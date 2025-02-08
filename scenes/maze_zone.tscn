@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bt0ww0ca2vevj"]
+
+[ext_resource type="Script" path="res://scripts/maze_zone.gd" id="1_8rd02"]
+
+[node name="Maze Zone" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_8rd02")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
