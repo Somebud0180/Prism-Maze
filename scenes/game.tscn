@@ -1,0 +1,83 @@
+[gd_scene load_steps=11 format=4 uid="uid://brinhdnvr4uxf"]
+
+[ext_resource type="Script" path="res://scenes/game_manager.gd" id="1_vrrtt"]
+[ext_resource type="PackedScene" uid="uid://bgf3ofvnym71l" path="res://scenes/player.tscn" id="1_vxt15"]
+[ext_resource type="PackedScene" uid="uid://dak5chwustt20" path="res://scenes/platform_up.tscn" id="2_nnj8i"]
+[ext_resource type="PackedScene" uid="uid://lh1g6i2usv5c" path="res://scenes/platform_down.tscn" id="2_sar34"]
+[ext_resource type="Texture2D" uid="uid://b2trhvjrl8ees" path="res://sprites/Tileset.png" id="3_5adld"]
+[ext_resource type="PackedScene" uid="uid://c1hg0dm7ju66w" path="res://scenes/killzone.tscn" id="4_ug23a"]
+[ext_resource type="PackedScene" uid="uid://cp5cu1p2kmu6r" path="res://scenes/flag.tscn" id="5_5wbu3"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wolhd"]
+texture = ExtResource("3_5adld")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, -2, -16, -2)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 2, -16, 16, 16, 16, 16, 2)
+3:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_hcp71"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_wolhd")
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_5gurd"]
+
+[node name="Game" type="Node2D"]
+
+[node name="GameManager" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("1_vrrtt")
+
+[node name="Player" parent="." instance=ExtResource("1_vxt15")]
+position = Vector2(-32, 0)
+motion_mode = 0
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(16, -14)
+zoom = Vector2(2, 2)
+limit_bottom = 180
+limit_smoothed = true
+position_smoothing_enabled = true
+
+[node name="Platforms" type="Node" parent="."]
+
+[node name="Platform Down" parent="Platforms" instance=ExtResource("2_sar34")]
+position = Vector2(0, -270)
+
+[node name="Entrance" parent="Platforms" instance=ExtResource("2_nnj8i")]
+position = Vector2(32, -64)
+
+[node name="Exit 1" parent="Platforms" instance=ExtResource("2_nnj8i")]
+position = Vector2(-192, -448)
+
+[node name="Parkour 1" parent="Platforms" instance=ExtResource("2_nnj8i")]
+position = Vector2(-128, -289)
+
+[node name="Parkour 2" parent="Platforms" instance=ExtResource("2_nnj8i")]
+position = Vector2(-224, -321)
+
+[node name="Parkour 3" parent="Platforms" instance=ExtResource("2_nnj8i")]
+position = Vector2(-128, -384)
+
+[node name="Exit 2" parent="Platforms" instance=ExtResource("2_nnj8i")]
+position = Vector2(-160, -448)
+
+[node name="Tilemaps" type="Node" parent="."]
+
+[node name="Layer1" type="TileMapLayer" parent="Tilemaps"]
+use_parent_material = true
+tile_map_data = PackedByteArray("AAD+/wAAAAAAAAAAAAD//wAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAALAP7/AAAAAAAAAAAMAP7/AAAAAAAAAAANAPz/AAAAAAAAAAAMAPr/AAAAAAAAAAAJAPj/AAAAAAAAAAAKAPn/AAAAAAAAAAAIAPj/AAAAAAAAAAAGAPf/AAAAAAAAAAAFAPf/AAAAAAAAAAABAPf/AAAAAAAAAAD///3/AAAAAAAAAAAAAP3/AAAAAAAAAAACAP3/AAAAAAAAAAADAP3/AAAAAAAAAAAEAP3/AAAAAAAAAAD///f/AAAAAAAAAAABAPj/AAAAAAAAAAABAPn/AAAAAAAAAAAAAPn/AAAAAAAAAAD///n/AAAAAAAAAAD+//n/AAAAAAAAAAD+//f/AAAAAAAAAAD9//n/AAAAAAAAAAD9//f/AAAAAAAAAAD9//b/AAAAAAAAAAD9//X/AAAAAAAAAAD9//T/AAAAAAAAAAD9//P/AAAAAAAAAAD9//L/AAAAAAAAAAD8//L/AAAAAAAAAAD4//L/AAAAAAAAAAD4//P/AAAAAAAAAAD4//T/AAAAAAAAAAD4//f/AAAAAAAAAAD4//j/AAAAAAAAAAD4//n/AAAAAAAAAAD5//n/AAAAAAAAAAD6//n/AAAAAAAAAAD7//n/AAAAAAAAAAD8//n/AAAAAAAAAAAIAPz/AAAAAAAAAAAEAP7/AAAAAAAAAAAEAP//AAAAAAAAAAD+////AAAAAAAAAAD+//7/AAAAAAAAAAD+//3/AAAAAAAAAAD4//b/AAAAAAAAAAD4//X/AAAAAAAAAAD5//L/AAAAAAAAAAD9//H/AAAAAAAAAAD9//D/AAAAAAAAAAD9/+//AAAAAAAAAAD8/+//AAAAAAAAAAD7/+//AAAAAAAAAAD6/+//AAAAAAAAAAD5/+//AAAAAAAAAAD4/+//AAAAAAAAAAD4//D/AAAAAAAAAAD4//H/AAAAAAAAAAA=")
+tile_set = SubResource("TileSet_hcp71")
+
+[node name="Flag" parent="." instance=ExtResource("5_5wbu3")]
+position = Vector2(-210, -464)
+
+[node name="Killzone" parent="." instance=ExtResource("4_ug23a")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
+position = Vector2(56, 178)
+shape = SubResource("WorldBoundaryShape2D_5gurd")

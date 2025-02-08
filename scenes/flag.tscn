@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://cp5cu1p2kmu6r"]
+
+[ext_resource type="Texture2D" uid="uid://b2trhvjrl8ees" path="res://sprites/Tileset.png" id="1_bgbau"]
+[ext_resource type="Script" path="res://scenes/flag.gd" id="1_k8dmr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hwhxd"]
+size = Vector2(21, 28)
+
+[node name="Flag" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_k8dmr")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_bgbau")
+region_enabled = true
+region_rect = Rect2(96, 0, 32, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2.5, 2)
+shape = SubResource("RectangleShape2D_hwhxd")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
