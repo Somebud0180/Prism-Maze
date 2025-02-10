@@ -74,8 +74,8 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0dsx4"]
-size = Vector2(22, 27)
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_vug4e"]
+points = PackedVector2Array(12, -6, 0, 15, -12, -6, 0, -15)
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
@@ -91,4 +91,4 @@ frame_progress = 0.435101
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(16, -15.5)
-shape = SubResource("RectangleShape2D_0dsx4")
+shape = SubResource("ConvexPolygonShape2D_vug4e")

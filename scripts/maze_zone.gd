@@ -1,6 +1,6 @@
 extends Area2D
 
-@onready var game_manager = %GameManager
+@onready var game_manager = get_node("/root/Game/GameManager")
 
 # This MazeZone Area2D should trigger its body_entered signal
 # when the player enters the zone on level 2.

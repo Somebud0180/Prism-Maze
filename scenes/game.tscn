@@ -1,76 +1,9 @@
-[gd_scene load_steps=18 format=4 uid="uid://brinhdnvr4uxf"]
+[gd_scene load_steps=5 format=3 uid="uid://brinhdnvr4uxf"]
 
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_vrrtt"]
 [ext_resource type="PackedScene" uid="uid://bgf3ofvnym71l" path="res://scenes/player.tscn" id="1_vxt15"]
-[ext_resource type="PackedScene" uid="uid://dak5chwustt20" path="res://scenes/platform_up.tscn" id="2_nnj8i"]
-[ext_resource type="PackedScene" uid="uid://lh1g6i2usv5c" path="res://scenes/platform_down.tscn" id="2_sar34"]
-[ext_resource type="Texture2D" uid="uid://b2trhvjrl8ees" path="res://sprites/Tileset.png" id="3_5adld"]
-[ext_resource type="PackedScene" uid="uid://3e12k3x6yjbr" path="res://scenes/platform_zone.tscn" id="4_dulun"]
-[ext_resource type="PackedScene" uid="uid://c1hg0dm7ju66w" path="res://scenes/killzone.tscn" id="4_ug23a"]
-[ext_resource type="PackedScene" uid="uid://cp5cu1p2kmu6r" path="res://scenes/flag.tscn" id="5_5wbu3"]
-[ext_resource type="PackedScene" uid="uid://bt0ww0ca2vevj" path="res://scenes/maze_zone.tscn" id="8_06eun"]
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wolhd"]
-texture = ExtResource("3_5adld")
-texture_region_size = Vector2i(32, 32)
-0:0/0 = 0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
-1:0/0 = 0
-1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, -2, -16, -2)
-2:0/0 = 0
-2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 2, -16, 16, 16, 16, 16, 2)
-3:0/0 = 0
-
-[sub_resource type="TileSet" id="TileSet_hcp71"]
-tile_size = Vector2i(32, 32)
-physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_wolhd")
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_12i3k"]
-size = Vector2(704, 544)
-
-[sub_resource type="Animation" id="Animation_41j5q"]
-resource_name = "Move"
-length = 2.0
-loop_mode = 2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(-128, -384), Vector2(-225, -384)]
-}
-
-[sub_resource type="Animation" id="Animation_hin5d"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-128, -384)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_enqpk"]
-_data = {
-"Move": SubResource("Animation_41j5q"),
-"RESET": SubResource("Animation_hin5d")
-}
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_5gurd"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jgcys"]
-size = Vector2(736, 416)
+[ext_resource type="Script" path="res://scripts/camera_2d.gd" id="3_lo0k5"]
+[ext_resource type="PackedScene" uid="uid://mievb8x5787c" path="res://scenes/platform_layer.tscn" id="4_platform_layer"]
 
 [node name="Game" type="Node2D"]
 
@@ -79,75 +12,17 @@ unique_name_in_owner = true
 script = ExtResource("1_vrrtt")
 
 [node name="Player" parent="." instance=ExtResource("1_vxt15")]
-position = Vector2(-32, 0)
+position = Vector2(24, 49)
 motion_mode = 0
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(16, -14)
-zoom = Vector2(2, 2)
-limit_bottom = 180
+zoom = Vector2(1.5, 1.5)
 limit_smoothed = true
 position_smoothing_enabled = true
+script = ExtResource("3_lo0k5")
 
-[node name="Tilemaps" type="Node" parent="."]
+[node name="MainLayer" type="TileMapLayer" parent="."]
+
+[node name="PlatformLayer" parent="." instance=ExtResource("4_platform_layer")]
 unique_name_in_owner = true
-
-[node name="Level1" type="TileMapLayer" parent="Tilemaps"]
-use_parent_material = true
-tile_map_data = PackedByteArray("AAD+/wAAAAAAAAAAAAD//wAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAALAP7/AAAAAAAAAAAMAP7/AAAAAAAAAAANAPz/AAAAAAAAAAAMAPr/AAAAAAAAAAAJAPj/AAAAAAAAAAAKAPn/AAAAAAAAAAAIAPj/AAAAAAAAAAAGAPf/AAAAAAAAAAAFAPf/AAAAAAAAAAABAPf/AAAAAAAAAAD///3/AAAAAAAAAAAAAP3/AAAAAAAAAAACAP3/AAAAAAAAAAADAP3/AAAAAAAAAAAEAP3/AAAAAAAAAAD///f/AAAAAAAAAAABAPj/AAAAAAAAAAABAPn/AAAAAAAAAAAAAPn/AAAAAAAAAAD///n/AAAAAAAAAAD+//n/AAAAAAAAAAD+//f/AAAAAAAAAAD9//n/AAAAAAAAAAD9//f/AAAAAAAAAAD9//b/AAAAAAAAAAD9//X/AAAAAAAAAAD9//T/AAAAAAAAAAD9//P/AAAAAAAAAAD9//L/AAAAAAAAAAD8//L/AAAAAAAAAAD4//L/AAAAAAAAAAD4//P/AAAAAAAAAAD4//T/AAAAAAAAAAD4//f/AAAAAAAAAAD4//j/AAAAAAAAAAD4//n/AAAAAAAAAAD5//n/AAAAAAAAAAD6//n/AAAAAAAAAAD7//n/AAAAAAAAAAD8//n/AAAAAAAAAAAIAPz/AAAAAAAAAAAEAP7/AAAAAAAAAAAEAP//AAAAAAAAAAD+////AAAAAAAAAAD+//7/AAAAAAAAAAD+//3/AAAAAAAAAAD4//b/AAAAAAAAAAD4//X/AAAAAAAAAAD5//L/AAAAAAAAAAD9//H/AAAAAAAAAAD9//D/AAAAAAAAAAD9/+//AAAAAAAAAAD8/+//AAAAAAAAAAD7/+//AAAAAAAAAAD6/+//AAAAAAAAAAD5/+//AAAAAAAAAAD4/+//AAAAAAAAAAD4//D/AAAAAAAAAAD4//H/AAAAAAAAAAA=")
-tile_set = SubResource("TileSet_hcp71")
-
-[node name="Platform Zone" parent="Tilemaps/Level1" instance=ExtResource("4_dulun")]
-
-[node name="Platform Collision" type="CollisionShape2D" parent="Tilemaps/Level1/Platform Zone"]
-position = Vector2(96, -240)
-shape = SubResource("RectangleShape2D_12i3k")
-
-[node name="Platforms" type="Node" parent="Tilemaps/Level1"]
-
-[node name="Platform Down" parent="Tilemaps/Level1/Platforms" instance=ExtResource("2_sar34")]
-position = Vector2(0, -270)
-
-[node name="Entrance" parent="Tilemaps/Level1/Platforms" instance=ExtResource("2_nnj8i")]
-position = Vector2(32, -64)
-
-[node name="Exit 1" parent="Tilemaps/Level1/Platforms" instance=ExtResource("2_nnj8i")]
-position = Vector2(-192, -448)
-
-[node name="Parkour 1" parent="Tilemaps/Level1/Platforms" instance=ExtResource("2_nnj8i")]
-position = Vector2(-128, -288)
-
-[node name="Parkour 2" parent="Tilemaps/Level1/Platforms" instance=ExtResource("2_nnj8i")]
-position = Vector2(-224, -320)
-
-[node name="Parkour 3" parent="Tilemaps/Level1/Platforms" instance=ExtResource("2_nnj8i")]
-position = Vector2(-128, -384)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Tilemaps/Level1/Platforms/Parkour 3"]
-libraries = {
-"": SubResource("AnimationLibrary_enqpk")
-}
-autoplay = "Move"
-
-[node name="Exit 2" parent="Tilemaps/Level1/Platforms" instance=ExtResource("2_nnj8i")]
-position = Vector2(-160, -448)
-
-[node name="Killzone" parent="Tilemaps/Level1" instance=ExtResource("4_ug23a")]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Tilemaps/Level1/Killzone"]
-position = Vector2(56, 178)
-shape = SubResource("WorldBoundaryShape2D_5gurd")
-
-[node name="Flag" parent="Tilemaps/Level1" instance=ExtResource("5_5wbu3")]
-position = Vector2(-210, -464)
-
-[node name="Level2" type="TileMapLayer" parent="Tilemaps"]
-use_parent_material = true
-tile_map_data = PackedByteArray("AAD5//L/AAAAAAAAAAD4//L/AAAAAAAAAAD3//L/AAAAAAAAAAD2//L/AAAAAAAAAAD1//L/AAAAAAAAAAD6//L/AAAAAAAAAAD7//L/AAAAAAAAAAD8//L/AAAAAAAAAAD9//L/AAAAAAAAAAD5//D/AAAAAAAAAAD4//D/AAAAAAAAAAD3//D/AAAAAAAAAAD2//D/AAAAAAAAAAD6//D/AAAAAAAAAAD7//D/AAAAAAAAAAD8//D/AAAAAAAAAAD+//L/AAAAAAAAAAD+//H/AAAAAAAAAAD+//D/AAAAAAAAAAD0//L/AAAAAAAAAAD0//H/AAAAAAAAAAD0//D/AAAAAAAAAADz//L/AAAAAAAAAADy//L/AAAAAAAAAADx//L/AAAAAAAAAADy//D/AAAAAAAAAADx//D/AAAAAAAAAADw//D/AAAAAAAAAAD8/+//AAAAAAAAAAAAAPD/AAAAAAAAAAAAAPL/AAAAAAAAAAABAPL/AAAAAAAAAAACAPL/AAAAAAAAAAABAPD/AAAAAAAAAAADAPL/AAAAAAAAAAACAPD/AAAAAAAAAADw//L/AAAAAAAAAADv//L/AAAAAAAAAADu//L/AAAAAAAAAADu//H/AAAAAAAAAADu//D/AAAAAAAAAAAEAPL/AAAAAAAAAAAEAPH/AAAAAAAAAAAEAPD/AAAAAAAAAADx/+//AAAAAAAAAADx/+7/AAAAAAAAAADx/+3/AAAAAAAAAADx/+z/AAAAAAAAAADu/+//AAAAAAAAAADu/+7/AAAAAAAAAADv/+7/AAAAAAAAAADw/+z/AAAAAAAAAADu/+3/AAAAAAAAAADu/+z/AAAAAAAAAADu/+v/AAAAAAAAAADu/+r/AAAAAAAAAAAEAO//AAAAAAAAAAAEAO7/AAAAAAAAAAADAO7/AAAAAAAAAAACAO7/AAAAAAAAAAAAAO7/AAAAAAAAAAD8/+3/AAAAAAAAAAD9/+3/AAAAAAAAAAD+/+3/AAAAAAAAAAD+/+7/AAAAAAAAAAAAAO3/AAAAAAAAAAAAAOz/AAAAAAAAAAD//+z/AAAAAAAAAAD+/+z/AAAAAAAAAAAEAO3/AAAAAAAAAAAEAOz/AAAAAAAAAAAEAOv/AAAAAAAAAAACAO3/AAAAAAAAAAACAOz/AAAAAAAAAAACAOv/AAAAAAAAAAAEAOr/AAAAAAAAAAAEAOn/AAAAAAAAAAADAOn/AAAAAAAAAAACAOn/AAAAAAAAAAABAOn/AAAAAAAAAADw/+r/AAAAAAAAAADw/+v/AAAAAAAAAADv/+r/AAAAAAAAAAD0/+7/AAAAAAAAAADz/+7/AAAAAAAAAAD1/+7/AAAAAAAAAAD2/+7/AAAAAAAAAAD3/+7/AAAAAAAAAAD4/+7/AAAAAAAAAAD5/+7/AAAAAAAAAAD6/+7/AAAAAAAAAAD5/+//AAAAAAAAAAD6/+3/AAAAAAAAAAD6/+z/AAAAAAAAAADz/+z/AAAAAAAAAAD0/+z/AAAAAAAAAAD1/+z/AAAAAAAAAAD2/+z/AAAAAAAAAAD2/+3/AAAAAAAAAADx/+r/AAAAAAAAAADy/+r/AAAAAAAAAADz/+r/AAAAAAAAAAD0/+r/AAAAAAAAAAD1/+r/AAAAAAAAAAD2/+r/AAAAAAAAAAD3/+r/AAAAAAAAAAD4/+r/AAAAAAAAAAD4/+v/AAAAAAAAAAD4/+z/AAAAAAAAAADu/+n/AAAAAAAAAADu/+j/AAAAAAAAAADu/+f/AAAAAAAAAADy/+b/AAAAAAAAAADz/+b/AAAAAAAAAAD0/+b/AAAAAAAAAAD1/+b/AAAAAAAAAAD2/+b/AAAAAAAAAAD3/+b/AAAAAAAAAAD4/+b/AAAAAAAAAADu/+b/AAAAAAAAAADv/+b/AAAAAAAAAADw/+b/AAAAAAAAAADx/+b/AAAAAAAAAADw/+n/AAAAAAAAAADw/+j/AAAAAAAAAADy/+j/AAAAAAAAAADz/+j/AAAAAAAAAAD0/+j/AAAAAAAAAAD1/+j/AAAAAAAAAADz/+n/AAAAAAAAAAD4/+j/AAAAAAAAAAD3/+j/AAAAAAAAAAD3/+f/AAAAAAAAAAD5/+j/AAAAAAAAAAD6/+j/AAAAAAAAAAD5/+b/AAAAAAAAAAD6/+b/AAAAAAAAAAD7/+b/AAAAAAAAAAD8/+b/AAAAAAAAAAD9/+b/AAAAAAAAAAD6/+n/AAAAAAAAAAD6/+r/AAAAAAAAAAD8/+v/AAAAAAAAAAD8/+r/AAAAAAAAAAD8/+n/AAAAAAAAAAD8/+j/AAAAAAAAAAD+/+j/AAAAAAAAAAD+/+n/AAAAAAAAAAD+/+r/AAAAAAAAAAD9/+r/AAAAAAAAAAD+/+b/AAAAAAAAAAD//+b/AAAAAAAAAAAAAOb/AAAAAAAAAAABAOb/AAAAAAAAAAACAOb/AAAAAAAAAAADAOb/AAAAAAAAAAAEAOb/AAAAAAAAAAAEAOf/AAAAAAAAAAAEAOj/AAAAAAAAAAACAOf/AAAAAAAAAAAAAOn/AAAAAAAAAAAAAOj/AAAAAAAAAAAAAOr/AAAAAAAAAAA=")
-tile_set = SubResource("TileSet_hcp71")
-
-[node name="Maze Zone" parent="Tilemaps/Level2" instance=ExtResource("8_06eun")]
-
-[node name="Maze Collision" type="CollisionShape2D" parent="Tilemaps/Level2/Maze Zone"]
-position = Vector2(-208, -624)
-shape = SubResource("RectangleShape2D_jgcys")

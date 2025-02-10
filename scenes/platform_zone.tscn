@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://3e12k3x6yjbr"]
 
-[ext_resource type="Script" path="res://scenes/platform_zone.gd" id="1_ymlj8"]
+[ext_resource type="Script" path="res://scripts/platform_zone.gd" id="1_ymlj8"]
 
 [node name="Platform Zone" type="Area2D"]
 collision_mask = 2
