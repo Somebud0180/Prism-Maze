@@ -22,8 +22,6 @@ func _init_zone() -> void:
 	# Connect the body_entered signal if it isn't already connected.
 	if not is_connected("body_entered", Callable(self, "_on_body_entered")):
 		connect("body_entered", Callable(self, "_on_body_entered"))
-	print("PlatformZone ready with monitoring: ", monitoring)
 
 func _on_body_entered(body: Node2D) -> void:
 	game_manager.GAME_MODE = 1
-	print("PlatformZone triggered by player!")

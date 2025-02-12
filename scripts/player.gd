@@ -8,6 +8,9 @@ var GRAVITY_DIRECTION = 1
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var game_manager = %GameManager
 
+func go_to(input_position: Vector2):
+	position = input_position
+
 func _physics_process(delta: float) -> void:
 	if game_manager.GAME_MODE == 1:
 		# Invert the gravity.

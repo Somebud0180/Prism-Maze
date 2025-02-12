@@ -1,15 +1,16 @@
 extends TileMapLayer
-class_name MazeGen
+class_name Maze
 
 # A maze generator
 # From https://godotengine.org/asset-library/asset/2199
 # Slightly modified to fit the game.
 
+@onready var game_manager = get_node("/root/Game/GameManager")
 @onready var player = get_node("/root/Game/Player")
-@onready var player_pos = player.position
 
 const allow_loops = true
 
+var current_level = 0
 var starting_pos = Vector2i()
 const normal_wall_atlas_coords = Vector2i(1, 0)
 const walkable_atlas_coords = Vector2i(0, 0)
@@ -30,11 +31,13 @@ var adj4 = [
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	print("Readying maze layer")
-	reset_level()
+	pass
 	
-func reset_level():
+func load_maze(level: int):
 	print("Resetting maze layer")
+	# Store current level as needed.
+	current_level = level
+	
 	# Remove existing flag nodes.
 	for flag in get_tree().get_nodes_in_group("flag"):
 		flag.queue_free()
@@ -46,11 +49,17 @@ func reset_level():
 	# Re-assign starting position from player's current tile position.
 	var player_tile: Vector2i = Vector2i(0, 0)
 	player = get_node("/root/Game/Player")
+	game_manager = get_node("/root/Game/GameManager")
+	
 	player.position = Vector2i(0,32)
 	
 	# Set maze dimensions.
-	y_dim = randi_range(20, 30)
-	x_dim = randi_range(20, 30)
+	var size_range: Vector2i = determine_size(level)
+	var min_range = size_range[0]
+	var max_range = size_range[1]
+	
+	y_dim = randi_range(min_range, max_range)
+	x_dim = randi_range(min_range, max_range)
 	
 	starting_coords = player_tile  # Use this as the start for DFS and border.
 	
@@ -59,6 +68,12 @@ func reset_level():
 	place_border()
 	dfs(player_tile)
 	place_flag()
+	
+func determine_size(level: int):
+	if level <= 5:
+		return Vector2i(12, 16)
+	elif level <= 10:
+		return Vector2i(16, 32)
 	
 func place_border():
 	for y in range(-1, y_dim):
@@ -135,7 +150,6 @@ func dfs(start: Vector2i):
 		#if we hit a dead end or are at a cross section
 		if not found_new_path:
 			place_wall(current)
-	place_flag()
 			
 func place_flag() -> void:
 	var candidate_positions = []
@@ -170,4 +184,5 @@ func place_flag() -> void:
 		flag_instance.add_to_group("flag")
 		print("Placed flag at: ", chosen)
 	else:
-		print("No suitable flag candidate found.")
+		print("No suitable flag candidate found. Resetting...")
+		load_maze(current_level)

@@ -1,39 +1,34 @@
 extends Node
-
-@onready var levels = %"Platform Maps"
-@onready var main_layer: Node = $"../MainLayer"
-@onready var game_manager = get_node("/root/Game/GameManager")
-
-var possible_platform_scenes = [
-	load("res://scenes/platform_zone.tscn")
-]
+class_name Platform
 
 var tilemap_defaults := {}  # For TileMap nodes.
 var physics_defaults := {}  # For CollisionObject2D nodes (excluding TileMap).
-var child_count = 0
+var level_count = -1
 
 func _ready() -> void:
-	call_deferred("_init")
-
-func _init() -> void:
-	if levels == null:
-		printerr("Error: Platform Maps node not found!")
-		return
 	_store_tilemap_defaults()
-	_store_physics_defaults(levels)
-	child_count = levels.get_child_count()
-	update_levels_state()
+	_store_physics_defaults(self)
+	
+func get_random_level() -> int:
+	return randi_range(0, get_child_count())
 
-func randomize_platforms() -> void:
-	var scene = possible_platform_scenes[randi() % possible_platform_scenes.size()]
-	var instance = scene.instantiate()
-	main_layer.add_child(instance) # Add to MainLayer
+func disable_all_levels() -> void:
+	for i in range(level_count):
+		var level_node: Node = get_child(i)
+		_disable_level(level_node)
 
-func update_levels_state() -> void:
-	var level = game_manager.PLATFORM_LEVEL
-		
-	for i in range(child_count):
-		var level_node = levels.get_child(i)
+func enable_all_levels() -> void:
+	for i in range(level_count):
+		var level_node: Node = get_child(i)
+		_enable_level(level_node)
+
+func load_level(level: int) -> void:
+	level_count = get_child_count()
+	enable_all_levels()
+	
+	for i in range(level_count):
+		print("level_count: " + str(i))
+		var level_node = get_child(i)
 		if i == level:
 			_enable_level(level_node)
 		else:
@@ -41,6 +36,7 @@ func update_levels_state() -> void:
 
 # Enables a level node by recursively showing it, enabling processing, and restoring its physics.
 func _enable_level(level_node: Node) -> void:
+	print("Enabling platform level")
 	_set_visibility_recursive(level_node, true)
 	if level_node.has_method("set_process"):
 		level_node.set_process(true)
@@ -62,11 +58,11 @@ func _disable_level(level_node: Node) -> void:
 	_set_physics_state(level_node, false)
 
 # Recursively set the "visible" property for all CanvasItem nodes using deferred calls.
-func _set_visibility_recursive(current_node: Node, visible: bool) -> void:
+func _set_visibility_recursive(current_node: Node, visibility: bool) -> void:
 	if current_node is CanvasItem:
-		current_node.set_deferred("visible", visible)
+		current_node.set_deferred("visible", visibility)
 	for child in current_node.get_children():
-		_set_visibility_recursive(child, visible)
+		_set_visibility_recursive(child, visibility)
 
 # Recursively update physics/collision state for CollisionShape2D and CollisionObject2D nodes.
 func _set_physics_state(current_node: Node, enable: bool) -> void:
@@ -96,8 +92,8 @@ func _set_physics_state(current_node: Node, enable: bool) -> void:
 
 # Store default collision_layer and collision_mask for each TileMap under levels.
 func _store_tilemap_defaults() -> void:
-	for i in range(levels.get_child_count()):
-		var level_node: Node = levels.get_child(i)
+	for i in range(get_child_count()):
+		var level_node: Node = get_child(i)
 		for child in level_node.get_children():
 			if child is TileMap:
 				var id = child.get_instance_id()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://cxjm5sy3y54p4"]
+[gd_scene load_steps=5 format=3 uid="uid://bndu4to01dkyd"]
 
 [ext_resource type="Texture2D" uid="uid://b2trhvjrl8ees" path="res://sprites/Tileset.png" id="1_825dj"]
 [ext_resource type="Script" path="res://scripts/maze_layer.gd" id="1_gihkl"]

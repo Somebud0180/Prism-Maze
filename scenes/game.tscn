@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://brinhdnvr4uxf"]
+[gd_scene load_steps=4 format=3 uid="uid://brinhdnvr4uxf"]
 
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_vrrtt"]
 [ext_resource type="PackedScene" uid="uid://bgf3ofvnym71l" path="res://scenes/player.tscn" id="1_vxt15"]
 [ext_resource type="Script" path="res://scripts/camera_2d.gd" id="3_lo0k5"]
-[ext_resource type="PackedScene" uid="uid://mievb8x5787c" path="res://scenes/platform_layer.tscn" id="4_platform_layer"]
 
 [node name="Game" type="Node2D"]
 
@@ -12,10 +11,11 @@ unique_name_in_owner = true
 script = ExtResource("1_vrrtt")
 
 [node name="Player" parent="." instance=ExtResource("1_vxt15")]
-position = Vector2(24, 49)
+unique_name_in_owner = true
 motion_mode = 0
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
+unique_name_in_owner = true
 position = Vector2(16, -14)
 zoom = Vector2(1.5, 1.5)
 limit_smoothed = true
@@ -23,6 +23,4 @@ position_smoothing_enabled = true
 script = ExtResource("3_lo0k5")
 
 [node name="MainLayer" type="TileMapLayer" parent="."]
-
-[node name="PlatformLayer" parent="." instance=ExtResource("4_platform_layer")]
 unique_name_in_owner = true
