@@ -6,6 +6,7 @@ extends Node
 
 @export var level: int = 0
 var level_collection: Array[String] = [] # The level set for the current playthrough
+var level_amount: int = 10 # The amount of levels to create for the playthrough.
 var game_ready: bool = false
 var GAME_MODE: int = 2  # 1: Platformer, 2: Maze
 var PLATFORM_LEVEL = -1
@@ -25,14 +26,14 @@ func load_game() -> void:
 	main_layer.add_child(platform_instance)
 	
 	# Create a level collection
-	for i in range(10): 
+	for i in range(level_amount): 
 		var this_level = randi_range(0, 1)
 		if this_level == 0:
 			level_collection.append("Maze")
 		else:
 			level_collection.append("Platform")
-		# load_maze()
-		# platform_layer.update_levels_state()
+		
+	level_collection.append(str(platform_instance.get_child_count() - 1))
 	print(level_collection)
 	
 	# Replace placeholder platformer levels to real levels
@@ -56,11 +57,12 @@ func load_game() -> void:
 	print(level_collection)
 
 func progress_level() -> void:
-	level += 1
-	print("Progressing to level:", level)
-	load_level()
-	#  load_maze()
-	# platform_layer.update_levels_state() # Call the function in PlatformLayer
+	if level > level_collection.size():
+		load_end()
+	else:
+		level += 1
+		print("Progressing to level:", level)
+		load_level()
 
 func load_level() -> void:
 	for child in main_layer.get_children():
@@ -104,6 +106,10 @@ func load_platform(selected_level: int) -> void:
 
 	platform_instance.disable_all_levels()
 	platform_instance.load_level(selected_level)
+	
+func load_end() -> void:
+	print("Loading end")
+	pass
 
 func _process(_delta: float) -> void:
 	pass

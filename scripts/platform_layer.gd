@@ -9,8 +9,10 @@ func _ready() -> void:
 	_store_tilemap_defaults()
 	_store_physics_defaults(self)
 	
+# Give a random level between the first and the last, excluding the final level.
+# Reduced by an additional 1 to match counting starting at 0.
 func get_random_level() -> int:
-	return randi_range(0, get_child_count())
+	return randi_range(0, get_child_count() - 2)
 
 func disable_all_levels() -> void:
 	for i in range(level_count):

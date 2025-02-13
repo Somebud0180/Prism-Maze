@@ -80,6 +80,7 @@ motion_mode = 1
 script = ExtResource("1_4jykx")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 1
 position = Vector2(16, -16)
 sprite_frames = SubResource("SpriteFrames_wx7ie")
 animation = &"idle"
@@ -87,4 +88,4 @@ autoplay = "idle"
 frame_progress = 0.435101
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(16, -2, 27, -21, 18, -29, 15, -29, 5, -21)
+polygon = PackedVector2Array(13, -1, 19, -1, 27, -21, 18, -29, 15, -29, 5, -21)

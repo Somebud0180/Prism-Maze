@@ -4,3 +4,9 @@
 
 # Mac ignores
 .DS_Store
+
+# iOS Project ignores
+build/iOS/
+.xcframework
+.xcodeproj
+.xcprivacy
