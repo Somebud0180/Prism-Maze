@@ -1,12 +1,9 @@
 extends TileMapLayer
-class_name Maze
+class_name GenMaze
 
 # A maze generator
 # From https://godotengine.org/asset-library/asset/2199
 # Slightly modified to fit the game.
-
-@onready var game_manager = get_node("/root/Game/GameManager")
-@onready var player = get_node("/root/Game/Player")
 
 const allow_loops = true
 
@@ -30,6 +27,7 @@ var adj4 = [
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	position.y = -32
 	pass
 	
 func load_maze(level: int):
@@ -44,13 +42,6 @@ func load_maze(level: int):
 	# Clear the existing maze cells.
 	for cell in get_used_cells():
 		set_cell(cell, -1, Vector2i(-1, 0))  # -1 clears the cell
-
-	# Re-assign starting position from player's current tile position.
-	var player_tile: Vector2i = Vector2i(0, 0)
-	player = get_node("/root/Game/Player")
-	game_manager = get_node("/root/Game/GameManager")
-	
-	player.position = Vector2i(0,32)
 	
 	# Set maze dimensions.
 	var size_range: Vector2i = determine_size(level)
@@ -60,12 +51,10 @@ func load_maze(level: int):
 	y_dim = randi_range(min_range, max_range)
 	x_dim = randi_range(min_range, max_range)
 	
-	starting_coords = player_tile  # Use this as the start for DFS and border.
-	
-	print("Player tile:", player_tile)
+	print("Player tile:", starting_coords)
 	
 	place_border()
-	dfs(player_tile)
+	dfs(starting_coords)
 	place_flag()
 	
 func determine_size(level: int):

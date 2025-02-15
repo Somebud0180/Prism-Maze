@@ -1,11 +1,11 @@
 extends Node
-class_name Platform
+class_name Maze
 
 @onready var player = get_node("/root/Game/Player")
 
 var tilemap_defaults := {}  # For TileMap nodes.
 var physics_defaults := {}  # For CollisionObject2D nodes (excluding TileMap).
-var level_count = -1
+var level_count = 0
 
 func _ready() -> void:
 	_store_tilemap_defaults()
@@ -31,6 +31,7 @@ func load_level(level: int) -> void:
 	enable_all_levels()
 	
 	for i in range(level_count):
+		print("level_count: " + str(i))
 		var level_node = get_child(i)
 		if i == level:
 			_enable_level(level_node)
@@ -39,6 +40,7 @@ func load_level(level: int) -> void:
 
 # Enables a level node by recursively showing it, enabling processing, and restoring its physics.
 func _enable_level(level_node: Node) -> void:
+	print("Enabling platform level")
 	_set_visibility_recursive(level_node, true)
 	if level_node.has_method("set_process"):
 		level_node.set_process(true)

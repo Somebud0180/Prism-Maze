@@ -1,6 +1,7 @@
 extends Area2D
 
 @onready var timer = $Timer
+@onready var player = get_node("/root/Game/Player")
 @onready var game_manager = get_node("/root/Game/GameManager")
 
 func _on_body_entered(_body: Node2D) -> void:
@@ -9,4 +10,6 @@ func _on_body_entered(_body: Node2D) -> void:
 	
 
 func _on_timer_timeout() -> void:
-	game_manager.load_level()
+	player = get_node("/root/Game/Player")
+	player.position = Vector2i(0,0)
+	timer.stop()
