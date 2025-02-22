@@ -1,8 +1,4 @@
 extends TileMapLayer
-<<<<<<< HEAD
-class_name GenMaze
-=======
->>>>>>> ade2381 (Added a main menu (Changed the primary scene to the menu), added new levels, made some changes throughout the code, and some asset reogranization and update. Also added a rough 3D scene implementation)
 
 # A maze generator
 # From https://godotengine.org/asset-library/asset/2199

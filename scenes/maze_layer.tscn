@@ -1,20 +1,11 @@
 [gd_scene load_steps=6 format=4 uid="uid://bndu4to01dkyd"]
 
-<<<<<<< HEAD
-[ext_resource type="Script" path="res://maze_layer.gd" id="1_ee7bj"]
-[ext_resource type="Texture2D" uid="uid://b2trhvjrl8ees" path="res://sprites/Tileset.png" id="2_i8qtl"]
-[ext_resource type="PackedScene" uid="uid://cp5cu1p2kmu6r" path="res://scenes/flag.tscn" id="3_t77i3"]
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4ira2"]
-texture = ExtResource("2_i8qtl")
-=======
 [ext_resource type="Script" path="res://scripts/maze_layer.gd" id="1_ee7bj"]
 [ext_resource type="Texture2D" uid="uid://b2trhvjrl8ees" path="res://resources/Game/Tileset.png" id="2_p2yql"]
 [ext_resource type="PackedScene" uid="uid://cp5cu1p2kmu6r" path="res://scenes/flag.tscn" id="3_t77i3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jyev0"]
 texture = ExtResource("2_p2yql")
->>>>>>> ade2381 (Added a main menu (Changed the primary scene to the menu), added new levels, made some changes throughout the code, and some asset reogranization and update. Also added a rough 3D scene implementation)
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
@@ -30,20 +21,13 @@ texture_region_size = Vector2i(32, 32)
 [sub_resource type="TileSet" id="TileSet_b6wc0"]
 tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
-<<<<<<< HEAD
-sources/0 = SubResource("TileSetAtlasSource_4ira2")
-=======
 sources/0 = SubResource("TileSetAtlasSource_jyev0")
->>>>>>> ade2381 (Added a main menu (Changed the primary scene to the menu), added new levels, made some changes throughout the code, and some asset reogranization and update. Also added a rough 3D scene implementation)
 
 [node name="MazeLayer" type="Node"]
 script = ExtResource("1_ee7bj")
 
 [node name="0" type="TileMapLayer" parent="."]
-<<<<<<< HEAD
-=======
 visible = false
->>>>>>> ade2381 (Added a main menu (Changed the primary scene to the menu), added new levels, made some changes throughout the code, and some asset reogranization and update. Also added a rough 3D scene implementation)
 use_parent_material = true
 tile_map_data = PackedByteArray("AAD4//T/AAABAAAAAAD4//X/AAABAAAAAAD4//b/AAABAAAAAAD4//f/AAABAAAAAAD4//j/AAABAAAAAAD4//n/AAABAAAAAAD4//r/AAABAAAAAAD4//v/AAABAAAAAAD4//z/AAABAAAAAAD4//3/AAABAAAAAAD4//7/AAABAAAAAAD4////AAABAAAAAAD4/wAAAAABAAAAAAD4/wEAAAABAAAAAAD4/wIAAAABAAAAAAD4/wMAAAABAAAAAAD4/wQAAAABAAAAAAD4/wUAAAABAAAAAAD4/wYAAAABAAAAAAD4/wcAAAABAAAAAAD4/wgAAAABAAAAAAD5//T/AAABAAAAAAD5//7/AAABAAAAAAD5/wgAAAABAAAAAAD6//T/AAABAAAAAAD6//b/AAABAAAAAAD6//f/AAABAAAAAAD6//j/AAABAAAAAAD6//r/AAABAAAAAAD6//z/AAABAAAAAAD6//7/AAABAAAAAAD6/wAAAAABAAAAAAD6/wEAAAABAAAAAAD6/wIAAAABAAAAAAD6/wMAAAABAAAAAAD6/wQAAAABAAAAAAD6/wUAAAABAAAAAAD6/wYAAAABAAAAAAD6/wgAAAABAAAAAAD7//T/AAABAAAAAAD7//b/AAABAAAAAAD7//r/AAABAAAAAAD7//z/AAABAAAAAAD7/wAAAAABAAAAAAD7/wYAAAABAAAAAAD7/wgAAAABAAAAAAD8//T/AAABAAAAAAD8//X/AAABAAAAAAD8//b/AAABAAAAAAD8//f/AAABAAAAAAD8//j/AAABAAAAAAD8//r/AAABAAAAAAD8//z/AAABAAAAAAD8//7/AAABAAAAAAD8/wAAAAABAAAAAAD8/wIAAAABAAAAAAD8/wQAAAABAAAAAAD8/wYAAAABAAAAAAD8/wgAAAABAAAAAAD9//T/AAABAAAAAAD9//r/AAABAAAAAAD9//z/AAABAAAAAAD9//7/AAABAAAAAAD9/wAAAAABAAAAAAD9/wIAAAABAAAAAAD9/wQAAAABAAAAAAD9/wYAAAABAAAAAAD9/wcAAAABAAAAAAD9/wgAAAABAAAAAAD+//T/AAABAAAAAAD+//b/AAABAAAAAAD+//f/AAABAAAAAAD+//j/AAABAAAAAAD+//n/AAABAAAAAAD+//r/AAABAAAAAAD+//z/AAABAAAAAAD+//7/AAABAAAAAAD+/wIAAAABAAAAAAD+/wQAAAABAAAAAAD+/wYAAAABAAAAAAD+/wgAAAABAAAAAAD///T/AAABAAAAAAD///b/AAABAAAAAAD///z/AAABAAAAAAD///7/AAABAAAAAAD/////AAABAAAAAAD//wAAAAABAAAAAAD//wIAAAABAAAAAAD//wQAAAABAAAAAAD//wYAAAABAAAAAAD//wgAAAABAAAAAAAAAPT/AAABAAAAAAAAAPb/AAABAAAAAAAAAPf/AAABAAAAAAAAAPj/AAABAAAAAAAAAPr/AAABAAAAAAAAAPv/AAABAAAAAAAAAPz/AAABAAAAAAAAAAAAAAABAAAAAAAAAAIAAAABAAAAAAAAAAQAAAABAAAAAAAAAAUAAAABAAAAAAAAAAYAAAABAAAAAAAAAAgAAAABAAAAAAABAPT/AAABAAAAAAABAPj/AAABAAAAAAABAPz/AAABAAAAAAABAP7/AAABAAAAAAABAP//AAABAAAAAAABAAAAAAABAAAAAAABAAYAAAABAAAAAAABAAgAAAABAAAAAAACAPT/AAABAAAAAAACAPb/AAABAAAAAAACAPf/AAABAAAAAAACAPj/AAABAAAAAAACAPn/AAABAAAAAAACAPr/AAABAAAAAAACAPz/AAABAAAAAAACAP7/AAABAAAAAAACAAIAAAABAAAAAAACAAMAAAABAAAAAAACAAQAAAABAAAAAAACAAUAAAABAAAAAAACAAYAAAABAAAAAAACAAgAAAABAAAAAAADAPT/AAABAAAAAAADAPz/AAABAAAAAAADAP7/AAABAAAAAAADAAAAAAABAAAAAAADAAEAAAABAAAAAAADAAIAAAABAAAAAAADAAYAAAABAAAAAAADAAgAAAABAAAAAAAEAPT/AAABAAAAAAAEAPX/AAABAAAAAAAEAPb/AAABAAAAAAAEAPj/AAABAAAAAAAEAPn/AAABAAAAAAAEAPr/AAABAAAAAAAEAP7/AAABAAAAAAAEAAAAAAABAAAAAAAEAAQAAAABAAAAAAAEAAUAAAABAAAAAAAEAAYAAAABAAAAAAAEAAgAAAABAAAAAAAFAPT/AAABAAAAAAAFAPj/AAABAAAAAAAFAPr/AAABAAAAAAAFAPz/AAABAAAAAAAFAP7/AAABAAAAAAAFAAAAAAABAAAAAAAFAAIAAAABAAAAAAAFAAgAAAABAAAAAAAGAPT/AAABAAAAAAAGAPb/AAABAAAAAAAGAPf/AAABAAAAAAAGAPj/AAABAAAAAAAGAPr/AAABAAAAAAAGAPz/AAABAAAAAAAGAP7/AAABAAAAAAAGAP//AAABAAAAAAAGAAAAAAABAAAAAAAGAAIAAAABAAAAAAAGAAMAAAABAAAAAAAGAAQAAAABAAAAAAAGAAUAAAABAAAAAAAGAAYAAAABAAAAAAAGAAcAAAABAAAAAAAGAAgAAAABAAAAAAAHAPT/AAABAAAAAAAHAPj/AAABAAAAAAAHAPz/AAABAAAAAAAHAAgAAAABAAAAAAAIAPT/AAABAAAAAAAIAPX/AAABAAAAAAAIAPb/AAABAAAAAAAIAPf/AAABAAAAAAAIAPj/AAABAAAAAAAIAPn/AAABAAAAAAAIAPr/AAABAAAAAAAIAPv/AAABAAAAAAAIAPz/AAABAAAAAAAIAP3/AAABAAAAAAAIAP7/AAABAAAAAAAIAP//AAABAAAAAAAIAAAAAAABAAAAAAAIAAEAAAABAAAAAAAIAAIAAAABAAAAAAAIAAMAAAABAAAAAAAIAAQAAAABAAAAAAAIAAUAAAABAAAAAAAIAAYAAAABAAAAAAAIAAcAAAABAAAAAAAIAAgAAAABAAAAAAA=")
 tile_set = SubResource("TileSet_b6wc0")
@@ -58,11 +42,7 @@ tile_map_data = PackedByteArray("AADq//7/AAABAAAAAADq////AAABAAAAAADq/wAAAAABAAA
 tile_set = SubResource("TileSet_b6wc0")
 
 [node name="Flag" parent="1" instance=ExtResource("3_t77i3")]
-<<<<<<< HEAD
-position = Vector2(-626, 142)
-=======
 position = Vector2(-628, 143)
->>>>>>> ade2381 (Added a main menu (Changed the primary scene to the menu), added new levels, made some changes throughout the code, and some asset reogranization and update. Also added a rough 3D scene implementation)
 
 [node name="2" type="TileMapLayer" parent="."]
 visible = false
@@ -71,9 +51,6 @@ tile_map_data = PackedByteArray("AAD3////AAABAAAAAAD3/wAAAAABAAAAAAD3/wEAAAABAAA
 tile_set = SubResource("TileSet_b6wc0")
 
 [node name="Flag" parent="2" instance=ExtResource("3_t77i3")]
-<<<<<<< HEAD
-position = Vector2(9, 0)
-=======
 position = Vector2(-178, 112)
 
 [node name="3" type="TileMapLayer" parent="."]
@@ -101,4 +78,3 @@ tile_set = SubResource("TileSet_b6wc0")
 
 [node name="Flag" parent="5" instance=ExtResource("3_t77i3")]
 position = Vector2(12, -307)
->>>>>>> ade2381 (Added a main menu (Changed the primary scene to the menu), added new levels, made some changes throughout the code, and some asset reogranization and update. Also added a rough 3D scene implementation)

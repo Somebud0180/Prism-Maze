@@ -1,15 +1,5 @@
 [gd_scene load_steps=5 format=3 uid="uid://dcmtjpe03ohl2"]
 
-<<<<<<< HEAD
-[ext_resource type="Texture2D" uid="uid://b2trhvjrl8ees" path="res://sprites/Tileset.png" id="1_wk13p"]
-[ext_resource type="Script" path="res://scripts/gen_maze_layer.gd" id="2_1af3a"]
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qgp52"]
-texture = ExtResource("1_wk13p")
-texture_region_size = Vector2i(32, 32)
-0:0/0 = 0
-0:0/0/z_index = -1
-=======
 [ext_resource type="Texture2D" uid="uid://b2trhvjrl8ees" path="res://resources/Game/Tileset.png" id="1_fgp6t"]
 [ext_resource type="Script" path="res://scripts/gen_maze_layer.gd" id="2_1af3a"]
 
@@ -18,7 +8,6 @@ texture = ExtResource("1_fgp6t")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
->>>>>>> ade2381 (Added a main menu (Changed the primary scene to the menu), added new levels, made some changes throughout the code, and some asset reogranization and update. Also added a rough 3D scene implementation)
 1:0/0 = 0
 1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 2:0/0 = 0
@@ -31,11 +20,7 @@ texture_region_size = Vector2i(32, 32)
 [sub_resource type="TileSet" id="TileSet_7wfx8"]
 tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
-<<<<<<< HEAD
-sources/0 = SubResource("TileSetAtlasSource_qgp52")
-=======
 sources/0 = SubResource("TileSetAtlasSource_05jap")
->>>>>>> ade2381 (Added a main menu (Changed the primary scene to the menu), added new levels, made some changes throughout the code, and some asset reogranization and update. Also added a rough 3D scene implementation)
 
 [node name="GenMazeLayer" type="TileMapLayer"]
 tile_set = SubResource("TileSet_7wfx8")

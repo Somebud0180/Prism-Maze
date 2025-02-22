@@ -9,18 +9,11 @@ extends Node
 @onready var player = %Player
 @export var level: int = 0
 
-<<<<<<< HEAD
-var level_collection: Array[String] = [] # The level set for the current playthrough
-var level_amount: int = 10 # The amount of levels to create for the playthrough.
-var game_ready: bool = false
-var GAME_MODE: int = 2  # 1: Platformer, 2: Maze
-=======
 var platform_list: Array[int] = []
 var maze_list: Array[int] = []
 var level_collection: Array[String] = [] # The level set for the current playthrough
 var level_amount: int = 10 # The amount of levels to create for the playthrough. Excluding the final level.
 var game_mode: int = 2  # 1: Platformer, 2: Maze
->>>>>>> ade2381 (Added a main menu (Changed the primary scene to the menu), added new levels, made some changes throughout the code, and some asset reogranization and update. Also added a rough 3D scene implementation)
 
 func _ready() -> void:
 	# Load Maze Layer
@@ -37,12 +30,6 @@ func _ready() -> void:
 	for i in range(platform_instance.get_child_count() - 1):
 		platform_list.append(i)
 	
-<<<<<<< HEAD
-	load_game(maze_instance, platform_instance)
-	load_level()
-
-func load_game(maze_instance: Node, platform_instance: Node) -> void:
-=======
 	for i in range(maze_instance.get_child_count()):
 		maze_list.append(i)
 	
@@ -54,7 +41,6 @@ func load_game(maze_instance: Node, platform_instance: Node) -> void:
 	load_level()
 
 func load_game(platform_instance: Node) -> void:
->>>>>>> ade2381 (Added a main menu (Changed the primary scene to the menu), added new levels, made some changes throughout the code, and some asset reogranization and update. Also added a rough 3D scene implementation)
 	# Create a level collection
 	for i in range(level_amount): 
 		var this_level = randi_range(0, 1)
@@ -70,54 +56,11 @@ func load_game(platform_instance: Node) -> void:
 	
 	print(level_collection)
 	
-<<<<<<< HEAD
-	level_set(maze_instance, platform_instance)
-=======
 	level_set(platform_instance)
->>>>>>> ade2381 (Added a main menu (Changed the primary scene to the menu), added new levels, made some changes throughout the code, and some asset reogranization and update. Also added a rough 3D scene implementation)
 	print(level_collection)
 
 func level_check() -> void:
 	# Improve random level list
-<<<<<<< HEAD
-	for i in range(level_collection.size()):
-		if level_collection[i] == "Maze":
-			if level_collection.size() > 2:
-				if level_collection[level_collection.size() - 1] == "Maze" and level_collection[level_collection.size() - 2] == "Maze":
-					level_collection[i] = "Platform"
-			
-		if level_collection[i] == "Platform":
-			if level_collection.size() > 2:
-				if level_collection[level_collection.size() - 1] == "Platform" and level_collection[level_collection.size() - 2] == "Platform" and level_collection[level_collection.size() - 3] == "Platform":
-					level_collection[i] = "Maze"
-
-func level_set(maze_instance: Node, platform_instance: Node) -> void:
-	# Replace placeholder platformer levels to real levels
-	for i in range(level_collection.size()):
-		if level_collection[i] == "Maze":
-			var resolved = str(maze_instance.get_random_level())
-			
-			if i >= 1:
-				while resolved == level_collection[i - 1] and resolved == level_collection[i - 2]:
-					resolved = str(maze_instance.get_random_level())
-			elif i >= 0:
-				while resolved == level_collection[i - 1]:
-					resolved = str(maze_instance.get_random_level())
-			
-			level_collection[i] = str("Maze: " + resolved)
-			
-		elif level_collection[i] == "Platform":
-			var resolved = str(platform_instance.get_random_level())
-			
-			if i >= 1:
-				while resolved == level_collection[i - 1] and resolved == level_collection[i - 2]:
-					resolved = str(platform_instance.get_random_level())
-			elif i >= 0:
-				while resolved == level_collection[i - 1]:
-					resolved = str(platform_instance.get_random_level())
-			
-			level_collection[i] = str("Platform: " + resolved)
-=======
 	for i in range(level_collection.size()):
 		if i > 1:
 			if level_collection[i] == "Maze" and level_collection[i - 1] == "Maze" and level_collection[i - 2] == "Maze":
@@ -139,7 +82,6 @@ func level_set(platform_instance: Node) -> void:
 		
 		# Append last level
 		level_collection.append("Platform: " + str(platform_instance.get_child_count() - 1))
->>>>>>> ade2381 (Added a main menu (Changed the primary scene to the menu), added new levels, made some changes throughout the code, and some asset reogranization and update. Also added a rough 3D scene implementation)
 
 func progress_level() -> void:
 	if level > level_collection.size():
@@ -158,12 +100,9 @@ func load_level() -> void:
 	var platform_instance = platform_scene.instantiate()
 	platform_instance.disable_all_levels()
 	
-<<<<<<< HEAD
-=======
 	# Reset player gravity and sprite
 	player.gravity_direction = 1
 	
->>>>>>> ade2381 (Added a main menu (Changed the primary scene to the menu), added new levels, made some changes throughout the code, and some asset reogranization and update. Also added a rough 3D scene implementation)
 	for child in main_layer.get_children():
 		child.queue_free()
 		
@@ -181,15 +120,6 @@ func load_level() -> void:
 			var parts = raw_level_string.split(": ")
 			var level_number = int(parts[1])
 			load_platform(level_number)
-<<<<<<< HEAD
-	
-	player.position = Vector2i(0,0)
-
-func load_gen_maze() -> void:
-	# Set game mode
-	GAME_MODE = 2
-	
-=======
 	
 	player.position = Vector2i(0,0)
 
@@ -197,7 +127,6 @@ func load_gen_maze() -> void:
 	# Set game mode
 	game_mode = 2
 	
->>>>>>> ade2381 (Added a main menu (Changed the primary scene to the menu), added new levels, made some changes throughout the code, and some asset reogranization and update. Also added a rough 3D scene implementation)
 	# Load and instantiate a new maze scene.
 	var gen_maze_scene = load("res://scenes/gen_maze_layer.tscn")
 	var gen_maze_instance = gen_maze_scene.instantiate()
@@ -207,11 +136,7 @@ func load_gen_maze() -> void:
 
 func load_maze(selected_level: int) -> void:
 	# Set game mode
-<<<<<<< HEAD
-	GAME_MODE = 2
-=======
 	game_mode = 2
->>>>>>> ade2381 (Added a main menu (Changed the primary scene to the menu), added new levels, made some changes throughout the code, and some asset reogranization and update. Also added a rough 3D scene implementation)
 
 	var maze_layer = load("res://scenes/maze_layer.tscn")
 	var maze_instance = maze_layer.instantiate()
@@ -222,11 +147,7 @@ func load_maze(selected_level: int) -> void:
 
 func load_platform(selected_level: int) -> void:
 	# Set game mode
-<<<<<<< HEAD
-	GAME_MODE = 1
-=======
 	game_mode = 1
->>>>>>> ade2381 (Added a main menu (Changed the primary scene to the menu), added new levels, made some changes throughout the code, and some asset reogranization and update. Also added a rough 3D scene implementation)
 
 	var platform_scene = load("res://scenes/platform_layer.tscn")
 	var platform_instance = platform_scene.instantiate()

@@ -9,10 +9,10 @@
 [ext_resource type="Texture2D" uid="uid://b0bn0h04f0qnm" path="res://resources/Menu/Gear.png" id="6_c7385"]
 [ext_resource type="Texture2D" uid="uid://csmavf1aewl1w" path="res://resources/Menu/Settings.png" id="7_ugwaw"]
 [ext_resource type="Texture2D" uid="uid://d3gerbn0xbpgv" path="res://resources/Menu/Exit.png" id="8_2fno0"]
-[ext_resource type="Texture2D" uid="uid://cn8i1e5a2w11c" path="res://resources/Background/Substrate.png" id="9_7a3p2"]
-[ext_resource type="Texture2D" uid="uid://dhkixf8jhbq4o" path="res://resources/Background/Bottom Layer.png" id="10_r6w36"]
-[ext_resource type="Texture2D" uid="uid://dhop524e0npfj" path="res://resources/Background/Top Layer.png" id="11_huxgw"]
-[ext_resource type="Texture2D" uid="uid://b0viiebu5kc4j" path="res://resources/Background/Components.png" id="12_p5yvi"]
+[ext_resource type="Texture2D" uid="uid://cn8i1e5a2w11c" path="res://sprites/Background/Substrate.png" id="9_7a3p2"]
+[ext_resource type="Texture2D" uid="uid://dhkixf8jhbq4o" path="res://sprites/Background/Bottom Layer.png" id="10_r6w36"]
+[ext_resource type="Texture2D" uid="uid://dhop524e0npfj" path="res://sprites/Background/Top Layer.png" id="11_huxgw"]
+[ext_resource type="Texture2D" uid="uid://b0viiebu5kc4j" path="res://sprites/Background/Components.png" id="12_p5yvi"]
 
 [sub_resource type="Theme" id="Theme_a0jag"]
 Button/styles/hover = ExtResource("1_5s20r")
