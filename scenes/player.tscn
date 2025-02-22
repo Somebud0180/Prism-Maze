@@ -90,4 +90,4 @@ frame_progress = 0.435101
 [node name="CanvasModulate" type="CanvasModulate" parent="AnimatedSprite2D"]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(13, -1, 19, -1, 27, -21, 18, -29, 15, -29, 5, -21)
+polygon = PackedVector2Array(13, -1, 19, -1, 27, -21, 18, -29, 14, -29, 5, -21)

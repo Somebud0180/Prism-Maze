@@ -1,22 +1,40 @@
-[gd_scene load_steps=21 format=3 uid="uid://br2t4hanatnss"]
+[gd_scene load_steps=39 format=3 uid="uid://br2t4hanatnss"]
 
 [ext_resource type="StyleBox" uid="uid://d4xsuett3yt0" path="res://resources/Theme/button_hover.tres" id="1_5s20r"]
 [ext_resource type="Texture2D" uid="uid://up7vguaee3r1" path="res://resources/Menu/Menu.png" id="1_dj8fk"]
 [ext_resource type="Script" path="res://scripts/menu.gd" id="3_0ybmh"]
+[ext_resource type="StyleBox" uid="uid://vqm1soj8xnjh" path="res://resources/Theme/separator.tres" id="3_b36nl"]
 [ext_resource type="StyleBox" uid="uid://b5uyfssq3f7bs" path="res://resources/Theme/button_normal.tres" id="3_devaa"]
 [ext_resource type="Texture2D" uid="uid://k2ow5rr33vw" path="res://resources/Menu/Play.png" id="4_4g08a"]
 [ext_resource type="Texture2D" uid="uid://d1vxa1f4hthke" path="res://resources/Menu/Title.png" id="4_dlxnh"]
 [ext_resource type="Texture2D" uid="uid://b0bn0h04f0qnm" path="res://resources/Menu/Gear.png" id="6_c7385"]
 [ext_resource type="Texture2D" uid="uid://csmavf1aewl1w" path="res://resources/Menu/Settings.png" id="7_ugwaw"]
 [ext_resource type="Texture2D" uid="uid://d3gerbn0xbpgv" path="res://resources/Menu/Exit.png" id="8_2fno0"]
+[ext_resource type="Texture2D" uid="uid://h8cyu0rn8tep" path="res://resources/Menu/Controls.png" id="8_46v5l"]
 [ext_resource type="Texture2D" uid="uid://cn8i1e5a2w11c" path="res://sprites/Background/Substrate.png" id="9_7a3p2"]
+[ext_resource type="Texture2D" uid="uid://dj3sea68kohlb" path="res://resources/Menu/Settings-Header.png" id="10_mrnth"]
 [ext_resource type="Texture2D" uid="uid://dhkixf8jhbq4o" path="res://sprites/Background/Bottom Layer.png" id="10_r6w36"]
 [ext_resource type="Texture2D" uid="uid://dhop524e0npfj" path="res://sprites/Background/Top Layer.png" id="11_huxgw"]
+[ext_resource type="Texture2D" uid="uid://djowydi7vutu5" path="res://resources/Menu/Resize.png" id="11_p7mvo"]
+[ext_resource type="Texture2D" uid="uid://da7g5s3h5esdr" path="res://resources/Menu/Fullscreen.png" id="12_aniy3"]
 [ext_resource type="Texture2D" uid="uid://b0viiebu5kc4j" path="res://sprites/Background/Components.png" id="12_p5yvi"]
+[ext_resource type="Texture2D" uid="uid://br34aw4na03cr" path="res://resources/Menu/Controls-Header.png" id="15_xhhkk"]
+[ext_resource type="Texture2D" uid="uid://c7vfpy4vpfcj" path="res://resources/Menu/Move.png" id="16_kqq8n"]
+[ext_resource type="Texture2D" uid="uid://bhf1o42di43rv" path="res://resources/Controls/Controllers/stick_l.png" id="17_8utq4"]
+[ext_resource type="Texture2D" uid="uid://dgx4iqfxayl3s" path="res://resources/Controls/KBM/keyboard_arrows.png" id="18_b0m12"]
+[ext_resource type="Texture2D" uid="uid://ctip13a7fsjav" path="res://resources/Controls/KBM/keyboard_w.png" id="19_jr665"]
+[ext_resource type="Texture2D" uid="uid://c807al7k3h364" path="res://resources/Controls/KBM/keyboard_a.png" id="20_1yqjv"]
+[ext_resource type="Texture2D" uid="uid://d353h2rlwu5sj" path="res://resources/Controls/KBM/keyboard_s.png" id="21_hnb4n"]
+[ext_resource type="Texture2D" uid="uid://cgaau8d4e2lq0" path="res://resources/Controls/KBM/keyboard_d.png" id="22_bmrv8"]
+[ext_resource type="Texture2D" uid="uid://c63pofosye2ac" path="res://resources/Menu/Jump.png" id="23_tuapu"]
+[ext_resource type="Texture2D" uid="uid://dqm1knqvsbn8a" path="res://resources/Controls/Controllers/button_b.png" id="24_05cvn"]
+[ext_resource type="Texture2D" uid="uid://toobd4vd6hfg" path="res://resources/Controls/KBM/keyboard_space_icon.png" id="25_7o6xk"]
 
 [sub_resource type="Theme" id="Theme_a0jag"]
 Button/styles/hover = ExtResource("1_5s20r")
 Button/styles/normal = ExtResource("3_devaa")
+HSeparator/constants/separation = 4
+HSeparator/styles/separator = ExtResource("3_b36nl")
 RichTextLabel/font_sizes/normal_font_size = 32
 VBoxContainer/constants/separation = 16
 
@@ -32,7 +50,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(1600, 80)]
+"values": [Vector2(1400, 80)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -69,6 +87,30 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CanvasLayer/Controls:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CanvasLayer/Controls:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(80, 800)]
 }
 
 [sub_resource type="Animation" id="Animation_ui7xe"]
@@ -112,7 +154,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(2, 2),
 "update": 0,
-"values": [Vector2(80, 80), Vector2(1600, 80)]
+"values": [Vector2(80, 80), Vector2(1400, 80)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -168,7 +210,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(0.5, 0.5),
 "update": 0,
-"values": [Vector2(1600, 80), Vector2(80, 80)]
+"values": [Vector2(1400, 80), Vector2(80, 80)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -183,16 +225,74 @@ tracks/1/keys = {
 "values": [true, true]
 }
 
+[sub_resource type="Animation" id="Animation_4bbw6"]
+resource_name = "show_controls"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Controls:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [Vector2(80, 800), Vector2(80, 80)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/Controls:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+
+[sub_resource type="Animation" id="Animation_q8cwc"]
+resource_name = "hide_controls"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Controls:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(2, 2),
+"update": 0,
+"values": [Vector2(80, 80), Vector2(80, 800)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/Controls:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nyjex"]
 _data = {
 "RESET": SubResource("Animation_8rgj6"),
+"hide_controls": SubResource("Animation_q8cwc"),
 "hide_main": SubResource("Animation_ui7xe"),
 "hide_settings": SubResource("Animation_2ywoo"),
+"show_controls": SubResource("Animation_4bbw6"),
 "show_main": SubResource("Animation_y5frn"),
 "show_settings": SubResource("Animation_antcs")
 }
 
-[node name="Menu" type="Control" node_paths=PackedStringArray("main", "settings", "animation_player", "camera")]
+[node name="Menu" type="Control" node_paths=PackedStringArray("main", "settings", "animation_player", "resolution_picker")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -206,12 +306,12 @@ script = ExtResource("3_0ybmh")
 main = NodePath("CanvasLayer/Main")
 settings = NodePath("CanvasLayer/Settings")
 animation_player = NodePath("CanvasLayer/AnimationPlayer")
-camera = NodePath("CanvasLayer/Menu Camera")
+resolution_picker = NodePath("CanvasLayer/Settings/Sprite2D/VBoxContainer/Resolution")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-follow_viewport_enabled = true
 
 [node name="Main" type="NinePatchRect" parent="CanvasLayer"]
+custom_minimum_size = Vector2(640, 560)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -219,7 +319,7 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -560.0
 offset_top = -280.0
-offset_right = 560.0
+offset_right = 80.0
 offset_bottom = 280.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -231,22 +331,20 @@ patch_margin_right = 5
 patch_margin_bottom = 5
 metadata/_edit_use_anchors_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Main"]
-position = Vector2(320, 80)
-scale = Vector2(3, 3)
-texture = ExtResource("4_dlxnh")
-region_rect = Rect2(0, 0, 192, 32)
-
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Main"]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 64.0
-offset_top = -125.0
-offset_right = 601.0
-offset_bottom = 223.0
-grow_vertical = 2
+custom_minimum_size = Vector2(256, 218)
+offset_left = 32.0
+offset_top = 32.0
+offset_right = 288.0
+offset_bottom = 250.0
+scale = Vector2(2.25, 2.25)
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Main/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("4_dlxnh")
+expand_mode = 5
+stretch_mode = 4
 
 [node name="Play" type="Button" parent="CanvasLayer/Main/VBoxContainer"]
 layout_mode = 2
@@ -258,6 +356,11 @@ layout_mode = 2
 icon = ExtResource("6_c7385")
 icon_alignment = 1
 
+[node name="Controls" type="Button" parent="CanvasLayer/Main/VBoxContainer"]
+layout_mode = 2
+icon = ExtResource("8_46v5l")
+icon_alignment = 1
+
 [node name="Quit" type="Button" parent="CanvasLayer/Main/VBoxContainer"]
 layout_mode = 2
 icon = ExtResource("8_2fno0")
@@ -265,14 +368,15 @@ icon_alignment = 1
 
 [node name="Settings" type="NinePatchRect" parent="CanvasLayer"]
 visible = false
+custom_minimum_size = Vector2(600, 560)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 960.0
+offset_left = 760.0
 offset_top = -280.0
-offset_right = 2080.0
+offset_right = 1880.0
 offset_bottom = 280.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -285,17 +389,175 @@ patch_margin_bottom = 5
 axis_stretch_horizontal = 2
 axis_stretch_vertical = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Settings"]
-layout_mode = 1
-offset_left = 22.0
-offset_top = 13.0
-offset_right = 367.0
-offset_bottom = 58.0
-text = "Settings (Placeholder)"
-fit_content = true
-scroll_active = false
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Settings"]
+position = Vector2(32, 32)
+scale = Vector2(2, 2)
+texture = ExtResource("10_mrnth")
+centered = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Settings/Sprite2D"]
+offset_top = 48.0
+offset_right = 256.0
+offset_bottom = 210.0
+scale = Vector2(0.5, 0.5)
+
+[node name="Resolution" type="OptionButton" parent="CanvasLayer/Settings/Sprite2D/VBoxContainer"]
+layout_mode = 2
+icon_alignment = 2
+selected = 0
+item_count = 4
+popup/item_0/text = "1280x720"
+popup/item_0/icon = ExtResource("11_p7mvo")
+popup/item_1/text = "1280x960"
+popup/item_1/icon = ExtResource("11_p7mvo")
+popup/item_1/id = 1
+popup/item_2/text = "640x480"
+popup/item_2/icon = ExtResource("11_p7mvo")
+popup/item_2/id = 2
+popup/item_3/text = "640x360"
+popup/item_3/icon = ExtResource("11_p7mvo")
+popup/item_3/id = 3
+
+[node name="Fullscreen" type="CheckButton" parent="CanvasLayer/Settings/Sprite2D/VBoxContainer"]
+layout_mode = 2
+icon = ExtResource("12_aniy3")
+icon_alignment = 1
 
 [node name="Exit Settings" type="Button" parent="CanvasLayer/Settings"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -34.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = 54.0
+grow_horizontal = 0
+text = "X
+"
+
+[node name="Controls" type="NinePatchRect" parent="CanvasLayer"]
+visible = false
+custom_minimum_size = Vector2(600, 560)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -560.0
+offset_top = 440.0
+offset_right = 560.0
+offset_bottom = 1000.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_ugwaw")
+region_rect = Rect2(0, 0, 32, 32)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Controls"]
+custom_minimum_size = Vector2(512, 240)
+offset_left = 32.0
+offset_top = 32.0
+offset_right = 544.0
+offset_bottom = 288.0
+scale = Vector2(0.5, 0.5)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Controls/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("15_xhhkk")
+expand_mode = 5
+stretch_mode = 4
+
+[node name="VSeparator" type="VSeparator" parent="CanvasLayer/Controls/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 16
+theme_override_styles/separator = ExtResource("3_b36nl")
+
+[node name="Move Controls" type="HBoxContainer" parent="CanvasLayer/Controls/VBoxContainer"]
+layout_mode = 2
+
+[node name="Move" type="TextureRect" parent="CanvasLayer/Controls/VBoxContainer/Move Controls"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("16_kqq8n")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer/Controls/VBoxContainer/Move Controls"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="L Stick" type="TextureRect" parent="CanvasLayer/Controls/VBoxContainer/Move Controls"]
+layout_mode = 2
+texture = ExtResource("17_8utq4")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="Arrow Keys" type="TextureRect" parent="CanvasLayer/Controls/VBoxContainer/Move Controls"]
+layout_mode = 2
+texture = ExtResource("18_b0m12")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="W" type="TextureRect" parent="CanvasLayer/Controls/VBoxContainer/Move Controls"]
+layout_mode = 2
+texture = ExtResource("19_jr665")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="A" type="TextureRect" parent="CanvasLayer/Controls/VBoxContainer/Move Controls"]
+layout_mode = 2
+texture = ExtResource("20_1yqjv")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="S" type="TextureRect" parent="CanvasLayer/Controls/VBoxContainer/Move Controls"]
+layout_mode = 2
+texture = ExtResource("21_hnb4n")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="D" type="TextureRect" parent="CanvasLayer/Controls/VBoxContainer/Move Controls"]
+layout_mode = 2
+texture = ExtResource("22_bmrv8")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="Jump Controls" type="HBoxContainer" parent="CanvasLayer/Controls/VBoxContainer"]
+layout_mode = 2
+
+[node name="Jump" type="TextureRect" parent="CanvasLayer/Controls/VBoxContainer/Jump Controls"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("23_tuapu")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer/Controls/VBoxContainer/Jump Controls"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="B Button" type="TextureRect" parent="CanvasLayer/Controls/VBoxContainer/Jump Controls"]
+layout_mode = 2
+texture = ExtResource("24_05cvn")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="Spacebar" type="TextureRect" parent="CanvasLayer/Controls/VBoxContainer/Jump Controls"]
+layout_mode = 2
+texture = ExtResource("25_7o6xk")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="Exit Controls" type="Button" parent="CanvasLayer/Controls"]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -313,9 +575,6 @@ root_node = NodePath("../..")
 libraries = {
 "": SubResource("AnimationLibrary_nyjex")
 }
-
-[node name="Menu Camera" type="Camera2D" parent="CanvasLayer"]
-offset = Vector2(640, 360)
 
 [node name="Substrate Layer" type="Parallax2D" parent="."]
 z_index = -100
@@ -364,5 +623,9 @@ centered = false
 
 [connection signal="pressed" from="CanvasLayer/Main/VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="CanvasLayer/Main/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="CanvasLayer/Main/VBoxContainer/Controls" to="." method="_on_controls_pressed"]
 [connection signal="pressed" from="CanvasLayer/Main/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="item_selected" from="CanvasLayer/Settings/Sprite2D/VBoxContainer/Resolution" to="." method="_on_resolution_item_selected"]
+[connection signal="toggled" from="CanvasLayer/Settings/Sprite2D/VBoxContainer/Fullscreen" to="." method="_on_fullscreen_toggled"]
 [connection signal="pressed" from="CanvasLayer/Settings/Exit Settings" to="." method="_on_exit_settings_pressed"]
+[connection signal="pressed" from="CanvasLayer/Controls/Exit Controls" to="." method="_on_exit_controls_pressed"]

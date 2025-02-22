@@ -187,9 +187,3 @@ func get_maze_index() -> int:
 		maze_list.shuffle()
 	
 	return maze_list.pop_back()
-
-func _process(_delta: float) -> void:
-	if menu.menu_state == menu.STATE.GAME:
-		player_camera.enabled = true
-	else:
-		player_camera.enabled = false
