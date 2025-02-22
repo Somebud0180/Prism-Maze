@@ -1,17 +1,17 @@
-[gd_scene load_steps=16 format=4 uid="uid://1xqnurgp142s"]
+[gd_scene load_steps=40 format=4 uid="uid://1xqnurgp142s"]
 
 [ext_resource type="Script" path="res://scripts/platform_layer.gd" id="1_j615w"]
-[ext_resource type="Texture2D" uid="uid://b2trhvjrl8ees" path="res://sprites/Tileset.png" id="1_q0yss"]
+[ext_resource type="Texture2D" uid="uid://b2trhvjrl8ees" path="res://resources/Game/Tileset.png" id="2_ib4ga"]
 [ext_resource type="PackedScene" uid="uid://lh1g6i2usv5c" path="res://scenes/platform_down.tscn" id="3_jhml1"]
 [ext_resource type="PackedScene" uid="uid://dak5chwustt20" path="res://scenes/platform_up.tscn" id="4_klxfx"]
 [ext_resource type="PackedScene" uid="uid://c1hg0dm7ju66w" path="res://scenes/killzone.tscn" id="5_n8b4s"]
 [ext_resource type="PackedScene" uid="uid://cp5cu1p2kmu6r" path="res://scenes/flag.tscn" id="6_dc8wf"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4ira2"]
-texture = ExtResource("1_q0yss")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_aye4h"]
+texture = ExtResource("2_ib4ga")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
-0:0/0/z_index = -1
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 1:0/0 = 0
 1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 2:0/0 = 0
@@ -24,7 +24,7 @@ texture_region_size = Vector2i(32, 32)
 [sub_resource type="TileSet" id="TileSet_b6wc0"]
 tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_4ira2")
+sources/0 = SubResource("TileSetAtlasSource_aye4h")
 
 [sub_resource type="Animation" id="Animation_he0n5"]
 resource_name = "Move"
@@ -102,6 +102,311 @@ tracks/0/keys = {
 _data = {
 "Move": SubResource("Animation_41j5q"),
 "RESET": SubResource("Animation_hin5d")
+}
+
+[sub_resource type="Animation" id="Animation_m17tc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(288, -128)]
+}
+
+[sub_resource type="Animation" id="Animation_1r2we"]
+resource_name = "move"
+length = 3.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(288, -128), Vector2(64, -128)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_g3fkv"]
+_data = {
+"RESET": SubResource("Animation_m17tc"),
+"move": SubResource("Animation_1r2we")
+}
+
+[sub_resource type="Animation" id="Animation_cbhrs"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(128, -32)]
+}
+
+[sub_resource type="Animation" id="Animation_tmlvv"]
+resource_name = "move"
+length = 3.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(128, -32), Vector2(288, -32)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_p0rar"]
+_data = {
+"RESET": SubResource("Animation_cbhrs"),
+"move": SubResource("Animation_tmlvv")
+}
+
+[sub_resource type="Animation" id="Animation_jmaa7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-128, -46)]
+}
+
+[sub_resource type="Animation" id="Animation_wv5w8"]
+resource_name = "move"
+length = 5.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-128, -46), Vector2(-128, -416)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_h8evc"]
+_data = {
+"RESET": SubResource("Animation_jmaa7"),
+"move": SubResource("Animation_wv5w8")
+}
+
+[sub_resource type="Animation" id="Animation_fvw5p"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-128, -46)]
+}
+
+[sub_resource type="Animation" id="Animation_36e0a"]
+resource_name = "move"
+length = 5.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-160, -46), Vector2(-160, -416)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cuffm"]
+_data = {
+"RESET": SubResource("Animation_fvw5p"),
+"move": SubResource("Animation_36e0a")
+}
+
+[sub_resource type="Animation" id="Animation_s07qm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(160, -32)]
+}
+
+[sub_resource type="Animation" id="Animation_rlahp"]
+resource_name = "move"
+length = 2.5
+loop_mode = 2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(160, -32), Vector2(320, -32)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uv4ru"]
+_data = {
+"RESET": SubResource("Animation_s07qm"),
+"move": SubResource("Animation_rlahp")
+}
+
+[sub_resource type="Animation" id="Animation_ckbir"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(224, -128)]
+}
+
+[sub_resource type="Animation" id="Animation_d3muf"]
+resource_name = "move"
+length = 2.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(224, -128), Vector2(320, -128)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yw31a"]
+_data = {
+"RESET": SubResource("Animation_ckbir"),
+"move": SubResource("Animation_d3muf")
+}
+
+[sub_resource type="Animation" id="Animation_ftik0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(64, -128)]
+}
+
+[sub_resource type="Animation" id="Animation_5lkmr"]
+resource_name = "move"
+length = 4.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.5, 3.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(96, -128), Vector2(96, -960)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gj8qr"]
+_data = {
+"RESET": SubResource("Animation_ftik0"),
+"move": SubResource("Animation_5lkmr")
+}
+
+[sub_resource type="Animation" id="Animation_uakag"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(64, -128)]
+}
+
+[sub_resource type="Animation" id="Animation_614q2"]
+resource_name = "move"
+length = 4.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.5, 3.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(64, -128), Vector2(64, -960)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2nm3c"]
+_data = {
+"RESET": SubResource("Animation_uakag"),
+"move": SubResource("Animation_614q2")
 }
 
 [node name="PlatformLayer" type="Node"]
@@ -195,7 +500,11 @@ position = Vector2(-594, 144)
 [node name="2" type="TileMapLayer" parent="."]
 visible = false
 use_parent_material = true
+<<<<<<< HEAD
 tile_map_data = PackedByteArray("AAACAP3/AAABAAAAAAACAP7/AAABAAAAAAACAP//AAABAAAAAAAEAP7/AAABAAAAAAAEAP3/AAABAAAAAAAEAPz/AAABAAAAAAACAPz/AAABAAAAAAABAPz/AAABAAAAAAAAAPz/AAABAAAAAAD///z/AAABAAAAAAD+//z/AAABAAAAAAD9//z/AAABAAAAAAD8//z/AAABAAAAAAD8//3/AAABAAAAAAD8/wAAAAABAAAAAAD9/wAAAAABAAAAAAD+/wAAAAABAAAAAAD//wAAAAABAAAAAAAAAAAAAAABAAAAAAABAAAAAAABAAAAAAACAAAAAAABAAAAAAADAAAAAAABAAAAAAAEAAAAAAABAAAAAAAEAP//AAABAAAAAAD0//r/AAABAAAAAAD0//n/AAABAAAAAAD0//j/AAABAAAAAAD0/wAAAAABAAAAAAD0////AAABAAAAAAD0//7/AAABAAAAAAD0//3/AAABAAAAAAD0//z/AAABAAAAAAD0//v/AAABAAAAAAD0//f/AAABAAAAAAD0//b/AAABAAAAAAD7//b/AAABAAAAAAACAPb/AAABAAAAAAAEAPb/AAABAAAAAAAEAPf/AAABAAAAAAAEAPj/AAABAAAAAAAEAPn/AAABAAAAAAAEAPr/AAABAAAAAAAEAPv/AAABAAAAAAACAPv/AAABAAAAAAACAPr/AAABAAAAAAACAPn/AAABAAAAAAACAPj/AAABAAAAAAD6/wAAAAABAAAAAAD4////AAABAAAAAAD2//7/AAABAAAAAAD3//z/AAABAAAAAAD6//z/AAABAAAAAAD5//n/AAABAAAAAAD0//X/AAABAAAAAAD0//T/AAABAAAAAAD0//P/AAABAAAAAAAEAPT/AAABAAAAAAAEAPX/AAABAAAAAAAEAPP/AAABAAAAAAABAPb/AAABAAAAAAACAPf/AAABAAAAAAD2//j/AAABAAAAAAD4//X/AAABAAAAAAD+//X/AAABAAAAAAD0//L/AAABAAAAAAD1//L/AAABAAAAAAD2//L/AAABAAAAAAD3//L/AAABAAAAAAD4//L/AAABAAAAAAD5//L/AAABAAAAAAD6//L/AAABAAAAAAD7//L/AAABAAAAAAD8//L/AAABAAAAAAD9//L/AAABAAAAAAD+//L/AAABAAAAAAD///L/AAABAAAAAAAAAPL/AAABAAAAAAABAPL/AAABAAAAAAACAPL/AAABAAAAAAADAPL/AAABAAAAAAAEAPL/AAABAAAAAAA=")
+=======
+tile_map_data = PackedByteArray("AAACAP3/AAABAAAAAAACAP7/AAABAAAAAAACAP//AAABAAAAAAAEAP7/AAABAAAAAAAEAP3/AAABAAAAAAAEAPz/AAABAAAAAAACAPz/AAABAAAAAAABAPz/AAABAAAAAAAAAPz/AAABAAAAAAD///z/AAABAAAAAAD+//z/AAABAAAAAAD9//z/AAABAAAAAAD8//z/AAABAAAAAAD8//3/AAABAAAAAAD8/wAAAAABAAAAAAD9/wAAAAABAAAAAAD+/wAAAAABAAAAAAD//wAAAAABAAAAAAAAAAAAAAABAAAAAAABAAAAAAABAAAAAAACAAAAAAABAAAAAAADAAAAAAABAAAAAAAEAAAAAAABAAAAAAAEAP//AAABAAAAAAD0//r/AAABAAAAAAD0//n/AAABAAAAAAD0//j/AAABAAAAAAD0/wAAAAABAAAAAAD0////AAABAAAAAAD0//7/AAABAAAAAAD0//3/AAABAAAAAAD0//z/AAABAAAAAAD0//v/AAABAAAAAAD0//f/AAABAAAAAAD0//b/AAABAAAAAAACAPb/AAABAAAAAAAEAPb/AAABAAAAAAAEAPf/AAABAAAAAAAEAPj/AAABAAAAAAAEAPn/AAABAAAAAAAEAPr/AAABAAAAAAAEAPv/AAABAAAAAAACAPv/AAABAAAAAAACAPr/AAABAAAAAAACAPn/AAABAAAAAAACAPj/AAABAAAAAAD6/wAAAAABAAAAAAD4////AAABAAAAAAD2//7/AAABAAAAAAD6//z/AAABAAAAAAD5//n/AAABAAAAAAD0//X/AAABAAAAAAD0//T/AAABAAAAAAD0//P/AAABAAAAAAAEAPT/AAABAAAAAAAEAPX/AAABAAAAAAAEAPP/AAABAAAAAAABAPb/AAABAAAAAAACAPf/AAABAAAAAAD2//j/AAABAAAAAAD4//X/AAABAAAAAAD+//X/AAABAAAAAAD0//L/AAABAAAAAAD1//L/AAABAAAAAAD2//L/AAABAAAAAAD3//L/AAABAAAAAAD4//L/AAABAAAAAAD5//L/AAABAAAAAAD6//L/AAABAAAAAAD7//L/AAABAAAAAAD8//L/AAABAAAAAAD9//L/AAABAAAAAAD+//L/AAABAAAAAAD///L/AAABAAAAAAAAAPL/AAABAAAAAAABAPL/AAABAAAAAAACAPL/AAABAAAAAAADAPL/AAABAAAAAAAEAPL/AAABAAAAAAD4//z/AAABAAAAAAD7//X/AAABAAAAAAA=")
+>>>>>>> ade2381 (Added a main menu (Changed the primary scene to the menu), added new levels, made some changes throughout the code, and some asset reogranization and update. Also added a rough 3D scene implementation)
 tile_set = SubResource("TileSet_b6wc0")
 
 [node name="Platforms" type="Node" parent="2"]
@@ -230,10 +539,187 @@ position = Vector2(111, -16)
 [node name="3" type="TileMapLayer" parent="."]
 visible = false
 use_parent_material = true
+<<<<<<< HEAD
+tile_map_data = PackedByteArray("AAD5//n/AAABAAAAAAD5/wMAAAABAAAAAAD6//n/AAABAAAAAAD6/wMAAAABAAAAAAD7//n/AAABAAAAAAD7/wMAAAABAAAAAAD8//n/AAABAAAAAAD8////AAABAAAAAAD8/wMAAAABAAAAAAD9//n/AAABAAAAAAD9/wMAAAABAAAAAAD+//n/AAABAAAAAAD+/wEAAAABAAAAAAD+/wMAAAABAAAAAAD///n/AAABAAAAAAD//wEAAAABAAAAAAD//wMAAAABAAAAAAAAAPn/AAABAAAAAAAAAAEAAAABAAAAAAAAAAMAAAABAAAAAAABAPn/AAABAAAAAAABAAEAAAABAAAAAAABAAMAAAABAAAAAAACAPn/AAABAAAAAAACAAMAAAABAAAAAAADAPn/AAABAAAAAAADAP//AAABAAAAAAADAAMAAAABAAAAAAAEAPn/AAABAAAAAAAEAAMAAAABAAAAAAAFAPn/AAABAAAAAAAFAAMAAAABAAAAAAAGAPn/AAABAAAAAAAGAAMAAAABAAAAAAAHAPn/AAABAAAAAAAHAPr/AAABAAAAAAAHAPv/AAABAAAAAAAHAPz/AAABAAAAAAAHAP3/AAABAAAAAAAHAP7/AAABAAAAAAAHAP//AAABAAAAAAAHAAAAAAABAAAAAAAHAAEAAAABAAAAAAAHAAIAAAABAAAAAAAHAAMAAAABAAAAAAD4//n/AAABAAAAAAD4//r/AAABAAAAAAD4//v/AAABAAAAAAD4//z/AAABAAAAAAD4//3/AAABAAAAAAD4//7/AAABAAAAAAD4////AAABAAAAAAD4/wAAAAABAAAAAAD4/wEAAAABAAAAAAD4/wIAAAABAAAAAAD4/wMAAAABAAAAAAA=")
+=======
+tile_map_data = PackedByteArray("AAAAAAAAAAABAAAAAAABAAAAAAABAAAAAAACAAAAAAABAAAAAAD//wAAAAABAAAAAAD+/wAAAAABAAAAAAD9/wAAAAABAAAAAAD7//7/AAABAAAAAAAEAP7/AAABAAAAAAAFAP7/AAABAAAAAAD6//7/AAABAAAAAAD3//7/AAABAAAAAAAIAP7/AAABAAAAAAD2//7/AAABAAAAAAAJAP7/AAABAAAAAAAHAAIAAAABAAAAAAAGAAIAAAABAAAAAAAFAAIAAAABAAAAAAAEAAIAAAABAAAAAAD7/wIAAAABAAAAAAD6/wIAAAABAAAAAAD5/wIAAAABAAAAAAD4/wIAAAABAAAAAAD3/wIAAAABAAAAAAAIAAIAAAABAAAAAAD1//z/AAABAAAAAAALAPz/AAABAAAAAAAJAPr/AAABAAAAAAD3//r/AAABAAAAAAD6//n/AAABAAAAAAD9//r/AAABAAAAAAADAPr/AAABAAAAAAAGAPn/AAABAAAAAAD///n/AAABAAAAAAAAAPn/AAABAAAAAAABAPn/AAABAAAAAAA=")
+>>>>>>> ade2381 (Added a main menu (Changed the primary scene to the menu), added new levels, made some changes throughout the code, and some asset reogranization and update. Also added a rough 3D scene implementation)
+tile_set = SubResource("TileSet_b6wc0")
+
+[node name="Killzone" parent="3" instance=ExtResource("5_n8b4s")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="3/Killzone"]
+position = Vector2(16, 66)
+shape = SubResource("WorldBoundaryShape2D_7ajkl")
+
+[node name="Flag" parent="3" instance=ExtResource("6_dc8wf")]
+position = Vector2(14, -240)
+
+[node name="4" type="TileMapLayer" parent="."]
+visible = false
+use_parent_material = true
+tile_map_data = PackedByteArray("AAAAAAAAAAABAAAAAAD///3/AAABAAAAAAD///7/AAABAAAAAAD/////AAABAAAAAAD//wAAAAABAAAAAAD///z/AAABAAAAAAAAAPz/AAABAAAAAAACAP//AAABAAAAAAALAP//AAABAAAAAAAMAP//AAABAAAAAAALAPz/AAABAAAAAAANAP3/AAABAAAAAAD9//z/AAABAAAAAAD9//3/AAABAAAAAAD9//7/AAABAAAAAAD+/wAAAAABAAAAAAD9/wAAAAABAAAAAAD8/wAAAAABAAAAAAD9//v/AAABAAAAAAD9//r/AAABAAAAAAD9//n/AAABAAAAAAD7/wAAAAABAAAAAAD6/wAAAAABAAAAAAD6////AAABAAAAAAD6//7/AAABAAAAAAD6//3/AAABAAAAAAD6//z/AAABAAAAAAD9//j/AAABAAAAAAD9//f/AAABAAAAAAD9//b/AAABAAAAAAD7//v/AAABAAAAAAD6//v/AAABAAAAAAD8//f/AAABAAAAAAD6//r/AAABAAAAAAD6//n/AAABAAAAAAD6//j/AAABAAAAAAD6//f/AAABAAAAAAD6//b/AAABAAAAAAD6//X/AAABAAAAAAD6//T/AAABAAAAAAD6//P/AAABAAAAAAD9//X/AAABAAAAAAD9//T/AAABAAAAAAD9//P/AAABAAAAAAD6//L/AAABAAAAAAD6//H/AAABAAAAAAD6//D/AAABAAAAAAD7//D/AAABAAAAAAD8//D/AAABAAAAAAD9//D/AAABAAAAAAD+//D/AAABAAAAAAD///D/AAABAAAAAAD+//P/AAABAAAAAAD///P/AAABAAAAAAAAAPP/AAABAAAAAAAAAPD/AAABAAAAAAAAAPH/AAABAAAAAAAAAPL/AAABAAAAAAA=")
+tile_set = SubResource("TileSet_b6wc0")
+
+[node name="Platforms" type="Node" parent="4"]
+
+[node name="Sliding 2" parent="4/Platforms" instance=ExtResource("4_klxfx")]
+position = Vector2(288, -128)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="4/Platforms/Sliding 2"]
+libraries = {
+"": SubResource("AnimationLibrary_g3fkv")
+}
+autoplay = "move"
+
+[node name="Sliding 1" parent="4/Platforms" instance=ExtResource("4_klxfx")]
+position = Vector2(128, -32)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="4/Platforms/Sliding 1"]
+libraries = {
+"": SubResource("AnimationLibrary_p0rar")
+}
+autoplay = "move"
+
+[node name="Elevator 1" parent="4/Platforms" instance=ExtResource("4_klxfx")]
+position = Vector2(-128, -46)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="4/Platforms/Elevator 1"]
+libraries = {
+"": SubResource("AnimationLibrary_h8evc")
+}
+autoplay = "move"
+
+[node name="Elevator 2" parent="4/Platforms" instance=ExtResource("4_klxfx")]
+position = Vector2(-128, -46)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="4/Platforms/Elevator 2"]
+libraries = {
+"": SubResource("AnimationLibrary_cuffm")
+}
+autoplay = "move"
+
+[node name="Killzone" parent="4" instance=ExtResource("5_n8b4s")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="4/Killzone"]
+position = Vector2(16, 66)
+shape = SubResource("WorldBoundaryShape2D_7ajkl")
+
+[node name="Flag" parent="4" instance=ExtResource("6_dc8wf")]
+position = Vector2(-18, -432)
+
+[node name="5" type="TileMapLayer" parent="."]
+visible = false
+use_parent_material = true
+tile_map_data = PackedByteArray("AAAAAAAAAAABAAAAAAD//wAAAAABAAAAAAABAAAAAAABAAAAAAADAP//AAABAAAAAAAMAP3/AAABAAAAAAAMAAEAAAABAAAAAAAPAAAAAAABAAAAAAAQAP7/AAABAAAAAAANAP3/AAABAAAAAAABAPv/AAABAAAAAAABAPr/AAABAAAAAAABAPn/AAABAAAAAAABAPj/AAABAAAAAAABAPf/AAABAAAAAAABAPb/AAABAAAAAAABAPX/AAABAAAAAAAEAPj/AAABAAAAAAAEAPf/AAABAAAAAAAEAPb/AAABAAAAAAAEAPX/AAABAAAAAAAEAPT/AAABAAAAAAAEAPP/AAABAAAAAAABAPT/AAABAAAAAAABAPP/AAABAAAAAAAFAPz/AAABAAAAAAAEAPz/AAABAAAAAAABAPL/AAABAAAAAAABAPH/AAABAAAAAAABAPD/AAABAAAAAAAEAPL/AAABAAAAAAABAO//AAABAAAAAAABAO7/AAABAAAAAAAEAPH/AAABAAAAAAAEAPD/AAABAAAAAAAEAO//AAABAAAAAAAEAO7/AAABAAAAAAABAO3/AAABAAAAAAABAOz/AAABAAAAAAABAOv/AAABAAAAAAABAOr/AAABAAAAAAABAOn/AAABAAAAAAAEAO3/AAABAAAAAAAEAOz/AAABAAAAAAADAPf/AAABAAAAAAACAPP/AAABAAAAAAADAO//AAABAAAAAAAEAOv/AAABAAAAAAAEAOr/AAABAAAAAAAEAOn/AAABAAAAAAAEAOj/AAABAAAAAAAEAOf/AAABAAAAAAAEAOb/AAABAAAAAAAEAOX/AAABAAAAAAAEAOT/AAABAAAAAAAEAOP/AAABAAAAAAAEAOL/AAABAAAAAAABAOj/AAABAAAAAAABAOf/AAABAAAAAAABAOb/AAABAAAAAAABAOX/AAABAAAAAAABAOT/AAABAAAAAAABAOP/AAABAAAAAAABAOL/AAABAAAAAAAFAOL/AAABAAAAAAAGAOL/AAABAAAAAAAHAOL/AAABAAAAAAAHAOH/AAABAAAAAAAHAOD/AAABAAAAAAAHAN//AAABAAAAAAABAOD/AAABAAAAAAABAOH/AAABAAAAAAADAN//AAABAAAAAAAEAN//AAABAAAAAAAFAN//AAABAAAAAAAGAN//AAABAAAAAAACAN//AAABAAAAAAABAN//AAABAAAAAAACAOn/AAABAAAAAAADAOX/AAABAAAAAAA=")
+tile_set = SubResource("TileSet_b6wc0")
+
+[node name="Platforms" type="Node" parent="5"]
+
+[node name="Sliding 1" parent="5/Platforms" instance=ExtResource("4_klxfx")]
+position = Vector2(160, -32)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="5/Platforms/Sliding 1"]
+libraries = {
+"": SubResource("AnimationLibrary_uv4ru")
+}
+autoplay = "move"
+
+[node name="Sliding 2" parent="5/Platforms" instance=ExtResource("4_klxfx")]
+position = Vector2(224, -128)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="5/Platforms/Sliding 2"]
+libraries = {
+"": SubResource("AnimationLibrary_yw31a")
+}
+autoplay = "move"
+
+[node name="Elevator 1" parent="5/Platforms" instance=ExtResource("4_klxfx")]
+position = Vector2(64, -128)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="5/Platforms/Elevator 1"]
+libraries = {
+"": SubResource("AnimationLibrary_gj8qr")
+}
+autoplay = "move"
+
+[node name="Elevator 2" parent="5/Platforms" instance=ExtResource("4_klxfx")]
+position = Vector2(64, -128)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="5/Platforms/Elevator 2"]
+libraries = {
+"": SubResource("AnimationLibrary_2nm3c")
+}
+autoplay = "move"
+
+[node name="Killzone" parent="5" instance=ExtResource("5_n8b4s")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="5/Killzone"]
+position = Vector2(16, 66)
+shape = SubResource("WorldBoundaryShape2D_7ajkl")
+
+[node name="Flag" parent="5" instance=ExtResource("6_dc8wf")]
+position = Vector2(206, -976)
+
+[node name="6" type="TileMapLayer" parent="."]
+visible = false
+use_parent_material = true
+tile_map_data = PackedByteArray("AAD//wAAAAABAAAAAAAAAAAAAAABAAAAAAABAAAAAAABAAAAAAD///3/AAABAAAAAAAAAP3/AAABAAAAAAABAP3/AAABAAAAAAD+//3/AAABAAAAAAD+//7/AAABAAAAAAD+////AAABAAAAAAD+/wAAAAABAAAAAAAEAAAAAAABAAAAAAAFAP3/AAABAAAAAAAHAAAAAAABAAAAAAAIAP3/AAABAAAAAAAKAAAAAAABAAAAAAAMAP7/AAABAAAAAAALAAQAAAABAAAAAAAJAAQAAAABAAAAAAAIAAQAAAABAAAAAAAGAAQAAAABAAAAAAAFAAQAAAABAAAAAAADAAQAAAABAAAAAAACAAIAAAABAAAAAAALAPz/AAABAAAAAAADAPv/AAABAAAAAAD4//r/AAABAAAAAAD1//7/AAABAAAAAADz//z/AAABAAAAAADw//v/AAABAAAAAADv//v/AAABAAAAAADu//v/AAABAAAAAAA=")
+tile_set = SubResource("TileSet_b6wc0")
+
+[node name="Platforms" type="Node" parent="6"]
+
+[node name="Sliding 1" parent="6/Platforms" instance=ExtResource("4_klxfx")]
+position = Vector2(160, -32)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="6/Platforms/Sliding 1"]
+libraries = {
+"": SubResource("AnimationLibrary_uv4ru")
+}
+autoplay = "move"
+
+[node name="Sliding 2" parent="6/Platforms" instance=ExtResource("4_klxfx")]
+position = Vector2(224, -128)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="6/Platforms/Sliding 2"]
+libraries = {
+"": SubResource("AnimationLibrary_yw31a")
+}
+autoplay = "move"
+
+[node name="Elevator 1" parent="6/Platforms" instance=ExtResource("4_klxfx")]
+position = Vector2(64, -128)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="6/Platforms/Elevator 1"]
+libraries = {
+"": SubResource("AnimationLibrary_gj8qr")
+}
+autoplay = "move"
+
+[node name="Elevator 2" parent="6/Platforms" instance=ExtResource("4_klxfx")]
+position = Vector2(64, -128)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="6/Platforms/Elevator 2"]
+libraries = {
+"": SubResource("AnimationLibrary_2nm3c")
+}
+autoplay = "move"
+
+[node name="Killzone" parent="6" instance=ExtResource("5_n8b4s")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="6/Killzone"]
+position = Vector2(0, 192)
+shape = SubResource("WorldBoundaryShape2D_7ajkl")
+
+[node name="Flag" parent="6" instance=ExtResource("6_dc8wf")]
+position = Vector2(-562, -176)
+
+[node name="End" type="TileMapLayer" parent="."]
+use_parent_material = true
 tile_map_data = PackedByteArray("AAD5//n/AAABAAAAAAD5/wMAAAABAAAAAAD6//n/AAABAAAAAAD6/wMAAAABAAAAAAD7//n/AAABAAAAAAD7/wMAAAABAAAAAAD8//n/AAABAAAAAAD8////AAABAAAAAAD8/wMAAAABAAAAAAD9//n/AAABAAAAAAD9/wMAAAABAAAAAAD+//n/AAABAAAAAAD+/wEAAAABAAAAAAD+/wMAAAABAAAAAAD///n/AAABAAAAAAD//wEAAAABAAAAAAD//wMAAAABAAAAAAAAAPn/AAABAAAAAAAAAAEAAAABAAAAAAAAAAMAAAABAAAAAAABAPn/AAABAAAAAAABAAEAAAABAAAAAAABAAMAAAABAAAAAAACAPn/AAABAAAAAAACAAMAAAABAAAAAAADAPn/AAABAAAAAAADAP//AAABAAAAAAADAAMAAAABAAAAAAAEAPn/AAABAAAAAAAEAAMAAAABAAAAAAAFAPn/AAABAAAAAAAFAAMAAAABAAAAAAAGAPn/AAABAAAAAAAGAAMAAAABAAAAAAAHAPn/AAABAAAAAAAHAPr/AAABAAAAAAAHAPv/AAABAAAAAAAHAPz/AAABAAAAAAAHAP3/AAABAAAAAAAHAP7/AAABAAAAAAAHAP//AAABAAAAAAAHAAAAAAABAAAAAAAHAAEAAAABAAAAAAAHAAIAAAABAAAAAAAHAAMAAAABAAAAAAD4//n/AAABAAAAAAD4//r/AAABAAAAAAD4//v/AAABAAAAAAD4//z/AAABAAAAAAD4//3/AAABAAAAAAD4//7/AAABAAAAAAD4////AAABAAAAAAD4/wAAAAABAAAAAAD4/wEAAAABAAAAAAD4/wIAAAABAAAAAAD4/wMAAAABAAAAAAA=")
 tile_set = SubResource("TileSet_b6wc0")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="3"]
+[node name="RichTextLabel" type="RichTextLabel" parent="End"]
 anchors_preset = -1
 anchor_left = 0.5
 anchor_right = 0.5
@@ -249,8 +735,8 @@ text = "		Thank you for playing!
 You have completed the demo"
 scroll_active = false
 
-[node name="Killzone" parent="3" instance=ExtResource("5_n8b4s")]
+[node name="Killzone" parent="End" instance=ExtResource("5_n8b4s")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="3/Killzone"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="End/Killzone"]
 position = Vector2(16, 161)
 shape = SubResource("WorldBoundaryShape2D_7ajkl")

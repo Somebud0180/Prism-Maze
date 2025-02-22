@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b2trhvjrl8ees"
-path="res://.godot/imported/Tileset.png-a8ffc1a35ac4cb02efe4276169135695.ctex"
+uid="uid://b0bn0h04f0qnm"
+path="res://.godot/imported/Gear.png-633ddbd5d3e51ebb032c8abc63908de5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Tileset.png"
-dest_files=["res://.godot/imported/Tileset.png-a8ffc1a35ac4cb02efe4276169135695.ctex"]
+source_file="res://resources/Menu/Gear.png"
+dest_files=["res://.godot/imported/Gear.png-633ddbd5d3e51ebb032c8abc63908de5.ctex"]
 
 [params]
 

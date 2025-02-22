@@ -1,0 +1,56 @@
+[gd_scene load_steps=8 format=3 uid="uid://bnkt72lydniy7"]
+
+[ext_resource type="Texture2D" uid="uid://cckneexxyrlpv" path="res://resources/icon.svg" id="1_flqlm"]
+[ext_resource type="Script" path="res://scripts/player_3d.gd" id="1_kiyd7"]
+[ext_resource type="PackedScene" uid="uid://ccdkgsb3rhpjw" path="res://resources/Game/Player.glb" id="1_ydncd"]
+[ext_resource type="Script" path="res://scripts/camera_3d.gd" id="2_gl5q8"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ujd0x"]
+size = Vector3(60, 2, 60)
+
+[sub_resource type="BoxMesh" id="BoxMesh_sig0s"]
+size = Vector3(60, 2, 1)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_c0da2"]
+radius = 0.113307
+height = 0.276479
+
+[node name="Main3D" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_ujd0x")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("BoxMesh_sig0s")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 36, 0)
+shadow_enabled = true
+
+[node name="Sprite3D" type="Sprite3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.06816, 0)
+texture = ExtResource("1_flqlm")
+
+[node name="Player3D" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00579634, 0)
+script = ExtResource("1_kiyd7")
+
+[node name="Pivot" type="Node3D" parent="Player3D"]
+
+[node name="CameraPivot" type="Marker3D" parent="Player3D/Pivot"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00579634, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Player3D/Pivot/CameraPivot"]
+transform = Transform3D(1, 0, 0, 0, 0.961918, 0.273338, 0, -0.273338, 0.961918, 0, 0.732596, 1.59029)
+far = 100.0
+script = ExtResource("2_gl5q8")
+
+[node name="Character" parent="Player3D/Pivot" instance=ExtResource("1_ydncd")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.132415, 0)
+shape = SubResource("CapsuleShape3D_c0da2")

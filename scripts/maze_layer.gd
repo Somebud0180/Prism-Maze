@@ -1,15 +1,12 @@
-extends TileMapLayer
-class_name Maze
+extends Node
 
-# A maze generator
-# From https://godotengine.org/asset-library/asset/2199
-# Slightly modified to fit the game.
-
-@onready var game_manager = get_node("/root/Game/GameManager")
 @onready var player = get_node("/root/Game/Player")
 
-const allow_loops = true
+var tilemap_defaults := {}  # For TileMap nodes.
+var physics_defaults := {}  # For CollisionObject2D nodes (excluding TileMap).
+var level_count = 0
 
+<<<<<<< HEAD
 var current_level = 0
 var starting_pos = Vector2i()
 const normal_wall_atlas_coords = Vector2i(1, 0)
@@ -29,86 +26,76 @@ var adj4 = [
 ]
 
 # Called when the node enters the scene tree for the first time.
+=======
+>>>>>>> ade2381 (Added a main menu (Changed the primary scene to the menu), added new levels, made some changes throughout the code, and some asset reogranization and update. Also added a rough 3D scene implementation)
 func _ready() -> void:
-	pass
+	_store_tilemap_defaults()
+	_store_physics_defaults(self)
 	
-func load_maze(level: int):
-	print("Resetting maze layer")
-	# Store current level as needed.
-	current_level = level
-	
-	# Remove existing flag nodes.
-	for flag in get_tree().get_nodes_in_group("flag"):
-		flag.queue_free()
-		
-	# Clear the existing maze cells.
-	for cell in get_used_cells():
-		set_cell(cell, -1, Vector2i(-1, 0))  # -1 clears the cell
+# Give a random level between the first and the last, excluding the final level.
+# Reduced by an additional 1 to match counting starting at 0.
+func get_random_level() -> int:
+	return randi_range(0, get_child_count() - 2)
 
-	# Re-assign starting position from player's current tile position.
-	var player_tile: Vector2i = Vector2i(0, 0)
-	player = get_node("/root/Game/Player")
-	game_manager = get_node("/root/Game/GameManager")
-	
-	player.position = Vector2i(0,32)
-	
-	# Set maze dimensions.
-	var size_range: Vector2i = determine_size(level)
-	var min_range = size_range[0]
-	var max_range = size_range[1]
-	
-	y_dim = randi_range(min_range, max_range)
-	x_dim = randi_range(min_range, max_range)
-	
-	starting_coords = player_tile  # Use this as the start for DFS and border.
-	
-	print("Player tile:", player_tile)
-	
-	place_border()
-	dfs(player_tile)
-	place_flag()
-	
-func determine_size(level: int):
-	if level <= 5:
-		return Vector2i(12, 16)
-	elif level <= 10:
-		return Vector2i(16, 32)
-	
-func place_border():
-	for y in range(-1, y_dim):
-		place_wall(Vector2(-1, y))
-	for x in range(-1, x_dim):
-		place_wall(Vector2(x, -1))
-	for y in range(-1, y_dim + 1):
-		place_wall(Vector2(x_dim, y))
-	for x in range(-1, x_dim + 1):
-		place_wall(Vector2(x, y_dim))
+func disable_all_levels() -> void:
+	for i in range(level_count):
+		var level_node: Node = get_child(i)
+		_disable_level(level_node)
 
+func enable_all_levels() -> void:
+	for i in range(level_count):
+		var level_node: Node = get_child(i)
+		_enable_level(level_node)
 
-func delete_cell_at(pos: Vector2i):
-	set_cell(pos)
+func load_level(level: int) -> void:
+	level_count = get_child_count()
+	enable_all_levels()
 	
-	
-func place_wall(pos: Vector2i):
-	set_cell(pos, SOURCE_ID, normal_wall_atlas_coords)
+	for i in range(level_count):
+		print("level_count: " + str(i))
+		var level_node = get_child(i)
+		if i == level:
+			_enable_level(level_node)
+		else:
+			_disable_level(level_node)
 
+# Enables a level node by recursively showing it, enabling processing, and restoring its physics.
+func _enable_level(level_node: Node) -> void:
+	print("Enabling platform level")
+	_set_visibility_recursive(level_node, true)
+	if level_node.has_method("set_process"):
+		level_node.set_process(true)
+	if level_node.has_method("set_physics_process"):
+		level_node.set_physics_process(true)
+	if "collision_enabled" in level_node:
+		level_node.collision_enabled = true
+	_set_physics_state(level_node, true)
 
-func will_be_converted_to_wall(spot: Vector2i):
-	return (spot.x % 2 == 1 and spot.y % 2 == 1)
-	
-	
-func is_wall(pos: Vector2i):
-	return get_cell_atlas_coords(pos) == normal_wall_atlas_coords
+# Disables a level node by recursively hiding it, disabling processing, and turning off its physics.
+func _disable_level(level_node: Node) -> void:
+	_set_visibility_recursive(level_node, false)
+	if level_node.has_method("set_process"):
+		level_node.set_process(false)
+	if level_node.has_method("set_physics_process"):
+		level_node.set_physics_process(false)
+	if "collision_enabled" in level_node:
+		level_node.collision_enabled = false
+	_set_physics_state(level_node, false)
 
+# Recursively set the "visible" property for all CanvasItem nodes using deferred calls.
+func _set_visibility_recursive(current_node: Node, visibility: bool) -> void:
+	if current_node is CanvasItem:
+		current_node.set_deferred("visible", visibility)
+	for child in current_node.get_children():
+		_set_visibility_recursive(child, visibility)
 
-func can_move_to(cell: Vector2i):
-	# Adjusted to work in maze coordinates relative to starting_coords.
-	return (
-		cell.x >= starting_coords.x and cell.y >= starting_coords.y and
-		cell.x < starting_coords.x + x_dim and cell.y < starting_coords.y + y_dim and
-		not is_wall(cell)
-	)
+# Recursively update physics/collision state for CollisionShape2D and CollisionObject2D nodes.
+func _set_physics_state(current_node: Node, enable: bool) -> void:
+	# For CollisionShape2D nodes, update their "disabled" property using deferred call.
+	if current_node is CollisionShape2D:
+		current_node.set_deferred("disabled", not enable)
 
+<<<<<<< HEAD
 func dfs(start: Vector2i):
 	var fringe: Array[Vector2i] = [start]
 	var seen = {}
@@ -179,6 +166,83 @@ func place_flag() -> void:
 		add_child(flag_instance)
 		flag_instance.add_to_group("flag")
 		print("Placed flag at: ", chosen)
+=======
+	# For CollisionObject2D nodes (excluding TileMap) update collision layers and masks.
+	if current_node is CollisionObject2D and not (current_node is TileMap):
+		# For Area2D nodes, use deferred calls for the "monitoring" property.
+		if current_node is Area2D:
+			current_node.set_deferred("monitoring", enable)
+		if enable:
+			_restore_physics_properties(current_node)
+		else:
+			_disable_physics_properties(current_node)
+
+	# Handle TileMap nodes separately.
+	if current_node is TileMap:
+		if enable:
+			_enable_tilemap_collisions(current_node)
+		else:
+			_disable_tilemap_collisions(current_node)
+
+	for child in current_node.get_children():
+		_set_physics_state(child, enable)
+
+# Store default collision_layer and collision_mask for each TileMap under levels.
+func _store_tilemap_defaults() -> void:
+	for i in range(get_child_count()):
+		var level_node: Node = get_child(i)
+		for child in level_node.get_children():
+			if child is TileMap:
+				var id = child.get_instance_id()
+				if not tilemap_defaults.has(id):
+					tilemap_defaults[id] = {
+						"collision_layer": child.collision_layer,
+						"collision_mask": child.collision_mask
+					}
+
+# Recursively store default physics properties for CollisionObject2D nodes (excluding TileMap) under current_node.
+func _store_physics_defaults(current_node: Node) -> void:
+	if current_node is CollisionObject2D and not (current_node is TileMap):
+		var id = current_node.get_instance_id()
+		# Only store if not already stored and if the node has collision properties.
+		if not physics_defaults.has(id) and current_node.has_method("get_collision_layer") and current_node.has_method("get_collision_mask"):
+			physics_defaults[id] = {
+				"collision_layer": current_node.collision_layer,
+				"collision_mask": current_node.collision_mask
+			}
+	for child in current_node.get_children():
+		_store_physics_defaults(child)
+
+# Restore physics properties for a given CollisionObject2D.
+func _restore_physics_properties(obj: CollisionObject2D) -> void:
+	var id = obj.get_instance_id()
+	if physics_defaults.has(id):
+		var defaults = physics_defaults[id]
+		# Using deferred calls to ensure the changes are applied correctly.
+		obj.set_deferred("collision_layer", defaults["collision_layer"])
+		obj.set_deferred("collision_mask", defaults["collision_mask"])
+		# For Area2D nodes, monitoring is updated in _set_physics_state.
+
+# Disable physics properties for a given CollisionObject2D.
+func _disable_physics_properties(obj: CollisionObject2D) -> void:
+	obj.set_deferred("collision_layer", 0)
+	obj.set_deferred("collision_mask", 0)
+
+# Restore the TileMap's collision properties from stored defaults.
+func _enable_tilemap_collisions(tilemap: TileMap) -> void:
+	var id = tilemap.get_instance_id()
+	if tilemap_defaults.has(id):
+		var defaults = tilemap_defaults[id]
+		tilemap.set_deferred("collision_layer", defaults["collision_layer"])
+		tilemap.set_deferred("collision_mask", defaults["collision_mask"])
+>>>>>>> ade2381 (Added a main menu (Changed the primary scene to the menu), added new levels, made some changes throughout the code, and some asset reogranization and update. Also added a rough 3D scene implementation)
 	else:
-		print("No suitable flag candidate found. Resetting...")
-		load_maze(current_level)
+		tilemap.set_deferred("collision_layer", 1)
+		tilemap.set_deferred("collision_mask", 1)
+	tilemap.update_dirty_quadrants()
+
+# Disable collisions on the TileMap.
+func _disable_tilemap_collisions(tilemap: TileMap) -> void:
+	tilemap.set_deferred("collision_layer", 0)
+	tilemap.set_deferred("collision_mask", 0)
+	tilemap.update_dirty_quadrants()

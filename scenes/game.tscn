@@ -3,10 +3,17 @@
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_vrrtt"]
 [ext_resource type="PackedScene" uid="uid://bgf3ofvnym71l" path="res://scenes/player.tscn" id="1_vxt15"]
 [ext_resource type="Script" path="res://scripts/camera_2d.gd" id="3_lo0k5"]
+<<<<<<< HEAD
 [ext_resource type="Texture2D" uid="uid://cn8i1e5a2w11c" path="res://sprites/Background/Substrate.png" id="4_6envm"]
 [ext_resource type="Texture2D" uid="uid://dhkixf8jhbq4o" path="res://sprites/Background/Bottom Layer.png" id="5_of18u"]
 [ext_resource type="Texture2D" uid="uid://dhop524e0npfj" path="res://sprites/Background/Top Layer.png" id="6_o088u"]
 [ext_resource type="Texture2D" uid="uid://b0viiebu5kc4j" path="res://sprites/Background/Components.png" id="7_g53dw"]
+=======
+[ext_resource type="Texture2D" uid="uid://cn8i1e5a2w11c" path="res://resources/Background/Substrate.png" id="4_v4we0"]
+[ext_resource type="Texture2D" uid="uid://dhkixf8jhbq4o" path="res://resources/Background/Bottom Layer.png" id="5_fcqnm"]
+[ext_resource type="Texture2D" uid="uid://dhop524e0npfj" path="res://resources/Background/Top Layer.png" id="6_snnqn"]
+[ext_resource type="Texture2D" uid="uid://b0viiebu5kc4j" path="res://resources/Background/Components.png" id="7_qve1l"]
+>>>>>>> ade2381 (Added a main menu (Changed the primary scene to the menu), added new levels, made some changes throughout the code, and some asset reogranization and update. Also added a rough 3D scene implementation)
 
 [node name="Game" type="Node2D"]
 
@@ -30,13 +37,21 @@ script = ExtResource("3_lo0k5")
 unique_name_in_owner = true
 
 [node name="Background" type="ParallaxBackground" parent="."]
+<<<<<<< HEAD
+=======
+visible = false
+>>>>>>> ade2381 (Added a main menu (Changed the primary scene to the menu), added new levels, made some changes throughout the code, and some asset reogranization and update. Also added a rough 3D scene implementation)
 
 [node name="Substrate Layer" type="ParallaxLayer" parent="Background"]
 motion_scale = Vector2(0, 0)
 motion_mirroring = Vector2(640, 320)
 
 [node name="Sprite2D" type="Sprite2D" parent="Background/Substrate Layer"]
+<<<<<<< HEAD
 texture = ExtResource("4_6envm")
+=======
+texture = ExtResource("4_v4we0")
+>>>>>>> ade2381 (Added a main menu (Changed the primary scene to the menu), added new levels, made some changes throughout the code, and some asset reogranization and update. Also added a rough 3D scene implementation)
 centered = false
 
 [node name="Bottom Layer" type="ParallaxLayer" parent="Background"]
@@ -44,7 +59,11 @@ motion_scale = Vector2(0.8, 0.8)
 motion_mirroring = Vector2(640, 320)
 
 [node name="Sprite2D" type="Sprite2D" parent="Background/Bottom Layer"]
+<<<<<<< HEAD
 texture = ExtResource("5_of18u")
+=======
+texture = ExtResource("5_fcqnm")
+>>>>>>> ade2381 (Added a main menu (Changed the primary scene to the menu), added new levels, made some changes throughout the code, and some asset reogranization and update. Also added a rough 3D scene implementation)
 centered = false
 
 [node name="Top Layer" type="ParallaxLayer" parent="Background"]
@@ -52,7 +71,11 @@ motion_scale = Vector2(0.8, 0.8)
 motion_mirroring = Vector2(640, 320)
 
 [node name="Sprite2D" type="Sprite2D" parent="Background/Top Layer"]
+<<<<<<< HEAD
 texture = ExtResource("6_o088u")
+=======
+texture = ExtResource("6_snnqn")
+>>>>>>> ade2381 (Added a main menu (Changed the primary scene to the menu), added new levels, made some changes throughout the code, and some asset reogranization and update. Also added a rough 3D scene implementation)
 centered = false
 
 [node name="Component Layer" type="ParallaxLayer" parent="Background"]
@@ -60,5 +83,9 @@ motion_scale = Vector2(0.8, 0.8)
 motion_mirroring = Vector2(640, 320)
 
 [node name="Sprite2D" type="Sprite2D" parent="Background/Component Layer"]
+<<<<<<< HEAD
 texture = ExtResource("7_g53dw")
+=======
+texture = ExtResource("7_qve1l")
+>>>>>>> ade2381 (Added a main menu (Changed the primary scene to the menu), added new levels, made some changes throughout the code, and some asset reogranization and update. Also added a rough 3D scene implementation)
 centered = false

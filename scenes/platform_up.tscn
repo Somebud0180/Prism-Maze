@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dak5chwustt20"]
 
-[ext_resource type="Texture2D" uid="uid://b2trhvjrl8ees" path="res://sprites/Tileset.png" id="1_4b5pm"]
+[ext_resource type="Texture2D" uid="uid://b2trhvjrl8ees" path="res://resources/Game/Tileset.png" id="1_4b5pm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d35sm"]
 size = Vector2(32, 14)
