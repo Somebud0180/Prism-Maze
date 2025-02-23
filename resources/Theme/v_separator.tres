@@ -2,9 +2,10 @@
 
 [resource]
 content_margin_left = 0.0
-content_margin_top = 5.0
+content_margin_top = 0.0
 content_margin_right = 0.0
 content_margin_bottom = 16.0
 grow_begin = 0.0
 grow_end = 16.0
+thickness = 0
 vertical = true

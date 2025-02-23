@@ -1,12 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://brinhdnvr4uxf"]
+[gd_scene load_steps=4 format=3 uid="uid://brinhdnvr4uxf"]
 
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_vrrtt"]
 [ext_resource type="PackedScene" uid="uid://bgf3ofvnym71l" path="res://scenes/player.tscn" id="1_vxt15"]
 [ext_resource type="Script" path="res://scripts/camera_2d.gd" id="3_lo0k5"]
-[ext_resource type="Texture2D" uid="uid://cn8i1e5a2w11c" path="res://resources/Background/Substrate.png" id="4_v4we0"]
-[ext_resource type="Texture2D" uid="uid://dhkixf8jhbq4o" path="res://resources/Background/Bottom Layer.png" id="5_fcqnm"]
-[ext_resource type="Texture2D" uid="uid://dhop524e0npfj" path="res://resources/Background/Top Layer.png" id="6_snnqn"]
-[ext_resource type="Texture2D" uid="uid://b0viiebu5kc4j" path="res://resources/Background/Components.png" id="7_qve1l"]
 
 [node name="Game" type="Node2D"]
 
@@ -28,38 +24,3 @@ script = ExtResource("3_lo0k5")
 
 [node name="MainLayer" type="TileMapLayer" parent="."]
 unique_name_in_owner = true
-
-[node name="Background" type="ParallaxBackground" parent="."]
-visible = false
-
-[node name="Substrate Layer" type="ParallaxLayer" parent="Background"]
-motion_scale = Vector2(0, 0)
-motion_mirroring = Vector2(640, 320)
-
-[node name="Sprite2D" type="Sprite2D" parent="Background/Substrate Layer"]
-texture = ExtResource("4_v4we0")
-centered = false
-
-[node name="Bottom Layer" type="ParallaxLayer" parent="Background"]
-motion_scale = Vector2(0.8, 0.8)
-motion_mirroring = Vector2(640, 320)
-
-[node name="Sprite2D" type="Sprite2D" parent="Background/Bottom Layer"]
-texture = ExtResource("5_fcqnm")
-centered = false
-
-[node name="Top Layer" type="ParallaxLayer" parent="Background"]
-motion_scale = Vector2(0.8, 0.8)
-motion_mirroring = Vector2(640, 320)
-
-[node name="Sprite2D" type="Sprite2D" parent="Background/Top Layer"]
-texture = ExtResource("6_snnqn")
-centered = false
-
-[node name="Component Layer" type="ParallaxLayer" parent="Background"]
-motion_scale = Vector2(0.8, 0.8)
-motion_mirroring = Vector2(640, 320)
-
-[node name="Sprite2D" type="Sprite2D" parent="Background/Component Layer"]
-texture = ExtResource("7_qve1l")
-centered = false
