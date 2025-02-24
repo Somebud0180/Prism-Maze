@@ -1,10 +1,9 @@
-[gd_scene load_steps=40 format=3 uid="uid://br2t4hanatnss"]
+[gd_scene load_steps=38 format=3 uid="uid://br2t4hanatnss"]
 
-[ext_resource type="StyleBox" uid="uid://d4xsuett3yt0" path="res://resources/Theme/button_hover.tres" id="1_5s20r"]
 [ext_resource type="Texture2D" uid="uid://up7vguaee3r1" path="res://resources/Menu/Menu.png" id="1_dj8fk"]
+[ext_resource type="Theme" uid="uid://bau50guyc4alk" path="res://resources/Theme/menu.tres" id="1_fjike"]
 [ext_resource type="Script" path="res://scripts/menu.gd" id="3_0ybmh"]
 [ext_resource type="StyleBox" uid="uid://vqm1soj8xnjh" path="res://resources/Theme/separator.tres" id="3_b36nl"]
-[ext_resource type="StyleBox" uid="uid://b5uyfssq3f7bs" path="res://resources/Theme/button_normal.tres" id="3_devaa"]
 [ext_resource type="Texture2D" uid="uid://k2ow5rr33vw" path="res://resources/Menu/Play.png" id="4_4g08a"]
 [ext_resource type="Texture2D" uid="uid://d1vxa1f4hthke" path="res://resources/Menu/Title.png" id="4_dlxnh"]
 [ext_resource type="Texture2D" uid="uid://b0bn0h04f0qnm" path="res://resources/Menu/Gear.png" id="6_c7385"]
@@ -26,14 +25,6 @@
 [ext_resource type="Texture2D" uid="uid://c63pofosye2ac" path="res://resources/Menu/Jump.png" id="23_tuapu"]
 [ext_resource type="Texture2D" uid="uid://dqm1knqvsbn8a" path="res://resources/Controls/Controllers/button_b.png" id="24_05cvn"]
 [ext_resource type="Texture2D" uid="uid://toobd4vd6hfg" path="res://resources/Controls/KBM/keyboard_space_icon.png" id="25_7o6xk"]
-
-[sub_resource type="Theme" id="Theme_a0jag"]
-Button/styles/hover = ExtResource("1_5s20r")
-Button/styles/normal = ExtResource("3_devaa")
-HSeparator/constants/separation = 4
-HSeparator/styles/separator = ExtResource("3_b36nl")
-RichTextLabel/font_sizes/normal_font_size = 32
-VBoxContainer/constants/separation = 16
 
 [sub_resource type="Animation" id="Animation_8rgj6"]
 length = 0.001
@@ -108,6 +99,166 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(80, 800)]
+}
+
+[sub_resource type="Animation" id="Animation_gf7yk"]
+resource_name = "RESET_controls"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Controls:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(2),
+"update": 0,
+"values": [Vector2(80, 80)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/Controls:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_fv2yu"]
+resource_name = "RESET_game"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Settings:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1400, 80)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/Settings:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/Main:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(80, 80)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CanvasLayer/Main:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CanvasLayer/Controls:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CanvasLayer/Controls:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(80, 800)]
+}
+
+[sub_resource type="Animation" id="Animation_ufe8k"]
+resource_name = "RESET_main"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Main:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(2),
+"update": 0,
+"values": [Vector2(80, 80)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/Main:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_11v34"]
+resource_name = "RESET_settings"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Settings:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(2),
+"update": 0,
+"values": [Vector2(80, 80)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/Settings:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_q8cwc"]
@@ -278,166 +429,6 @@ tracks/1/keys = {
 "values": [true, true]
 }
 
-[sub_resource type="Animation" id="Animation_11v34"]
-resource_name = "RESET_settings"
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/Settings:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(2),
-"update": 0,
-"values": [Vector2(80, 80)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CanvasLayer/Settings:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
-[sub_resource type="Animation" id="Animation_ufe8k"]
-resource_name = "RESET_main"
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/Main:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(2),
-"update": 0,
-"values": [Vector2(80, 80)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CanvasLayer/Main:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
-[sub_resource type="Animation" id="Animation_gf7yk"]
-resource_name = "RESET_controls"
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/Controls:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(2),
-"update": 0,
-"values": [Vector2(80, 80)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CanvasLayer/Controls:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
-[sub_resource type="Animation" id="Animation_fv2yu"]
-resource_name = "RESET_game"
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/Settings:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1400, 80)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CanvasLayer/Settings:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("CanvasLayer/Main:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(80, 80)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("CanvasLayer/Main:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("CanvasLayer/Controls:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("CanvasLayer/Controls:position")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(80, 800)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nyjex"]
 _data = {
 "RESET": SubResource("Animation_8rgj6"),
@@ -462,7 +453,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme = SubResource("Theme_a0jag")
+theme = ExtResource("1_fjike")
 script = ExtResource("3_0ybmh")
 main = NodePath("CanvasLayer/Main")
 settings = NodePath("CanvasLayer/Settings")
@@ -485,6 +476,7 @@ offset_right = 80.0
 offset_bottom = 280.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_fjike")
 texture = ExtResource("1_dj8fk")
 patch_margin_left = 5
 patch_margin_top = 5
@@ -494,7 +486,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Main"]
 custom_minimum_size = Vector2(256, 218)
-layout_mode = 0
+layout_mode = 1
 offset_left = 32.0
 offset_top = 32.0
 offset_right = 288.0
@@ -510,23 +502,31 @@ stretch_mode = 4
 
 [node name="Play" type="Button" parent="CanvasLayer/Main/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
 icon = ExtResource("4_4g08a")
 icon_alignment = 1
+expand_icon = true
 
 [node name="Settings" type="Button" parent="CanvasLayer/Main/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
 icon = ExtResource("6_c7385")
 icon_alignment = 1
+expand_icon = true
 
 [node name="Controls" type="Button" parent="CanvasLayer/Main/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
 icon = ExtResource("8_46v5l")
 icon_alignment = 1
+expand_icon = true
 
 [node name="Quit" type="Button" parent="CanvasLayer/Main/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
 icon = ExtResource("8_2fno0")
 icon_alignment = 1
+expand_icon = true
 
 [node name="Settings" type="NinePatchRect" parent="CanvasLayer"]
 visible = false
@@ -542,6 +542,7 @@ offset_right = 1880.0
 offset_bottom = 280.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_fjike")
 texture = ExtResource("7_ugwaw")
 region_rect = Rect2(0, 0, 32, 32)
 patch_margin_left = 5
@@ -552,6 +553,7 @@ axis_stretch_horizontal = 2
 axis_stretch_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Settings"]
+layout_mode = 0
 offset_left = 32.0
 offset_top = 32.0
 offset_right = 288.0
@@ -574,7 +576,6 @@ custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 icon_alignment = 2
 expand_icon = true
-selected = 0
 
 [node name="Fullscreen" type="CheckButton" parent="CanvasLayer/Settings/VBoxContainer"]
 custom_minimum_size = Vector2(0, 32)
@@ -609,6 +610,7 @@ offset_right = 560.0
 offset_bottom = 1000.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_fjike")
 texture = ExtResource("7_ugwaw")
 region_rect = Rect2(0, 0, 32, 32)
 patch_margin_left = 5

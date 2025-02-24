@@ -18,18 +18,25 @@ var resolution = Vector2i(1280, 720)
 var supported_resolutions = ["2560x1600", "2560x1440", "2560x1080", "2048x1536", "1920x1200", "1920x1080", "1680x1050", "1600x900", "1440x900", "1366x768", "1280x1024", "1280x720", "1024x768", "800x600", "640x480", "640x360"]
 
 func _ready() -> void:
-	var current_resolution = DisplayServer.window_get_size()
-	var string_current = str(current_resolution[0]) + "x" + str(current_resolution[1])
+	add_full_window_resolution()
+	add_resolutions()
+
+func add_resolutions():
+	var current_resolution: Vector2i = DisplayServer.window_get_size()
+	var string_current: String = str(current_resolution[0]) + "x" + str(current_resolution[1])
 	
-	var native_resolution = DisplayServer.screen_get_size()
-	var string_native = str(native_resolution[0]) + "x" + str(native_resolution[1])
+	var native_resolution: Vector2i = DisplayServer.screen_get_size()
+	var string_native: String = str(native_resolution[0]) + "x" + str(native_resolution[1])
+	
+	var native_windowed: Rect2i = DisplayServer.screen_get_usable_rect()
+	var string_windowed: String = str(native_windowed.size.x) + "x" + str(native_windowed.size.y)
 	
 	for i in range(supported_resolutions.size()):
 		var resolution_name: String = supported_resolutions[i]
 		var icon = ""
 		
 		# Add a native icon to the native resoluton
-		if resolution_name == string_native:
+		if (resolution_name == string_native and DisplayServer.window_get_mode() == 3) or (resolution_name == string_windowed and DisplayServer.window_get_mode() == 0):
 			icon = native_icon
 		else:
 			icon = resolution_icon
@@ -39,6 +46,48 @@ func _ready() -> void:
 		# Set as selected if same as current resolution
 		if resolution_name == string_current:
 			resolution_picker.selected = i
+
+
+func add_full_window_resolution():
+	var rect = DisplayServer.screen_get_usable_rect()
+	var fw_w = int(rect.size.x)
+	var fw_h = int(rect.size.y)
+	
+	# Convert each supported resolution to a (width, height) pair
+	var resolution_pairs = []
+	for res_str in supported_resolutions:
+		var parts = res_str.split("x")
+		var w = int(parts[0])
+		var h = int(parts[1])
+		resolution_pairs.append(Vector2i(w, h))
+	
+	# Insert your full-window resolution
+	resolution_pairs.append(Vector2i(fw_w, fw_h))
+	
+	# Sort by width, then height
+	resolution_pairs.sort_custom(_compare_resolutions)
+	
+	# Rebuild the string list
+	supported_resolutions.clear()
+	for pair in resolution_pairs:
+		supported_resolutions.append(str(pair.x) + "x" + str(pair.y))
+
+
+func reset_game() -> void:
+	in_game = false
+	menu_state = STATE.MAIN
+	animation_player.play("show_main")
+	
+	if simultaneous_scene.get_parent() != null:
+		simultaneous_scene.get_parent().remove_child(simultaneous_scene)
+	
+	simultaneous_scene = preload("res://scenes/game.tscn").instantiate()
+
+func _compare_resolutions(a: Vector2i, b: Vector2i) -> bool:
+	if a.x == b.x:
+		return a.y > b.y
+	return a.x > b.x
+
 
 func _input(event):
 	if event.is_action_pressed("ui_cancel") and not animation_player.is_playing():
@@ -131,10 +180,13 @@ func _on_fullscreen_toggled(toggled_on: bool) -> void:
 
 
 func set_resolution() -> void:
-	print(resolution)
-	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+	# Doesnt seem to be an issue anymore
+	#
+	# Set window mode to window
+	# Workaround for macOS not allowing resizing from native resolution
+	# DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+	
 	DisplayServer.window_set_size(resolution)
-	print(DisplayServer.window_get_size())
 	
 	# Reposition the current menu
 	match menu_state:

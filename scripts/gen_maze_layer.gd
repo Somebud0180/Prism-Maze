@@ -26,9 +26,10 @@ var adj4 = [
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	# Offset the maze position to allow the player to spawn in (0, 0)
 	position.y = -32
-	pass
-	
+
+
 func load_maze(level: int):
 	print("Resetting maze layer")
 	# Store current level as needed.
@@ -56,12 +57,19 @@ func load_maze(level: int):
 	dfs(starting_coords)
 	place_flag()
 	
+	# Hide the flag for 1 second to avoid spoiling it during camera movement
+	show_flags(false)
+	await get_tree().create_timer(1).timeout
+	show_flags(true)
+
+
 func determine_size(level: int):
 	if level <= 5:
 		return Vector2i(12, 16)
 	elif level <= 10:
 		return Vector2i(16, 32)
-	
+
+
 func place_border():
 	for y in range(-1, y_dim):
 		place_wall(Vector2(-1, y))
@@ -170,3 +178,16 @@ func place_flag() -> void:
 	else:
 		print("No suitable flag candidate found. Resetting...")
 		load_maze(current_level)
+
+func show_flags(visible: bool) -> void:
+	for child in get_children():
+		_show_flags_recursive(visible, child)
+
+func _show_flags_recursive(visible: bool, node: Node) -> void:
+	# If you name nodes "Flag," check for node.name == "Flag."
+	if node.name == "Flag" and node is CanvasItem:
+		node.visible = visible
+	
+	# Continue down the scene tree
+	for subchild in node.get_children():
+		_show_flags_recursive(visible, subchild)

@@ -9,36 +9,40 @@ extends Node
 @onready var player = %Player
 @export var level: int = 0
 
+var finish_scene = preload("res://scenes/level_popup.tscn").instantiate()
+var maze_scene = preload("res://scenes/maze_layer.tscn").instantiate()
+var platform_scene = preload("res://scenes/platform_layer.tscn").instantiate()
+
+var time_elapsed: float = 0.0
+var is_timer_running: bool = false
+
 var platform_list: Array[int] = []
 var maze_list: Array[int] = []
 var level_collection: Array[String] = [] # The level set for the current playthrough
-var level_amount: int = 10 # The amount of levels to create for the playthrough. Excluding the final level.
+var level_amount: int = 1 # The amount of levels to create for the playthrough. Excluding the final level.
 var game_mode: int = 2  # 1: Platformer, 2: Maze
 
 func _ready() -> void:
 	# Load Maze Layer
-	var maze_layer = load("res://scenes/maze_layer.tscn")
-	var maze_instance = maze_layer.instantiate()
-	main_layer.add_child(maze_instance)
+	main_layer.add_child(maze_scene)
 	
 	# Load Platform Layer
-	var platform_layer = load("res://scenes/platform_layer.tscn")
-	var platform_instance = platform_layer.instantiate()
-	main_layer.add_child(platform_instance)
+	main_layer.add_child(platform_scene)
 
 	# Fill each list with all valid indices initially, excluding the final platform level.
-	for i in range(platform_instance.get_child_count() - 1):
+	for i in range(platform_scene.get_child_count() - 1):
 		platform_list.append(i)
 	
-	for i in range(maze_instance.get_child_count()):
+	for i in range(maze_scene.get_child_count()):
 		maze_list.append(i)
 	
 	# Shuffle them for random selection if desired:
 	platform_list.shuffle()
 	maze_list.shuffle()
 	
-	load_game(platform_instance)
+	load_game(platform_scene)
 	load_level()
+	is_timer_running = true
 
 func load_game(platform_instance: Node) -> void:
 	# Create a level collection
@@ -48,16 +52,12 @@ func load_game(platform_instance: Node) -> void:
 			level_collection.append("Maze")
 		else:
 			level_collection.append("Platform")
-	print(level_collection)
 	
 	for i in range(3):
 		# Check levels thrice to optimize for speed and best level set.
 		level_check()
 	
-	print(level_collection)
-	
 	level_set(platform_instance)
-	print(level_collection)
 
 func level_check() -> void:
 	# Improve random level list
@@ -79,26 +79,27 @@ func level_set(platform_instance: Node) -> void:
 		elif level_collection[i] == "Platform":
 			var resolved = str(get_platform_index())
 			level_collection[i] = "Platform: " + resolved
-		
-		# Append last level
-		level_collection.append("Platform: " + str(platform_instance.get_child_count() - 1))
+	
+	# Append last level
+	level_collection.append("Platform: " + str(platform_instance.get_child_count() - 1))
 
 func progress_level() -> void:
-	if level > level_collection.size():
-		load_end()
-	else:
-		level += 1
-		print("Progressing to level:", level)
-		load_level()
+	level += 1
+	print("Progressing to level:", level)
+	load_level()
+	
+	if level == level_collection.size() - 1:
+		is_timer_running = false
+		print("Time Elapsed: " + str(snapped(time_elapsed, 0.01)) + "s")
+		finish_scene.output_timer(snapped(time_elapsed, 0.01))
+		main_layer.add_child(finish_scene)
 
 func load_level() -> void:
-	var maze_layer = load("res://scenes/maze_layer.tscn")
-	var maze_instance = maze_layer.instantiate()
-	maze_instance.disable_all_levels()
+	maze_scene = preload("res://scenes/maze_layer.tscn").instantiate()
+	platform_scene = preload("res://scenes/platform_layer.tscn").instantiate()
 	
-	var platform_scene = load("res://scenes/platform_layer.tscn")
-	var platform_instance = platform_scene.instantiate()
-	platform_instance.disable_all_levels()
+	maze_scene.disable_all_levels()
+	platform_scene.disable_all_levels()
 	
 	# Reset player gravity and sprite
 	player.gravity_direction = 1
@@ -137,38 +138,31 @@ func load_gen_maze() -> void:
 func load_maze(selected_level: int) -> void:
 	# Set game mode
 	game_mode = 2
-
-	var maze_layer = load("res://scenes/maze_layer.tscn")
-	var maze_instance = maze_layer.instantiate()
-	main_layer.add_child(maze_instance)
-
-	maze_instance.disable_all_levels()
-	maze_instance.load_level(selected_level)
+	
+	maze_scene = preload("res://scenes/maze_layer.tscn").instantiate()
+	main_layer.add_child(maze_scene)
+	
+	maze_scene.disable_all_levels()
+	maze_scene.load_level(selected_level)
 
 func load_platform(selected_level: int) -> void:
 	# Set game mode
 	game_mode = 1
-
-	var platform_scene = load("res://scenes/platform_layer.tscn")
-	var platform_instance = platform_scene.instantiate()
-	main_layer.add_child(platform_instance)
-
-	platform_instance.disable_all_levels()
-	platform_instance.load_level(selected_level)
-
-func load_end() -> void:
-	print("Loading end level!")
-	pass
+	
+	platform_scene = preload("res://scenes/platform_layer.tscn").instantiate()
+	main_layer.add_child(platform_scene)
+	
+	platform_scene.disable_all_levels()
+	platform_scene.load_level(selected_level)
 
 func get_platform_index() -> int:
 	# Load Platform Layer
-	var platform_layer = load("res://scenes/platform_layer.tscn")
-	var platform_instance = platform_layer.instantiate()
-	main_layer.add_child(platform_instance)
+	platform_scene = preload("res://scenes/platform_layer.tscn").instantiate()
+	main_layer.add_child(platform_scene)
 	
 	# If the list is empty, refill it
 	if platform_list.size() == 0:
-		for i in range(platform_instance.get_child_count() - 1):
+		for i in range(platform_scene.get_child_count() - 1):
 			platform_list.append(i)
 		platform_list.shuffle()
 	
@@ -176,14 +170,35 @@ func get_platform_index() -> int:
 
 func get_maze_index() -> int:
 	# Load Maze Layer
-	var maze_layer = load("res://scenes/maze_layer.tscn")
-	var maze_instance = maze_layer.instantiate()
-	main_layer.add_child(maze_instance)
+	maze_scene = preload("res://scenes/maze_layer.tscn").instantiate()
+	main_layer.add_child(maze_scene)
 	
 	# If the list is empty, refill it
 	if maze_list.size() == 0:
-		for i in range(maze_instance.get_child_count()):
+		for i in range(maze_scene.get_child_count()):
 			maze_list.append(i)
 		maze_list.shuffle()
 	
 	return maze_list.pop_back()
+
+func hide_flags_in_current_level() -> void:
+	# Loop over all children in main_layer (which is where levels are added)
+	for child in main_layer.get_children():
+		# If that child implements hide_flags(), call it
+		if child.has_method("hide_flags"):
+			child.show_flags(false)
+
+
+func reset_game() -> void:
+	for child in main_layer.get_children():
+		child.queue_free()
+	
+	level_collection = []
+	platform_list = []
+	maze_list = []
+	time_elapsed = 0.0
+
+
+func _process(delta: float) -> void:
+	if is_timer_running:
+		time_elapsed += delta

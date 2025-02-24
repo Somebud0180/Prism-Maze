@@ -36,6 +36,11 @@ func load_level(level: int) -> void:
 			_enable_level(level_node)
 		else:
 			_disable_level(level_node)
+	
+	# Hide the flag for 1 second to avoid spoiling it during camera movement
+	show_flags(false)
+	await get_tree().create_timer(1).timeout
+	show_flags(true)
 
 # Enables a level node by recursively showing it, enabling processing, and restoring its physics.
 func _enable_level(level_node: Node) -> void:
@@ -150,3 +155,16 @@ func _disable_tilemap_collisions(tilemap: TileMap) -> void:
 	tilemap.set_deferred("collision_layer", 0)
 	tilemap.set_deferred("collision_mask", 0)
 	tilemap.update_dirty_quadrants()
+
+func show_flags(visible: bool) -> void:
+	for child in get_children():
+		_show_flags_recursive(visible, child)
+
+func _show_flags_recursive(visible: bool, node: Node) -> void:
+	# If you name nodes "Flag," check for node.name == "Flag."
+	if node.name == "Flag" and node is CanvasItem:
+		node.visible = visible
+	
+	# Continue down the scene tree
+	for subchild in node.get_children():
+		_show_flags_recursive(visible, subchild)

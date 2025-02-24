@@ -1,0 +1,81 @@
+[gd_scene load_steps=6 format=3 uid="uid://cty4nmtt40uli"]
+
+[ext_resource type="Theme" uid="uid://bau50guyc4alk" path="res://resources/Theme/menu.tres" id="1_guh7m"]
+[ext_resource type="Texture2D" uid="uid://up7vguaee3r1" path="res://resources/Menu/Menu.png" id="2_gkfly"]
+[ext_resource type="Script" path="res://scripts/level_popup.gd" id="2_yf7d8"]
+[ext_resource type="Texture2D" uid="uid://dcrmd8a7krrgb" path="res://resources/Menu/Timer.png" id="3_mku4n"]
+[ext_resource type="Texture2D" uid="uid://b78vfepjp4r7a" path="res://resources/Menu/Flag.png" id="4_fbgwy"]
+
+[node name="Level Popup" type="Control" node_paths=PackedStringArray("timer_label")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_guh7m")
+script = ExtResource("2_yf7d8")
+timer_label = NodePath("CanvasLayer/Finish/VBoxContainer/Timer HBox/Timer")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Finish" type="NinePatchRect" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -125.0
+offset_top = -175.0
+offset_right = 125.0
+offset_bottom = 175.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_guh7m")
+texture = ExtResource("2_gkfly")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Finish"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.05
+anchor_right = 0.95
+anchor_bottom = 0.95
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Timer HBox" type="HBoxContainer" parent="CanvasLayer/Finish/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+alignment = 1
+
+[node name="Timer Icon" type="TextureRect" parent="CanvasLayer/Finish/VBoxContainer/Timer HBox"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("3_mku4n")
+stretch_mode = 5
+
+[node name="Timer" type="RichTextLabel" parent="CanvasLayer/Finish/VBoxContainer/Timer HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "00:00:00"
+fit_content = true
+scroll_active = false
+
+[node name="Finish" type="Button" parent="CanvasLayer/Finish/VBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+icon = ExtResource("4_fbgwy")
+icon_alignment = 1
+expand_icon = true
+
+[node name="VSeparator" type="VSeparator" parent="CanvasLayer/Finish/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[connection signal="pressed" from="CanvasLayer/Finish/VBoxContainer/Finish" to="." method="_on_finish_pressed"]

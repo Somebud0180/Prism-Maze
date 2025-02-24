@@ -20,3 +20,11 @@ func _process(_delta: float) -> void:
 		
 		camera_tween = create_tween()
 		camera_tween.tween_property(self, "zoom", desired_zoom, CAMERA_TWEEN_DURATION).set_trans(Tween.TRANS_CUBIC)
+
+
+func disable_pos_smoothing() -> void:
+	position_smoothing_enabled = false
+
+
+func enable_pos_smoothing() -> void:
+	position_smoothing_enabled = true
