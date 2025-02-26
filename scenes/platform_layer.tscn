@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=4 uid="uid://1xqnurgp142s"]
+[gd_scene load_steps=43 format=4 uid="uid://1xqnurgp142s"]
 
 [ext_resource type="Script" path="res://scripts/platform_layer.gd" id="1_j615w"]
 [ext_resource type="Texture2D" uid="uid://b2trhvjrl8ees" path="res://resources/Game/Tileset.png" id="2_ib4ga"]
@@ -409,11 +409,48 @@ _data = {
 "move": SubResource("Animation_614q2")
 }
 
+[sub_resource type="Animation" id="Animation_5h661"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(64, -160)]
+}
+
+[sub_resource type="Animation" id="Animation_hwsb3"]
+resource_name = "move"
+length = 2.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(64, -160), Vector2(64, -384)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_57tau"]
+_data = {
+"RESET": SubResource("Animation_5h661"),
+"move": SubResource("Animation_hwsb3")
+}
+
 [node name="PlatformLayer" type="Node"]
 script = ExtResource("1_j615w")
 
 [node name="0" type="TileMapLayer" parent="."]
-visible = false
 use_parent_material = true
 tile_map_data = PackedByteArray("AAD+/wAAAAABAAAAAAD//wAAAAABAAAAAAALAP7/AAABAAAAAAAMAP7/AAABAAAAAAANAPz/AAABAAAAAAAMAPr/AAABAAAAAAAJAPj/AAABAAAAAAAKAPn/AAABAAAAAAAIAPj/AAABAAAAAAAGAPf/AAABAAAAAAAFAPf/AAABAAAAAAABAPf/AAABAAAAAAD///3/AAABAAAAAAAAAP3/AAABAAAAAAACAP3/AAABAAAAAAADAP3/AAABAAAAAAAEAP3/AAABAAAAAAD///f/AAABAAAAAAABAPj/AAABAAAAAAABAPn/AAABAAAAAAAAAPn/AAABAAAAAAD///n/AAABAAAAAAD+//n/AAABAAAAAAD+//f/AAABAAAAAAD9//n/AAABAAAAAAD9//f/AAABAAAAAAD9//b/AAABAAAAAAD9//X/AAABAAAAAAD9//T/AAABAAAAAAD9//P/AAABAAAAAAD9//L/AAABAAAAAAD8//L/AAABAAAAAAD4//L/AAABAAAAAAD4//P/AAABAAAAAAD4//T/AAABAAAAAAD4//f/AAABAAAAAAD4//j/AAABAAAAAAD4//n/AAABAAAAAAD5//n/AAABAAAAAAD6//n/AAABAAAAAAD7//n/AAABAAAAAAD8//n/AAABAAAAAAAIAPz/AAABAAAAAAAEAP7/AAABAAAAAAAEAP//AAABAAAAAAD+////AAABAAAAAAD+//7/AAABAAAAAAD+//3/AAABAAAAAAD4//b/AAABAAAAAAD4//X/AAABAAAAAAD5//L/AAABAAAAAAD9//H/AAABAAAAAAD9//D/AAABAAAAAAD9/+//AAABAAAAAAD8/+//AAABAAAAAAD7/+//AAABAAAAAAD6/+//AAABAAAAAAD5/+//AAABAAAAAAD4/+//AAABAAAAAAD4//D/AAABAAAAAAD4//H/AAABAAAAAAAAAAAAAAABAAAAAAABAAAAAAABAAAAAAACAAAAAAABAAAAAAADAAAAAAABAAAAAAAEAAAAAAABAAAAAAA=")
 tile_set = SubResource("TileSet_b6wc0")
@@ -450,7 +487,7 @@ position = Vector2(-160, -448)
 [node name="Killzone" parent="0" instance=ExtResource("5_n8b4s")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="0/Killzone"]
-position = Vector2(56, 178)
+position = Vector2(56, 64)
 shape = SubResource("WorldBoundaryShape2D_7ajkl")
 
 [node name="Flag" parent="0" instance=ExtResource("6_dc8wf")]
@@ -526,7 +563,7 @@ position = Vector2(-352, -320)
 [node name="Killzone" parent="2" instance=ExtResource("5_n8b4s")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="2/Killzone"]
-position = Vector2(16, 66)
+position = Vector2(16, 96)
 shape = SubResource("WorldBoundaryShape2D_7ajkl")
 
 [node name="Flag" parent="2" instance=ExtResource("6_dc8wf")]
@@ -541,7 +578,7 @@ tile_set = SubResource("TileSet_b6wc0")
 [node name="Killzone" parent="3" instance=ExtResource("5_n8b4s")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="3/Killzone"]
-position = Vector2(16, 66)
+position = Vector2(16, 160)
 shape = SubResource("WorldBoundaryShape2D_7ajkl")
 
 [node name="Flag" parent="3" instance=ExtResource("6_dc8wf")]
@@ -594,7 +631,7 @@ autoplay = "move"
 [node name="Killzone" parent="4" instance=ExtResource("5_n8b4s")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="4/Killzone"]
-position = Vector2(16, 66)
+position = Vector2(16, 96)
 shape = SubResource("WorldBoundaryShape2D_7ajkl")
 
 [node name="Flag" parent="4" instance=ExtResource("6_dc8wf")]
@@ -647,7 +684,7 @@ autoplay = "move"
 [node name="Killzone" parent="5" instance=ExtResource("5_n8b4s")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="5/Killzone"]
-position = Vector2(16, 66)
+position = Vector2(16, 128)
 shape = SubResource("WorldBoundaryShape2D_7ajkl")
 
 [node name="Flag" parent="5" instance=ExtResource("6_dc8wf")]
@@ -656,48 +693,22 @@ position = Vector2(206, -976)
 [node name="6" type="TileMapLayer" parent="."]
 visible = false
 use_parent_material = true
-tile_map_data = PackedByteArray("AAD//wAAAAABAAAAAAAAAAAAAAABAAAAAAABAAAAAAABAAAAAAD///3/AAABAAAAAAAAAP3/AAABAAAAAAABAP3/AAABAAAAAAD+//3/AAABAAAAAAD+//7/AAABAAAAAAD+////AAABAAAAAAD+/wAAAAABAAAAAAAEAAAAAAABAAAAAAAFAP3/AAABAAAAAAAHAAAAAAABAAAAAAAIAP3/AAABAAAAAAAKAAAAAAABAAAAAAAMAP7/AAABAAAAAAALAAQAAAABAAAAAAAJAAQAAAABAAAAAAAIAAQAAAABAAAAAAAGAAQAAAABAAAAAAAFAAQAAAABAAAAAAADAAQAAAABAAAAAAACAAIAAAABAAAAAAALAPz/AAABAAAAAAADAPv/AAABAAAAAAD4//r/AAABAAAAAAD1//7/AAABAAAAAADz//z/AAABAAAAAADw//v/AAABAAAAAADv//v/AAABAAAAAADu//v/AAABAAAAAAA=")
+tile_map_data = PackedByteArray("AAD//wAAAAABAAAAAAAAAAAAAAABAAAAAAABAAAAAAABAAAAAAD///3/AAABAAAAAAAAAP3/AAABAAAAAAABAP3/AAABAAAAAAD+//3/AAABAAAAAAD+//7/AAABAAAAAAD+////AAABAAAAAAD+/wAAAAABAAAAAAAEAAAAAAABAAAAAAAFAP3/AAABAAAAAAAHAAAAAAABAAAAAAAIAP3/AAABAAAAAAAKAAAAAAABAAAAAAAMAP7/AAABAAAAAAALAAQAAAABAAAAAAAJAAQAAAABAAAAAAAIAAQAAAABAAAAAAAGAAQAAAABAAAAAAAFAAQAAAABAAAAAAADAAQAAAABAAAAAAACAAIAAAABAAAAAAALAPz/AAABAAAAAAADAPv/AAABAAAAAADv//v/AAABAAAAAADu//v/AAABAAAAAAD5//v/AAABAAAAAAD6//v/AAABAAAAAADt//v/AAABAAAAAADy//z/AAABAAAAAAD0//7/AAABAAAAAAA=")
 tile_set = SubResource("TileSet_b6wc0")
 
 [node name="Platforms" type="Node" parent="6"]
 
-[node name="Sliding 1" parent="6/Platforms" instance=ExtResource("4_klxfx")]
-position = Vector2(160, -32)
+[node name="Height Up" parent="6/Platforms" instance=ExtResource("4_klxfx")]
+position = Vector2(64, -160)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="6/Platforms/Sliding 1"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="6/Platforms/Height Up"]
 libraries = {
-"": SubResource("AnimationLibrary_uv4ru")
-}
-autoplay = "move"
-
-[node name="Sliding 2" parent="6/Platforms" instance=ExtResource("4_klxfx")]
-position = Vector2(224, -128)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="6/Platforms/Sliding 2"]
-libraries = {
-"": SubResource("AnimationLibrary_yw31a")
-}
-autoplay = "move"
-
-[node name="Elevator 1" parent="6/Platforms" instance=ExtResource("4_klxfx")]
-position = Vector2(64, -128)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="6/Platforms/Elevator 1"]
-libraries = {
-"": SubResource("AnimationLibrary_gj8qr")
-}
-autoplay = "move"
-
-[node name="Elevator 2" parent="6/Platforms" instance=ExtResource("4_klxfx")]
-position = Vector2(64, -128)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="6/Platforms/Elevator 2"]
-libraries = {
-"": SubResource("AnimationLibrary_2nm3c")
+"": SubResource("AnimationLibrary_57tau")
 }
 autoplay = "move"
 
 [node name="Killzone" parent="6" instance=ExtResource("5_n8b4s")]
+position = Vector2(0, 32)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="6/Killzone"]
 position = Vector2(0, 192)
@@ -707,6 +718,7 @@ shape = SubResource("WorldBoundaryShape2D_7ajkl")
 position = Vector2(-562, -176)
 
 [node name="End" type="TileMapLayer" parent="."]
+visible = false
 use_parent_material = true
 tile_map_data = PackedByteArray("AAD5//n/AAABAAAAAAD5/wMAAAABAAAAAAD6//n/AAABAAAAAAD6/wMAAAABAAAAAAD7//n/AAABAAAAAAD7/wMAAAABAAAAAAD8//n/AAABAAAAAAD8////AAABAAAAAAD8/wMAAAABAAAAAAD9//n/AAABAAAAAAD9/wMAAAABAAAAAAD+//n/AAABAAAAAAD+/wEAAAABAAAAAAD+/wMAAAABAAAAAAD///n/AAABAAAAAAD//wEAAAABAAAAAAD//wMAAAABAAAAAAAAAPn/AAABAAAAAAAAAAEAAAABAAAAAAAAAAMAAAABAAAAAAABAPn/AAABAAAAAAABAAEAAAABAAAAAAABAAMAAAABAAAAAAACAPn/AAABAAAAAAACAAMAAAABAAAAAAADAPn/AAABAAAAAAADAP//AAABAAAAAAADAAMAAAABAAAAAAAEAPn/AAABAAAAAAAEAAMAAAABAAAAAAAFAPn/AAABAAAAAAAFAAMAAAABAAAAAAAGAPn/AAABAAAAAAAGAAMAAAABAAAAAAAHAPn/AAABAAAAAAAHAPr/AAABAAAAAAAHAPv/AAABAAAAAAAHAPz/AAABAAAAAAAHAP3/AAABAAAAAAAHAP7/AAABAAAAAAAHAP//AAABAAAAAAAHAAAAAAABAAAAAAAHAAEAAAABAAAAAAAHAAIAAAABAAAAAAAHAAMAAAABAAAAAAD4//n/AAABAAAAAAD4//r/AAABAAAAAAD4//v/AAABAAAAAAD4//z/AAABAAAAAAD4//3/AAABAAAAAAD4//7/AAABAAAAAAD4////AAABAAAAAAD4/wAAAAABAAAAAAD4/wEAAAABAAAAAAD4/wIAAAABAAAAAAD4/wMAAAABAAAAAAA=")
 tile_set = SubResource("TileSet_b6wc0")

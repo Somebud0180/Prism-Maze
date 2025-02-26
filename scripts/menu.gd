@@ -1,92 +1,41 @@
 extends Control
+class_name Menu
 
 @export var main: NinePatchRect
 @export var settings: NinePatchRect
-
 @export var animation_player: AnimationPlayer
 @export var resolution_picker: OptionButton
 
-var simultaneous_scene = preload("res://scenes/game.tscn").instantiate()
+var player = preload("res://scenes/player.tscn").instantiate()
+var game_scene = preload("res://scenes/game.tscn").instantiate()
 var resolution_icon = load("res://resources/Menu/Resize.png")
 var native_icon = load("res://resources/Menu/Native.png")
 
 enum STATE { MAIN, SETTINGS, CONTROLS, GAME }
-var menu_state = STATE.MAIN
-var in_game = false
+var menu_state = STATE.MAIN:
+	set(value):
+		manage_game_timer(value)
+		menu_state = value
+
+var in_game = false:
+	set(value):
+		in_game = value
+		manage_color_buttons()
+
+var is_popup_displaying = false
 var resolution = Vector2i(1280, 720)
+
+var time_elapsed: float = 0.0
+var is_timer_running: bool = false
 
 var supported_resolutions = ["2560x1600", "2560x1440", "2560x1080", "2048x1536", "1920x1200", "1920x1080", "1680x1050", "1600x900", "1440x900", "1366x768", "1280x1024", "1280x720", "1024x768", "800x600", "640x480", "640x360"]
 
 func _ready() -> void:
 	add_full_window_resolution()
 	add_resolutions()
-
-func add_resolutions():
-	var current_resolution: Vector2i = DisplayServer.window_get_size()
-	var string_current: String = str(current_resolution[0]) + "x" + str(current_resolution[1])
+	manage_color_buttons()
 	
-	var native_resolution: Vector2i = DisplayServer.screen_get_size()
-	var string_native: String = str(native_resolution[0]) + "x" + str(native_resolution[1])
-	
-	var native_windowed: Rect2i = DisplayServer.screen_get_usable_rect()
-	var string_windowed: String = str(native_windowed.size.x) + "x" + str(native_windowed.size.y)
-	
-	for i in range(supported_resolutions.size()):
-		var resolution_name: String = supported_resolutions[i]
-		var icon = ""
-		
-		# Add a native icon to the native resoluton
-		if (resolution_name == string_native and DisplayServer.window_get_mode() == 3) or (resolution_name == string_windowed and DisplayServer.window_get_mode() == 0):
-			icon = native_icon
-		else:
-			icon = resolution_icon
-		
-		resolution_picker.add_icon_item(icon, resolution_name, i)
-		
-		# Set as selected if same as current resolution
-		if resolution_name == string_current:
-			resolution_picker.selected = i
-
-
-func add_full_window_resolution():
-	var rect = DisplayServer.screen_get_usable_rect()
-	var fw_w = int(rect.size.x)
-	var fw_h = int(rect.size.y)
-	
-	# Convert each supported resolution to a (width, height) pair
-	var resolution_pairs = []
-	for res_str in supported_resolutions:
-		var parts = res_str.split("x")
-		var w = int(parts[0])
-		var h = int(parts[1])
-		resolution_pairs.append(Vector2i(w, h))
-	
-	# Insert your full-window resolution
-	resolution_pairs.append(Vector2i(fw_w, fw_h))
-	
-	# Sort by width, then height
-	resolution_pairs.sort_custom(_compare_resolutions)
-	
-	# Rebuild the string list
-	supported_resolutions.clear()
-	for pair in resolution_pairs:
-		supported_resolutions.append(str(pair.x) + "x" + str(pair.y))
-
-
-func reset_game() -> void:
-	in_game = false
-	menu_state = STATE.MAIN
-	animation_player.play("show_main")
-	
-	if simultaneous_scene.get_parent() != null:
-		simultaneous_scene.get_parent().remove_child(simultaneous_scene)
-	
-	simultaneous_scene = preload("res://scenes/game.tscn").instantiate()
-
-func _compare_resolutions(a: Vector2i, b: Vector2i) -> bool:
-	if a.x == b.x:
-		return a.y > b.y
-	return a.x > b.x
+	$CanvasLayer/Main/VBoxContainer/Play.grab_focus()
 
 
 func _input(event):
@@ -95,17 +44,24 @@ func _input(event):
 			STATE.SETTINGS:
 				menu_state = STATE.MAIN
 				hide_and_show("settings", "main")
+				await animation_player.animation_finished
+				$CanvasLayer/Main/VBoxContainer/Play.grab_focus()
 			STATE.CONTROLS:
 				menu_state = STATE.MAIN
 				hide_and_show("controls", "main")
+				await animation_player.animation_finished
+				$CanvasLayer/Main/VBoxContainer/Play.grab_focus()
 			STATE.GAME:
 				menu_state = STATE.MAIN
 				animation_player.play("show_main")
+				manage_popup(menu_state)
+				await animation_player.animation_finished
+				$CanvasLayer/Main/VBoxContainer/Play.grab_focus()
 			STATE.MAIN:
 				if in_game:
 					menu_state = STATE.GAME
 					animation_player.play("hide_main")
-					await animation_player.animation_finished
+					manage_popup(menu_state)
 
 
 func hide_and_show(first: String, second: String):
@@ -118,18 +74,21 @@ func _on_play_pressed() -> void:
 	menu_state = STATE.GAME
 	animation_player.play("hide_main")
 	await animation_player.animation_finished
-	get_tree().root.add_child(simultaneous_scene)
-	in_game = true
+	if !in_game:
+		get_tree().root.add_child(game_scene)
+		in_game = true
 
 
 func _on_settings_pressed() -> void:
 	menu_state = STATE.SETTINGS
 	hide_and_show("main", "settings")
+	$CanvasLayer/Settings/VBoxContainer/Resolution.grab_focus()
 
 
 func _on_controls_pressed() -> void:
 	menu_state = STATE.CONTROLS
 	hide_and_show("main", "controls")
+	$"CanvasLayer/Controls/Exit Controls".grab_focus()
 
 
 func _on_quit_pressed() -> void:
@@ -139,11 +98,13 @@ func _on_quit_pressed() -> void:
 func _on_exit_settings_pressed() -> void:
 	menu_state = STATE.MAIN
 	hide_and_show("settings", "main")
+	$CanvasLayer/Main/VBoxContainer/Play.grab_focus()
 
 
 func _on_exit_controls_pressed() -> void:
 	menu_state = STATE.MAIN
 	hide_and_show("controls", "main")
+	$CanvasLayer/Main/VBoxContainer/Play.grab_focus()
 
 
 func _on_resolution_item_selected(index: int) -> void:
@@ -217,3 +178,131 @@ func set_resolution() -> void:
 		win_pos.y = rect.position.y
 	
 	DisplayServer.window_set_position(win_pos)
+
+
+func add_resolutions():
+	var current_resolution: Vector2i = DisplayServer.window_get_size()
+	var string_current: String = str(current_resolution[0]) + "x" + str(current_resolution[1])
+	
+	var native_resolution: Vector2i = DisplayServer.screen_get_size()
+	var string_native: String = str(native_resolution[0]) + "x" + str(native_resolution[1])
+	
+	var native_windowed: Rect2i = DisplayServer.screen_get_usable_rect()
+	var string_windowed: String = str(native_windowed.size.x) + "x" + str(native_windowed.size.y)
+	
+	for i in range(supported_resolutions.size()):
+		var resolution_name: String = supported_resolutions[i]
+		var icon = ""
+		
+		# Add a native icon to the native resoluton
+		if (resolution_name == string_native and DisplayServer.window_get_mode() == 3) or (resolution_name == string_windowed and DisplayServer.window_get_mode() == 0):
+			icon = native_icon
+		else:
+			icon = resolution_icon
+		
+		resolution_picker.add_icon_item(icon, resolution_name, i)
+		
+		# Set as selected if same as current resolution
+		if resolution_name == string_current:
+			resolution_picker.selected = i
+
+
+func add_full_window_resolution():
+	var rect = DisplayServer.screen_get_usable_rect()
+	var fw_w = int(rect.size.x)
+	var fw_h = int(rect.size.y)
+	
+	# Convert each supported resolution to a (width, height) pair
+	var resolution_pairs = []
+	for res_str in supported_resolutions:
+		var parts = res_str.split("x")
+		var w = int(parts[0])
+		var h = int(parts[1])
+		resolution_pairs.append(Vector2i(w, h))
+	
+	# Insert your full-window resolution
+	resolution_pairs.append(Vector2i(fw_w, fw_h))
+	
+	# Sort by width, then height
+	resolution_pairs.sort_custom(_compare_resolutions)
+	
+	# Rebuild the string list
+	supported_resolutions.clear()
+	for pair in resolution_pairs:
+		supported_resolutions.append(str(pair.x) + "x" + str(pair.y))
+
+
+func _compare_resolutions(a: Vector2i, b: Vector2i) -> bool:
+	if a.x == b.x:
+		return a.y > b.y
+	return a.x > b.x
+
+
+func reset_game() -> void:
+	in_game = false
+	menu_state = STATE.MAIN
+	animation_player.play("show_main")
+	
+	if game_scene.get_parent() != null:
+		game_scene.get_parent().remove_child(game_scene)
+	
+	game_scene = preload("res://scenes/game.tscn").instantiate()
+
+
+func manage_game_timer(state: STATE) -> void:
+	if state == STATE.GAME and not is_popup_displaying:
+		is_timer_running = true
+	else:
+		is_timer_running = false
+
+
+func manage_popup(state: STATE) -> void:
+	var popup_ref = game_scene.get_node("/root/Game/MainLayer/LevelPopup")
+	if is_popup_displaying:
+		if state == Menu.STATE.MAIN and !popup_ref.isOnSide:
+			popup_ref.animation_player.play("side_finish")
+			popup_ref.isOnSide = true
+		elif state == Menu.STATE.GAME and popup_ref.isOnSide:
+			popup_ref.animation_player.play("return_finish")
+			popup_ref.isOnSide = false
+
+
+func manage_color_buttons() -> void:
+	# Reference to the GridContainer holding all color buttons
+	var grid = $CanvasLayer/Settings/VBoxContainer/GridContainer
+	
+	# Loop through all children of the GridContainer (all color buttons)
+	for button in grid.get_children():
+		if button is Button:
+			button.disabled = !in_game
+
+
+func _process(delta: float) -> void:
+	if is_timer_running:
+		time_elapsed += delta
+
+
+# Player Color Settings
+func _on_white_pressed() -> void:
+	var player_ref = game_scene.get_node("/root/Game/Player")
+	player_ref.change_color(Color.WHITE)
+
+
+func _on_red_pressed() -> void:
+	var player_ref = game_scene.get_node("/root/Game/Player")
+	player_ref.change_color(Color.RED)
+
+
+func _on_green_pressed() -> void:
+	var player_ref = game_scene.get_node("/root/Game/Player")
+	player_ref.change_color(Color.WEB_GREEN)
+
+
+func _on_blue_pressed() -> void:
+	var player_ref = game_scene.get_node("/root/Game/Player")
+	player_ref.change_color(Color.DARK_BLUE)
+
+
+func _on_yellow_pressed() -> void:
+	var player_ref = game_scene.get_node("/root/Game/Player")
+	player_ref.change_color(Color.YELLOW)

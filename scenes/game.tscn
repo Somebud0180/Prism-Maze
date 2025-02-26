@@ -9,6 +9,7 @@
 [node name="GameManager" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("1_vrrtt")
+level_amount = 1
 
 [node name="Player" parent="." instance=ExtResource("1_vxt15")]
 unique_name_in_owner = true
@@ -24,3 +25,5 @@ script = ExtResource("3_lo0k5")
 
 [node name="MainLayer" type="TileMapLayer" parent="."]
 unique_name_in_owner = true
+
+[editable path="Player"]

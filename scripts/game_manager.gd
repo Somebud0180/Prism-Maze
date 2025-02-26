@@ -3,24 +3,22 @@ extends Node
 # The Game Manager holds the set of levels, game mode, and level progression.
 # It is also responsible for loading the game and the levels.
 
-@onready var main_layer = get_node("/root/Game/MainLayer")
 @onready var menu = get_node("/root/Menu")
-@onready var player_camera = %Camera2D
-@onready var player = %Player
-@export var level: int = 0
+@onready var main_layer = get_node("/root/Game/MainLayer")
+@onready var player = get_node("/root/Game/Player")
 
-var finish_scene = preload("res://scenes/level_popup.tscn").instantiate()
+@export var level_amount: int = 10 # The amount of levels to create for the playthrough. Excluding the final level.
+
+var level: int = 0
+var level_times = []
+var popup_scene = preload("res://scenes/level_popup.tscn").instantiate()
 var maze_scene = preload("res://scenes/maze_layer.tscn").instantiate()
 var platform_scene = preload("res://scenes/platform_layer.tscn").instantiate()
 
-var time_elapsed: float = 0.0
-var is_timer_running: bool = false
-
+var level_collection: Array[String] = [] # The level set for the current playthrough
+var game_mode: int = 2  # 1: Platformer, 2: Maze
 var platform_list: Array[int] = []
 var maze_list: Array[int] = []
-var level_collection: Array[String] = [] # The level set for the current playthrough
-var level_amount: int = 1 # The amount of levels to create for the playthrough. Excluding the final level.
-var game_mode: int = 2  # 1: Platformer, 2: Maze
 
 func _ready() -> void:
 	# Load Maze Layer
@@ -42,7 +40,6 @@ func _ready() -> void:
 	
 	load_game(platform_scene)
 	load_level()
-	is_timer_running = true
 
 func load_game(platform_instance: Node) -> void:
 	# Create a level collection
@@ -84,15 +81,27 @@ func level_set(platform_instance: Node) -> void:
 	level_collection.append("Platform: " + str(platform_instance.get_child_count() - 1))
 
 func progress_level() -> void:
+	# Compute how long this level took
+	var total_previous = 0.0
+	for t in level_times:
+		total_previous += t
+	
+	var current_time = menu.time_elapsed
+	var current_level_time = current_time - total_previous
+	level_times.append(snapped(current_level_time, 0.01))
+
+	# Increase level index and load next
 	level += 1
 	print("Progressing to level:", level)
 	load_level()
 	
+	# If completed all levels, finalize
 	if level == level_collection.size() - 1:
-		is_timer_running = false
-		print("Time Elapsed: " + str(snapped(time_elapsed, 0.01)) + "s")
-		finish_scene.output_timer(snapped(time_elapsed, 0.01))
-		main_layer.add_child(finish_scene)
+		menu.is_timer_running = false
+		popup_scene.output_timer(snapped(menu.time_elapsed, 0.01), level_times)
+		main_layer.add_child(popup_scene)
+		menu.is_popup_displaying = true
+		popup_scene.animation_player.play("show_finish")
 
 func load_level() -> void:
 	maze_scene = preload("res://scenes/maze_layer.tscn").instantiate()
@@ -196,9 +205,4 @@ func reset_game() -> void:
 	level_collection = []
 	platform_list = []
 	maze_list = []
-	time_elapsed = 0.0
-
-
-func _process(delta: float) -> void:
-	if is_timer_running:
-		time_elapsed += delta
+	menu.time_elapsed = 0.0

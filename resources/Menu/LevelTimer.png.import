@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dhop524e0npfj"
-path="res://.godot/imported/Top Layer.png-687433a161ffb0829b99fce5e2285c23.ctex"
+uid="uid://b0g7maqisp0k7"
+path="res://.godot/imported/LevelTimer.png-407e82424b43bc564a7e61975ff76d0d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Background/Top Layer.png"
-dest_files=["res://.godot/imported/Top Layer.png-687433a161ffb0829b99fce5e2285c23.ctex"]
+source_file="res://resources/Menu/LevelTimer.png"
+dest_files=["res://.godot/imported/LevelTimer.png-407e82424b43bc564a7e61975ff76d0d.ctex"]
 
 [params]
 

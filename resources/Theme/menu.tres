@@ -1,9 +1,10 @@
-[gd_resource type="Theme" load_steps=7 format=3 uid="uid://bau50guyc4alk"]
+[gd_resource type="Theme" load_steps=8 format=3 uid="uid://bau50guyc4alk"]
 
 [ext_resource type="StyleBox" uid="uid://d4xsuett3yt0" path="res://resources/Theme/button_hover.tres" id="1_dxyip"]
 [ext_resource type="StyleBox" uid="uid://55ng6tb5ctyb" path="res://resources/Theme/button_focus.tres" id="1_sn4ko"]
 [ext_resource type="StyleBox" uid="uid://b5uyfssq3f7bs" path="res://resources/Theme/button_normal.tres" id="2_ohts3"]
-[ext_resource type="StyleBox" uid="uid://cab412g1l7xe1" path="res://resources/Theme/checkbox_normal.tres" id="3_xw7by"]
+[ext_resource type="StyleBox" uid="uid://cab412g1l7xe1" path="res://resources/Theme/box_normal.tres" id="3_xw7by"]
+[ext_resource type="StyleBox" uid="uid://o1f6ysc2jugj" path="res://resources/Theme/box_focus.tres" id="4_7jhnw"]
 [ext_resource type="StyleBox" uid="uid://vqm1soj8xnjh" path="res://resources/Theme/separator.tres" id="5_wuakj"]
 [ext_resource type="StyleBox" uid="uid://b4mewmdnj56qd" path="res://resources/Theme/v_separator.tres" id="6_kbp2n"]
 
@@ -11,14 +12,15 @@
 Button/styles/focus = ExtResource("1_sn4ko")
 Button/styles/hover = ExtResource("1_dxyip")
 Button/styles/normal = ExtResource("2_ohts3")
-CheckButton/styles/focus = ExtResource("3_xw7by")
+CheckButton/styles/focus = ExtResource("4_7jhnw")
 CheckButton/styles/hover = ExtResource("3_xw7by")
 CheckButton/styles/hover_pressed = ExtResource("3_xw7by")
 CheckButton/styles/normal = ExtResource("3_xw7by")
+CheckButton/styles/pressed = ExtResource("3_xw7by")
 HSeparator/styles/separator = ExtResource("5_wuakj")
-OptionButton/styles/focus = ExtResource("3_xw7by")
+OptionButton/styles/focus = ExtResource("4_7jhnw")
 OptionButton/styles/hover = ExtResource("3_xw7by")
 OptionButton/styles/normal = ExtResource("3_xw7by")
-OptionButton/styles/pressed = ExtResource("3_xw7by")
+OptionButton/styles/pressed = ExtResource("4_7jhnw")
 RichTextLabel/font_sizes/normal_font_size = 32
 VSeparator/styles/separator = ExtResource("6_kbp2n")

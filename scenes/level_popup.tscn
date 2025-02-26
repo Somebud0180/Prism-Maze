@@ -1,12 +1,241 @@
-[gd_scene load_steps=6 format=3 uid="uid://cty4nmtt40uli"]
+[gd_scene load_steps=14 format=3 uid="uid://cty4nmtt40uli"]
 
 [ext_resource type="Theme" uid="uid://bau50guyc4alk" path="res://resources/Theme/menu.tres" id="1_guh7m"]
 [ext_resource type="Texture2D" uid="uid://up7vguaee3r1" path="res://resources/Menu/Menu.png" id="2_gkfly"]
 [ext_resource type="Script" path="res://scripts/level_popup.gd" id="2_yf7d8"]
 [ext_resource type="Texture2D" uid="uid://dcrmd8a7krrgb" path="res://resources/Menu/Timer.png" id="3_mku4n"]
 [ext_resource type="Texture2D" uid="uid://b78vfepjp4r7a" path="res://resources/Menu/Flag.png" id="4_fbgwy"]
+[ext_resource type="Texture2D" uid="uid://b0g7maqisp0k7" path="res://resources/Menu/LevelTimer.png" id="5_218nm"]
 
-[node name="Level Popup" type="Control" node_paths=PackedStringArray("timer_label")]
+[sub_resource type="Animation" id="Animation_o3c8g"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Finish:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(515, 185)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Finish:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Finish:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_2w4hx"]
+resource_name = "hide_finish"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Finish:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(2, 2),
+"update": 0,
+"values": [Vector2(515, 185), Vector2(515, -500)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Finish:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_onlv7"]
+resource_name = "hide_finish_side"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Finish:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(2, 2),
+"update": 0,
+"values": [Vector2(797, 185), Vector2(797, -500)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Finish:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_qayne"]
+resource_name = "return_finish"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Finish:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(797, 185), Vector2(515, 185)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Finish:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.25),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Finish:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.25),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_pto1w"]
+resource_name = "show_finish"
+length = 0.5
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Finish:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(2, 2, -2),
+"update": 0,
+"values": [Vector2(577.5, 272.5), Vector2(490, 150), Vector2(515, 185)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Finish:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(2, 2, -2),
+"update": 0,
+"values": [Vector2(0.5, 0.5), Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Finish:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+
+[sub_resource type="Animation" id="Animation_tj0vq"]
+resource_name = "side_finish"
+length = 0.25
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Finish:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(515, 185), Vector2(797, 185)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Finish:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Finish:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1o0hk"]
+_data = {
+"RESET": SubResource("Animation_o3c8g"),
+"hide_finish": SubResource("Animation_2w4hx"),
+"hide_finish_side": SubResource("Animation_onlv7"),
+"return_finish": SubResource("Animation_qayne"),
+"show_finish": SubResource("Animation_pto1w"),
+"side_finish": SubResource("Animation_tj0vq")
+}
+
+[node name="LevelPopup" type="Control" node_paths=PackedStringArray("timer_label", "level_label", "animation_player")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -16,10 +245,13 @@ grow_vertical = 2
 theme = ExtResource("1_guh7m")
 script = ExtResource("2_yf7d8")
 timer_label = NodePath("CanvasLayer/Finish/VBoxContainer/Timer HBox/Timer")
+level_label = NodePath("CanvasLayer/Finish/VBoxContainer/Level Timer HBox/LevelTimer")
+animation_player = NodePath("CanvasLayer/AnimationPlayer")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Finish" type="NinePatchRect" parent="CanvasLayer"]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -63,9 +295,35 @@ stretch_mode = 5
 [node name="Timer" type="RichTextLabel" parent="CanvasLayer/Finish/VBoxContainer/Timer HBox"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "00:00:00"
+text = "00:00.00"
 fit_content = true
 scroll_active = false
+
+[node name="Time Separator" type="VSeparator" parent="CanvasLayer/Finish/VBoxContainer"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+
+[node name="Level Timer HBox" type="HBoxContainer" parent="CanvasLayer/Finish/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+alignment = 1
+
+[node name="Level Icon" type="TextureRect" parent="CanvasLayer/Finish/VBoxContainer/Level Timer HBox"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("5_218nm")
+stretch_mode = 5
+
+[node name="LevelTimer" type="RichTextLabel" parent="CanvasLayer/Finish/VBoxContainer/Level Timer HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "00:00.00"
+fit_content = true
+scroll_active = false
+
+[node name="VSeparator" type="VSeparator" parent="CanvasLayer/Finish/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
 
 [node name="Finish" type="Button" parent="CanvasLayer/Finish/VBoxContainer"]
 custom_minimum_size = Vector2(64, 64)
@@ -74,8 +332,10 @@ icon = ExtResource("4_fbgwy")
 icon_alignment = 1
 expand_icon = true
 
-[node name="VSeparator" type="VSeparator" parent="CanvasLayer/Finish/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer"]
+callback_mode_process = 0
+libraries = {
+"": SubResource("AnimationLibrary_1o0hk")
+}
 
 [connection signal="pressed" from="CanvasLayer/Finish/VBoxContainer/Finish" to="." method="_on_finish_pressed"]
