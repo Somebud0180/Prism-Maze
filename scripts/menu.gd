@@ -8,10 +8,11 @@ class_name Menu
 
 var player = preload("res://scenes/player.tscn").instantiate()
 var game_scene = preload("res://scenes/game.tscn").instantiate()
+var game_scene_3d = preload("res://scenes/game_3d.tscn").instantiate()
 var resolution_icon = load("res://resources/Menu/Resize.png")
 var native_icon = load("res://resources/Menu/Native.png")
 
-enum STATE { MAIN, SETTINGS, CONTROLS, GAME }
+enum STATE { MAIN, SETTINGS, CONTROLS, GAME, GAME3D }
 var menu_state = STATE.MAIN:
 	set(value):
 		manage_game_timer(value)
@@ -21,6 +22,8 @@ var in_game = false:
 	set(value):
 		in_game = value
 		manage_color_buttons()
+
+var in_game_3d = false
 
 var is_popup_displaying = false
 var resolution = Vector2i(1280, 720)
@@ -57,11 +60,19 @@ func _input(event):
 				manage_popup(menu_state)
 				await animation_player.animation_finished
 				$CanvasLayer/Main/VBoxContainer/Play.grab_focus()
+			STATE.GAME3D:
+				menu_state = STATE.MAIN
+				animation_player.play("show_main")
+				await animation_player.animation_finished
+				$CanvasLayer/Main/VBoxContainer/Play.grab_focus()
 			STATE.MAIN:
 				if in_game:
 					menu_state = STATE.GAME
 					animation_player.play("hide_main")
 					manage_popup(menu_state)
+				elif in_game_3d:
+					menu_state = STATE.GAME3D
+					animation_player.play("hide_main")
 
 
 func hide_and_show(first: String, second: String):
@@ -71,12 +82,35 @@ func hide_and_show(first: String, second: String):
 
 
 func _on_play_pressed() -> void:
+	# Check if already in-game in another dimension
+	if in_game_3d:
+		reset_game_3d()
+	
 	menu_state = STATE.GAME
 	animation_player.play("hide_main")
 	await animation_player.animation_finished
 	if !in_game:
 		get_tree().root.add_child(game_scene)
 		in_game = true
+
+
+func _on_play_3d_pressed() -> void:
+	# Check if already in-game in another dimension
+	if in_game:
+		reset_game()
+	
+	# Hide the parallax background
+	$"Substrate Layer".visible = false
+	$"Bottom Layer".visible = false
+	$"Top Layer".visible = false
+	$"Component Layer".visible = false
+	
+	menu_state = STATE.GAME3D
+	animation_player.play("hide_main")
+	await animation_player.animation_finished
+	if !in_game_3d:
+		get_tree().root.add_child(game_scene_3d)
+		in_game_3d = true
 
 
 func _on_settings_pressed() -> void:
@@ -239,14 +273,36 @@ func _compare_resolutions(a: Vector2i, b: Vector2i) -> bool:
 
 
 func reset_game() -> void:
+	var popup_ref = game_scene.get_node("/root/Game/MainLayer/LevelPopup")
+	if popup_ref != null:
+		if !popup_ref.isOnSide:
+			animation_player.play("show_main")
+		else:
+			popup_ref.isOnSide = false
+	
 	in_game = false
 	menu_state = STATE.MAIN
-	animation_player.play("show_main")
 	
 	if game_scene.get_parent() != null:
 		game_scene.get_parent().remove_child(game_scene)
 	
 	game_scene = preload("res://scenes/game.tscn").instantiate()
+	manage_color_buttons()
+
+
+func reset_game_3d() -> void:
+	in_game_3d = false
+	menu_state = STATE.MAIN
+	animation_player.play("show_main")
+	
+	if game_scene_3d.get_parent() != null:
+		game_scene_3d.get_parent().remove_child(game_scene_3d)
+	
+	game_scene_3d = preload("res://scenes/game_3d.tscn").instantiate()
+	$"Substrate Layer".visible = true
+	$"Bottom Layer".visible = true
+	$"Top Layer".visible = true
+	$"Component Layer".visible = true
 
 
 func manage_game_timer(state: STATE) -> void:
@@ -269,7 +325,7 @@ func manage_popup(state: STATE) -> void:
 
 func manage_color_buttons() -> void:
 	# Reference to the GridContainer holding all color buttons
-	var grid = $CanvasLayer/Settings/VBoxContainer/GridContainer
+	var grid = $CanvasLayer/Settings/VBoxContainer/Panel/VBoxContainer/HBoxContainer/GridContainer
 	
 	# Loop through all children of the GridContainer (all color buttons)
 	for button in grid.get_children():

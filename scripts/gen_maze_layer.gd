@@ -8,7 +8,7 @@ const allow_loops = true
 
 var current_level = 0
 var starting_pos = Vector2i()
-const normal_wall_atlas_coords = Vector2i(1, 0)
+const normal_wall_atlas_coords = Vector2i(0, 0)
 const SOURCE_ID = 0
 var spot_to_letter = {}
 var spot_to_label = {}

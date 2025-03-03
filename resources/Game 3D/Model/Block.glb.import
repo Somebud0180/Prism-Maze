@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://ccdkgsb3rhpjw"
-path="res://.godot/imported/Player.glb-3de60b218025be05a4f6f3731a05336c.scn"
+uid="uid://cmxa1na60m75g"
+path="res://.godot/imported/Block.glb-6da83940556e11f0ef1df693a5ccc392.scn"
 
 [deps]
 
-source_file="res://resources/Game/Player.glb"
-dest_files=["res://.godot/imported/Player.glb-3de60b218025be05a4f6f3731a05336c.scn"]
+source_file="res://resources/Game 3D/Model/Block.glb"
+dest_files=["res://.godot/imported/Block.glb-6da83940556e11f0ef1df693a5ccc392.scn"]
 
 [params]
 

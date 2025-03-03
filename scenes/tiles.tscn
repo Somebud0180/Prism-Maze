@@ -1,0 +1,58 @@
+[gd_scene load_steps=6 format=4 uid="uid://dwgtfqyh32i4k"]
+
+[ext_resource type="Texture2D" uid="uid://f07c5yfebyiv" path="res://resources/Game 3D/Model/Block_Floor.png" id="1_0kb7o"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v4gky"]
+resource_name = "Material"
+cull_mode = 2
+albedo_texture = ExtResource("1_0kb7o")
+metallic = 0.5
+roughness = 0.5
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_3mipa"]
+_surfaces = [{
+"aabb": AABB(-1, -1, -1, 2, 2, 2),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAAGAAQAAAACAAYAAwAGAAIAAwAHAAYABwAEAAYABwAFAAQABQADAAEABQAHAAMAAQACAAAAAQADAAIABQAAAAQABQABAAAA"),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("/////wAAAAD//wAAAAAAAP///////wAA//8AAP//AAAAAP//AAAAAAAAAAAAAAAAAAD/////AAAAAAAA//8AAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_sy2q6"]
+resource_name = "Block_Cube"
+_surfaces = [{
+"aabb": AABB(-1, -1, -1, 2, 2, 2),
+"attribute_data": PackedByteArray("qqr/f6qq/3+qqv9/V1X/f1dV/39XVf9/qar/P6mq/z+pqv8/V1X/P1dV/z9XVf8/v6r/v5P//3+/qv+/V1X/vwIA/39XVf+/qqoAAOr//z+/qv//V1UAAAIA/z9XVf//"),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("AQATAA0AAQAHABMACQASAAYACQAVABIAFwAOABQAFwARAA4AEAAKAAQAEAAWAAoABQAIAAIABQALAAgADwAAAAwADwADAAAA"),
+"material": SubResource("StandardMaterial3D_v4gky"),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("/////wAA////////AAD///////8AAFTV//8AAAAA/////wAAAAD/v///AAAAAFTV/////////7///////////////////1TV//8AAP///7///wAA////v///AAD//1TVAAD//wAA//8AAP//AAD//wAA//8AAFTVAAAAAAAA//8AAAAAAAD/vwAAAAAAAFTVAAD//////78AAP///////wAA/////1TVAAAAAP///78AAAAA////vwAAAAD//1TV/7//v/9//7+qKqoq/7//vwAA/3+qKqoq//////9//7+qKqoq/////wAA/3+qKqoq/7//v/9//79U1VTV/7//vwAA/39U1VTV//////9//79U1VTV/////wAA/39U1VTV")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_3mipa")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_6tfby"]
+points = PackedVector3Array(-1, -1, -1, 1, 1, 1, 1, -1, 1, 1, 1, -1, -1, 1, 1, 1, -1, -1, -1, -1, 1, -1, 1, -1)
+
+[node name="Tiles" type="Node3D"]
+
+[node name="Block" type="Node3D" parent="."]
+
+[node name="Block" type="MeshInstance3D" parent="Block"]
+mesh = SubResource("ArrayMesh_sy2q6")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Block/Block"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Block/Block/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_6tfby")

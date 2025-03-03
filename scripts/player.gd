@@ -3,7 +3,10 @@ extends CharacterBody2D
 
 const speed = 200.0
 const jump_velocity = -360.0
-var gravity_direction = 1 # 1 for normal, -1 for upside-down
+var gravity_direction = 1: # 1 for normal, -1 for upside-down
+	set(value):
+		gravity_direction = value
+		_gravity_change()
 
 @export var animated_sprite: AnimatedSprite2D
 @onready var game_manager = %GameManager
@@ -14,7 +17,12 @@ func go_to(input_position: Vector2):
 
 func change_color(selected_color: Color):
 	animated_sprite.modulate = selected_color
-	print(animated_sprite.modulate)
+
+func _gravity_change():
+	if gravity_direction == 1:
+		animated_sprite.flip_v = false
+	else:
+		animated_sprite.flip_v = true
 
 func _physics_process(delta: float) -> void:
 	if menu.menu_state == Menu.STATE.GAME:
@@ -23,10 +31,8 @@ func _physics_process(delta: float) -> void:
 			if Input.is_action_just_pressed("invert_gravity"):
 				if gravity_direction == 1:
 					gravity_direction = -1
-					animated_sprite.flip_v = true
 				else:
 					gravity_direction = 1
-					animated_sprite.flip_v = false
 			
 			# Add gravity based on gravity direction.
 			if gravity_direction == 1 and not is_on_floor():

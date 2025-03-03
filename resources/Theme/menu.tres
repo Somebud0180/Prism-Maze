@@ -1,7 +1,8 @@
-[gd_resource type="Theme" load_steps=8 format=3 uid="uid://bau50guyc4alk"]
+[gd_resource type="Theme" load_steps=9 format=3 uid="uid://bau50guyc4alk"]
 
 [ext_resource type="StyleBox" uid="uid://d4xsuett3yt0" path="res://resources/Theme/button_hover.tres" id="1_dxyip"]
 [ext_resource type="StyleBox" uid="uid://55ng6tb5ctyb" path="res://resources/Theme/button_focus.tres" id="1_sn4ko"]
+[ext_resource type="StyleBox" uid="uid://k5qrhd2cgjp1" path="res://resources/Theme/button_disabled.tres" id="1_yg5h2"]
 [ext_resource type="StyleBox" uid="uid://b5uyfssq3f7bs" path="res://resources/Theme/button_normal.tres" id="2_ohts3"]
 [ext_resource type="StyleBox" uid="uid://cab412g1l7xe1" path="res://resources/Theme/box_normal.tres" id="3_xw7by"]
 [ext_resource type="StyleBox" uid="uid://o1f6ysc2jugj" path="res://resources/Theme/box_focus.tres" id="4_7jhnw"]
@@ -9,6 +10,7 @@
 [ext_resource type="StyleBox" uid="uid://b4mewmdnj56qd" path="res://resources/Theme/v_separator.tres" id="6_kbp2n"]
 
 [resource]
+Button/styles/disabled = ExtResource("1_yg5h2")
 Button/styles/focus = ExtResource("1_sn4ko")
 Button/styles/hover = ExtResource("1_dxyip")
 Button/styles/normal = ExtResource("2_ohts3")

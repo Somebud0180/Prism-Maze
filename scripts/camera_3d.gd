@@ -8,9 +8,6 @@ var min_fov: float = 10.0
 var max_fov: float = 90.0
 var is_holding: bool = false
 
-func _ready() -> void:
-	pass
-
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
@@ -37,8 +34,3 @@ func _unhandled_input(event: InputEvent) -> void:
 				fov = clamp(fov - zoom_sensitivity, min_fov, max_fov)
 			elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN and event.pressed:
 				fov = clamp(fov + zoom_sensitivity, min_fov, max_fov)
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass

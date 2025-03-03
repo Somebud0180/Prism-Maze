@@ -86,7 +86,8 @@ position = Vector2(16, -16)
 sprite_frames = SubResource("SpriteFrames_wx7ie")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.49879
+frame_progress = 0.0914439
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+process_physics_priority = 2
 polygon = PackedVector2Array(13, -1, 19, -1, 27, -20, 27, -22, 18, -30, 14, -30, 5, -22, 5, -20)
