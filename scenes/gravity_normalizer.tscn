@@ -1,6 +1,6 @@
 [gd_scene load_steps=29 format=3 uid="uid://cdwkrk6so1f7k"]
 
-[ext_resource type="Script" path="res://scripts/gravity_normalizer.gd" id="1_vlnex"]
+[ext_resource type="Script" uid="uid://cygqp8qufm66a" path="res://scripts/gravity_normalizer.gd" id="1_vlnex"]
 [ext_resource type="Texture2D" uid="uid://x74s206rpjr1" path="res://resources/Game/Gravity-Sheet.png" id="2_cdd8x"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x5wx3"]

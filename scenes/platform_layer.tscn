@@ -1,6 +1,6 @@
 [gd_scene load_steps=49 format=4 uid="uid://1xqnurgp142s"]
 
-[ext_resource type="Script" path="res://scripts/platform_layer.gd" id="1_j615w"]
+[ext_resource type="Script" uid="uid://dtowa34stivec" path="res://scripts/platform_layer.gd" id="1_j615w"]
 [ext_resource type="TileSet" uid="uid://dyown6ix7tyu4" path="res://resources/Game/platform_layer.tres" id="2_pthuq"]
 [ext_resource type="PackedScene" uid="uid://lh1g6i2usv5c" path="res://scenes/platform_down.tscn" id="3_jhml1"]
 [ext_resource type="PackedScene" uid="uid://dak5chwustt20" path="res://scenes/platform_up.tscn" id="4_klxfx"]
@@ -45,8 +45,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gxggm"]
 _data = {
-"Move": SubResource("Animation_he0n5"),
-"RESET": SubResource("Animation_vvexu")
+&"Move": SubResource("Animation_he0n5"),
+&"RESET": SubResource("Animation_vvexu")
 }
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_7ajkl"]
@@ -85,8 +85,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_enqpk"]
 _data = {
-"Move": SubResource("Animation_41j5q"),
-"RESET": SubResource("Animation_hin5d")
+&"Move": SubResource("Animation_41j5q"),
+&"RESET": SubResource("Animation_hin5d")
 }
 
 [sub_resource type="Animation" id="Animation_m17tc"]
@@ -123,8 +123,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_g3fkv"]
 _data = {
-"RESET": SubResource("Animation_m17tc"),
-"move": SubResource("Animation_1r2we")
+&"RESET": SubResource("Animation_m17tc"),
+&"move": SubResource("Animation_1r2we")
 }
 
 [sub_resource type="Animation" id="Animation_cbhrs"]
@@ -161,8 +161,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_p0rar"]
 _data = {
-"RESET": SubResource("Animation_cbhrs"),
-"move": SubResource("Animation_tmlvv")
+&"RESET": SubResource("Animation_cbhrs"),
+&"move": SubResource("Animation_tmlvv")
 }
 
 [sub_resource type="Animation" id="Animation_jmaa7"]
@@ -199,8 +199,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_h8evc"]
 _data = {
-"RESET": SubResource("Animation_jmaa7"),
-"move": SubResource("Animation_wv5w8")
+&"RESET": SubResource("Animation_jmaa7"),
+&"move": SubResource("Animation_wv5w8")
 }
 
 [sub_resource type="Animation" id="Animation_fvw5p"]
@@ -237,8 +237,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cuffm"]
 _data = {
-"RESET": SubResource("Animation_fvw5p"),
-"move": SubResource("Animation_36e0a")
+&"RESET": SubResource("Animation_fvw5p"),
+&"move": SubResource("Animation_36e0a")
 }
 
 [sub_resource type="Animation" id="Animation_s07qm"]
@@ -276,8 +276,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_uv4ru"]
 _data = {
-"RESET": SubResource("Animation_s07qm"),
-"move": SubResource("Animation_rlahp")
+&"RESET": SubResource("Animation_s07qm"),
+&"move": SubResource("Animation_rlahp")
 }
 
 [sub_resource type="Animation" id="Animation_ckbir"]
@@ -314,8 +314,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_yw31a"]
 _data = {
-"RESET": SubResource("Animation_ckbir"),
-"move": SubResource("Animation_d3muf")
+&"RESET": SubResource("Animation_ckbir"),
+&"move": SubResource("Animation_d3muf")
 }
 
 [sub_resource type="Animation" id="Animation_ftik0"]
@@ -352,8 +352,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gj8qr"]
 _data = {
-"RESET": SubResource("Animation_ftik0"),
-"move": SubResource("Animation_5lkmr")
+&"RESET": SubResource("Animation_ftik0"),
+&"move": SubResource("Animation_5lkmr")
 }
 
 [sub_resource type="Animation" id="Animation_uakag"]
@@ -390,8 +390,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2nm3c"]
 _data = {
-"RESET": SubResource("Animation_uakag"),
-"move": SubResource("Animation_614q2")
+&"RESET": SubResource("Animation_uakag"),
+&"move": SubResource("Animation_614q2")
 }
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_rmtu0"]
@@ -406,57 +406,6 @@ distance = -192.0
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_0rdip"]
 normal = Vector2(0, 1)
 distance = -1536.0
-
-[sub_resource type="Animation" id="Animation_ujnir"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Platforms/Elevator2:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(224, -800)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Platforms/Elevator1:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(192, -800)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Platforms/Sliding1:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(96, -1376)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Platforms/Sliding2:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-96, -1408)]
-}
 
 [sub_resource type="Animation" id="Animation_lljj2"]
 resource_name = "Elevator1"
@@ -511,10 +460,61 @@ tracks/3/keys = {
 "values": [Vector2(-224, -1408), Vector2(-224, -1408), Vector2(-96, -1408), Vector2(-96, -1408), Vector2(-224, -1408), Vector2(-224, -1408)]
 }
 
+[sub_resource type="Animation" id="Animation_ujnir"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Platforms/Elevator2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(224, -800)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Platforms/Elevator1:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(192, -800)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Platforms/Sliding1:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(96, -1376)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Platforms/Sliding2:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-96, -1408)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7rkoh"]
 _data = {
-"Move": SubResource("Animation_lljj2"),
-"RESET": SubResource("Animation_ujnir")
+&"Move": SubResource("Animation_lljj2"),
+&"RESET": SubResource("Animation_ujnir")
 }
 
 [node name="PlatformLayer" type="Node"]
@@ -548,7 +548,7 @@ position = Vector2(-128, -384)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="0/Platforms/Parkour 3"]
 libraries = {
-"": SubResource("AnimationLibrary_gxggm")
+&"": SubResource("AnimationLibrary_gxggm")
 }
 autoplay = "Move"
 
@@ -621,7 +621,7 @@ position = Vector2(-32, -191)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="2/Platforms/Platform 2"]
 libraries = {
-"": SubResource("AnimationLibrary_enqpk")
+&"": SubResource("AnimationLibrary_enqpk")
 }
 autoplay = "Move"
 
@@ -668,7 +668,7 @@ position = Vector2(288, -128)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="4/Platforms/Sliding 2"]
 libraries = {
-"": SubResource("AnimationLibrary_g3fkv")
+&"": SubResource("AnimationLibrary_g3fkv")
 }
 autoplay = "move"
 
@@ -677,7 +677,7 @@ position = Vector2(128, -32)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="4/Platforms/Sliding 1"]
 libraries = {
-"": SubResource("AnimationLibrary_p0rar")
+&"": SubResource("AnimationLibrary_p0rar")
 }
 autoplay = "move"
 
@@ -686,7 +686,7 @@ position = Vector2(-128, -46)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="4/Platforms/Elevator 1"]
 libraries = {
-"": SubResource("AnimationLibrary_h8evc")
+&"": SubResource("AnimationLibrary_h8evc")
 }
 autoplay = "move"
 
@@ -695,7 +695,7 @@ position = Vector2(-128, -46)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="4/Platforms/Elevator 2"]
 libraries = {
-"": SubResource("AnimationLibrary_cuffm")
+&"": SubResource("AnimationLibrary_cuffm")
 }
 autoplay = "move"
 
@@ -721,7 +721,7 @@ position = Vector2(160, -32)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="5/Platforms/Sliding 1"]
 libraries = {
-"": SubResource("AnimationLibrary_uv4ru")
+&"": SubResource("AnimationLibrary_uv4ru")
 }
 autoplay = "move"
 
@@ -730,7 +730,7 @@ position = Vector2(224, -128)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="5/Platforms/Sliding 2"]
 libraries = {
-"": SubResource("AnimationLibrary_yw31a")
+&"": SubResource("AnimationLibrary_yw31a")
 }
 autoplay = "move"
 
@@ -739,7 +739,7 @@ position = Vector2(64, -128)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="5/Platforms/Elevator 1"]
 libraries = {
-"": SubResource("AnimationLibrary_gj8qr")
+&"": SubResource("AnimationLibrary_gj8qr")
 }
 autoplay = "move"
 
@@ -748,7 +748,7 @@ position = Vector2(64, -128)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="5/Platforms/Elevator 2"]
 libraries = {
-"": SubResource("AnimationLibrary_2nm3c")
+&"": SubResource("AnimationLibrary_2nm3c")
 }
 autoplay = "move"
 
@@ -920,7 +920,7 @@ position = Vector2(-304, -1424)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="8"]
 libraries = {
-"": SubResource("AnimationLibrary_7rkoh")
+&"": SubResource("AnimationLibrary_7rkoh")
 }
 autoplay = "Move"
 

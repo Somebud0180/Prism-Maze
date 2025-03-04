@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://cm2i30ivbfof6"]
 
-[ext_resource type="Script" path="res://scripts/door.gd" id="1_7433j"]
+[ext_resource type="Script" uid="uid://b71vcyi5xjlcv" path="res://scripts/door.gd" id="1_7433j"]
 [ext_resource type="Texture2D" uid="uid://dd5hwn5itnrvw" path="res://resources/Game/Door.png" id="2_4inbj"]
 [ext_resource type="Texture2D" uid="uid://0h0nq17d5hjw" path="res://resources/Game/Gate.png" id="3_q2eea"]
 [ext_resource type="Texture2D" uid="uid://cqk2gr1jlojgq" path="res://resources/Game/Padlock.png" id="4_ftrxi"]
@@ -45,6 +45,7 @@ animations = [{
 }]
 
 [node name="Door" type="Node2D"]
+process_priority = 2
 script = ExtResource("1_7433j")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]

@@ -2,11 +2,11 @@
 
 [ext_resource type="Texture2D" uid="uid://up7vguaee3r1" path="res://resources/Menu/Menu.png" id="1_dj8fk"]
 [ext_resource type="Theme" uid="uid://bau50guyc4alk" path="res://resources/Theme/menu.tres" id="1_fjike"]
-[ext_resource type="Script" path="res://scripts/menu.gd" id="3_0ybmh"]
+[ext_resource type="Script" uid="uid://cnwd74ny2hf2q" path="res://scripts/menu.gd" id="3_0ybmh"]
 [ext_resource type="StyleBox" uid="uid://vqm1soj8xnjh" path="res://resources/Theme/separator.tres" id="3_b36nl"]
 [ext_resource type="Texture2D" uid="uid://k2ow5rr33vw" path="res://resources/Menu/Play.png" id="4_4g08a"]
 [ext_resource type="Texture2D" uid="uid://d1vxa1f4hthke" path="res://resources/Menu/Title.png" id="4_dlxnh"]
-[ext_resource type="Script" path="res://scripts/main.gd" id="4_r80dm"]
+[ext_resource type="Script" uid="uid://pxmim2yta7rs" path="res://scripts/main.gd" id="4_r80dm"]
 [ext_resource type="Texture2D" uid="uid://du5u4ffx7ot77" path="res://resources/Menu/Play_3D.png" id="6_3giok"]
 [ext_resource type="Texture2D" uid="uid://b0bn0h04f0qnm" path="res://resources/Menu/Gear.png" id="6_c7385"]
 [ext_resource type="Texture2D" uid="uid://csmavf1aewl1w" path="res://resources/Menu/Settings.png" id="7_ugwaw"]
@@ -436,17 +436,17 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nyjex"]
 _data = {
-"RESET": SubResource("Animation_8rgj6"),
-"RESET_controls": SubResource("Animation_gf7yk"),
-"RESET_game": SubResource("Animation_fv2yu"),
-"RESET_main": SubResource("Animation_ufe8k"),
-"RESET_settings": SubResource("Animation_11v34"),
-"hide_controls": SubResource("Animation_q8cwc"),
-"hide_main": SubResource("Animation_ui7xe"),
-"hide_settings": SubResource("Animation_2ywoo"),
-"show_controls": SubResource("Animation_4bbw6"),
-"show_main": SubResource("Animation_y5frn"),
-"show_settings": SubResource("Animation_antcs")
+&"RESET": SubResource("Animation_8rgj6"),
+&"RESET_controls": SubResource("Animation_gf7yk"),
+&"RESET_game": SubResource("Animation_fv2yu"),
+&"RESET_main": SubResource("Animation_ufe8k"),
+&"RESET_settings": SubResource("Animation_11v34"),
+&"hide_controls": SubResource("Animation_q8cwc"),
+&"hide_main": SubResource("Animation_ui7xe"),
+&"hide_settings": SubResource("Animation_2ywoo"),
+&"show_controls": SubResource("Animation_4bbw6"),
+&"show_main": SubResource("Animation_y5frn"),
+&"show_settings": SubResource("Animation_antcs")
 }
 
 [node name="Menu" type="Control" node_paths=PackedStringArray("main", "settings", "animation_player", "resolution_picker")]
@@ -957,7 +957,7 @@ text = "X
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer"]
 root_node = NodePath("../..")
 libraries = {
-"": SubResource("AnimationLibrary_nyjex")
+&"": SubResource("AnimationLibrary_nyjex")
 }
 
 [node name="Substrate Layer" type="Parallax2D" parent="."]

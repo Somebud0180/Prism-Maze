@@ -6,6 +6,7 @@
 size = Vector2(32, 14)
 
 [node name="Platform Down" type="AnimatableBody2D"]
+physics_interpolation_mode = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(16, 7)
@@ -14,7 +15,6 @@ region_enabled = true
 region_rect = Rect2(64, 18, 32, 14)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-process_physics_priority = 1
 position = Vector2(16, 7)
 rotation = 3.14159
 shape = SubResource("RectangleShape2D_d35sm")

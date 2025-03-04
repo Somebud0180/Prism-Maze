@@ -1,9 +1,9 @@
 [gd_scene load_steps=10 format=3 uid="uid://wmf2eu0uuhrg"]
 
-[ext_resource type="Script" path="res://addons/third-person-camera/third_person_camera/ThirdPersonCamera.gd" id="1_telmq"]
+[ext_resource type="Script" uid="uid://c7esoa5mocbkl" path="res://addons/third-person-camera/third_person_camera/ThirdPersonCamera.gd" id="1_telmq"]
 [ext_resource type="Resource" uid="uid://8wq0le7mywh4" path="res://addons/third-person-camera/third_person_camera/camera-shake-presets/DefaultCameraShakePreset.tres" id="2_idc07"]
-[ext_resource type="Script" path="res://addons/third-person-camera/third_person_camera/CameraShakePreset.gd" id="2_m1iln"]
-[ext_resource type="Script" path="res://addons/third-person-camera/third_person_camera/CameraShake.gd" id="2_y3uk4"]
+[ext_resource type="Script" uid="uid://c5m688cg4vg3r" path="res://addons/third-person-camera/third_person_camera/CameraShakePreset.gd" id="2_m1iln"]
+[ext_resource type="Script" uid="uid://cfmv86j4c8p37" path="res://addons/third-person-camera/third_person_camera/CameraShake.gd" id="2_y3uk4"]
 [ext_resource type="Resource" uid="uid://cn4iinuc23o7j" path="res://addons/third-person-camera/third_person_camera/camera-shake-presets/GentleSway.tres" id="3_iflr8"]
 
 [sub_resource type="SeparationRayShape3D" id="SeparationRayShape3D_84uqy"]

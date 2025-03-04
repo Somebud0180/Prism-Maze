@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://dxtfp5xf31vwm"]
 
-[ext_resource type="Script" path="res://scripts/key.gd" id="1_e45yn"]
+[ext_resource type="Script" uid="uid://dx73w0w4k4cbc" path="res://scripts/key.gd" id="1_e45yn"]
 [ext_resource type="Texture2D" uid="uid://dpkmfpsnfsava" path="res://resources/Game/Key.png" id="2_kmpnw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hxmts"]
@@ -43,6 +43,7 @@ animations = [{
 size = Vector2(32, 32)
 
 [node name="Key" type="Area2D"]
+process_priority = 1
 collision_mask = 2
 script = ExtResource("1_e45yn")
 

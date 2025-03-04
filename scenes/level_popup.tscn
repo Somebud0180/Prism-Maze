@@ -2,7 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://bau50guyc4alk" path="res://resources/Theme/menu.tres" id="1_guh7m"]
 [ext_resource type="Texture2D" uid="uid://up7vguaee3r1" path="res://resources/Menu/Menu.png" id="2_gkfly"]
-[ext_resource type="Script" path="res://scripts/level_popup.gd" id="2_yf7d8"]
+[ext_resource type="Script" uid="uid://dv6t0v2h0mu5l" path="res://scripts/level_popup.gd" id="2_yf7d8"]
 [ext_resource type="Texture2D" uid="uid://dcrmd8a7krrgb" path="res://resources/Menu/Timer.png" id="3_mku4n"]
 [ext_resource type="Texture2D" uid="uid://b78vfepjp4r7a" path="res://resources/Menu/Flag.png" id="4_fbgwy"]
 [ext_resource type="Texture2D" uid="uid://b0g7maqisp0k7" path="res://resources/Menu/LevelTimer.png" id="5_218nm"]
@@ -227,12 +227,12 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1o0hk"]
 _data = {
-"RESET": SubResource("Animation_o3c8g"),
-"hide_finish": SubResource("Animation_2w4hx"),
-"hide_finish_side": SubResource("Animation_onlv7"),
-"return_finish": SubResource("Animation_qayne"),
-"show_finish": SubResource("Animation_pto1w"),
-"side_finish": SubResource("Animation_tj0vq")
+&"RESET": SubResource("Animation_o3c8g"),
+&"hide_finish": SubResource("Animation_2w4hx"),
+&"hide_finish_side": SubResource("Animation_onlv7"),
+&"return_finish": SubResource("Animation_qayne"),
+&"show_finish": SubResource("Animation_pto1w"),
+&"side_finish": SubResource("Animation_tj0vq")
 }
 
 [node name="LevelPopup" type="Control" node_paths=PackedStringArray("timer_label", "level_label", "animation_player")]

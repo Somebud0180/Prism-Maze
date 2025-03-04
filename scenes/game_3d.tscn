@@ -1,7 +1,7 @@
 [gd_scene load_steps=17 format=4 uid="uid://bnkt72lydniy7"]
 
 [ext_resource type="Environment" uid="uid://b7y82yodphdhe" path="res://resources/Game 3D/game_3d.tres" id="1_cyag4"]
-[ext_resource type="Script" path="res://scripts/player_3d.gd" id="2_orbxt"]
+[ext_resource type="Script" uid="uid://bd64urs07si80" path="res://scripts/player_3d.gd" id="2_orbxt"]
 [ext_resource type="PackedScene" uid="uid://wmf2eu0uuhrg" path="res://addons/third-person-camera/third_person_camera/ThirdPersonCamera.tscn" id="3_nj5rp"]
 [ext_resource type="PackedScene" uid="uid://b3jsecotdh7vb" path="res://scenes/level_3d.tscn" id="4_q2db6"]
 
@@ -147,10 +147,10 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0dlai"]
 _data = {
-"PlayerAction": SubResource("Animation_5ioq1"),
-"RESET": SubResource("Animation_6u17x"),
-"invert_player": SubResource("Animation_f5rib"),
-"normalize_player": SubResource("Animation_uyo3i")
+&"PlayerAction": SubResource("Animation_5ioq1"),
+&"RESET": SubResource("Animation_6u17x"),
+&"invert_player": SubResource("Animation_f5rib"),
+&"normalize_player": SubResource("Animation_uyo3i")
 }
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_oc55x"]

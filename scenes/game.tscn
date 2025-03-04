@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://brinhdnvr4uxf"]
 
-[ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_vrrtt"]
+[ext_resource type="Script" uid="uid://b7l1rpqy1mblr" path="res://scripts/game_manager.gd" id="1_vrrtt"]
 [ext_resource type="PackedScene" uid="uid://bgf3ofvnym71l" path="res://scenes/player.tscn" id="1_vxt15"]
-[ext_resource type="Script" path="res://scripts/camera_2d.gd" id="3_lo0k5"]
+[ext_resource type="Script" uid="uid://pt4eigkvwdlj" path="res://scripts/camera_2d.gd" id="3_lo0k5"]
 
 [node name="Game" type="Node2D"]
 
@@ -10,6 +10,7 @@
 unique_name_in_owner = true
 script = ExtResource("1_vrrtt")
 level_amount = 15
+custom_level = "Maze: 6"
 
 [node name="Player" parent="." instance=ExtResource("1_vxt15")]
 unique_name_in_owner = true
