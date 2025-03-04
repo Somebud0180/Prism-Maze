@@ -1,15 +1,21 @@
 extends Node
+class_name GameManager
+
 
 # The Game Manager holds the set of levels, game mode, and level progression.
 # It is also responsible for loading the game and the levels.
 
+signal finished_loading
+signal finished_level_set
+
+@onready var game = $".."
 @onready var menu = get_node("/root/Menu")
 @onready var main_layer = get_node("/root/Game/MainLayer")
-@onready var player = get_node("/root/Game/Player")
+var player
 
-var popup_scene = preload("res://scenes/level_popup.tscn").instantiate()
-var maze_scene = preload("res://scenes/maze_layer.tscn").instantiate()
-var platform_scene = preload("res://scenes/platform_layer.tscn").instantiate()
+var _popup_scene = preload("res://scenes/2D/level_popup.tscn").instantiate()
+var _maze_scene = preload("res://scenes/2D/maze_layer.tscn").instantiate()
+var _platform_scene = preload("res://scenes/2D/platform_layer.tscn").instantiate()
 
 @export var level_amount: int = 10 # The amount of levels to create for the playthrough. Excluding the final level.
 @export var custom_level: String = "": # A level to add first to the game, used for debugging. Follows the Maze: X, Platform: X, Maze format
@@ -24,7 +30,6 @@ var level_times = []
 
 var possible_colors = [Color.WHITE, Color.YELLOW, Color.ORANGE, Color.GREEN, Color.RED, Color.BLUE]
 var selected_colors = []
-var stored_keys = []
 
 var level_collection: Array[String] = [] # The level set for the current playthrough
 var game_mode: int = 2  # 1: Platformer, 2: Maze
@@ -34,28 +39,32 @@ var maze_list: Array[int] = []
 
 func _ready() -> void:
 	# Reset the key color list
-	possible_colors = [Color.WHITE, Color.YELLOW, Color.ORANGE, Color.GREEN, Color.RED, Color.BLUE]
+	_reset_keys()
+	
+	var player_scene = preload("res://scenes/2D/player.tscn").instantiate()
+	game.add_child.call_deferred(player_scene)
+	await Signal(player_scene, "player_loaded")
+	player = get_node("/root/Game/Player")
+	player._on_game_manager_loaded()
 	
 	# Load Maze Layer
-	main_layer.add_child(maze_scene)
+	main_layer.add_child(_maze_scene)
 	
 	# Load Platform Layer
-	main_layer.add_child(platform_scene)
+	main_layer.add_child(_platform_scene)
 
-	# Fill each list with all valid indices initially, excluding the final platform level.
-	for i in range(platform_scene.get_child_count() - 1):
+	# Fill each list with all valid indices initially, excluding the final platform level and Timer.
+	for i in range(_platform_scene.get_child_count() - 2):
 		platform_list.append(i)
 	
-	for i in range(maze_scene.get_child_count()):
+	for i in range(_maze_scene.get_child_count() - 1):
 		maze_list.append(i)
 	
 	# Shuffle them for random selection if desired:
 	platform_list.shuffle()
 	maze_list.shuffle()
 	
-	load_game(platform_scene)
-	load_level()
-
+	load_game(_platform_scene)
 
 func load_game(platform_instance: Node) -> void:
 	# Create a level collection
@@ -77,6 +86,7 @@ func load_game(platform_instance: Node) -> void:
 		level_check()
 	
 	level_set(platform_instance)
+	emit_signal("finished_level_set")
 
 
 func get_custom_level_amount() -> int:
@@ -101,15 +111,15 @@ func level_set(platform_instance: Node) -> void:
 	for i in range(level_collection.size()):
 		if level_collection[i] == "Maze":
 			if randi_range(0, 2) == 1:
-				var resolved = str(get_maze_index())
+				var resolved = str(get_maze_index(_maze_scene))
 				level_collection[i] = "Maze: " + resolved
 			
 		elif level_collection[i] == "Platform":
-			var resolved = str(get_platform_index(i))
+			var resolved = str(get_platform_index(_platform_scene, i))
 			level_collection[i] = "Platform: " + resolved
 	
 	# Append last level
-	level_collection.append("Platform: " + str(platform_instance.get_child_count() - 1))
+	level_collection.append("Platform: " + str(platform_instance.get_child_count() - 2))
 
 
 func progress_level() -> void:
@@ -124,24 +134,23 @@ func progress_level() -> void:
 	
 	# Increase level index and load next
 	level += 1
-	print("Progressing to level:", level)
 	load_level()
 	
 	# If completed all levels, finalize
 	if level == level_collection.size() - 1:
 		menu.is_timer_running = false
-		popup_scene.output_timer(snapped(menu.time_elapsed, 0.01), level_times)
-		main_layer.add_child(popup_scene)
+		_popup_scene.output_timer(snapped(menu.time_elapsed, 0.01), level_times)
+		main_layer.add_child(_popup_scene)
 		menu.is_popup_displaying = true
-		popup_scene.animation_player.play("show_finish")
+		_popup_scene.animation_player.play("show_finish")
 
 
 func load_level() -> void:
 	# Reset the key color list
-	possible_colors = [Color.WHITE, Color.YELLOW, Color.ORANGE, Color.GREEN, Color.RED, Color.BLUE]
+	_reset_keys()
 	
-	maze_scene = preload("res://scenes/maze_layer.tscn").instantiate()
-	platform_scene = preload("res://scenes/platform_layer.tscn").instantiate()
+	var maze_scene = preload("res://scenes/2D/maze_layer.tscn").instantiate()
+	var platform_scene = preload("res://scenes/2D/platform_layer.tscn").instantiate()
 	
 	maze_scene.disable_all_levels()
 	platform_scene.disable_all_levels()
@@ -151,7 +160,7 @@ func load_level() -> void:
 	
 	for child in main_layer.get_children():
 		child.queue_free()
-		
+	
 	if level_collection[level] == "Maze":
 		load_gen_maze()
 	else:
@@ -175,7 +184,7 @@ func load_gen_maze() -> void:
 	game_mode = 2
 	
 	# Load and instantiate a new maze scene.
-	var gen_maze_scene = load("res://scenes/gen_maze_layer.tscn")
+	var gen_maze_scene = load("res://scenes/2D/gen_maze_layer.tscn")
 	var gen_maze_instance = gen_maze_scene.instantiate()
 	main_layer.add_child(gen_maze_instance)
 	
@@ -186,7 +195,7 @@ func load_maze(selected_level: int) -> void:
 	# Set game mode
 	game_mode = 2
 	
-	maze_scene = preload("res://scenes/maze_layer.tscn").instantiate()
+	var maze_scene = preload("res://scenes/2D/maze_layer.tscn").instantiate()
 	main_layer.add_child(maze_scene)
 	
 	maze_scene.disable_all_levels()
@@ -197,40 +206,37 @@ func load_platform(selected_level: int) -> void:
 	# Set game mode
 	game_mode = 1
 	
-	platform_scene = preload("res://scenes/platform_layer.tscn").instantiate()
+	var platform_scene = preload("res://scenes/2D/platform_layer.tscn").instantiate()
 	main_layer.add_child(platform_scene)
 	
 	platform_scene.disable_all_levels()
 	platform_scene.load_level(selected_level)
 
 
-func get_platform_index(current_level_index: int) -> int:
-	platform_scene = preload("res://scenes/platform_layer.tscn").instantiate()
-	main_layer.add_child(platform_scene)
-	
+func get_platform_index(platform_scene: Node, current_level_index: int) -> int:
 	# Only gather from first 5 children if current level is less than 6
 	var limit = 0
 	if current_level_index <= 5:
 		limit = 5
 	else:
-		limit = platform_scene.get_child_count() - 1
+		# Account for Timer child and last level
+		limit = platform_scene.get_child_count() - 2
 	
 	if platform_list.is_empty():
-		for i in range(min(5, limit)): 
+		# Use the full range of available levels, not limited to 5
+		for i in range(limit): 
 			platform_list.append(i)
 		platform_list.shuffle()
 	
 	return platform_list.pop_back()
 
 
-func get_maze_index() -> int:
-	# Load Maze Layer
-	maze_scene = preload("res://scenes/maze_layer.tscn").instantiate()
-	main_layer.add_child(maze_scene)
+func get_maze_index(maze_scene: Node) -> int:
 	
 	# If the list is empty, refill it
-	if maze_list.size() == 0:
-		for i in range(maze_scene.get_child_count()):
+	if maze_list.is_empty():
+		# Account for Timer child
+		for i in range(maze_scene.get_child_count() - 1):
 			maze_list.append(i)
 		maze_list.shuffle()
 	
@@ -267,7 +273,7 @@ func _is_valid_custom_level(level_string: String) -> bool:
 			return false
 		var maze_index = int(parts[1])
 		# Check if the index is within level count
-		if maze_index < 0 or maze_index >= maze_scene.get_child_count():
+		if maze_index < 0 or maze_index >= _maze_scene.get_child_count():
 			return false
 		return true
 	
@@ -278,7 +284,7 @@ func _is_valid_custom_level(level_string: String) -> bool:
 			return false
 		var platform_index = int(parts[1])
 		# Check if the index is within level count
-		if platform_index < 0 or platform_index >= platform_scene.get_child_count():
+		if platform_index < 0 or platform_index >= _platform_scene.get_child_count():
 			return false
 		return true
 	
@@ -286,29 +292,33 @@ func _is_valid_custom_level(level_string: String) -> bool:
 	return false
 
 
+func _reset_keys() -> void:
+	possible_colors = [Color.WHITE, Color.YELLOW, Color.ORANGE, Color.GREEN, Color.RED, Color.BLUE]
+	selected_colors = []
+
+
 func get_color(id: int) -> Color:
-	var color
+	var color: Color = Color.WHITE  # Set a default to avoid returning nil
+	var found_color = false
 	
 	if !selected_colors.is_empty():
 		for item in selected_colors:
 			if item["id"] == id:
 				color = item["color"]
-	else:
-		var rand = randi_range(0, possible_colors.size() - 1)
-		color = possible_colors[rand]
-		selected_colors.append({"id": id, "color": color})
-		possible_colors.remove_at(rand)
+				found_color = true
+				break
+	
+	if !found_color:
+		if possible_colors.size() > 0:
+			var rand_index = randi_range(0, possible_colors.size() - 1)
+			color = possible_colors[rand_index]
+			selected_colors.append({"id": id, "color": color})
+			possible_colors.remove_at(rand_index)
 	
 	return color
 
 
-func store_key(id: int) -> void:
-	stored_keys.append(id)
-	_unlock_doors_in(platform_scene)
-
-
-func _unlock_doors_in(node: Node) -> void:
-	for child in node.get_children():
-		if child is Door:
-			child.key_lock()
-		_unlock_doors_in(child)  # Recursively check nested children
+func _on_finished_level_set() -> void:
+	load_level()
+	
+	emit_signal("finished_loading")

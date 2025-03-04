@@ -49,6 +49,7 @@ process_priority = 2
 script = ExtResource("1_7433j")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource("RectangleShape2D_jm0te")

@@ -1,6 +1,6 @@
 extends Camera2D
 
-@onready var game_manager = %GameManager
+@onready var game_manager = get_node("/root/Game/GameManager")
 
 const CAMERA_TWEEN_DURATION : float = 0.5
 
@@ -8,8 +8,15 @@ const ZOOM_PLATFORM : Vector2 = Vector2(2.0, 2.0)  # 2x zoom-in
 const ZOOM_MAZE : Vector2    = Vector2(4.0, 4.0) # 4x zoom-in
 
 var camera_tween : Tween = null
+var initialized = false
+
+func _on_game_manager_loaded():
+	initialized = true
 
 func _process(_delta: float) -> void:
+	if !initialized:
+		return
+	
 	if not camera_tween or not camera_tween.is_running():
 		var desired_zoom = Vector2.ZERO
 		

@@ -3,7 +3,7 @@
 [ext_resource type="Environment" uid="uid://b7y82yodphdhe" path="res://resources/Game 3D/game_3d.tres" id="1_cyag4"]
 [ext_resource type="Script" uid="uid://bd64urs07si80" path="res://scripts/player_3d.gd" id="2_orbxt"]
 [ext_resource type="PackedScene" uid="uid://wmf2eu0uuhrg" path="res://addons/third-person-camera/third_person_camera/ThirdPersonCamera.tscn" id="3_nj5rp"]
-[ext_resource type="PackedScene" uid="uid://b3jsecotdh7vb" path="res://scenes/level_3d.tscn" id="4_q2db6"]
+[ext_resource type="PackedScene" uid="uid://b3jsecotdh7vb" path="res://scenes/3D/level_3d.tscn" id="4_q2db6"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tx4ct"]
 resource_name = "Plastic Material"
@@ -205,7 +205,7 @@ skeleton = NodePath("")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Player3D/Player"]
 unique_name_in_owner = true
 libraries = {
-"": SubResource("AnimationLibrary_0dlai")
+&"": SubResource("AnimationLibrary_0dlai")
 }
 autoplay = "PlayerAction"
 playback_default_blend_time = 0.25

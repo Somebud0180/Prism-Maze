@@ -1,21 +1,21 @@
 fc8a56933c4b1c8d796fdb8f7a9f9475
-::res://::1741068239
+::res://::1741104405
 export_presets.cfg::TextFile/TextFile::-1::1741016272::0::1::::<><><>0<>0<><>::
 README.md::TextFile/TextFile::-1::1739463324::0::1::::<><><>0<>0<><>::
 ::res://addons/::1740837362
 ::res://addons/third-person-camera/::1741067957
 plugin.cfg::TextFile/TextFile::-1::1740837362::0::1::::<><><>0<>0<><>::
 tpc.gd::GDScript/GDScript::7453565145376031912::1740837527::0::1::::<>EditorPlugin<><>0<>1<><>::
-::res://addons/third-person-camera/editor_panels/::1741067957
+::res://addons/third-person-camera/editor_panels/::1741068252
 Preview.gd::GDScript/GDScript::2567384800307892064::1740837362::0::1::::<>Panel<><>0<>1<><>::
-Preview.tscn::PackedScene::3158199445886687145::1741068252::0::1::::<><><>0<>0<><>::uid://bctwpnfqfxyuq::::res://addons/third-person-camera/editor_panels/Preview.gd
-::res://addons/third-person-camera/third_person_camera/::1741067959
+Preview.tscn::PackedScene/PackedScene::3158199445886687145::1741068252::0::1::::<><><>0<>0<><>::uid://bctwpnfqfxyuq::::res://addons/third-person-camera/editor_panels/Preview.gd
+::res://addons/third-person-camera/third_person_camera/::1741068252
 CameraShake.gd::GDScript/GDScript::5149893750120748188::1740837362::0::1::::CameraShaker<>Node3D<><>0<>0<><>::
 CameraShakePreset.gd::GDScript/GDScript::6905222104222876057::1740837362::0::1::::CameraShakePreset<>Resource<><>0<>0<><>::
 ThirdPersonCamera.gd::GDScript/GDScript::7028259828712088787::1740850273::0::1::::ThirdPersonCamera<>Node3D<><>0<>1<><>::
-ThirdPersonCamera.tscn::PackedScene::1569279136637590244::1741068252::0::1::::<><><>0<>0<><>::uid://c7esoa5mocbkl::::res://addons/third-person-camera/third_person_camera/ThirdPersonCamera.gd<>uid://8wq0le7mywh4::::res://addons/third-person-camera/third_person_camera/camera-shake-presets/DefaultCameraShakePreset.tres<>uid://c5m688cg4vg3r::::res://addons/third-person-camera/third_person_camera/CameraShakePreset.gd<>uid://cfmv86j4c8p37::::res://addons/third-person-camera/third_person_camera/CameraShake.gd<>uid://cn4iinuc23o7j::::res://addons/third-person-camera/third_person_camera/camera-shake-presets/GentleSway.tres
+ThirdPersonCamera.tscn::PackedScene/PackedScene::1569279136637590244::1741068252::0::1::::<><><>0<>0<><>::uid://c7esoa5mocbkl::::res://addons/third-person-camera/third_person_camera/ThirdPersonCamera.gd<>uid://8wq0le7mywh4::::res://addons/third-person-camera/third_person_camera/camera-shake-presets/DefaultCameraShakePreset.tres<>uid://c5m688cg4vg3r::::res://addons/third-person-camera/third_person_camera/CameraShakePreset.gd<>uid://cfmv86j4c8p37::::res://addons/third-person-camera/third_person_camera/CameraShake.gd<>uid://cn4iinuc23o7j::::res://addons/third-person-camera/third_person_camera/camera-shake-presets/GentleSway.tres
 ThirdPersonCameraIcon.svg::CompressedTexture2D/CompressedTexture2D::7583439636594400096::1740837362::1741067959::1::::<><><>0<>0<>7c8f77cd12ff3689b70d8957684dc0f6<>res://.godot/imported/ThirdPersonCameraIcon.svg-895880fcccc5c0191c5c521669ff32ad.ctex::
-::res://addons/third-person-camera/third_person_camera/camera-shake-presets/::1740837362
+::res://addons/third-person-camera/third_person_camera/camera-shake-presets/::1741068252
 DefaultCameraShakePreset.tres::Resource/CameraShakePreset::2362664852783277411::1741068252::0::1::::<><><>0<>0<><>::uid://c5m688cg4vg3r::::res://addons/third-person-camera/third_person_camera/CameraShakePreset.gd
 GentleSway.tres::Resource/CameraShakePreset::5745664025669437393::1741068252::0::1::::<><><>0<>0<><>::uid://c5m688cg4vg3r::::res://addons/third-person-camera/third_person_camera/CameraShakePreset.gd
 ::res://build/::1741016392
@@ -84,21 +84,21 @@ keyboard_s.png::CompressedTexture2D/CompressedTexture2D::9188195026842937861::17
 keyboard_space_icon.png::CompressedTexture2D/CompressedTexture2D::1363341344700845652::1710862176::1741067959::1::::<><><>0<>0<>29d463c4facf028d10ad889986440148<>res://.godot/imported/keyboard_space_icon.png-b8a5fd5a52faa8f9370926394b050aec.ctex::
 keyboard_w.png::CompressedTexture2D/CompressedTexture2D::6123903076189457049::1710862178::1741067959::1::::<><><>0<>0<>5bfac18cb41e9d525efe2130ac327ee6<>res://.godot/imported/keyboard_w.png-50a8ffaebf2076634e9b4a03eecc79f9.ctex::
 keyboard_wasd.png::CompressedTexture2D/CompressedTexture2D::4286838645628477308::1740283161::1741067959::1::::<><><>0<>0<>ae14d708b691842cfe16e6ee85810d9c<>res://.godot/imported/keyboard_wasd.png-a6dbbfb05eb1666d1b0c1b8f040d564c.ctex::
-::res://resources/Game/::1741067959
+::res://resources/Game/::1741104344
 Door.png::CompressedTexture2D/CompressedTexture2D::7432224950567556028::1741008425::1741067959::1::::<><><>0<>0<>b05000772ee1ded7be4b223066a1b290<>res://.godot/imported/Door.png-b72245548a5a8d26070c335057ca451a.ctex::
 Gate.png::CompressedTexture2D/CompressedTexture2D::1770713757366800516::1741008520::1741067959::1::::<><><>0<>0<>0b58bf8ec7c097bdb769a5516d2b4e16<>res://.godot/imported/Gate.png-fe17ee2b014b2822a698c8040ae4be00.ctex::
 Gravity-Sheet.png::CompressedTexture2D/CompressedTexture2D::1682197887067553960::1740758648::1741067959::1::::<><><>0<>0<>368754bd843d2696c0cd1f9ee61109b7<>res://.godot/imported/Gravity-Sheet.png-f591ccda2d98be944e4beaecd9c6a510.ctex::
 Key.png::CompressedTexture2D/CompressedTexture2D::8233476832327890762::1741005099::1741067959::1::::<><><>0<>0<>10d0c84b3452c8123fcc67f49e1ebd4f<>res://.godot/imported/Key.png-e4fef272100bd23e6695ddc753a5b186.ctex::
 Padlock.png::CompressedTexture2D/CompressedTexture2D::5918157650189488576::1741008438::1741067959::1::::<><><>0<>0<>2fadca847f83f514c20647ee3bf0b0fd<>res://.godot/imported/Padlock.png-d128ffee9e92e79fb446aa83a06e6f2c.ctex::
-platform_layer.tres::TileSet/TileSet::8874056217781385629::1740998769::0::1::::<><><>0<>0<><>::uid://b2trhvjrl8ees::::res://resources/Game/Tileset.png
 Player-Sheet.png::CompressedTexture2D/CompressedTexture2D::7554202790502777846::1740229569::1741067959::1::::<><><>0<>0<>aa34ac45bece666ca98f62ce72c60b14<>res://.godot/imported/Player-Sheet.png-5654d2031edbda97e07ba24f3f079569.ctex::
 Tileset.png::CompressedTexture2D/CompressedTexture2D::4321788446363471810::1740675253::1741067959::1::::<><><>0<>0<>146b0d09c4e9c14f3d3b7b9f56672b82<>res://.godot/imported/Tileset.png-d88eb2514a0e32e38e50bae7a019b04d.ctex::
-::res://resources/Game 3D/::1741067962
+Tileset.tres::TileSet/TileSet::8874056217781385629::1741086461::0::1::::<><><>0<>0<><>::uid://b2trhvjrl8ees::::res://resources/Game/Tileset.png
+::res://resources/Game 3D/::1741068283
 Flag.glb::PackedScene/PackedScene::7805580195804590117::1740924681::1741067962::1::::<><><>0<>0<>d04e3de516171f7cda775ee51565be1d<>res://.godot/imported/Flag.glb-ffd7f22a8920ffe0b3337a4e0963b90f.scn::
 Floor.png::CompressedTexture2D/CompressedTexture2D::2820794524834292997::1740736885::1741067960::1::::<><><>0<>0<>b07577eee048c48d02b28710ec60b74f<>res://.godot/imported/Floor.png-b71e7ccbf657335c2ee27a0fe4eb440e.s3tc.ctex<*>res://.godot/imported/Floor.png-b71e7ccbf657335c2ee27a0fe4eb440e.etc2.ctex::
-game_3d.tres::Environment/Environment::4684061905748592902::1740998769::0::1::::<><><>0<>0<><>::
+game_3d.tres::Environment/Environment::4684061905748592902::1741068283::0::1::::<><><>0<>0<><>::
 Player.glb::PackedScene/PackedScene::4920031020875849612::1740840202::1741067962::1::::<><><>0<>0<>0481324a363cf210610b57cf6e44a8cb<>res://.godot/imported/Player.glb-dbdcc85c56cf5215afb4e7126bd004a5.scn::
-Tiles.tres::MeshLibrary/MeshLibrary::8104012916323337676::1740998769::0::1::::<><><>0<>0<><>::uid://f07c5yfebyiv::::res://resources/Game 3D/Model/Block_Floor.png
+Tiles.tres::MeshLibrary/MeshLibrary::8104012916323337676::1741068283::0::1::::<><><>0<>0<><>::uid://f07c5yfebyiv::::res://resources/Game 3D/Model/Block_Floor.png
 ::res://resources/Game 3D/Model/::1741067962
 Block.glb::PackedScene/PackedScene::5662635294273460946::1740818016::1741067962::1::::<><><>0<>0<>336263330f119e592c3d4daadd07f147<>res://.godot/imported/Block.glb-6da83940556e11f0ef1df693a5ccc392.scn::uid://f07c5yfebyiv::::res://resources/Game 3D/Model/Block_Floor.png
 Block_Floor.png::CompressedTexture2D/CompressedTexture2D::404501790406393069::1740818041::1741067960::1::::<><><>0<>0<>84fdecd2862bbc37496f3c33f20e0694<>res://.godot/imported/Block_Floor.png-dce3c6934909c70b791d0a14d739fbee.s3tc.ctex<*>res://.godot/imported/Block_Floor.png-dce3c6934909c70b791d0a14d739fbee.etc2.ctex::
@@ -123,54 +123,62 @@ Settings.png::CompressedTexture2D/CompressedTexture2D::6061050890379394342::1740
 Settings_Header.png::CompressedTexture2D/CompressedTexture2D::4964578312388901341::1740204097::1741067959::1::::<><><>0<>0<>95ed183203c8e9575f86eb431e49224d<>res://.godot/imported/Settings_Header.png-3c83b0add50c2921f1f8c3d8eca8cd76.ctex::
 Timer.png::CompressedTexture2D/CompressedTexture2D::7335469856207836089::1740397472::1741067959::1::::<><><>0<>0<>89f7732d64f11d0ec549c10153ec683d<>res://.godot/imported/Timer.png-35637b4a269a41e9a84a3554690d9173.ctex::
 Title.png::CompressedTexture2D/CompressedTexture2D::9028921783995891804::1740193958::1741067959::1::::<><><>0<>0<>840084f1d0611d8581c148fc058f0464<>res://.godot/imported/Title.png-ce6aaf240eb00dd2ab4ef2945ffadf5c.ctex::
-::res://resources/Theme/::1740998769
-box_focus.tres::StyleBoxFlat/StyleBoxFlat::1036677865607103581::1740998769::0::1::::<><><>0<>0<><>::
+::res://resources/Theme/::1741089396
+box_focus.tres::StyleBoxFlat/StyleBoxFlat::1036677865607103581::1741068283::0::1::::<><><>0<>0<><>::
 box_normal.tres::StyleBoxFlat/StyleBoxFlat::4776714397168602222::1740591988::0::1::::<><><>0<>0<><>::
-button_disabled.tres::StyleBoxFlat/StyleBoxFlat::764821972910303916::1740998769::0::1::::<><><>0<>0<><>::
-button_focus.tres::StyleBoxFlat/StyleBoxFlat::2168398335092923469::1740998769::0::1::::<><><>0<>0<><>::
-button_hover.tres::StyleBoxFlat/StyleBoxFlat::271863178441760367::1740998769::0::1::::<><><>0<>0<><>::
-button_normal.tres::StyleBoxFlat/StyleBoxFlat::4534840658702587548::1740998769::0::1::::<><><>0<>0<><>::
-menu.tres::Theme/Theme::2429574740535365128::1740998769::0::1::::<><><>0<>0<><>::uid://d4xsuett3yt0::::res://resources/Theme/button_hover.tres<>uid://55ng6tb5ctyb::::res://resources/Theme/button_focus.tres<>uid://k5qrhd2cgjp1::::res://resources/Theme/button_disabled.tres<>uid://b5uyfssq3f7bs::::res://resources/Theme/button_normal.tres<>uid://cab412g1l7xe1::::res://resources/Theme/box_normal.tres<>uid://o1f6ysc2jugj::::res://resources/Theme/box_focus.tres<>uid://vqm1soj8xnjh::::res://resources/Theme/separator.tres<>uid://b4mewmdnj56qd::::res://resources/Theme/v_separator.tres
+button_disabled.tres::StyleBoxFlat/StyleBoxFlat::764821972910303916::1741068283::0::1::::<><><>0<>0<><>::
+button_focus.tres::StyleBoxFlat/StyleBoxFlat::2168398335092923469::1741068283::0::1::::<><><>0<>0<><>::
+button_hover.tres::StyleBoxFlat/StyleBoxFlat::271863178441760367::1741068283::0::1::::<><><>0<>0<><>::
+button_normal.tres::StyleBoxFlat/StyleBoxFlat::4534840658702587548::1741068283::0::1::::<><><>0<>0<><>::
+loading.tres::Theme/Theme::3747424631026548619::1741089396::0::1::::<><><>0<>0<><>::uid://oc726cekuti::::res://resources/Theme/panel.tres
+menu.tres::Theme/Theme::2429574740535365128::1741068283::0::1::::<><><>0<>0<><>::uid://d4xsuett3yt0::::res://resources/Theme/button_hover.tres<>uid://55ng6tb5ctyb::::res://resources/Theme/button_focus.tres<>uid://k5qrhd2cgjp1::::res://resources/Theme/button_disabled.tres<>uid://b5uyfssq3f7bs::::res://resources/Theme/button_normal.tres<>uid://cab412g1l7xe1::::res://resources/Theme/box_normal.tres<>uid://o1f6ysc2jugj::::res://resources/Theme/box_focus.tres<>uid://vqm1soj8xnjh::::res://resources/Theme/separator.tres<>uid://b4mewmdnj56qd::::res://resources/Theme/v_separator.tres
+panel.tres::StyleBoxFlat/StyleBoxFlat::29081334063350254::1741089190::0::1::::<><><>0<>0<><>::
 separator.tres::StyleBoxLine/StyleBoxLine::1507771762519862997::1740327373::0::1::::<><><>0<>0<><>::
-v_separator.tres::StyleBoxLine/StyleBoxLine::4446952473200249087::1740998769::0::1::::<><><>0<>0<><>::
-::res://scenes/::1741015836
-door.tscn::PackedScene::5671382754971555545::1741068253::0::1::::<><><>0<>0<><>::uid://b71vcyi5xjlcv::::res://scripts/door.gd<>uid://dd5hwn5itnrvw::::res://resources/Game/Door.png<>uid://0h0nq17d5hjw::::res://resources/Game/Gate.png<>uid://cqk2gr1jlojgq::::res://resources/Game/Padlock.png
-flag.tscn::PackedScene::5887763894461897631::1741068253::0::1::::<><><>0<>0<><>::uid://b1nahnat8e6kw::::res://scripts/flag.gd<>uid://b2trhvjrl8ees::::res://resources/Game/Tileset.png
+v_separator.tres::StyleBoxLine/StyleBoxLine::4446952473200249087::1741068283::0::1::::<><><>0<>0<><>::
+::res://scenes/::1741104405
+::res://scenes/2D/::1741105139
+door.tscn::PackedScene/PackedScene::5671382754971555545::1741097731::0::1::::<><><>0<>0<><>::uid://b71vcyi5xjlcv::::res://scripts/door.gd<>uid://dd5hwn5itnrvw::::res://resources/Game/Door.png<>uid://0h0nq17d5hjw::::res://resources/Game/Gate.png<>uid://cqk2gr1jlojgq::::res://resources/Game/Padlock.png
+flag.tscn::PackedScene::5887763894461897631::1741105139::0::1::::<><><>0<>0<><>::uid://b1nahnat8e6kw::::res://scripts/flag.gd<>uid://b2trhvjrl8ees::::res://resources/Game/Tileset.png
+game.tscn::PackedScene::3596948047665961275::1741105138::0::1::::<><><>0<>0<><>::uid://b7l1rpqy1mblr::::res://scripts/game_manager.gd
+gen_maze_layer.tscn::PackedScene/PackedScene::7325582761615123709::1741097731::0::1::::<><><>0<>0<><>::uid://b2trhvjrl8ees::::res://resources/Game/Tileset.png<>uid://2uolgs6tp7en::::res://scripts/gen_maze_layer.gd
+gravity_inverter.tscn::PackedScene/PackedScene::5406060562645498193::1741068253::0::1::::<><><>0<>0<><>::uid://y8dx51v2hici::::res://scripts/gravity_inverter.gd<>uid://x74s206rpjr1::::res://resources/Game/Gravity-Sheet.png
+gravity_normalizer.tscn::PackedScene/PackedScene::5029462311273675662::1741068253::0::1::::<><><>0<>0<><>::uid://cygqp8qufm66a::::res://scripts/gravity_normalizer.gd<>uid://x74s206rpjr1::::res://resources/Game/Gravity-Sheet.png
+key.tscn::PackedScene::8813160615450236860::1741105139::0::1::::<><><>0<>0<><>::uid://brl65p3qlhy44::::res://scripts/key.gd<>uid://dpkmfpsnfsava::::res://resources/Game/Key.png
+killzone.tscn::PackedScene::6612611070632170720::1741105139::0::1::::<><><>0<>0<><>::uid://dx4m5fcwnqpme::::res://scripts/killzone.gd
+level_popup.tscn::PackedScene/PackedScene::6157759131251761670::1741100690::0::1::::<><><>0<>0<><>::uid://bau50guyc4alk::::res://resources/Theme/menu.tres<>uid://up7vguaee3r1::::res://resources/Menu/Menu.png<>uid://dv6t0v2h0mu5l::::res://scripts/level_popup.gd<>uid://dcrmd8a7krrgb::::res://resources/Menu/Timer.png<>uid://b78vfepjp4r7a::::res://resources/Menu/Flag.png<>uid://b0g7maqisp0k7::::res://resources/Menu/LevelTimer.png
+platform_down.tscn::PackedScene/PackedScene::788118922708637826::1741068960::0::1::::<><><>0<>0<><>::uid://b2trhvjrl8ees::::res://resources/Game/Tileset.png
+platform_layer.tscn::PackedScene::1873386387159635804::1741105152::0::1::::<><><>0<>0<><>::uid://dtowa34stivec::::res://scripts/platform_layer.gd<>uid://dyown6ix7tyu4::::res://resources/Game/Tileset.tres<>uid://lh1g6i2usv5c::::res://scenes/2D/platform_down.tscn<>uid://dak5chwustt20::::res://scenes/2D/platform_up.tscn<>uid://c1hg0dm7ju66w::::res://scenes/2D/killzone.tscn<>uid://cp5cu1p2kmu6r::::res://scenes/2D/flag.tscn<>uid://cdwkrk6so1f7k::::res://scenes/2D/gravity_normalizer.tscn<>uid://cja0a67a5d87v::::res://scenes/2D/gravity_inverter.tscn<>uid://dxtfp5xf31vwm::::res://scenes/2D/key.tscn<>uid://cm2i30ivbfof6::::res://scenes/2D/door.tscn
+platform_up.tscn::PackedScene/PackedScene::7181731312573385011::1741068960::0::1::::<><><>0<>0<><>::uid://b2trhvjrl8ees::::res://resources/Game/Tileset.png
+player.tscn::PackedScene::2819601006884609343::1741105139::0::1::::<><><>0<>0<><>::uid://cmgcuu7j3ncl2::::res://scripts/player.gd<>uid://dfvku7oe2ae6y::::res://resources/Game/Player-Sheet.png<>uid://pt4eigkvwdlj::::res://scripts/camera_2d.gd
+::res://scenes/3D/::1741104387
 flag_3d.tscn::PackedScene::3960434893065204588::1741068253::0::1::::<><><>0<>0<><>::uid://by6kx232wk0le::::res://scripts/flag_3d.gd
-game.tscn::PackedScene::3596948047665961275::1741068253::0::1::::<><><>0<>0<><>::uid://b7l1rpqy1mblr::::res://scripts/game_manager.gd<>uid://bgf3ofvnym71l::::res://scenes/player.tscn<>uid://pt4eigkvwdlj::::res://scripts/camera_2d.gd
-game_3d.tscn::PackedScene::3320731633013921992::1741068253::0::1::::<><><>0<>0<><>::uid://b7y82yodphdhe::::res://resources/Game 3D/game_3d.tres<>uid://bd64urs07si80::::res://scripts/player_3d.gd<>uid://wmf2eu0uuhrg::::res://addons/third-person-camera/third_person_camera/ThirdPersonCamera.tscn<>uid://b3jsecotdh7vb::::res://scenes/level_3d.tscn
-gen_maze_layer.tscn::PackedScene::7325582761615123709::1741068253::0::1::::<><><>0<>0<><>::uid://b2trhvjrl8ees::::res://resources/Game/Tileset.png<>uid://2uolgs6tp7en::::res://scripts/gen_maze_layer.gd
-gravity_inverter.tscn::PackedScene::5406060562645498193::1741068253::0::1::::<><><>0<>0<><>::uid://y8dx51v2hici::::res://scripts/gravity_inverter.gd<>uid://x74s206rpjr1::::res://resources/Game/Gravity-Sheet.png
-gravity_normalizer.tscn::PackedScene::5029462311273675662::1741068253::0::1::::<><><>0<>0<><>::uid://cygqp8qufm66a::::res://scripts/gravity_normalizer.gd<>uid://x74s206rpjr1::::res://resources/Game/Gravity-Sheet.png
-key.tscn::PackedScene::8813160615450236860::1741068253::0::1::::<><><>0<>0<><>::uid://dx73w0w4k4cbc::::res://scripts/key.gd<>uid://dpkmfpsnfsava::::res://resources/Game/Key.png
-killzone.tscn::PackedScene::6612611070632170720::1741068253::0::1::::<><><>0<>0<><>::uid://dx4m5fcwnqpme::::res://scripts/killzone.gd
+game_3d.tscn::PackedScene::3320731633013921992::1741104387::0::1::::<><><>0<>0<><>::uid://b7y82yodphdhe::::res://resources/Game 3D/game_3d.tres<>uid://bd64urs07si80::::res://scripts/player_3d.gd<>uid://wmf2eu0uuhrg::::res://addons/third-person-camera/third_person_camera/ThirdPersonCamera.tscn<>uid://b3jsecotdh7vb::::res://scenes/3D/level_3d.tscn
 killzone_3d.tscn::PackedScene::9176002406334831754::1741068253::0::1::::<><><>0<>0<><>::uid://c17cvn571sp5b::::res://scripts/killzone_3d.gd
-level_3d.tscn::PackedScene::4371387881931518739::1741068253::0::1::::<><><>0<>0<><>::uid://dnpv55qmiew0c::::res://resources/Game 3D/Tiles.tres<>uid://d3y6oimo6t5jy::::res://scenes/killzone_3d.tscn<>uid://bwop1wm1jvak7::::res://scenes/flag_3d.tscn
-level_popup.tscn::PackedScene::6157759131251761670::1741068253::0::1::::<><><>0<>0<><>::uid://bau50guyc4alk::::res://resources/Theme/menu.tres<>uid://up7vguaee3r1::::res://resources/Menu/Menu.png<>uid://dv6t0v2h0mu5l::::res://scripts/level_popup.gd<>uid://dcrmd8a7krrgb::::res://resources/Menu/Timer.png<>uid://b78vfepjp4r7a::::res://resources/Menu/Flag.png<>uid://b0g7maqisp0k7::::res://resources/Menu/LevelTimer.png
-maze_layer.tscn::PackedScene::3306335932869947827::1741068253::0::1::::<><><>0<>0<><>::uid://dwwjepw5rg5qi::::res://scripts/maze_layer.gd<>uid://b2trhvjrl8ees::::res://resources/Game/Tileset.png<>uid://cp5cu1p2kmu6r::::res://scenes/flag.tscn
-menu.tscn::PackedScene::3636575004039944290::1741068253::0::1::::<><><>0<>0<><>::uid://up7vguaee3r1::::res://resources/Menu/Menu.png<>uid://bau50guyc4alk::::res://resources/Theme/menu.tres<>uid://cnwd74ny2hf2q::::res://scripts/menu.gd<>uid://vqm1soj8xnjh::::res://resources/Theme/separator.tres<>uid://k2ow5rr33vw::::res://resources/Menu/Play.png<>uid://d1vxa1f4hthke::::res://resources/Menu/Title.png<>uid://pxmim2yta7rs::::res://scripts/main.gd<>uid://du5u4ffx7ot77::::res://resources/Menu/Play_3D.png<>uid://b0bn0h04f0qnm::::res://resources/Menu/Gear.png<>uid://csmavf1aewl1w::::res://resources/Menu/Settings.png<>uid://d3gerbn0xbpgv::::res://resources/Menu/Exit.png<>uid://h8cyu0rn8tep::::res://resources/Menu/Controls.png<>uid://dj3sea68kohlb::::res://resources/Menu/Settings-Header.png<>uid://da7g5s3h5esdr::::res://resources/Menu/Fullscreen.png<>uid://cab412g1l7xe1::::res://resources/Theme/box_normal.tres<>uid://o1f6ysc2jugj::::res://resources/Theme/box_focus.tres<>uid://ctv8w3oyplrgd::::res://resources/Menu/color.png<>uid://br34aw4na03cr::::res://resources/Menu/Controls-Header.png<>uid://b4mewmdnj56qd::::res://resources/Theme/v_separator.tres<>uid://c7vfpy4vpfcj::::res://resources/Menu/Move.png<>uid://bhf1o42di43rv::::res://resources/Controls/Controllers/stick_l.png<>uid://dgx4iqfxayl3s::::res://resources/Controls/KBM/keyboard_arrows.png<>uid://b2ctuu0ig3fse::::res://resources/Controls/KBM/keyboard_wasd.png<>uid://cn8i1e5a2w11c::::res://resources/Background/Substrate.png<>uid://dhkixf8jhbq4o::::res://resources/Background/Bottom Layer.png<>uid://c63pofosye2ac::::res://resources/Menu/Jump.png<>uid://dqm1knqvsbn8a::::res://resources/Controls/Controllers/button_b.png<>uid://dhop524e0npfj::::res://resources/Background/Top Layer.png<>uid://toobd4vd6hfg::::res://resources/Controls/KBM/keyboard_space_icon.png<>uid://b0viiebu5kc4j::::res://resources/Background/Components.png
-platform_down.tscn::PackedScene::788118922708637826::1741068253::0::1::::<><><>0<>0<><>::uid://b2trhvjrl8ees::::res://resources/Game/Tileset.png
-platform_layer.tscn::PackedScene::1873386387159635804::1741068253::0::1::::<><><>0<>0<><>::uid://dtowa34stivec::::res://scripts/platform_layer.gd<>uid://dyown6ix7tyu4::::res://resources/Game/platform_layer.tres<>uid://lh1g6i2usv5c::::res://scenes/platform_down.tscn<>uid://dak5chwustt20::::res://scenes/platform_up.tscn<>uid://c1hg0dm7ju66w::::res://scenes/killzone.tscn<>uid://cp5cu1p2kmu6r::::res://scenes/flag.tscn<>uid://cdwkrk6so1f7k::::res://scenes/gravity_normalizer.tscn<>uid://cja0a67a5d87v::::res://scenes/gravity_inverter.tscn<>uid://dxtfp5xf31vwm::::res://scenes/key.tscn<>uid://cm2i30ivbfof6::::res://scenes/door.tscn
-platform_up.tscn::PackedScene::7181731312573385011::1741068253::0::1::::<><><>0<>0<><>::uid://b2trhvjrl8ees::::res://resources/Game/Tileset.png
-player.tscn::PackedScene::2819601006884609343::1741068253::0::1::::<><><>0<>0<><>::uid://dfvku7oe2ae6y::::res://resources/Game/Player-Sheet.png<>uid://cmgcuu7j3ncl2::::res://scripts/player.gd
+level_3d.tscn::PackedScene::4371387881931518739::1741104387::0::1::::<><><>0<>0<><>::uid://dnpv55qmiew0c::::res://resources/Game 3D/Tiles.tres<>uid://d3y6oimo6t5jy::::res://scenes/3D/killzone_3d.tscn<>uid://bwop1wm1jvak7::::res://scenes/3D/flag_3d.tscn
 tiles.tscn::PackedScene::8716966307277906684::1741068253::0::1::::<><><>0<>0<><>::uid://f07c5yfebyiv::::res://resources/Game 3D/Model/Block_Floor.png
-::res://scripts/::1741067958
-camera_2d.gd::GDScript/GDScript::1093824197802382027::1740494143::0::1::::<>Camera2D<><>0<>0<><>::
-camera_3d.gd::GDScript/GDScript::4387845661061242422::1740998769::0::1::::<>Camera3D<><>0<>0<><>::
-door.gd::GDScript/GDScript::4687417404464600829::1741013154::0::1::::Door<>Node2D<><>0<>0<><>::
+::res://scenes/UI/::1741105139
+loading_screen.tscn::PackedScene::622353889631650389::1741105139::0::1::::<><><>0<>0<><>::uid://dolbwqgj8f0we::::res://scripts/loading_screen.gd<>uid://btnjsh2r256l0::::res://resources/Theme/loading.tres<>uid://dfvku7oe2ae6y::::res://resources/Game/Player-Sheet.png
+maze_layer.tscn::PackedScene::3306335932869947827::1741105138::0::1::::<><><>0<>0<><>::uid://dwwjepw5rg5qi::::res://scripts/maze_layer.gd<>uid://dyown6ix7tyu4::::res://resources/Game/Tileset.tres<>uid://cp5cu1p2kmu6r::::res://scenes/2D/flag.tscn<>uid://dxtfp5xf31vwm::::res://scenes/2D/key.tscn<>uid://cm2i30ivbfof6::::res://scenes/2D/door.tscn
+menu.tscn::PackedScene::3636575004039944290::1741105138::0::1::::<><><>0<>0<><>::uid://bau50guyc4alk::::res://resources/Theme/menu.tres<>uid://cnwd74ny2hf2q::::res://scripts/menu.gd<>uid://up7vguaee3r1::::res://resources/Menu/Menu.png<>uid://pxmim2yta7rs::::res://scripts/main.gd<>uid://d1vxa1f4hthke::::res://resources/Menu/Title.png<>uid://k2ow5rr33vw::::res://resources/Menu/Play.png<>uid://du5u4ffx7ot77::::res://resources/Menu/Play_3D.png<>uid://b0bn0h04f0qnm::::res://resources/Menu/Gear.png<>uid://h8cyu0rn8tep::::res://resources/Menu/Controls.png<>uid://d3gerbn0xbpgv::::res://resources/Menu/Exit.png<>uid://csmavf1aewl1w::::res://resources/Menu/Settings.png<>uid://dj3sea68kohlb::::res://resources/Menu/Settings-Header.png<>uid://b4mewmdnj56qd::::res://resources/Theme/v_separator.tres<>uid://da7g5s3h5esdr::::res://resources/Menu/Fullscreen.png<>uid://cab412g1l7xe1::::res://resources/Theme/box_normal.tres<>uid://ctv8w3oyplrgd::::res://resources/Menu/color.png<>uid://o1f6ysc2jugj::::res://resources/Theme/box_focus.tres<>uid://br34aw4na03cr::::res://resources/Menu/Controls-Header.png<>uid://c7vfpy4vpfcj::::res://resources/Menu/Move.png<>uid://vqm1soj8xnjh::::res://resources/Theme/separator.tres<>uid://dgx4iqfxayl3s::::res://resources/Controls/KBM/keyboard_arrows.png<>uid://b2ctuu0ig3fse::::res://resources/Controls/KBM/keyboard_wasd.png<>uid://bhf1o42di43rv::::res://resources/Controls/Controllers/stick_l.png<>uid://c63pofosye2ac::::res://resources/Menu/Jump.png<>uid://toobd4vd6hfg::::res://resources/Controls/KBM/keyboard_space_icon.png<>uid://dqm1knqvsbn8a::::res://resources/Controls/Controllers/button_b.png<>uid://cn8i1e5a2w11c::::res://resources/Background/Substrate.png<>uid://dhkixf8jhbq4o::::res://resources/Background/Bottom Layer.png<>uid://dhop524e0npfj::::res://resources/Background/Top Layer.png<>uid://b0viiebu5kc4j::::res://resources/Background/Components.png
+::res://scripts/::1741105139
+camera_2d.gd::GDScript/GDScript::1093824197802382027::1741103267::0::1::::<>Camera2D<><>0<>0<><>::
+camera_3d.gd::GDScript::4387845661061242422::1741105152::0::1::::<>Camera3D<><>0<>0<><>::
+door.gd::GDScript::4687417404464600829::1741105152::0::1::::Door<>Node2D<><>0<>0<><>::
 flag.gd::GDScript/GDScript::4238180713353171830::1741005799::0::1::::<>Area2D<><>0<>0<><>::
 flag_3d.gd::GDScript/GDScript::4135598347210764270::1741005799::0::1::::<>Area3D<><>0<>0<><>::
-game_manager.gd::GDScript/GDScript::4656781649405897099::1741014159::0::1::::<>Node<><>0<>0<><>::
-gen_maze_layer.gd::GDScript/GDScript::1937256359320849821::1740675556::0::1::::<>TileMapLayer<><>0<>0<><>::
-gravity_inverter.gd::GDScript/GDScript::1752881554290790388::1740675794::0::1::::<>Area2D<><>0<>0<><>::
-gravity_normalizer.gd::GDScript/GDScript::6470759898919498954::1740675861::0::1::::<>Area2D<><>0<>0<><>::
-key.gd::GDScript/GDScript::8841406254548913108::1741012426::0::1::::<>Area2D<><>0<>0<><>::
-killzone.gd::GDScript/GDScript::8834254854076083816::1740755108::0::1::::<>Area2D<><>0<>0<><>::
+game_manager.gd::GDScript/GDScript::4656781649405897099::1741103097::0::1::::GameManager<>Node<><>0<>0<><>::
+gen_maze_layer.gd::GDScript/GDScript::1937256359320849821::1741103356::0::1::::<>TileMapLayer<><>0<>0<><>::
+gravity_inverter.gd::GDScript/GDScript::1752881554290790388::1741091921::0::1::::<>Area2D<><>0<>0<><>::
+gravity_normalizer.gd::GDScript/GDScript::6470759898919498954::1741091912::0::1::::<>Area2D<><>0<>0<><>::
+key.gd::GDScript/GDScript::3604275813273962559::1741091193::0::1::::<>CharacterBody2D<><>0<>0<><>::
+killzone.gd::GDScript/GDScript::8834254854076083816::1741091940::0::1::::<>Area2D<><>0<>0<><>::
 killzone_3d.gd::GDScript/GDScript::6663971056399581161::1740926128::0::1::::<>Area3D<><>0<>0<><>::
-level_popup.gd::GDScript/GDScript::8698422890616045927::1740998769::0::1::::level_popup<>Control<><>0<>0<><>::
-main.gd::GDScript/GDScript::1101056906284096452::1741014898::0::1::::<>NinePatchRect<><>0<>0<><>::
-maze_layer.gd::GDScript/GDScript::8749387341037849248::1740998769::0::1::::<>Node<><>0<>0<><>::
-menu.gd::GDScript/GDScript::5730953486039618914::1741014625::0::1::::Menu<>Control<><>0<>0<><>::
-platform_layer.gd::GDScript/GDScript::8523088658896316494::1741013754::0::1::::Platform<>Node<><>0<>0<><>::
-player.gd::GDScript/GDScript::5627652007778174305::1740676791::0::1::::<>CharacterBody2D<><>0<>0<><>::
+level_popup.gd::GDScript::8698422890616045927::1741105152::0::1::::level_popup<>Control<><>0<>0<><>::
+loading_manager.gd::GDScript/GDScript::1936821090492414264::1741104069::0::1::::<>Node<><>0<>0<><>::
+loading_screen.gd::GDScript/GDScript::8164714871860761132::1741089882::0::1::::<>CanvasLayer<><>0<>0<><>::
+main.gd::GDScript/GDScript::1101056906284096452::1741069011::0::1::::<>NinePatchRect<><>0<>0<><>::
+maze_layer.gd::GDScript/GDScript::8749387341037849248::1741103928::0::1::::<>Node<><>0<>0<><>::
+menu.gd::GDScript::5730953486039618914::1741105152::0::1::::Menu<>Control<><>0<>0<><>::
+platform_layer.gd::GDScript/GDScript::8523088658896316494::1741103921::0::1::::Platform<>Node<><>0<>0<><>::
+player.gd::GDScript/GDScript::5627652007778174305::1741103794::0::1::::<>CharacterBody2D<><>0<>0<><>::
 player_3d.gd::GDScript/GDScript::2662780355534174795::1740926490::0::1::::<>CharacterBody3D<><>0<>0<><>::

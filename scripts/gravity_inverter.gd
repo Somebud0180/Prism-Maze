@@ -1,9 +1,10 @@
 extends Area2D
 
-@onready var player = get_node("/root/Game/Player")
+var player
 
 func _ready() -> void:
 	call_deferred("_init_zone")
+	player = get_node("/root/Game/Player")
 
 func _init_zone() -> void:
 	# Re-enable collision monitoring.

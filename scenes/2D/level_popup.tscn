@@ -335,7 +335,7 @@ expand_icon = true
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer"]
 callback_mode_process = 0
 libraries = {
-"": SubResource("AnimationLibrary_1o0hk")
+&"": SubResource("AnimationLibrary_1o0hk")
 }
 
 [connection signal="pressed" from="CanvasLayer/Finish/VBoxContainer/Finish" to="." method="_on_finish_pressed"]

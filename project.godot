@@ -12,9 +12,13 @@ config_version=5
 
 config/name="Prism Maze"
 config/version="0.2"
-run/main_scene="res://scenes/menu.tscn"
+run/main_scene="res://scenes/UI/menu.tscn"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://resources/icon.svg"
+
+[autoload]
+
+LoadingManager="*res://scripts/loading_manager.gd"
 
 [display]
 

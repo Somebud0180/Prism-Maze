@@ -1,15 +1,15 @@
 [gd_scene load_steps=49 format=4 uid="uid://1xqnurgp142s"]
 
 [ext_resource type="Script" uid="uid://dtowa34stivec" path="res://scripts/platform_layer.gd" id="1_j615w"]
-[ext_resource type="TileSet" uid="uid://dyown6ix7tyu4" path="res://resources/Game/platform_layer.tres" id="2_pthuq"]
-[ext_resource type="PackedScene" uid="uid://lh1g6i2usv5c" path="res://scenes/platform_down.tscn" id="3_jhml1"]
-[ext_resource type="PackedScene" uid="uid://dak5chwustt20" path="res://scenes/platform_up.tscn" id="4_klxfx"]
-[ext_resource type="PackedScene" uid="uid://c1hg0dm7ju66w" path="res://scenes/killzone.tscn" id="5_n8b4s"]
-[ext_resource type="PackedScene" uid="uid://cp5cu1p2kmu6r" path="res://scenes/flag.tscn" id="6_dc8wf"]
-[ext_resource type="PackedScene" uid="uid://cdwkrk6so1f7k" path="res://scenes/gravity_normalizer.tscn" id="7_q4g3c"]
-[ext_resource type="PackedScene" uid="uid://cja0a67a5d87v" path="res://scenes/gravity_inverter.tscn" id="8_jybe8"]
-[ext_resource type="PackedScene" uid="uid://dxtfp5xf31vwm" path="res://scenes/key.tscn" id="9_u8bjk"]
-[ext_resource type="PackedScene" uid="uid://cm2i30ivbfof6" path="res://scenes/door.tscn" id="10_0j0pa"]
+[ext_resource type="TileSet" uid="uid://dyown6ix7tyu4" path="res://resources/Game/Tileset.tres" id="2_pthuq"]
+[ext_resource type="PackedScene" uid="uid://lh1g6i2usv5c" path="res://scenes/2D/platform_down.tscn" id="3_jhml1"]
+[ext_resource type="PackedScene" uid="uid://dak5chwustt20" path="res://scenes/2D/platform_up.tscn" id="4_klxfx"]
+[ext_resource type="PackedScene" uid="uid://c1hg0dm7ju66w" path="res://scenes/2D/killzone.tscn" id="5_n8b4s"]
+[ext_resource type="PackedScene" uid="uid://cp5cu1p2kmu6r" path="res://scenes/2D/flag.tscn" id="6_dc8wf"]
+[ext_resource type="PackedScene" uid="uid://cdwkrk6so1f7k" path="res://scenes/2D/gravity_normalizer.tscn" id="7_q4g3c"]
+[ext_resource type="PackedScene" uid="uid://cja0a67a5d87v" path="res://scenes/2D/gravity_inverter.tscn" id="8_jybe8"]
+[ext_resource type="PackedScene" uid="uid://dxtfp5xf31vwm" path="res://scenes/2D/key.tscn" id="9_u8bjk"]
+[ext_resource type="PackedScene" uid="uid://cm2i30ivbfof6" path="res://scenes/2D/door.tscn" id="10_0j0pa"]
 
 [sub_resource type="Animation" id="Animation_he0n5"]
 resource_name = "Move"
@@ -562,7 +562,7 @@ position = Vector2(56, 96)
 shape = SubResource("WorldBoundaryShape2D_7ajkl")
 
 [node name="Flag" parent="0" instance=ExtResource("6_dc8wf")]
-position = Vector2(-207, -464)
+position = Vector2(-208, -466)
 
 [node name="1" type="TileMapLayer" parent="."]
 visible = false
@@ -603,7 +603,7 @@ position = Vector2(-305, 354)
 shape = SubResource("WorldBoundaryShape2D_7ajkl")
 
 [node name="Flag" parent="1" instance=ExtResource("6_dc8wf")]
-position = Vector2(-591, 144)
+position = Vector2(-592, 142)
 
 [node name="2" type="TileMapLayer" parent="."]
 visible = false
@@ -638,7 +638,7 @@ position = Vector2(16, 96)
 shape = SubResource("WorldBoundaryShape2D_7ajkl")
 
 [node name="Flag" parent="2" instance=ExtResource("6_dc8wf")]
-position = Vector2(113, -16)
+position = Vector2(112, -18)
 
 [node name="3" type="TileMapLayer" parent="."]
 visible = false
@@ -653,7 +653,7 @@ position = Vector2(16, 160)
 shape = SubResource("WorldBoundaryShape2D_7ajkl")
 
 [node name="Flag" parent="3" instance=ExtResource("6_dc8wf")]
-position = Vector2(17, -240)
+position = Vector2(16, -242)
 
 [node name="4" type="TileMapLayer" parent="."]
 visible = false
@@ -706,12 +706,11 @@ position = Vector2(16, 96)
 shape = SubResource("WorldBoundaryShape2D_7ajkl")
 
 [node name="Flag" parent="4" instance=ExtResource("6_dc8wf")]
-position = Vector2(-15, -432)
+position = Vector2(-16, -434)
 
 [node name="5" type="TileMapLayer" parent="."]
-visible = false
 use_parent_material = true
-tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAD//wAAAAAAAAAAAAABAAAAAAAAAAAAAAADAP//AAAAAAAAAAAMAP3/AAAAAAAAAAAMAAEAAAAAAAAAAAAPAAAAAAAAAAAAAAAQAP7/AAAAAAAAAAANAP3/AAAAAAAAAAABAPv/AAAAAAAAAAABAPr/AAAAAAAAAAABAPn/AAAAAAAAAAABAPj/AAAAAAAAAAABAPf/AAAAAAAAAAABAPb/AAAAAAAAAAABAPX/AAAAAAAAAAAEAPj/AAAAAAAAAAAEAPf/AAAAAAAAAAAEAPb/AAAAAAAAAAAEAPX/AAAAAAAAAAAEAPT/AAAAAAAAAAAEAPP/AAAAAAAAAAABAPT/AAAAAAAAAAABAPP/AAAAAAAAAAAFAPz/AAAAAAAAAAAEAPz/AAAAAAAAAAABAPL/AAAAAAAAAAABAPH/AAAAAAAAAAABAPD/AAAAAAAAAAAEAPL/AAAAAAAAAAABAO//AAAAAAAAAAABAO7/AAAAAAAAAAAEAPH/AAAAAAAAAAAEAPD/AAAAAAAAAAAEAO//AAAAAAAAAAAEAO7/AAAAAAAAAAABAO3/AAAAAAAAAAABAOz/AAAAAAAAAAABAOv/AAAAAAAAAAABAOr/AAAAAAAAAAABAOn/AAAAAAAAAAAEAO3/AAAAAAAAAAAEAOz/AAAAAAAAAAADAPf/AAAAAAAAAAACAPP/AAAAAAAAAAADAO//AAAAAAAAAAAEAOv/AAAAAAAAAAAEAOr/AAAAAAAAAAAEAOn/AAAAAAAAAAAEAOj/AAAAAAAAAAAEAOf/AAAAAAAAAAAEAOb/AAAAAAAAAAAEAOX/AAAAAAAAAAAEAOT/AAAAAAAAAAAEAOP/AAAAAAAAAAAEAOL/AAAAAAAAAAABAOj/AAAAAAAAAAABAOf/AAAAAAAAAAABAOb/AAAAAAAAAAABAOX/AAAAAAAAAAABAOT/AAAAAAAAAAABAOP/AAAAAAAAAAABAOL/AAAAAAAAAAAFAOL/AAAAAAAAAAAGAOL/AAAAAAAAAAAHAOL/AAAAAAAAAAAHAOH/AAAAAAAAAAAHAOD/AAAAAAAAAAAHAN//AAAAAAAAAAABAOD/AAAAAAAAAAABAOH/AAAAAAAAAAADAN//AAAAAAAAAAAEAN//AAAAAAAAAAAFAN//AAAAAAAAAAAGAN//AAAAAAAAAAACAN//AAAAAAAAAAABAN//AAAAAAAAAAACAOn/AAAAAAAAAAADAOX/AAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAD//wAAAAAAAAAAAAABAAAAAAAAAAAAAAADAP//AAAAAAAAAAAMAP3/AAAAAAAAAAAMAAEAAAAAAAAAAAAPAAAAAAAAAAAAAAAQAP7/AAAAAAAAAAANAP3/AAAAAAAAAAABAPv/AAAAAAAAAAABAPr/AAAAAAAAAAABAPn/AAAAAAAAAAABAPj/AAAAAAAAAAABAPf/AAAAAAAAAAABAPb/AAAAAAAAAAABAPX/AAAAAAAAAAAEAPj/AAAAAAAAAAAEAPf/AAAAAAAAAAAEAPb/AAAAAAAAAAAEAPX/AAAAAAAAAAAEAPT/AAAAAAAAAAAEAPP/AAAAAAAAAAABAPT/AAAAAAAAAAABAPP/AAAAAAAAAAAFAPz/AAAAAAAAAAAEAPz/AAAAAAAAAAABAPL/AAAAAAAAAAABAPH/AAAAAAAAAAABAPD/AAAAAAAAAAAEAPL/AAAAAAAAAAABAO//AAAAAAAAAAABAO7/AAAAAAAAAAAEAPH/AAAAAAAAAAAEAPD/AAAAAAAAAAAEAO//AAAAAAAAAAAEAO7/AAAAAAAAAAABAO3/AAAAAAAAAAABAOz/AAAAAAAAAAABAOv/AAAAAAAAAAABAOr/AAAAAAAAAAABAOn/AAAAAAAAAAAEAO3/AAAAAAAAAAAEAOz/AAAAAAAAAAADAPf/AAAAAAAAAAACAPP/AAAAAAAAAAADAO//AAAAAAAAAAAEAOv/AAAAAAAAAAAEAOr/AAAAAAAAAAAEAOn/AAAAAAAAAAAEAOj/AAAAAAAAAAAEAOf/AAAAAAAAAAAEAOb/AAAAAAAAAAAEAOX/AAAAAAAAAAAEAOT/AAAAAAAAAAAEAOP/AAAAAAAAAAAEAOL/AAAAAAAAAAABAOj/AAAAAAAAAAABAOf/AAAAAAAAAAABAOb/AAAAAAAAAAABAOX/AAAAAAAAAAABAOT/AAAAAAAAAAABAOP/AAAAAAAAAAABAOL/AAAAAAAAAAAFAOL/AAAAAAAAAAAGAOL/AAAAAAAAAAAHAOL/AAAAAAAAAAAHAOH/AAAAAAAAAAAHAOD/AAAAAAAAAAAHAN//AAAAAAAAAAABAOD/AAAAAAAAAAABAOH/AAAAAAAAAAADAN//AAAAAAAAAAAEAN//AAAAAAAAAAAFAN//AAAAAAAAAAAGAN//AAAAAAAAAAACAN//AAAAAAAAAAABAN//AAAAAAAAAAACAOn/AAAAAAAAAAADAOT/AAAAAAAAAAA=")
 tile_set = ExtResource("2_pthuq")
 
 [node name="Platforms" type="Node" parent="5"]
@@ -759,7 +758,7 @@ position = Vector2(16, 128)
 shape = SubResource("WorldBoundaryShape2D_7ajkl")
 
 [node name="Flag" parent="5" instance=ExtResource("6_dc8wf")]
-position = Vector2(209, -976)
+position = Vector2(208, -978)
 
 [node name="6" type="TileMapLayer" parent="."]
 visible = false
@@ -789,7 +788,7 @@ position = Vector2(0, 192)
 shape = SubResource("WorldBoundaryShape2D_7ajkl")
 
 [node name="Flag" parent="6" instance=ExtResource("6_dc8wf")]
-position = Vector2(-559, -176)
+position = Vector2(-560, -178)
 
 [node name="7" type="TileMapLayer" parent="."]
 visible = false
@@ -841,7 +840,7 @@ shape = SubResource("WorldBoundaryShape2D_7ajkl")
 one_way_collision_margin = 32.0
 
 [node name="Flag" parent="7" instance=ExtResource("6_dc8wf")]
-position = Vector2(17, 112)
+position = Vector2(16, 110)
 
 [node name="8" type="TileMapLayer" parent="."]
 visible = false
@@ -916,7 +915,7 @@ shape = SubResource("WorldBoundaryShape2D_jxp0v")
 shape = SubResource("WorldBoundaryShape2D_0rdip")
 
 [node name="Flag" parent="8" instance=ExtResource("6_dc8wf")]
-position = Vector2(-304, -1424)
+position = Vector2(-304, -1426)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="8"]
 libraries = {
@@ -947,7 +946,7 @@ position = Vector2(208, -528)
 position = Vector2(368, -16)
 
 [node name="Flag" parent="9" instance=ExtResource("6_dc8wf")]
-position = Vector2(400, -16)
+position = Vector2(400, -18)
 
 [node name="End" type="TileMapLayer" parent="."]
 visible = false
@@ -976,3 +975,8 @@ scroll_active = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="End/Killzone"]
 position = Vector2(16, 161)
 shape = SubResource("WorldBoundaryShape2D_7ajkl")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

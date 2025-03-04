@@ -1,7 +1,5 @@
 extends Node
 
-@onready var player = get_node("/root/Game/Player")
-
 var tilemap_defaults := {}  # For TileMap nodes.
 var physics_defaults := {}  # For CollisionObject2D nodes (excluding TileMap).
 var level_count = 0
@@ -9,11 +7,7 @@ var level_count = 0
 func _ready() -> void:
 	_store_tilemap_defaults()
 	_store_physics_defaults(self)
-	
-# Give a random level between the first and the last, excluding the final level.
-# Reduced by an additional 1 to match counting starting at 0.
-func get_random_level() -> int:
-	return randi_range(0, get_child_count() - 2)
+
 
 func disable_all_levels() -> void:
 	for i in range(level_count):
@@ -30,7 +24,6 @@ func load_level(level: int) -> void:
 	enable_all_levels()
 	
 	for i in range(level_count):
-		print("level_count: " + str(i))
 		var level_node = get_child(i)
 		if i == level:
 			_enable_level(level_node)
@@ -39,12 +32,11 @@ func load_level(level: int) -> void:
 	
 	# Hide the flag for 1 second to avoid spoiling it during camera movement
 	show_flags(false)
-	await get_tree().create_timer(1).timeout
-	show_flags(true)
+	$Timer.start()
+
 
 # Enables a level node by recursively showing it, enabling processing, and restoring its physics.
 func _enable_level(level_node: Node) -> void:
-	print("Enabling platform level")
 	_set_visibility_recursive(level_node, true)
 	if level_node.has_method("set_process"):
 		level_node.set_process(true)
@@ -169,3 +161,7 @@ func _show_flags_recursive(visible: bool, node: Node) -> void:
 	# Continue down the scene tree
 	for subchild in node.get_children():
 		_show_flags_recursive(visible, subchild)
+
+
+func _on_timer_timeout() -> void:
+	show_flags(true)

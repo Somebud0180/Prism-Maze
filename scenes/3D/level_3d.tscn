@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://b3jsecotdh7vb"]
 
 [ext_resource type="MeshLibrary" uid="uid://dnpv55qmiew0c" path="res://resources/Game 3D/Tiles.tres" id="1_nvka6"]
-[ext_resource type="PackedScene" uid="uid://d3y6oimo6t5jy" path="res://scenes/killzone_3d.tscn" id="2_2ntvb"]
-[ext_resource type="PackedScene" uid="uid://bwop1wm1jvak7" path="res://scenes/flag_3d.tscn" id="3_vgct1"]
+[ext_resource type="PackedScene" uid="uid://d3y6oimo6t5jy" path="res://scenes/3D/killzone_3d.tscn" id="2_2ntvb"]
+[ext_resource type="PackedScene" uid="uid://bwop1wm1jvak7" path="res://scenes/3D/flag_3d.tscn" id="3_vgct1"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_f3vdc"]
 

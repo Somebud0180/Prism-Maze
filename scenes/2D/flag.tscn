@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://b2trhvjrl8ees" path="res://resources/Game/Tileset.png" id="2_3mnug"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hwhxd"]
-size = Vector2(22, 28)
+size = Vector2(32, 32)
 
 [node name="Flag" type="Area2D"]
 collision_mask = 2

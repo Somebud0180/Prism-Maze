@@ -1,42 +1,43 @@
-[gd_scene load_steps=13 format=3 uid="uid://bgf3ofvnym71l"]
+[gd_scene load_steps=14 format=3 uid="uid://bgf3ofvnym71l"]
 
-[ext_resource type="Texture2D" uid="uid://dfvku7oe2ae6y" path="res://resources/Game/Player-Sheet.png" id="1_2qll3"]
-[ext_resource type="Script" uid="uid://cmgcuu7j3ncl2" path="res://scripts/player.gd" id="1_4jykx"]
+[ext_resource type="Script" uid="uid://cmgcuu7j3ncl2" path="res://scripts/player.gd" id="1_kdbcp"]
+[ext_resource type="Texture2D" uid="uid://dfvku7oe2ae6y" path="res://resources/Game/Player-Sheet.png" id="2_24ttj"]
+[ext_resource type="Script" uid="uid://pt4eigkvwdlj" path="res://scripts/camera_2d.gd" id="3_6nks7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ei8ab"]
-atlas = ExtResource("1_2qll3")
+atlas = ExtResource("2_24ttj")
 region = Rect2(0, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_12alg"]
-atlas = ExtResource("1_2qll3")
+atlas = ExtResource("2_24ttj")
 region = Rect2(32, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_drjm1"]
-atlas = ExtResource("1_2qll3")
+atlas = ExtResource("2_24ttj")
 region = Rect2(64, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kfyh6"]
-atlas = ExtResource("1_2qll3")
+atlas = ExtResource("2_24ttj")
 region = Rect2(96, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dafwu"]
-atlas = ExtResource("1_2qll3")
+atlas = ExtResource("2_24ttj")
 region = Rect2(128, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gkjfo"]
-atlas = ExtResource("1_2qll3")
+atlas = ExtResource("2_24ttj")
 region = Rect2(160, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uu375"]
-atlas = ExtResource("1_2qll3")
+atlas = ExtResource("2_24ttj")
 region = Rect2(192, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bvmwx"]
-atlas = ExtResource("1_2qll3")
+atlas = ExtResource("2_24ttj")
 region = Rect2(224, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p1m2c"]
-atlas = ExtResource("1_2qll3")
+atlas = ExtResource("2_24ttj")
 region = Rect2(256, 32, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wx7ie"]
@@ -76,8 +77,7 @@ animations = [{
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite")]
 collision_layer = 2
-motion_mode = 1
-script = ExtResource("1_4jykx")
+script = ExtResource("1_kdbcp")
 animated_sprite = NodePath("AnimatedSprite2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -91,3 +91,8 @@ frame_progress = 0.0914439
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 process_physics_priority = 2
 polygon = PackedVector2Array(13, -1, 19, -1, 27, -20, 27, -22, 18, -30, 14, -30, 5, -22, 5, -20)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2(16, -16)
+position_smoothing_enabled = true
+script = ExtResource("3_6nks7")

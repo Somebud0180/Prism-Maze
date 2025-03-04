@@ -1,8 +1,6 @@
 extends Node
 class_name Platform
 
-@onready var player = get_node("/root/Game/Player")
-
 var tilemap_defaults := {}  # For TileMap nodes.
 var physics_defaults := {}  # For CollisionObject2D nodes (excluding TileMap).
 var level_count = -1
@@ -10,21 +8,19 @@ var level_count = -1
 func _ready() -> void:
 	_store_tilemap_defaults()
 	_store_physics_defaults(self)
-	
-# Give a random level between the first and the last, excluding the final level.
-# Reduced by an additional 1 to match counting starting at 0.
-func get_random_level() -> int:
-	return randi_range(0, get_child_count() - 2)
+
 
 func disable_all_levels() -> void:
 	for i in range(level_count):
 		var level_node: Node = get_child(i)
 		_disable_level(level_node)
 
+
 func enable_all_levels() -> void:
 	for i in range(level_count):
 		var level_node: Node = get_child(i)
 		_enable_level(level_node)
+
 
 func load_level(level: int) -> void:
 	level_count = get_child_count()
@@ -39,8 +35,8 @@ func load_level(level: int) -> void:
 	
 	# Hide the flag for 1 second to avoid spoiling it during camera movement
 	show_flags(false)
-	await get_tree().create_timer(1).timeout
-	show_flags(true)
+	$Timer.start()
+
 
 # Enables a level node by recursively showing it, enabling processing, and restoring its physics.
 func _enable_level(level_node: Node) -> void:
@@ -53,6 +49,7 @@ func _enable_level(level_node: Node) -> void:
 		level_node.collision_enabled = true
 	_set_physics_state(level_node, true)
 
+
 # Disables a level node by recursively hiding it, disabling processing, and turning off its physics.
 func _disable_level(level_node: Node) -> void:
 	_set_visibility_recursive(level_node, false)
@@ -64,6 +61,7 @@ func _disable_level(level_node: Node) -> void:
 		level_node.collision_enabled = false
 	_set_physics_state(level_node, false)
 
+
 # Recursively set the "visible" property for all CanvasItem nodes using deferred calls.
 func _set_visibility_recursive(current_node: Node, visibility: bool) -> void:
 	if current_node is CanvasItem:
@@ -71,12 +69,13 @@ func _set_visibility_recursive(current_node: Node, visibility: bool) -> void:
 	for child in current_node.get_children():
 		_set_visibility_recursive(child, visibility)
 
+
 # Recursively update physics/collision state for CollisionShape2D and CollisionObject2D nodes.
 func _set_physics_state(current_node: Node, enable: bool) -> void:
 	# For CollisionShape2D nodes, update their "disabled" property using deferred call.
 	if current_node is CollisionShape2D:
 		current_node.set_deferred("disabled", not enable)
-
+	
 	# For CollisionObject2D nodes (excluding TileMap) update collision layers and masks.
 	if current_node is CollisionObject2D and not (current_node is TileMap):
 		# For Area2D nodes, use deferred calls for the "monitoring" property.
@@ -86,16 +85,17 @@ func _set_physics_state(current_node: Node, enable: bool) -> void:
 			_restore_physics_properties(current_node)
 		else:
 			_disable_physics_properties(current_node)
-
+	
 	# Handle TileMap nodes separately.
 	if current_node is TileMap:
 		if enable:
 			_enable_tilemap_collisions(current_node)
 		else:
 			_disable_tilemap_collisions(current_node)
-
+	
 	for child in current_node.get_children():
 		_set_physics_state(child, enable)
+
 
 # Store default collision_layer and collision_mask for each TileMap under levels.
 func _store_tilemap_defaults() -> void:
@@ -110,6 +110,7 @@ func _store_tilemap_defaults() -> void:
 						"collision_mask": child.collision_mask
 					}
 
+
 # Recursively store default physics properties for CollisionObject2D nodes (excluding TileMap) under current_node.
 func _store_physics_defaults(current_node: Node) -> void:
 	if current_node is CollisionObject2D and not (current_node is TileMap):
@@ -123,6 +124,7 @@ func _store_physics_defaults(current_node: Node) -> void:
 	for child in current_node.get_children():
 		_store_physics_defaults(child)
 
+
 # Restore physics properties for a given CollisionObject2D.
 func _restore_physics_properties(obj: CollisionObject2D) -> void:
 	var id = obj.get_instance_id()
@@ -133,10 +135,12 @@ func _restore_physics_properties(obj: CollisionObject2D) -> void:
 		obj.set_deferred("collision_mask", defaults["collision_mask"])
 		# For Area2D nodes, monitoring is updated in _set_physics_state.
 
+
 # Disable physics properties for a given CollisionObject2D.
 func _disable_physics_properties(obj: CollisionObject2D) -> void:
 	obj.set_deferred("collision_layer", 0)
 	obj.set_deferred("collision_mask", 0)
+
 
 # Restore the TileMap's collision properties from stored defaults.
 func _enable_tilemap_collisions(tilemap: TileMap) -> void:
@@ -150,15 +154,18 @@ func _enable_tilemap_collisions(tilemap: TileMap) -> void:
 		tilemap.set_deferred("collision_mask", 1)
 	tilemap.update_dirty_quadrants()
 
+
 # Disable collisions on the TileMap.
 func _disable_tilemap_collisions(tilemap: TileMap) -> void:
 	tilemap.set_deferred("collision_layer", 0)
 	tilemap.set_deferred("collision_mask", 0)
 	tilemap.update_dirty_quadrants()
 
+
 func show_flags(visible: bool) -> void:
 	for child in get_children():
 		_show_flags_recursive(visible, child)
+
 
 func _show_flags_recursive(visible: bool, node: Node) -> void:
 	# If you name nodes "Flag," check for node.name == "Flag."
@@ -168,3 +175,7 @@ func _show_flags_recursive(visible: bool, node: Node) -> void:
 	# Continue down the scene tree
 	for subchild in node.get_children():
 		_show_flags_recursive(visible, subchild)
+
+
+func _on_timer_timeout() -> void:
+	show_flags(true)

@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://brinhdnvr4uxf"]
+
+[ext_resource type="Script" uid="uid://b7l1rpqy1mblr" path="res://scripts/game_manager.gd" id="1_rn7ij"]
+
+[node name="Game" type="Node2D"]
+
+[node name="GameManager" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("1_rn7ij")
+level_amount = 20
+
+[node name="MainLayer" type="TileMapLayer" parent="."]
+unique_name_in_owner = true
+
+[connection signal="finished_level_set" from="GameManager" to="GameManager" method="_on_finished_level_set"]

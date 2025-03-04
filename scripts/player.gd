@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+signal player_loaded
 
 const speed = 200.0
 const jump_velocity = -360.0
@@ -9,14 +10,17 @@ var gravity_direction = 1: # 1 for normal, -1 for upside-down
 		_gravity_change()
 
 @export var animated_sprite: AnimatedSprite2D
-@onready var game_manager = %GameManager
 @onready var menu = get_node("/root/Menu")
+@onready var game_manager = get_node("/root/Game/GameManager")
+var game_initialized = false
 
 func go_to(input_position: Vector2):
 	position = input_position
 
+
 func change_color(selected_color: Color):
 	animated_sprite.modulate = selected_color
+
 
 func _gravity_change():
 	if gravity_direction == 1:
@@ -24,7 +28,21 @@ func _gravity_change():
 	else:
 		animated_sprite.flip_v = true
 
+
+func _ready():
+	# Emit signal that we're loaded
+	call_deferred("emit_signal", "player_loaded")
+
+func _on_game_manager_loaded():
+	game_initialized = true
+	$Camera2D._on_game_manager_loaded()
+
+
 func _physics_process(delta: float) -> void:
+	# Don't process physics until we're properly initialized
+	if !game_initialized:
+		return
+	
 	if menu.menu_state == Menu.STATE.GAME:
 		if game_manager.game_mode == 1:
 			# Invert the gravity.

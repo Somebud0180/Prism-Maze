@@ -6,11 +6,13 @@ class_name Menu
 @export var animation_player: AnimationPlayer
 @export var resolution_picker: OptionButton
 
-var player = preload("res://scenes/player.tscn").instantiate()
-var game_scene = preload("res://scenes/game.tscn").instantiate()
-var game_scene_3d = preload("res://scenes/game_3d.tscn").instantiate()
+var game_scene = preload("res://scenes/2D/game.tscn").instantiate()
+var game_scene_3d = preload("res://scenes/3D/game_3d.tscn").instantiate()
 var resolution_icon = load("res://resources/Menu/Resize.png")
 var native_icon = load("res://resources/Menu/Native.png")
+
+var game_scene_path = "res://scenes/2D/game.tscn"
+var game_scene_3d_path = "res://scenes/3D/game_3d.tscn"
 
 enum STATE { MAIN, SETTINGS, CONTROLS, GAME, GAME3D }
 var menu_state = STATE.MAIN:
@@ -24,6 +26,8 @@ var in_game = false:
 		manage_color_buttons()
 
 var in_game_3d = false
+
+var is_loading = false
 
 var is_popup_displaying = false
 var resolution = Vector2i(1280, 720)
@@ -42,7 +46,7 @@ func _ready() -> void:
 
 
 func _input(event):
-	if event.is_action_pressed("ui_cancel") and not animation_player.is_playing():
+	if event.is_action_pressed("ui_cancel") and not animation_player.is_playing() and not is_loading:
 		match menu_state:
 			STATE.SETTINGS:
 				menu_state = STATE.MAIN
@@ -90,7 +94,7 @@ func _on_play_pressed() -> void:
 	animation_player.play("hide_main")
 	await animation_player.animation_finished
 	if !in_game:
-		get_tree().root.add_child(game_scene)
+		LoadingManager.load_scene(game_scene_path)
 		in_game = true
 
 
@@ -108,8 +112,11 @@ func _on_play_3d_pressed() -> void:
 	menu_state = STATE.GAME3D
 	animation_player.play("hide_main")
 	await animation_player.animation_finished
+	
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	
 	if !in_game_3d:
-		get_tree().root.add_child(game_scene_3d)
+		LoadingManager.load_scene(game_scene_3d_path)
 		in_game_3d = true
 
 
@@ -273,7 +280,7 @@ func _compare_resolutions(a: Vector2i, b: Vector2i) -> bool:
 
 
 func reset_game() -> void:
-	var popup_ref = game_scene.get_node("/root/Game/MainLayer/LevelPopup")
+	var popup_ref = game_scene.get_node_or_null("MainLayer/LevelPopup")
 	if popup_ref != null:
 		if !popup_ref.isOnSide:
 			animation_player.play("show_main")
@@ -283,10 +290,10 @@ func reset_game() -> void:
 	in_game = false
 	menu_state = STATE.MAIN
 	
-	if game_scene.get_parent() != null:
-		game_scene.get_parent().remove_child(game_scene)
+	if game_scene != null:
+		LoadingManager.unload_current_scene("/root/Game")
 	
-	game_scene = preload("res://scenes/game.tscn").instantiate()
+	game_scene = preload("res://scenes/2D/game.tscn").instantiate()
 	manage_color_buttons()
 
 
@@ -295,10 +302,10 @@ func reset_game_3d() -> void:
 	menu_state = STATE.MAIN
 	animation_player.play("show_main")
 	
-	if game_scene_3d.get_parent() != null:
-		game_scene_3d.get_parent().remove_child(game_scene_3d)
+	if game_scene_3d != null:
+		LoadingManager.unload_current_scene("/root/Game3D")
 	
-	game_scene_3d = preload("res://scenes/game_3d.tscn").instantiate()
+	game_scene_3d = preload("res://scenes/3D/game_3d.tscn").instantiate()
 	$"Substrate Layer".visible = true
 	$"Bottom Layer".visible = true
 	$"Top Layer".visible = true
@@ -313,8 +320,8 @@ func manage_game_timer(state: STATE) -> void:
 
 
 func manage_popup(state: STATE) -> void:
-	var popup_ref = game_scene.get_node("/root/Game/MainLayer/LevelPopup")
-	if is_popup_displaying:
+	var popup_ref = game_scene.get_node_or_null("MainLayer/LevelPopup")
+	if popup_ref != null and is_popup_displaying:
 		if state == Menu.STATE.MAIN and !popup_ref.isOnSide:
 			popup_ref.animation_player.play("side_finish")
 			popup_ref.isOnSide = true

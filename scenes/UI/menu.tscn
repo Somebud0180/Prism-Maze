@@ -1,35 +1,35 @@
 [gd_scene load_steps=43 format=3 uid="uid://br2t4hanatnss"]
 
-[ext_resource type="Texture2D" uid="uid://up7vguaee3r1" path="res://resources/Menu/Menu.png" id="1_dj8fk"]
-[ext_resource type="Theme" uid="uid://bau50guyc4alk" path="res://resources/Theme/menu.tres" id="1_fjike"]
-[ext_resource type="Script" uid="uid://cnwd74ny2hf2q" path="res://scripts/menu.gd" id="3_0ybmh"]
-[ext_resource type="StyleBox" uid="uid://vqm1soj8xnjh" path="res://resources/Theme/separator.tres" id="3_b36nl"]
-[ext_resource type="Texture2D" uid="uid://k2ow5rr33vw" path="res://resources/Menu/Play.png" id="4_4g08a"]
-[ext_resource type="Texture2D" uid="uid://d1vxa1f4hthke" path="res://resources/Menu/Title.png" id="4_dlxnh"]
-[ext_resource type="Script" uid="uid://pxmim2yta7rs" path="res://scripts/main.gd" id="4_r80dm"]
-[ext_resource type="Texture2D" uid="uid://du5u4ffx7ot77" path="res://resources/Menu/Play_3D.png" id="6_3giok"]
-[ext_resource type="Texture2D" uid="uid://b0bn0h04f0qnm" path="res://resources/Menu/Gear.png" id="6_c7385"]
-[ext_resource type="Texture2D" uid="uid://csmavf1aewl1w" path="res://resources/Menu/Settings.png" id="7_ugwaw"]
-[ext_resource type="Texture2D" uid="uid://d3gerbn0xbpgv" path="res://resources/Menu/Exit.png" id="8_2fno0"]
-[ext_resource type="Texture2D" uid="uid://h8cyu0rn8tep" path="res://resources/Menu/Controls.png" id="8_46v5l"]
-[ext_resource type="Texture2D" uid="uid://dj3sea68kohlb" path="res://resources/Menu/Settings-Header.png" id="10_mrnth"]
-[ext_resource type="Texture2D" uid="uid://da7g5s3h5esdr" path="res://resources/Menu/Fullscreen.png" id="12_aniy3"]
-[ext_resource type="StyleBox" uid="uid://cab412g1l7xe1" path="res://resources/Theme/box_normal.tres" id="13_dj0hg"]
-[ext_resource type="StyleBox" uid="uid://o1f6ysc2jugj" path="res://resources/Theme/box_focus.tres" id="13_ocdiu"]
-[ext_resource type="Texture2D" uid="uid://ctv8w3oyplrgd" path="res://resources/Menu/color.png" id="14_jfnw5"]
-[ext_resource type="Texture2D" uid="uid://br34aw4na03cr" path="res://resources/Menu/Controls-Header.png" id="15_xhhkk"]
-[ext_resource type="StyleBox" uid="uid://b4mewmdnj56qd" path="res://resources/Theme/v_separator.tres" id="16_cnarv"]
-[ext_resource type="Texture2D" uid="uid://c7vfpy4vpfcj" path="res://resources/Menu/Move.png" id="16_kqq8n"]
-[ext_resource type="Texture2D" uid="uid://bhf1o42di43rv" path="res://resources/Controls/Controllers/stick_l.png" id="17_8utq4"]
-[ext_resource type="Texture2D" uid="uid://dgx4iqfxayl3s" path="res://resources/Controls/KBM/keyboard_arrows.png" id="18_b0m12"]
-[ext_resource type="Texture2D" uid="uid://b2ctuu0ig3fse" path="res://resources/Controls/KBM/keyboard_wasd.png" id="19_1ploq"]
-[ext_resource type="Texture2D" uid="uid://cn8i1e5a2w11c" path="res://resources/Background/Substrate.png" id="22_h4mbb"]
-[ext_resource type="Texture2D" uid="uid://dhkixf8jhbq4o" path="res://resources/Background/Bottom Layer.png" id="23_70bx8"]
-[ext_resource type="Texture2D" uid="uid://c63pofosye2ac" path="res://resources/Menu/Jump.png" id="23_tuapu"]
-[ext_resource type="Texture2D" uid="uid://dqm1knqvsbn8a" path="res://resources/Controls/Controllers/button_b.png" id="24_05cvn"]
-[ext_resource type="Texture2D" uid="uid://dhop524e0npfj" path="res://resources/Background/Top Layer.png" id="24_co3tt"]
-[ext_resource type="Texture2D" uid="uid://toobd4vd6hfg" path="res://resources/Controls/KBM/keyboard_space_icon.png" id="25_7o6xk"]
-[ext_resource type="Texture2D" uid="uid://b0viiebu5kc4j" path="res://resources/Background/Components.png" id="25_h54ee"]
+[ext_resource type="Theme" uid="uid://bau50guyc4alk" path="res://resources/Theme/menu.tres" id="1_7yxt8"]
+[ext_resource type="Script" uid="uid://cnwd74ny2hf2q" path="res://scripts/menu.gd" id="2_o131u"]
+[ext_resource type="Texture2D" uid="uid://up7vguaee3r1" path="res://resources/Menu/Menu.png" id="3_u30pp"]
+[ext_resource type="Script" uid="uid://pxmim2yta7rs" path="res://scripts/main.gd" id="4_0cnb7"]
+[ext_resource type="Texture2D" uid="uid://d1vxa1f4hthke" path="res://resources/Menu/Title.png" id="5_7k0uf"]
+[ext_resource type="Texture2D" uid="uid://k2ow5rr33vw" path="res://resources/Menu/Play.png" id="6_jcwtk"]
+[ext_resource type="Texture2D" uid="uid://du5u4ffx7ot77" path="res://resources/Menu/Play_3D.png" id="7_7oqtn"]
+[ext_resource type="Texture2D" uid="uid://b0bn0h04f0qnm" path="res://resources/Menu/Gear.png" id="8_1anaf"]
+[ext_resource type="Texture2D" uid="uid://h8cyu0rn8tep" path="res://resources/Menu/Controls.png" id="9_xlwes"]
+[ext_resource type="Texture2D" uid="uid://d3gerbn0xbpgv" path="res://resources/Menu/Exit.png" id="10_fqtlv"]
+[ext_resource type="Texture2D" uid="uid://csmavf1aewl1w" path="res://resources/Menu/Settings.png" id="11_mfpu8"]
+[ext_resource type="Texture2D" uid="uid://dj3sea68kohlb" path="res://resources/Menu/Settings-Header.png" id="12_wg8ic"]
+[ext_resource type="StyleBox" uid="uid://b4mewmdnj56qd" path="res://resources/Theme/v_separator.tres" id="13_tbd65"]
+[ext_resource type="Texture2D" uid="uid://da7g5s3h5esdr" path="res://resources/Menu/Fullscreen.png" id="14_pjik4"]
+[ext_resource type="StyleBox" uid="uid://cab412g1l7xe1" path="res://resources/Theme/box_normal.tres" id="15_bqoc1"]
+[ext_resource type="Texture2D" uid="uid://ctv8w3oyplrgd" path="res://resources/Menu/color.png" id="16_whlyx"]
+[ext_resource type="StyleBox" uid="uid://o1f6ysc2jugj" path="res://resources/Theme/box_focus.tres" id="17_cijfx"]
+[ext_resource type="Texture2D" uid="uid://br34aw4na03cr" path="res://resources/Menu/Controls-Header.png" id="18_s1ob8"]
+[ext_resource type="Texture2D" uid="uid://c7vfpy4vpfcj" path="res://resources/Menu/Move.png" id="19_i7uud"]
+[ext_resource type="StyleBox" uid="uid://vqm1soj8xnjh" path="res://resources/Theme/separator.tres" id="20_6p85y"]
+[ext_resource type="Texture2D" uid="uid://dgx4iqfxayl3s" path="res://resources/Controls/KBM/keyboard_arrows.png" id="21_vsims"]
+[ext_resource type="Texture2D" uid="uid://b2ctuu0ig3fse" path="res://resources/Controls/KBM/keyboard_wasd.png" id="22_ifku1"]
+[ext_resource type="Texture2D" uid="uid://bhf1o42di43rv" path="res://resources/Controls/Controllers/stick_l.png" id="23_hvuoq"]
+[ext_resource type="Texture2D" uid="uid://c63pofosye2ac" path="res://resources/Menu/Jump.png" id="24_xkl7s"]
+[ext_resource type="Texture2D" uid="uid://toobd4vd6hfg" path="res://resources/Controls/KBM/keyboard_space_icon.png" id="25_q4tpj"]
+[ext_resource type="Texture2D" uid="uid://dqm1knqvsbn8a" path="res://resources/Controls/Controllers/button_b.png" id="26_qg4he"]
+[ext_resource type="Texture2D" uid="uid://cn8i1e5a2w11c" path="res://resources/Background/Substrate.png" id="27_ucr8h"]
+[ext_resource type="Texture2D" uid="uid://dhkixf8jhbq4o" path="res://resources/Background/Bottom Layer.png" id="28_y8j5i"]
+[ext_resource type="Texture2D" uid="uid://dhop524e0npfj" path="res://resources/Background/Top Layer.png" id="29_p2cca"]
+[ext_resource type="Texture2D" uid="uid://b0viiebu5kc4j" path="res://resources/Background/Components.png" id="30_v00k6"]
 
 [sub_resource type="Animation" id="Animation_8rgj6"]
 length = 0.001
@@ -450,6 +450,7 @@ _data = {
 }
 
 [node name="Menu" type="Control" node_paths=PackedStringArray("main", "settings", "animation_player", "resolution_picker")]
+process_priority = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -458,8 +459,9 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme = ExtResource("1_fjike")
-script = ExtResource("3_0ybmh")
+mouse_filter = 1
+theme = ExtResource("1_7yxt8")
+script = ExtResource("2_o131u")
 main = NodePath("CanvasLayer/Main")
 settings = NodePath("CanvasLayer/Settings")
 animation_player = NodePath("CanvasLayer/AnimationPlayer")
@@ -479,13 +481,13 @@ offset_right = 680.0
 offset_bottom = 320.0
 grow_vertical = 2
 size_flags_horizontal = 4
-theme = ExtResource("1_fjike")
-texture = ExtResource("1_dj8fk")
+theme = ExtResource("1_7yxt8")
+texture = ExtResource("3_u30pp")
 patch_margin_left = 5
 patch_margin_top = 5
 patch_margin_right = 5
 patch_margin_bottom = 5
-script = ExtResource("4_r80dm")
+script = ExtResource("4_0cnb7")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Main"]
 custom_minimum_size = Vector2(576, 576)
@@ -505,7 +507,7 @@ alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/Main/VBoxContainer"]
 layout_mode = 2
-texture = ExtResource("4_dlxnh")
+texture = ExtResource("5_7k0uf")
 expand_mode = 5
 stretch_mode = 4
 
@@ -518,10 +520,10 @@ custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 size_flags_vertical = 3
 focus_neighbor_top = NodePath("../Quit")
-focus_neighbor_bottom = NodePath("../Settings")
-focus_next = NodePath("../Settings")
+focus_neighbor_bottom = NodePath("../Play3D")
+focus_next = NodePath("../Play3D")
 focus_previous = NodePath("../Quit")
-icon = ExtResource("4_4g08a")
+icon = ExtResource("6_jcwtk")
 icon_alignment = 1
 expand_icon = true
 
@@ -532,11 +534,11 @@ layout_mode = 2
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 size_flags_vertical = 3
-focus_neighbor_top = NodePath("../Quit")
+focus_neighbor_top = NodePath("../Play")
 focus_neighbor_bottom = NodePath("../Settings")
 focus_next = NodePath("../Settings")
-focus_previous = NodePath("../Quit")
-icon = ExtResource("6_3giok")
+focus_previous = NodePath("../Play")
+icon = ExtResource("7_7oqtn")
 icon_alignment = 1
 expand_icon = true
 
@@ -547,11 +549,11 @@ layout_mode = 2
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 size_flags_vertical = 3
-focus_neighbor_top = NodePath("../Play")
+focus_neighbor_top = NodePath("../Play3D")
 focus_neighbor_bottom = NodePath("../Controls")
 focus_next = NodePath("../Controls")
-focus_previous = NodePath("../Play")
-icon = ExtResource("6_c7385")
+focus_previous = NodePath("../Play3D")
+icon = ExtResource("8_1anaf")
 icon_alignment = 1
 expand_icon = true
 
@@ -566,7 +568,7 @@ focus_neighbor_top = NodePath("../Settings")
 focus_neighbor_bottom = NodePath("../Quit")
 focus_next = NodePath("../Quit")
 focus_previous = NodePath("../Settings")
-icon = ExtResource("8_46v5l")
+icon = ExtResource("9_xlwes")
 icon_alignment = 1
 expand_icon = true
 
@@ -581,7 +583,7 @@ focus_neighbor_top = NodePath("../Controls")
 focus_neighbor_bottom = NodePath("../Play")
 focus_next = NodePath("../Play")
 focus_previous = NodePath("../Controls")
-icon = ExtResource("8_2fno0")
+icon = ExtResource("10_fqtlv")
 icon_alignment = 1
 expand_icon = true
 
@@ -599,8 +601,8 @@ offset_right = 1880.0
 offset_bottom = 280.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_fjike")
-texture = ExtResource("7_ugwaw")
+theme = ExtResource("1_7yxt8")
+texture = ExtResource("11_mfpu8")
 region_rect = Rect2(0, 0, 32, 32)
 patch_margin_left = 5
 patch_margin_top = 5
@@ -619,14 +621,14 @@ offset_bottom = 194.0
 [node name="Settings Header" type="TextureRect" parent="CanvasLayer/Settings/VBoxContainer"]
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
-texture = ExtResource("10_mrnth")
+texture = ExtResource("12_wg8ic")
 stretch_mode = 4
 
 [node name="VSeparator" type="VSeparator" parent="CanvasLayer/Settings/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 16
-theme_override_styles/separator = ExtResource("16_cnarv")
+theme_override_styles/separator = ExtResource("13_tbd65")
 
 [node name="Resolution" type="OptionButton" parent="CanvasLayer/Settings/VBoxContainer"]
 custom_minimum_size = Vector2(0, 48)
@@ -645,14 +647,14 @@ focus_neighbor_top = NodePath("../Resolution")
 focus_neighbor_right = NodePath("../../Exit Settings")
 focus_next = NodePath("../Panel/VBoxContainer/HBoxContainer/GridContainer/White")
 focus_previous = NodePath("../Resolution")
-icon = ExtResource("12_aniy3")
+icon = ExtResource("14_pjik4")
 icon_alignment = 1
 
 [node name="Panel" type="Panel" parent="CanvasLayer/Settings/VBoxContainer"]
 custom_minimum_size = Vector2(0, 160)
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_styles/panel = ExtResource("13_dj0hg")
+theme_override_styles/panel = ExtResource("15_bqoc1")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Settings/VBoxContainer/Panel"]
 layout_mode = 1
@@ -670,7 +672,7 @@ grow_vertical = 2
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/Settings/VBoxContainer/Panel/VBoxContainer"]
 layout_mode = 2
-texture = ExtResource("14_jfnw5")
+texture = ExtResource("16_whlyx")
 stretch_mode = 5
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Settings/VBoxContainer/Panel/VBoxContainer"]
@@ -679,7 +681,7 @@ layout_mode = 2
 [node name="Left Padding" type="HSeparator" parent="CanvasLayer/Settings/VBoxContainer/Panel/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_styles/separator = ExtResource("16_cnarv")
+theme_override_styles/separator = ExtResource("13_tbd65")
 
 [node name="GridContainer" type="GridContainer" parent="CanvasLayer/Settings/VBoxContainer/Panel/VBoxContainer/HBoxContainer"]
 layout_mode = 2
@@ -715,8 +717,8 @@ focus_neighbor_left = NodePath("../White")
 focus_neighbor_right = NodePath("../Green")
 focus_next = NodePath("../Green")
 focus_previous = NodePath("../White")
-theme_override_styles/focus = ExtResource("13_ocdiu")
-theme_override_styles/pressed = ExtResource("13_ocdiu")
+theme_override_styles/focus = ExtResource("17_cijfx")
+theme_override_styles/pressed = ExtResource("17_cijfx")
 
 [node name="Red" type="ColorRect" parent="CanvasLayer/Settings/VBoxContainer/Panel/VBoxContainer/HBoxContainer/GridContainer/Red"]
 custom_minimum_size = Vector2(32, 32)
@@ -739,8 +741,8 @@ focus_neighbor_left = NodePath("../Red")
 focus_neighbor_right = NodePath("../Blue")
 focus_next = NodePath("../Blue")
 focus_previous = NodePath("../Red")
-theme_override_styles/focus = ExtResource("13_ocdiu")
-theme_override_styles/pressed = ExtResource("13_ocdiu")
+theme_override_styles/focus = ExtResource("17_cijfx")
+theme_override_styles/pressed = ExtResource("17_cijfx")
 
 [node name="Green" type="ColorRect" parent="CanvasLayer/Settings/VBoxContainer/Panel/VBoxContainer/HBoxContainer/GridContainer/Green"]
 custom_minimum_size = Vector2(32, 32)
@@ -766,8 +768,8 @@ focus_neighbor_left = NodePath("../Green")
 focus_neighbor_right = NodePath("../Yellow")
 focus_next = NodePath("../Yellow")
 focus_previous = NodePath("../Green")
-theme_override_styles/focus = ExtResource("13_ocdiu")
-theme_override_styles/pressed = ExtResource("13_ocdiu")
+theme_override_styles/focus = ExtResource("17_cijfx")
+theme_override_styles/pressed = ExtResource("17_cijfx")
 
 [node name="Blue" type="ColorRect" parent="CanvasLayer/Settings/VBoxContainer/Panel/VBoxContainer/HBoxContainer/GridContainer/Blue"]
 custom_minimum_size = Vector2(32, 32)
@@ -791,8 +793,8 @@ custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 focus_neighbor_left = NodePath("../Blue")
 focus_previous = NodePath("../Blue")
-theme_override_styles/focus = ExtResource("13_ocdiu")
-theme_override_styles/pressed = ExtResource("13_ocdiu")
+theme_override_styles/focus = ExtResource("17_cijfx")
+theme_override_styles/pressed = ExtResource("17_cijfx")
 
 [node name="Yellow" type="ColorRect" parent="CanvasLayer/Settings/VBoxContainer/Panel/VBoxContainer/HBoxContainer/GridContainer/Yellow"]
 custom_minimum_size = Vector2(32, 32)
@@ -814,7 +816,7 @@ color = Color(1, 1, 0, 1)
 [node name="Right Padding" type="HSeparator" parent="CanvasLayer/Settings/VBoxContainer/Panel/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_styles/separator = ExtResource("16_cnarv")
+theme_override_styles/separator = ExtResource("13_tbd65")
 
 [node name="Exit Settings" type="Button" parent="CanvasLayer/Settings"]
 custom_minimum_size = Vector2(32, 32)
@@ -848,8 +850,8 @@ offset_right = 560.0
 offset_bottom = 1000.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_fjike")
-texture = ExtResource("7_ugwaw")
+theme = ExtResource("1_7yxt8")
+texture = ExtResource("11_mfpu8")
 region_rect = Rect2(0, 0, 32, 32)
 patch_margin_left = 5
 patch_margin_top = 5
@@ -871,14 +873,14 @@ size_flags_vertical = 3
 [node name="Controls Header" type="TextureRect" parent="CanvasLayer/Controls/VBoxContainer"]
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
-texture = ExtResource("15_xhhkk")
+texture = ExtResource("18_s1ob8")
 stretch_mode = 4
 
 [node name="VSeparator" type="VSeparator" parent="CanvasLayer/Controls/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 16
-theme_override_styles/separator = ExtResource("16_cnarv")
+theme_override_styles/separator = ExtResource("13_tbd65")
 
 [node name="Move Controls" type="HBoxContainer" parent="CanvasLayer/Controls/VBoxContainer"]
 layout_mode = 2
@@ -886,30 +888,30 @@ layout_mode = 2
 [node name="Move" type="TextureRect" parent="CanvasLayer/Controls/VBoxContainer/Move Controls"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-texture = ExtResource("16_kqq8n")
+texture = ExtResource("19_i7uud")
 expand_mode = 3
 stretch_mode = 4
 
 [node name="HSeparator" type="HSeparator" parent="CanvasLayer/Controls/VBoxContainer/Move Controls"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_styles/separator = ExtResource("3_b36nl")
+theme_override_styles/separator = ExtResource("20_6p85y")
 
 [node name="Arrow Keys" type="TextureRect" parent="CanvasLayer/Controls/VBoxContainer/Move Controls"]
 layout_mode = 2
-texture = ExtResource("18_b0m12")
+texture = ExtResource("21_vsims")
 expand_mode = 3
 stretch_mode = 4
 
 [node name="WASD" type="TextureRect" parent="CanvasLayer/Controls/VBoxContainer/Move Controls"]
 layout_mode = 2
-texture = ExtResource("19_1ploq")
+texture = ExtResource("22_ifku1")
 expand_mode = 3
 stretch_mode = 4
 
 [node name="L Stick" type="TextureRect" parent="CanvasLayer/Controls/VBoxContainer/Move Controls"]
 layout_mode = 2
-texture = ExtResource("17_8utq4")
+texture = ExtResource("23_hvuoq")
 expand_mode = 3
 stretch_mode = 4
 
@@ -919,24 +921,24 @@ layout_mode = 2
 [node name="Jump" type="TextureRect" parent="CanvasLayer/Controls/VBoxContainer/Jump Controls"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-texture = ExtResource("23_tuapu")
+texture = ExtResource("24_xkl7s")
 expand_mode = 3
 stretch_mode = 4
 
 [node name="HSeparator" type="HSeparator" parent="CanvasLayer/Controls/VBoxContainer/Jump Controls"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_styles/separator = ExtResource("3_b36nl")
+theme_override_styles/separator = ExtResource("20_6p85y")
 
 [node name="Spacebar" type="TextureRect" parent="CanvasLayer/Controls/VBoxContainer/Jump Controls"]
 layout_mode = 2
-texture = ExtResource("25_7o6xk")
+texture = ExtResource("25_q4tpj")
 expand_mode = 3
 stretch_mode = 4
 
 [node name="B Button" type="TextureRect" parent="CanvasLayer/Controls/VBoxContainer/Jump Controls"]
 layout_mode = 2
-texture = ExtResource("24_05cvn")
+texture = ExtResource("26_qg4he")
 expand_mode = 3
 stretch_mode = 4
 
@@ -968,7 +970,7 @@ repeat_times = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="Substrate Layer"]
 scale = Vector2(1.25, 1.25)
-texture = ExtResource("22_h4mbb")
+texture = ExtResource("27_ucr8h")
 centered = false
 
 [node name="Bottom Layer" type="Parallax2D" parent="."]
@@ -979,7 +981,7 @@ repeat_times = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="Bottom Layer"]
 scale = Vector2(1.25, 1.25)
-texture = ExtResource("23_70bx8")
+texture = ExtResource("28_y8j5i")
 centered = false
 region_rect = Rect2(0, 0, 640, 320)
 
@@ -991,7 +993,7 @@ repeat_times = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="Top Layer"]
 scale = Vector2(1.25, 1.25)
-texture = ExtResource("24_co3tt")
+texture = ExtResource("29_p2cca")
 centered = false
 
 [node name="Component Layer" type="Parallax2D" parent="."]
@@ -1002,7 +1004,7 @@ repeat_times = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="Component Layer"]
 scale = Vector2(1.25, 1.25)
-texture = ExtResource("25_h54ee")
+texture = ExtResource("30_v00k6")
 centered = false
 
 [connection signal="pressed" from="CanvasLayer/Main/VBoxContainer/Play" to="." method="_on_play_pressed"]

@@ -1,7 +1,7 @@
 extends Area2D
 
 @onready var timer = $Timer
-@onready var player = get_node("/root/Game/Player")
+var player
 
 func _on_body_entered(_body: Node2D) -> void:
 	print("You Died")
@@ -11,7 +11,7 @@ func _on_body_entered(_body: Node2D) -> void:
 
 
 func _on_timer_timeout() -> void:
+	player = get_node("/root/Game/Player")
 	player.velocity.x = 0
 	player.velocity.y = 0
 	player.position = Vector2i(0,0)
-	timer.stop()

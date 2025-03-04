@@ -4,7 +4,7 @@ extends TileMapLayer
 # From https://godotengine.org/asset-library/asset/2199
 # Slightly modified to fit the game.
 
-const allow_loops = true
+var allow_loops = true
 
 var current_level = 0
 var starting_pos = Vector2i()
@@ -24,14 +24,17 @@ var adj4 = [
 	Vector2i(0, -1),
 ]
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	# Allow loops in maze randomly
+	allow_loops = randi() % 2 == 0
+	
 	# Offset the maze position to allow the player to spawn in (0, 0)
 	position.y = -32
 
 
 func load_maze(level: int):
-	print("Resetting maze layer")
 	# Store current level as needed.
 	current_level = level
 	
@@ -51,16 +54,13 @@ func load_maze(level: int):
 	y_dim = randi_range(min_range, max_range)
 	x_dim = randi_range(min_range, max_range)
 	
-	print("Player tile:", starting_coords)
-	
 	place_border()
 	dfs(starting_coords)
 	place_flag()
 	
 	# Hide the flag for 1 second to avoid spoiling it during camera movement
 	show_flags(false)
-	await get_tree().create_timer(1).timeout
-	show_flags(true)
+	$Timer.start()
 
 
 func determine_size(level: int):
@@ -83,16 +83,16 @@ func place_border():
 
 func delete_cell_at(pos: Vector2i):
 	set_cell(pos)
-	
-	
+
+
 func place_wall(pos: Vector2i):
 	set_cell(pos, SOURCE_ID, normal_wall_atlas_coords)
 
 
 func will_be_converted_to_wall(spot: Vector2i):
 	return (spot.x % 2 == 1 and spot.y % 2 == 1)
-	
-	
+
+
 func is_wall(pos: Vector2i):
 	return get_cell_atlas_coords(pos) == normal_wall_atlas_coords
 
@@ -104,6 +104,7 @@ func can_move_to(cell: Vector2i):
 		cell.x < starting_coords.x + x_dim and cell.y < starting_coords.y + y_dim and
 		not is_wall(cell)
 	)
+
 
 func dfs(start: Vector2i):
 	var fringe: Array[Vector2i] = [start]
@@ -142,7 +143,8 @@ func dfs(start: Vector2i):
 		#if we hit a dead end or are at a cross section
 		if not found_new_path:
 			place_wall(current)
-			
+
+
 func place_flag() -> void:
 	var candidate_positions = []
 	for y in range(0, y_dim):
@@ -167,27 +169,31 @@ func place_flag() -> void:
 					
 	if candidate_positions.size() > 0:
 		var chosen = candidate_positions[randi() % candidate_positions.size()]
-		var flag_scene = load("res://scenes/flag.tscn")
+		var flag_scene = load("res://scenes/2D/flag.tscn")
 		var flag_instance = flag_scene.instantiate()
 		# Position the flag at the chosen cell (convert to local coordinates).
 		flag_instance.position = map_to_local(chosen)
 		# Add the flag node to the scene and the "flag" group for cleanup.
 		add_child(flag_instance)
 		flag_instance.add_to_group("flag")
-		print("Placed flag at: ", chosen)
 	else:
-		print("No suitable flag candidate found. Resetting...")
 		load_maze(current_level)
+
 
 func show_flags(visible: bool) -> void:
 	for child in get_children():
 		_show_flags_recursive(visible, child)
 
+
 func _show_flags_recursive(visible: bool, node: Node) -> void:
 	# If you name nodes "Flag," check for node.name == "Flag."
 	if node.name == "Flag" and node is CanvasItem:
 		node.visible = visible
-	
-	# Continue down the scene tree
-	for subchild in node.get_children():
-		_show_flags_recursive(visible, subchild)
+	#
+	## Continue down the scene tree
+	#for subchild in node.get_children():
+		#_show_flags_recursive(visible, subchild)
+
+
+func _on_timer_timeout() -> void:
+	show_flags(true)
