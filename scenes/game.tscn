@@ -10,7 +10,6 @@
 unique_name_in_owner = true
 script = ExtResource("1_vrrtt")
 level_amount = 15
-custom_level = "Platform: 9"
 
 [node name="Player" parent="." instance=ExtResource("1_vxt15")]
 unique_name_in_owner = true
