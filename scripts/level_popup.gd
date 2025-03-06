@@ -15,13 +15,13 @@ func _ready() -> void:
 
 func output_timer(seconds_elapsed: float, level_times: Array) -> void:
 	# Total integer seconds
-	var total_whole_seconds = int(seconds_elapsed)
+	var total_whole_seconds = seconds_elapsed
 	
 	# Minutes, seconds, hundredths
-	var total_fraction = seconds_elapsed - float(total_whole_seconds)
+	var total_fraction = seconds_elapsed - total_whole_seconds
 
-	var total_mins = total_whole_seconds / 60
-	var total_secs = total_whole_seconds % 60
+	var total_mins = int(total_whole_seconds / 60)
+	var total_secs = int(total_whole_seconds % 60)
 	var total_hundredths = int(round(total_fraction * 100.0))
 	
 	# Format each component as two digits
@@ -42,11 +42,11 @@ func output_timer(seconds_elapsed: float, level_times: Array) -> void:
 		avg_time = total_avg_time / float(level_times.size())
 	
 	# Minutes, seconds, hundredths
-	var avg_whole_seconds = int(avg_time)
-	var avg_fraction = avg_time - float(avg_whole_seconds)
+	var avg_whole_seconds = avg_time
+	var avg_fraction = avg_time - avg_whole_seconds
 
-	var avg_mins = avg_whole_seconds / 60
-	var avg_secs = avg_whole_seconds % 60
+	var avg_mins = int(avg_whole_seconds / 60)
+	var avg_secs = int(avg_whole_seconds % 60)
 	var avg_hundredths = int(round(avg_fraction * 100.0))
 	
 	# Format each component as two digits

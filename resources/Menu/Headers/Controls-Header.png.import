@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c7vfpy4vpfcj"
-path="res://.godot/imported/Move.png-15c24fbcfc958ca256bb7bbf381386d2.ctex"
+uid="uid://br34aw4na03cr"
+path="res://.godot/imported/Controls-Header.png-15c17d2a2cea6143bb9e050c516c0103.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/Menu/Move.png"
-dest_files=["res://.godot/imported/Move.png-15c24fbcfc958ca256bb7bbf381386d2.ctex"]
+source_file="res://resources/Menu/Headers/Controls-Header.png"
+dest_files=["res://.godot/imported/Controls-Header.png-15c17d2a2cea6143bb9e050c516c0103.ctex"]
 
 [params]
 

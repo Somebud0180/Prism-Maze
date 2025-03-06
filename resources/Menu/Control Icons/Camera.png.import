@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c63pofosye2ac"
-path="res://.godot/imported/Jump.png-1c631c6a2aa62fbaae85437d2cd537d1.ctex"
+uid="uid://dn3jva0kh35qs"
+path="res://.godot/imported/Camera.png-a919553b78aeb75ee7f2019a3098db0f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/Menu/Jump.png"
-dest_files=["res://.godot/imported/Jump.png-1c631c6a2aa62fbaae85437d2cd537d1.ctex"]
+source_file="res://resources/Menu/Control Icons/Camera.png"
+dest_files=["res://.godot/imported/Camera.png-a919553b78aeb75ee7f2019a3098db0f.ctex"]
 
 [params]
 

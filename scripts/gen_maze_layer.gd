@@ -66,7 +66,7 @@ func load_maze(level: int):
 func determine_size(level: int):
 	if level <= 5:
 		return Vector2i(12, 16)
-	elif level <= 10:
+	elif level > 5:
 		return Vector2i(16, 32)
 
 

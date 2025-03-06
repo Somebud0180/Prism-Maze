@@ -45,8 +45,8 @@ func _enable_level(level_node: Node) -> void:
 		level_node.set_process(true)
 	if level_node.has_method("set_physics_process"):
 		level_node.set_physics_process(true)
-	if "collision_enabled" in level_node:
-		level_node.collision_enabled = true
+	if level_node is TileMapLayer:
+		level_node.enabled = true
 	_set_physics_state(level_node, true)
 
 
@@ -57,8 +57,8 @@ func _disable_level(level_node: Node) -> void:
 		level_node.set_process(false)
 	if level_node.has_method("set_physics_process"):
 		level_node.set_physics_process(false)
-	if "collision_enabled" in level_node:
-		level_node.collision_enabled = false
+	if level_node is TileMapLayer:
+		level_node.enabled = false
 	_set_physics_state(level_node, false)
 
 

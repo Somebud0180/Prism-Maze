@@ -113,8 +113,6 @@ func _on_play_3d_pressed() -> void:
 	animation_player.play("hide_main")
 	await animation_player.animation_finished
 	
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	
 	if !in_game_3d:
 		LoadingManager.load_scene(game_scene_3d_path)
 		in_game_3d = true

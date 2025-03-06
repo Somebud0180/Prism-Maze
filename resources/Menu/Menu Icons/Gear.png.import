@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://br34aw4na03cr"
-path="res://.godot/imported/Controls-Header.png-fa13ba55a3003cbc6f7253b43823d3e9.ctex"
+uid="uid://b0bn0h04f0qnm"
+path="res://.godot/imported/Gear.png-933fc7dc5ff4fb0715f9e967ecca6839.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/Menu/Controls-Header.png"
-dest_files=["res://.godot/imported/Controls-Header.png-fa13ba55a3003cbc6f7253b43823d3e9.ctex"]
+source_file="res://resources/Menu/Menu Icons/Gear.png"
+dest_files=["res://.godot/imported/Gear.png-933fc7dc5ff4fb0715f9e967ecca6839.ctex"]
 
 [params]
 

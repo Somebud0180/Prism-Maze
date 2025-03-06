@@ -214,12 +214,12 @@ func cycle_zoom() -> void:
 
 # Increase to next higher zoom level
 func increase_zoom() -> void:
-	current_zoom_index = min(current_zoom_index - 1, zoom_levels.size() - 1)
+	current_zoom_index = clamp(current_zoom_index - 1, 0, zoom_levels.size() - 1)
 	set_zoom(zoom_levels[current_zoom_index])
 
 # Decrease to next lower zoom level
 func decrease_zoom() -> void:
-	current_zoom_index = max(current_zoom_index + 1, 0)
+	current_zoom_index = clamp(current_zoom_index + 1, 0, zoom_levels.size() - 1)
 	set_zoom(zoom_levels[current_zoom_index])
 
 # Add a new function to handle zooming with constraints

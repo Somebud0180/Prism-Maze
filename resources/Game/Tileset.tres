@@ -1,6 +1,11 @@
-[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://dyown6ix7tyu4"]
+[gd_resource type="TileSet" load_steps=9 format=3 uid="uid://dyown6ix7tyu4"]
 
 [ext_resource type="Texture2D" uid="uid://b2trhvjrl8ees" path="res://resources/Game/Tileset.png" id="1_018dw"]
+[ext_resource type="PackedScene" uid="uid://cp5cu1p2kmu6r" path="res://scenes/2D/flag.tscn" id="2_w3rtk"]
+[ext_resource type="PackedScene" uid="uid://lh1g6i2usv5c" path="res://scenes/2D/platform_down.tscn" id="5_k3x02"]
+[ext_resource type="PackedScene" uid="uid://cdwkrk6so1f7k" path="res://scenes/2D/gravity_normalizer.tscn" id="5_w3rtk"]
+[ext_resource type="PackedScene" uid="uid://cja0a67a5d87v" path="res://scenes/2D/gravity_inverter.tscn" id="6_0djkg"]
+[ext_resource type="PackedScene" uid="uid://dak5chwustt20" path="res://scenes/2D/platform_up.tscn" id="6_81kwd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_aye4h"]
 texture = ExtResource("1_018dw")
@@ -8,16 +13,23 @@ texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 1:0/0 = 0
-1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -2, 16, -2, 16, -16, -16, -16)
-1:0/0/physics_layer_0/polygon_0/one_way = true
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 2:0/0 = 0
-2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 2, 16, 2, 16, 16, -16, 16)
-2:0/0/physics_layer_0/polygon_0/one_way = true
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 3:0/0 = 0
 4:0/0 = 0
 5:0/0 = 0
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_vaip8"]
+resource_name = "Misc"
+scenes/0/scene = ExtResource("2_w3rtk")
+scenes/3/scene = ExtResource("5_k3x02")
+scenes/4/scene = ExtResource("6_81kwd")
+scenes/5/scene = ExtResource("5_w3rtk")
+scenes/6/scene = ExtResource("6_0djkg")
 
 [resource]
 tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_aye4h")
+sources/1 = SubResource("TileSetScenesCollectionSource_vaip8")

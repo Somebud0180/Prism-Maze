@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d3gerbn0xbpgv"
-path="res://.godot/imported/Exit.png-c85c6c4fc383693e9f842273b31bd13d.ctex"
+uid="uid://2tmrtrxy6h1a"
+path="res://.godot/imported/stick_side_r.png-48f39c86180b50a2efe2fca3caeb7ea3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/Menu/Exit.png"
-dest_files=["res://.godot/imported/Exit.png-c85c6c4fc383693e9f842273b31bd13d.ctex"]
+source_file="res://resources/Controls/Controllers/stick_side_r.png"
+dest_files=["res://.godot/imported/stick_side_r.png-48f39c86180b50a2efe2fca3caeb7ea3.ctex"]
 
 [params]
 

@@ -6,6 +6,7 @@
 .DS_Store
 
 # iOS Project ignores
+.p8
 .xcframework
 .xcodeproj
 .xcprivacy

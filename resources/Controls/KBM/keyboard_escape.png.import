@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dj3sea68kohlb"
-path="res://.godot/imported/Settings-Header.png-b34fbfc75d31be0b43dd4a0812b56a2b.ctex"
+uid="uid://bpfhnqlts6ljd"
+path="res://.godot/imported/keyboard_escape.png-578f74c5b9cd1cd91fa98589dff6a661.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/Menu/Settings-Header.png"
-dest_files=["res://.godot/imported/Settings-Header.png-b34fbfc75d31be0b43dd4a0812b56a2b.ctex"]
+source_file="res://resources/Controls/KBM/keyboard_escape.png"
+dest_files=["res://.godot/imported/keyboard_escape.png-578f74c5b9cd1cd91fa98589dff6a661.ctex"]
 
 [params]
 

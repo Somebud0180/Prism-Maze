@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ccy445wy4ije8"
-path="res://.godot/imported/Settings_Header.png-3c83b0add50c2921f1f8c3d8eca8cd76.ctex"
+uid="uid://cl34u7ep38jhx"
+path="res://.godot/imported/Zoom.png-f11192781f2da95853962522a322be95.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/Menu/Settings_Header.png"
-dest_files=["res://.godot/imported/Settings_Header.png-3c83b0add50c2921f1f8c3d8eca8cd76.ctex"]
+source_file="res://resources/Menu/Control Icons/Zoom.png"
+dest_files=["res://.godot/imported/Zoom.png-f11192781f2da95853962522a322be95.ctex"]
 
 [params]
 

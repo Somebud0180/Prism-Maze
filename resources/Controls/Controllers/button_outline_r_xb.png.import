@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://up7vguaee3r1"
-path="res://.godot/imported/Menu.png-8106cbc3f8e6f657ed8a54d4995ab175.ctex"
+uid="uid://72xvr3t4rcle"
+path="res://.godot/imported/button_outline_r_xb.png-ea6a3c6cc454a46457643c41f368f1f8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/Menu/Menu.png"
-dest_files=["res://.godot/imported/Menu.png-8106cbc3f8e6f657ed8a54d4995ab175.ctex"]
+source_file="res://resources/Controls/Controllers/button_outline_r_xb.png"
+dest_files=["res://.godot/imported/button_outline_r_xb.png-ea6a3c6cc454a46457643c41f368f1f8.ctex"]
 
 [params]
 
