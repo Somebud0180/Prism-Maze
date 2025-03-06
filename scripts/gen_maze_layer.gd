@@ -2,21 +2,21 @@ extends TileMapLayer
 
 # A maze generator
 # From https://godotengine.org/asset-library/asset/2199
-# Slightly modified to fit the game.
+# Modified to fit the game.
+
+var _hidden_tile_flags: Array = []
 
 var allow_loops = true
-
 var current_level = 0
 var starting_pos = Vector2i()
 const normal_wall_atlas_coords = Vector2i(0, 0)
+const flag_alternative_id = 0
 const SOURCE_ID = 0
-var spot_to_letter = {}
-var spot_to_label = {}
-var current_letter_num = 65
 
 @export var y_dim = 35
 @export var x_dim = 35
 @export var starting_coords = Vector2i(0, 0)
+
 var adj4 = [
 	Vector2i(-1, 0),
 	Vector2i(1, 0),
@@ -116,12 +116,6 @@ func dfs(start: Vector2i):
 			continue
 			
 		seen[current] = true
-		if current in spot_to_label:
-			for node in spot_to_label[current]:
-				node.queue_free()
-##			var existing_letter = find_child(spot_to_letter[current])
-#			if existing_letter != null:
-#				existing_letter.queue_free()
 		if current.x % 2 == 1 and current.y % 2 == 1:
 			place_wall(current)
 			continue
@@ -181,8 +175,43 @@ func place_flag() -> void:
 
 
 func show_flags(visible: bool) -> void:
-	for child in get_children():
-		_show_flags_recursive(visible, child)
+	var tilemap = get_node_or_null("TileMapLayer")
+	# If no tilemap layer found, return
+	if not tilemap:
+		return
+	
+	if visible:
+		# Restore any flags we previously hid
+		for hidden in _hidden_tile_flags:
+			tilemap.set_cell(
+				hidden["pos"], 
+				hidden["source_id"], 
+				hidden["atlas_coords"], 
+				hidden["alternative_tile"]
+			)
+		_hidden_tile_flags.clear()
+	
+	else:
+		# Hide the currently existing flags (if any remain)
+		_hidden_tile_flags.clear()
+		
+		# Grab whatever flag tiles exist (source_id=1, atlas=FLAG_ATLAS in your setup)
+		var used_flag_cells = tilemap.get_used_cells_by_id(1, flag_alternative_id)
+		for cell_pos in used_flag_cells:
+			var source_id = tilemap.get_cell_source_id(cell_pos)
+			var atlas_coords = tilemap.get_cell_atlas_coords(cell_pos)
+			var alt_tile = tilemap.get_cell_alternative_tile(cell_pos)
+			
+			_hidden_tile_flags.append({
+				"pos": cell_pos,
+				"source_id": source_id,
+				"atlas_coords": atlas_coords,
+				"alternative_tile": alt_tile
+			})
+		
+		# Now remove them so they disappear (hidden)
+		for hidden in _hidden_tile_flags:
+			tilemap.set_cell(hidden["pos"], -1, Vector2i(-1, -1), -1)
 
 
 func _show_flags_recursive(visible: bool, node: Node) -> void:

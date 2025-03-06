@@ -4,8 +4,8 @@ extends Camera2D
 
 const CAMERA_TWEEN_DURATION : float = 0.5
 
-const ZOOM_PLATFORM : Vector2 = Vector2(2.0, 2.0)  # 2x zoom-in
-const ZOOM_MAZE : Vector2    = Vector2(4.0, 4.0) # 4x zoom-in
+@export var ZOOM_PLATFORM : Vector2 = Vector2(2.0, 2.0)  # 2x zoom-in
+@export var ZOOM_MAZE : Vector2    = Vector2(4.0, 4.0) # 4x zoom-in
 
 var camera_tween : Tween = null
 var initialized = false

@@ -1,6 +1,6 @@
 [gd_scene load_steps=48 format=4 uid="uid://1xqnurgp142s"]
 
-[ext_resource type="Script" uid="uid://dtowa34stivec" path="res://scripts/platform_layer.gd" id="1_j615w"]
+[ext_resource type="Script" uid="uid://gvjhotcobtjd" path="res://scripts/level_layer.gd" id="1_pbkb7"]
 [ext_resource type="TileSet" uid="uid://dyown6ix7tyu4" path="res://resources/Game/Tileset.tres" id="2_pthuq"]
 [ext_resource type="PackedScene" uid="uid://lh1g6i2usv5c" path="res://scenes/2D/platform_down.tscn" id="3_jhml1"]
 [ext_resource type="PackedScene" uid="uid://dak5chwustt20" path="res://scenes/2D/platform_up.tscn" id="4_klxfx"]
@@ -522,7 +522,7 @@ distance = -512.0
 distance = -384.0
 
 [node name="PlatformLayer" type="Node"]
-script = ExtResource("1_j615w")
+script = ExtResource("1_pbkb7")
 
 [node name="0" type="TileMapLayer" parent="."]
 visible = false
@@ -789,7 +789,7 @@ autoplay = "Move"
 
 [node name="9" type="TileMapLayer" parent="."]
 visible = false
-tile_map_data = PackedByteArray("AAD/////AAAAAAAAAAD//wAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAD///7/AAAAAAAAAAAAAP7/AAAAAAAAAAABAP7/AAAAAAAAAAABAP3/AAAAAAAAAAABAPv/AAAAAAAAAAABAPz/AAAAAAAAAAAHAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAJAAAAAAAAAAAAAAAKAAAAAAAAAAAAAAALAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAMAP7/AAAAAAAAAAALAP7/AAAAAAAAAAANAAAAAAAAAAAAAAANAP//AAAAAAAAAAANAP7/AAAAAAAAAAABAPr/AAAAAAAAAAABAPn/AAAAAAAAAAABAPj/AAAAAAAAAAALAPb/AAAAAAAAAAALAPf/AAAAAAAAAAALAPj/AAAAAAAAAAALAPn/AAAAAAAAAAALAPr/AAAAAAAAAAALAPv/AAAAAAAAAAALAPz/AAAAAAAAAAALAP3/AAAAAAAAAAADAP7/AAAAAAAAAAAIAPv/AAAAAAAAAAAEAPj/AAAAAAAAAAADAPj/AAAAAAAAAAACAPj/AAAAAAAAAAAGAPn/AAAAAAAAAAAGAP3/AAAAAAAAAAABAPX/AAAAAAAAAAABAPb/AAAAAAAAAAABAPf/AAAAAAAAAAADAPb/AAAAAAAAAAALAPX/AAAAAAAAAAALAPT/AAAAAAAAAAALAPP/AAAAAAAAAAAJAPP/AAAAAAAAAAABAPT/AAAAAAAAAAABAPP/AAAAAAAAAAABAPL/AAAAAAAAAAALAPL/AAAAAAAAAAALAPH/AAAAAAAAAAALAPD/AAAAAAAAAAAJAPL/AAAAAAAAAAABAPD/AAAAAAAAAAABAPH/AAAAAAAAAAALAO7/AAAAAAAAAAAKAO7/AAAAAAAAAAAJAO7/AAAAAAAAAAAIAO7/AAAAAAAAAAAHAO7/AAAAAAAAAAAGAO7/AAAAAAAAAAAFAO7/AAAAAAAAAAAEAO7/AAAAAAAAAAADAO7/AAAAAAAAAAACAO7/AAAAAAAAAAABAO7/AAAAAAAAAAABAO//AAAAAAAAAAALAO//AAAAAAAAAAAJAPb/AAAAAAAAAAAEAO//AAAAAAAAAAAEAPD/AAAAAAAAAAAGAPD/AAAAAAAAAAAHAPD/AAAAAAAAAAAIAPD/AAAAAAAAAAAJAPD/AAAAAAAAAAAJAPH/AAAAAAAAAAAFAPT/AAAAAAAAAAAKAPb/AQAAAAAABAAKAPP/AQAAAAAABAAKAPH/AQAAAAAABAAMAP//AQAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAD/////AAAAAAAAAAD//wAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAD///7/AAAAAAAAAAAAAP7/AAAAAAAAAAABAP7/AAAAAAAAAAABAP3/AAAAAAAAAAABAPv/AAAAAAAAAAABAPz/AAAAAAAAAAAHAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAJAAAAAAAAAAAAAAAKAAAAAAAAAAAAAAALAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAMAP7/AAAAAAAAAAALAP7/AAAAAAAAAAANAAAAAAAAAAAAAAANAP//AAAAAAAAAAANAP7/AAAAAAAAAAABAPr/AAAAAAAAAAABAPn/AAAAAAAAAAABAPj/AAAAAAAAAAALAPb/AAAAAAAAAAALAPf/AAAAAAAAAAALAPj/AAAAAAAAAAALAPn/AAAAAAAAAAALAPr/AAAAAAAAAAALAPv/AAAAAAAAAAALAPz/AAAAAAAAAAALAP3/AAAAAAAAAAADAP7/AAAAAAAAAAAIAPv/AAAAAAAAAAAEAPj/AAAAAAAAAAADAPj/AAAAAAAAAAACAPj/AAAAAAAAAAAGAPn/AAAAAAAAAAAGAP3/AAAAAAAAAAABAPX/AAAAAAAAAAABAPb/AAAAAAAAAAABAPf/AAAAAAAAAAADAPb/AAAAAAAAAAALAPX/AAAAAAAAAAALAPT/AAAAAAAAAAALAPP/AAAAAAAAAAAJAPP/AAAAAAAAAAABAPT/AAAAAAAAAAABAPP/AAAAAAAAAAABAPL/AAAAAAAAAAALAPL/AAAAAAAAAAALAPH/AAAAAAAAAAALAPD/AAAAAAAAAAAJAPL/AAAAAAAAAAABAPD/AAAAAAAAAAABAPH/AAAAAAAAAAALAO7/AAAAAAAAAAAKAO7/AAAAAAAAAAAJAO7/AAAAAAAAAAAIAO7/AAAAAAAAAAAHAO7/AAAAAAAAAAAGAO7/AAAAAAAAAAAFAO7/AAAAAAAAAAAEAO7/AAAAAAAAAAADAO7/AAAAAAAAAAACAO7/AAAAAAAAAAABAO7/AAAAAAAAAAABAO//AAAAAAAAAAALAO//AAAAAAAAAAAJAPb/AAAAAAAAAAAEAO//AAAAAAAAAAAEAPD/AAAAAAAAAAAGAPD/AAAAAAAAAAAHAPD/AAAAAAAAAAAIAPD/AAAAAAAAAAAJAPD/AAAAAAAAAAAJAPH/AAAAAAAAAAAFAPT/AAAAAAAAAAAKAPb/AQAAAAAABAAMAP//AQAAAAAAAAAKAPT/AQAAAAAABAAKAPL/AQAAAAAABAA=")
 tile_set = ExtResource("2_pthuq")
 navigation_enabled = false
 
@@ -801,7 +801,7 @@ position = Vector2(368, -16)
 
 [node name="10" type="TileMapLayer" parent="."]
 visible = false
-tile_map_data = PackedByteArray("AAAHAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAKAP//AAAAAAAAAAD3//b/AAAAAAAAAAD2//b/AAAAAAAAAAD///z/AAAAAAAAAAD//wIAAAAAAAAAAAAAAPz/AAAAAAAAAAAAAAIAAAAAAAAAAAABAPz/AAAAAAAAAAABAAIAAAAAAAAAAAAEAPv/AAAAAAAAAAAGAAAAAAAAAAAAAAD8//f/AAAAAAAAAAAHAPj/AAAAAAAAAAD///P/AAAAAAAAAAD5//P/AAAAAAAAAAD4//f/AAAAAAAAAAABAPj/AAAAAAAAAAALAP3/AAAAAAAAAAAKAPv/AAAAAAAAAAAIAPj/AAAAAAAAAAAJAPn/AAAAAAAAAAAEAPL/AAAAAAAAAAD9//n/AQAAAAAABQD+//n/AQAAAAAABQD///n/AQAAAAAABQAAAPn/AQAAAAAABQABAPn/AQAAAAAABQACAPn/AQAAAAAABQADAPn/AQAAAAAABQAAAAYAAQAAAAAABgAAAAcAAAAAAAAAAAAEAPz/AQAAAAAABQAHAPf/AQAAAAAABgABAPf/AQAAAAAABgD8//b/AQAAAAAABgAEAPP/AQAAAAAABQD///T/AQAAAAAABQD5//T/AQAAAAAABQD2//X/AQAAAAAAAAD8//n/AAAFAAAAAAD7//n/AAAFAAAAAAD6//n/AAAFAAAAAAD5//n/AAAFAAAAAAD4//n/AAAFAAAAAAAEAPn/AAAFAAAAAAAFAPn/AAAFAAAAAAAGAPn/AAAFAAAAAAA=")
+tile_map_data = PackedByteArray("AAAHAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAKAP//AAAAAAAAAAD3//b/AAAAAAAAAAD2//b/AAAAAAAAAAD///z/AAAAAAAAAAD//wIAAAAAAAAAAAAAAPz/AAAAAAAAAAAAAAIAAAAAAAAAAAABAPz/AAAAAAAAAAABAAIAAAAAAAAAAAAEAPv/AAAAAAAAAAAGAAAAAAAAAAAAAAD8//f/AAAAAAAAAAAHAPj/AAAAAAAAAAD///P/AAAAAAAAAAD5//P/AAAAAAAAAAD4//f/AAAAAAAAAAABAPj/AAAAAAAAAAALAP3/AAAAAAAAAAAKAPv/AAAAAAAAAAAIAPj/AAAAAAAAAAAJAPn/AAAAAAAAAAAEAPL/AAAAAAAAAAD9//n/AQAAAAAABQD+//n/AQAAAAAABQD///n/AQAAAAAABQAAAPn/AQAAAAAABQABAPn/AQAAAAAABQACAPn/AQAAAAAABQADAPn/AQAAAAAABQAAAAYAAQAAAAAABgAAAAcAAAAAAAAAAAAEAPz/AQAAAAAABQAHAPf/AQAAAAAABgABAPf/AQAAAAAABgD8//b/AQAAAAAABgAEAPP/AQAAAAAABQD///T/AQAAAAAABQD5//T/AQAAAAAABQD2//X/AQAAAAAAAAD8//n/AQAAAAAABQD7//n/AQAAAAAABQD6//n/AQAAAAAABQD5//n/AQAAAAAABQD4//n/AQAAAAAABQAEAPn/AQAAAAAABQAFAPn/AQAAAAAABQAGAPn/AQAAAAAABQA=")
 tile_set = ExtResource("2_pthuq")
 navigation_enabled = false
 
@@ -846,7 +846,58 @@ scroll_active = false
 position = Vector2(16, 161)
 shape = SubResource("WorldBoundaryShape2D_7ajkl")
 
+[node name="Debug" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAD+////AAAAAAAAAAD+//7/AAAAAAAAAAD+//3/AAAAAAAAAAD+//z/AAAAAAAAAAABAP7/AAAAAAAAAAACAP7/AAAAAAAAAAADAP7/AAAAAAAAAAAEAP7/AAAAAAAAAAADAPz/AAAAAAAAAAACAPz/AAAAAAAAAAABAPz/AAAAAAAAAAD///7/AAAAAAAAAAAAAPz/AAAAAAAAAAD+//v/AAAAAAAAAAD+//r/AAAAAAAAAAD///r/AAAAAAAAAAAAAPr/AAAAAAAAAAABAPr/AAAAAAAAAAACAPr/AAAAAAAAAAADAPr/AAAAAAAAAAAEAPr/AAAAAAAAAAAFAPr/AAAAAAAAAAAGAPr/AAAAAAAAAAAHAPr/AAAAAAAAAAAIAPr/AAAAAAAAAAAJAPr/AAAAAAAAAAAGAP7/AAAAAAAAAAAFAPz/AAAAAAAAAAAIAPz/AAAAAAAAAAAJAP7/AAAAAAAAAAAKAPr/AAAAAAAAAAALAPr/AAAAAAAAAAAMAPr/AAAAAAAAAAANAPr/AAAAAAAAAAAOAPr/AAAAAAAAAAAFAP7/AAAAAAAAAAAEAPz/AAAAAAAAAAAPAPr/AAAAAAAAAAAQAPr/AAAAAAAAAAARAPr/AAAAAAAAAAASAPr/AAAAAAAAAAATAPr/AAAAAAAAAAAUAPr/AAAAAAAAAAAUAPv/AAAAAAAAAAAUAPz/AAAAAAAAAAAUAP3/AAAAAAAAAAAUAP7/AAAAAAAAAAAUAP//AAAAAAAAAAATAPz/AAAAAAAAAAASAPz/AAAAAAAAAAARAPz/AAAAAAAAAAAQAPz/AAAAAAAAAAATAP7/AAAAAAAAAAASAP7/AAAAAAAAAAARAP7/AAAAAAAAAAAKAP7/AAAAAAAAAAALAP7/AAAAAAAAAAAMAP7/AAAAAAAAAAANAP7/AAAAAAAAAAAOAP7/AAAAAAAAAAAJAPz/AAAAAAAAAAAKAPz/AAAAAAAAAAALAPz/AAAAAAAAAAAMAPz/AAAAAAAAAAANAPz/AAAAAAAAAAAGAPz/AAAAAAAAAAAHAP7/AAAAAAAAAAAOAPz/AAAAAAAAAAAPAP7/AAAAAAAAAAATAP//AQAAAAAAAAATAP3/AQAAAAAAAAATAPv/AQAAAAAAAAD+/wAAAAAAAAAAAAD//wAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAJAAAAAAAAAAAAAAAKAAAAAAAAAAAAAAALAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAANAAAAAAAAAAAAAAAOAAAAAAAAAAAAAAAPAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAARAAAAAAAAAAAAAAASAAAAAAAAAAAAAAATAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA=")
+tile_set = ExtResource("2_pthuq")
+
+[node name="Keys" type="Node" parent="Debug"]
+
+[node name="Key0_0" parent="Debug/Keys" instance=ExtResource("9_u8bjk")]
+position = Vector2(80, -16)
+
+[node name="Key0_1" parent="Debug/Keys" instance=ExtResource("9_u8bjk")]
+position = Vector2(80, -80)
+
+[node name="Key0_2" parent="Debug/Keys" instance=ExtResource("9_u8bjk")]
+position = Vector2(80, -144)
+
+[node name="Key1_0" parent="Debug/Keys" instance=ExtResource("9_u8bjk")]
+position = Vector2(336, -16)
+key_id = 1
+
+[node name="Key1_1" parent="Debug/Keys" instance=ExtResource("9_u8bjk")]
+position = Vector2(336, -80)
+key_id = 1
+
+[node name="Key1_2" parent="Debug/Keys" instance=ExtResource("9_u8bjk")]
+position = Vector2(336, -144)
+key_id = 1
+
+[node name="Doors" type="Node" parent="Debug"]
+
+[node name="Door0_0" parent="Debug/Doors" instance=ExtResource("10_0j0pa")]
+position = Vector2(208, -16)
+
+[node name="Door0_1" parent="Debug/Doors" instance=ExtResource("10_0j0pa")]
+position = Vector2(208, -80)
+
+[node name="Door0_2" parent="Debug/Doors" instance=ExtResource("10_0j0pa")]
+position = Vector2(208, -144)
+
+[node name="Door1_0" parent="Debug/Doors" instance=ExtResource("10_0j0pa")]
+position = Vector2(464, -16)
+id = 1
+
+[node name="Door1_1" parent="Debug/Doors" instance=ExtResource("10_0j0pa")]
+position = Vector2(464, -80)
+id = 1
+
+[node name="Door1_2" parent="Debug/Doors" instance=ExtResource("10_0j0pa")]
+position = Vector2(464, -144)
+id = 1
+
 [node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
 one_shot = true
 
 [connection signal="body_entered" from="0/Flag" to="0/Flag" method="_on_body_entered"]
@@ -859,39 +910,50 @@ one_shot = true
 [connection signal="body_entered" from="6/GravityNormalizer" to="6/GravityNormalizer" method="_on_body_entered"]
 [connection signal="body_entered" from="6/Flag" to="6/Flag" method="_on_body_entered"]
 [connection signal="body_entered" from="7/GravityInverter" to="7/GravityInverter" method="_on_body_entered"]
-[connection signal="body_entered" from="7/@Area2D@25128" to="7/@Area2D@25128" method="_on_body_entered"]
+[connection signal="body_entered" from="7/@Area2D@283018" to="7/@Area2D@283018" method="_on_body_entered"]
 [connection signal="body_entered" from="7/GravityNormalizer" to="7/GravityNormalizer" method="_on_body_entered"]
-[connection signal="body_entered" from="7/@Area2D@25129" to="7/@Area2D@25129" method="_on_body_entered"]
-[connection signal="body_entered" from="7/@Area2D@25130" to="7/@Area2D@25130" method="_on_body_entered"]
-[connection signal="body_entered" from="7/@Area2D@25131" to="7/@Area2D@25131" method="_on_body_entered"]
-[connection signal="body_entered" from="7/@Area2D@25132" to="7/@Area2D@25132" method="_on_body_entered"]
-[connection signal="body_entered" from="7/@Area2D@25133" to="7/@Area2D@25133" method="_on_body_entered"]
-[connection signal="body_entered" from="7/@Area2D@25134" to="7/@Area2D@25134" method="_on_body_entered"]
+[connection signal="body_entered" from="7/@Area2D@283019" to="7/@Area2D@283019" method="_on_body_entered"]
+[connection signal="body_entered" from="7/@Area2D@283020" to="7/@Area2D@283020" method="_on_body_entered"]
+[connection signal="body_entered" from="7/@Area2D@283021" to="7/@Area2D@283021" method="_on_body_entered"]
+[connection signal="body_entered" from="7/@Area2D@283022" to="7/@Area2D@283022" method="_on_body_entered"]
+[connection signal="body_entered" from="7/@Area2D@283023" to="7/@Area2D@283023" method="_on_body_entered"]
+[connection signal="body_entered" from="7/@Area2D@283024" to="7/@Area2D@283024" method="_on_body_entered"]
 [connection signal="body_entered" from="7/Flag" to="7/Flag" method="_on_body_entered"]
 [connection signal="body_entered" from="8/Flag" to="8/Flag" method="_on_body_entered"]
 [connection signal="body_entered" from="8/GravityNormalizer" to="8/GravityNormalizer" method="_on_body_entered"]
-[connection signal="body_entered" from="8/@Area2D@25135" to="8/@Area2D@25135" method="_on_body_entered"]
-[connection signal="body_entered" from="8/@Area2D@25136" to="8/@Area2D@25136" method="_on_body_entered"]
-[connection signal="body_entered" from="8/@Area2D@25137" to="8/@Area2D@25137" method="_on_body_entered"]
-[connection signal="body_entered" from="8/@Area2D@25138" to="8/@Area2D@25138" method="_on_body_entered"]
-[connection signal="body_entered" from="8/@Area2D@25139" to="8/@Area2D@25139" method="_on_body_entered"]
+[connection signal="body_entered" from="8/@Area2D@283025" to="8/@Area2D@283025" method="_on_body_entered"]
+[connection signal="body_entered" from="8/@Area2D@283026" to="8/@Area2D@283026" method="_on_body_entered"]
+[connection signal="body_entered" from="8/@Area2D@283027" to="8/@Area2D@283027" method="_on_body_entered"]
+[connection signal="body_entered" from="8/@Area2D@283028" to="8/@Area2D@283028" method="_on_body_entered"]
+[connection signal="body_entered" from="8/@Area2D@283029" to="8/@Area2D@283029" method="_on_body_entered"]
 [connection signal="body_entered" from="8/GravityInverter" to="8/GravityInverter" method="_on_body_entered"]
-[connection signal="body_entered" from="8/@Area2D@25140" to="8/@Area2D@25140" method="_on_body_entered"]
+[connection signal="body_entered" from="8/@Area2D@283030" to="8/@Area2D@283030" method="_on_body_entered"]
 [connection signal="body_entered" from="9/Flag" to="9/Flag" method="_on_body_entered"]
 [connection signal="body_entered" from="10/GravityNormalizer" to="10/GravityNormalizer" method="_on_body_entered"]
-[connection signal="body_entered" from="10/@Area2D@25143" to="10/@Area2D@25143" method="_on_body_entered"]
-[connection signal="body_entered" from="10/@Area2D@25144" to="10/@Area2D@25144" method="_on_body_entered"]
-[connection signal="body_entered" from="10/@Area2D@25145" to="10/@Area2D@25145" method="_on_body_entered"]
-[connection signal="body_entered" from="10/@Area2D@25146" to="10/@Area2D@25146" method="_on_body_entered"]
-[connection signal="body_entered" from="10/@Area2D@25147" to="10/@Area2D@25147" method="_on_body_entered"]
-[connection signal="body_entered" from="10/@Area2D@25148" to="10/@Area2D@25148" method="_on_body_entered"]
+[connection signal="body_entered" from="10/@Area2D@283033" to="10/@Area2D@283033" method="_on_body_entered"]
+[connection signal="body_entered" from="10/@Area2D@283034" to="10/@Area2D@283034" method="_on_body_entered"]
+[connection signal="body_entered" from="10/@Area2D@283035" to="10/@Area2D@283035" method="_on_body_entered"]
+[connection signal="body_entered" from="10/@Area2D@283036" to="10/@Area2D@283036" method="_on_body_entered"]
+[connection signal="body_entered" from="10/@Area2D@283037" to="10/@Area2D@283037" method="_on_body_entered"]
+[connection signal="body_entered" from="10/@Area2D@283038" to="10/@Area2D@283038" method="_on_body_entered"]
 [connection signal="body_entered" from="10/GravityInverter" to="10/GravityInverter" method="_on_body_entered"]
-[connection signal="body_entered" from="10/@Area2D@25149" to="10/@Area2D@25149" method="_on_body_entered"]
-[connection signal="body_entered" from="10/@Area2D@25150" to="10/@Area2D@25150" method="_on_body_entered"]
-[connection signal="body_entered" from="10/@Area2D@25151" to="10/@Area2D@25151" method="_on_body_entered"]
-[connection signal="body_entered" from="10/@Area2D@25152" to="10/@Area2D@25152" method="_on_body_entered"]
-[connection signal="body_entered" from="10/@Area2D@25153" to="10/@Area2D@25153" method="_on_body_entered"]
-[connection signal="body_entered" from="10/@Area2D@25154" to="10/@Area2D@25154" method="_on_body_entered"]
-[connection signal="body_entered" from="10/@Area2D@25155" to="10/@Area2D@25155" method="_on_body_entered"]
+[connection signal="body_entered" from="10/@Area2D@283039" to="10/@Area2D@283039" method="_on_body_entered"]
+[connection signal="body_entered" from="10/@Area2D@283040" to="10/@Area2D@283040" method="_on_body_entered"]
+[connection signal="body_entered" from="10/@Area2D@283041" to="10/@Area2D@283041" method="_on_body_entered"]
+[connection signal="body_entered" from="10/@Area2D@283042" to="10/@Area2D@283042" method="_on_body_entered"]
+[connection signal="body_entered" from="10/@Area2D@283043" to="10/@Area2D@283043" method="_on_body_entered"]
+[connection signal="body_entered" from="10/@Area2D@283044" to="10/@Area2D@283044" method="_on_body_entered"]
+[connection signal="body_entered" from="10/@Area2D@283045" to="10/@Area2D@283045" method="_on_body_entered"]
 [connection signal="body_entered" from="10/Flag" to="10/Flag" method="_on_body_entered"]
+[connection signal="body_entered" from="10/@Area2D@283046" to="10/@Area2D@283046" method="_on_body_entered"]
+[connection signal="body_entered" from="10/@Area2D@283047" to="10/@Area2D@283047" method="_on_body_entered"]
+[connection signal="body_entered" from="10/@Area2D@283048" to="10/@Area2D@283048" method="_on_body_entered"]
+[connection signal="body_entered" from="10/@Area2D@283049" to="10/@Area2D@283049" method="_on_body_entered"]
+[connection signal="body_entered" from="10/@Area2D@283050" to="10/@Area2D@283050" method="_on_body_entered"]
+[connection signal="body_entered" from="10/@Area2D@283051" to="10/@Area2D@283051" method="_on_body_entered"]
+[connection signal="body_entered" from="10/@Area2D@283052" to="10/@Area2D@283052" method="_on_body_entered"]
+[connection signal="body_entered" from="10/@Area2D@283053" to="10/@Area2D@283053" method="_on_body_entered"]
+[connection signal="body_entered" from="Debug/Flag" to="Debug/Flag" method="_on_body_entered"]
+[connection signal="body_entered" from="Debug/@Area2D@283054" to="Debug/@Area2D@283054" method="_on_body_entered"]
+[connection signal="body_entered" from="Debug/@Area2D@283055" to="Debug/@Area2D@283055" method="_on_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

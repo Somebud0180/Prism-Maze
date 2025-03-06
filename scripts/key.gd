@@ -1,5 +1,5 @@
 extends CharacterBody2D
-
+class_name Key
 
 @onready var game_manager = get_node("/root/Game/GameManager")
 @export var key_id = 0

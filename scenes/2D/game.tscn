@@ -8,7 +8,7 @@
 unique_name_in_owner = true
 script = ExtResource("1_rn7ij")
 level_amount = 20
-custom_level = "Maze: 10"
+custom_level = "Platform: Debug"
 
 [node name="MainLayer" type="TileMapLayer" parent="."]
 unique_name_in_owner = true

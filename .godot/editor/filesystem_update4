@@ -11,3 +11,16 @@ res://scripts/maze_layer.gd
 res://resources/Game/Tileset.tres
 res://resources/Game 3D/game_3d.tres
 res://resources/Game 3D/Tiles.tres
+res://scenes/2D/platform_layer.tscn
+res://scripts/platform_layer.gd
+res://scenes/2D/maze_layer.tscn
+res://scenes/2D/game.tscn
+res://scripts/menu.gd
+res://scenes/2D/player.tscn
+res://scripts/camera_2d.gd
+res://scenes/2D/gen_maze_layer.tscn
+res://scripts/level_layer.gd
+res://scenes/2D/key.tscn
+res://scripts/key.gd
+res://scripts/game_manager.gd
+res://scripts/gen_maze_layer.gd

@@ -53,8 +53,8 @@ func _ready() -> void:
 	# Load Platform Layer
 	main_layer.add_child(_platform_scene)
 
-	# Fill each list with all valid indices initially, excluding the final platform level and Timer.
-	for i in range(_platform_scene.get_child_count() - 2):
+	# Fill each list with all valid indices initially, excluding the final and debuh platform level and Timer.
+	for i in range(_platform_scene.get_child_count() - 3):
 		platform_list.append(i)
 	
 	for i in range(_maze_scene.get_child_count() - 1):
@@ -119,7 +119,7 @@ func level_set(platform_instance: Node) -> void:
 			level_collection[i] = "Platform: " + resolved
 	
 	# Append last level
-	level_collection.append("Platform: " + str(platform_instance.get_child_count() - 2))
+	level_collection.append("Platform: " + str(platform_instance.get_child_count() - 3))
 
 
 func progress_level() -> void:
@@ -165,16 +165,12 @@ func load_level() -> void:
 		load_gen_maze()
 	else:
 		if level_collection[level].begins_with("Maze: "):
-			var raw_level_string = level_collection[level]
-			var parts = raw_level_string.split(": ")
-			var level_number = int(parts[1])   # Parse the number portion
-			load_maze(level_number)
+			var level_name = level_collection[level].replace("Maze: ", "")
+			load_maze(level_name)
 		
 		elif level_collection[level].begins_with("Platform: "):
-			var raw_level_string = level_collection[level]
-			var parts = raw_level_string.split(": ")
-			var level_number = int(parts[1])
-			load_platform(level_number)
+			var level_name = level_collection[level].replace("Platform: ", "")
+			load_platform(level_name)
 	
 	player.position = Vector2i(0,0)
 
@@ -191,7 +187,7 @@ func load_gen_maze() -> void:
 	gen_maze_instance.load_maze(level)
 
 
-func load_maze(selected_level: int) -> void:
+func load_maze(selected_level: String) -> void:
 	# Set game mode
 	game_mode = 2
 	
@@ -202,7 +198,7 @@ func load_maze(selected_level: int) -> void:
 	maze_scene.load_level(selected_level)
 
 
-func load_platform(selected_level: int) -> void:
+func load_platform(selected_level: String) -> void:
 	# Set game mode
 	game_mode = 1
 	
@@ -219,8 +215,8 @@ func get_platform_index(platform_scene: Node, current_level_index: int) -> int:
 	if current_level_index <= 5:
 		limit = 5
 	else:
-		# Account for Timer child and last level
-		limit = platform_scene.get_child_count() - 2
+		# Account for final and debug level and Timer node
+		limit = platform_scene.get_child_count() - 3
 	
 	if platform_list.is_empty():
 		# Use the full range of available levels, not limited to 5
@@ -268,23 +264,17 @@ func _is_valid_custom_level(level_string: String) -> bool:
 	
 	# 2) Maze: X
 	if level_string.begins_with("Maze: "):
-		var parts = level_string.split(": ")
-		if parts.size() < 2:
-			return false
-		var maze_index = int(parts[1])
-		# Check if the index is within level count
-		if maze_index < 0 or maze_index >= _maze_scene.get_child_count():
+		var child_name = level_string.replace("Maze: ", "")
+		# Confirm if _maze_scene actually has a child with the name child_name
+		if not _maze_scene.has_node(child_name):
 			return false
 		return true
 	
-	# 3) Platform: X
+	# 2) Platform: X
 	if level_string.begins_with("Platform: "):
-		var parts = level_string.split(": ")
-		if parts.size() < 2:
-			return false
-		var platform_index = int(parts[1])
-		# Check if the index is within level count
-		if platform_index < 0 or platform_index >= _platform_scene.get_child_count():
+		var child_name = level_string.replace("Platform: ", "")
+		# Confirm if _platform_scene actually has a child with the name child_name
+		if not _platform_scene.has_node(child_name):
 			return false
 		return true
 	
