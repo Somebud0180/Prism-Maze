@@ -9,8 +9,17 @@ var physics_defaults := {}  # For CollisionObject2D nodes (excluding TileMap).
 var _removed_flags := []
 var _hidden_tile_flags: Array = []
 var _removed_keys: Array = []
+<<<<<<< HEAD
 var _replaced_doors: Array = []
 var level_count = -1
+=======
+var _hidden_keys: Array = []
+var _replaced_doors: Array = []
+var _level_name = ""
+var _level_count = -1
+
+@export var timer: Timer
+>>>>>>> d6ebe24 (Fixed the finish popup, added character health, roughly implemented death (currently only the popup))
 
 func _ready() -> void:
 	_store_tilemap_defaults()
@@ -30,13 +39,22 @@ func disable_all_levels() -> void:
 
 
 func load_level(level_name: String) -> void:
+<<<<<<< HEAD
 	level_count = get_child_count()
+=======
+	_level_count = get_child_count()
+	_level_name = level_name
+>>>>>>> d6ebe24 (Fixed the finish popup, added character health, roughly implemented death (currently only the popup))
 	enable_all_levels()
 	restore_flags()
 	restore_keys_and_doors()
 	
 	# Enable only the level with the matching name, disable the others
+<<<<<<< HEAD
 	for i in range(level_count):
+=======
+	for i in range(_level_count):
+>>>>>>> d6ebe24 (Fixed the finish popup, added character health, roughly implemented death (currently only the popup))
 		var level_node = get_child(i)
 		if level_node.name == level_name:
 			_enable_level(level_node.name)
@@ -44,8 +62,14 @@ func load_level(level_name: String) -> void:
 			_disable_level(level_node.name)
 	
 	# Hide the flag for 1 second to avoid spoiling it during camera movement
+<<<<<<< HEAD
 	show_flags(false)
 	$Timer.start()
+=======
+	show_flags(false, _level_name)
+	show_keys(false, _level_name)
+	timer.start()
+>>>>>>> d6ebe24 (Fixed the finish popup, added character health, roughly implemented death (currently only the popup))
 
 
 # Enables a level node by recursively showing it, enabling processing, and restoring its physics.
@@ -53,6 +77,10 @@ func _enable_level(level_name: String) -> void:
 	var level_node = get_node_or_null(level_name)
 	if not level_node:
 		return
+<<<<<<< HEAD
+=======
+	
+>>>>>>> d6ebe24 (Fixed the finish popup, added character health, roughly implemented death (currently only the popup))
 	_set_visibility_recursive(level_node, true)
 	if level_node.has_method("set_process"):
 		level_node.set_process(true)
@@ -166,10 +194,16 @@ func _enable_tilemap_collisions(tilemap: TileMap) -> void:
 	tilemap.update_dirty_quadrants()
 
 
+<<<<<<< HEAD
 func show_flags(visible: bool) -> void:
 	var tilemap = get_node_or_null("TileMapLayer")
 	# If no tilemap layer found, return
 	if not tilemap:
+=======
+func show_flags(visible: bool, level_name: String) -> void:
+	var tilemap = get_node_or_null(level_name)
+	if tilemap is not TileMapLayer:
+>>>>>>> d6ebe24 (Fixed the finish popup, added character health, roughly implemented death (currently only the popup))
 		return
 	
 	if visible:
@@ -188,7 +222,11 @@ func show_flags(visible: bool) -> void:
 		_hidden_tile_flags.clear()
 		
 		# Grab whatever flag tiles exist (source_id=1, atlas=FLAG_ATLAS in your setup)
+<<<<<<< HEAD
 		var used_flag_cells = tilemap.get_used_cells_by_id(1, FLAG_ALTERNATIVE_ID)
+=======
+		var used_flag_cells = tilemap.get_used_cells_by_id(1, Vector2i(0, 0), FLAG_ALTERNATIVE_ID)
+>>>>>>> d6ebe24 (Fixed the finish popup, added character health, roughly implemented death (currently only the popup))
 		for cell_pos in used_flag_cells:
 			var source_id = tilemap.get_cell_source_id(cell_pos)
 			var atlas_coords = tilemap.get_cell_atlas_coords(cell_pos)
@@ -206,6 +244,7 @@ func show_flags(visible: bool) -> void:
 			tilemap.set_cell(hidden["pos"], -1, Vector2i(-1, -1), -1)
 
 
+<<<<<<< HEAD
 func _show_flags_recursive(visible: bool, node: Node) -> void:
 	# If you name nodes "Flag," check for node.name == "Flag."
 	if node.name == "Flag" and node is CanvasItem:
@@ -218,6 +257,41 @@ func _show_flags_recursive(visible: bool, node: Node) -> void:
 
 func _on_timer_timeout() -> void:
 	show_flags(true)
+=======
+func show_keys(visible: bool, level_name: String) -> void:
+	var root_node = get_node_or_null(level_name)
+	if root_node is not TileMapLayer:
+		return
+	
+	if visible:
+		for k in _hidden_keys:
+			k.set_deferred("visible", true)
+			if k is CollisionObject2D:
+				k.process_mode = Node.PROCESS_MODE_INHERIT
+		_hidden_keys.clear()
+	else:
+		_hidden_keys.clear()
+		_hide_all_keys_recursive(root_node)
+
+
+func _hide_all_keys_recursive(current_node: Node) -> void:
+	if not current_node:
+		return
+	for child in current_node.get_children():
+		# If the child is a Key (which may be directly under the TileMapLayer or under a "Keys" node)
+		if child is CharacterBody2D and child is Key and child not in _removed_keys:
+			_hidden_keys.append(child)
+			child.set_deferred("visible", false)
+			if child is CollisionObject2D:
+				child.process_mode = Node.PROCESS_MODE_DISABLED
+		# Recurse on the actual child node (not the same level_name again)
+		_hide_all_keys_recursive(child)
+
+
+func _on_timer_timeout() -> void:
+	show_flags(true, _level_name)
+	show_keys(true, _level_name,)
+>>>>>>> d6ebe24 (Fixed the finish popup, added character health, roughly implemented death (currently only the popup))
 
 
 func randomize_flags(level_node: Node) -> void:
@@ -259,6 +333,7 @@ func restore_flags() -> void:
 	_removed_flags.clear()
 
 
+<<<<<<< HEAD
 # Doesn't seem to actually be needed?
 #func _round_for_tiles(value: float) -> int:
 	# Positive => floor, negative => ceil
@@ -268,6 +343,8 @@ func restore_flags() -> void:
 		#return int(floor(value / 32.0))
 
 
+=======
+>>>>>>> d6ebe24 (Fixed the finish popup, added character health, roughly implemented death (currently only the popup))
 func randomize_keys_and_doors(level_node: Node) -> void:
 	# Dictionary: key_id => [list_of_key_nodes]
 	var keys_by_id: Dictionary = {}
@@ -318,7 +395,10 @@ func randomize_keys_and_doors(level_node: Node) -> void:
 					# (assumes 'level_node' is or contains your TileMap).
 					if level_node is TileMapLayer:
 						# Place a "wall" or "block" tile
+<<<<<<< HEAD
 						print(tile_pos)
+=======
+>>>>>>> d6ebe24 (Fixed the finish popup, added character health, roughly implemented death (currently only the popup))
 						level_node.set_cell(
 							tile_pos,
 							DOOR_REPLACEMENT_SOURCE_ID,

@@ -2,8 +2,13 @@
 
 importer="texture"
 type="CompressedTexture2D"
+<<<<<<<< HEAD:resources/Menu/Menu Icons/Exit.png.import
 uid="uid://d3gerbn0xbpgv"
 path="res://.godot/imported/Exit.png-7a509973d3d115402f4bb8cd0fe9aac4.ctex"
+========
+uid="uid://der8mkkl04i5g"
+path="res://.godot/imported/Exit.png-c85c6c4fc383693e9f842273b31bd13d.ctex"
+>>>>>>>> d6ebe24 (Fixed the finish popup, added character health, roughly implemented death (currently only the popup)):resources/Menu/Exit.png.import
 metadata={
 "vram_texture": false
 }
