@@ -74,7 +74,6 @@ func _ready() -> void:
 
 func _on_key_body_entered(body: Node2D) -> void:
 	if !is_stored:
-		print("Grabbed Key")
 		is_stored = true
 	player = body
 

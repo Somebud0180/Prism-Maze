@@ -1,30 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://dcmtjpe03ohl2"]
+[gd_scene load_steps=3 format=3 uid="uid://dcmtjpe03ohl2"]
 
-[ext_resource type="Texture2D" uid="uid://b2trhvjrl8ees" path="res://resources/Game/Tileset.png" id="1_fgp6t"]
+[ext_resource type="TileSet" uid="uid://dyown6ix7tyu4" path="res://resources/Game/Tileset.tres" id="1_5dabs"]
 [ext_resource type="Script" uid="uid://2uolgs6tp7en" path="res://scripts/gen_maze_layer.gd" id="2_1af3a"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_05jap"]
-texture = ExtResource("1_fgp6t")
-texture_region_size = Vector2i(32, 32)
-0:0/0 = 0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
-1:0/0 = 0
-1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
-2:0/0 = 0
-2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
-3:0/0 = 0
-3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
-4:0/0 = 0
-4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
-
-[sub_resource type="TileSet" id="TileSet_7wfx8"]
-tile_size = Vector2i(32, 32)
-physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_05jap")
-
-[node name="GenMazeLayer" type="TileMapLayer"]
-tile_set = SubResource("TileSet_7wfx8")
+[node name="GenMazeLayer" type="TileMapLayer" node_paths=PackedStringArray("timer")]
+tile_set = ExtResource("1_5dabs")
 script = ExtResource("2_1af3a")
+timer = NodePath("Timer")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0

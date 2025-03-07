@@ -64,14 +64,9 @@ func _ready() -> void:
 	platform_list.shuffle()
 	maze_list.shuffle()
 	
-	load_game(_platform_scene)
+	load_game()
 
-func load_game(platform_instance: Node) -> void:
-	# Create a level collection
-	if !custom_level.is_empty():
-		if custom_level == "Maze" or custom_level.begins_with("Maze: ") or custom_level.begins_with("Platform: "):
-			level_collection.append(custom_level)
-	
+func load_game() -> void:
 	var gen_level_amount: int = get_custom_level_amount()
 	
 	for i in range(gen_level_amount): 
@@ -85,7 +80,12 @@ func load_game(platform_instance: Node) -> void:
 		# Check levels thrice to optimize for speed and best level set.
 		level_check()
 	
-	level_set(platform_instance)
+	level_set()
+	
+	# Create a level collection after randomizer to allow setting a Generated Maze
+	if !custom_level.is_empty():
+		level_collection.insert(0, custom_level)
+	
 	emit_signal("finished_level_set")
 
 
@@ -106,7 +106,7 @@ func level_check() -> void:
 				level_collection[i] = "Maze"
 
 
-func level_set(platform_instance: Node) -> void:
+func level_set() -> void:
 	# Replace placeholder platformer levels to real levels
 	for i in range(level_collection.size()):
 		if level_collection[i] == "Maze":
@@ -119,7 +119,11 @@ func level_set(platform_instance: Node) -> void:
 			level_collection[i] = "Platform: " + resolved
 	
 	# Append last level
+<<<<<<< HEAD
 	level_collection.append("Platform: " + str(platform_instance.get_child_count() - 3))
+=======
+	level_collection.append("Platform: End")
+>>>>>>> 3eb2e6e (Fixed the finish popup, added character health, roughly implemented death (currently only the popup))
 
 
 func progress_level() -> void:
@@ -139,10 +143,15 @@ func progress_level() -> void:
 	# If completed all levels, finalize
 	if level == level_collection.size() - 1:
 		menu.is_timer_running = false
-		_popup_scene.output_timer(snapped(menu.time_elapsed, 0.01), level_times)
-		main_layer.add_child(_popup_scene)
 		menu.is_popup_displaying = true
-		_popup_scene.animation_player.play("show_finish")
+		get_tree().get_root().add_child(_popup_scene)
+		
+		var popup_scene = get_tree().get_root().get_node_or_null("LevelPopup")
+		
+		if popup_scene != null:
+			popup_scene.popup_state = level_popup.POPUP.FINISH
+			popup_scene.output_timer(snapped(menu.time_elapsed, 0.01), level_times)
+			popup_scene.animation_player.play("show_finish")
 
 
 func load_level() -> void:

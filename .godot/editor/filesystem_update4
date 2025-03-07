@@ -24,3 +24,14 @@ res://scenes/2D/key.tscn
 res://scripts/key.gd
 res://scripts/game_manager.gd
 res://scripts/gen_maze_layer.gd
+<<<<<<< HEAD
+=======
+res://scripts/loading_manager.gd
+res://scenes/2D/level_popup.tscn
+res://scenes/2D/killzone.tscn
+res://scripts/killzone.gd
+res://resources/Theme/progress_background.tres
+res://scripts/progress_fill.tres
+res://scripts/panel.tres
+res://resources/Theme/panel_container.tres
+>>>>>>> 3eb2e6e (Fixed the finish popup, added character health, roughly implemented death (currently only the popup))

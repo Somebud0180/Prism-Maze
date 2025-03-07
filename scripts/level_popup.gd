@@ -8,17 +8,26 @@ class_name level_popup
 @onready var menu = get_node("/root/Menu")
 @onready var game_manager = get_node("/root/Game/GameManager")
 
-var isOnSide: bool = false
+enum POPUP { NONE, FINISH, DEATH }
+var popup_state = POPUP.NONE
+var is_on_side: bool = false
 
 func _ready() -> void:
-	$CanvasLayer/Finish/VBoxContainer/Finish.grab_focus()
+	$FinishLayer/Finish/VBoxContainer/Finish.grab_focus()
 
 func output_timer(seconds_elapsed: float, level_times: Array) -> void:
+<<<<<<< HEAD
 	# Total integer seconds
 	var total_whole_seconds = seconds_elapsed
 	
 	# Minutes, seconds, hundredths
 	var total_fraction = seconds_elapsed - total_whole_seconds
+=======
+	# Cast to int for the "whole seconds" part
+	var total_whole_seconds = int(seconds_elapsed)
+	# Fraction is what's left after subtracting those whole seconds
+	var total_fraction = seconds_elapsed - float(total_whole_seconds)
+>>>>>>> 3eb2e6e (Fixed the finish popup, added character health, roughly implemented death (currently only the popup))
 
 	var total_mins = int(total_whole_seconds / 60)
 	var total_secs = int(total_whole_seconds % 60)
@@ -46,7 +55,11 @@ func output_timer(seconds_elapsed: float, level_times: Array) -> void:
 	var avg_fraction = avg_time - avg_whole_seconds
 
 	var avg_mins = int(avg_whole_seconds / 60)
+<<<<<<< HEAD
 	var avg_secs = int(avg_whole_seconds % 60)
+=======
+	var avg_secs = int(int(avg_whole_seconds) % 60)
+>>>>>>> 3eb2e6e (Fixed the finish popup, added character health, roughly implemented death (currently only the popup))
 	var avg_hundredths = int(round(avg_fraction * 100.0))
 	
 	# Format each component as two digits
@@ -58,7 +71,7 @@ func output_timer(seconds_elapsed: float, level_times: Array) -> void:
 
 
 func _on_finish_pressed() -> void:
-	if isOnSide:
+	if is_on_side:
 		animation_player.play("hide_finish_side")
 	else:
 		animation_player.play("hide_finish")
@@ -66,4 +79,20 @@ func _on_finish_pressed() -> void:
 	await animation_player.animation_finished
 	menu.is_popup_displaying = false
 	game_manager.reset_game()
-	menu.reset_game()
+	menu._reset_game()
+
+
+func _on_restart_pressed() -> void:
+	if is_on_side:
+		animation_player.play("hide_death_side")
+	else:
+		animation_player.play("hide_death") 
+	
+	await animation_player.animation_finished
+	menu.is_popup_displaying = false
+	
+	if menu.in_game:
+		game_manager.reset_game()
+		menu._reset_game()
+	elif menu.in_game_3d:
+		menu._reset_game_3d()

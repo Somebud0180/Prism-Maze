@@ -1,10 +1,12 @@
 extends Control
 class_name Menu
 
+@export var game_overlay: CanvasLayer
 @export var main: NinePatchRect
 @export var settings: NinePatchRect
 @export var animation_player: AnimationPlayer
 @export var resolution_picker: OptionButton
+@export var health_bar: ProgressBar
 
 var game_scene = preload("res://scenes/2D/game.tscn").instantiate()
 var game_scene_3d = preload("res://scenes/3D/game_3d.tscn").instantiate()
@@ -13,6 +15,12 @@ var native_icon = load("res://resources/Menu/Native.png")
 
 var game_scene_path = "res://scenes/2D/game.tscn"
 var game_scene_3d_path = "res://scenes/3D/game_3d.tscn"
+
+enum WINDOW_STATE { FULLSCREEN, WINDOWED }
+var window_state = WINDOW_STATE.WINDOWED:
+	set(value):
+		window_state = value
+		_manage_resolution_picker()
 
 enum STATE { MAIN, SETTINGS, CONTROLS, GAME, GAME3D }
 var menu_state = STATE.MAIN:
@@ -23,9 +31,13 @@ var menu_state = STATE.MAIN:
 var in_game = false:
 	set(value):
 		in_game = value
-		manage_color_buttons()
+		_manage_game_overlay()
+		_manage_color_buttons()
 
-var in_game_3d = false
+var in_game_3d = false:
+	set(value):
+		in_game = value
+		_manage_game_overlay()
 
 var is_loading = false
 
@@ -35,14 +47,24 @@ var resolution = Vector2i(1280, 720)
 var time_elapsed: float = 0.0
 var is_timer_running: bool = false
 
+var character_life: int = 10:
+	set(value):
+		character_life = value
+		health_bar.value = value
+
 var supported_resolutions = ["2560x1600", "2560x1440", "2560x1080", "2048x1536", "1920x1200", "1920x1080", "1680x1050", "1600x900", "1440x900", "1366x768", "1280x1024", "1280x720", "1024x768", "800x600", "640x480", "640x360"]
 
 func _ready() -> void:
-	add_full_window_resolution()
-	add_resolutions()
-	manage_color_buttons()
+	$MenuLayer.show()
+	$GameOverlay.hide()
+	animation_player.play("RESET_main")
 	
-	$CanvasLayer/Main/VBoxContainer/Play.grab_focus()
+	_add_full_window_resolution()
+	_add_resolutions()
+	_manage_resolution_picker()
+	_manage_color_buttons()
+	
+	$MenuLayer/Main/VBoxContainer/Play.grab_focus()
 
 
 func _input(event):
@@ -50,36 +72,36 @@ func _input(event):
 		match menu_state:
 			STATE.SETTINGS:
 				menu_state = STATE.MAIN
-				hide_and_show("settings", "main")
+				_hide_and_show("settings", "main")
 				await animation_player.animation_finished
-				$CanvasLayer/Main/VBoxContainer/Play.grab_focus()
+				$MenuLayer/Main/VBoxContainer/Play.grab_focus()
 			STATE.CONTROLS:
 				menu_state = STATE.MAIN
-				hide_and_show("controls", "main")
+				_hide_and_show("controls", "main")
 				await animation_player.animation_finished
-				$CanvasLayer/Main/VBoxContainer/Play.grab_focus()
+				$MenuLayer/Main/VBoxContainer/Play.grab_focus()
 			STATE.GAME:
 				menu_state = STATE.MAIN
 				animation_player.play("show_main")
-				manage_popup(menu_state)
+				_manage_popup(menu_state)
 				await animation_player.animation_finished
-				$CanvasLayer/Main/VBoxContainer/Play.grab_focus()
+				$MenuLayer/Main/VBoxContainer/Play.grab_focus()
 			STATE.GAME3D:
 				menu_state = STATE.MAIN
 				animation_player.play("show_main")
 				await animation_player.animation_finished
-				$CanvasLayer/Main/VBoxContainer/Play.grab_focus()
+				$MenuLayer/Main/VBoxContainer/Play.grab_focus()
 			STATE.MAIN:
 				if in_game:
 					menu_state = STATE.GAME
 					animation_player.play("hide_main")
-					manage_popup(menu_state)
+					_manage_popup(menu_state)
 				elif in_game_3d:
 					menu_state = STATE.GAME3D
 					animation_player.play("hide_main")
 
 
-func hide_and_show(first: String, second: String):
+func _hide_and_show(first: String, second: String):
 	animation_player.play("hide_" + first)
 	await animation_player.animation_finished
 	animation_player.play("show_" + second)
@@ -88,7 +110,7 @@ func hide_and_show(first: String, second: String):
 func _on_play_pressed() -> void:
 	# Check if already in-game in another dimension
 	if in_game_3d:
-		reset_game_3d()
+		_reset_game_3d()
 	
 	menu_state = STATE.GAME
 	animation_player.play("hide_main")
@@ -101,7 +123,7 @@ func _on_play_pressed() -> void:
 func _on_play_3d_pressed() -> void:
 	# Check if already in-game in another dimension
 	if in_game:
-		reset_game()
+		_reset_game()
 	
 	# Hide the parallax background
 	$"Substrate Layer".visible = false
@@ -120,14 +142,14 @@ func _on_play_3d_pressed() -> void:
 
 func _on_settings_pressed() -> void:
 	menu_state = STATE.SETTINGS
-	hide_and_show("main", "settings")
-	$CanvasLayer/Settings/VBoxContainer/Resolution.grab_focus()
+	_hide_and_show("main", "settings")
+	$MenuLayer/Settings/VBoxContainer/Resolution.grab_focus()
 
 
 func _on_controls_pressed() -> void:
 	menu_state = STATE.CONTROLS
-	hide_and_show("main", "controls")
-	$"CanvasLayer/Controls/Exit Controls".grab_focus()
+	_hide_and_show("main", "controls")
+	$"MenuLayer/Controls/Exit Controls".grab_focus()
 
 
 func _on_quit_pressed() -> void:
@@ -136,14 +158,27 @@ func _on_quit_pressed() -> void:
 
 func _on_exit_settings_pressed() -> void:
 	menu_state = STATE.MAIN
-	hide_and_show("settings", "main")
-	$CanvasLayer/Main/VBoxContainer/Play.grab_focus()
+	_hide_and_show("settings", "main")
+	$MenuLayer/Main/VBoxContainer/Play.grab_focus()
 
 
 func _on_exit_controls_pressed() -> void:
 	menu_state = STATE.MAIN
-	hide_and_show("controls", "main")
-	$CanvasLayer/Main/VBoxContainer/Play.grab_focus()
+	_hide_and_show("controls", "main")
+	$MenuLayer/Main/VBoxContainer/Play.grab_focus()
+
+
+func _manage_resolution_picker() -> void:
+	var platform = OS.get_name()
+	if platform == "Web" or platform == "iOS":
+		resolution_picker.hide()
+		return
+	
+	# Check for window state if fullscreen
+	if window_state == WINDOW_STATE.FULLSCREEN:
+		resolution_picker.disabled = true
+	else:
+		resolution_picker.disabled = false
 
 
 func _on_resolution_item_selected(index: int) -> void:
@@ -158,7 +193,7 @@ func _on_resolution_item_selected(index: int) -> void:
 func _on_fullscreen_toggled(toggled_on: bool) -> void:
 	if toggled_on:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
-		resolution_picker.disabled = true 
+		window_state = WINDOW_STATE.FULLSCREEN
 		
 		var current_resolution = DisplayServer.window_get_size()
 		var string_current = str(current_resolution[0]) + "x" + str(current_resolution[1])
@@ -169,7 +204,7 @@ func _on_fullscreen_toggled(toggled_on: bool) -> void:
 	else:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 		set_resolution()
-		resolution_picker.disabled = false
+		window_state = WINDOW_STATE.WINDOWED
 		
 		var current_resolution = DisplayServer.window_get_size()
 		var string_current = str(current_resolution[0]) + "x" + str(current_resolution[1])
@@ -219,7 +254,7 @@ func set_resolution() -> void:
 	DisplayServer.window_set_position(win_pos)
 
 
-func add_resolutions():
+func _add_resolutions():
 	var current_resolution: Vector2i = DisplayServer.window_get_size()
 	var string_current: String = str(current_resolution[0]) + "x" + str(current_resolution[1])
 	
@@ -246,7 +281,7 @@ func add_resolutions():
 			resolution_picker.selected = i
 
 
-func add_full_window_resolution():
+func _add_full_window_resolution():
 	var rect = DisplayServer.screen_get_usable_rect()
 	var fw_w = int(rect.size.x)
 	var fw_h = int(rect.size.y)
@@ -277,25 +312,35 @@ func _compare_resolutions(a: Vector2i, b: Vector2i) -> bool:
 	return a.x > b.x
 
 
-func reset_game() -> void:
-	var popup_ref = game_scene.get_node_or_null("MainLayer/LevelPopup")
+func _reset_game() -> void:
+	var popup_ref = get_tree().get_root().get_node_or_null("LevelPopup")
 	if popup_ref != null:
-		if !popup_ref.isOnSide:
+		if !popup_ref.is_on_side:
 			animation_player.play("show_main")
 		else:
-			popup_ref.isOnSide = false
+			popup_ref.is_on_side = false
 	
+	character_life = 10
 	in_game = false
 	menu_state = STATE.MAIN
+	animation_player.play("show_main")
 	
 	if game_scene != null:
 		LoadingManager.unload_current_scene("/root/Game")
 	
 	game_scene = preload("res://scenes/2D/game.tscn").instantiate()
-	manage_color_buttons()
+	_manage_color_buttons()
 
 
-func reset_game_3d() -> void:
+func _reset_game_3d() -> void:
+	var popup_ref = get_tree().get_root().get_node_or_null("LevelPopup")
+	if popup_ref != null:
+		if !popup_ref.is_on_side:
+			animation_player.play("show_main")
+		else:
+			popup_ref.is_on_side = false
+	
+	character_life = 10
 	in_game_3d = false
 	menu_state = STATE.MAIN
 	animation_player.play("show_main")
@@ -317,20 +362,36 @@ func manage_game_timer(state: STATE) -> void:
 		is_timer_running = false
 
 
-func manage_popup(state: STATE) -> void:
-	var popup_ref = game_scene.get_node_or_null("MainLayer/LevelPopup")
+func _manage_popup(state: STATE) -> void:
+	var popup_ref = get_tree().get_root().get_node_or_null("LevelPopup")
 	if popup_ref != null and is_popup_displaying:
-		if state == Menu.STATE.MAIN and !popup_ref.isOnSide:
-			popup_ref.animation_player.play("side_finish")
-			popup_ref.isOnSide = true
-		elif state == Menu.STATE.GAME and popup_ref.isOnSide:
-			popup_ref.animation_player.play("return_finish")
-			popup_ref.isOnSide = false
+		if state == Menu.STATE.MAIN and !popup_ref.is_on_side:
+			if popup_ref.popup_state == level_popup.POPUP.FINISH:
+				popup_ref.animation_player.play("side_finish")
+			elif popup_ref.popup_state == level_popup.POPUP.FINISH:
+				popup_ref.animation_player.play("side_death")
+			
+			popup_ref.is_on_side = true
+		elif state == Menu.STATE.GAME and popup_ref.is_on_side:
+			if popup_ref.popup_state == level_popup.POPUP.FINISH:
+				popup_ref.animation_player.play("return_finish")
+			elif popup_ref.popup_state == level_popup.POPUP.FINISH:
+				popup_ref.animation_player.play("return_death")
+			
+			popup_ref.is_on_side = false
 
 
-func manage_color_buttons() -> void:
+func _manage_game_overlay() -> void:
+	if in_game or in_game_3d:
+		await Signal(LoadingManager, "load_finish")
+		game_overlay.show()
+	else:
+		game_overlay.hide()
+
+
+func _manage_color_buttons() -> void:
 	# Reference to the GridContainer holding all color buttons
-	var grid = $CanvasLayer/Settings/VBoxContainer/Panel/VBoxContainer/HBoxContainer/GridContainer
+	var grid = $MenuLayer/Settings/VBoxContainer/Panel/VBoxContainer/HBoxContainer/GridContainer
 	
 	# Loop through all children of the GridContainer (all color buttons)
 	for button in grid.get_children():

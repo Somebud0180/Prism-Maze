@@ -35,14 +35,11 @@ func start_load() -> void:
 
 func unload_current_scene(node: String) -> void:
 	# Find the Game node in the scene tree
-	var remove_node = get_node_or_null(node)
+	var remove_node = get_tree().get_root().get_node_or_null(node)
 	
 	if remove_node != null:
 		# Queue it for deletion
 		remove_node.queue_free()
-		print("Unloaded scene")
-	else:
-		print("No scene found to unload")
 
 
 func _process(_delta) -> void:
@@ -62,7 +59,6 @@ func _process(_delta) -> void:
 			if game_manager != null:
 				# Wait for the game manager to finish loading
 				await game_manager.finished_loading
-				print("Game finished loading, hiding loading screen now")
 			
 			# Now emit the signal to hide the loading screen
 			var menu = get_node("/root/Menu")

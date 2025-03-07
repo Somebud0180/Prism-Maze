@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 [gd_scene load_steps=63 format=3 uid="uid://br2t4hanatnss"]
+=======
+[gd_scene load_steps=64 format=3 uid="uid://br2t4hanatnss"]
+>>>>>>> 3eb2e6e (Fixed the finish popup, added character health, roughly implemented death (currently only the popup))
 
 [ext_resource type="Theme" uid="uid://bau50guyc4alk" path="res://resources/Theme/menu.tres" id="1_7yxt8"]
 [ext_resource type="Script" uid="uid://cnwd74ny2hf2q" path="res://scripts/menu.gd" id="2_o131u"]
@@ -50,25 +54,29 @@
 [ext_resource type="Texture2D" uid="uid://cl34u7ep38jhx" path="res://resources/Menu/Control Icons/Zoom.png" id="44_vsims"]
 [ext_resource type="Texture2D" uid="uid://dg51oyjbk8xpj" path="res://resources/Controls/KBM/keyboard_i.png" id="45_ifku1"]
 [ext_resource type="Texture2D" uid="uid://bugnbckbsxckc" path="res://resources/Controls/KBM/keyboard_k.png" id="46_hvuoq"]
+<<<<<<< HEAD
+=======
+[ext_resource type="Texture2D" uid="uid://c1hxy2sj457tk" path="res://resources/Menu/Overlay/Life.png" id="47_ifku1"]
+>>>>>>> 3eb2e6e (Fixed the finish popup, added character health, roughly implemented death (currently only the popup))
 
 [sub_resource type="Animation" id="Animation_8rgj6"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/Settings:position")
+tracks/0/path = NodePath("MenuLayer/Settings:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(1400, 80)]
+"values": [Vector2(1600, 64)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CanvasLayer/Settings:visible")
+tracks/1/path = NodePath("MenuLayer/Settings:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -80,7 +88,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("CanvasLayer/Main:position")
+tracks/2/path = NodePath("MenuLayer/Main:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -92,7 +100,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("CanvasLayer/Main:visible")
+tracks/3/path = NodePath("MenuLayer/Main:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -104,26 +112,26 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("CanvasLayer/Controls:visible")
+tracks/4/path = NodePath("MenuLayer/Controls:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [Vector2(64, 960)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("CanvasLayer/Controls:position")
+tracks/5/path = NodePath("MenuLayer/Controls:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(80, 800)]
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_gf7yk"]
@@ -132,19 +140,19 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/Controls:position")
+tracks/0/path = NodePath("MenuLayer/Controls:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(2),
 "update": 0,
-"values": [Vector2(80, 80)]
+"values": [Vector2(64, 64)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CanvasLayer/Controls:visible")
+tracks/1/path = NodePath("MenuLayer/Controls:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -160,19 +168,19 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/Settings:position")
+tracks/0/path = NodePath("MenuLayer/Settings:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(1400, 80)]
+"values": [Vector2(1600, 64)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CanvasLayer/Settings:visible")
+tracks/1/path = NodePath("MenuLayer/Settings:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -184,19 +192,19 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("CanvasLayer/Main:position")
+tracks/2/path = NodePath("MenuLayer/Main:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(80, 80)]
+"values": [Vector2(64, 64)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("CanvasLayer/Main:visible")
+tracks/3/path = NodePath("MenuLayer/Main:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -208,26 +216,26 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("CanvasLayer/Controls:visible")
+tracks/4/path = NodePath("MenuLayer/Controls:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [Vector2(64, 960)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("CanvasLayer/Controls:position")
+tracks/5/path = NodePath("MenuLayer/Controls:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(80, 800)]
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_ufe8k"]
@@ -236,7 +244,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/Main:position")
+tracks/0/path = NodePath("MenuLayer/Main:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -248,7 +256,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CanvasLayer/Main:visible")
+tracks/1/path = NodePath("MenuLayer/Main:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -264,19 +272,19 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/Settings:position")
+tracks/0/path = NodePath("MenuLayer/Settings:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(2),
 "update": 0,
-"values": [Vector2(80, 80)]
+"values": [Vector2(64, 64)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CanvasLayer/Settings:visible")
+tracks/1/path = NodePath("MenuLayer/Settings:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -292,19 +300,19 @@ length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/Controls:position")
+tracks/0/path = NodePath("MenuLayer/Controls:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(2, 2),
+"transitions": PackedFloat32Array(0.5, 0.5),
 "update": 0,
-"values": [Vector2(80, 80), Vector2(80, 800)]
+"values": [Vector2(64, 64), Vector2(64, 960)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CanvasLayer/Controls:visible")
+tracks/1/path = NodePath("MenuLayer/Controls:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -320,19 +328,19 @@ length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/Main:position")
+tracks/0/path = NodePath("MenuLayer/Main:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(2, 2),
 "update": 0,
-"values": [Vector2(40, 40), Vector2(40, -800)]
+"values": [Vector2(40, 40), Vector2(40, -960)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CanvasLayer/Main:visible")
+tracks/1/path = NodePath("MenuLayer/Main:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -348,19 +356,19 @@ length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/Settings:position")
+tracks/0/path = NodePath("MenuLayer/Settings:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(2, 2),
 "update": 0,
-"values": [Vector2(80, 80), Vector2(1400, 80)]
+"values": [Vector2(64, 64), Vector2(1600, 64)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CanvasLayer/Settings:visible")
+tracks/1/path = NodePath("MenuLayer/Settings:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -376,19 +384,19 @@ length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/Controls:position")
+tracks/0/path = NodePath("MenuLayer/Controls:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(0.5, 0.5),
 "update": 0,
-"values": [Vector2(80, 800), Vector2(80, 80)]
+"values": [Vector2(64, 960), Vector2(64, 64)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CanvasLayer/Controls:visible")
+tracks/1/path = NodePath("MenuLayer/Controls:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -404,19 +412,19 @@ length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/Main:position")
+tracks/0/path = NodePath("MenuLayer/Main:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(0.5, 0.5),
 "update": 0,
-"values": [Vector2(40, -800), Vector2(40, 40)]
+"values": [Vector2(40, -960), Vector2(40, 40)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CanvasLayer/Main:visible")
+tracks/1/path = NodePath("MenuLayer/Main:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -432,19 +440,19 @@ length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/Settings:position")
+tracks/0/path = NodePath("MenuLayer/Settings:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(0.5, 0.5),
 "update": 0,
-"values": [Vector2(1400, 80), Vector2(80, 80)]
+"values": [Vector2(1600, 64), Vector2(64, 64)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CanvasLayer/Settings:visible")
+tracks/1/path = NodePath("MenuLayer/Settings:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -469,7 +477,7 @@ _data = {
 &"show_settings": SubResource("Animation_antcs")
 }
 
-[node name="Menu" type="Control" node_paths=PackedStringArray("main", "settings", "animation_player", "resolution_picker")]
+[node name="Menu" type="Control" node_paths=PackedStringArray("game_overlay", "main", "settings", "animation_player", "resolution_picker", "health_bar")]
 process_priority = 1
 layout_mode = 3
 anchors_preset = 15
@@ -482,15 +490,19 @@ size_flags_vertical = 3
 mouse_filter = 1
 theme = ExtResource("1_7yxt8")
 script = ExtResource("2_o131u")
-main = NodePath("CanvasLayer/Main")
-settings = NodePath("CanvasLayer/Settings")
-animation_player = NodePath("CanvasLayer/AnimationPlayer")
-resolution_picker = NodePath("CanvasLayer/Settings/VBoxContainer/Resolution")
+game_overlay = NodePath("GameOverlay")
+main = NodePath("MenuLayer/Main")
+settings = NodePath("MenuLayer/Settings")
+animation_player = NodePath("AnimationPlayer")
+resolution_picker = NodePath("MenuLayer/Settings/VBoxContainer/Resolution")
+health_bar = NodePath("GameOverlay/HBoxContainer/Health/Bar")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="MenuLayer" type="CanvasLayer" parent="."]
+layer = 2
+visible = false
 follow_viewport_scale = 0.05
 
-[node name="Main" type="NinePatchRect" parent="CanvasLayer"]
+[node name="Main" type="NinePatchRect" parent="MenuLayer"]
 custom_minimum_size = Vector2(640, 640)
 anchors_preset = 4
 anchor_top = 0.5
@@ -509,7 +521,7 @@ patch_margin_right = 5
 patch_margin_bottom = 5
 script = ExtResource("4_0cnb7")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Main"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuLayer/Main"]
 custom_minimum_size = Vector2(576, 576)
 layout_mode = 1
 anchors_preset = 8
@@ -525,17 +537,17 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Main/VBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="MenuLayer/Main/VBoxContainer"]
 layout_mode = 2
 texture = ExtResource("5_7k0uf")
 expand_mode = 5
 stretch_mode = 4
 
-[node name="VSeparator" type="VSeparator" parent="CanvasLayer/Main/VBoxContainer"]
+[node name="VSeparator" type="VSeparator" parent="MenuLayer/Main/VBoxContainer"]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 
-[node name="Play" type="Button" parent="CanvasLayer/Main/VBoxContainer"]
+[node name="Play" type="Button" parent="MenuLayer/Main/VBoxContainer"]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 size_flags_vertical = 3
@@ -547,10 +559,10 @@ icon = ExtResource("6_jcwtk")
 icon_alignment = 1
 expand_icon = true
 
-[node name="ButtonSpacer1" type="VSeparator" parent="CanvasLayer/Main/VBoxContainer"]
+[node name="ButtonSpacer1" type="VSeparator" parent="MenuLayer/Main/VBoxContainer"]
 layout_mode = 2
 
-[node name="Play3D" type="Button" parent="CanvasLayer/Main/VBoxContainer"]
+[node name="Play3D" type="Button" parent="MenuLayer/Main/VBoxContainer"]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 size_flags_vertical = 3
@@ -562,10 +574,10 @@ icon = ExtResource("7_7oqtn")
 icon_alignment = 1
 expand_icon = true
 
-[node name="ButtonSpacer2" type="VSeparator" parent="CanvasLayer/Main/VBoxContainer"]
+[node name="ButtonSpacer2" type="VSeparator" parent="MenuLayer/Main/VBoxContainer"]
 layout_mode = 2
 
-[node name="Settings" type="Button" parent="CanvasLayer/Main/VBoxContainer"]
+[node name="Settings" type="Button" parent="MenuLayer/Main/VBoxContainer"]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 size_flags_vertical = 3
@@ -577,10 +589,10 @@ icon = ExtResource("8_1anaf")
 icon_alignment = 1
 expand_icon = true
 
-[node name="ButtonSpacer3" type="VSeparator" parent="CanvasLayer/Main/VBoxContainer"]
+[node name="ButtonSpacer3" type="VSeparator" parent="MenuLayer/Main/VBoxContainer"]
 layout_mode = 2
 
-[node name="Controls" type="Button" parent="CanvasLayer/Main/VBoxContainer"]
+[node name="Controls" type="Button" parent="MenuLayer/Main/VBoxContainer"]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 size_flags_vertical = 3
@@ -592,10 +604,10 @@ icon = ExtResource("9_xlwes")
 icon_alignment = 1
 expand_icon = true
 
-[node name="ButtonSpacer4" type="VSeparator" parent="CanvasLayer/Main/VBoxContainer"]
+[node name="ButtonSpacer4" type="VSeparator" parent="MenuLayer/Main/VBoxContainer"]
 layout_mode = 2
 
-[node name="Quit" type="Button" parent="CanvasLayer/Main/VBoxContainer"]
+[node name="Quit" type="Button" parent="MenuLayer/Main/VBoxContainer"]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 size_flags_vertical = 3
@@ -607,18 +619,16 @@ icon = ExtResource("10_fqtlv")
 icon_alignment = 1
 expand_icon = true
 
-[node name="Settings" type="NinePatchRect" parent="CanvasLayer"]
+[node name="Settings" type="NinePatchRect" parent="MenuLayer"]
 visible = false
 custom_minimum_size = Vector2(600, 560)
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 760.0
-offset_top = -280.0
-offset_right = 1880.0
-offset_bottom = 280.0
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1600.0
+offset_top = 64.0
+offset_right = 1472.0
+offset_bottom = -64.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_7yxt8")
@@ -631,26 +641,26 @@ patch_margin_bottom = 5
 axis_stretch_horizontal = 2
 axis_stretch_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Settings"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuLayer/Settings"]
 layout_mode = 0
 offset_left = 32.0
 offset_top = 32.0
 offset_right = 288.0
 offset_bottom = 194.0
 
-[node name="Settings Header" type="TextureRect" parent="CanvasLayer/Settings/VBoxContainer"]
+[node name="Settings Header" type="TextureRect" parent="MenuLayer/Settings/VBoxContainer"]
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 texture = ExtResource("12_wg8ic")
 stretch_mode = 4
 
-[node name="VSeparator" type="VSeparator" parent="CanvasLayer/Settings/VBoxContainer"]
+[node name="VSeparator" type="VSeparator" parent="MenuLayer/Settings/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 16
 theme_override_styles/separator = ExtResource("13_tbd65")
 
-[node name="Resolution" type="OptionButton" parent="CanvasLayer/Settings/VBoxContainer"]
+[node name="Resolution" type="OptionButton" parent="MenuLayer/Settings/VBoxContainer"]
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 focus_neighbor_right = NodePath("../../Exit Settings")
@@ -660,7 +670,7 @@ focus_previous = NodePath("../../Exit Settings")
 icon_alignment = 2
 expand_icon = true
 
-[node name="Fullscreen" type="CheckButton" parent="CanvasLayer/Settings/VBoxContainer"]
+[node name="Fullscreen" type="CheckButton" parent="MenuLayer/Settings/VBoxContainer"]
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 focus_neighbor_top = NodePath("../Resolution")
@@ -670,13 +680,13 @@ focus_previous = NodePath("../Resolution")
 icon = ExtResource("14_pjik4")
 icon_alignment = 1
 
-[node name="Panel" type="Panel" parent="CanvasLayer/Settings/VBoxContainer"]
+[node name="Panel" type="Panel" parent="MenuLayer/Settings/VBoxContainer"]
 custom_minimum_size = Vector2(0, 160)
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = ExtResource("15_bqoc1")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Settings/VBoxContainer/Panel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuLayer/Settings/VBoxContainer/Panel"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -690,31 +700,31 @@ offset_bottom = 42.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Settings/VBoxContainer/Panel/VBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="MenuLayer/Settings/VBoxContainer/Panel/VBoxContainer"]
 layout_mode = 2
 texture = ExtResource("16_whlyx")
 stretch_mode = 5
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Settings/VBoxContainer/Panel/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MenuLayer/Settings/VBoxContainer/Panel/VBoxContainer"]
 layout_mode = 2
 
-[node name="Left Padding" type="HSeparator" parent="CanvasLayer/Settings/VBoxContainer/Panel/VBoxContainer/HBoxContainer"]
+[node name="Left Padding" type="HSeparator" parent="MenuLayer/Settings/VBoxContainer/Panel/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/separator = ExtResource("13_tbd65")
 
-[node name="GridContainer" type="GridContainer" parent="CanvasLayer/Settings/VBoxContainer/Panel/VBoxContainer/HBoxContainer"]
+[node name="GridContainer" type="GridContainer" parent="MenuLayer/Settings/VBoxContainer/Panel/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 columns = 4
 
-[node name="White" type="Button" parent="CanvasLayer/Settings/VBoxContainer/Panel/VBoxContainer/HBoxContainer/GridContainer"]
+[node name="White" type="Button" parent="MenuLayer/Settings/VBoxContainer/Panel/VBoxContainer/HBoxContainer/GridContainer"]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 focus_neighbor_right = NodePath("../Red")
 focus_next = NodePath("../Red")
 focus_previous = NodePath("../../../../../Fullscreen")
 
-[node name="White" type="ColorRect" parent="CanvasLayer/Settings/VBoxContainer/Panel/VBoxContainer/HBoxContainer/GridContainer/White"]
+[node name="White" type="ColorRect" parent="MenuLayer/Settings/VBoxContainer/Panel/VBoxContainer/HBoxContainer/GridContainer/White"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 1
 anchors_preset = 8
@@ -730,7 +740,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 
-[node name="Red" type="Button" parent="CanvasLayer/Settings/VBoxContainer/Panel/VBoxContainer/HBoxContainer/GridContainer"]
+[node name="Red" type="Button" parent="MenuLayer/Settings/VBoxContainer/Panel/VBoxContainer/HBoxContainer/GridContainer"]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 focus_neighbor_left = NodePath("../White")
@@ -740,7 +750,7 @@ focus_previous = NodePath("../White")
 theme_override_styles/focus = ExtResource("17_cijfx")
 theme_override_styles/pressed = ExtResource("17_cijfx")
 
-[node name="Red" type="ColorRect" parent="CanvasLayer/Settings/VBoxContainer/Panel/VBoxContainer/HBoxContainer/GridContainer/Red"]
+[node name="Red" type="ColorRect" parent="MenuLayer/Settings/VBoxContainer/Panel/VBoxContainer/HBoxContainer/GridContainer/Red"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 1
 anchors_preset = 5
@@ -754,7 +764,7 @@ grow_horizontal = 2
 mouse_filter = 1
 color = Color(0.784314, 0, 0, 1)
 
-[node name="Green" type="Button" parent="CanvasLayer/Settings/VBoxContainer/Panel/VBoxContainer/HBoxContainer/GridContainer"]
+[node name="Green" type="Button" parent="MenuLayer/Settings/VBoxContainer/Panel/VBoxContainer/HBoxContainer/GridContainer"]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 focus_neighbor_left = NodePath("../Red")
@@ -764,7 +774,7 @@ focus_previous = NodePath("../Red")
 theme_override_styles/focus = ExtResource("17_cijfx")
 theme_override_styles/pressed = ExtResource("17_cijfx")
 
-[node name="Green" type="ColorRect" parent="CanvasLayer/Settings/VBoxContainer/Panel/VBoxContainer/HBoxContainer/GridContainer/Green"]
+[node name="Green" type="ColorRect" parent="MenuLayer/Settings/VBoxContainer/Panel/VBoxContainer/HBoxContainer/GridContainer/Green"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 1
 anchors_preset = 8
@@ -781,7 +791,7 @@ grow_vertical = 2
 mouse_filter = 1
 color = Color(0, 0.784314, 0, 1)
 
-[node name="Blue" type="Button" parent="CanvasLayer/Settings/VBoxContainer/Panel/VBoxContainer/HBoxContainer/GridContainer"]
+[node name="Blue" type="Button" parent="MenuLayer/Settings/VBoxContainer/Panel/VBoxContainer/HBoxContainer/GridContainer"]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 focus_neighbor_left = NodePath("../Green")
@@ -791,7 +801,7 @@ focus_previous = NodePath("../Green")
 theme_override_styles/focus = ExtResource("17_cijfx")
 theme_override_styles/pressed = ExtResource("17_cijfx")
 
-[node name="Blue" type="ColorRect" parent="CanvasLayer/Settings/VBoxContainer/Panel/VBoxContainer/HBoxContainer/GridContainer/Blue"]
+[node name="Blue" type="ColorRect" parent="MenuLayer/Settings/VBoxContainer/Panel/VBoxContainer/HBoxContainer/GridContainer/Blue"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 1
 anchors_preset = 8
@@ -808,7 +818,7 @@ grow_vertical = 2
 mouse_filter = 1
 color = Color(0, 0, 0.784314, 1)
 
-[node name="Yellow" type="Button" parent="CanvasLayer/Settings/VBoxContainer/Panel/VBoxContainer/HBoxContainer/GridContainer"]
+[node name="Yellow" type="Button" parent="MenuLayer/Settings/VBoxContainer/Panel/VBoxContainer/HBoxContainer/GridContainer"]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 focus_neighbor_left = NodePath("../Blue")
@@ -816,7 +826,7 @@ focus_previous = NodePath("../Blue")
 theme_override_styles/focus = ExtResource("17_cijfx")
 theme_override_styles/pressed = ExtResource("17_cijfx")
 
-[node name="Yellow" type="ColorRect" parent="CanvasLayer/Settings/VBoxContainer/Panel/VBoxContainer/HBoxContainer/GridContainer/Yellow"]
+[node name="Yellow" type="ColorRect" parent="MenuLayer/Settings/VBoxContainer/Panel/VBoxContainer/HBoxContainer/GridContainer/Yellow"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 1
 anchors_preset = 8
@@ -833,12 +843,12 @@ grow_vertical = 2
 mouse_filter = 1
 color = Color(1, 1, 0, 1)
 
-[node name="Right Padding" type="HSeparator" parent="CanvasLayer/Settings/VBoxContainer/Panel/VBoxContainer/HBoxContainer"]
+[node name="Right Padding" type="HSeparator" parent="MenuLayer/Settings/VBoxContainer/Panel/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/separator = ExtResource("13_tbd65")
 
-[node name="Exit Settings" type="Button" parent="CanvasLayer/Settings"]
+[node name="Exit Settings" type="Button" parent="MenuLayer/Settings"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 1
 anchors_preset = 1
@@ -856,18 +866,16 @@ focus_previous = NodePath("../VBoxContainer/Resolution")
 text = "X
 "
 
-[node name="Controls" type="NinePatchRect" parent="CanvasLayer"]
+[node name="Controls" type="NinePatchRect" parent="MenuLayer"]
 visible = false
 custom_minimum_size = Vector2(600, 560)
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -560.0
-offset_top = 440.0
-offset_right = 560.0
-offset_bottom = 1000.0
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 64.0
+offset_top = 960.0
+offset_right = -64.0
+offset_bottom = 832.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_7yxt8")
@@ -880,7 +888,7 @@ patch_margin_bottom = 5
 axis_stretch_horizontal = 2
 axis_stretch_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Controls"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuLayer/Controls"]
 custom_minimum_size = Vector2(512, 256)
 layout_mode = 1
 anchors_preset = -1
@@ -895,19 +903,27 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Controls Header" type="TextureRect" parent="CanvasLayer/Controls/VBoxContainer"]
+[node name="Controls Header" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer"]
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 texture = ExtResource("18_s1ob8")
 stretch_mode = 4
 
+<<<<<<< HEAD
 [node name="VSeparator" type="VSeparator" parent="CanvasLayer/Controls/VBoxContainer"]
+=======
+[node name="VSeparator" type="VSeparator" parent="MenuLayer/Controls/VBoxContainer"]
+>>>>>>> 3eb2e6e (Fixed the finish popup, added character health, roughly implemented death (currently only the popup))
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
 theme_override_constants/separation = 16
 theme_override_styles/separator = ExtResource("13_tbd65")
 
+<<<<<<< HEAD
 [node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/Controls/VBoxContainer"]
+=======
+[node name="ScrollContainer" type="ScrollContainer" parent="MenuLayer/Controls/VBoxContainer"]
+>>>>>>> 3eb2e6e (Fixed the finish popup, added character health, roughly implemented death (currently only the popup))
 layout_mode = 2
 size_flags_vertical = 3
 focus_neighbor_top = NodePath(".")
@@ -919,26 +935,45 @@ focus_mode = 2
 follow_focus = true
 draw_focus_border = true
 
+<<<<<<< HEAD
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Controls/VBoxContainer/ScrollContainer"]
+=======
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer"]
+>>>>>>> 3eb2e6e (Fixed the finish popup, added character health, roughly implemented death (currently only the popup))
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
+<<<<<<< HEAD
 [node name="Menu Controls" type="TextureRect" parent="CanvasLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer"]
+=======
+[node name="Menu Controls" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer"]
+>>>>>>> 3eb2e6e (Fixed the finish popup, added character health, roughly implemented death (currently only the popup))
 layout_mode = 2
 texture = ExtResource("19_xlwes")
 stretch_mode = 4
 
+<<<<<<< HEAD
 [node name="Menu Separator" type="VSeparator" parent="CanvasLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer"]
+=======
+[node name="Menu Separator" type="VSeparator" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer"]
+>>>>>>> 3eb2e6e (Fixed the finish popup, added character health, roughly implemented death (currently only the popup))
 custom_minimum_size = Vector2(8, 8)
 layout_mode = 2
 theme_override_constants/separation = 16
 theme_override_styles/separator = ExtResource("13_tbd65")
 
+<<<<<<< HEAD
 [node name="Pause_Exit Controls" type="HBoxContainer" parent="CanvasLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 
 [node name="Pause" type="TextureRect" parent="CanvasLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/Pause_Exit Controls"]
+=======
+[node name="Pause_Exit Controls" type="HBoxContainer" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Pause" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/Pause_Exit Controls"]
+>>>>>>> 3eb2e6e (Fixed the finish popup, added character health, roughly implemented death (currently only the popup))
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 focus_neighbor_top = NodePath("../../..")
@@ -949,7 +984,11 @@ texture = ExtResource("20_tbd65")
 expand_mode = 3
 stretch_mode = 4
 
+<<<<<<< HEAD
 [node name="Exit" type="TextureRect" parent="CanvasLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/Pause_Exit Controls"]
+=======
+[node name="Exit" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/Pause_Exit Controls"]
+>>>>>>> 3eb2e6e (Fixed the finish popup, added character health, roughly implemented death (currently only the popup))
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 focus_neighbor_top = NodePath("../../..")
@@ -960,27 +999,46 @@ texture = ExtResource("20_wg8ic")
 expand_mode = 3
 stretch_mode = 4
 
+<<<<<<< HEAD
 [node name="HSeparator" type="HSeparator" parent="CanvasLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/Pause_Exit Controls"]
+=======
+[node name="HSeparator" type="HSeparator" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/Pause_Exit Controls"]
+>>>>>>> 3eb2e6e (Fixed the finish popup, added character health, roughly implemented death (currently only the popup))
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/separator = ExtResource("20_6p85y")
 
+<<<<<<< HEAD
 [node name="Escape" type="TextureRect" parent="CanvasLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/Pause_Exit Controls"]
+=======
+[node name="Escape" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/Pause_Exit Controls"]
+>>>>>>> 3eb2e6e (Fixed the finish popup, added character health, roughly implemented death (currently only the popup))
 layout_mode = 2
 texture = ExtResource("22_tbd65")
 expand_mode = 3
 stretch_mode = 4
 
+<<<<<<< HEAD
 [node name="Plus_Start" type="TextureRect" parent="CanvasLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/Pause_Exit Controls"]
+=======
+[node name="Plus_Start" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/Pause_Exit Controls"]
+>>>>>>> 3eb2e6e (Fixed the finish popup, added character health, roughly implemented death (currently only the popup))
 layout_mode = 2
 texture = ExtResource("23_pjik4")
 expand_mode = 3
 stretch_mode = 4
 
+<<<<<<< HEAD
 [node name="Confirm Controls" type="HBoxContainer" parent="CanvasLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 
 [node name="Confirm" type="TextureRect" parent="CanvasLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/Confirm Controls"]
+=======
+[node name="Confirm Controls" type="HBoxContainer" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Confirm" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/Confirm Controls"]
+>>>>>>> 3eb2e6e (Fixed the finish popup, added character health, roughly implemented death (currently only the popup))
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 focus_neighbor_top = NodePath("../../..")
@@ -991,56 +1049,95 @@ texture = ExtResource("25_pjik4")
 expand_mode = 3
 stretch_mode = 4
 
+<<<<<<< HEAD
 [node name="HSeparator" type="HSeparator" parent="CanvasLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/Confirm Controls"]
+=======
+[node name="HSeparator" type="HSeparator" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/Confirm Controls"]
+>>>>>>> 3eb2e6e (Fixed the finish popup, added character health, roughly implemented death (currently only the popup))
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/separator = ExtResource("20_6p85y")
 
+<<<<<<< HEAD
 [node name="Enter" type="TextureRect" parent="CanvasLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/Confirm Controls"]
+=======
+[node name="Enter" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/Confirm Controls"]
+>>>>>>> 3eb2e6e (Fixed the finish popup, added character health, roughly implemented death (currently only the popup))
 layout_mode = 2
 texture = ExtResource("26_whlyx")
 expand_mode = 3
 stretch_mode = 4
 
+<<<<<<< HEAD
 [node name="Space" type="TextureRect" parent="CanvasLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/Confirm Controls"]
+=======
+[node name="Space" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/Confirm Controls"]
+>>>>>>> 3eb2e6e (Fixed the finish popup, added character health, roughly implemented death (currently only the popup))
 layout_mode = 2
 texture = ExtResource("25_q4tpj")
 expand_mode = 3
 stretch_mode = 4
 
+<<<<<<< HEAD
 [node name="Right Xb" type="TextureRect" parent="CanvasLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/Confirm Controls"]
+=======
+[node name="Right Xb" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/Confirm Controls"]
+>>>>>>> 3eb2e6e (Fixed the finish popup, added character health, roughly implemented death (currently only the popup))
 layout_mode = 2
 texture = ExtResource("28_cijfx")
 expand_mode = 3
 stretch_mode = 4
 
+<<<<<<< HEAD
 [node name="Right Nin" type="TextureRect" parent="CanvasLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/Confirm Controls"]
+=======
+[node name="Right Nin" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/Confirm Controls"]
+>>>>>>> 3eb2e6e (Fixed the finish popup, added character health, roughly implemented death (currently only the popup))
 layout_mode = 2
 texture = ExtResource("29_s1ob8")
 expand_mode = 3
 stretch_mode = 4
 
+<<<<<<< HEAD
 [node name="Controls Separator1" type="VSeparator" parent="CanvasLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer"]
+=======
+[node name="Controls Separator1" type="VSeparator" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer"]
+>>>>>>> 3eb2e6e (Fixed the finish popup, added character health, roughly implemented death (currently only the popup))
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
 theme_override_constants/separation = 16
 theme_override_styles/separator = ExtResource("13_tbd65")
 
+<<<<<<< HEAD
 [node name="2D Controls" type="TextureRect" parent="CanvasLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer"]
+=======
+[node name="2D Controls" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer"]
+>>>>>>> 3eb2e6e (Fixed the finish popup, added character health, roughly implemented death (currently only the popup))
 layout_mode = 2
 texture = ExtResource("19_7oqtn")
 stretch_mode = 4
 
+<<<<<<< HEAD
 [node name="2D Separator" type="VSeparator" parent="CanvasLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer"]
+=======
+[node name="2D Separator" type="VSeparator" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer"]
+>>>>>>> 3eb2e6e (Fixed the finish popup, added character health, roughly implemented death (currently only the popup))
 custom_minimum_size = Vector2(8, 8)
 layout_mode = 2
 theme_override_constants/separation = 16
 theme_override_styles/separator = ExtResource("13_tbd65")
 
+<<<<<<< HEAD
 [node name="Move Controls" type="HBoxContainer" parent="CanvasLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 
 [node name="Move" type="TextureRect" parent="CanvasLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/Move Controls"]
+=======
+[node name="Move Controls" type="HBoxContainer" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Move" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/Move Controls"]
+>>>>>>> 3eb2e6e (Fixed the finish popup, added character health, roughly implemented death (currently only the popup))
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 focus_neighbor_top = NodePath("../../..")
@@ -1051,39 +1148,66 @@ texture = ExtResource("19_i7uud")
 expand_mode = 3
 stretch_mode = 4
 
+<<<<<<< HEAD
 [node name="HSeparator" type="HSeparator" parent="CanvasLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/Move Controls"]
+=======
+[node name="HSeparator" type="HSeparator" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/Move Controls"]
+>>>>>>> 3eb2e6e (Fixed the finish popup, added character health, roughly implemented death (currently only the popup))
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/separator = ExtResource("20_6p85y")
 
+<<<<<<< HEAD
 [node name="Arrow Keys" type="TextureRect" parent="CanvasLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/Move Controls"]
+=======
+[node name="Arrow Keys" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/Move Controls"]
+>>>>>>> 3eb2e6e (Fixed the finish popup, added character health, roughly implemented death (currently only the popup))
 layout_mode = 2
 texture = ExtResource("21_vsims")
 expand_mode = 3
 stretch_mode = 4
 
+<<<<<<< HEAD
 [node name="WASD" type="TextureRect" parent="CanvasLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/Move Controls"]
+=======
+[node name="WASD" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/Move Controls"]
+>>>>>>> 3eb2e6e (Fixed the finish popup, added character health, roughly implemented death (currently only the popup))
 layout_mode = 2
 texture = ExtResource("22_ifku1")
 expand_mode = 3
 stretch_mode = 4
 
+<<<<<<< HEAD
 [node name="L Stick" type="TextureRect" parent="CanvasLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/Move Controls"]
+=======
+[node name="L Stick" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/Move Controls"]
+>>>>>>> 3eb2e6e (Fixed the finish popup, added character health, roughly implemented death (currently only the popup))
 layout_mode = 2
 texture = ExtResource("23_hvuoq")
 expand_mode = 3
 stretch_mode = 4
 
+<<<<<<< HEAD
 [node name="DPad" type="TextureRect" parent="CanvasLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/Move Controls"]
+=======
+[node name="DPad" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/Move Controls"]
+>>>>>>> 3eb2e6e (Fixed the finish popup, added character health, roughly implemented death (currently only the popup))
 layout_mode = 2
 texture = ExtResource("35_s1ob8")
 expand_mode = 3
 stretch_mode = 4
 
+<<<<<<< HEAD
 [node name="Jump Controls" type="HBoxContainer" parent="CanvasLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 
 [node name="Jump" type="TextureRect" parent="CanvasLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/Jump Controls"]
+=======
+[node name="Jump Controls" type="HBoxContainer" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Jump" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/Jump Controls"]
+>>>>>>> 3eb2e6e (Fixed the finish popup, added character health, roughly implemented death (currently only the popup))
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 focus_neighbor_top = NodePath("../../Move Controls/Move")
@@ -1094,50 +1218,85 @@ texture = ExtResource("24_xkl7s")
 expand_mode = 3
 stretch_mode = 4
 
+<<<<<<< HEAD
 [node name="HSeparator" type="HSeparator" parent="CanvasLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/Jump Controls"]
+=======
+[node name="HSeparator" type="HSeparator" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/Jump Controls"]
+>>>>>>> 3eb2e6e (Fixed the finish popup, added character health, roughly implemented death (currently only the popup))
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/separator = ExtResource("20_6p85y")
 
+<<<<<<< HEAD
 [node name="Spacebar" type="TextureRect" parent="CanvasLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/Jump Controls"]
+=======
+[node name="Spacebar" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/Jump Controls"]
+>>>>>>> 3eb2e6e (Fixed the finish popup, added character health, roughly implemented death (currently only the popup))
 layout_mode = 2
 texture = ExtResource("25_q4tpj")
 expand_mode = 3
 stretch_mode = 4
 
+<<<<<<< HEAD
 [node name="A Button" type="TextureRect" parent="CanvasLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/Jump Controls"]
+=======
+[node name="A Button" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/Jump Controls"]
+>>>>>>> 3eb2e6e (Fixed the finish popup, added character health, roughly implemented death (currently only the popup))
 layout_mode = 2
 texture = ExtResource("27_1anaf")
 expand_mode = 3
 stretch_mode = 4
 
+<<<<<<< HEAD
 [node name="B Button" type="TextureRect" parent="CanvasLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/Jump Controls"]
+=======
+[node name="B Button" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/Jump Controls"]
+>>>>>>> 3eb2e6e (Fixed the finish popup, added character health, roughly implemented death (currently only the popup))
 layout_mode = 2
 texture = ExtResource("26_qg4he")
 expand_mode = 3
 stretch_mode = 4
 
+<<<<<<< HEAD
 [node name="Controls Separator2" type="VSeparator" parent="CanvasLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer"]
+=======
+[node name="Controls Separator2" type="VSeparator" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer"]
+>>>>>>> 3eb2e6e (Fixed the finish popup, added character health, roughly implemented death (currently only the popup))
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
 theme_override_constants/separation = 16
 theme_override_styles/separator = ExtResource("13_tbd65")
 
+<<<<<<< HEAD
 [node name="3D Controls" type="TextureRect" parent="CanvasLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer"]
+=======
+[node name="3D Controls" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer"]
+>>>>>>> 3eb2e6e (Fixed the finish popup, added character health, roughly implemented death (currently only the popup))
 layout_mode = 2
 texture = ExtResource("28_1anaf")
 stretch_mode = 4
 
+<<<<<<< HEAD
 [node name="3D Separator" type="VSeparator" parent="CanvasLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer"]
+=======
+[node name="3D Separator" type="VSeparator" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer"]
+>>>>>>> 3eb2e6e (Fixed the finish popup, added character health, roughly implemented death (currently only the popup))
 custom_minimum_size = Vector2(8, 8)
 layout_mode = 2
 theme_override_constants/separation = 16
 theme_override_styles/separator = ExtResource("13_tbd65")
 
+<<<<<<< HEAD
 [node name="3D Move Controls" type="HBoxContainer" parent="CanvasLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 
 [node name="Move" type="TextureRect" parent="CanvasLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/3D Move Controls"]
+=======
+[node name="3D Move Controls" type="HBoxContainer" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Move" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/3D Move Controls"]
+>>>>>>> 3eb2e6e (Fixed the finish popup, added character health, roughly implemented death (currently only the popup))
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 focus_neighbor_top = NodePath("../../Jump Controls/Jump")
@@ -1148,39 +1307,66 @@ texture = ExtResource("19_i7uud")
 expand_mode = 3
 stretch_mode = 4
 
+<<<<<<< HEAD
 [node name="HSeparator" type="HSeparator" parent="CanvasLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/3D Move Controls"]
+=======
+[node name="HSeparator" type="HSeparator" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/3D Move Controls"]
+>>>>>>> 3eb2e6e (Fixed the finish popup, added character health, roughly implemented death (currently only the popup))
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/separator = ExtResource("20_6p85y")
 
+<<<<<<< HEAD
 [node name="Arrow Keys" type="TextureRect" parent="CanvasLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/3D Move Controls"]
+=======
+[node name="Arrow Keys" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/3D Move Controls"]
+>>>>>>> 3eb2e6e (Fixed the finish popup, added character health, roughly implemented death (currently only the popup))
 layout_mode = 2
 texture = ExtResource("21_vsims")
 expand_mode = 3
 stretch_mode = 4
 
+<<<<<<< HEAD
 [node name="WASD" type="TextureRect" parent="CanvasLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/3D Move Controls"]
+=======
+[node name="WASD" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/3D Move Controls"]
+>>>>>>> 3eb2e6e (Fixed the finish popup, added character health, roughly implemented death (currently only the popup))
 layout_mode = 2
 texture = ExtResource("22_ifku1")
 expand_mode = 3
 stretch_mode = 4
 
+<<<<<<< HEAD
 [node name="L Stick" type="TextureRect" parent="CanvasLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/3D Move Controls"]
+=======
+[node name="L Stick" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/3D Move Controls"]
+>>>>>>> 3eb2e6e (Fixed the finish popup, added character health, roughly implemented death (currently only the popup))
 layout_mode = 2
 texture = ExtResource("23_hvuoq")
 expand_mode = 3
 stretch_mode = 4
 
+<<<<<<< HEAD
 [node name="DPad" type="TextureRect" parent="CanvasLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/3D Move Controls"]
+=======
+[node name="DPad" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/3D Move Controls"]
+>>>>>>> 3eb2e6e (Fixed the finish popup, added character health, roughly implemented death (currently only the popup))
 layout_mode = 2
 texture = ExtResource("35_s1ob8")
 expand_mode = 3
 stretch_mode = 4
 
+<<<<<<< HEAD
 [node name="3D Jump Controls" type="HBoxContainer" parent="CanvasLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 
 [node name="Jump" type="TextureRect" parent="CanvasLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/3D Jump Controls"]
+=======
+[node name="3D Jump Controls" type="HBoxContainer" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Jump" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/3D Jump Controls"]
+>>>>>>> 3eb2e6e (Fixed the finish popup, added character health, roughly implemented death (currently only the popup))
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 focus_neighbor_top = NodePath("../../3D Camera Controls/Camera")
@@ -1189,33 +1375,56 @@ texture = ExtResource("24_xkl7s")
 expand_mode = 3
 stretch_mode = 4
 
+<<<<<<< HEAD
 [node name="HSeparator" type="HSeparator" parent="CanvasLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/3D Jump Controls"]
+=======
+[node name="HSeparator" type="HSeparator" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/3D Jump Controls"]
+>>>>>>> 3eb2e6e (Fixed the finish popup, added character health, roughly implemented death (currently only the popup))
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/separator = ExtResource("20_6p85y")
 
+<<<<<<< HEAD
 [node name="Spacebar" type="TextureRect" parent="CanvasLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/3D Jump Controls"]
+=======
+[node name="Spacebar" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/3D Jump Controls"]
+>>>>>>> 3eb2e6e (Fixed the finish popup, added character health, roughly implemented death (currently only the popup))
 layout_mode = 2
 texture = ExtResource("25_q4tpj")
 expand_mode = 3
 stretch_mode = 4
 
+<<<<<<< HEAD
 [node name="A Button" type="TextureRect" parent="CanvasLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/3D Jump Controls"]
+=======
+[node name="A Button" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/3D Jump Controls"]
+>>>>>>> 3eb2e6e (Fixed the finish popup, added character health, roughly implemented death (currently only the popup))
 layout_mode = 2
 texture = ExtResource("27_1anaf")
 expand_mode = 3
 stretch_mode = 4
 
+<<<<<<< HEAD
 [node name="B Button" type="TextureRect" parent="CanvasLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/3D Jump Controls"]
+=======
+[node name="B Button" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/3D Jump Controls"]
+>>>>>>> 3eb2e6e (Fixed the finish popup, added character health, roughly implemented death (currently only the popup))
 layout_mode = 2
 texture = ExtResource("26_qg4he")
 expand_mode = 3
 stretch_mode = 4
 
+<<<<<<< HEAD
 [node name="3D Camera Controls" type="HBoxContainer" parent="CanvasLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 
 [node name="Camera" type="TextureRect" parent="CanvasLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/3D Camera Controls"]
+=======
+[node name="3D Camera Controls" type="HBoxContainer" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Camera" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/3D Camera Controls"]
+>>>>>>> 3eb2e6e (Fixed the finish popup, added character health, roughly implemented death (currently only the popup))
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 focus_neighbor_top = NodePath("../../3D Move Controls/Move")
@@ -1226,33 +1435,56 @@ texture = ExtResource("29_xlwes")
 expand_mode = 3
 stretch_mode = 4
 
+<<<<<<< HEAD
 [node name="HSeparator" type="HSeparator" parent="CanvasLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/3D Camera Controls"]
+=======
+[node name="HSeparator" type="HSeparator" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/3D Camera Controls"]
+>>>>>>> 3eb2e6e (Fixed the finish popup, added character health, roughly implemented death (currently only the popup))
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/separator = ExtResource("20_6p85y")
 
+<<<<<<< HEAD
 [node name="Brackets" type="TextureRect" parent="CanvasLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/3D Camera Controls"]
+=======
+[node name="Brackets" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/3D Camera Controls"]
+>>>>>>> 3eb2e6e (Fixed the finish popup, added character health, roughly implemented death (currently only the popup))
 layout_mode = 2
 texture = ExtResource("30_fqtlv")
 expand_mode = 3
 stretch_mode = 4
 
+<<<<<<< HEAD
 [node name="Mouse Move" type="TextureRect" parent="CanvasLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/3D Camera Controls"]
+=======
+[node name="Mouse Move" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/3D Camera Controls"]
+>>>>>>> 3eb2e6e (Fixed the finish popup, added character health, roughly implemented death (currently only the popup))
 layout_mode = 2
 texture = ExtResource("31_mfpu8")
 expand_mode = 3
 stretch_mode = 4
 
+<<<<<<< HEAD
 [node name="R Stick" type="TextureRect" parent="CanvasLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/3D Camera Controls"]
+=======
+[node name="R Stick" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/3D Camera Controls"]
+>>>>>>> 3eb2e6e (Fixed the finish popup, added character health, roughly implemented death (currently only the popup))
 layout_mode = 2
 texture = ExtResource("32_wg8ic")
 expand_mode = 3
 stretch_mode = 4
 
+<<<<<<< HEAD
 [node name="3D Zoom Controls" type="HBoxContainer" parent="CanvasLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 
 [node name="Zoom" type="TextureRect" parent="CanvasLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/3D Zoom Controls"]
+=======
+[node name="3D Zoom Controls" type="HBoxContainer" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Zoom" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/3D Zoom Controls"]
+>>>>>>> 3eb2e6e (Fixed the finish popup, added character health, roughly implemented death (currently only the popup))
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 focus_neighbor_top = NodePath("../../3D Move Controls/Move")
@@ -1263,30 +1495,50 @@ texture = ExtResource("44_vsims")
 expand_mode = 3
 stretch_mode = 4
 
+<<<<<<< HEAD
 [node name="HSeparator" type="HSeparator" parent="CanvasLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/3D Zoom Controls"]
+=======
+[node name="HSeparator" type="HSeparator" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/3D Zoom Controls"]
+>>>>>>> 3eb2e6e (Fixed the finish popup, added character health, roughly implemented death (currently only the popup))
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/separator = ExtResource("20_6p85y")
 
+<<<<<<< HEAD
 [node name="I" type="TextureRect" parent="CanvasLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/3D Zoom Controls"]
+=======
+[node name="I" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/3D Zoom Controls"]
+>>>>>>> 3eb2e6e (Fixed the finish popup, added character health, roughly implemented death (currently only the popup))
 layout_mode = 2
 texture = ExtResource("45_ifku1")
 expand_mode = 3
 stretch_mode = 4
 
+<<<<<<< HEAD
 [node name="K" type="TextureRect" parent="CanvasLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/3D Zoom Controls"]
+=======
+[node name="K" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/3D Zoom Controls"]
+>>>>>>> 3eb2e6e (Fixed the finish popup, added character health, roughly implemented death (currently only the popup))
 layout_mode = 2
 texture = ExtResource("46_hvuoq")
 expand_mode = 3
 stretch_mode = 4
 
+<<<<<<< HEAD
 [node name="R Stick" type="TextureRect" parent="CanvasLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/3D Zoom Controls"]
+=======
+[node name="R Stick" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/3D Zoom Controls"]
+>>>>>>> 3eb2e6e (Fixed the finish popup, added character health, roughly implemented death (currently only the popup))
 layout_mode = 2
 texture = ExtResource("32_wg8ic")
 expand_mode = 3
 stretch_mode = 4
 
+<<<<<<< HEAD
 [node name="Exit Controls" type="Button" parent="CanvasLayer/Controls"]
+=======
+[node name="Exit Controls" type="Button" parent="MenuLayer/Controls"]
+>>>>>>> 3eb2e6e (Fixed the finish popup, added character health, roughly implemented death (currently only the popup))
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 1
 anchors_preset = 1
@@ -1303,11 +1555,43 @@ focus_next = NodePath("../VBoxContainer/ScrollContainer")
 text = "X
 "
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer"]
-root_node = NodePath("../..")
-libraries = {
-&"": SubResource("AnimationLibrary_nyjex")
-}
+[node name="GameOverlay" type="CanvasLayer" parent="."]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GameOverlay"]
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 48.0
+offset_top = 48.0
+offset_right = -48.0
+offset_bottom = -48.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_7yxt8")
+
+[node name="Health" type="HBoxContainer" parent="GameOverlay/HBoxContainer"]
+custom_minimum_size = Vector2(160, 48)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+
+[node name="Icon" type="TextureRect" parent="GameOverlay/HBoxContainer/Health"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource("47_ifku1")
+stretch_mode = 4
+
+[node name="Bar" type="ProgressBar" parent="GameOverlay/HBoxContainer/Health"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 10.0
+step = 1.0
+value = 10.0
+show_percentage = false
 
 [node name="Substrate Layer" type="Parallax2D" parent="."]
 z_index = -100
@@ -1354,17 +1638,22 @@ scale = Vector2(1.25, 1.25)
 texture = ExtResource("30_v00k6")
 centered = false
 
-[connection signal="pressed" from="CanvasLayer/Main/VBoxContainer/Play" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="CanvasLayer/Main/VBoxContainer/Play3D" to="." method="_on_play_3d_pressed"]
-[connection signal="pressed" from="CanvasLayer/Main/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
-[connection signal="pressed" from="CanvasLayer/Main/VBoxContainer/Controls" to="." method="_on_controls_pressed"]
-[connection signal="pressed" from="CanvasLayer/Main/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
-[connection signal="item_selected" from="CanvasLayer/Settings/VBoxContainer/Resolution" to="." method="_on_resolution_item_selected"]
-[connection signal="toggled" from="CanvasLayer/Settings/VBoxContainer/Fullscreen" to="." method="_on_fullscreen_toggled"]
-[connection signal="pressed" from="CanvasLayer/Settings/VBoxContainer/Panel/VBoxContainer/HBoxContainer/GridContainer/White" to="." method="_on_white_pressed"]
-[connection signal="pressed" from="CanvasLayer/Settings/VBoxContainer/Panel/VBoxContainer/HBoxContainer/GridContainer/Red" to="." method="_on_red_pressed"]
-[connection signal="pressed" from="CanvasLayer/Settings/VBoxContainer/Panel/VBoxContainer/HBoxContainer/GridContainer/Green" to="." method="_on_green_pressed"]
-[connection signal="pressed" from="CanvasLayer/Settings/VBoxContainer/Panel/VBoxContainer/HBoxContainer/GridContainer/Blue" to="." method="_on_blue_pressed"]
-[connection signal="pressed" from="CanvasLayer/Settings/VBoxContainer/Panel/VBoxContainer/HBoxContainer/GridContainer/Yellow" to="." method="_on_yellow_pressed"]
-[connection signal="pressed" from="CanvasLayer/Settings/Exit Settings" to="." method="_on_exit_settings_pressed"]
-[connection signal="pressed" from="CanvasLayer/Controls/Exit Controls" to="." method="_on_exit_controls_pressed"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_nyjex")
+}
+
+[connection signal="pressed" from="MenuLayer/Main/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="MenuLayer/Main/VBoxContainer/Play3D" to="." method="_on_play_3d_pressed"]
+[connection signal="pressed" from="MenuLayer/Main/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="MenuLayer/Main/VBoxContainer/Controls" to="." method="_on_controls_pressed"]
+[connection signal="pressed" from="MenuLayer/Main/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="item_selected" from="MenuLayer/Settings/VBoxContainer/Resolution" to="." method="_on_resolution_item_selected"]
+[connection signal="toggled" from="MenuLayer/Settings/VBoxContainer/Fullscreen" to="." method="_on_fullscreen_toggled"]
+[connection signal="pressed" from="MenuLayer/Settings/VBoxContainer/Panel/VBoxContainer/HBoxContainer/GridContainer/White" to="." method="_on_white_pressed"]
+[connection signal="pressed" from="MenuLayer/Settings/VBoxContainer/Panel/VBoxContainer/HBoxContainer/GridContainer/Red" to="." method="_on_red_pressed"]
+[connection signal="pressed" from="MenuLayer/Settings/VBoxContainer/Panel/VBoxContainer/HBoxContainer/GridContainer/Green" to="." method="_on_green_pressed"]
+[connection signal="pressed" from="MenuLayer/Settings/VBoxContainer/Panel/VBoxContainer/HBoxContainer/GridContainer/Blue" to="." method="_on_blue_pressed"]
+[connection signal="pressed" from="MenuLayer/Settings/VBoxContainer/Panel/VBoxContainer/HBoxContainer/GridContainer/Yellow" to="." method="_on_yellow_pressed"]
+[connection signal="pressed" from="MenuLayer/Settings/Exit Settings" to="." method="_on_exit_settings_pressed"]
+[connection signal="pressed" from="MenuLayer/Controls/Exit Controls" to="." method="_on_exit_controls_pressed"]

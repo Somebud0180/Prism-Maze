@@ -86,6 +86,44 @@ _data = {
 &"RESET": SubResource("Animation_hin5d")
 }
 
+[sub_resource type="Animation" id="Animation_cbhrs"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(128, -32)]
+}
+
+[sub_resource type="Animation" id="Animation_tmlvv"]
+resource_name = "move"
+length = 3.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(128, -32), Vector2(336, -32)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_p0rar"]
+_data = {
+&"RESET": SubResource("Animation_cbhrs"),
+&"move": SubResource("Animation_tmlvv")
+}
+
 [sub_resource type="Animation" id="Animation_m17tc"]
 length = 0.001
 tracks/0/type = "value"
@@ -124,44 +162,6 @@ _data = {
 &"move": SubResource("Animation_1r2we")
 }
 
-[sub_resource type="Animation" id="Animation_cbhrs"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(128, -32)]
-}
-
-[sub_resource type="Animation" id="Animation_tmlvv"]
-resource_name = "move"
-length = 3.0
-loop_mode = 2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(128, -32), Vector2(288, -32)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_p0rar"]
-_data = {
-&"RESET": SubResource("Animation_cbhrs"),
-&"move": SubResource("Animation_tmlvv")
-}
-
 [sub_resource type="Animation" id="Animation_jmaa7"]
 length = 0.001
 tracks/0/type = "value"
@@ -174,7 +174,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-128, -46)]
+"values": [Vector2(-144, -46)]
 }
 
 [sub_resource type="Animation" id="Animation_wv5w8"]
@@ -191,7 +191,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(-128, -46), Vector2(-128, -416)]
+"values": [Vector2(-144, -46), Vector2(-144, -416)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_h8evc"]
@@ -212,7 +212,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-128, -46)]
+"values": [Vector2(-112, -46)]
 }
 
 [sub_resource type="Animation" id="Animation_36e0a"]
@@ -229,7 +229,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(-160, -46), Vector2(-160, -416)]
+"values": [Vector2(-112, -46), Vector2(-112, -416)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cuffm"]
@@ -521,8 +521,14 @@ distance = -512.0
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_g326m"]
 distance = -384.0
 
+<<<<<<< HEAD
 [node name="PlatformLayer" type="Node"]
 script = ExtResource("1_pbkb7")
+=======
+[node name="PlatformLayer" type="Node" node_paths=PackedStringArray("timer")]
+script = ExtResource("1_pbkb7")
+timer = NodePath("Timer")
+>>>>>>> 3eb2e6e (Fixed the finish popup, added character health, roughly implemented death (currently only the popup))
 
 [node name="0" type="TileMapLayer" parent="."]
 visible = false
@@ -607,22 +613,12 @@ position = Vector2(16, 160)
 shape = SubResource("WorldBoundaryShape2D_7ajkl")
 
 [node name="4" type="TileMapLayer" parent="."]
-visible = false
 use_parent_material = true
 tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAD///3/AAAAAAAAAAD///7/AAAAAAAAAAD/////AAAAAAAAAAD//wAAAAAAAAAAAAD///z/AAAAAAAAAAAAAPz/AAAAAAAAAAACAP//AAAAAAAAAAALAP//AAAAAAAAAAAMAP//AAAAAAAAAAALAPz/AAAAAAAAAAANAP3/AAAAAAAAAAD9//z/AAAAAAAAAAD9//3/AAAAAAAAAAD9//7/AAAAAAAAAAD+/wAAAAAAAAAAAAD9/wAAAAAAAAAAAAD8/wAAAAAAAAAAAAD9//v/AAAAAAAAAAD9//r/AAAAAAAAAAD9//n/AAAAAAAAAAD7/wAAAAAAAAAAAAD6/wAAAAAAAAAAAAD6////AAAAAAAAAAD6//7/AAAAAAAAAAD6//3/AAAAAAAAAAD6//z/AAAAAAAAAAD9//j/AAAAAAAAAAD9//f/AAAAAAAAAAD9//b/AAAAAAAAAAD7//v/AAAAAAAAAAD6//v/AAAAAAAAAAD8//f/AAAAAAAAAAD6//r/AAAAAAAAAAD6//n/AAAAAAAAAAD6//j/AAAAAAAAAAD6//f/AAAAAAAAAAD6//b/AAAAAAAAAAD6//X/AAAAAAAAAAD6//T/AAAAAAAAAAD6//P/AAAAAAAAAAD9//X/AAAAAAAAAAD9//T/AAAAAAAAAAD9//P/AAAAAAAAAAD6//L/AAAAAAAAAAD6//H/AAAAAAAAAAD6//D/AAAAAAAAAAD7//D/AAAAAAAAAAD8//D/AAAAAAAAAAD9//D/AAAAAAAAAAD+//D/AAAAAAAAAAD///D/AAAAAAAAAAD+//P/AAAAAAAAAAD///P/AAAAAAAAAAAAAPP/AAAAAAAAAAAAAPD/AAAAAAAAAAAAAPH/AAAAAAAAAAAAAPL/AAAAAAAAAAD///L/AQAAAAAAAAA=")
 tile_set = ExtResource("2_pthuq")
 navigation_enabled = false
 
 [node name="Platforms" type="Node" parent="4"]
-
-[node name="Sliding 2" parent="4/Platforms" instance=ExtResource("4_klxfx")]
-position = Vector2(288, -128)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="4/Platforms/Sliding 2"]
-libraries = {
-&"": SubResource("AnimationLibrary_g3fkv")
-}
-autoplay = "move"
 
 [node name="Sliding 1" parent="4/Platforms" instance=ExtResource("4_klxfx")]
 position = Vector2(128, -32)
@@ -633,8 +629,17 @@ libraries = {
 }
 autoplay = "move"
 
+[node name="Sliding 2" parent="4/Platforms" instance=ExtResource("4_klxfx")]
+position = Vector2(288, -128)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="4/Platforms/Sliding 2"]
+libraries = {
+&"": SubResource("AnimationLibrary_g3fkv")
+}
+autoplay = "move"
+
 [node name="Elevator 1" parent="4/Platforms" instance=ExtResource("4_klxfx")]
-position = Vector2(-128, -46)
+position = Vector2(-144, -46)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="4/Platforms/Elevator 1"]
 libraries = {
@@ -643,7 +648,7 @@ libraries = {
 autoplay = "move"
 
 [node name="Elevator 2" parent="4/Platforms" instance=ExtResource("4_klxfx")]
-position = Vector2(-128, -46)
+position = Vector2(-112, -46)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="4/Platforms/Elevator 2"]
 libraries = {
@@ -769,16 +774,24 @@ position = Vector2(112, -1360)
 [node name="Sliding2" parent="8/Platforms" instance=ExtResource("4_klxfx")]
 position = Vector2(-208, -1392)
 
+<<<<<<< HEAD
 [node name="Killzones" type="Node" parent="8"]
 
 [node name="Bottom Killzone" parent="8/Killzones" instance=ExtResource("5_n8b4s")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="8/Killzones/Bottom Killzone"]
+=======
+[node name="Killzones" type="Node" parent="8/Platforms/Sliding2"]
+
+[node name="Bottom Killzone" parent="8/Platforms/Sliding2/Killzones" instance=ExtResource("5_n8b4s")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="8/Platforms/Sliding2/Killzones/Bottom Killzone"]
+>>>>>>> 3eb2e6e (Fixed the finish popup, added character health, roughly implemented death (currently only the popup))
 shape = SubResource("WorldBoundaryShape2D_jxp0v")
 
-[node name="Top Killzone" parent="8/Killzones" instance=ExtResource("5_n8b4s")]
+[node name="Top Killzone" parent="8/Platforms/Sliding2/Killzones" instance=ExtResource("5_n8b4s")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="8/Killzones/Top Killzone"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="8/Platforms/Sliding2/Killzones/Top Killzone"]
 shape = SubResource("WorldBoundaryShape2D_0rdip")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="8"]
@@ -847,6 +860,10 @@ position = Vector2(16, 161)
 shape = SubResource("WorldBoundaryShape2D_7ajkl")
 
 [node name="Debug" type="TileMapLayer" parent="."]
+<<<<<<< HEAD
+=======
+visible = false
+>>>>>>> 3eb2e6e (Fixed the finish popup, added character health, roughly implemented death (currently only the popup))
 tile_map_data = PackedByteArray("AAD+////AAAAAAAAAAD+//7/AAAAAAAAAAD+//3/AAAAAAAAAAD+//z/AAAAAAAAAAABAP7/AAAAAAAAAAACAP7/AAAAAAAAAAADAP7/AAAAAAAAAAAEAP7/AAAAAAAAAAADAPz/AAAAAAAAAAACAPz/AAAAAAAAAAABAPz/AAAAAAAAAAD///7/AAAAAAAAAAAAAPz/AAAAAAAAAAD+//v/AAAAAAAAAAD+//r/AAAAAAAAAAD///r/AAAAAAAAAAAAAPr/AAAAAAAAAAABAPr/AAAAAAAAAAACAPr/AAAAAAAAAAADAPr/AAAAAAAAAAAEAPr/AAAAAAAAAAAFAPr/AAAAAAAAAAAGAPr/AAAAAAAAAAAHAPr/AAAAAAAAAAAIAPr/AAAAAAAAAAAJAPr/AAAAAAAAAAAGAP7/AAAAAAAAAAAFAPz/AAAAAAAAAAAIAPz/AAAAAAAAAAAJAP7/AAAAAAAAAAAKAPr/AAAAAAAAAAALAPr/AAAAAAAAAAAMAPr/AAAAAAAAAAANAPr/AAAAAAAAAAAOAPr/AAAAAAAAAAAFAP7/AAAAAAAAAAAEAPz/AAAAAAAAAAAPAPr/AAAAAAAAAAAQAPr/AAAAAAAAAAARAPr/AAAAAAAAAAASAPr/AAAAAAAAAAATAPr/AAAAAAAAAAAUAPr/AAAAAAAAAAAUAPv/AAAAAAAAAAAUAPz/AAAAAAAAAAAUAP3/AAAAAAAAAAAUAP7/AAAAAAAAAAAUAP//AAAAAAAAAAATAPz/AAAAAAAAAAASAPz/AAAAAAAAAAARAPz/AAAAAAAAAAAQAPz/AAAAAAAAAAATAP7/AAAAAAAAAAASAP7/AAAAAAAAAAARAP7/AAAAAAAAAAAKAP7/AAAAAAAAAAALAP7/AAAAAAAAAAAMAP7/AAAAAAAAAAANAP7/AAAAAAAAAAAOAP7/AAAAAAAAAAAJAPz/AAAAAAAAAAAKAPz/AAAAAAAAAAALAPz/AAAAAAAAAAAMAPz/AAAAAAAAAAANAPz/AAAAAAAAAAAGAPz/AAAAAAAAAAAHAP7/AAAAAAAAAAAOAPz/AAAAAAAAAAAPAP7/AAAAAAAAAAATAP//AQAAAAAAAAATAP3/AQAAAAAAAAATAPv/AQAAAAAAAAD+/wAAAAAAAAAAAAD//wAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAJAAAAAAAAAAAAAAAKAAAAAAAAAAAAAAALAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAANAAAAAAAAAAAAAAAOAAAAAAAAAAAAAAAPAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAARAAAAAAAAAAAAAAASAAAAAAAAAAAAAAATAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA=")
 tile_set = ExtResource("2_pthuq")
 
