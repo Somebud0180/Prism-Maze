@@ -1,13 +1,13 @@
 [gd_scene load_steps=21 format=3 uid="uid://cty4nmtt40uli"]
 
-[ext_resource type="Theme" uid="uid://bau50guyc4alk" path="res://resources/Theme/menu.tres" id="1_guh7m"]
-[ext_resource type="Texture2D" uid="uid://up7vguaee3r1" path="res://resources/Menu/PatchRects/Menu.png" id="2_gkfly"]
-[ext_resource type="Script" uid="uid://dv6t0v2h0mu5l" path="res://scripts/level_popup.gd" id="2_yf7d8"]
-[ext_resource type="Texture2D" uid="uid://dcrmd8a7krrgb" path="res://resources/Menu/Timer.png" id="3_mku4n"]
-[ext_resource type="Texture2D" uid="uid://b78vfepjp4r7a" path="res://resources/Menu/Flag.png" id="4_fbgwy"]
-[ext_resource type="Texture2D" uid="uid://b0g7maqisp0k7" path="res://resources/Menu/LevelTimer.png" id="5_218nm"]
-[ext_resource type="Texture2D" uid="uid://o8rqjf8mwf8v" path="res://resources/Menu/Overlay/Dead.png" id="7_coxp6"]
-[ext_resource type="Texture2D" uid="uid://v3agimklmxo0" path="res://resources/Menu/Overlay/Restart.png" id="8_hncxo"]
+[ext_resource type="Theme" uid="uid://bau50guyc4alk" path="res://resources/Theme/menu.tres" id="1_jpmka"]
+[ext_resource type="Script" uid="uid://dv6t0v2h0mu5l" path="res://scripts/level_popup.gd" id="2_ataru"]
+[ext_resource type="Texture2D" uid="uid://du1fhq083pt1n" path="res://resources/Menu/PatchRects/Menu.png" id="3_5o2pc"]
+[ext_resource type="Texture2D" uid="uid://dcrmd8a7krrgb" path="res://resources/Menu/Timer.png" id="4_grn5l"]
+[ext_resource type="Texture2D" uid="uid://b0g7maqisp0k7" path="res://resources/Menu/LevelTimer.png" id="5_ga3kf"]
+[ext_resource type="Texture2D" uid="uid://b78vfepjp4r7a" path="res://resources/Menu/Flag.png" id="6_2r6d8"]
+[ext_resource type="Texture2D" uid="uid://o8rqjf8mwf8v" path="res://resources/Menu/Overlay/Dead.png" id="7_l62xh"]
+[ext_resource type="Texture2D" uid="uid://v3agimklmxo0" path="res://resources/Menu/Overlay/Restart.png" id="8_5hl0p"]
 
 [sub_resource type="Animation" id="Animation_o3c8g"]
 length = 0.001
@@ -84,6 +84,63 @@ tracks/5/keys = {
 "values": [0.0]
 }
 
+[sub_resource type="Animation" id="Animation_re1m3"]
+resource_name = "hide_death"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../DeathLayer/AspectRatioContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(2, 2),
+"update": 0,
+"values": [Vector2(128, 128), Vector2(128, -896)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../DeathLayer/AspectRatioContainer:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+
+[sub_resource type="Animation" id="Animation_hncxo"]
+resource_name = "hide_death_side"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../DeathLayer/AspectRatioContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [Vector2(410, 128), Vector2(410, -896)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../DeathLayer/AspectRatioContainer:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
 [sub_resource type="Animation" id="Animation_2w4hx"]
 resource_name = "hide_finish"
 length = 0.5
@@ -140,6 +197,35 @@ tracks/1/keys = {
 "values": [true, false]
 }
 
+[sub_resource type="Animation" id="Animation_5mqf4"]
+resource_name = "return_death"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../DeathLayer/AspectRatioContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.25, 0.5),
+"transitions": PackedFloat32Array(2, 2),
+"update": 0,
+"values": [Vector2(410, 128), Vector2(128, 128)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../DeathLayer/AspectRatioContainer:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+
 [sub_resource type="Animation" id="Animation_qayne"]
 resource_name = "return_finish"
 length = 0.5
@@ -181,6 +267,47 @@ tracks/2/keys = {
 "values": [true]
 }
 
+[sub_resource type="Animation" id="Animation_n6nc2"]
+resource_name = "show_death"
+length = 0.8
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../DeathLayer/AspectRatioContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [Vector2(128, 1024), Vector2(128, 128)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../DeathLayer/AspectRatioContainer:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../DeathLayer/AspectRatioContainer:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.35, 0.5, 0.65, 0.8),
+"transitions": PackedFloat32Array(-2, -2, -0.5, -0.5),
+"update": 0,
+"values": [0.0, -0.10472, 0.139626, 0.0]
+}
+
 [sub_resource type="Animation" id="Animation_pto1w"]
 resource_name = "show_finish"
 length = 0.5
@@ -216,6 +343,35 @@ tracks/2/path = NodePath("Finish:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+
+[sub_resource type="Animation" id="Animation_coxp6"]
+resource_name = "side_death"
+length = 0.5
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../DeathLayer/AspectRatioContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [Vector2(128, 128), Vector2(410, 128)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../DeathLayer/AspectRatioContainer:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
@@ -263,162 +419,6 @@ tracks/2/keys = {
 "values": [true]
 }
 
-[sub_resource type="Animation" id="Animation_n6nc2"]
-resource_name = "show_death"
-length = 0.8
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../DeathLayer/AspectRatioContainer:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(0.5, 0.5),
-"update": 0,
-"values": [Vector2(128, 1024), Vector2(128, 128)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../DeathLayer/AspectRatioContainer:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, true]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../DeathLayer/AspectRatioContainer:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.35, 0.5, 0.65, 0.8),
-"transitions": PackedFloat32Array(-2, -2, -0.5, -0.5),
-"update": 0,
-"values": [0.0, -0.10472, 0.139626, 0.0]
-}
-
-[sub_resource type="Animation" id="Animation_re1m3"]
-resource_name = "hide_death"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../DeathLayer/AspectRatioContainer:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(2, 2),
-"update": 0,
-"values": [Vector2(128, 128), Vector2(128, -896)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../DeathLayer/AspectRatioContainer:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, true]
-}
-
-[sub_resource type="Animation" id="Animation_coxp6"]
-resource_name = "side_death"
-length = 0.5
-step = 0.01
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../DeathLayer/AspectRatioContainer:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(0.5, 0.5),
-"update": 0,
-"values": [Vector2(128, 128), Vector2(410, 128)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../DeathLayer/AspectRatioContainer:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, true]
-}
-
-[sub_resource type="Animation" id="Animation_hncxo"]
-resource_name = "hide_death_side"
-length = 0.5
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../DeathLayer/AspectRatioContainer:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(0.5, 0.5),
-"update": 0,
-"values": [Vector2(410, 128), Vector2(410, -896)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../DeathLayer/AspectRatioContainer:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-
-[sub_resource type="Animation" id="Animation_5mqf4"]
-resource_name = "return_death"
-length = 0.5
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../DeathLayer/AspectRatioContainer:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.25, 0.5),
-"transitions": PackedFloat32Array(2, 2),
-"update": 0,
-"values": [Vector2(410, 128), Vector2(128, 128)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../DeathLayer/AspectRatioContainer:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, true]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1o0hk"]
 _data = {
 &"RESET": SubResource("Animation_o3c8g"),
@@ -441,8 +441,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_guh7m")
-script = ExtResource("2_yf7d8")
+theme = ExtResource("1_jpmka")
+script = ExtResource("2_ataru")
 timer_label = NodePath("FinishLayer/Finish/VBoxContainer/Timer HBox/Timer")
 level_label = NodePath("FinishLayer/Finish/VBoxContainer/Level Timer HBox/LevelTimer")
 animation_player = NodePath("AnimationPlayer")
@@ -462,8 +462,8 @@ offset_right = 125.0
 offset_bottom = 175.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_guh7m")
-texture = ExtResource("2_gkfly")
+theme = ExtResource("1_jpmka")
+texture = ExtResource("3_5o2pc")
 patch_margin_left = 5
 patch_margin_top = 5
 patch_margin_right = 5
@@ -488,7 +488,7 @@ alignment = 1
 [node name="Timer Icon" type="TextureRect" parent="FinishLayer/Finish/VBoxContainer/Timer HBox"]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
-texture = ExtResource("3_mku4n")
+texture = ExtResource("4_grn5l")
 stretch_mode = 5
 
 [node name="Timer" type="RichTextLabel" parent="FinishLayer/Finish/VBoxContainer/Timer HBox"]
@@ -510,7 +510,7 @@ alignment = 1
 [node name="Level Icon" type="TextureRect" parent="FinishLayer/Finish/VBoxContainer/Level Timer HBox"]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
-texture = ExtResource("5_218nm")
+texture = ExtResource("5_ga3kf")
 stretch_mode = 5
 
 [node name="LevelTimer" type="RichTextLabel" parent="FinishLayer/Finish/VBoxContainer/Level Timer HBox"]
@@ -527,7 +527,7 @@ size_flags_vertical = 3
 [node name="Finish" type="Button" parent="FinishLayer/Finish/VBoxContainer"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-icon = ExtResource("4_fbgwy")
+icon = ExtResource("6_2r6d8")
 icon_alignment = 1
 expand_icon = true
 
@@ -535,7 +535,7 @@ expand_icon = true
 
 [node name="AspectRatioContainer" type="AspectRatioContainer" parent="DeathLayer"]
 visible = false
-anchors_preset = -1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 128.0
@@ -545,12 +545,12 @@ offset_bottom = 768.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(512, 232)
-theme = ExtResource("1_guh7m")
+theme = ExtResource("1_jpmka")
 ratio = 0.75
 
 [node name="NinePatchRect" type="NinePatchRect" parent="DeathLayer/AspectRatioContainer"]
 layout_mode = 2
-texture = ExtResource("2_gkfly")
+texture = ExtResource("3_5o2pc")
 region_rect = Rect2(0, 0, 32, 32)
 patch_margin_left = 5
 patch_margin_top = 5
@@ -577,7 +577,7 @@ size_flags_vertical = 3
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 size_flags_horizontal = 4
-texture = ExtResource("7_coxp6")
+texture = ExtResource("7_l62xh")
 stretch_mode = 5
 
 [node name="VSeparator" type="VSeparator" parent="DeathLayer/AspectRatioContainer/NinePatchRect/Death"]
@@ -587,7 +587,7 @@ size_flags_vertical = 3
 [node name="Restart" type="Button" parent="DeathLayer/AspectRatioContainer/NinePatchRect/Death"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-icon = ExtResource("8_hncxo")
+icon = ExtResource("8_5hl0p")
 icon_alignment = 1
 expand_icon = true
 

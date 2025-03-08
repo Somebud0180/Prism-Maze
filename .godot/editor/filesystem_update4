@@ -1,37 +1,29 @@
-res://scenes/UI/menu.tscn
+res://scenes/2D/maze_layer.tscn
+res://resources/Game/Tileset.tres
 res://resources/Theme/button_hover.tres
 res://resources/Theme/button_focus.tres
 res://resources/Theme/button_disabled.tres
 res://resources/Theme/button_normal.tres
 res://resources/Theme/box_focus.tres
 res://resources/Theme/v_separator.tres
+res://resources/Theme/progress_background.tres
+res://resources/Theme/panel_container.tres
 res://resources/Theme/menu.tres
 res://scripts/level_popup.gd
-res://scripts/maze_layer.gd
-res://resources/Game/Tileset.tres
 res://resources/Game 3D/game_3d.tres
 res://resources/Game 3D/Tiles.tres
-res://scenes/2D/platform_layer.tscn
-res://scripts/platform_layer.gd
-res://scenes/2D/maze_layer.tscn
 res://scenes/2D/game.tscn
-res://scripts/menu.gd
 res://scenes/2D/player.tscn
-res://scripts/camera_2d.gd
 res://scenes/2D/gen_maze_layer.tscn
-res://scripts/level_layer.gd
 res://scenes/2D/key.tscn
-res://scripts/key.gd
+res://scenes/2D/platform_layer.tscn
+res://scenes/UI/level_popup.tscn
 res://scripts/game_manager.gd
-res://scripts/gen_maze_layer.gd
-<<<<<<< HEAD
-=======
-res://scripts/loading_manager.gd
-res://scenes/2D/level_popup.tscn
+res://scenes/2D/platform_up.tscn
+res://scenes/2D/platform_down.tscn
 res://scenes/2D/killzone.tscn
-res://scripts/killzone.gd
-res://resources/Theme/progress_background.tres
-res://scripts/progress_fill.tres
-res://scripts/panel.tres
-res://resources/Theme/panel_container.tres
->>>>>>> 3eb2e6e (Fixed the finish popup, added character health, roughly implemented death (currently only the popup))
+res://scenes/2D/gravity_normalizer.tscn
+res://scenes/2D/gravity_inverter.tscn
+res://scenes/2D/flag.tscn
+res://scenes/2D/door.tscn
+res://scenes/UI/menu.tscn

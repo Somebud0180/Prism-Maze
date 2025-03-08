@@ -5,14 +5,9 @@
 [ext_resource type="PackedScene" uid="uid://dxtfp5xf31vwm" path="res://scenes/2D/key.tscn" id="4_n4n60"]
 [ext_resource type="PackedScene" uid="uid://cm2i30ivbfof6" path="res://scenes/2D/door.tscn" id="5_14cgm"]
 
-<<<<<<< HEAD
-[node name="MazeLayer" type="Node"]
-script = ExtResource("1_hsf7d")
-=======
 [node name="MazeLayer" type="Node" node_paths=PackedStringArray("timer")]
 script = ExtResource("1_hsf7d")
 timer = NodePath("Timer")
->>>>>>> 3eb2e6e (Fixed the finish popup, added character health, roughly implemented death (currently only the popup))
 
 [node name="0" type="TileMapLayer" parent="."]
 visible = false

@@ -2,13 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-<<<<<<<< HEAD:resources/Menu/Headers/Settings_Header.png.import
-uid="uid://ccy445wy4ije8"
+uid="uid://c407l5mv674x0"
 path="res://.godot/imported/Settings_Header.png-f211e0527689c4a0e1d05367332684a1.ctex"
-========
-uid="uid://cxds2uj88on2p"
-path="res://.godot/imported/Settings_Header.png-3c83b0add50c2921f1f8c3d8eca8cd76.ctex"
->>>>>>>> d6ebe24 (Fixed the finish popup, added character health, roughly implemented death (currently only the popup)):resources/Menu/Settings_Header.png.import
 metadata={
 "vram_texture": false
 }

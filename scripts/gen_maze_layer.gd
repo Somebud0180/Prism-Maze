@@ -4,32 +4,21 @@ extends TileMapLayer
 # From https://godotengine.org/asset-library/asset/2199
 # Modified to fit the game.
 
-<<<<<<< HEAD
-var _hidden_tile_flags: Array = []
-=======
 var _hidden_tile_flag: Dictionary = {}
->>>>>>> 3eb2e6e (Fixed the finish popup, added character health, roughly implemented death (currently only the popup))
 
 var allow_loops = true
 var current_level = 0
 var starting_pos = Vector2i()
 const normal_wall_atlas_coords = Vector2i(0, 0)
-<<<<<<< HEAD
-const flag_alternative_id = 0
-=======
 const FLAG_SOURCE_ID = 1
 const FLAG_ATLAS_COORDS = Vector2i(0, 0)
 const FLAG_ALTERNATIVE_ID = 0
->>>>>>> 3eb2e6e (Fixed the finish popup, added character health, roughly implemented death (currently only the popup))
 const SOURCE_ID = 0
 
 @export var y_dim = 35
 @export var x_dim = 35
 @export var starting_coords = Vector2i(0, 0)
-<<<<<<< HEAD
-=======
 @export var timer: Timer
->>>>>>> 3eb2e6e (Fixed the finish popup, added character health, roughly implemented death (currently only the popup))
 
 var adj4 = [
 	Vector2i(-1, 0),
@@ -79,11 +68,6 @@ func load_maze(level: int):
 
 func determine_size(level: int):
 	if level <= 5:
-<<<<<<< HEAD
-		return Vector2i(12, 16)
-	elif level > 5:
-		return Vector2i(16, 32)
-=======
 		return Vector2i(13, 17)
 	elif level > 5:
 		return Vector2i(17, 33)
@@ -105,7 +89,6 @@ func random_odd_in_range(min_val: int, max_val: int) -> int:
 	var step_count = int(((max_val - min_val) / 2)) + 1
 	var rand_step = randi_range(0, step_count - 1)
 	return min_val + (rand_step * 2)
->>>>>>> 3eb2e6e (Fixed the finish popup, added character health, roughly implemented death (currently only the popup))
 
 
 func place_border():
@@ -209,55 +192,6 @@ func place_flag() -> void:
 
 
 func show_flags(visible: bool) -> void:
-<<<<<<< HEAD
-	var tilemap = get_node_or_null("TileMapLayer")
-	# If no tilemap layer found, return
-	if not tilemap:
-		return
-	
-	if visible:
-		# Restore any flags we previously hid
-		for hidden in _hidden_tile_flags:
-			tilemap.set_cell(
-				hidden["pos"], 
-				hidden["source_id"], 
-				hidden["atlas_coords"], 
-				hidden["alternative_tile"]
-			)
-		_hidden_tile_flags.clear()
-	
-	else:
-		# Hide the currently existing flags (if any remain)
-		_hidden_tile_flags.clear()
-		
-		# Grab whatever flag tiles exist (source_id=1, atlas=FLAG_ATLAS in your setup)
-		var used_flag_cells = tilemap.get_used_cells_by_id(1, flag_alternative_id)
-		for cell_pos in used_flag_cells:
-			var source_id = tilemap.get_cell_source_id(cell_pos)
-			var atlas_coords = tilemap.get_cell_atlas_coords(cell_pos)
-			var alt_tile = tilemap.get_cell_alternative_tile(cell_pos)
-			
-			_hidden_tile_flags.append({
-				"pos": cell_pos,
-				"source_id": source_id,
-				"atlas_coords": atlas_coords,
-				"alternative_tile": alt_tile
-			})
-		
-		# Now remove them so they disappear (hidden)
-		for hidden in _hidden_tile_flags:
-			tilemap.set_cell(hidden["pos"], -1, Vector2i(-1, -1), -1)
-
-
-func _show_flags_recursive(visible: bool, node: Node) -> void:
-	# If you name nodes "Flag," check for node.name == "Flag."
-	if node.name == "Flag" and node is CanvasItem:
-		node.visible = visible
-	#
-	## Continue down the scene tree
-	#for subchild in node.get_children():
-		#_show_flags_recursive(visible, subchild)
-=======
 	if visible:
 		# Restore the single flag if we previously hid it
 		if _hidden_tile_flag.size() > 0:
@@ -284,7 +218,6 @@ func _show_flags_recursive(visible: bool, node: Node) -> void:
 			
 			# Remove the flag tile so it's invisible
 			set_cell(cell_pos, -1, Vector2i(-1, -1), -1)
->>>>>>> 3eb2e6e (Fixed the finish popup, added character health, roughly implemented death (currently only the popup))
 
 
 func _on_timer_timeout() -> void:

@@ -16,18 +16,10 @@ func _ready() -> void:
 	$FinishLayer/Finish/VBoxContainer/Finish.grab_focus()
 
 func output_timer(seconds_elapsed: float, level_times: Array) -> void:
-<<<<<<< HEAD
-	# Total integer seconds
-	var total_whole_seconds = seconds_elapsed
-	
-	# Minutes, seconds, hundredths
-	var total_fraction = seconds_elapsed - total_whole_seconds
-=======
 	# Cast to int for the "whole seconds" part
 	var total_whole_seconds = int(seconds_elapsed)
 	# Fraction is what's left after subtracting those whole seconds
 	var total_fraction = seconds_elapsed - float(total_whole_seconds)
->>>>>>> 3eb2e6e (Fixed the finish popup, added character health, roughly implemented death (currently only the popup))
 
 	var total_mins = int(total_whole_seconds / 60)
 	var total_secs = int(total_whole_seconds % 60)
@@ -55,11 +47,7 @@ func output_timer(seconds_elapsed: float, level_times: Array) -> void:
 	var avg_fraction = avg_time - avg_whole_seconds
 
 	var avg_mins = int(avg_whole_seconds / 60)
-<<<<<<< HEAD
-	var avg_secs = int(avg_whole_seconds % 60)
-=======
 	var avg_secs = int(int(avg_whole_seconds) % 60)
->>>>>>> 3eb2e6e (Fixed the finish popup, added character health, roughly implemented death (currently only the popup))
 	var avg_hundredths = int(round(avg_fraction * 100.0))
 	
 	# Format each component as two digits

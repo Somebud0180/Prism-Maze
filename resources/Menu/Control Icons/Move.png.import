@@ -2,13 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-<<<<<<<< HEAD:resources/Menu/Control Icons/Move.png.import
-uid="uid://c7vfpy4vpfcj"
+uid="uid://bp1ir113ycfmw"
 path="res://.godot/imported/Move.png-85a34d239a6bf4545fead43f9ef9d697.ctex"
-========
-uid="uid://cs51x3lyr1mw"
-path="res://.godot/imported/Move.png-15c24fbcfc958ca256bb7bbf381386d2.ctex"
->>>>>>>> d6ebe24 (Fixed the finish popup, added character health, roughly implemented death (currently only the popup)):resources/Menu/Move.png.import
 metadata={
 "vram_texture": false
 }

@@ -7,12 +7,7 @@
 [node name="GameManager" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("1_rn7ij")
-<<<<<<< HEAD
-level_amount = 20
-custom_level = "Platform: Debug"
-=======
 level_amount = 3
->>>>>>> 3eb2e6e (Fixed the finish popup, added character health, roughly implemented death (currently only the popup))
 
 [node name="MainLayer" type="TileMapLayer" parent="."]
 unique_name_in_owner = true

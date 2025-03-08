@@ -13,7 +13,7 @@ signal finished_level_set
 @onready var main_layer = get_node("/root/Game/MainLayer")
 var player
 
-var _popup_scene = preload("res://scenes/2D/level_popup.tscn").instantiate()
+var _popup_scene = preload("res://scenes/UI/level_popup.tscn").instantiate()
 var _maze_scene = preload("res://scenes/2D/maze_layer.tscn").instantiate()
 var _platform_scene = preload("res://scenes/2D/platform_layer.tscn").instantiate()
 
@@ -119,11 +119,7 @@ func level_set() -> void:
 			level_collection[i] = "Platform: " + resolved
 	
 	# Append last level
-<<<<<<< HEAD
-	level_collection.append("Platform: " + str(platform_instance.get_child_count() - 3))
-=======
 	level_collection.append("Platform: End")
->>>>>>> 3eb2e6e (Fixed the finish popup, added character health, roughly implemented death (currently only the popup))
 
 
 func progress_level() -> void:

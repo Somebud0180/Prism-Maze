@@ -2,13 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-<<<<<<<< HEAD:resources/Menu/Menu Icons/Play_3D.png.import
-uid="uid://du5u4ffx7ot77"
+uid="uid://b8blbwcxtsbgw"
 path="res://.godot/imported/Play_3D.png-fe7294bc65bfd5d151c488bded6cc564.ctex"
-========
-uid="uid://b0ubh5ffi78d8"
-path="res://.godot/imported/Play_3D.png-1d3fc053994985aad3f6a0cd8da735c3.ctex"
->>>>>>>> d6ebe24 (Fixed the finish popup, added character health, roughly implemented death (currently only the popup)):resources/Menu/Play_3D.png.import
 metadata={
 "vram_texture": false
 }
