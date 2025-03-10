@@ -1,7 +1,9 @@
 extends Area3D
 
 @onready var timer = $Timer
-@onready var player = get_node("/root/Game3D/Player3D")
+var player
+var menu
+var level
 
 func _on_body_entered(_body: Node3D) -> void:
 	print("You Died")
@@ -11,7 +13,15 @@ func _on_body_entered(_body: Node3D) -> void:
 
 
 func _on_timer_timeout() -> void:
+	menu = get_node("/root/Menu")
+	level = get_parent_node_3d()
+	print("Respawning in level: ", level.name)
+	var entrance_marker = level.get_node("EntranceMarker")
+	var respawn_point = entrance_marker.global_transform
+	level.close_door(2.0)
+	respawn_point.origin += Vector3(0, 0, -1)
+	
+	menu.character_life -= 1
 	player.velocity.x = 0
 	player.velocity.y = 0
-	player.position = Vector3(0, 10, 0)
-	timer.stop()
+	player.global_transform = respawn_point

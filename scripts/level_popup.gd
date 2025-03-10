@@ -5,15 +5,15 @@ class_name level_popup
 @export var level_label: RichTextLabel
 @export var animation_player: AnimationPlayer
 
-@onready var menu = get_node("/root/Menu")
-@onready var game_manager = get_node("/root/Game/GameManager")
-
 enum POPUP { NONE, FINISH, DEATH }
 var popup_state = POPUP.NONE
 var is_on_side: bool = false
+var is_playing: bool = false:
+	get():
+		return animation_player.is_playing()
 
 func _ready() -> void:
-	$FinishLayer/Finish/VBoxContainer/Finish.grab_focus()
+	animation_player.play("RESET")
 
 func output_timer(seconds_elapsed: float, level_times: Array) -> void:
 	# Cast to int for the "whole seconds" part
@@ -43,8 +43,8 @@ func output_timer(seconds_elapsed: float, level_times: Array) -> void:
 		avg_time = total_avg_time / float(level_times.size())
 	
 	# Minutes, seconds, hundredths
-	var avg_whole_seconds = avg_time
-	var avg_fraction = avg_time - avg_whole_seconds
+	var avg_whole_seconds = int(avg_time)
+	var avg_fraction = avg_time - float(avg_whole_seconds)
 
 	var avg_mins = int(avg_whole_seconds / 60)
 	var avg_secs = int(int(avg_whole_seconds) % 60)
@@ -59,6 +59,9 @@ func output_timer(seconds_elapsed: float, level_times: Array) -> void:
 
 
 func _on_finish_pressed() -> void:
+	var menu = get_node("/root/Menu")
+	var game_manager = get_node("/root/Game/GameManager")
+	
 	if is_on_side:
 		animation_player.play("hide_finish_side")
 	else:
@@ -71,6 +74,9 @@ func _on_finish_pressed() -> void:
 
 
 func _on_restart_pressed() -> void:
+	var menu = get_node("/root/Menu")
+	var game_manager = get_node("/root/Game/GameManager")
+	
 	if is_on_side:
 		animation_player.play("hide_death_side")
 	else:
@@ -84,3 +90,10 @@ func _on_restart_pressed() -> void:
 		menu._reset_game()
 	elif menu.in_game_3d:
 		menu._reset_game_3d()
+
+
+func _on_animation_player_current_animation_changed(name: String) -> void:
+	if name == "show_finish":
+		$PopupLayer/Finish/VBoxContainer/Finish.grab_focus()
+	elif name == "show_death":
+		$PopupLayer/DeathScreen/NinePatchRect/Death/Restart.grab_focus()

@@ -7,7 +7,8 @@
 [node name="GameManager" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("1_rn7ij")
-level_amount = 3
+level_amount = 1
+custom_level = "Platform: 2"
 
 [node name="MainLayer" type="TileMapLayer" parent="."]
 unique_name_in_owner = true

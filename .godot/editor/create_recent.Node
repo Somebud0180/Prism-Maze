@@ -1,4 +1,8 @@
-<<<<<<< HEAD
+CollisionShape3D
+GridMap
+Marker3D
+StaticBody3D
+Node3D
 Node
 TileMapLayer
 VBoxContainer
@@ -8,25 +12,3 @@ Node2D
 AnimationPlayer
 AnimationTree
 CollisionShape2D
-Timer
-Camera2D
-Panel
-MarginContainer
-AnimatedSprite2D
-=======
-Button
-VBoxContainer
-Container
-TextureRect
-RichTextLabel
-NinePatchRect
-PanelContainer
-AspectRatioContainer
-CanvasLayer
-ProgressBar
-TextureProgressBar
-HBoxContainer
-BoxContainer
-Node
-TileMapLayer
->>>>>>> 3eb2e6e (Fixed the finish popup, added character health, roughly implemented death (currently only the popup))

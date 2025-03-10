@@ -50,7 +50,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../DeathLayer/AspectRatioContainer:position")
+tracks/3/path = NodePath("DeathScreen:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -62,7 +62,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("../DeathLayer/AspectRatioContainer:visible")
+tracks/4/path = NodePath("DeathScreen:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -74,7 +74,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("../DeathLayer/AspectRatioContainer:rotation")
+tracks/5/path = NodePath("DeathScreen:rotation")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -90,7 +90,7 @@ length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../DeathLayer/AspectRatioContainer:position")
+tracks/0/path = NodePath("DeathScreen:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -102,7 +102,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../DeathLayer/AspectRatioContainer:visible")
+tracks/1/path = NodePath("DeathScreen:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -119,7 +119,7 @@ step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../DeathLayer/AspectRatioContainer:position")
+tracks/0/path = NodePath("DeathScreen:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -131,7 +131,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../DeathLayer/AspectRatioContainer:visible")
+tracks/1/path = NodePath("DeathScreen:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -204,7 +204,7 @@ step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../DeathLayer/AspectRatioContainer:position")
+tracks/0/path = NodePath("DeathScreen:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -216,7 +216,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../DeathLayer/AspectRatioContainer:visible")
+tracks/1/path = NodePath("DeathScreen:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -274,7 +274,7 @@ step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../DeathLayer/AspectRatioContainer:position")
+tracks/0/path = NodePath("DeathScreen:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -286,7 +286,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../DeathLayer/AspectRatioContainer:visible")
+tracks/1/path = NodePath("DeathScreen:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -298,7 +298,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../DeathLayer/AspectRatioContainer:rotation")
+tracks/2/path = NodePath("DeathScreen:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -351,16 +351,16 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_coxp6"]
 resource_name = "side_death"
-length = 0.5
+length = 0.25
 step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../DeathLayer/AspectRatioContainer:position")
+tracks/0/path = NodePath("DeathScreen:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
+"times": PackedFloat32Array(0, 0.25),
 "transitions": PackedFloat32Array(0.5, 0.5),
 "update": 0,
 "values": [Vector2(128, 128), Vector2(410, 128)]
@@ -368,11 +368,11 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../DeathLayer/AspectRatioContainer:visible")
+tracks/1/path = NodePath("DeathScreen:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
+"times": PackedFloat32Array(0, 0.25),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, true]
@@ -443,13 +443,14 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_jpmka")
 script = ExtResource("2_ataru")
-timer_label = NodePath("FinishLayer/Finish/VBoxContainer/Timer HBox/Timer")
-level_label = NodePath("FinishLayer/Finish/VBoxContainer/Level Timer HBox/LevelTimer")
+timer_label = NodePath("PopupLayer/Finish/VBoxContainer/Timer HBox/Timer")
+level_label = NodePath("PopupLayer/Finish/VBoxContainer/Level Timer HBox/LevelTimer")
 animation_player = NodePath("AnimationPlayer")
 
-[node name="FinishLayer" type="CanvasLayer" parent="."]
+[node name="PopupLayer" type="CanvasLayer" parent="."]
+layer = 2
 
-[node name="Finish" type="NinePatchRect" parent="FinishLayer"]
+[node name="Finish" type="NinePatchRect" parent="PopupLayer"]
 visible = false
 anchors_preset = 8
 anchor_left = 0.5
@@ -469,7 +470,7 @@ patch_margin_top = 5
 patch_margin_right = 5
 patch_margin_bottom = 5
 
-[node name="VBoxContainer" type="VBoxContainer" parent="FinishLayer/Finish"]
+[node name="VBoxContainer" type="VBoxContainer" parent="PopupLayer/Finish"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.05
@@ -480,60 +481,58 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="Timer HBox" type="HBoxContainer" parent="FinishLayer/Finish/VBoxContainer"]
+[node name="Timer HBox" type="HBoxContainer" parent="PopupLayer/Finish/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 0
 alignment = 1
 
-[node name="Timer Icon" type="TextureRect" parent="FinishLayer/Finish/VBoxContainer/Timer HBox"]
+[node name="Timer Icon" type="TextureRect" parent="PopupLayer/Finish/VBoxContainer/Timer HBox"]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 texture = ExtResource("4_grn5l")
 stretch_mode = 5
 
-[node name="Timer" type="RichTextLabel" parent="FinishLayer/Finish/VBoxContainer/Timer HBox"]
+[node name="Timer" type="RichTextLabel" parent="PopupLayer/Finish/VBoxContainer/Timer HBox"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "00:00.00"
 fit_content = true
 scroll_active = false
 
-[node name="Time Separator" type="VSeparator" parent="FinishLayer/Finish/VBoxContainer"]
+[node name="Time Separator" type="VSeparator" parent="PopupLayer/Finish/VBoxContainer"]
 custom_minimum_size = Vector2(0, 16)
 layout_mode = 2
 
-[node name="Level Timer HBox" type="HBoxContainer" parent="FinishLayer/Finish/VBoxContainer"]
+[node name="Level Timer HBox" type="HBoxContainer" parent="PopupLayer/Finish/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 0
 alignment = 1
 
-[node name="Level Icon" type="TextureRect" parent="FinishLayer/Finish/VBoxContainer/Level Timer HBox"]
+[node name="Level Icon" type="TextureRect" parent="PopupLayer/Finish/VBoxContainer/Level Timer HBox"]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 texture = ExtResource("5_ga3kf")
 stretch_mode = 5
 
-[node name="LevelTimer" type="RichTextLabel" parent="FinishLayer/Finish/VBoxContainer/Level Timer HBox"]
+[node name="LevelTimer" type="RichTextLabel" parent="PopupLayer/Finish/VBoxContainer/Level Timer HBox"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "00:00.00"
 fit_content = true
 scroll_active = false
 
-[node name="VSeparator" type="VSeparator" parent="FinishLayer/Finish/VBoxContainer"]
+[node name="VSeparator" type="VSeparator" parent="PopupLayer/Finish/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Finish" type="Button" parent="FinishLayer/Finish/VBoxContainer"]
+[node name="Finish" type="Button" parent="PopupLayer/Finish/VBoxContainer"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 icon = ExtResource("6_2r6d8")
 icon_alignment = 1
 expand_icon = true
 
-[node name="DeathLayer" type="CanvasLayer" parent="."]
-
-[node name="AspectRatioContainer" type="AspectRatioContainer" parent="DeathLayer"]
+[node name="DeathScreen" type="AspectRatioContainer" parent="PopupLayer"]
 visible = false
 anchors_preset = 15
 anchor_right = 1.0
@@ -548,7 +547,7 @@ pivot_offset = Vector2(512, 232)
 theme = ExtResource("1_jpmka")
 ratio = 0.75
 
-[node name="NinePatchRect" type="NinePatchRect" parent="DeathLayer/AspectRatioContainer"]
+[node name="NinePatchRect" type="NinePatchRect" parent="PopupLayer/DeathScreen"]
 layout_mode = 2
 texture = ExtResource("3_5o2pc")
 region_rect = Rect2(0, 0, 32, 32)
@@ -557,7 +556,7 @@ patch_margin_top = 5
 patch_margin_right = 5
 patch_margin_bottom = 5
 
-[node name="Death" type="VBoxContainer" parent="DeathLayer/AspectRatioContainer/NinePatchRect"]
+[node name="Death" type="VBoxContainer" parent="PopupLayer/DeathScreen/NinePatchRect"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -569,22 +568,22 @@ offset_bottom = -16.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VSeparator2" type="VSeparator" parent="DeathLayer/AspectRatioContainer/NinePatchRect/Death"]
+[node name="VSeparator2" type="VSeparator" parent="PopupLayer/DeathScreen/NinePatchRect/Death"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="TextureRect" type="TextureRect" parent="DeathLayer/AspectRatioContainer/NinePatchRect/Death"]
+[node name="TextureRect" type="TextureRect" parent="PopupLayer/DeathScreen/NinePatchRect/Death"]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 size_flags_horizontal = 4
 texture = ExtResource("7_l62xh")
 stretch_mode = 5
 
-[node name="VSeparator" type="VSeparator" parent="DeathLayer/AspectRatioContainer/NinePatchRect/Death"]
+[node name="VSeparator" type="VSeparator" parent="PopupLayer/DeathScreen/NinePatchRect/Death"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Restart" type="Button" parent="DeathLayer/AspectRatioContainer/NinePatchRect/Death"]
+[node name="Restart" type="Button" parent="PopupLayer/DeathScreen/NinePatchRect/Death"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 icon = ExtResource("8_5hl0p")
@@ -592,11 +591,12 @@ icon_alignment = 1
 expand_icon = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-root_node = NodePath("../FinishLayer")
+root_node = NodePath("../PopupLayer")
 callback_mode_process = 0
 libraries = {
 &"": SubResource("AnimationLibrary_1o0hk")
 }
 
-[connection signal="pressed" from="FinishLayer/Finish/VBoxContainer/Finish" to="." method="_on_finish_pressed"]
-[connection signal="pressed" from="DeathLayer/AspectRatioContainer/NinePatchRect/Death/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="PopupLayer/Finish/VBoxContainer/Finish" to="." method="_on_finish_pressed"]
+[connection signal="pressed" from="PopupLayer/DeathScreen/NinePatchRect/Death/Restart" to="." method="_on_restart_pressed"]
+[connection signal="current_animation_changed" from="AnimationPlayer" to="." method="_on_animation_player_current_animation_changed"]

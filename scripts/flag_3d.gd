@@ -17,4 +17,5 @@ func _init_zone() -> void:
 
 
 func _on_body_entered(_body: Node3D) -> void:
+	get_parent_node_3d().open_door()
 	print("You finished the level!")

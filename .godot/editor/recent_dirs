@@ -1,12 +1,13 @@
+res://scripts
+res://scenes/3D
+res://scenes/UI
 <<<<<<< HEAD
 res://resources/Game
-res://scripts
 /Users/ethanlagera/prism-maze/build
 /Users/ethanlagera/prism-maze/.godot/
 /Users/ethanlagera/prism-maze/build/iOS
 res://resources/Theme
 =======
-res://scripts
 res://resources/Theme
 /Users/ethanlagera/prism-maze/build/iOS
 res://resources/Game
@@ -18,4 +19,3 @@ res://scenes
 res://resources/Game 3D
 res://resources
 /Users/ethanlagera/prism-maze
-res://

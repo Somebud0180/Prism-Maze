@@ -13,7 +13,6 @@ signal finished_level_set
 @onready var main_layer = get_node("/root/Game/MainLayer")
 var player
 
-var _popup_scene = preload("res://scenes/UI/level_popup.tscn").instantiate()
 var _maze_scene = preload("res://scenes/2D/maze_layer.tscn").instantiate()
 var _platform_scene = preload("res://scenes/2D/platform_layer.tscn").instantiate()
 
@@ -140,7 +139,6 @@ func progress_level() -> void:
 	if level == level_collection.size() - 1:
 		menu.is_timer_running = false
 		menu.is_popup_displaying = true
-		get_tree().get_root().add_child(_popup_scene)
 		
 		var popup_scene = get_tree().get_root().get_node_or_null("LevelPopup")
 		

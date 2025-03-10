@@ -1335,9 +1335,9 @@ custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
-max_value = 10.0
+max_value = 5.0
 step = 1.0
-value = 10.0
+value = 5.0
 show_percentage = false
 
 [node name="Substrate Layer" type="Parallax2D" parent="."]

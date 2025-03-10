@@ -8,10 +8,13 @@ class_name Menu
 @export var resolution_picker: OptionButton
 @export var health_bar: ProgressBar
 
-var game_scene = preload("res://scenes/2D/game.tscn").instantiate()
-var game_scene_3d = preload("res://scenes/3D/game_3d.tscn").instantiate()
+var _game_scene = preload("res://scenes/2D/game.tscn").instantiate()
+var _game_scene_3d = preload("res://scenes/3D/game_3d.tscn").instantiate()
+var _popup_scene = preload("res://scenes/UI/level_popup.tscn").instantiate()
 var resolution_icon = load("res://resources/Menu/Resize.png")
 var native_icon = load("res://resources/Menu/Native.png")
+
+var popup_scene
 
 var game_scene_path = "res://scenes/2D/game.tscn"
 var game_scene_3d_path = "res://scenes/3D/game_3d.tscn"
@@ -22,7 +25,7 @@ var window_state = WINDOW_STATE.WINDOWED:
 		window_state = value
 		_manage_resolution_picker()
 
-enum STATE { MAIN, SETTINGS, CONTROLS, GAME, GAME3D }
+enum STATE { MAIN, SETTINGS, CONTROLS, OVERLAY, GAME, GAME3D }
 var menu_state = STATE.MAIN:
 	set(value):
 		manage_game_timer(value)
@@ -36,7 +39,7 @@ var in_game = false:
 
 var in_game_3d = false:
 	set(value):
-		in_game = value
+		in_game_3d = value
 		_manage_game_overlay()
 
 var is_loading = false
@@ -47,10 +50,11 @@ var resolution = Vector2i(1280, 720)
 var time_elapsed: float = 0.0
 var is_timer_running: bool = false
 
-var character_life: int = 10:
+@export var character_life: int = 5:
 	set(value):
 		character_life = value
 		health_bar.value = value
+		_check_health()
 
 var supported_resolutions = ["2560x1600", "2560x1440", "2560x1080", "2048x1536", "1920x1200", "1920x1080", "1680x1050", "1600x900", "1440x900", "1366x768", "1280x1024", "1280x720", "1024x768", "800x600", "640x480", "640x360"]
 
@@ -64,11 +68,13 @@ func _ready() -> void:
 	_manage_resolution_picker()
 	_manage_color_buttons()
 	
+	popup_scene = get_node("/root/LevelPopup")
+	
 	$MenuLayer/Main/VBoxContainer/Play.grab_focus()
 
 
 func _input(event):
-	if event.is_action_pressed("ui_cancel") and not animation_player.is_playing() and not is_loading:
+	if event.is_action_pressed("ui_cancel") and not animation_player.is_playing() and not popup_scene.is_playing and not is_loading:
 		match menu_state:
 			STATE.SETTINGS:
 				menu_state = STATE.MAIN
@@ -80,15 +86,10 @@ func _input(event):
 				_hide_and_show("controls", "main")
 				await animation_player.animation_finished
 				$MenuLayer/Main/VBoxContainer/Play.grab_focus()
-			STATE.GAME:
+			STATE.GAME, STATE.GAME3D, STATE.OVERLAY:
 				menu_state = STATE.MAIN
 				animation_player.play("show_main")
 				_manage_popup(menu_state)
-				await animation_player.animation_finished
-				$MenuLayer/Main/VBoxContainer/Play.grab_focus()
-			STATE.GAME3D:
-				menu_state = STATE.MAIN
-				animation_player.play("show_main")
 				await animation_player.animation_finished
 				$MenuLayer/Main/VBoxContainer/Play.grab_focus()
 			STATE.MAIN:
@@ -320,15 +321,15 @@ func _reset_game() -> void:
 		else:
 			popup_ref.is_on_side = false
 	
-	character_life = 10
+	character_life = 5
 	in_game = false
 	menu_state = STATE.MAIN
 	animation_player.play("show_main")
 	
-	if game_scene != null:
+	if _game_scene != null:
 		LoadingManager.unload_current_scene("/root/Game")
 	
-	game_scene = preload("res://scenes/2D/game.tscn").instantiate()
+	_game_scene = preload("res://scenes/2D/game.tscn").instantiate()
 	_manage_color_buttons()
 
 
@@ -340,15 +341,15 @@ func _reset_game_3d() -> void:
 		else:
 			popup_ref.is_on_side = false
 	
-	character_life = 10
+	character_life = 5
 	in_game_3d = false
 	menu_state = STATE.MAIN
 	animation_player.play("show_main")
 	
-	if game_scene_3d != null:
+	if _game_scene_3d != null:
 		LoadingManager.unload_current_scene("/root/Game3D")
 	
-	game_scene_3d = preload("res://scenes/3D/game_3d.tscn").instantiate()
+	_game_scene_3d = preload("res://scenes/3D/game_3d.tscn").instantiate()
 	$"Substrate Layer".visible = true
 	$"Bottom Layer".visible = true
 	$"Top Layer".visible = true
@@ -363,19 +364,19 @@ func manage_game_timer(state: STATE) -> void:
 
 
 func _manage_popup(state: STATE) -> void:
-	var popup_ref = get_tree().get_root().get_node_or_null("LevelPopup")
+	var popup_ref = get_node_or_null("/root/LevelPopup")
 	if popup_ref != null and is_popup_displaying:
 		if state == Menu.STATE.MAIN and !popup_ref.is_on_side:
 			if popup_ref.popup_state == level_popup.POPUP.FINISH:
 				popup_ref.animation_player.play("side_finish")
-			elif popup_ref.popup_state == level_popup.POPUP.FINISH:
+			elif popup_ref.popup_state == level_popup.POPUP.DEATH:
 				popup_ref.animation_player.play("side_death")
 			
 			popup_ref.is_on_side = true
 		elif state == Menu.STATE.GAME and popup_ref.is_on_side:
 			if popup_ref.popup_state == level_popup.POPUP.FINISH:
 				popup_ref.animation_player.play("return_finish")
-			elif popup_ref.popup_state == level_popup.POPUP.FINISH:
+			elif popup_ref.popup_state == level_popup.POPUP.DEATH:
 				popup_ref.animation_player.play("return_death")
 			
 			popup_ref.is_on_side = false
@@ -399,32 +400,46 @@ func _manage_color_buttons() -> void:
 			button.disabled = !in_game
 
 
-func _process(delta: float) -> void:
-	if is_timer_running:
-		time_elapsed += delta
-
-
 # Player Color Settings
 func _on_white_pressed() -> void:
-	var player_ref = game_scene.get_node("/root/Game/Player")
+	var player_ref = _game_scene.get_node("/root/Game/Player")
 	player_ref.change_color(Color.WHITE)
 
 
 func _on_red_pressed() -> void:
-	var player_ref = game_scene.get_node("/root/Game/Player")
+	var player_ref = _game_scene.get_node("/root/Game/Player")
 	player_ref.change_color(Color.RED)
 
 
 func _on_green_pressed() -> void:
-	var player_ref = game_scene.get_node("/root/Game/Player")
+	var player_ref = _game_scene.get_node("/root/Game/Player")
 	player_ref.change_color(Color.WEB_GREEN)
 
 
 func _on_blue_pressed() -> void:
-	var player_ref = game_scene.get_node("/root/Game/Player")
+	var player_ref = _game_scene.get_node("/root/Game/Player")
 	player_ref.change_color(Color.DARK_BLUE)
 
 
 func _on_yellow_pressed() -> void:
-	var player_ref = game_scene.get_node("/root/Game/Player")
+	var player_ref = _game_scene.get_node("/root/Game/Player")
 	player_ref.change_color(Color.YELLOW)
+
+
+func _check_health() -> void:
+	if character_life <= 0:
+		var player
+		if in_game:
+			player = get_node("/root/Game/Player")
+		elif in_game_3d:
+			player = get_node("/root/Game3D/Player3D")
+		
+		menu_state = STATE.OVERLAY
+		player.hide_on_death()
+		popup_scene.popup_state = level_popup.POPUP.DEATH
+		popup_scene.animation_player.play("show_death")
+		is_popup_displaying = true
+
+func _process(delta: float) -> void:
+	if is_timer_running:
+		time_elapsed += delta

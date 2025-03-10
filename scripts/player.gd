@@ -29,6 +29,11 @@ func _gravity_change():
 		animated_sprite.flip_v = true
 
 
+func hide_on_death() -> void:
+	if menu.character_life <= 0:
+		hide()
+
+
 func _ready():
 	# Emit signal that we're loaded
 	call_deferred("emit_signal", "player_loaded")

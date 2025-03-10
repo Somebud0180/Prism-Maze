@@ -19,6 +19,7 @@ config/icon="res://resources/icon.svg"
 [autoload]
 
 LoadingManager="*res://scripts/loading_manager.gd"
+LevelPopup="*res://scenes/UI/level_popup.tscn"
 
 [display]
 
@@ -133,7 +134,7 @@ decrease_zoom={
 [physics]
 
 2d/run_on_separate_thread=true
-3d/default_gravity=20.0
+3d/default_gravity=30.0
 
 [rendering]
 

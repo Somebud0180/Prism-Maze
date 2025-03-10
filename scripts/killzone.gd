@@ -12,9 +12,8 @@ func _on_body_entered(_body: Node2D) -> void:
 
 
 func _on_timer_timeout() -> void:
-	player = get_node("/root/Game/Player")
 	menu = get_node("/root/Menu")
-	menu.character_life -= 1
+	menu.character_life -= 3
 	player.velocity.x = 0
 	player.velocity.y = 0
 	player.position = Vector2i(0,0)

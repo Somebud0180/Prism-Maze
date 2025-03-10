@@ -1,0 +1,248 @@
+[gd_scene load_steps=17 format=4 uid="uid://ctmtxa4b7y3um"]
+
+[ext_resource type="Texture2D" uid="uid://uwuhb7x6umay" path="res://resources/Game 3D/Door_Door.png" id="1_qm7m6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0f2o8"]
+resource_name = "Material.005"
+cull_mode = 2
+albedo_texture = ExtResource("1_qm7m6")
+metallic = 0.5
+roughness = 0.5
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_edts4"]
+_surfaces = [{
+"aabb": AABB(-0.0501831, -0.1, -0.1, 0.100366, 0.2, 0.2),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAACAAEAAwAEAAEABQAAAAIAAwAAAAUABAAGAAIABQACAAYAAwAHAAQAAwAFAAcABwAGAAQABwAFAAYA"),
+"name": "Material.005",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("AAAAAP//AAAAAP//AAAAAAAA/////wAAAAAAAAAAAAD/////AAAAAP//AAD//wAA////////AAD//wAAAAAAAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_x8j3n"]
+resource_name = "Door_Cube_2"
+_surfaces = [{
+"aabb": AABB(-0.0501831, -0.1, -0.1, 0.100366, 0.2, 0.2),
+"attribute_data": PackedByteArray("LSD5/ypg/L8qYPn/LSD8vyIgAkAFAAUAIiAFAAUAAkAqYPR/LSDxvy0g9H8qYPG/BQD/fyIg/L8FAPy/IiD/fyIgAkAFAP9/BQACQCIg/38FAPn/IiD8vyIg+f8FAPy/"),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUA"),
+"material": SubResource("StandardMaterial3D_0f2o8"),
+"name": "Material.005",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("AAAAAP//VNUAAP//AABU1QAA/////1TVAAAAAAAAVNUAAAAAAAD///////8AAP//AAD//wAA/////wAAAAD/////AAAAAFTV////////VNX/////AABU1f//AAD//1TV//8AAP////8AAP//////////////////AAAAAP////8AAAAAAAD/////AAD///////8AAAAA//8AAAAA//////////8AAP//AAD///////8AAP//AAD/////////////VNVU1VTVVNVU1VTVVNVU1f9//v//f/7//3/+//9///+qqlRVqqpUVaqqVFWqqlRV/3//f/9//3//f/9//3//f/9//z//f/8//3//P/9//z//f/+//3//v/9//7//f/+/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_edts4")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_60xlx"]
+size = Vector3(0.1, 0.2, 0.2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_86bid"]
+resource_name = "Material.006"
+cull_mode = 2
+albedo_texture = ExtResource("1_qm7m6")
+metallic = 0.5
+roughness = 0.5
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ypi05"]
+_surfaces = [{
+"aabb": AABB(-0.0501831, -0.1, -0.1, 0.100366, 0.2, 0.2),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAACAAEAAwAEAAEABQAAAAIAAwAAAAUABAAGAAIABQACAAYAAwAHAAQAAwAFAAcABwAGAAQABwAFAAYA"),
+"name": "Material.006",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("AAAAAP//AAAAAP//AAAAAAAA/////wAAAAAAAAAAAAD/////AAAAAP//AAD//wAA////////AAD//wAAAAAAAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ucjam"]
+resource_name = "Door_Cube_1"
+_surfaces = [{
+"aabb": AABB(-0.0501831, -0.1, -0.1, 0.100366, 0.2, 0.2),
+"attribute_data": PackedByteArray("LSD5/ypg/L8qYPn/LSD8vyIgAkAFAAUAIiAFAAUAAkAqYPR/LSDxvy0g9H8qYPG/BQD/fyIg/L8FAPy/IiD/fyIgAkAFAP9/BQACQCIg/38FAPn/IiD8vyIg+f8FAPy/"),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUA"),
+"material": SubResource("StandardMaterial3D_86bid"),
+"name": "Material.006",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("AAAAAP//VNUAAP//AABU1QAA/////1TVAAAAAAAAVNUAAAAAAAD///////8AAP//AAD//wAA/////wAAAAD/////AAAAAFTV////////VNX/////AABU1f//AAD//1TV//8AAP////8AAP//////////////////AAAAAP////8AAAAAAAD/////AAD///////8AAAAA//8AAAAA//////////8AAP//AAD///////8AAP//AAD/////////////VNVU1VTVVNVU1VTVVNVU1f9//v//f/7//3/+//9///+qqlRVqqpUVaqqVFWqqlRV/3//f/9//3//f/9//3//f/9//z//f/8//3//P/9//z//f/+//3//v/9//7//f/+/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_ypi05")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ay2rb"]
+resource_name = "Material.007"
+cull_mode = 2
+albedo_texture = ExtResource("1_qm7m6")
+metallic = 0.5
+roughness = 0.5
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_fvgb5"]
+_surfaces = [{
+"aabb": AABB(-0.0501831, -0.1, -0.1, 0.100366, 0.2, 0.2),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAACAAEAAwAEAAEABQAAAAIAAwAAAAUABAAGAAIABQACAAYAAwAHAAQAAwAFAAcABwAGAAQABwAFAAYA"),
+"name": "Material.007",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("AAAAAP//AAAAAP//AAAAAAAA/////wAAAAAAAAAAAAD/////AAAAAP//AAD//wAA////////AAD//wAAAAAAAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_oqqfr"]
+resource_name = "Door_Cube_3"
+_surfaces = [{
+"aabb": AABB(-0.0501831, -0.1, -0.1, 0.100366, 0.2, 0.2),
+"attribute_data": PackedByteArray("LSD5/ypg/L8qYPn/LSD8vyIgAkAFAAUAIiAFAAUAAkAqYPR/LSDxvy0g9H8qYPG/BQD/fyIg/L8FAPy/IiD/fyIgAkAFAP9/BQACQCIg/38FAPn/IiD8vyIg+f8FAPy/"),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUA"),
+"material": SubResource("StandardMaterial3D_ay2rb"),
+"name": "Material.007",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("AAAAAP//VNUAAP//AABU1QAA/////1TVAAAAAAAAVNUAAAAAAAD///////8AAP//AAD//wAA/////wAAAAD/////AAAAAFTV////////VNX/////AABU1f//AAD//1TV//8AAP////8AAP//////////////////AAAAAP////8AAAAAAAD/////AAD///////8AAAAA//8AAAAA//////////8AAP//AAD///////8AAP//AAD/////////////VNVU1VTVVNVU1VTVVNVU1f9//v//f/7//3/+//9///+qqlRVqqpUVaqqVFWqqlRV/3//f/9//3//f/9//3//f/9//z//f/8//3//P/9//z//f/+//3//v/9//7//f/+/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_fvgb5")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r7i8s"]
+resource_name = "Material.008"
+cull_mode = 2
+albedo_texture = ExtResource("1_qm7m6")
+metallic = 0.5
+roughness = 0.5
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_y2tky"]
+_surfaces = [{
+"aabb": AABB(-0.0501831, -0.1, -0.1, 0.100366, 0.2, 0.2),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAACAAEAAwAEAAEABQAAAAIAAwAAAAUABAAGAAIABQACAAYAAwAHAAQAAwAFAAcABwAGAAQABwAFAAYA"),
+"name": "Material.008",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("AAAAAP//AAAAAP//AAAAAAAA/////wAAAAAAAAAAAAD/////AAAAAP//AAD//wAA////////AAD//wAAAAAAAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_yo5m8"]
+resource_name = "Door_Cube_4"
+_surfaces = [{
+"aabb": AABB(-0.0501831, -0.1, -0.1, 0.100366, 0.2, 0.2),
+"attribute_data": PackedByteArray("LSD5/ypg/L8qYPn/LSD8vyIgAkAFAAUAIiAFAAUAAkAqYPR/LSDxvy0g9H8qYPG/BQD/fyIg/L8FAPy/IiD/fyIgAkAFAP9/BQACQCIg/38FAPn/IiD8vyIg+f8FAPy/"),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUA"),
+"material": SubResource("StandardMaterial3D_r7i8s"),
+"name": "Material.008",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("AAAAAP//VNUAAP//AABU1QAA/////1TVAAAAAAAAVNUAAAAAAAD///////8AAP//AAD//wAA/////wAAAAD/////AAAAAFTV////////VNX/////AABU1f//AAD//1TV//8AAP////8AAP//////////////////AAAAAP////8AAAAAAAD/////AAD///////8AAAAA//8AAAAA//////////8AAP//AAD///////8AAP//AAD/////////////VNVU1VTVVNVU1VTVVNVU1f9//v//f/7//3/+//9///+qqlRVqqpUVaqqVFWqqlRV/3//f/9//3//f/9//3//f/9//z//f/8//3//P/9//z//f/+//3//v/9//7//f/+/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_y2tky")
+
+[sub_resource type="Animation" id="Animation_bvbp6"]
+resource_name = "open_door"
+length = 3.75
+tracks/0/type = "position_3d"
+tracks/0/imported = true
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cube_2")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, -1, -1, 0.0333333, 1, 0.016, -1, -1, 0.0666667, 1, 0.056, -1, -1, 0.1, 1, 0.12, -1, -1, 0.133333, 1, 0.208, -1, -1, 0.166667, 1, 0.32, -1, -1, 0.2, 1, 0.464, -1, -1, 0.233333, 1, 0.5, -1, -1, 1.86667, 1, 0.5, -1, -1, 1.9, 1, 0.494, -1, -1, 1.93333, 1, 0.478, -1, -1, 1.96667, 1, 0.45, -1, -1, 2, 1, 0.41, -1, -1, 2.03333, 1, 0.354, -1, -1, 2.06667, 1, 0.286, -1, -1, 2.1, 1, 0.25, -1, -0.996444, 2.13333, 1, 0.25, -1, -0.985778, 2.16667, 1, 0.25, -1, -0.964444, 2.2, 1, 0.25, -1, -0.928889, 2.23333, 1, 0.25, -1, -0.882667, 2.26667, 1, 0.25, -1, -0.825778, 2.3, 1, 0.25, -1, -0.758222, 2.33333, 1, 0.25, -1, -0.68, 2.36667, 1, 0.25, -1, -0.587556, 2.4, 1, 0.25, -1, -0.484444, 2.43333, 1, 0.25, -1, -0.370666, 2.46667, 1, 0.25, -1, -0.246222, 2.5, 1, 0.25, -1, -0.111111, 2.53333, 1, 0.25, -1, 0.0382218, 2.56667, 1, 0.25, -1, 0.198222, 2.6, 1, 0.25, -1, 0.368889, 2.63333, 1, 0.25, -1, 0.550223, 2.66667, 1, 0.25, -1, 0.742222, 2.7, 1, 0.25, -1, 0.948445, 2.73333, 1, 0.25, -1, 1, 2.9, 1, 0.25, -1, 1, 2.93333, 1, 0.25, -1, 1.002, 2.96667, 1, 0.25, -1, 1.008, 3, 1, 0.25, -1, 1.02, 3.03333, 1, 0.25, -1, 1.04, 3.06667, 1, 0.25, -1, 1.066, 3.1, 1, 0.25, -1, 1.098, 3.13333, 1, 0.25, -1, 1.136, 3.16667, 1, 0.25, -1, 1.18, 3.2, 1, 0.25, -1, 1.232, 3.23333, 1, 0.25, -1, 1.29, 3.26667, 1, 0.25, -1, 1.354, 3.3, 1, 0.25, -1, 1.424, 3.33333, 1, 0.25, -1, 1.5, 3.36667, 1, 0.25, -1, 1.584, 3.4, 1, 0.25, -1, 1.674, 3.43333, 1, 0.25, -1, 1.77, 3.46667, 1, 0.25, -1, 1.872, 3.5, 1, 0.25, -1, 1.98, 3.53333, 1, 0.25, -1, 2.096, 3.56667, 1, 0.25, -1, 2.218, 3.6, 1, 0.25, -1, 2.346, 3.63333, 1, 0.25, -1, 2.48, 3.66667, 1, 0.25, -1, 2.62, 3.7, 1, 0.25, -1, 2.768, 3.73333, 1, 0.25, -1, 2.922, 3.75, 1, 0.25, -1, 3)
+tracks/1/type = "position_3d"
+tracks/1/imported = true
+tracks/1/enabled = true
+tracks/1/path = NodePath("Cube_1")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, -1, 1, 0.0333333, 1, 0.016, -1, 1, 0.0666667, 1, 0.056, -1, 1, 0.1, 1, 0.12, -1, 1, 0.133333, 1, 0.208, -1, 1, 0.166667, 1, 0.32, -1, 1, 0.2, 1, 0.464, -1, 1, 0.233333, 1, 0.5, -1, 1, 2.9, 1, 0.5, -1, 1, 2.93333, 1, 0.5, -1, 1.002, 2.96667, 1, 0.5, -1, 1.008, 3, 1, 0.5, -1, 1.02, 3.03333, 1, 0.5, -1, 1.04, 3.06667, 1, 0.5, -1, 1.066, 3.1, 1, 0.5, -1, 1.098, 3.13333, 1, 0.5, -1, 1.136, 3.16667, 1, 0.5, -1, 1.18, 3.2, 1, 0.5, -1, 1.232, 3.23333, 1, 0.5, -1, 1.29, 3.26667, 1, 0.5, -1, 1.354, 3.3, 1, 0.5, -1, 1.424, 3.33333, 1, 0.5, -1, 1.5, 3.36667, 1, 0.5, -1, 1.584, 3.4, 1, 0.5, -1, 1.674, 3.43333, 1, 0.5, -1, 1.77, 3.46667, 1, 0.5, -1, 1.872, 3.5, 1, 0.5, -1, 1.98, 3.53333, 1, 0.5, -1, 2.096, 3.56667, 1, 0.5, -1, 2.218, 3.6, 1, 0.5, -1, 2.346, 3.63333, 1, 0.5, -1, 2.48, 3.66667, 1, 0.5, -1, 2.62, 3.7, 1, 0.5, -1, 2.768, 3.73333, 1, 0.5, -1, 2.922, 3.75, 1, 0.5, -1, 3)
+tracks/2/type = "position_3d"
+tracks/2/imported = true
+tracks/2/enabled = true
+tracks/2/path = NodePath("Cube_3")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, 0, 1, -1, 0.0333333, 1, 0.016, 1, -1, 0.0666667, 1, 0.056, 1, -1, 0.1, 1, 0.12, 1, -1, 0.133333, 1, 0.208, 1, -1, 0.166667, 1, 0.32, 1, -1, 0.2, 1, 0.464, 1, -1, 0.233333, 1, 0.5, 1, -1, 1.03333, 1, 0.5, 1, -1, 1.06667, 1, 0.494, 1, -1, 1.1, 1, 0.478, 1, -1, 1.13333, 1, 0.45, 1, -1, 1.16667, 1, 0.41, 1, -1, 1.2, 1, 0.354, 1, -1, 1.23333, 1, 0.286, 1, -1, 1.26667, 1, 0.25, 0.996444, -1, 1.3, 1, 0.25, 0.985778, -1, 1.33333, 1, 0.25, 0.964444, -1, 1.36667, 1, 0.25, 0.928889, -1, 1.4, 1, 0.25, 0.882667, -1, 1.43333, 1, 0.25, 0.825778, -1, 1.46667, 1, 0.25, 0.758222, -1, 1.5, 1, 0.25, 0.68, -1, 1.53333, 1, 0.25, 0.587556, -1, 1.56667, 1, 0.25, 0.484444, -1, 1.6, 1, 0.25, 0.370667, -1, 1.63333, 1, 0.25, 0.246222, -1, 1.66667, 1, 0.25, 0.111111, -1, 1.7, 1, 0.25, -0.0382223, -1, 1.73333, 1, 0.25, -0.198222, -1, 1.76667, 1, 0.25, -0.368889, -1, 1.8, 1, 0.25, -0.550222, -1, 1.83333, 1, 0.25, -0.742222, -1, 1.86667, 1, 0.25, -0.948444, -1, 1.9, 1, 0.244, -1, -1, 1.93333, 1, 0.228, -1, -1, 1.96667, 1, 0.2, -1, -1, 2, 1, 0.16, -1, -1, 2.03333, 1, 0.104, -1, -1, 2.06667, 1, 0.0360001, -1, -1, 2.1, 1, 0, -1, -0.996444, 2.13333, 1, 0, -1, -0.985778, 2.16667, 1, 0, -1, -0.964444, 2.2, 1, 0, -1, -0.928889, 2.23333, 1, 0, -1, -0.882667, 2.26667, 1, 0, -1, -0.825778, 2.3, 1, 0, -1, -0.758222, 2.33333, 1, 0, -1, -0.68, 2.36667, 1, 0, -1, -0.587556, 2.4, 1, 0, -1, -0.484444, 2.43333, 1, 0, -1, -0.370666, 2.46667, 1, 0, -1, -0.246222, 2.5, 1, 0, -1, -0.111111, 2.53333, 1, 0, -1, 0.0382218, 2.56667, 1, 0, -1, 0.198222, 2.6, 1, 0, -1, 0.368889, 2.63333, 1, 0, -1, 0.550223, 2.66667, 1, 0, -1, 0.742222, 2.7, 1, 0, -1, 0.948445, 2.73333, 1, 0, -1, 1, 2.9, 1, 0, -1, 1, 2.93333, 1, 0, -1, 1.002, 2.96667, 1, 0, -1, 1.008, 3, 1, 0, -1, 1.02, 3.03333, 1, 0, -1, 1.04, 3.06667, 1, 0, -1, 1.066, 3.1, 1, 0, -1, 1.098, 3.13333, 1, 0, -1, 1.136, 3.16667, 1, 0, -1, 1.18, 3.2, 1, 0, -1, 1.232, 3.23333, 1, 0, -1, 1.29, 3.26667, 1, 0, -1, 1.354, 3.3, 1, 0, -1, 1.424, 3.33333, 1, 0, -1, 1.5, 3.36667, 1, 0, -1, 1.584, 3.4, 1, 0, -1, 1.674, 3.43333, 1, 0, -1, 1.77, 3.46667, 1, 0, -1, 1.872, 3.5, 1, 0, -1, 1.98, 3.53333, 1, 0, -1, 2.096, 3.56667, 1, 0, -1, 2.218, 3.6, 1, 0, -1, 2.346, 3.63333, 1, 0, -1, 2.48, 3.66667, 1, 0, -1, 2.62, 3.7, 1, 0, -1, 2.768, 3.73333, 1, 0, -1, 2.922, 3.75, 1, 0, -1, 3)
+tracks/3/type = "position_3d"
+tracks/3/imported = true
+tracks/3/enabled = true
+tracks/3/path = NodePath("Cube_4")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(0, 1, 0, 1, 1, 0.0333333, 1, 0.016, 1, 1, 0.0666667, 1, 0.056, 1, 1, 0.1, 1, 0.12, 1, 1, 0.133333, 1, 0.208, 1, 1, 0.166667, 1, 0.32, 1, 1, 0.2, 1, 0.464, 1, 1, 0.233333, 1, 0.494, 1, 1, 0.266667, 1, 0.478, 1, 1, 0.3, 1, 0.45, 1, 1, 0.333333, 1, 0.41, 1, 1, 0.366667, 1, 0.354, 1, 1, 0.4, 1, 0.286, 1, 1, 0.433333, 1, 0.25, 1, 0.996444, 0.466667, 1, 0.25, 1, 0.985778, 0.5, 1, 0.25, 1, 0.964444, 0.533333, 1, 0.25, 1, 0.928889, 0.566667, 1, 0.25, 1, 0.882667, 0.6, 1, 0.25, 1, 0.825778, 0.633333, 1, 0.25, 1, 0.758222, 0.666667, 1, 0.25, 1, 0.68, 0.7, 1, 0.25, 1, 0.587556, 0.733333, 1, 0.25, 1, 0.484444, 0.766667, 1, 0.25, 1, 0.370667, 0.8, 1, 0.25, 1, 0.246222, 0.833333, 1, 0.25, 1, 0.111111, 0.866667, 1, 0.25, 1, -0.0382223, 0.9, 1, 0.25, 1, -0.198222, 0.933333, 1, 0.25, 1, -0.368889, 0.966667, 1, 0.25, 1, -0.550222, 1, 1, 0.25, 1, -0.742222, 1.03333, 1, 0.25, 1, -0.948444, 1.06667, 1, 0.244, 1, -1, 1.1, 1, 0.228, 1, -1, 1.13333, 1, 0.2, 1, -1, 1.16667, 1, 0.16, 1, -1, 1.2, 1, 0.104, 1, -1, 1.23333, 1, 0.036, 1, -1, 1.26667, 1, 0, 0.996444, -1, 1.3, 1, 0, 0.985778, -1, 1.33333, 1, 0, 0.964444, -1, 1.36667, 1, 0, 0.928889, -1, 1.4, 1, 0, 0.882667, -1, 1.43333, 1, 0, 0.825778, -1, 1.46667, 1, 0, 0.758222, -1, 1.5, 1, 0, 0.68, -1, 1.53333, 1, 0, 0.587556, -1, 1.56667, 1, 0, 0.484444, -1, 1.6, 1, 0, 0.370667, -1, 1.63333, 1, 0, 0.246222, -1, 1.66667, 1, 0, 0.111111, -1, 1.7, 1, 0, -0.0382223, -1, 1.73333, 1, 0, -0.198222, -1, 1.76667, 1, 0, -0.368889, -1, 1.8, 1, 0, -0.550222, -1, 1.83333, 1, 0, -0.742222, -1, 1.86667, 1, 0, -0.948444, -1, 1.9, 1, -0.006, -1, -1, 1.93333, 1, -0.022, -1, -1, 1.96667, 1, -0.05, -1, -1, 2, 1, -0.09, -1, -1, 2.03333, 1, -0.146, -1, -1, 2.06667, 1, -0.214, -1, -1, 2.1, 1, -0.25, -1, -0.996444, 2.13333, 1, -0.25, -1, -0.985778, 2.16667, 1, -0.25, -1, -0.964444, 2.2, 1, -0.25, -1, -0.928889, 2.23333, 1, -0.25, -1, -0.882667, 2.26667, 1, -0.25, -1, -0.825778, 2.3, 1, -0.25, -1, -0.758222, 2.33333, 1, -0.25, -1, -0.68, 2.36667, 1, -0.25, -1, -0.587556, 2.4, 1, -0.25, -1, -0.484444, 2.43333, 1, -0.25, -1, -0.370666, 2.46667, 1, -0.25, -1, -0.246222, 2.5, 1, -0.25, -1, -0.111111, 2.53333, 1, -0.25, -1, 0.0382218, 2.56667, 1, -0.25, -1, 0.198222, 2.6, 1, -0.25, -1, 0.368889, 2.63333, 1, -0.25, -1, 0.550223, 2.66667, 1, -0.25, -1, 0.742222, 2.7, 1, -0.25, -1, 0.948445, 2.73333, 1, -0.25, -1, 1, 2.9, 1, -0.25, -1, 1, 2.93333, 1, -0.25, -1, 1.002, 2.96667, 1, -0.25, -1, 1.008, 3, 1, -0.25, -1, 1.02, 3.03333, 1, -0.25, -1, 1.04, 3.06667, 1, -0.25, -1, 1.066, 3.1, 1, -0.25, -1, 1.098, 3.13333, 1, -0.25, -1, 1.136, 3.16667, 1, -0.25, -1, 1.18, 3.2, 1, -0.25, -1, 1.232, 3.23333, 1, -0.25, -1, 1.29, 3.26667, 1, -0.25, -1, 1.354, 3.3, 1, -0.25, -1, 1.424, 3.33333, 1, -0.25, -1, 1.5, 3.36667, 1, -0.25, -1, 1.584, 3.4, 1, -0.25, -1, 1.674, 3.43333, 1, -0.25, -1, 1.77, 3.46667, 1, -0.25, -1, 1.872, 3.5, 1, -0.25, -1, 1.98, 3.53333, 1, -0.25, -1, 2.096, 3.56667, 1, -0.25, -1, 2.218, 3.6, 1, -0.25, -1, 2.346, 3.63333, 1, -0.25, -1, 2.48, 3.66667, 1, -0.25, -1, 2.62, 3.7, 1, -0.25, -1, 2.768, 3.73333, 1, -0.25, -1, 2.922, 3.75, 1, -0.25, -1, 3)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vas5g"]
+_data = {
+&"open_door": SubResource("Animation_bvbp6")
+}
+
+[node name="Door3D" type="Node3D"]
+
+[node name="Door" type="Node3D" parent="."]
+
+[node name="Cube_2" type="MeshInstance3D" parent="Door"]
+transform = Transform3D(2.5, 0, 0, 0, 10, 0, 0, 0, 10, 0, -1, -1)
+mesh = SubResource("ArrayMesh_x8j3n")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Door/Cube_2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Door/Cube_2/StaticBody3D"]
+shape = SubResource("BoxShape3D_60xlx")
+
+[node name="Cube_1" type="MeshInstance3D" parent="Door"]
+transform = Transform3D(2.5, 0, 0, 0, 10, 0, 0, 0, 10, 0, -1, 1)
+mesh = SubResource("ArrayMesh_ucjam")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Door/Cube_1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Door/Cube_1/StaticBody3D"]
+shape = SubResource("BoxShape3D_60xlx")
+
+[node name="Cube_3" type="MeshInstance3D" parent="Door"]
+transform = Transform3D(2.5, 0, 0, 0, 10, 0, 0, 0, 10, 0, 1, -1)
+mesh = SubResource("ArrayMesh_oqqfr")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Door/Cube_3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Door/Cube_3/StaticBody3D"]
+shape = SubResource("BoxShape3D_60xlx")
+
+[node name="Cube_4" type="MeshInstance3D" parent="Door"]
+transform = Transform3D(2.5, 0, 0, 0, 10, 0, 0, 0, 10, 0, 1, 1)
+mesh = SubResource("ArrayMesh_yo5m8")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Door/Cube_4"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Door/Cube_4/StaticBody3D"]
+shape = SubResource("BoxShape3D_60xlx")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Door"]
+libraries = {
+&"": SubResource("AnimationLibrary_vas5g")
+}
