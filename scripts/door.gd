@@ -1,10 +1,13 @@
 extends Node2D
 class_name Door
 
-@onready var game_manager = get_node("/root/Game/GameManager")
+var managers
+var game_manager
+
 @export var id = 0
 var is_locked = true
 var color = Color.WHITE
+
 
 func validate_id() -> void:
 	if !game_manager.selected_colors.is_empty:
@@ -39,5 +42,9 @@ func key_unlock(key_id: int) -> void:
 		update_lock()
 
 func _ready() -> void:
+	managers = get_tree().get_nodes_in_group("GameManager")
+	if managers.size() > 0:
+		game_manager = managers[0]
+	
 	validate_id()
 	update_lock()

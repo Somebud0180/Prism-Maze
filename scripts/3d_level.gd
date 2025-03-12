@@ -1,10 +1,19 @@
 extends GridMap
 
+signal door_close_animation_finished
 var is_door_open = false
 
 
 func _ready() -> void:
 	_hide()
+	
+	var viewport = $SubViewport
+	if viewport != null:
+		# Clear the viewport.
+		$SubViewport.set_clear_mode(SubViewport.CLEAR_MODE_ONCE)
+
+		# Retrieve the texture and set it to the viewport quad.
+		$ViewportQuad.material_override.albedo_texture = viewport.get_texture()
 
 
 func _on_visibility_changed():
@@ -58,3 +67,6 @@ func close_door(speed_multiplier: float = 1.0):
 	var animation_player: AnimationPlayer = get_node("Door3D/Door/AnimationPlayer")
 	is_door_open = false
 	animation_player.play("open_door", -1, -1.0 * speed_multiplier, true)
+	
+	await animation_player.animation_finished
+	emit_signal("door_close_animation_finished")

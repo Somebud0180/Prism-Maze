@@ -10,8 +10,8 @@ signal finished_level_set
 
 @onready var game = $".."
 @onready var menu = get_node("/root/Menu")
-@onready var main_layer = get_node("/root/Game/MainLayer")
-var player
+@onready var main_layer = %MainLayer
+@onready var player = %Player
 
 var _maze_scene = preload("res://scenes/2D/maze_layer.tscn").instantiate()
 var _platform_scene = preload("res://scenes/2D/platform_layer.tscn").instantiate()
@@ -37,13 +37,12 @@ var maze_list: Array[int] = []
 
 
 func _ready() -> void:
+	add_to_group("GameManager")
+	
 	# Reset the key color list
 	_reset_keys()
 	
-	var player_scene = preload("res://scenes/2D/player.tscn").instantiate()
-	game.add_child.call_deferred(player_scene)
-	await Signal(player_scene, "player_loaded")
-	player = get_node("/root/Game/Player")
+	await Signal(player, "player_loaded")
 	player._on_game_manager_loaded()
 	
 	# Load Maze Layer

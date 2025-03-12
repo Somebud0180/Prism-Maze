@@ -1,7 +1,9 @@
 extends CharacterBody2D
 class_name Key
 
-@onready var game_manager = get_node("/root/Game/GameManager")
+var managers
+var game_manager
+
 @export var key_id = 0
 @export var follow_speed = 50
 @export var follow_delay = 30
@@ -19,9 +21,10 @@ var is_stored = false
 var color = Color.WHITE
 var position_history = [] 
 
+
 func _physics_process(_delta):
 	velocity = Vector2.ZERO
-
+	
 	if is_unlocking and target_door != null:
 		# Move towards door center during unlock sequence
 		var door_center = target_door.global_position
@@ -68,6 +71,10 @@ func _physics_process(_delta):
 
 
 func _ready() -> void:
+	managers = get_tree().get_nodes_in_group("GameManager")
+	if managers.size() > 0:
+		game_manager = managers[0]
+	
 	get_color()
 	%AnimatedSprite2D.self_modulate = color
 

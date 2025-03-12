@@ -101,7 +101,7 @@ class_name ThirdPersonCamera extends Node3D
 @export var near := 0.05
 @export var far := 4000.0
 
-var zoom_levels = [4.0, 8.0, 12.0]
+var zoom_levels = [6.0, 9.0, 12.0, 14.0, 16.0]
 var current_zoom_index = 1
 var camera_tilt_deg := 0.
 var camera_horizontal_rotation_deg := 0.

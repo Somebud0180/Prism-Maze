@@ -10,7 +10,6 @@ class_name Menu
 
 var _game_scene = preload("res://scenes/2D/game.tscn").instantiate()
 var _game_scene_3d = preload("res://scenes/3D/game_3d.tscn").instantiate()
-var _popup_scene = preload("res://scenes/UI/level_popup.tscn").instantiate()
 var resolution_icon = load("res://resources/Menu/Resize.png")
 var native_icon = load("res://resources/Menu/Native.png")
 

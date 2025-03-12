@@ -3,6 +3,7 @@ extends CharacterBody3D
 @export var SPEED = 0.0
 @export var JUMP_VELOCITY = 0.0
 @export var WALL_JUMP_FORCE = 0.0
+@export var WALL_SLIDE_FACTOR = 0.3
 @export var ROTATION_SPEED = 0.0
 
 var was_on_wall = false
@@ -22,13 +23,18 @@ var gravity_direction = 1: # 1 for normal, -1 for upside-down
 var camera_horizontal_rotation_variation
 
 
+func _ready() -> void:
+	# Disable obect interaction before loading
+	set_collision_layer_value(2, false)
+
 func hide_on_death() -> void:
-	var menu = get_node("/root/Menu")
+	menu = get_node("/root/Menu")
 	if menu.character_life <= 0:
 		hide()
 
 func _on_game_loaded():
 	game_initialized = true
+	set_collision_layer_value(2, true)
 
 func _gravity_change(oldValue: int, newValue: int):
 	if newValue == 1 and oldValue != 1:
@@ -57,22 +63,29 @@ func _physics_process(delta: float) -> void:
 		# Add gravity based on gravity direction.
 		if (gravity_direction == 1 and not is_on_floor()) or (gravity_direction == -1 and not is_on_ceiling()):
 			if is_on_wall_only():
-				velocity += gravity_direction * get_gravity() * 0.5 * delta
+				if (gravity_direction == 1 and velocity.y < 0) or (gravity_direction == -1 and velocity.y > 0):
+					# Apply reduced gravity for wall sliding only when falling
+					velocity += gravity_direction * get_gravity() * WALL_SLIDE_FACTOR * delta
+				else:
+					# Normal gravity when moving upward on wall
+					velocity += gravity_direction * get_gravity() * delta
 			else: 
 				velocity += gravity_direction * get_gravity() * delta
 		
-		if is_on_wall_only():
+		if !is_on_floor():
 			# Get the current wall collision.
 			var collision = get_slide_collision(0)
 			if collision:
 				var current_normal = collision.get_normal().normalized()
 				# Only refill jump if it's a 180° flip
 				if last_wall_normal == Vector3.ZERO:
-					jump_credit = 1
+					if jump_credit <= 0:
+						jump_credit = 1
 					was_on_wall = true
 					last_wall_normal = current_normal
 				elif current_normal.dot(last_wall_normal.normalized()) <= -0.99:
-					jump_credit = 1
+					if jump_credit <= 0:
+						jump_credit = 1
 					was_on_wall = true
 					last_wall_normal = current_normal
 		else:
@@ -80,7 +93,7 @@ func _physics_process(delta: float) -> void:
 			last_wall_normal = Vector3.ZERO
 		
 		# Check if is on floor and restore double jump
-		if is_on_floor():
+		if (gravity_direction == 1 and is_on_floor()) or (gravity_direction == -1 and is_on_ceiling()):
 			jump_credit = 2
 			was_on_wall = false
 			last_wall_normal = Vector3.ZERO
@@ -93,7 +106,7 @@ func _physics_process(delta: float) -> void:
 				# Push away from the wall
 				velocity += -last_wall_normal * WALL_JUMP_FORCE
 			
-			velocity.y = JUMP_VELOCITY
+			velocity.y = JUMP_VELOCITY * gravity_direction
 		
 		# Get the input direction
 		var input_dir := Input.get_vector("move_left", "move_right", "move_up", "move_down")

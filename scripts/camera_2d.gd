@@ -1,6 +1,6 @@
 extends Camera2D
 
-@onready var game_manager = get_node("/root/Game/GameManager")
+@onready var game_manager = %GameManager
 
 const CAMERA_TWEEN_DURATION : float = 0.5
 

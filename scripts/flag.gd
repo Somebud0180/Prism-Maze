@@ -1,9 +1,14 @@
 extends Area2D
 
-@onready var game_manager = get_node("/root/Game/GameManager")
+var managers
+var game_manager
 
 
 func _ready() -> void:
+	managers = get_tree().get_nodes_in_group("GameManager")
+	if managers.size() > 0:
+		game_manager = managers[0]
+	
 	call_deferred("_init_zone")
 
 

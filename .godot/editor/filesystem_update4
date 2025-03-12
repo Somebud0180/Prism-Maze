@@ -13,10 +13,17 @@ res://resources/Game 3D/game_3d.tres
 res://resources/Game/Tileset.tres
 res://resources/Game 3D/Tiles.tres
 res://scenes/3D/game_3d.tscn
-res://scenes/3D/killzone_3d.tscn
 res://scenes/3D/level_3d.tscn
 res://scenes/3D/tiles.tscn
 res://scenes/3D/door_3d.tscn
+res://scenes/3D/killzone_3d.tscn
+res://scenes/2D/game.tscn
+res://scenes/2D/maze_layer.tscn
+res://scenes/2D/door.tscn
+res://scenes/2D/flag.tscn
+res://scenes/2D/platform_layer.tscn
+res://scripts/player_3d.gd
+res://scripts/level_layer_3d.gd
+res://scripts/flag_3d.gd
 res://scripts/level_3d.gd
 res://scripts/3d_level.gd
-res://scripts/killzone_3d.gd
