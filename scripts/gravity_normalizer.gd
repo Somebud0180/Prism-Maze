@@ -4,8 +4,10 @@ var player
 
 func _ready() -> void:
 	call_deferred("_init_zone")
-	player = get_node("/root/Game/Player")
-
+	var players = get_tree().get_nodes_in_group("Player")
+	if players.size() > 0:
+		player = players[0]
+	
 func _init_zone() -> void:
 	# Re-enable collision monitoring.
 	monitoring = true

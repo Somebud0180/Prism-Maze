@@ -31,6 +31,10 @@ window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 window/vsync/vsync_mode=2
 
+[global_group]
+
+Player=""
+
 [input]
 
 ui_accept={

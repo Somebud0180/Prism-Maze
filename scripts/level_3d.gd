@@ -1,6 +1,7 @@
 extends Node3D
 
 var level_indices_used = []
+var last_level = null
 
 func get_next_random_level() -> Node3D:
 	# If no more children to pick from, return null
@@ -10,17 +11,24 @@ func get_next_random_level() -> Node3D:
 	var tries = 10
 	while tries > 0:
 		if level_indices_used.size() == get_child_count() - 1:
+			# Set last_level as reference for the next level loaded
+			last_level = level_indices_used[-1]
 			level_indices_used.clear()
 		
 		# Pick a random index from 1..(child_count-1)
 		var r = randi_range(1, get_child_count() - 1)
 		var original_child = get_child(r)
-		# If we want to ensure it’s not repeated in the last 3 picks, etc.,
-		# do that check here. Otherwise, just pick it:
+		
+		# Check if child is already exhausted
 		if original_child not in level_indices_used:
-			level_indices_used.append(original_child)
+			if original_child != last_level:
+				level_indices_used.append(original_child)
+				
+				# Reset last_level after loading the first level after resetting indices
+				if last_level != null:
+					last_level = null
 			
-			# Actually duplicate the child
+			# Duplicate the child
 			var copy_child = original_child.duplicate()
 			return copy_child
 		tries -= 1

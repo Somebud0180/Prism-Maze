@@ -13,7 +13,7 @@ var level_collection = [] # The final level set to be played
 var current_level = 0
 
 
-func _input(event: InputEvent) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("load_level"):
 		place_level()
 
@@ -50,14 +50,14 @@ func place_level():
 		get_child(get_child_count() - 1)._show()
 		
 		var last_level = level_collection[get_child_count() - 2]
-		var current_level = level_collection[get_child_count() - 1]
+		var this_level = level_collection[get_child_count() - 1]
 		
 		var exit_marker = last_level.get_node("ExitMarker")
-		var entrance_marker = current_level.get_node("EntranceMarker")
+		var entrance_marker = this_level.get_node("EntranceMarker")
 			
 		var exit_global = exit_marker.global_transform
 		var entrance_local = entrance_marker.transform
-		current_level.global_transform = exit_global * entrance_local.affine_inverse()
+		this_level.global_transform = exit_global * entrance_local.affine_inverse()
 		
 		# Remove old levels
 		cull_levels()

@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://djhc1a25dsp6l"
-path="res://.godot/imported/Flag.glb-ffd7f22a8920ffe0b3337a4e0963b90f.scn"
+uid="uid://dq5ixxg0dugqr"
+path="res://.godot/imported/Door.glb-4c1951320aace0c24c64cab7db2b56d8.scn"
 
 [deps]
 
-source_file="res://resources/Game 3D/Flag.glb"
-dest_files=["res://.godot/imported/Flag.glb-ffd7f22a8920ffe0b3337a4e0963b90f.scn"]
+source_file="res://resources/Game 3D/Model/Door.glb"
+dest_files=["res://.godot/imported/Door.glb-4c1951320aace0c24c64cab7db2b56d8.scn"]
 
 [params]
 

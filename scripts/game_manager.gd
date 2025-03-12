@@ -151,11 +151,8 @@ func load_level() -> void:
 	# Reset the key color list
 	_reset_keys()
 	
-	var maze_scene = preload("res://scenes/2D/maze_layer.tscn").instantiate()
-	var platform_scene = preload("res://scenes/2D/platform_layer.tscn").instantiate()
-	
-	maze_scene.disable_all_levels()
-	platform_scene.disable_all_levels()
+	# Disable player for a moment
+	player.game_initialized = false
 	
 	# Reset player gravity and sprite
 	player.gravity_direction = 1
@@ -175,6 +172,9 @@ func load_level() -> void:
 			load_platform(level_name)
 	
 	player.position = Vector2i(0,0)
+	
+	# Enable player again
+	player.game_initialized = true
 
 
 func load_gen_maze() -> void:
@@ -184,8 +184,8 @@ func load_gen_maze() -> void:
 	# Load and instantiate a new maze scene.
 	var gen_maze_scene = load("res://scenes/2D/gen_maze_layer.tscn")
 	var gen_maze_instance = gen_maze_scene.instantiate()
-	main_layer.add_child(gen_maze_instance)
 	
+	main_layer.add_child(gen_maze_instance)
 	gen_maze_instance.load_maze(level)
 
 
@@ -194,10 +194,15 @@ func load_maze(selected_level: String) -> void:
 	game_mode = 2
 	
 	var maze_scene = preload("res://scenes/2D/maze_layer.tscn").instantiate()
-	main_layer.add_child(maze_scene)
 	
-	maze_scene.disable_all_levels()
-	maze_scene.load_level(selected_level)
+	#main_layer.add_child(maze_scene)
+	#
+	#maze_scene.disable_all_levels()
+	#maze_scene.load_level(selected_level)
+	
+	main_layer.add_child(maze_scene.return_level(selected_level))
+	main_layer.get_child(main_layer.get_child_count() - 1).show()
+	main_layer.get_child(main_layer.get_child_count() - 1).init_level()
 
 
 func load_platform(selected_level: String) -> void:
@@ -205,10 +210,15 @@ func load_platform(selected_level: String) -> void:
 	game_mode = 1
 	
 	var platform_scene = preload("res://scenes/2D/platform_layer.tscn").instantiate()
-	main_layer.add_child(platform_scene)
 	
-	platform_scene.disable_all_levels()
-	platform_scene.load_level(selected_level)
+	#main_layer.add_child(platform_scene)
+	#
+	#platform_scene.disable_all_levels()
+	#platform_scene.load_level(selected_level)
+	
+	main_layer.add_child(platform_scene.return_level(selected_level))
+	main_layer.get_child(main_layer.get_child_count() - 1).show()
+	main_layer.get_child(main_layer.get_child_count() - 1).init_level()
 
 
 func get_platform_index(platform_scene: Node, current_level_index: int) -> int:

@@ -1,13 +1,13 @@
 extends GridMap
 
 signal door_close_animation_finished
+@onready var viewport = get_node_or_null("SubViewport")
 var is_door_open = false
 
 
 func _ready() -> void:
 	_hide()
 	
-	var viewport = $SubViewport
 	if viewport != null:
 		# Clear the viewport.
 		$SubViewport.set_clear_mode(SubViewport.CLEAR_MODE_ONCE)
@@ -46,7 +46,7 @@ func toggle_area_collisions(enable: bool) -> void:
 	# 2) Grab the child CollisionShape3D
 	var shape = get_node("Killzone 3D/CollisionShape3D") as CollisionShape3D
 	if shape:
-		shape.disabled = not enable
+		shape.call_deferred("set_disabled", not enable)
 
 
 func open_door():

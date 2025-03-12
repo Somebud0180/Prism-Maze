@@ -72,7 +72,8 @@ func _physics_process(delta: float) -> void:
 			else: 
 				velocity += gravity_direction * get_gravity() * delta
 		
-		if !is_on_floor():
+		# Check if there are any collisions before trying to access them
+		if get_slide_collision_count() > 0:
 			# Get the current wall collision.
 			var collision = get_slide_collision(0)
 			if collision:
@@ -88,9 +89,12 @@ func _physics_process(delta: float) -> void:
 						jump_credit = 1
 					was_on_wall = true
 					last_wall_normal = current_normal
+		elif is_on_wall_only():
+			# We're on a wall but don't have detailed collision info
+			was_on_wall = true
 		else:
+			# Not on a wall and no collision
 			was_on_wall = false
-			last_wall_normal = Vector3.ZERO
 		
 		# Check if is on floor and restore double jump
 		if (gravity_direction == 1 and is_on_floor()) or (gravity_direction == -1 and is_on_ceiling()):

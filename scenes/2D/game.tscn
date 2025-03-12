@@ -81,13 +81,12 @@ animations = [{
 [node name="GameManager" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("1_rn7ij")
-level_amount = 1
-custom_level = "Platform: 2"
+custom_level = "Platform: Debug"
 
 [node name="MainLayer" type="TileMapLayer" parent="."]
 unique_name_in_owner = true
 
-[node name="Player" type="CharacterBody2D" parent="." node_paths=PackedStringArray("animated_sprite")]
+[node name="Player" type="CharacterBody2D" parent="." node_paths=PackedStringArray("animated_sprite") groups=["Player"]]
 unique_name_in_owner = true
 collision_layer = 2
 script = ExtResource("2_musdt")

@@ -27,3 +27,13 @@ res://scripts/level_layer_3d.gd
 res://scripts/flag_3d.gd
 res://scripts/level_3d.gd
 res://scripts/3d_level.gd
+res://scripts/level_layer.gd
+res://scripts/killzone.gd
+res://scripts/game_manager.gd
+res://scripts/gravity_normalizer.gd
+res://scripts/killzone_3d.gd
+res://scripts/loading_screen.gd
+res://scripts/player.gd
+res://addons/third-person-camera/third_person_camera/ThirdPersonCamera.gd
+res://scripts/level.gd
+res://scripts/gravity_inverter.gd
