@@ -24,7 +24,7 @@ var window_state = WINDOW_STATE.WINDOWED:
 		window_state = value
 		_manage_resolution_picker()
 
-enum STATE { MAIN, SETTINGS, CONTROLS, OVERLAY, GAME, GAME3D }
+enum STATE { MAIN, SETTINGS, CONTROLS, OVERLAY, GAME, GAME3D, GAMEMIXED }
 var menu_state = STATE.MAIN:
 	set(value):
 		manage_game_timer(value)
@@ -42,6 +42,7 @@ var in_game_3d = false:
 		_manage_game_overlay()
 
 var is_loading = false
+var last_state = STATE.MAIN
 
 var is_popup_displaying = false
 var resolution = Vector2i(1280, 720)
@@ -85,19 +86,21 @@ func _input(event):
 				_hide_and_show("controls", "main")
 				await animation_player.animation_finished
 				$MenuLayer/Main/VBoxContainer/Play.grab_focus()
-			STATE.GAME, STATE.GAME3D, STATE.OVERLAY:
+			STATE.GAME, STATE.GAME3D, STATE.GAMEMIXED, STATE.OVERLAY:
+				last_state = menu_state
 				menu_state = STATE.MAIN
 				animation_player.play("show_main")
 				_manage_popup(menu_state)
 				await animation_player.animation_finished
 				$MenuLayer/Main/VBoxContainer/Play.grab_focus()
 			STATE.MAIN:
+				# Recover menu state
+				menu_state = last_state
+				
 				if in_game:
-					menu_state = STATE.GAME
 					animation_player.play("hide_main")
 					_manage_popup(menu_state)
 				elif in_game_3d:
-					menu_state = STATE.GAME3D
 					animation_player.play("hide_main")
 
 

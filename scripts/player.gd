@@ -45,18 +45,9 @@ func _on_game_manager_loaded():
 	$Camera2D._on_game_manager_loaded()
 
 
-func _process(_delta: float) -> void:
-	# Invert the gravity.
-	if Input.is_action_just_pressed("invert_gravity"):
-		if gravity_direction == 1:
-			gravity_direction = -1
-		else:
-			gravity_direction = 1
-
-
 func _physics_process(delta: float) -> void:
 	# Don't process physics until we're properly initialized
-	if !game_initialized or menu.menu_state != Menu.STATE.GAME:
+	if !game_initialized or (menu.menu_state != Menu.STATE.GAME and menu.menu_state != Menu.STATE.GAMEMIXED):
 		return
 	
 	if game_manager.game_mode == 1:
@@ -68,6 +59,13 @@ func _physics_process(delta: float) -> void:
 		
 		if (gravity_direction == 1 and is_on_floor()) or (gravity_direction == -1 and is_on_ceiling()):
 			jump_credit = 1
+		
+		# Invert the gravity.
+		if Input.is_action_just_pressed("invert_gravity"):
+			if gravity_direction == 1:
+				gravity_direction = -1
+			else:
+				gravity_direction = 1
 		
 		# Handle jump based on gravity direction.
 		if Input.is_action_just_pressed("jump") and jump_credit > 0:
@@ -85,8 +83,7 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 	elif game_manager.game_mode == 2:
 		# TOP-DOWN MODE
-		# For top-down movement, we use full directional input.
-		# You can define the actions: move_up, move_down, move_left, move_right.
+		# For top-down movement, use four directional input.
 		var input_vector := Vector2(
 			Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),
 			Input.get_action_strength("move_down") - Input.get_action_strength("move_up")

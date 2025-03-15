@@ -369,7 +369,7 @@ light_volumetric_fog_energy = 5.0
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("1_cyag4")
 
-[node name="Player3D" type="CharacterBody3D" parent="."]
+[node name="Player3D" type="CharacterBody3D" parent="." groups=["Player3D"]]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
 collision_layer = 3
@@ -428,6 +428,11 @@ playback_default_blend_time = 0.25
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player3D"]
 transform = Transform3D(-1, 2.04636e-11, -8.75443e-08, 5.61158e-10, 1, 2.32831e-10, 8.75443e-08, 0, -1, 0, -0.16, 0)
 shape = SubResource("CapsuleShape3D_dfa31")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Player3D"]
+unique_name_in_owner = true
+volume_db = -3.0
+doppler_tracking = 1
 
 [node name="LevelLayer3D" type="Node3D" parent="."]
 unique_name_in_owner = true

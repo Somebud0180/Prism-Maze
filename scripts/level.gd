@@ -4,11 +4,13 @@ const FLAG_ALTERNATIVE_ID = 0
 const DOOR_REPLACEMENT_SOURCE_ID = 0
 const DOOR_REPLACEMENT_ATLAS_COORDS = Vector2i(0,0)
 
+## When randomizing the door, pick the one next to a flag.
+@export var pick_door_with_flag: bool = false
+
 var _removed_flags := []
 var _hidden_tile_flags: Array = []
 var _removed_keys: Array = []
 var _hidden_keys: Array = []
-var _replaced_doors: Array = []
 
 
 func init_level() -> void:
@@ -74,7 +76,7 @@ func show_keys(visible: bool) -> void:
 
 func _hide_all_keys_recursive(current_node: Node) -> void:
 	for child in current_node.get_children():
-		# If the child is a Key (which may be directly under the TileMapLayer or under a "Keys" node)
+		# If the child is a Key
 		if child is CharacterBody2D and child is Key and child not in _removed_keys:
 			_hidden_keys.append(child)
 			child.set_deferred("visible", false)
@@ -104,15 +106,6 @@ func randomize_flags() -> void:
 			})
 			
 			set_cell(cell_pos, -1, Vector2i(-1, -1), -1)
-
-
-func restore_flags() -> void:
-	for removed in _removed_flags:
-		var pos = removed["pos"]
-		# Single call to restore the tile:
-		set_cell(pos, removed["source_id"], removed["atlas_coords"], removed["alternative_tile"])
-	
-	_removed_flags.clear()
 
 
 func randomize_keys_and_doors() -> void:
@@ -148,36 +141,63 @@ func randomize_keys_and_doors() -> void:
 	for door_id in doors_by_id.keys():
 		var door_nodes = doors_by_id[door_id]
 		if door_nodes.size() > 1:
-			randomize()
-			var keep_index = randi() % door_nodes.size()
-			for i in range(door_nodes.size()):
-				if i != keep_index:
+			if pick_door_with_flag:
+				var flag_found = false
+				for i in range(door_nodes.size()):
 					var door_node = door_nodes[i]
 					
-					# Calculate tilemap coords:
 					# x => floor(global_x/32), y => ceil(global_y/32)
 					var gpos = door_node.global_position
 					var tile_x = int(floor(gpos.x / 32.0))
 					var tile_y = int(floor(gpos.y / 32.0))
 					var tile_pos = Vector2i(tile_x, tile_y)
 					
-					# Replace the door with a tile in the tilemap
-					set_cell(
-						tile_pos,
-						DOOR_REPLACEMENT_SOURCE_ID,
-						DOOR_REPLACEMENT_ATLAS_COORDS
-					)
-					# Remove this door from the scene
-					var parent = door_node.get_parent()
-					if parent:
-						parent.remove_child(door_node)
+					var surrounding_cells = get_surrounding_cells(tile_pos)
 					
-					# Save info to restore later
-					_replaced_doors.append({
-						"door_node": door_node,
-						"parent": parent,
-						"tile_pos": tile_pos
-					})
+					for neighbor_pos in surrounding_cells:
+						# Check if the cell is a Flag tile
+						var src_id = get_cell_source_id(neighbor_pos)
+						var atlas_coords = get_cell_atlas_coords(neighbor_pos)
+						var alternative_id = get_cell_alternative_tile(neighbor_pos)
+						# Compare to Flag ID
+						if src_id == 1 and atlas_coords == Vector2i(0, 0) and alternative_id == 0:
+							# Found a Flag tile
+							flag_found = true
+							break
+					
+					if flag_found:
+						# Keep this door and remove others
+						for j in range(door_nodes.size()):
+							if j != i:
+								var door_to_remove = door_nodes[j]
+								var parent = door_to_remove.get_parent()
+								if parent:
+									parent.remove_child(door_to_remove)
+						break
+			else:
+				randomize()
+				var keep_index = randi() % door_nodes.size()
+				for i in range(door_nodes.size()):
+					if i != keep_index:
+						var door_node = door_nodes[i]
+						
+						# Calculate tilemap coords:
+						# x => floor(global_x/32), y => ceil(global_y/32)
+						var gpos = door_node.global_position
+						var tile_x = int(floor(gpos.x / 32.0))
+						var tile_y = int(floor(gpos.y / 32.0))
+						var tile_pos = Vector2i(tile_x, tile_y)
+						
+						# Replace the door with a tile in the tilemap
+						set_cell(
+							tile_pos,
+							DOOR_REPLACEMENT_SOURCE_ID,
+							DOOR_REPLACEMENT_ATLAS_COORDS
+						)
+						# Remove this door from the scene
+						var parent = door_node.get_parent()
+						if parent:
+							parent.remove_child(door_node)
 
 
 func _collect_keys_and_doors(current: Node, keys_by_id: Dictionary, doors_by_id: Dictionary) -> void:
@@ -198,28 +218,3 @@ func _collect_keys_and_doors(current: Node, keys_by_id: Dictionary, doors_by_id:
 	# Recurse over children
 	for child in current.get_children():
 		_collect_keys_and_doors(child, keys_by_id, doors_by_id)
-
-
-func restore_keys_and_doors() -> void:
-	# Restore hidden keys
-	for key_node in _removed_keys:
-		# Make it visible and active again
-		if key_node is Node2D:
-			key_node.visible = true
-		if key_node is CollisionObject2D:
-			key_node.process_mode = Node.PROCESS_MODE_INHERIT
-	_removed_keys.clear()
-
-	# Restore replaced doors
-	for entry in _replaced_doors:
-		var door_node = entry["door_node"]
-		var parent = entry["parent"]
-		var tile_pos = entry["tile_pos"]
-
-		set_cell(tile_pos, -1, Vector2i(-1, -1), -1)
-
-		# Re-add the door node to its original parent
-		if parent:
-			parent.add_child(door_node)
-
-	_replaced_doors.clear()

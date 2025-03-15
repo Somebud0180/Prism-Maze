@@ -6,7 +6,16 @@ extends CharacterBody3D
 @export var WALL_SLIDE_FACTOR = 0.3
 @export var ROTATION_SPEED = 0.0
 
-var was_on_wall = false
+var was_on_wall = false:
+	set(value):
+		play_wall_grab(value, was_on_wall)
+		was_on_wall = value
+
+var is_in_air = false:
+	set(value):
+		play_floor_hit(value, is_in_air)
+		is_in_air = value
+
 var last_wall_normal: Vector3 = Vector3.ZERO
 var jump_credit = 2
 var game_initialized = false
@@ -15,13 +24,18 @@ var gravity_direction = 1: # 1 for normal, -1 for upside-down
 		_gravity_change(gravity_direction, value)
 		gravity_direction = value
 
+var is_in_subviewport = false
+var subviewport
+
 @onready var menu = get_node("/root/Menu")
 @onready var animation_player = %AnimationPlayer
 @onready var pivot = %CameraPivot
 @onready var camera = %ThirdPersonCamera
+@onready var audio_player = %AudioStreamPlayer3D
 
-var camera_horizontal_rotation_variation
-
+var fall_sound = load("res://resources/Sound/Player/Fall.wav")
+var jump_sound = load("res://resources/Sound/Player/Jump.wav")
+var grab_sound = load("res://resources/Sound/Player/Grab.wav")
 
 func _ready() -> void:
 	# Disable obect interaction before loading
@@ -47,10 +61,31 @@ func _gravity_change(oldValue: int, newValue: int):
 		animation_player.play("PlayerAction")
 
 
+func _gravity(delta: float):
+	# Add gravity based on gravity direction.
+		if (gravity_direction == 1 and not is_on_floor()) or (gravity_direction == -1 and not is_on_ceiling()):
+			is_in_air = true
+			if is_on_wall_only():
+				if (gravity_direction == 1 and velocity.y < 0) or (gravity_direction == -1 and velocity.y > 0):
+					# Apply reduced gravity for wall sliding only when falling
+					velocity += gravity_direction * get_gravity() * WALL_SLIDE_FACTOR * delta
+				else:
+					# Normal gravity when moving upward on wall
+					velocity += gravity_direction * get_gravity() * delta
+			else: 
+				velocity += gravity_direction * get_gravity() * delta
+
+
 func _physics_process(delta: float) -> void:
 	# Don't process physics until we're properly initialized
-	if !game_initialized:
+	if !game_initialized or menu.menu_state != Menu.STATE.GAME3D:
+		# Keep gravity if in 2D-in-3D mode
+		if menu.menu_state == Menu.STATE.GAMEMIXED:
+			_gravity(delta)
+			move_and_slide()
+		
 		return
+
 	
 	if menu.menu_state == Menu.STATE.GAME3D:
 		# Invert the gravity.
@@ -61,19 +96,10 @@ func _physics_process(delta: float) -> void:
 				gravity_direction = 1
 		
 		# Add gravity based on gravity direction.
-		if (gravity_direction == 1 and not is_on_floor()) or (gravity_direction == -1 and not is_on_ceiling()):
-			if is_on_wall_only():
-				if (gravity_direction == 1 and velocity.y < 0) or (gravity_direction == -1 and velocity.y > 0):
-					# Apply reduced gravity for wall sliding only when falling
-					velocity += gravity_direction * get_gravity() * WALL_SLIDE_FACTOR * delta
-				else:
-					# Normal gravity when moving upward on wall
-					velocity += gravity_direction * get_gravity() * delta
-			else: 
-				velocity += gravity_direction * get_gravity() * delta
+		_gravity(delta)
 		
 		# Check if there are any collisions before trying to access them
-		if get_slide_collision_count() > 0:
+		if get_slide_collision_count() > 0 and is_on_wall_only():
 			# Get the current wall collision.
 			var collision = get_slide_collision(0)
 			if collision:
@@ -98,12 +124,15 @@ func _physics_process(delta: float) -> void:
 		
 		# Check if is on floor and restore double jump
 		if (gravity_direction == 1 and is_on_floor()) or (gravity_direction == -1 and is_on_ceiling()):
+			is_in_air = false
 			jump_credit = 2
 			was_on_wall = false
 			last_wall_normal = Vector3.ZERO
 		
 		# Handle jump.
 		if Input.is_action_just_pressed("jump") and jump_credit > 0:
+			#audio_player.stream = jump_sound
+			#audio_player.play()
 			jump_credit -= 1
 			
 			if was_on_wall:
@@ -137,11 +166,58 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 
 
-func _unhandled_input(event: InputEvent) -> void:	
-	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
-			camera.mouse_follow = true
-			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED) # Lock the mouse to the viewport
-		elif event.button_index == MOUSE_BUTTON_RIGHT and not event.pressed:
-			camera.mouse_follow = false
-			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE) # Lock the mouse to the viewport
+func _unhandled_input(event: InputEvent) -> void:    
+	# Only handle 3D controls if not in subviewport
+	if !is_in_subviewport:
+		if event is InputEventMouseButton:
+			if event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
+				camera.mouse_follow = true
+				Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+			elif event.button_index == MOUSE_BUTTON_RIGHT and not event.pressed:
+				camera.mouse_follow = false
+				Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+
+func play_floor_hit(new_value: bool, old_value: bool) -> void:
+	if !new_value and new_value != old_value:
+		audio_player.stream = fall_sound
+		audio_player.play()
+
+func play_wall_grab(new_value: bool, old_value: bool) -> void:
+	if new_value and new_value != old_value:
+		audio_player.stream = grab_sound
+		audio_player.play()
+
+
+func _handle_input_mode_switch():
+	if is_in_subviewport:
+		# Switch to 2D controls
+		if subviewport:
+			print("Enabling 2D Input")
+			subviewport.handle_input_locally = true
+			subviewport.gui_disable_input = false
+			# Disable 3D movement
+			set_process_input(false)
+			
+			# Enable 2D player input
+			var player = get_tree().get_nodes_in_group("Player")[0] if get_tree().get_nodes_in_group("Player").size() > 0 else null
+			if player:
+				player.game_initialized = true
+				player.set_process_input(true)
+				player.set_physics_process(true)
+			
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	else:
+		# Switch back to 3D controls
+		if subviewport:
+			print("Enabling 3D Input")
+			subviewport.handle_input_locally = false
+			subviewport.gui_disable_input = true
+			# Re-enable 3D movement
+			set_process_input(true)
+			
+			# Disable 2D player input
+			var player = get_tree().get_nodes_in_group("Player")[0] if get_tree().get_nodes_in_group("Player").size() > 0 else null
+			if player:
+				player.game_initialized = false
+				player.set_process_input(false)
+				player.set_physics_process(false)

@@ -16,7 +16,7 @@ signal finished_level_set
 var _maze_scene = preload("res://scenes/2D/maze_layer.tscn").instantiate()
 var _platform_scene = preload("res://scenes/2D/platform_layer.tscn").instantiate()
 
-@export var level_amount: int = 10 # The amount of levels to create for the playthrough. Excluding the final level.
+@export var level_amount: int = 15 # The amount of levels to create for the playthrough. Excluding the final level.
 @export var custom_level: String: # A level to add first to the game, used for debugging. Follows the Maze: X, Platform: X, Maze format
 	set(value):
 		if not _is_valid_custom_level(value):
@@ -45,22 +45,11 @@ func _ready() -> void:
 	await Signal(player, "player_loaded")
 	player._on_game_manager_loaded()
 	
-	# Load Maze Layer
+	# Load Maze Layers
 	main_layer.add_child(_maze_scene)
 	
 	# Load Platform Layer
 	main_layer.add_child(_platform_scene)
-
-	# Fill each list with all valid indices initially, excluding the final and debuh platform level and Timer.
-	for i in range(_platform_scene.get_child_count() - 3):
-		platform_list.append(i)
-	
-	for i in range(_maze_scene.get_child_count() - 1):
-		maze_list.append(i)
-	
-	# Shuffle them for random selection if desired:
-	platform_list.shuffle()
-	maze_list.shuffle()
 	
 	load_game()
 
@@ -195,11 +184,6 @@ func load_maze(selected_level: String) -> void:
 	
 	var maze_scene = preload("res://scenes/2D/maze_layer.tscn").instantiate()
 	
-	#main_layer.add_child(maze_scene)
-	#
-	#maze_scene.disable_all_levels()
-	#maze_scene.load_level(selected_level)
-	
 	main_layer.add_child(maze_scene.return_level(selected_level))
 	main_layer.get_child(main_layer.get_child_count() - 1).show()
 	main_layer.get_child(main_layer.get_child_count() - 1).init_level()
@@ -210,11 +194,6 @@ func load_platform(selected_level: String) -> void:
 	game_mode = 1
 	
 	var platform_scene = preload("res://scenes/2D/platform_layer.tscn").instantiate()
-	
-	#main_layer.add_child(platform_scene)
-	#
-	#platform_scene.disable_all_levels()
-	#platform_scene.load_level(selected_level)
 	
 	main_layer.add_child(platform_scene.return_level(selected_level))
 	main_layer.get_child(main_layer.get_child_count() - 1).show()
