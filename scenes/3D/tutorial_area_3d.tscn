@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://crujbfbaaqvbl"]
+
+[ext_resource type="Script" uid="uid://15r1aqkewpy2" path="res://tutorial_area.gd" id="1_cavt3"]
+
+[node name="TutorialArea3D" type="Area3D"]
+collision_mask = 2
+script = ExtResource("1_cavt3")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

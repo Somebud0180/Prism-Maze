@@ -1,21 +1,16 @@
 res://scripts
 res://scenes/3D
-res://scenes/UI
-<<<<<<< HEAD
-res://resources/Game
 /Users/ethanlagera/prism-maze/build
-/Users/ethanlagera/prism-maze/.godot/
 /Users/ethanlagera/prism-maze/build/iOS
-res://resources/Theme
-=======
-res://resources/Theme
-/Users/ethanlagera/prism-maze/build/iOS
-res://resources/Game
-/Users/ethanlagera/prism-maze/build
-/Users/ethanlagera/prism-maze/.godot/
->>>>>>> 3eb2e6e (Fixed the finish popup, added character health, roughly implemented death (currently only the popup))
-res://scenes
 /Users/ethanlagera/prism-maze/build/web
+res://scenes/UI
+res://resources/Game
+/Users/ethanlagera/prism-maze/.godot/
+res://resources/Theme
+res://resources/Theme
+res://resources/Game
+/Users/ethanlagera/prism-maze/.godot/
+res://scenes
 res://resources/Game 3D
 res://resources
 /Users/ethanlagera/prism-maze

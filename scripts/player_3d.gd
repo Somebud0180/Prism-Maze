@@ -115,12 +115,12 @@ func _physics_process(delta: float) -> void:
 		# Get the input direction
 		var input_dir := Input.get_vector("move_left", "move_right", "move_up", "move_down")
 		
-		# Get camera direction vectors (flattened to ignore Y component for movement)
+		# Get camera direction vectors 
 		var camera_forward = camera.get_front_direction()
 		var camera_right = camera.get_right_direction()
 		
 		# Calculate the movement direction based on camera orientation
-		var direction = (camera_forward * -input_dir.y + camera_right * input_dir.x).normalized()
+		var direction = Vector3(camera_right.x * input_dir.x - camera_forward.x * input_dir.y, 0.0, camera_right.z * input_dir.x - camera_forward.z * input_dir.y).normalized()
 		
 		if direction:
 			velocity.x = direction.x * SPEED

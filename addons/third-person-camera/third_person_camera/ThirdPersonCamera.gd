@@ -101,7 +101,7 @@ class_name ThirdPersonCamera extends Node3D
 @export var near := 0.05
 @export var far := 4000.0
 
-var zoom_levels = [6.0, 9.0, 12.0, 14.0, 16.0]
+var zoom_levels = [2.0, 6.0, 12.0, 14.0, 16.0]
 var current_zoom_index = 1
 var camera_tilt_deg := 0.
 var camera_horizontal_rotation_deg := 0.
@@ -119,7 +119,6 @@ func _ready():
 
 
 func _physics_process(_delta):
-
 	_update_camera_properties()
 	if Engine.is_editor_hint() :
 		_camera_marker.global_position = Vector3(0., 0., 1.).rotated(Vector3(1., 0., 0.), deg_to_rad(initial_dive_angle_deg)).rotated(Vector3(0., 1., 0.), deg_to_rad(-camera_horizontal_rotation_deg)) * _camera_spring_arm.spring_length + _camera_spring_arm.global_position

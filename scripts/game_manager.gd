@@ -17,11 +17,11 @@ var _maze_scene = preload("res://scenes/2D/maze_layer.tscn").instantiate()
 var _platform_scene = preload("res://scenes/2D/platform_layer.tscn").instantiate()
 
 @export var level_amount: int = 10 # The amount of levels to create for the playthrough. Excluding the final level.
-@export var custom_level: String = "": # A level to add first to the game, used for debugging. Follows the Maze: X, Platform: X, Maze format
+@export var custom_level: String: # A level to add first to the game, used for debugging. Follows the Maze: X, Platform: X, Maze format
 	set(value):
 		if not _is_valid_custom_level(value):
-			push_error("Invalid custom_level format. Must be one of: 'Maze', 'Maze: <number>', or 'Platform: <number>'!")
-			get_tree().quit()
+			push_warning("Ignoring custom_level, invalid format. Must be one of: 'Maze', 'Maze: <number>', or 'Platform: <number>'!")
+			custom_level = ""
 		custom_level = value 
 
 var level: int = 0

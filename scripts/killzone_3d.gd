@@ -1,5 +1,6 @@
 extends Area3D
 
+@export var reduce_life_by = 1
 @onready var timer = $Timer
 var player
 var menu
@@ -19,9 +20,9 @@ func _on_timer_timeout() -> void:
 	var entrance_marker = level.get_node("EntranceMarker")
 	var respawn_point = entrance_marker.global_transform
 	level.close_door(2.0)
-	respawn_point.origin += Vector3(0, 0, -1)
+	respawn_point.origin += Vector3(0, 1, -1)
 	
-	menu.character_life -= 1
+	menu.character_life -= reduce_life_by
 	player.velocity.x = 0
 	player.velocity.y = 0
 	player.global_transform = respawn_point

@@ -1340,47 +1340,56 @@ step = 1.0
 value = 5.0
 show_percentage = false
 
-[node name="Substrate Layer" type="Parallax2D" parent="."]
+[node name="Background" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+
+[node name="Substrate Layer" type="Parallax2D" parent="Background"]
 z_index = -100
 scroll_scale = Vector2(0, 0)
 repeat_size = Vector2(800, 400)
-repeat_times = 3
+repeat_times = 5
 
-[node name="Sprite2D" type="Sprite2D" parent="Substrate Layer"]
+[node name="Sprite2D" type="Sprite2D" parent="Background/Substrate Layer"]
 scale = Vector2(1.25, 1.25)
 texture = ExtResource("27_ucr8h")
 centered = false
 
-[node name="Bottom Layer" type="Parallax2D" parent="."]
+[node name="Bottom Layer" type="Parallax2D" parent="Background"]
 z_index = -100
 scroll_scale = Vector2(0.8, 0.8)
 repeat_size = Vector2(800, 400)
-repeat_times = 3
+autoscroll = Vector2(-20, 15)
+repeat_times = 5
 
-[node name="Sprite2D" type="Sprite2D" parent="Bottom Layer"]
+[node name="Sprite2D" type="Sprite2D" parent="Background/Bottom Layer"]
 scale = Vector2(1.25, 1.25)
 texture = ExtResource("28_y8j5i")
 centered = false
 region_rect = Rect2(0, 0, 640, 320)
 
-[node name="Top Layer" type="Parallax2D" parent="."]
+[node name="Top Layer" type="Parallax2D" parent="Background"]
 z_index = -100
 scroll_scale = Vector2(0.8, 0.8)
 repeat_size = Vector2(800, 400)
-repeat_times = 3
+autoscroll = Vector2(-20, 15)
+repeat_times = 5
 
-[node name="Sprite2D" type="Sprite2D" parent="Top Layer"]
+[node name="Sprite2D" type="Sprite2D" parent="Background/Top Layer"]
 scale = Vector2(1.25, 1.25)
 texture = ExtResource("29_p2cca")
 centered = false
 
-[node name="Component Layer" type="Parallax2D" parent="."]
+[node name="Component Layer" type="Parallax2D" parent="Background"]
 z_index = -100
 scroll_scale = Vector2(0.8, 0.8)
 repeat_size = Vector2(800, 400)
-repeat_times = 3
+autoscroll = Vector2(-20, 15)
+repeat_times = 5
 
-[node name="Sprite2D" type="Sprite2D" parent="Component Layer"]
+[node name="Sprite2D" type="Sprite2D" parent="Background/Component Layer"]
 scale = Vector2(1.25, 1.25)
 texture = ExtResource("30_v00k6")
 centered = false

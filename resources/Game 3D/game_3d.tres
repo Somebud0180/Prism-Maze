@@ -1,24 +1,28 @@
-[gd_resource type="Environment" load_steps=4 format=3 uid="uid://b7y82yodphdhe"]
+[gd_resource type="Environment" load_steps=3 format=3 uid="uid://b7y82yodphdhe"]
 
-[ext_resource type="Texture2D" uid="uid://d2elk63rfe7l2" path="res://resources/Game 3D/Panorama.png" id="1_l3hk6"]
-
-[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_doled"]
-panorama = ExtResource("1_l3hk6")
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_nnoqm"]
+sky_top_color = Color(0.832031, 0.807909, 0.750778, 1)
+ground_bottom_color = Color(0.40007, 0.511311, 0.613281, 1)
 
 [sub_resource type="Sky" id="Sky_j5rak"]
-sky_material = SubResource("PanoramaSkyMaterial_doled")
+sky_material = SubResource("ProceduralSkyMaterial_nnoqm")
 
 [resource]
 background_mode = 2
 background_color = Color(0.675781, 0.675781, 0.675781, 1)
 sky = SubResource("Sky_j5rak")
-ambient_light_sky_contribution = 0.8
-ambient_light_energy = 2.0
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_sky_contribution = 0.5
+ambient_light_energy = 5.0
 tonemap_mode = 1
 ssao_enabled = true
+sdfgi_enabled = true
 glow_bloom = 0.3
 fog_enabled = true
+fog_light_energy = 1.25
+fog_sun_scatter = 0.5
 fog_density = 0.005
+fog_sky_affect = 0.8
 volumetric_fog_density = 0.2843
 volumetric_fog_albedo = Color(0.632812, 0.567152, 0.509216, 1)
 adjustment_brightness = 1.18

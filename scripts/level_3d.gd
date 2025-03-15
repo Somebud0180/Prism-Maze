@@ -2,6 +2,8 @@ extends Node3D
 
 var level_indices_used = []
 var last_level = null
+var level_exclude = 2 # Beginning/Special levels to exclude from randomization
+
 
 func get_next_random_level() -> Node3D:
 	# If no more children to pick from, return null
@@ -10,13 +12,13 @@ func get_next_random_level() -> Node3D:
 	
 	var tries = 10
 	while tries > 0:
-		if level_indices_used.size() == get_child_count() - 1:
+		if level_indices_used.size() == get_child_count() - level_exclude:
 			# Set last_level as reference for the next level loaded
 			last_level = level_indices_used[-1]
 			level_indices_used.clear()
 		
-		# Pick a random index from 1..(child_count-1)
-		var r = randi_range(1, get_child_count() - 1)
+		# Pick a random index from Level1 to LevelX (excluding Starting and Tutorial Level)
+		var r = randi_range(level_exclude, get_child_count() - 1)
 		var original_child = get_child(r)
 		
 		# Check if child is already exhausted

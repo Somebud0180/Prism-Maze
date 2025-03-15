@@ -1,68 +1,43 @@
-res://resources/Theme/button_focus.tres::f45bc60411fd1766ff3e56be44a76ff2::1741260248::res://.godot/exported/133200997/export-eaac42b1c672626b8de1e3297ae5b92e-button_focus.res
-res://resources/Theme/button_hover.tres::966faa4bc401b8cbfffc9da547b952c7::1741251291::res://.godot/exported/133200997/export-108f850266066add6004334c3a04e797-button_hover.res
-res://resources/Theme/button_normal.tres::55d670ffbbf1d135e5bb5d38c00c618b::1741251291::res://.godot/exported/133200997/export-d13cddbfc6f92b6a681e43ae58a741e3-button_normal.res
-res://resources/Theme/menu.tres::8dcd6ccada5bf771c2555ce3a9cc4e0a::1741251291::res://.godot/exported/133200997/export-2a65ebe3798934d09d7667b55c7de042-menu.res
+res://resources/Theme/button_focus.tres::f45bc60411fd1766ff3e56be44a76ff2::1741776261::res://.godot/exported/133200997/export-eaac42b1c672626b8de1e3297ae5b92e-button_focus.res
+res://resources/Theme/button_hover.tres::966faa4bc401b8cbfffc9da547b952c7::1741776261::res://.godot/exported/133200997/export-108f850266066add6004334c3a04e797-button_hover.res
+res://resources/Theme/button_normal.tres::55d670ffbbf1d135e5bb5d38c00c618b::1741776261::res://.godot/exported/133200997/export-d13cddbfc6f92b6a681e43ae58a741e3-button_normal.res
+res://resources/Theme/menu.tres::ef801b4eef9ea3806f21280c17b86c99::1741776261::res://.godot/exported/133200997/export-2a65ebe3798934d09d7667b55c7de042-menu.res
 res://resources/Theme/separator.tres::041d167630ce369c68b2ea7a28bf06b5::1740327373::res://.godot/exported/133200997/export-dfba33996295616013a9062abcaad451-separator.res
-res://resources/Theme/v_separator.tres::e3d949952ff78f5e781f276dc807252d::1741251291::res://.godot/exported/133200997/export-acbf29c7a9107c289c44bf099d25eaf0-v_separator.res
-res://resources/Theme/box_focus.tres::223df876811fe9a642574e8e41c486ce::1741251291::res://.godot/exported/133200997/export-46351584ffbce599dada71bf872f3cee-box_focus.res
+res://resources/Theme/v_separator.tres::e3d949952ff78f5e781f276dc807252d::1741776261::res://.godot/exported/133200997/export-acbf29c7a9107c289c44bf099d25eaf0-v_separator.res
+res://resources/Theme/box_focus.tres::223df876811fe9a642574e8e41c486ce::1741776261::res://.godot/exported/133200997/export-46351584ffbce599dada71bf872f3cee-box_focus.res
 res://resources/Theme/box_normal.tres::7241065f98c26342c3233a663180ffe5::1740591988::res://.godot/exported/133200997/export-050eddbeb79402a1742baf83fd322285-box_normal.res
 res://addons/third-person-camera/editor_panels/Preview.tscn::35ee69aa95424737035f85d650e3e34c::1741068252::res://.godot/exported/133200997/export-87e06240f64f0bc5b83c6f38aec03bba-Preview.scn
 res://addons/third-person-camera/third_person_camera/camera-shake-presets/DefaultCameraShakePreset.tres::67918179e8eb60a8f95d4bde917d88a3::1741068252::res://.godot/exported/133200997/export-129dc0946c20f1bdd7f0eb74a4d67735-DefaultCameraShakePreset.res
 res://addons/third-person-camera/third_person_camera/camera-shake-presets/GentleSway.tres::3482132d00ca3b0db97c208e0a064943::1741068252::res://.godot/exported/133200997/export-93c2006c2a68441d100dfc6941f55910-GentleSway.res
-res://addons/third-person-camera/third_person_camera/ThirdPersonCamera.tscn::e4d73d9a54d7c422177d9e9187298731::1741068252::res://.godot/exported/133200997/export-003ba1229ac6e0c4cc64b0e52ddc9e19-ThirdPersonCamera.scn
-res://resources/Game 3D/game_3d.tres::7b9214207eec1ad502a5a19562cfadea::1741251291::res://.godot/exported/133200997/export-4961961f4978a21296b86449e491b078-game_3d.res
-res://resources/Game 3D/Tiles.tres::a2cfb6448479151b9f7fc95b8357ce19::1741251291::res://.godot/exported/133200997/export-b338bd14471fc2f06f0da3b5d745a394-Tiles.res
-res://resources/Theme/button_disabled.tres::a2d21da503f4e1bc0d8bd5bca97322d6::1741251291::res://.godot/exported/133200997/export-8a1f29b91a86a60dca0247f4e037d34b-button_disabled.res
-res://resources/Game/Tileset.tres::f55b79fb2de301b2e381df13bc1ef457::1741275159::res://.godot/exported/133200997/export-650a8cc64e612d48d887ab6c6e82bfcb-Tileset.res
+res://addons/third-person-camera/third_person_camera/ThirdPersonCamera.tscn::e4d73d9a54d7c422177d9e9187298731::1741419897::res://.godot/exported/133200997/export-003ba1229ac6e0c4cc64b0e52ddc9e19-ThirdPersonCamera.scn
+res://resources/Game 3D/game_3d.tres::4207fabcdd4d2b467c57a7b755264b5a::1741776261::res://.godot/exported/133200997/export-4961961f4978a21296b86449e491b078-game_3d.res
+res://resources/Game 3D/Tiles.tres::a2cfb6448479151b9f7fc95b8357ce19::1741776261::res://.godot/exported/133200997/export-b338bd14471fc2f06f0da3b5d745a394-Tiles.res
+res://resources/Theme/button_disabled.tres::a2d21da503f4e1bc0d8bd5bca97322d6::1741776261::res://.godot/exported/133200997/export-8a1f29b91a86a60dca0247f4e037d34b-button_disabled.res
+res://resources/Game/Tileset.tres::f55b79fb2de301b2e381df13bc1ef457::1741776261::res://.godot/exported/133200997/export-650a8cc64e612d48d887ab6c6e82bfcb-Tileset.res
 res://resources/Theme/loading.tres::da99d2e155b6bfed8469c35225e0004e::1741089396::res://.godot/exported/133200997/export-5b1bd734443459b715ff930e0744e4f7-loading.res
 res://resources/Theme/panel.tres::48ed80cb2f421e812abbd076ecf04af1::1741089190::res://.godot/exported/133200997/export-adf496416db59b1d244dd189b8b51479-panel.res
-res://scenes/2D/door.tscn::ab92aa3f2e527d2af8bb88421c7fe2d0::1741181068::res://.godot/exported/133200997/export-2b338c4d99c7e12eb6434036149e94cf-door.scn
-res://scenes/2D/flag.tscn::b9bd7412707c1baabf0741f0715c8788::1741181068::res://.godot/exported/133200997/export-e99af1fbd3f3efaacb2b227177c2e0a6-flag.scn
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 3eb2e6e (Fixed the finish popup, added character health, roughly implemented death (currently only the popup))
-res://scenes/2D/game.tscn::21312803ce92c6420294d67a86d1072c::1741277368::res://.godot/exported/133200997/export-8a815608d15c5ff5da1016d41c8b1a6d-game.scn
-res://scenes/2D/gen_maze_layer.tscn::4438bddf3484ac74e0537f06f3446752::1741277368::res://.godot/exported/133200997/export-95127645bb2b6e879ed0bc919449b820-gen_maze_layer.scn
-res://scenes/2D/gravity_inverter.tscn::5e4f4dd853695ba6f5c16d8e25bfdae7::1741181068::res://.godot/exported/133200997/export-5fa5dd9fa23eabc96be0a60c9e0d792d-gravity_inverter.scn
-res://scenes/2D/gravity_normalizer.tscn::5b9d64f7965bb0c4ca37dd63a533fe1c::1741181068::res://.godot/exported/133200997/export-03784205bd5b9c24631e446173ce70a3-gravity_normalizer.scn
-res://scenes/2D/key.tscn::941f37ae7aeb30faa5120822f352ef37::1741277368::res://.godot/exported/133200997/export-7d991385b25b4cebabc5c01959a022d8-key.scn
-res://scenes/2D/killzone.tscn::2c868fa8c84dd0c13ffbc46b00e5d238::1741105988::res://.godot/exported/133200997/export-b2e00fced10583e1988fc235c6f07968-killzone.scn
-res://scenes/2D/level_popup.tscn::8f5c3900e9a1bdf5fc9e265992455a7e::1741257180::res://.godot/exported/133200997/export-ab6c2de0e9c8725a872474e8495452cf-level_popup.scn
-res://scenes/2D/maze_layer.tscn::a4cabefa58ad419d8cb968c672cdd343::1741277368::res://.godot/exported/133200997/export-f1554a644fb5859d458f4f260b644a51-maze_layer.scn
-res://scenes/2D/platform_down.tscn::7eecb5097c742440dcc53c76e29a22dc::1741181068::res://.godot/exported/133200997/export-1a6861b5347549dd863c225faba92dfa-platform_down.scn
-res://scenes/2D/platform_layer.tscn::27ed4128db9e3a22eac81e025baa4d24::1741277381::res://.godot/exported/133200997/export-db50853c6a988b71f6fb885632f509cd-platform_layer.scn
-res://scenes/2D/platform_up.tscn::56245c94600e7b2811cef76e979ca850::1741181068::res://.godot/exported/133200997/export-117ac0049084deac3c9455e8f0377659-platform_up.scn
-res://scenes/2D/player.tscn::e8d5606104c8812bd1ddedc763b20529::1741277368::res://.godot/exported/133200997/export-07b7a82bbd7d08e95a5337cee06292cf-player.scn
-<<<<<<< HEAD
-=======
-=======
-res://scenes/2D/game.tscn::21312803ce92c6420294d67a86d1072c::1741333987::res://.godot/exported/133200997/export-8a815608d15c5ff5da1016d41c8b1a6d-game.scn
-res://scenes/2D/gen_maze_layer.tscn::cd13439abff6f7ed457eb5f4731ef94e::1741328165::res://.godot/exported/133200997/export-95127645bb2b6e879ed0bc919449b820-gen_maze_layer.scn
-res://scenes/2D/gravity_inverter.tscn::5e4f4dd853695ba6f5c16d8e25bfdae7::1741181068::res://.godot/exported/133200997/export-5fa5dd9fa23eabc96be0a60c9e0d792d-gravity_inverter.scn
-res://scenes/2D/gravity_normalizer.tscn::5b9d64f7965bb0c4ca37dd63a533fe1c::1741181068::res://.godot/exported/133200997/export-03784205bd5b9c24631e446173ce70a3-gravity_normalizer.scn
-res://scenes/2D/key.tscn::941f37ae7aeb30faa5120822f352ef37::1741328165::res://.godot/exported/133200997/export-7d991385b25b4cebabc5c01959a022d8-key.scn
-res://scenes/2D/killzone.tscn::2c868fa8c84dd0c13ffbc46b00e5d238::1741105988::res://.godot/exported/133200997/export-b2e00fced10583e1988fc235c6f07968-killzone.scn
-res://scenes/2D/level_popup.tscn::8f5c3900e9a1bdf5fc9e265992455a7e::1741257180::res://.godot/exported/133200997/export-ab6c2de0e9c8725a872474e8495452cf-level_popup.scn
-res://scenes/2D/maze_layer.tscn::2bb26e66a8f9e87b2e57fb9a68d8af32::1741328165::res://.godot/exported/133200997/export-f1554a644fb5859d458f4f260b644a51-maze_layer.scn
-res://scenes/2D/platform_down.tscn::7eecb5097c742440dcc53c76e29a22dc::1741181068::res://.godot/exported/133200997/export-1a6861b5347549dd863c225faba92dfa-platform_down.scn
-res://scenes/2D/platform_layer.tscn::1a5dec3901a8a5f0f0dc74e04e984f81::1741333987::res://.godot/exported/133200997/export-db50853c6a988b71f6fb885632f509cd-platform_layer.scn
-res://scenes/2D/platform_up.tscn::56245c94600e7b2811cef76e979ca850::1741181068::res://.godot/exported/133200997/export-117ac0049084deac3c9455e8f0377659-platform_up.scn
-res://scenes/2D/player.tscn::e8d5606104c8812bd1ddedc763b20529::1741328178::res://.godot/exported/133200997/export-07b7a82bbd7d08e95a5337cee06292cf-player.scn
->>>>>>> 00f1bd6 (Fixed the finish popup, added character health, roughly implemented death (currently only the popup))
->>>>>>> 3eb2e6e (Fixed the finish popup, added character health, roughly implemented death (currently only the popup))
-res://scenes/3D/flag_3d.tscn::c1f7638cfeb230984b1f97380b983952::1741068253::res://.godot/exported/133200997/export-23961edbdd73a3d23600f77c45eeda1e-flag_3d.scn
-res://scenes/3D/game_3d.tscn::d62ccf10263061f7c1fd7e9d750759f5::1741184916::res://.godot/exported/133200997/export-97d2695309c4a48e97d7af6fe5dbaf1b-game_3d.scn
-res://scenes/3D/killzone_3d.tscn::a0718ecaf7b733f57c4ceef8408942ff::1741068253::res://.godot/exported/133200997/export-e65f8a4c433c3f66af7ab7226b9a8f5b-killzone_3d.scn
-res://scenes/3D/level_3d.tscn::0e80d018081dd1bbc2722b117fb5b11e::1741104387::res://.godot/exported/133200997/export-9e0362641f9c6583ac633c53fd26f8c9-level_3d.scn
-res://scenes/3D/tiles.tscn::43b693eca90b6230b6184f1c99eb79a1::1741068253::res://.godot/exported/133200997/export-bcd9ede1077ebe887b49f57cb3ac0e41-tiles.scn
-res://scenes/UI/loading_screen.tscn::293c84fdc28ba2ee9048153db47f3816::1741174555::res://.godot/exported/133200997/export-cee076c9f6eba90f237c6668eb8a8241-loading_screen.scn
-<<<<<<< HEAD
-res://scenes/UI/menu.tscn::d03086a1e51b3cd76fc5dcba7a644ff4::1741277368::res://.godot/exported/133200997/export-6845c2051f700156a523940a5adfbb49-menu.scn
-=======
-<<<<<<< HEAD
-res://scenes/UI/menu.tscn::d03086a1e51b3cd76fc5dcba7a644ff4::1741277368::res://.godot/exported/133200997/export-6845c2051f700156a523940a5adfbb49-menu.scn
-=======
-res://scenes/UI/menu.tscn::cbdf6acc788f84f8321db6b39682e36b::1741333987::res://.godot/exported/133200997/export-6845c2051f700156a523940a5adfbb49-menu.scn
->>>>>>> 00f1bd6 (Fixed the finish popup, added character health, roughly implemented death (currently only the popup))
->>>>>>> 3eb2e6e (Fixed the finish popup, added character health, roughly implemented death (currently only the popup))
+res://scenes/2D/door.tscn::ab92aa3f2e527d2af8bb88421c7fe2d0::1741776261::res://.godot/exported/133200997/export-2b338c4d99c7e12eb6434036149e94cf-door.scn
+res://scenes/2D/flag.tscn::b9bd7412707c1baabf0741f0715c8788::1741776261::res://.godot/exported/133200997/export-e99af1fbd3f3efaacb2b227177c2e0a6-flag.scn
+res://scenes/2D/game.tscn::af0a5eabcd2b97585b90667966b19d27::1741795071::res://.godot/exported/133200997/export-8a815608d15c5ff5da1016d41c8b1a6d-game.scn
+res://scenes/2D/gen_maze_layer.tscn::cd13439abff6f7ed457eb5f4731ef94e::1741421054::res://.godot/exported/133200997/export-95127645bb2b6e879ed0bc919449b820-gen_maze_layer.scn
+res://scenes/2D/gravity_inverter.tscn::5e4f4dd853695ba6f5c16d8e25bfdae7::1741421054::res://.godot/exported/133200997/export-5fa5dd9fa23eabc96be0a60c9e0d792d-gravity_inverter.scn
+res://scenes/2D/gravity_normalizer.tscn::5b9d64f7965bb0c4ca37dd63a533fe1c::1741421054::res://.godot/exported/133200997/export-03784205bd5b9c24631e446173ce70a3-gravity_normalizer.scn
+res://scenes/2D/key.tscn::941f37ae7aeb30faa5120822f352ef37::1741421054::res://.godot/exported/133200997/export-7d991385b25b4cebabc5c01959a022d8-key.scn
+res://scenes/2D/killzone.tscn::2c868fa8c84dd0c13ffbc46b00e5d238::1741430829::res://.godot/exported/133200997/export-b2e00fced10583e1988fc235c6f07968-killzone.scn
+res://scenes/2D/maze_layer.tscn::87d602279b89d35d7fa76ac901296af8::1741795234::res://.godot/exported/133200997/export-f1554a644fb5859d458f4f260b644a51-maze_layer.scn
+res://scenes/2D/platform_down.tscn::7eecb5097c742440dcc53c76e29a22dc::1741421054::res://.godot/exported/133200997/export-1a6861b5347549dd863c225faba92dfa-platform_down.scn
+res://scenes/2D/platform_layer.tscn::e841872669358b0439c6dc724455e8d9::1741795071::res://.godot/exported/133200997/export-db50853c6a988b71f6fb885632f509cd-platform_layer.scn
+res://scenes/2D/platform_up.tscn::56245c94600e7b2811cef76e979ca850::1741421054::res://.godot/exported/133200997/export-117ac0049084deac3c9455e8f0377659-platform_up.scn
+res://scenes/2D/player.tscn::e8d5606104c8812bd1ddedc763b20529::1741432826::res://.godot/exported/133200997/export-07b7a82bbd7d08e95a5337cee06292cf-player.scn
+res://scenes/3D/flag_3d.tscn::6d8b0397f90789fd34d780f7cc563207::1741776261::res://.godot/exported/133200997/export-23961edbdd73a3d23600f77c45eeda1e-flag_3d.scn
+res://scenes/3D/game_3d.tscn::61ad1bd25f1308824a14cf49cf3685ca::1741795070::res://.godot/exported/133200997/export-97d2695309c4a48e97d7af6fe5dbaf1b-game_3d.scn
+res://scenes/3D/killzone_3d.tscn::c839b570d46515ff17777f414c939df5::1741776261::res://.godot/exported/133200997/export-e65f8a4c433c3f66af7ab7226b9a8f5b-killzone_3d.scn
+res://scenes/3D/level_3d.tscn::5cd34eee062069ecb2e6f5db9be4ed9c::1741795070::res://.godot/exported/133200997/export-9e0362641f9c6583ac633c53fd26f8c9-level_3d.scn
+res://scenes/3D/tiles.tscn::43b693eca90b6230b6184f1c99eb79a1::1741776261::res://.godot/exported/133200997/export-bcd9ede1077ebe887b49f57cb3ac0e41-tiles.scn
+res://scenes/UI/loading_screen.tscn::293c84fdc28ba2ee9048153db47f3816::1741432826::res://.godot/exported/133200997/export-cee076c9f6eba90f237c6668eb8a8241-loading_screen.scn
+res://scenes/UI/menu.tscn::3d20d5bc4be981350d885613255f8a46::1741432826::res://.godot/exported/133200997/export-6845c2051f700156a523940a5adfbb49-menu.scn
+res://resources/Theme/panel_container.tres::28461cee79a561b821b19251deb449ea::1741776261::res://.godot/exported/133200997/export-99284a3a408197c3f30a5947080a1b16-panel_container.res
+res://resources/Theme/progress_background.tres::9370bc65616dec5ab231bbb7fad51857::1741776261::res://.godot/exported/133200997/export-8e89896a36c1fd87583de80bbbdbea94-progress_background.res
+res://resources/Theme/progress_fill.tres::4f199cb10562fa54941966b3a83d2822::1741371930::res://.godot/exported/133200997/export-806138ed2d2a042fa5d783962adea28a-progress_fill.res
+res://scenes/3D/door_3d.tscn::d90f7b6a6db00c5460f876c3ec9a8ad7::1741787723::res://.godot/exported/133200997/export-215b848b6eec2546272385d2323ba3b7-door_3d.scn
+res://scenes/UI/level_popup.tscn::236e9f830ce5c10bc63e975106015999::1741432826::res://.godot/exported/133200997/export-5a5defe865ae60a2773a2202cb853454-level_popup.scn

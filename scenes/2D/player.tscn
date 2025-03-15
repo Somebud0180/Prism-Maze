@@ -90,7 +90,7 @@ frame_progress = 0.0914439
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 process_physics_priority = 2
-polygon = PackedVector2Array(13, -1, 19, -1, 27, -20, 27, -22, 18, -30, 14, -30, 5, -22, 5, -20)
+polygon = PackedVector2Array(11, -1, 21, -1, 27, -20, 27, -22, 18, -30, 14, -30, 5, -22, 5, -20)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(16, -16)

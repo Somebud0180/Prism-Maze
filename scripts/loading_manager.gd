@@ -24,6 +24,7 @@ func load_scene(scene_path: String) -> void:
 	
 	await Signal(new_loading_scene, "loading_screen_has_full_coverage")
 	
+	menu.manage_background(false)
 	start_load()
 
 

@@ -101,6 +101,11 @@ func _input(event):
 					animation_player.play("hide_main")
 
 
+func manage_background(is_visible: bool):
+	# Control the parallax background visibility
+	$Background.visible = is_visible
+
+
 func _hide_and_show(first: String, second: String):
 	animation_player.play("hide_" + first)
 	await animation_player.animation_finished
@@ -124,12 +129,6 @@ func _on_play_3d_pressed() -> void:
 	# Check if already in-game in another dimension
 	if in_game:
 		_reset_game()
-	
-	# Hide the parallax background
-	$"Substrate Layer".visible = false
-	$"Bottom Layer".visible = false
-	$"Top Layer".visible = false
-	$"Component Layer".visible = false
 	
 	menu_state = STATE.GAME3D
 	animation_player.play("hide_main")
@@ -313,6 +312,10 @@ func _compare_resolutions(a: Vector2i, b: Vector2i) -> bool:
 
 
 func _reset_game() -> void:
+	# Return background visibility
+	manage_background(true)
+	
+	# Don't play show animation if it is on screen already
 	var popup_ref = get_tree().get_root().get_node_or_null("LevelPopup")
 	if popup_ref != null:
 		if !popup_ref.is_on_side:
@@ -323,7 +326,6 @@ func _reset_game() -> void:
 	character_life = 5
 	in_game = false
 	menu_state = STATE.MAIN
-	animation_player.play("show_main")
 	
 	if _game_scene != null:
 		LoadingManager.unload_current_scene("/root/Game")
@@ -333,6 +335,10 @@ func _reset_game() -> void:
 
 
 func _reset_game_3d() -> void:
+	# Return background visibility
+	manage_background(true)
+	
+	# Don't play show animation if it is on screen already
 	var popup_ref = get_tree().get_root().get_node_or_null("LevelPopup")
 	if popup_ref != null:
 		if !popup_ref.is_on_side:
@@ -343,16 +349,11 @@ func _reset_game_3d() -> void:
 	character_life = 5
 	in_game_3d = false
 	menu_state = STATE.MAIN
-	animation_player.play("show_main")
 	
 	if _game_scene_3d != null:
 		LoadingManager.unload_current_scene("/root/Game3D")
 	
 	_game_scene_3d = preload("res://scenes/3D/game_3d.tscn").instantiate()
-	$"Substrate Layer".visible = true
-	$"Bottom Layer".visible = true
-	$"Top Layer".visible = true
-	$"Component Layer".visible = true
 
 
 func manage_game_timer(state: STATE) -> void:

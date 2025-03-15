@@ -4,6 +4,7 @@ signal player_loaded
 
 const speed = 200.0
 const jump_velocity = -360.0
+var jump_credit = 1
 var gravity_direction = 1: # 1 for normal, -1 for upside-down
 	set(value):
 		gravity_direction = value
@@ -65,10 +66,13 @@ func _physics_process(delta: float) -> void:
 		elif gravity_direction == -1 and not is_on_ceiling():
 			velocity += gravity_direction * get_gravity() * delta
 		
+		if (gravity_direction == 1 and is_on_floor()) or (gravity_direction == -1 and is_on_ceiling()):
+			jump_credit = 1
+		
 		# Handle jump based on gravity direction.
-		if Input.is_action_just_pressed("jump"):
-			if (gravity_direction == 1 and is_on_floor()) or (gravity_direction == -1 and is_on_ceiling()):
-				velocity.y = jump_velocity * gravity_direction
+		if Input.is_action_just_pressed("jump") and jump_credit > 0:
+			jump_credit -= 1 
+			velocity.y = jump_velocity * gravity_direction
 		
 		# Get the input direction and handle the movement/deceleration.
 		# As good practice, you should replace UI actions with custom gameplay actions.

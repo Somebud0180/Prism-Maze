@@ -1,11 +1,32 @@
 extends Node3D
+class_name LevelLayer3D
 
 signal finished_loading
 
 @onready var player_3d = %Player3D
+@onready var tutorial_layer = %TutorialLayer
 @onready var _level_3d = preload("res://scenes/3D/level_3d.tscn").instantiate()
 
-@export var level_amount: int = 6
+## Enables unlimited levels.  [code]level_amount[/code]  is disregarded when enabled.
+@export var infinite_levels: bool = false
+
+## The amount of levels to spawn
+@export var level_amount: int = 6 
+
+## Spawn this amount of levels in advance
+@export var level_advance: int = 1 
+
+## Cull levels past this amount
+@export var level_cull: int = 5 
+
+## Use the tutorial level as the spawn
+@export var is_starting_on_tutorial = false
+
+enum TUTORIAL_STATE { RESET, MOVE, JUMP, DOUBLE_JUMP, WALL_JUMP, SUCCESS }
+var tutorial_state = TUTORIAL_STATE.MOVE:
+	set(value):
+		tutorial_state = value
+		change_overlay()
 
 var starting_marker
 var levels = [] # The levels in the node
@@ -20,8 +41,14 @@ func _process(_delta: float) -> void:
 
 func _ready() -> void:
 	# First, handle the starting level
-	var starting = _level_3d.get_child(0)
-	var copy_starting = starting.duplicate()
+	var copy_starting
+	if is_starting_on_tutorial:
+		var tutorial = _level_3d.get_child(0)
+		copy_starting = tutorial.duplicate()
+	else:
+		var starting = _level_3d.get_child(1)
+		copy_starting = starting.duplicate()
+	
 	add_child(copy_starting)
 	level_collection.append(copy_starting)
 	get_child(get_child_count() - 1)._show()
@@ -36,11 +63,15 @@ func _ready() -> void:
 	# Now place the player at that Marker
 	player_3d.global_transform = spawn_transform
 	
+	# Place level(s) in advance
+	for i in range(level_advance):
+		place_level()
+	
 	emit_signal("finished_loading")
 
 
 func place_level():
-	if current_level < level_amount:
+	if infinite_levels or (current_level < level_amount):
 		var next_level = _level_3d.get_next_random_level()
 		if next_level:
 			add_child(next_level)
@@ -64,7 +95,7 @@ func place_level():
 
 
 func cull_levels():
-	if level_collection.size() > 4 and get_child_count() > 4:
+	if level_collection.size() > level_cull and get_child_count() > level_cull:
 		# Close door of the second oldest level
 		level_collection[1].close_door()
 		await Signal(level_collection[1], "door_close_animation_finished")
@@ -73,3 +104,29 @@ func cull_levels():
 		var removed_level = level_collection[0]
 		removed_level.queue_free()
 		level_collection.remove_at(0)
+
+
+func reset_game_3d():
+	# Resets the related variables
+	levels = [] # The levels in the node
+	level_collection = [] # The final level set to be played
+	current_level = 0
+
+func change_overlay():
+	match tutorial_state:
+		TUTORIAL_STATE.RESET:
+			tutorial_layer.reset_tutorial()
+		TUTORIAL_STATE.MOVE:
+			tutorial_layer.move_tutorial()
+		TUTORIAL_STATE.JUMP:
+			tutorial_layer.jump_tutorial()
+		TUTORIAL_STATE.DOUBLE_JUMP:
+			tutorial_layer.double_jump_tutorial()
+		TUTORIAL_STATE.WALL_JUMP:
+			tutorial_layer.wall_jump_tutorial()
+		TUTORIAL_STATE.SUCCESS:
+			tutorial_layer.success_tutorial()
+
+
+func _on_tree_exiting() -> void:
+	reset_game_3d()

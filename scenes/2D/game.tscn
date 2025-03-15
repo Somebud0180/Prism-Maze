@@ -1,9 +1,13 @@
-[gd_scene load_steps=15 format=3 uid="uid://brinhdnvr4uxf"]
+[gd_scene load_steps=19 format=3 uid="uid://brinhdnvr4uxf"]
 
 [ext_resource type="Script" uid="uid://b7l1rpqy1mblr" path="res://scripts/game_manager.gd" id="1_rn7ij"]
 [ext_resource type="Script" uid="uid://cmgcuu7j3ncl2" path="res://scripts/player.gd" id="2_musdt"]
 [ext_resource type="Texture2D" uid="uid://dfvku7oe2ae6y" path="res://resources/Game/Player-Sheet.png" id="3_mqq6w"]
 [ext_resource type="Script" uid="uid://pt4eigkvwdlj" path="res://scripts/camera_2d.gd" id="4_j64ky"]
+[ext_resource type="Texture2D" uid="uid://cn8i1e5a2w11c" path="res://resources/Background/Substrate.png" id="5_rvy4k"]
+[ext_resource type="Texture2D" uid="uid://dhkixf8jhbq4o" path="res://resources/Background/Bottom Layer.png" id="6_lnfnm"]
+[ext_resource type="Texture2D" uid="uid://dhop524e0npfj" path="res://resources/Background/Top Layer.png" id="7_4osob"]
+[ext_resource type="Texture2D" uid="uid://b0viiebu5kc4j" path="res://resources/Background/Components.png" id="8_l5bty"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ei8ab"]
 atlas = ExtResource("3_mqq6w")
@@ -81,7 +85,6 @@ animations = [{
 [node name="GameManager" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("1_rn7ij")
-custom_level = "Platform: Debug"
 
 [node name="MainLayer" type="TileMapLayer" parent="."]
 unique_name_in_owner = true
@@ -102,11 +105,58 @@ frame_progress = 0.0914439
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Player"]
 process_physics_priority = 2
-polygon = PackedVector2Array(13, -1, 19, -1, 27, -20, 27, -22, 18, -30, 14, -30, 5, -22, 5, -20)
+polygon = PackedVector2Array(11, -1, 21, -1, 27, -20, 27, -22, 18, -30, 14, -30, 5, -22, 5, -20)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 offset = Vector2(16, -16)
 position_smoothing_enabled = true
 script = ExtResource("4_j64ky")
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="Substrate Layer" type="Parallax2D" parent="Background"]
+z_index = -100
+scroll_scale = Vector2(0, 0)
+repeat_size = Vector2(800, 400)
+repeat_times = 5
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/Substrate Layer"]
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("5_rvy4k")
+centered = false
+
+[node name="Bottom Layer" type="Parallax2D" parent="Background"]
+z_index = -100
+scroll_scale = Vector2(0.8, 0.8)
+repeat_size = Vector2(800, 400)
+repeat_times = 5
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/Bottom Layer"]
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("6_lnfnm")
+centered = false
+region_rect = Rect2(0, 0, 640, 320)
+
+[node name="Top Layer" type="Parallax2D" parent="Background"]
+z_index = -100
+scroll_scale = Vector2(0.8, 0.8)
+repeat_size = Vector2(800, 400)
+repeat_times = 5
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/Top Layer"]
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("7_4osob")
+centered = false
+
+[node name="Component Layer" type="Parallax2D" parent="Background"]
+z_index = -100
+scroll_scale = Vector2(0.8, 0.8)
+repeat_size = Vector2(800, 400)
+repeat_times = 5
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/Component Layer"]
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("8_l5bty")
+centered = false
 
 [connection signal="finished_level_set" from="GameManager" to="GameManager" method="_on_finished_level_set"]
