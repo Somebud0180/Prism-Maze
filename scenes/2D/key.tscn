@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://dxtfp5xf31vwm"]
 
-[ext_resource type="Script" uid="uid://brl65p3qlhy44" path="res://scripts/key.gd" id="1_wy8tx"]
+[ext_resource type="Script" uid="uid://brl65p3qlhy44" path="res://scripts/2D/key.gd" id="1_wy8tx"]
 [ext_resource type="Texture2D" uid="uid://dpkmfpsnfsava" path="res://resources/Game/Key.png" id="2_kmpnw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fttkb"]

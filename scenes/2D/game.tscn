@@ -1,9 +1,9 @@
 [gd_scene load_steps=19 format=3 uid="uid://brinhdnvr4uxf"]
 
-[ext_resource type="Script" uid="uid://b7l1rpqy1mblr" path="res://scripts/game_manager.gd" id="1_rn7ij"]
-[ext_resource type="Script" uid="uid://cmgcuu7j3ncl2" path="res://scripts/player.gd" id="2_musdt"]
+[ext_resource type="Script" uid="uid://b7l1rpqy1mblr" path="res://scripts/2D/game_manager.gd" id="1_rn7ij"]
+[ext_resource type="Script" uid="uid://cmgcuu7j3ncl2" path="res://scripts/2D/player.gd" id="2_musdt"]
 [ext_resource type="Texture2D" uid="uid://dfvku7oe2ae6y" path="res://resources/Game/Player-Sheet.png" id="3_mqq6w"]
-[ext_resource type="Script" uid="uid://pt4eigkvwdlj" path="res://scripts/camera_2d.gd" id="4_j64ky"]
+[ext_resource type="Script" uid="uid://pt4eigkvwdlj" path="res://scripts/2D/camera_2d.gd" id="4_j64ky"]
 [ext_resource type="Texture2D" uid="uid://cn8i1e5a2w11c" path="res://resources/Background/Substrate.png" id="5_rvy4k"]
 [ext_resource type="Texture2D" uid="uid://dhkixf8jhbq4o" path="res://resources/Background/Bottom Layer.png" id="6_lnfnm"]
 [ext_resource type="Texture2D" uid="uid://dhop524e0npfj" path="res://resources/Background/Top Layer.png" id="7_4osob"]
@@ -82,7 +82,7 @@ animations = [{
 
 [node name="Game" type="Node2D"]
 
-[node name="GameManager" type="Node" parent="."]
+[node name="GameManager" type="Node" parent="." groups=["GameManager"]]
 unique_name_in_owner = true
 script = ExtResource("1_rn7ij")
 
@@ -118,7 +118,7 @@ script = ExtResource("4_j64ky")
 z_index = -100
 scroll_scale = Vector2(0, 0)
 repeat_size = Vector2(800, 400)
-repeat_times = 5
+repeat_times = 9
 
 [node name="Sprite2D" type="Sprite2D" parent="Background/Substrate Layer"]
 scale = Vector2(1.25, 1.25)
@@ -129,7 +129,7 @@ centered = false
 z_index = -100
 scroll_scale = Vector2(0.8, 0.8)
 repeat_size = Vector2(800, 400)
-repeat_times = 5
+repeat_times = 9
 
 [node name="Sprite2D" type="Sprite2D" parent="Background/Bottom Layer"]
 scale = Vector2(1.25, 1.25)
@@ -141,7 +141,7 @@ region_rect = Rect2(0, 0, 640, 320)
 z_index = -100
 scroll_scale = Vector2(0.8, 0.8)
 repeat_size = Vector2(800, 400)
-repeat_times = 5
+repeat_times = 9
 
 [node name="Sprite2D" type="Sprite2D" parent="Background/Top Layer"]
 scale = Vector2(1.25, 1.25)
@@ -152,7 +152,7 @@ centered = false
 z_index = -100
 scroll_scale = Vector2(0.8, 0.8)
 repeat_size = Vector2(800, 400)
-repeat_times = 5
+repeat_times = 9
 
 [node name="Sprite2D" type="Sprite2D" parent="Background/Component Layer"]
 scale = Vector2(1.25, 1.25)

@@ -18,7 +18,7 @@ config/icon="res://resources/icon.svg"
 
 [autoload]
 
-LoadingManager="*res://scripts/loading_manager.gd"
+LoadingManager="*res://scripts/UI/loading_manager.gd"
 LevelPopup="*res://scenes/UI/level_popup.tscn"
 
 [display]
@@ -35,6 +35,8 @@ window/vsync/vsync_mode=2
 
 Player=""
 Player3D=""
+Game3D=""
+GameManager=""
 
 [input]
 
@@ -156,4 +158,6 @@ interact={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+renderer/rendering_method.mobile="forward_plus"
 textures/vram_compression/import_etc2_astc=true
+global_illumination/gi/use_half_resolution=true

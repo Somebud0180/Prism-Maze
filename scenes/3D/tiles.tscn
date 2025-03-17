@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=4 uid="uid://dwgtfqyh32i4k"]
+[gd_scene load_steps=8 format=4 uid="uid://dwgtfqyh32i4k"]
 
 [ext_resource type="Texture2D" uid="uid://f07c5yfebyiv" path="res://resources/Game 3D/Model/Block_Floor.png" id="1_0kb7o"]
 
@@ -41,12 +41,25 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_3mipa")
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_6tfby"]
-points = PackedVector3Array(-1, -1, -1, 1, 1, 1, 1, -1, 1, 1, 1, -1, -1, 1, 1, 1, -1, -1, -1, -1, 1, -1, 1, -1)
+[sub_resource type="BoxShape3D" id="BoxShape3D_781gc"]
+size = Vector3(2, 2, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_781gc"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+specular_mode = 2
+disable_ambient_light = true
+albedo_color = Color(1, 1, 1, 0.490196)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ve8er"]
+material = SubResource("StandardMaterial3D_781gc")
+size = Vector3(2, 2, 2)
 
 [node name="Tiles" type="Node3D"]
 
 [node name="Block" type="Node3D" parent="."]
+visible = false
 
 [node name="Block" type="MeshInstance3D" parent="Block"]
 mesh = SubResource("ArrayMesh_sy2q6")
@@ -55,4 +68,14 @@ skeleton = NodePath("")
 [node name="StaticBody3D" type="StaticBody3D" parent="Block/Block"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Block/Block/StaticBody3D"]
-shape = SubResource("ConvexPolygonShape3D_6tfby")
+shape = SubResource("BoxShape3D_781gc")
+
+[node name="Barrier" type="Node3D" parent="."]
+
+[node name="Barrier Block" type="MeshInstance3D" parent="Barrier"]
+mesh = SubResource("BoxMesh_ve8er")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Barrier/Barrier Block"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Barrier/Barrier Block/StaticBody3D"]
+shape = SubResource("BoxShape3D_781gc")

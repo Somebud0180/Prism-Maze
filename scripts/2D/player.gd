@@ -20,7 +20,8 @@ func go_to(input_position: Vector2):
 	position = input_position
 
 
-func change_color(selected_color: Color):
+func change_color():
+	var selected_color = menu.player_color
 	animated_sprite.modulate = selected_color
 
 
@@ -37,8 +38,11 @@ func hide_on_death() -> void:
 
 
 func _ready():
+	change_color()
+	
 	# Emit signal that we're loaded
 	call_deferred("emit_signal", "player_loaded")
+
 
 func _on_game_manager_loaded():
 	game_initialized = true

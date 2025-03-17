@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dcmtjpe03ohl2"]
 
 [ext_resource type="TileSet" uid="uid://dyown6ix7tyu4" path="res://resources/Game/Tileset.tres" id="1_5dabs"]
-[ext_resource type="Script" uid="uid://2uolgs6tp7en" path="res://scripts/gen_maze_layer.gd" id="2_1af3a"]
+[ext_resource type="Script" uid="uid://2uolgs6tp7en" path="res://scripts/2D/gen_maze_layer.gd" id="2_1af3a"]
 
 [node name="GenMazeLayer" type="TileMapLayer" node_paths=PackedStringArray("timer")]
 tile_set = ExtResource("1_5dabs")

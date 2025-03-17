@@ -34,7 +34,6 @@ var in_game = false:
 	set(value):
 		in_game = value
 		_manage_game_overlay()
-		_manage_color_buttons()
 
 var in_game_3d = false:
 	set(value):
@@ -49,6 +48,33 @@ var resolution = Vector2i(1280, 720)
 
 var time_elapsed: float = 0.0
 var is_timer_running: bool = false
+
+# Game Settings
+var player_color: Color = Color.WHITE:
+	set(value):
+		player_color = value
+		_update_player_color()
+
+var shadow_enabled: bool = true:
+	set(value):
+		shadow_enabled = value
+		var game_3d = get_tree().get_first_node_in_group("Game3D")
+		if game_3d:
+			game_3d.set_shadow()
+
+var sdfgi_enabled: bool = true:
+	set(value):
+		sdfgi_enabled = value
+		var game_3d = get_tree().get_first_node_in_group("Game3D")
+		if game_3d:
+			game_3d.set_sdfgi()
+
+var sdfgi_full_res: bool = false:
+	set(value):
+		sdfgi_full_res = value
+		var game_3d = get_tree().get_first_node_in_group("Game3D")
+		if game_3d:
+			game_3d.set_sdfgi()
 
 @export var character_life: int = 5:
 	set(value):
@@ -66,11 +92,11 @@ func _ready() -> void:
 	_add_full_window_resolution()
 	_add_resolutions()
 	_manage_resolution_picker()
-	_manage_color_buttons()
+	_graphics_check()
 	
 	popup_scene = get_node("/root/LevelPopup")
 	
-	$MenuLayer/Main/VBoxContainer/Play.grab_focus()
+	$MenuLayer/Main/Main/VBoxContainer/Play.grab_focus()
 
 
 func _input(event):
@@ -80,33 +106,33 @@ func _input(event):
 				menu_state = STATE.MAIN
 				_hide_and_show("settings", "main")
 				await animation_player.animation_finished
-				$MenuLayer/Main/VBoxContainer/Play.grab_focus()
+				$MenuLayer/Main/Main/VBoxContainer/Play.grab_focus()
 			STATE.CONTROLS:
 				menu_state = STATE.MAIN
 				_hide_and_show("controls", "main")
 				await animation_player.animation_finished
-				$MenuLayer/Main/VBoxContainer/Play.grab_focus()
+				$MenuLayer/Main/Main/VBoxContainer/Play.grab_focus()
 			STATE.GAME, STATE.GAME3D, STATE.GAMEMIXED, STATE.OVERLAY:
 				last_state = menu_state
 				menu_state = STATE.MAIN
 				animation_player.play("show_main")
 				_manage_popup(menu_state)
 				await animation_player.animation_finished
-				$MenuLayer/Main/VBoxContainer/Play.grab_focus()
+				$MenuLayer/Main/Main/VBoxContainer/Play.grab_focus()
 			STATE.MAIN:
 				# Recover menu state
 				menu_state = last_state
 				
 				if in_game:
-					animation_player.play("hide_main")
+					animation_player.play("hide_main_invisible")
 					_manage_popup(menu_state)
 				elif in_game_3d:
-					animation_player.play("hide_main")
+					animation_player.play("hide_main_invisible")
 
 
-func manage_background(is_visible: bool):
+func manage_background(_is_visible: bool):
 	# Control the parallax background visibility
-	$Background.visible = is_visible
+	$Background.visible = _is_visible
 
 
 func _hide_and_show(first: String, second: String):
@@ -121,7 +147,7 @@ func _on_play_pressed() -> void:
 		_reset_game_3d()
 	
 	menu_state = STATE.GAME
-	animation_player.play("hide_main")
+	animation_player.play("hide_main_invisible")
 	await animation_player.animation_finished
 	if !in_game:
 		LoadingManager.load_scene(game_scene_path)
@@ -134,7 +160,7 @@ func _on_play_3d_pressed() -> void:
 		_reset_game()
 	
 	menu_state = STATE.GAME3D
-	animation_player.play("hide_main")
+	animation_player.play("hide_main_invisible")
 	await animation_player.animation_finished
 	
 	if !in_game_3d:
@@ -145,7 +171,7 @@ func _on_play_3d_pressed() -> void:
 func _on_settings_pressed() -> void:
 	menu_state = STATE.SETTINGS
 	_hide_and_show("main", "settings")
-	$MenuLayer/Settings/VBoxContainer/Resolution.grab_focus()
+	$"MenuLayer/Settings/TabContainer".grab_focus()
 
 
 func _on_controls_pressed() -> void:
@@ -161,13 +187,13 @@ func _on_quit_pressed() -> void:
 func _on_exit_settings_pressed() -> void:
 	menu_state = STATE.MAIN
 	_hide_and_show("settings", "main")
-	$MenuLayer/Main/VBoxContainer/Play.grab_focus()
+	$MenuLayer/Main/Main/VBoxContainer/Play.grab_focus()
 
 
 func _on_exit_controls_pressed() -> void:
 	menu_state = STATE.MAIN
 	_hide_and_show("controls", "main")
-	$MenuLayer/Main/VBoxContainer/Play.grab_focus()
+	$MenuLayer/Main/Main/VBoxContainer/Play.grab_focus()
 
 
 func _manage_resolution_picker() -> void:
@@ -334,7 +360,6 @@ func _reset_game() -> void:
 		LoadingManager.unload_current_scene("/root/Game")
 	
 	_game_scene = preload("res://scenes/2D/game.tscn").instantiate()
-	_manage_color_buttons()
 
 
 func _reset_game_3d() -> void:
@@ -393,41 +418,31 @@ func _manage_game_overlay() -> void:
 		game_overlay.hide()
 
 
-func _manage_color_buttons() -> void:
-	# Reference to the GridContainer holding all color buttons
-	var grid = $MenuLayer/Settings/VBoxContainer/Panel/VBoxContainer/HBoxContainer/GridContainer
-	
-	# Loop through all children of the GridContainer (all color buttons)
-	for button in grid.get_children():
-		if button is Button:
-			button.disabled = !in_game
-
-
 # Player Color Settings
 func _on_white_pressed() -> void:
-	var player_ref = _game_scene.get_node("/root/Game/Player")
-	player_ref.change_color(Color.WHITE)
+	player_color = Color.WHITE
 
 
 func _on_red_pressed() -> void:
-	var player_ref = _game_scene.get_node("/root/Game/Player")
-	player_ref.change_color(Color.RED)
+	player_color = Color.RED
 
 
 func _on_green_pressed() -> void:
-	var player_ref = _game_scene.get_node("/root/Game/Player")
-	player_ref.change_color(Color.WEB_GREEN)
+	player_color = Color.WEB_GREEN
 
 
 func _on_blue_pressed() -> void:
-	var player_ref = _game_scene.get_node("/root/Game/Player")
-	player_ref.change_color(Color.DARK_BLUE)
+	player_color = Color.DARK_BLUE
 
 
 func _on_yellow_pressed() -> void:
-	var player_ref = _game_scene.get_node("/root/Game/Player")
-	player_ref.change_color(Color.YELLOW)
+	player_color = Color.YELLOW
 
+
+func _update_player_color() -> void:
+	var player_ref = get_tree().get_first_node_in_group("Player")
+	if player_ref:
+		player_ref.change_color()
 
 func _check_health() -> void:
 	if character_life <= 0:
@@ -446,3 +461,24 @@ func _check_health() -> void:
 func _process(delta: float) -> void:
 	if is_timer_running:
 		time_elapsed += delta
+
+
+func _graphics_check() -> void:
+	if RenderingServer.get_current_rendering_method() != "forward_plus":
+		$"MenuLayer/Settings/TabContainer/3D/MarginContainer/3D/SDFGI".disabled = true
+		$"MenuLayer/Settings/TabContainer/3D/MarginContainer/3D/SDFGI_Full".disabled = true
+		sdfgi_enabled = false
+
+
+func _on_shadow_toggled(toggled_on: bool) -> void:
+	shadow_enabled = toggled_on
+
+
+func _on_sdfgi_toggled(toggled_on: bool) -> void:
+	sdfgi_enabled = toggled_on
+	
+	$"MenuLayer/Settings/TabContainer/3D/MarginContainer/3D/SDFGI_Full".disabled = !sdfgi_enabled
+
+
+func _on_sdfgi_full_toggled(toggled_on: bool) -> void:
+	sdfgi_full_res = toggled_on

@@ -1,4 +1,4 @@
-extends "res://scripts/3d_level.gd"
+extends "res://scripts/3D/3d_level.gd"
 
 @export var grid_map: GridMap
 @export var wall_mesh_id: int = 0

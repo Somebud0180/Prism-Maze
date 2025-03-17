@@ -1,9 +1,9 @@
-[gd_scene load_steps=64 format=3 uid="uid://br2t4hanatnss"]
+[gd_scene load_steps=69 format=3 uid="uid://br2t4hanatnss"]
 
 [ext_resource type="Theme" uid="uid://bau50guyc4alk" path="res://resources/Theme/menu.tres" id="1_7yxt8"]
-[ext_resource type="Script" uid="uid://cnwd74ny2hf2q" path="res://scripts/menu.gd" id="2_o131u"]
+[ext_resource type="Script" uid="uid://cnwd74ny2hf2q" path="res://scripts/UI/menu.gd" id="2_o131u"]
 [ext_resource type="Texture2D" uid="uid://du1fhq083pt1n" path="res://resources/Menu/PatchRects/Menu.png" id="3_u30pp"]
-[ext_resource type="Script" uid="uid://pxmim2yta7rs" path="res://scripts/main.gd" id="4_0cnb7"]
+[ext_resource type="Script" uid="uid://pxmim2yta7rs" path="res://scripts/UI/main.gd" id="4_0cnb7"]
 [ext_resource type="Texture2D" uid="uid://d1vxa1f4hthke" path="res://resources/Menu/Title.png" id="5_7k0uf"]
 [ext_resource type="Texture2D" uid="uid://e665j6xb1xqo" path="res://resources/Menu/Menu Icons/Play.png" id="6_jcwtk"]
 [ext_resource type="Texture2D" uid="uid://b8blbwcxtsbgw" path="res://resources/Menu/Menu Icons/Play_3D.png" id="7_7oqtn"]
@@ -11,13 +11,17 @@
 [ext_resource type="Texture2D" uid="uid://slk1m7wnru8w" path="res://resources/Menu/Menu Icons/Controls.png" id="9_xlwes"]
 [ext_resource type="Texture2D" uid="uid://bhjm5wym26dsu" path="res://resources/Menu/Menu Icons/Exit.png" id="10_fqtlv"]
 [ext_resource type="Texture2D" uid="uid://ci8dfl1p8qliu" path="res://resources/Menu/PatchRects/Settings.png" id="11_mfpu8"]
-[ext_resource type="Texture2D" uid="uid://tbpn3gmuulne" path="res://resources/Menu/Headers/Settings-Header.png" id="12_wg8ic"]
+[ext_resource type="Script" uid="uid://1xcmpd8qm5wc" path="res://scripts/UI/settings_tab_container.gd" id="12_qg4he"]
+[ext_resource type="Texture2D" uid="uid://c407l5mv674x0" path="res://resources/Menu/Headers/Settings_Header.png" id="12_xkl7s"]
 [ext_resource type="StyleBox" uid="uid://b4mewmdnj56qd" path="res://resources/Theme/v_separator.tres" id="13_tbd65"]
 [ext_resource type="Texture2D" uid="uid://da7g5s3h5esdr" path="res://resources/Menu/Fullscreen.png" id="14_pjik4"]
-[ext_resource type="StyleBox" uid="uid://cab412g1l7xe1" path="res://resources/Theme/box_normal.tres" id="15_bqoc1"]
 [ext_resource type="Texture2D" uid="uid://k83gkr4l4vs5" path="res://resources/Menu/Misc/color.png" id="16_whlyx"]
 [ext_resource type="StyleBox" uid="uid://o1f6ysc2jugj" path="res://resources/Theme/box_focus.tres" id="17_cijfx"]
+[ext_resource type="Texture2D" uid="uid://ddwfg6atipo0i" path="res://resources/Menu/Graphics/SDFGI.png" id="17_hvuoq"]
+[ext_resource type="Texture2D" uid="uid://b51yf1mnhkc6j" path="res://resources/Menu/Headers/Graphics_Header.png" id="17_q4tpj"]
+[ext_resource type="Texture2D" uid="uid://bju7vgey6nhvw" path="res://resources/Menu/Graphics/Shadow.png" id="18_q4tpj"]
 [ext_resource type="Texture2D" uid="uid://bgxemtlrxcpgg" path="res://resources/Menu/Headers/Controls-Header.png" id="18_s1ob8"]
+[ext_resource type="Texture2D" uid="uid://cv1v7oqrqrym0" path="res://resources/Menu/Graphics/SDFGI-Full.png" id="18_xkl7s"]
 [ext_resource type="Texture2D" uid="uid://dc6lvnyagscon" path="res://resources/Menu/Misc/Block2D.png" id="19_7oqtn"]
 [ext_resource type="Texture2D" uid="uid://bp1ir113ycfmw" path="res://resources/Menu/Control Icons/Move.png" id="19_i7uud"]
 [ext_resource type="Texture2D" uid="uid://cha05i3vt0svl" path="res://resources/Menu/Misc/Menu.png" id="19_xlwes"]
@@ -64,55 +68,55 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(1600, 64)]
+"values": [Vector2(64, 800)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("MenuLayer/Settings:visible")
+tracks/1/path = NodePath("MenuLayer/Controls:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [Vector2(64, 800)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("MenuLayer/Main:position")
+tracks/2/path = NodePath("MenuLayer/Main:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(40, 40)]
+"values": [Vector2(1, 1)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("MenuLayer/Main:visible")
+tracks/3/path = NodePath("MenuLayer/Settings:scale")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"update": 0,
+"values": [Vector2(1, 1)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("MenuLayer/Controls:position")
+tracks/4/path = NodePath("MenuLayer/Controls:scale")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(64, 960)]
+"values": [Vector2(1, 1)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -125,6 +129,66 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("MenuLayer/Controls:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("MenuLayer/Settings:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("MenuLayer/Settings:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("MenuLayer/Main:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0.001),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("MenuLayer/Main:modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_gf7yk"]
@@ -153,6 +217,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MenuLayer/Controls:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_fv2yu"]
@@ -185,7 +261,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("MenuLayer/Main:position")
+tracks/2/path = NodePath("MenuLayer/Main/Main:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -197,7 +273,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("MenuLayer/Main:visible")
+tracks/3/path = NodePath("MenuLayer/Main/Main:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -237,26 +313,14 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("MenuLayer/Main:position")
+tracks/0/path = NodePath("MenuLayer/Main:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(2),
-"update": 0,
-"values": [Vector2(40, 40)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("MenuLayer/Main:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"update": 0,
+"values": [Vector2(1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_11v34"]
@@ -286,10 +350,23 @@ tracks/1/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MenuLayer/Settings:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_q8cwc"]
 resource_name = "hide_controls"
 length = 0.5
+step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -297,18 +374,42 @@ tracks/0/path = NodePath("MenuLayer/Controls:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
+"times": PackedFloat32Array(0.2, 0.5),
 "transitions": PackedFloat32Array(0.5, 0.5),
 "update": 0,
-"values": [Vector2(64, 64), Vector2(64, 960)]
+"values": [Vector2(64, 64), Vector2(64, 800)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("MenuLayer/Controls:visible")
+tracks/1/path = NodePath("MenuLayer/Controls:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.1, 1.1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MenuLayer/Controls:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.25, 0.5),
+"transitions": PackedFloat32Array(2, 2),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MenuLayer/Controls:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
@@ -317,30 +418,19 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_ui7xe"]
 resource_name = "hide_main"
-length = 0.5
+length = 0.15
+step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("MenuLayer/Main:position")
+tracks/0/path = NodePath("MenuLayer/Main:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(2, 2),
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(0.5, 0.5),
 "update": 0,
-"values": [Vector2(40, 40), Vector2(40, -960)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("MenuLayer/Main:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
+"values": [Vector2(1, 1), Vector2(0.9, 0.9)]
 }
 
 [sub_resource type="Animation" id="Animation_2ywoo"]
@@ -353,27 +443,52 @@ tracks/0/path = NodePath("MenuLayer/Settings:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(2, 2),
+"times": PackedFloat32Array(0.2, 0.5),
+"transitions": PackedFloat32Array(0.5, 0.5),
 "update": 0,
-"values": [Vector2(64, 64), Vector2(1600, 64)]
+"values": [Vector2(64, 64), Vector2(64, 800)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("MenuLayer/Settings:visible")
+tracks/1/path = NodePath("MenuLayer/Settings:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.1, 1.1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MenuLayer/Settings:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MenuLayer/Settings:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.25, 0.5),
+"transitions": PackedFloat32Array(2, 2),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_4bbw6"]
 resource_name = "show_controls"
 length = 0.5
+step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -381,38 +496,63 @@ tracks/0/path = NodePath("MenuLayer/Controls:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
+"times": PackedFloat32Array(0, 0.45),
 "transitions": PackedFloat32Array(0.5, 0.5),
 "update": 0,
-"values": [Vector2(64, 960), Vector2(64, 64)]
+"values": [Vector2(64, 800), Vector2(64, 64)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("MenuLayer/Controls:visible")
+tracks/1/path = NodePath("MenuLayer/Controls:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
+"times": PackedFloat32Array(0.2, 0.5),
 "transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.1, 1.1), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MenuLayer/Controls:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true, true]
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MenuLayer/Controls:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(2, 2),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_y5frn"]
 resource_name = "show_main"
-length = 0.5
+length = 0.1
+step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("MenuLayer/Main:position")
+tracks/0/path = NodePath("MenuLayer/Main:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
+"times": PackedFloat32Array(0, 0.1),
 "transitions": PackedFloat32Array(0.5, 0.5),
 "update": 0,
-"values": [Vector2(40, -960), Vector2(40, 40)]
+"values": [Vector2(0.9, 0.9), Vector2(1, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -421,10 +561,10 @@ tracks/1/path = NodePath("MenuLayer/Main:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true, true]
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_antcs"]
@@ -437,22 +577,75 @@ tracks/0/path = NodePath("MenuLayer/Settings:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
+"times": PackedFloat32Array(0, 0.45),
 "transitions": PackedFloat32Array(0.5, 0.5),
 "update": 0,
-"values": [Vector2(1600, 64), Vector2(64, 64)]
+"values": [Vector2(64, 800), Vector2(64, 64)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("MenuLayer/Settings:visible")
+tracks/1/path = NodePath("MenuLayer/Settings:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(0.5, 0.5),
+"times": PackedFloat32Array(0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.1, 1.1), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MenuLayer/Settings:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true, true]
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MenuLayer/Settings:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(2, 2),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ifku1"]
+resource_name = "hide_main_invisible"
+length = 0.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MenuLayer/Main:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.9, 0.9)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MenuLayer/Main:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nyjex"]
@@ -464,6 +657,7 @@ _data = {
 &"RESET_settings": SubResource("Animation_11v34"),
 &"hide_controls": SubResource("Animation_q8cwc"),
 &"hide_main": SubResource("Animation_ui7xe"),
+&"hide_main_invisible": SubResource("Animation_ifku1"),
 &"hide_settings": SubResource("Animation_2ywoo"),
 &"show_controls": SubResource("Animation_4bbw6"),
 &"show_main": SubResource("Animation_y5frn"),
@@ -484,28 +678,30 @@ mouse_filter = 1
 theme = ExtResource("1_7yxt8")
 script = ExtResource("2_o131u")
 game_overlay = NodePath("GameOverlay")
-main = NodePath("MenuLayer/Main")
+main = NodePath("MenuLayer/Main/Main")
 settings = NodePath("MenuLayer/Settings")
 animation_player = NodePath("AnimationPlayer")
-resolution_picker = NodePath("MenuLayer/Settings/VBoxContainer/Resolution")
+resolution_picker = NodePath("MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/Resolution")
 health_bar = NodePath("GameOverlay/HBoxContainer/Health/Bar")
 
 [node name="MenuLayer" type="CanvasLayer" parent="."]
 layer = 2
-visible = false
 follow_viewport_scale = 0.05
 
-[node name="Main" type="NinePatchRect" parent="MenuLayer"]
-custom_minimum_size = Vector2(640, 640)
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 40.0
-offset_top = -320.0
-offset_right = 680.0
-offset_bottom = 320.0
+[node name="Main" type="AspectRatioContainer" parent="MenuLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_top = 32.0
+offset_right = -32.0
+offset_bottom = -32.0
+grow_horizontal = 2
 grow_vertical = 2
-size_flags_horizontal = 4
+pivot_offset = Vector2(608, 328)
+
+[node name="Main" type="NinePatchRect" parent="MenuLayer/Main"]
+layout_mode = 2
 theme = ExtResource("1_7yxt8")
 texture = ExtResource("3_u30pp")
 patch_margin_left = 5
@@ -514,33 +710,31 @@ patch_margin_right = 5
 patch_margin_bottom = 5
 script = ExtResource("4_0cnb7")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MenuLayer/Main"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuLayer/Main/Main"]
 custom_minimum_size = Vector2(576, 576)
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -128.0
-offset_top = -120.0
-offset_right = 128.0
-offset_bottom = 120.0
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_top = 32.0
+offset_right = -32.0
+offset_bottom = -32.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="MenuLayer/Main/VBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="MenuLayer/Main/Main/VBoxContainer"]
 layout_mode = 2
 texture = ExtResource("5_7k0uf")
 expand_mode = 5
 stretch_mode = 4
 
-[node name="VSeparator" type="VSeparator" parent="MenuLayer/Main/VBoxContainer"]
+[node name="VSeparator" type="VSeparator" parent="MenuLayer/Main/Main/VBoxContainer"]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 
-[node name="Play" type="Button" parent="MenuLayer/Main/VBoxContainer"]
+[node name="Play" type="Button" parent="MenuLayer/Main/Main/VBoxContainer"]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 size_flags_vertical = 3
@@ -552,10 +746,10 @@ icon = ExtResource("6_jcwtk")
 icon_alignment = 1
 expand_icon = true
 
-[node name="ButtonSpacer1" type="VSeparator" parent="MenuLayer/Main/VBoxContainer"]
+[node name="ButtonSpacer1" type="VSeparator" parent="MenuLayer/Main/Main/VBoxContainer"]
 layout_mode = 2
 
-[node name="Play3D" type="Button" parent="MenuLayer/Main/VBoxContainer"]
+[node name="Play3D" type="Button" parent="MenuLayer/Main/Main/VBoxContainer"]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 size_flags_vertical = 3
@@ -567,10 +761,10 @@ icon = ExtResource("7_7oqtn")
 icon_alignment = 1
 expand_icon = true
 
-[node name="ButtonSpacer2" type="VSeparator" parent="MenuLayer/Main/VBoxContainer"]
+[node name="ButtonSpacer2" type="VSeparator" parent="MenuLayer/Main/Main/VBoxContainer"]
 layout_mode = 2
 
-[node name="Settings" type="Button" parent="MenuLayer/Main/VBoxContainer"]
+[node name="Settings" type="Button" parent="MenuLayer/Main/Main/VBoxContainer"]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 size_flags_vertical = 3
@@ -582,10 +776,10 @@ icon = ExtResource("8_1anaf")
 icon_alignment = 1
 expand_icon = true
 
-[node name="ButtonSpacer3" type="VSeparator" parent="MenuLayer/Main/VBoxContainer"]
+[node name="ButtonSpacer3" type="VSeparator" parent="MenuLayer/Main/Main/VBoxContainer"]
 layout_mode = 2
 
-[node name="Controls" type="Button" parent="MenuLayer/Main/VBoxContainer"]
+[node name="Controls" type="Button" parent="MenuLayer/Main/Main/VBoxContainer"]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 size_flags_vertical = 3
@@ -597,10 +791,10 @@ icon = ExtResource("9_xlwes")
 icon_alignment = 1
 expand_icon = true
 
-[node name="ButtonSpacer4" type="VSeparator" parent="MenuLayer/Main/VBoxContainer"]
+[node name="ButtonSpacer4" type="VSeparator" parent="MenuLayer/Main/Main/VBoxContainer"]
 layout_mode = 2
 
-[node name="Quit" type="Button" parent="MenuLayer/Main/VBoxContainer"]
+[node name="Quit" type="Button" parent="MenuLayer/Main/Main/VBoxContainer"]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 size_flags_vertical = 3
@@ -614,16 +808,18 @@ expand_icon = true
 
 [node name="Settings" type="NinePatchRect" parent="MenuLayer"]
 visible = false
+modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(600, 560)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 1600.0
-offset_top = 64.0
-offset_right = 1472.0
-offset_bottom = -64.0
+offset_left = 64.0
+offset_top = 800.0
+offset_right = -64.0
+offset_bottom = 672.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(576, 296)
 theme = ExtResource("1_7yxt8")
 texture = ExtResource("11_mfpu8")
 region_rect = Rect2(0, 0, 32, 32)
@@ -634,90 +830,111 @@ patch_margin_bottom = 5
 axis_stretch_horizontal = 2
 axis_stretch_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MenuLayer/Settings"]
-layout_mode = 0
+[node name="TabContainer" type="TabContainer" parent="MenuLayer/Settings"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
 offset_left = 32.0
 offset_top = 32.0
-offset_right = 288.0
-offset_bottom = 194.0
+offset_right = -32.0
+offset_bottom = -32.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_neighbor_top = NodePath("../Exit Settings")
+focus_mode = 2
+current_tab = 0
+script = ExtResource("12_qg4he")
 
-[node name="Settings Header" type="TextureRect" parent="MenuLayer/Settings/VBoxContainer"]
-custom_minimum_size = Vector2(0, 64)
+[node name="2D" type="ScrollContainer" parent="MenuLayer/Settings/TabContainer"]
 layout_mode = 2
-texture = ExtResource("12_wg8ic")
+theme = ExtResource("1_7yxt8")
+metadata/_tab_index = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="MenuLayer/Settings/TabContainer/2D"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="2D" type="VBoxContainer" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_7yxt8")
+
+[node name="Settings Header" type="TextureRect" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D"]
+custom_minimum_size = Vector2(256, 64)
+layout_mode = 2
+size_flags_vertical = 0
+texture = ExtResource("12_xkl7s")
 stretch_mode = 4
 
-[node name="VSeparator" type="VSeparator" parent="MenuLayer/Settings/VBoxContainer"]
+[node name="VSeparator" type="VSeparator" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D"]
+custom_minimum_size = Vector2(256, 48)
 layout_mode = 2
-size_flags_vertical = 3
 theme_override_constants/separation = 16
 theme_override_styles/separator = ExtResource("13_tbd65")
 
-[node name="Resolution" type="OptionButton" parent="MenuLayer/Settings/VBoxContainer"]
-custom_minimum_size = Vector2(0, 48)
+[node name="Resolution" type="OptionButton" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D"]
+custom_minimum_size = Vector2(256, 48)
 layout_mode = 2
-focus_neighbor_right = NodePath("../../Exit Settings")
+size_flags_vertical = 0
 focus_neighbor_bottom = NodePath("../Fullscreen")
 focus_next = NodePath("../Fullscreen")
-focus_previous = NodePath("../../Exit Settings")
 icon_alignment = 2
 expand_icon = true
 
-[node name="Fullscreen" type="CheckButton" parent="MenuLayer/Settings/VBoxContainer"]
-custom_minimum_size = Vector2(0, 48)
+[node name="Fullscreen" type="CheckButton" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D"]
+custom_minimum_size = Vector2(256, 48)
 layout_mode = 2
+size_flags_vertical = 4
 focus_neighbor_top = NodePath("../Resolution")
-focus_neighbor_right = NodePath("../../Exit Settings")
 focus_next = NodePath("../Panel/VBoxContainer/HBoxContainer/GridContainer/White")
 focus_previous = NodePath("../Resolution")
 icon = ExtResource("14_pjik4")
 icon_alignment = 1
 
-[node name="Panel" type="Panel" parent="MenuLayer/Settings/VBoxContainer"]
-custom_minimum_size = Vector2(0, 160)
+[node name="Panel" type="Panel" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D"]
+custom_minimum_size = Vector2(256, 160)
 layout_mode = 2
-size_flags_vertical = 3
-theme_override_styles/panel = ExtResource("15_bqoc1")
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MenuLayer/Settings/VBoxContainer/Panel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/Panel"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -128.0
-offset_top = -42.0
-offset_right = 128.0
-offset_bottom = 42.0
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = -16.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="MenuLayer/Settings/VBoxContainer/Panel/VBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/Panel/VBoxContainer"]
 layout_mode = 2
 texture = ExtResource("16_whlyx")
 stretch_mode = 5
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MenuLayer/Settings/VBoxContainer/Panel/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/Panel/VBoxContainer"]
 layout_mode = 2
+alignment = 1
 
-[node name="Left Padding" type="HSeparator" parent="MenuLayer/Settings/VBoxContainer/Panel/VBoxContainer/HBoxContainer"]
+[node name="GridContainer" type="GridContainer" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/Panel/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_styles/separator = ExtResource("13_tbd65")
+theme_override_constants/h_separation = 10
+columns = 16
 
-[node name="GridContainer" type="GridContainer" parent="MenuLayer/Settings/VBoxContainer/Panel/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-columns = 4
-
-[node name="White" type="Button" parent="MenuLayer/Settings/VBoxContainer/Panel/VBoxContainer/HBoxContainer/GridContainer"]
+[node name="White" type="Button" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/Panel/VBoxContainer/HBoxContainer/GridContainer"]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 focus_neighbor_right = NodePath("../Red")
 focus_next = NodePath("../Red")
 focus_previous = NodePath("../../../../../Fullscreen")
 
-[node name="White" type="ColorRect" parent="MenuLayer/Settings/VBoxContainer/Panel/VBoxContainer/HBoxContainer/GridContainer/White"]
+[node name="White" type="ColorRect" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/Panel/VBoxContainer/HBoxContainer/GridContainer/White"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 1
 anchors_preset = 8
@@ -733,7 +950,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 
-[node name="Red" type="Button" parent="MenuLayer/Settings/VBoxContainer/Panel/VBoxContainer/HBoxContainer/GridContainer"]
+[node name="Red" type="Button" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/Panel/VBoxContainer/HBoxContainer/GridContainer"]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 focus_neighbor_left = NodePath("../White")
@@ -743,7 +960,7 @@ focus_previous = NodePath("../White")
 theme_override_styles/focus = ExtResource("17_cijfx")
 theme_override_styles/pressed = ExtResource("17_cijfx")
 
-[node name="Red" type="ColorRect" parent="MenuLayer/Settings/VBoxContainer/Panel/VBoxContainer/HBoxContainer/GridContainer/Red"]
+[node name="Red" type="ColorRect" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/Panel/VBoxContainer/HBoxContainer/GridContainer/Red"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 1
 anchors_preset = 5
@@ -757,7 +974,7 @@ grow_horizontal = 2
 mouse_filter = 1
 color = Color(0.784314, 0, 0, 1)
 
-[node name="Green" type="Button" parent="MenuLayer/Settings/VBoxContainer/Panel/VBoxContainer/HBoxContainer/GridContainer"]
+[node name="Green" type="Button" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/Panel/VBoxContainer/HBoxContainer/GridContainer"]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 focus_neighbor_left = NodePath("../Red")
@@ -767,7 +984,7 @@ focus_previous = NodePath("../Red")
 theme_override_styles/focus = ExtResource("17_cijfx")
 theme_override_styles/pressed = ExtResource("17_cijfx")
 
-[node name="Green" type="ColorRect" parent="MenuLayer/Settings/VBoxContainer/Panel/VBoxContainer/HBoxContainer/GridContainer/Green"]
+[node name="Green" type="ColorRect" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/Panel/VBoxContainer/HBoxContainer/GridContainer/Green"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 1
 anchors_preset = 8
@@ -784,7 +1001,7 @@ grow_vertical = 2
 mouse_filter = 1
 color = Color(0, 0.784314, 0, 1)
 
-[node name="Blue" type="Button" parent="MenuLayer/Settings/VBoxContainer/Panel/VBoxContainer/HBoxContainer/GridContainer"]
+[node name="Blue" type="Button" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/Panel/VBoxContainer/HBoxContainer/GridContainer"]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 focus_neighbor_left = NodePath("../Green")
@@ -794,7 +1011,7 @@ focus_previous = NodePath("../Green")
 theme_override_styles/focus = ExtResource("17_cijfx")
 theme_override_styles/pressed = ExtResource("17_cijfx")
 
-[node name="Blue" type="ColorRect" parent="MenuLayer/Settings/VBoxContainer/Panel/VBoxContainer/HBoxContainer/GridContainer/Blue"]
+[node name="Blue" type="ColorRect" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/Panel/VBoxContainer/HBoxContainer/GridContainer/Blue"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 1
 anchors_preset = 8
@@ -811,7 +1028,7 @@ grow_vertical = 2
 mouse_filter = 1
 color = Color(0, 0, 0.784314, 1)
 
-[node name="Yellow" type="Button" parent="MenuLayer/Settings/VBoxContainer/Panel/VBoxContainer/HBoxContainer/GridContainer"]
+[node name="Yellow" type="Button" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/Panel/VBoxContainer/HBoxContainer/GridContainer"]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 focus_neighbor_left = NodePath("../Blue")
@@ -819,7 +1036,7 @@ focus_previous = NodePath("../Blue")
 theme_override_styles/focus = ExtResource("17_cijfx")
 theme_override_styles/pressed = ExtResource("17_cijfx")
 
-[node name="Yellow" type="ColorRect" parent="MenuLayer/Settings/VBoxContainer/Panel/VBoxContainer/HBoxContainer/GridContainer/Yellow"]
+[node name="Yellow" type="ColorRect" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/Panel/VBoxContainer/HBoxContainer/GridContainer/Yellow"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 1
 anchors_preset = 8
@@ -836,10 +1053,58 @@ grow_vertical = 2
 mouse_filter = 1
 color = Color(1, 1, 0, 1)
 
-[node name="Right Padding" type="HSeparator" parent="MenuLayer/Settings/VBoxContainer/Panel/VBoxContainer/HBoxContainer"]
+[node name="3D" type="ScrollContainer" parent="MenuLayer/Settings/TabContainer"]
+visible = false
+layout_mode = 2
+theme = ExtResource("1_7yxt8")
+metadata/_tab_index = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MenuLayer/Settings/TabContainer/3D"]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="3D" type="VBoxContainer" parent="MenuLayer/Settings/TabContainer/3D/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_7yxt8")
+
+[node name="Graphics Header" type="TextureRect" parent="MenuLayer/Settings/TabContainer/3D/MarginContainer/3D"]
+custom_minimum_size = Vector2(256, 64)
+layout_mode = 2
+size_flags_vertical = 0
+texture = ExtResource("17_q4tpj")
+stretch_mode = 4
+
+[node name="VSeparator" type="VSeparator" parent="MenuLayer/Settings/TabContainer/3D/MarginContainer/3D"]
+custom_minimum_size = Vector2(256, 48)
+layout_mode = 2
+theme_override_constants/separation = 16
 theme_override_styles/separator = ExtResource("13_tbd65")
+
+[node name="Shadow" type="CheckButton" parent="MenuLayer/Settings/TabContainer/3D/MarginContainer/3D"]
+custom_minimum_size = Vector2(256, 48)
+layout_mode = 2
+size_flags_vertical = 4
+button_pressed = true
+icon = ExtResource("18_q4tpj")
+icon_alignment = 1
+
+[node name="SDFGI" type="CheckButton" parent="MenuLayer/Settings/TabContainer/3D/MarginContainer/3D"]
+custom_minimum_size = Vector2(256, 48)
+layout_mode = 2
+size_flags_vertical = 4
+button_pressed = true
+icon = ExtResource("17_hvuoq")
+icon_alignment = 1
+
+[node name="SDFGI_Full" type="CheckButton" parent="MenuLayer/Settings/TabContainer/3D/MarginContainer/3D"]
+custom_minimum_size = Vector2(256, 48)
+layout_mode = 2
+size_flags_vertical = 4
+icon = ExtResource("18_xkl7s")
+icon_alignment = 1
 
 [node name="Exit Settings" type="Button" parent="MenuLayer/Settings"]
 custom_minimum_size = Vector2(32, 32)
@@ -852,25 +1117,26 @@ offset_top = 16.0
 offset_right = -16.0
 offset_bottom = 54.0
 grow_horizontal = 0
-focus_neighbor_left = NodePath("../VBoxContainer/Resolution")
-focus_neighbor_bottom = NodePath("../VBoxContainer/Resolution")
-focus_next = NodePath("../VBoxContainer/Resolution")
-focus_previous = NodePath("../VBoxContainer/Resolution")
+focus_neighbor_left = NodePath("../TabContainer")
+focus_neighbor_bottom = NodePath("../TabContainer")
+focus_next = NodePath("../TabContainer")
 text = "X
 "
 
 [node name="Controls" type="NinePatchRect" parent="MenuLayer"]
 visible = false
+modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(600, 560)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 64.0
-offset_top = 960.0
+offset_top = 800.0
 offset_right = -64.0
-offset_bottom = 832.0
+offset_bottom = 672.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(576, 296)
 theme = ExtResource("1_7yxt8")
 texture = ExtResource("11_mfpu8")
 region_rect = Rect2(0, 0, 32, 32)
@@ -1350,7 +1616,7 @@ mouse_filter = 2
 z_index = -100
 scroll_scale = Vector2(0, 0)
 repeat_size = Vector2(800, 400)
-repeat_times = 5
+repeat_times = 9
 
 [node name="Sprite2D" type="Sprite2D" parent="Background/Substrate Layer"]
 scale = Vector2(1.25, 1.25)
@@ -1362,7 +1628,7 @@ z_index = -100
 scroll_scale = Vector2(0.8, 0.8)
 repeat_size = Vector2(800, 400)
 autoscroll = Vector2(-20, 15)
-repeat_times = 5
+repeat_times = 9
 
 [node name="Sprite2D" type="Sprite2D" parent="Background/Bottom Layer"]
 scale = Vector2(1.25, 1.25)
@@ -1375,7 +1641,7 @@ z_index = -100
 scroll_scale = Vector2(0.8, 0.8)
 repeat_size = Vector2(800, 400)
 autoscroll = Vector2(-20, 15)
-repeat_times = 5
+repeat_times = 9
 
 [node name="Sprite2D" type="Sprite2D" parent="Background/Top Layer"]
 scale = Vector2(1.25, 1.25)
@@ -1387,7 +1653,7 @@ z_index = -100
 scroll_scale = Vector2(0.8, 0.8)
 repeat_size = Vector2(800, 400)
 autoscroll = Vector2(-20, 15)
-repeat_times = 5
+repeat_times = 9
 
 [node name="Sprite2D" type="Sprite2D" parent="Background/Component Layer"]
 scale = Vector2(1.25, 1.25)
@@ -1399,17 +1665,20 @@ libraries = {
 &"": SubResource("AnimationLibrary_nyjex")
 }
 
-[connection signal="pressed" from="MenuLayer/Main/VBoxContainer/Play" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="MenuLayer/Main/VBoxContainer/Play3D" to="." method="_on_play_3d_pressed"]
-[connection signal="pressed" from="MenuLayer/Main/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
-[connection signal="pressed" from="MenuLayer/Main/VBoxContainer/Controls" to="." method="_on_controls_pressed"]
-[connection signal="pressed" from="MenuLayer/Main/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
-[connection signal="item_selected" from="MenuLayer/Settings/VBoxContainer/Resolution" to="." method="_on_resolution_item_selected"]
-[connection signal="toggled" from="MenuLayer/Settings/VBoxContainer/Fullscreen" to="." method="_on_fullscreen_toggled"]
-[connection signal="pressed" from="MenuLayer/Settings/VBoxContainer/Panel/VBoxContainer/HBoxContainer/GridContainer/White" to="." method="_on_white_pressed"]
-[connection signal="pressed" from="MenuLayer/Settings/VBoxContainer/Panel/VBoxContainer/HBoxContainer/GridContainer/Red" to="." method="_on_red_pressed"]
-[connection signal="pressed" from="MenuLayer/Settings/VBoxContainer/Panel/VBoxContainer/HBoxContainer/GridContainer/Green" to="." method="_on_green_pressed"]
-[connection signal="pressed" from="MenuLayer/Settings/VBoxContainer/Panel/VBoxContainer/HBoxContainer/GridContainer/Blue" to="." method="_on_blue_pressed"]
-[connection signal="pressed" from="MenuLayer/Settings/VBoxContainer/Panel/VBoxContainer/HBoxContainer/GridContainer/Yellow" to="." method="_on_yellow_pressed"]
+[connection signal="pressed" from="MenuLayer/Main/Main/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="MenuLayer/Main/Main/VBoxContainer/Play3D" to="." method="_on_play_3d_pressed"]
+[connection signal="pressed" from="MenuLayer/Main/Main/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="MenuLayer/Main/Main/VBoxContainer/Controls" to="." method="_on_controls_pressed"]
+[connection signal="pressed" from="MenuLayer/Main/Main/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="item_selected" from="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/Resolution" to="." method="_on_resolution_item_selected"]
+[connection signal="toggled" from="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/Fullscreen" to="." method="_on_fullscreen_toggled"]
+[connection signal="pressed" from="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/Panel/VBoxContainer/HBoxContainer/GridContainer/White" to="." method="_on_white_pressed"]
+[connection signal="pressed" from="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/Panel/VBoxContainer/HBoxContainer/GridContainer/Red" to="." method="_on_red_pressed"]
+[connection signal="pressed" from="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/Panel/VBoxContainer/HBoxContainer/GridContainer/Green" to="." method="_on_green_pressed"]
+[connection signal="pressed" from="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/Panel/VBoxContainer/HBoxContainer/GridContainer/Blue" to="." method="_on_blue_pressed"]
+[connection signal="pressed" from="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/Panel/VBoxContainer/HBoxContainer/GridContainer/Yellow" to="." method="_on_yellow_pressed"]
+[connection signal="toggled" from="MenuLayer/Settings/TabContainer/3D/MarginContainer/3D/Shadow" to="." method="_on_shadow_toggled"]
+[connection signal="toggled" from="MenuLayer/Settings/TabContainer/3D/MarginContainer/3D/SDFGI" to="." method="_on_sdfgi_toggled"]
+[connection signal="toggled" from="MenuLayer/Settings/TabContainer/3D/MarginContainer/3D/SDFGI_Full" to="." method="_on_sdfgi_full_toggled"]
 [connection signal="pressed" from="MenuLayer/Settings/Exit Settings" to="." method="_on_exit_settings_pressed"]
 [connection signal="pressed" from="MenuLayer/Controls/Exit Controls" to="." method="_on_exit_controls_pressed"]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://tbpn3gmuulne"
-path="res://.godot/imported/Settings-Header.png-e0c85ebed10e53b4805c4760302540a9.ctex"
+uid="uid://dhiwb8hayqbcs"
+path="res://.godot/imported/2D_Tab.png-2610514d9422cc68703d35d7cd87b48a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/Menu/Headers/Settings-Header.png"
-dest_files=["res://.godot/imported/Settings-Header.png-e0c85ebed10e53b4805c4760302540a9.ctex"]
+source_file="res://resources/Menu/Headers/2D_Tab.png"
+dest_files=["res://.godot/imported/2D_Tab.png-2610514d9422cc68703d35d7cd87b48a.ctex"]
 
 [params]
 

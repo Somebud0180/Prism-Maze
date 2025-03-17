@@ -37,14 +37,26 @@ var fall_sound = load("res://resources/Sound/Player/Fall.wav")
 var jump_sound = load("res://resources/Sound/Player/Jump.wav")
 var grab_sound = load("res://resources/Sound/Player/Grab.wav")
 
-func _ready() -> void:
-	# Disable obect interaction before loading
-	set_collision_layer_value(2, false)
-
 func hide_on_death() -> void:
 	menu = get_node("/root/Menu")
 	if menu.character_life <= 0:
 		hide()
+
+
+func play_floor_hit(new_value: bool, old_value: bool) -> void:
+	if !new_value and new_value != old_value:
+		audio_player.stream = fall_sound
+		audio_player.play()
+
+
+func play_wall_grab(new_value: bool, old_value: bool) -> void:
+	if new_value and new_value != old_value:
+		audio_player.stream = grab_sound
+		audio_player.play()
+func _ready() -> void:
+	# Disable obect interaction before loading
+	set_collision_layer_value(2, false)
+
 
 func _on_game_loaded():
 	game_initialized = true
@@ -176,16 +188,6 @@ func _unhandled_input(event: InputEvent) -> void:
 			elif event.button_index == MOUSE_BUTTON_RIGHT and not event.pressed:
 				camera.mouse_follow = false
 				Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-
-func play_floor_hit(new_value: bool, old_value: bool) -> void:
-	if !new_value and new_value != old_value:
-		audio_player.stream = fall_sound
-		audio_player.play()
-
-func play_wall_grab(new_value: bool, old_value: bool) -> void:
-	if new_value and new_value != old_value:
-		audio_player.stream = grab_sound
-		audio_player.play()
 
 
 func _handle_input_mode_switch():

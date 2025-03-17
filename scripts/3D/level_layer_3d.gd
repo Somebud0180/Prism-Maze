@@ -7,6 +7,9 @@ signal finished_loading
 @onready var tutorial_layer = %TutorialLayer
 @onready var _level_3d = preload("res://scenes/3D/level_3d.tscn").instantiate()
 
+## A custom level to load at the beginning of the game after the starting level.
+@export var custom_level: String = ""
+
 ## Enables unlimited levels.  [code]level_amount[/code]  is disregarded when enabled.
 @export var infinite_levels: bool = false
 
@@ -72,7 +75,7 @@ func _ready() -> void:
 
 func place_level():
 	if infinite_levels or (current_level < level_amount):
-		var next_level = _level_3d.get_next_random_level()
+		var next_level = _level_3d.get_next_level(custom_level)
 		if next_level:
 			add_child(next_level)
 			level_collection.append(next_level)

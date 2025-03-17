@@ -22,6 +22,7 @@ var _platform_scene = preload("res://scenes/2D/platform_layer.tscn").instantiate
 		if not _is_valid_custom_level(value):
 			push_warning("Ignoring custom_level, invalid format. Must be one of: 'Maze', 'Maze: <number>', or 'Platform: <number>'!")
 			custom_level = ""
+			return
 		custom_level = value 
 
 var level: int = 0
@@ -37,19 +38,11 @@ var maze_list: Array[int] = []
 
 
 func _ready() -> void:
-	add_to_group("GameManager")
-	
 	# Reset the key color list
 	_reset_keys()
 	
 	await Signal(player, "player_loaded")
 	player._on_game_manager_loaded()
-	
-	# Load Maze Layers
-	main_layer.add_child(_maze_scene)
-	
-	# Load Platform Layer
-	main_layer.add_child(_platform_scene)
 	
 	load_game()
 

@@ -12,6 +12,9 @@ var player_3d
 
 
 func _ready() -> void:
+	# Make barrier block invisible in-game
+	mesh_library.get_item_mesh(1).material.albedo_color = Color(255, 255, 255, 0)
+	
 	_hide()
 	
 	player3D = get_tree().get_nodes_in_group("Player3D")

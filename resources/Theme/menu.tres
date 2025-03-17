@@ -1,32 +1,59 @@
-[gd_resource type="Theme" load_steps=12 format=3 uid="uid://bau50guyc4alk"]
+[gd_resource type="Theme" load_steps=14 format=3 uid="uid://bau50guyc4alk"]
 
 [ext_resource type="StyleBox" uid="uid://d4xsuett3yt0" path="res://resources/Theme/button_hover.tres" id="1_dxyip"]
 [ext_resource type="StyleBox" uid="uid://55ng6tb5ctyb" path="res://resources/Theme/button_focus.tres" id="1_sn4ko"]
 [ext_resource type="StyleBox" uid="uid://k5qrhd2cgjp1" path="res://resources/Theme/button_disabled.tres" id="1_yg5h2"]
-[ext_resource type="StyleBox" uid="uid://b5uyfssq3f7bs" path="res://resources/Theme/button_normal.tres" id="2_ohts3"]
-[ext_resource type="StyleBox" uid="uid://cab412g1l7xe1" path="res://resources/Theme/box_normal.tres" id="3_xw7by"]
-[ext_resource type="StyleBox" uid="uid://o1f6ysc2jugj" path="res://resources/Theme/box_focus.tres" id="4_7jhnw"]
+[ext_resource type="StyleBox" uid="uid://cewefipvpp1ym" path="res://resources/Theme/button_pressed.tres" id="5_tyiim"]
 [ext_resource type="StyleBox" uid="uid://vqm1soj8xnjh" path="res://resources/Theme/separator.tres" id="5_wuakj"]
 [ext_resource type="StyleBox" uid="uid://b4mewmdnj56qd" path="res://resources/Theme/v_separator.tres" id="6_kbp2n"]
+[ext_resource type="StyleBox" uid="uid://jno6mj38t23t" path="res://resources/Theme/panel_hover.tres" id="6_tyiim"]
+[ext_resource type="StyleBox" uid="uid://bjsu4wg5yurpm" path="res://resources/Theme/panel_pressed.tres" id="7_g2it7"]
 [ext_resource type="StyleBox" uid="uid://08dx8hrvluxe" path="res://resources/Theme/progress_background.tres" id="8_50ej0"]
+[ext_resource type="StyleBox" uid="uid://oc726cekuti" path="res://resources/Theme/panel.tres" id="8_g2it7"]
 [ext_resource type="StyleBox" uid="uid://jiyvdgjcnuc8" path="res://resources/Theme/panel_container.tres" id="8_ydv4c"]
 [ext_resource type="StyleBox" uid="uid://3hgi2d8hxu1i" path="res://resources/Theme/progress_fill.tres" id="10_g2it7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jhkqt"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 11.0
+bg_color = Color(0.262932, 0.262932, 0.262932, 1)
+border_width_bottom = 6
+border_color = Color(0.0676027, 0.0879598, 0.102674, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0.136826, 0.136826, 0.136826, 0.6)
+shadow_size = 2
 
 [resource]
 Button/styles/disabled = ExtResource("1_yg5h2")
 Button/styles/focus = ExtResource("1_sn4ko")
 Button/styles/hover = ExtResource("1_dxyip")
-Button/styles/normal = ExtResource("2_ohts3")
-CheckButton/styles/focus = ExtResource("4_7jhnw")
-CheckButton/styles/hover = ExtResource("3_xw7by")
-CheckButton/styles/hover_pressed = ExtResource("3_xw7by")
-CheckButton/styles/normal = ExtResource("3_xw7by")
-CheckButton/styles/pressed = ExtResource("3_xw7by")
+Button/styles/normal = SubResource("StyleBoxFlat_jhkqt")
+Button/styles/pressed = ExtResource("5_tyiim")
+CheckButton/styles/focus = ExtResource("6_tyiim")
+CheckButton/styles/hover = ExtResource("6_tyiim")
+CheckButton/styles/hover_pressed = ExtResource("6_tyiim")
+CheckButton/styles/normal = ExtResource("8_g2it7")
+CheckButton/styles/pressed = ExtResource("7_g2it7")
 HSeparator/styles/separator = ExtResource("5_wuakj")
-OptionButton/styles/focus = ExtResource("4_7jhnw")
-OptionButton/styles/hover = ExtResource("3_xw7by")
-OptionButton/styles/normal = ExtResource("3_xw7by")
-OptionButton/styles/pressed = ExtResource("4_7jhnw")
+MarginContainer/constants/margin_bottom = 16
+MarginContainer/constants/margin_left = 16
+MarginContainer/constants/margin_right = 16
+MarginContainer/constants/margin_top = 16
+OptionButton/styles/focus = ExtResource("6_tyiim")
+OptionButton/styles/hover = ExtResource("6_tyiim")
+OptionButton/styles/hover_mirrored = ExtResource("6_tyiim")
+OptionButton/styles/hover_pressed = ExtResource("7_g2it7")
+OptionButton/styles/hover_pressed_mirrored = ExtResource("7_g2it7")
+OptionButton/styles/normal = ExtResource("8_g2it7")
+OptionButton/styles/normal_mirrored = ExtResource("8_g2it7")
+OptionButton/styles/pressed = ExtResource("8_g2it7")
+OptionButton/styles/pressed_mirrored = ExtResource("8_g2it7")
+Panel/styles/panel = ExtResource("8_g2it7")
 PanelContainer/styles/panel = ExtResource("8_ydv4c")
 ProgressBar/styles/background = ExtResource("8_50ej0")
 ProgressBar/styles/fill = ExtResource("10_g2it7")

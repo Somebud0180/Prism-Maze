@@ -1,11 +1,11 @@
 [gd_scene load_steps=22 format=4 uid="uid://bnkt72lydniy7"]
 
 [ext_resource type="Environment" uid="uid://b7y82yodphdhe" path="res://resources/Game 3D/game_3d.tres" id="1_cyag4"]
-[ext_resource type="Script" uid="uid://v6f8iie1qjh" path="res://scripts/game_3d.gd" id="1_dfa31"]
-[ext_resource type="Script" uid="uid://bd64urs07si80" path="res://scripts/player_3d.gd" id="2_orbxt"]
+[ext_resource type="Script" uid="uid://v6f8iie1qjh" path="res://scripts/3D/game_3d.gd" id="1_dfa31"]
+[ext_resource type="Script" uid="uid://bd64urs07si80" path="res://scripts/3D/player_3d.gd" id="2_orbxt"]
 [ext_resource type="PackedScene" uid="uid://wmf2eu0uuhrg" path="res://addons/third-person-camera/third_person_camera/ThirdPersonCamera.tscn" id="3_nj5rp"]
-[ext_resource type="Script" uid="uid://bckm35jccxmnt" path="res://scripts/level_layer_3d.gd" id="6_2hj7x"]
-[ext_resource type="Script" uid="uid://d3x6emu6voebf" path="res://scripts/tutorial_layer.gd" id="6_pgrkm"]
+[ext_resource type="Script" uid="uid://bckm35jccxmnt" path="res://scripts/3D/level_layer_3d.gd" id="6_2hj7x"]
+[ext_resource type="Script" uid="uid://d3x6emu6voebf" path="res://scripts/3D/tutorial_layer.gd" id="6_pgrkm"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tx4ct"]
 resource_name = "Plastic Material"
@@ -357,14 +357,15 @@ _data = {
 &"show_tutorial": SubResource("Animation_2hj7x")
 }
 
-[node name="Game3D" type="Node3D"]
+[node name="Game3D" type="Node3D" groups=["Game3D"]]
 script = ExtResource("1_dfa31")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 35.4406, 0)
 light_energy = 2.0
 light_indirect_energy = 5.0
-light_volumetric_fog_energy = 5.0
+shadow_enabled = true
+directional_shadow_mode = 1
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("1_cyag4")
@@ -400,20 +401,20 @@ mouse_x_sensitiveness = 5.0
 [node name="Player" type="Node3D" parent="Player3D"]
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Player3D/Player"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.167484, 0)
-light_indirect_energy = 10.0
-omni_range = 10.0
-omni_attenuation = 2.0
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+light_color = Color(0.855469, 0.855469, 0.855469, 1)
+light_indirect_energy = 5.0
+light_specular = 0.0
+omni_range = 20.0
+omni_attenuation = 0.1
 
 [node name="Body" type="MeshInstance3D" parent="Player3D/Player"]
 transform = Transform3D(8, -7.77094e-07, 2.27243e-07, -7.14343e-07, -8, 5.79283e-07, 3.37139e-07, -6.98492e-07, -8, 9.20935e-09, -0.173045, 0)
-gi_mode = 2
 mesh = SubResource("ArrayMesh_sw282")
 skeleton = NodePath("")
 
 [node name="Head" type="MeshInstance3D" parent="Player3D/Player"]
 transform = Transform3D(8, -3.43425e-09, 0, 1.60071e-10, -7.65616, 6.98492e-07, -1.86265e-09, -6.70552e-07, -8, -2.19891e-08, 0.37773, 9.02683e-08)
-gi_mode = 2
 mesh = SubResource("ArrayMesh_kkt5c")
 skeleton = NodePath("")
 
@@ -438,6 +439,7 @@ doppler_tracking = 1
 unique_name_in_owner = true
 transform = Transform3D(0.999984, 0.00457461, -0.00331309, -0.00458199, 0.999987, -0.00222544, 0.00330288, 0.00224057, 0.999992, 0, 10, 0)
 script = ExtResource("6_2hj7x")
+custom_level = "Level4"
 infinite_levels = true
 is_starting_on_tutorial = true
 
