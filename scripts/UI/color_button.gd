@@ -5,7 +5,7 @@ extends Button
 
 func _ready():
 	toggled.connect(_on_toggled)
-	get_child(0).color = color
+	get_child(0).get_child(0).self_modulate = color
 
 
 func _process(_delta: float) -> void:

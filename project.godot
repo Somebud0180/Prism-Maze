@@ -151,6 +151,10 @@ interact={
 ]
 }
 
+[input_devices]
+
+virtual_controller/ios/enable_controller=true
+
 [physics]
 
 2d/run_on_separate_thread=true
@@ -159,6 +163,18 @@ interact={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+renderer/rendering_method="forward_plus"
 renderer/rendering_method.mobile="forward_plus"
 textures/vram_compression/import_etc2_astc=true
 global_illumination/gi/use_half_resolution=true
+
+[xogot]
+
+project/editorState=[{
+"column": 0,
+"current": true,
+"line": 3,
+"path": "res://scripts/UI/color_button.gd",
+"type": "file"
+}]
+project/breakpoints={}

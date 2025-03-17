@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=3 uid="uid://br2t4hanatnss"]
+[gd_scene load_steps=73 format=3 uid="uid://br2t4hanatnss"]
 
 [ext_resource type="Theme" uid="uid://bau50guyc4alk" path="res://resources/Theme/menu.tres" id="1_7yxt8"]
 [ext_resource type="Script" uid="uid://cnwd74ny2hf2q" path="res://scripts/UI/menu.gd" id="2_o131u"]
@@ -26,6 +26,7 @@
 [ext_resource type="Texture2D" uid="uid://cv1v7oqrqrym0" path="res://resources/Menu/Graphics/SDFGI-Full.png" id="18_xkl7s"]
 [ext_resource type="Texture2D" uid="uid://dc6lvnyagscon" path="res://resources/Menu/Misc/Block2D.png" id="19_7oqtn"]
 [ext_resource type="Texture2D" uid="uid://bp1ir113ycfmw" path="res://resources/Menu/Control Icons/Move.png" id="19_i7uud"]
+[ext_resource type="Texture2D" uid="uid://dfvku7oe2ae6y" path="res://resources/Game/Player-Sheet.png" id="19_p2cca"]
 [ext_resource type="Texture2D" uid="uid://cha05i3vt0svl" path="res://resources/Menu/Misc/Menu.png" id="19_xlwes"]
 [ext_resource type="StyleBox" uid="uid://vqm1soj8xnjh" path="res://resources/Theme/separator.tres" id="20_6p85y"]
 [ext_resource type="Texture2D" uid="uid://itwiqyff3egk" path="res://resources/Menu/Control Icons/Pause.png" id="20_tbd65"]
@@ -145,7 +146,7 @@ tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 0)]
+"values": [Color(1, 1, 1, 0.0686499)]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
@@ -169,7 +170,7 @@ tracks/8/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 0)]
+"values": [Color(1, 1, 1, 1)]
 }
 tracks/9/type = "value"
 tracks/9/imported = false
@@ -178,7 +179,7 @@ tracks/9/path = NodePath("MenuLayer/Main:visible")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
-"times": PackedFloat32Array(0.001),
+"times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
@@ -813,7 +814,6 @@ expand_icon = true
 [node name="Settings" type="NinePatchRect" parent="MenuLayer" node_paths=PackedStringArray("resolution_picker", "fullscreen_toggle", "shadow_toggle", "sdfgi_toggle", "sdfgi_full_toggle")]
 unique_name_in_owner = true
 visible = false
-modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(600, 560)
 anchors_preset = 15
 anchor_right = 1.0
@@ -944,21 +944,22 @@ button_group = SubResource("ButtonGroup_ucr8h")
 script = ExtResource("17_ucr8h")
 color = Color(1, 1, 1, 1)
 
-[node name="Color" type="ColorRect" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/Panel/VBoxContainer/HFlowContainer/White"]
-custom_minimum_size = Vector2(48, 48)
+[node name="CenterContainer" type="CenterContainer" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/Panel/VBoxContainer/HFlowContainer/White"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -16.0
-offset_top = -20.0
-offset_right = 16.0
-offset_bottom = 12.0
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -6.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/Panel/VBoxContainer/HFlowContainer/White/CenterContainer"]
+position = Vector2(8, 4)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("19_p2cca")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 32, 32, 32)
 
 [node name="Red" type="Button" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/Panel/VBoxContainer/HFlowContainer"]
 custom_minimum_size = Vector2(64, 64)
@@ -974,21 +975,22 @@ button_group = SubResource("ButtonGroup_ucr8h")
 script = ExtResource("17_ucr8h")
 color = Color(0.644531, 0, 0, 1)
 
-[node name="Color" type="ColorRect" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/Panel/VBoxContainer/HFlowContainer/Red"]
-custom_minimum_size = Vector2(48, 48)
+[node name="CenterContainer" type="CenterContainer" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/Panel/VBoxContainer/HFlowContainer/Red"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -16.0
-offset_top = -20.0
-offset_right = 16.0
-offset_bottom = 12.0
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -6.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/Panel/VBoxContainer/HFlowContainer/Red/CenterContainer"]
+position = Vector2(8, 4)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("19_p2cca")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 32, 32, 32)
 
 [node name="Green" type="Button" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/Panel/VBoxContainer/HFlowContainer"]
 custom_minimum_size = Vector2(64, 64)
@@ -1004,21 +1006,22 @@ button_group = SubResource("ButtonGroup_ucr8h")
 script = ExtResource("17_ucr8h")
 color = Color(0, 0.695312, 0.0108643, 1)
 
-[node name="Color" type="ColorRect" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/Panel/VBoxContainer/HFlowContainer/Green"]
-custom_minimum_size = Vector2(48, 48)
+[node name="CenterContainer" type="CenterContainer" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/Panel/VBoxContainer/HFlowContainer/Green"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -16.0
-offset_top = -20.0
-offset_right = 16.0
-offset_bottom = 12.0
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -6.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/Panel/VBoxContainer/HFlowContainer/Green/CenterContainer"]
+position = Vector2(8, 4)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("19_p2cca")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 32, 32, 32)
 
 [node name="Blue" type="Button" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/Panel/VBoxContainer/HFlowContainer"]
 custom_minimum_size = Vector2(64, 64)
@@ -1034,21 +1037,22 @@ button_group = SubResource("ButtonGroup_ucr8h")
 script = ExtResource("17_ucr8h")
 color = Color(0.202423, 0.320791, 0.785156, 1)
 
-[node name="Color" type="ColorRect" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/Panel/VBoxContainer/HFlowContainer/Blue"]
-custom_minimum_size = Vector2(48, 48)
+[node name="CenterContainer" type="CenterContainer" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/Panel/VBoxContainer/HFlowContainer/Blue"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -16.0
-offset_top = -20.0
-offset_right = 16.0
-offset_bottom = 12.0
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -6.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/Panel/VBoxContainer/HFlowContainer/Blue/CenterContainer"]
+position = Vector2(8, 4)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("19_p2cca")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 32, 32, 32)
 
 [node name="Yellow" type="Button" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/Panel/VBoxContainer/HFlowContainer"]
 custom_minimum_size = Vector2(64, 64)
@@ -1062,21 +1066,22 @@ button_group = SubResource("ButtonGroup_ucr8h")
 script = ExtResource("17_ucr8h")
 color = Color(1, 0.919586, 0.394531, 1)
 
-[node name="Color" type="ColorRect" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/Panel/VBoxContainer/HFlowContainer/Yellow"]
-custom_minimum_size = Vector2(48, 48)
+[node name="CenterContainer" type="CenterContainer" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/Panel/VBoxContainer/HFlowContainer/Yellow"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -16.0
-offset_top = -20.0
-offset_right = 16.0
-offset_bottom = 12.0
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -6.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/Panel/VBoxContainer/HFlowContainer/Yellow/CenterContainer"]
+position = Vector2(8, 4)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("19_p2cca")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 32, 32, 32)
 
 [node name="3D" type="ScrollContainer" parent="MenuLayer/Settings/TabContainer"]
 visible = false
@@ -1150,7 +1155,7 @@ text = "X
 
 [node name="Controls" type="NinePatchRect" parent="MenuLayer"]
 visible = false
-modulate = Color(1, 1, 1, 0)
+modulate = Color(1, 1, 1, 0.0686499)
 custom_minimum_size = Vector2(600, 560)
 anchors_preset = 15
 anchor_right = 1.0
