@@ -85,6 +85,7 @@ animations = [{
 [node name="GameManager" type="Node" parent="." groups=["GameManager"]]
 unique_name_in_owner = true
 script = ExtResource("1_rn7ij")
+infinite_levels = true
 
 [node name="MainLayer" type="TileMapLayer" parent="."]
 unique_name_in_owner = true
@@ -158,5 +159,7 @@ repeat_times = 9
 scale = Vector2(1.25, 1.25)
 texture = ExtResource("8_l5bty")
 centered = false
+
+[node name="Timer" type="Timer" parent="."]
 
 [connection signal="finished_level_set" from="GameManager" to="GameManager" method="_on_finished_level_set"]

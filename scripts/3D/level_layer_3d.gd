@@ -7,8 +7,12 @@ signal finished_loading
 @onready var tutorial_layer = %TutorialLayer
 @onready var _level_3d = preload("res://scenes/3D/level_3d.tscn").instantiate()
 
-## A custom level to load at the beginning of the game after the starting level.
-@export var custom_level: String = ""
+## A custom level to load as the next level (after spawn and  [code]level_advance[/code]  if set).
+@export var custom_level: String:
+	set(value):
+		custom_level = value
+		if _level_3d:
+			_level_3d.custom_level_loaded = false  # Reset the state in Level3D
 
 ## Enables unlimited levels.  [code]level_amount[/code]  is disregarded when enabled.
 @export var infinite_levels: bool = false
@@ -26,16 +30,15 @@ signal finished_loading
 @export var is_starting_on_tutorial = false
 
 enum TUTORIAL_STATE { RESET, MOVE, JUMP, DOUBLE_JUMP, WALL_JUMP, SUCCESS }
-var tutorial_state = TUTORIAL_STATE.MOVE:
+var tutorial_state = TUTORIAL_STATE.RESET:
 	set(value):
 		tutorial_state = value
 		change_overlay()
 
-var starting_marker
 var levels = [] # The levels in the node
 var level_collection = [] # The final level set to be played
 var current_level = 0
-
+var starting_marker: Node3D
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("load_level"):
@@ -110,10 +113,18 @@ func cull_levels():
 
 
 func reset_game_3d():
-	# Resets the related variables
+	# Resets the level_3d related variables (just in-case)
+	_level_3d.custom_level_loaded = false
+	_level_3d.level_indices_used = []
+	_level_3d.last_level = null
+	
+	# Resets related variables
 	levels = [] # The levels in the node
 	level_collection = [] # The final level set to be played
 	current_level = 0
+	starting_marker = null
+	tutorial_state = TUTORIAL_STATE.RESET
+
 
 func change_overlay():
 	match tutorial_state:

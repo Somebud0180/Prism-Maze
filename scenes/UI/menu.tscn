@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=3 uid="uid://br2t4hanatnss"]
+[gd_scene load_steps=72 format=3 uid="uid://br2t4hanatnss"]
 
 [ext_resource type="Theme" uid="uid://bau50guyc4alk" path="res://resources/Theme/menu.tres" id="1_7yxt8"]
 [ext_resource type="Script" uid="uid://cnwd74ny2hf2q" path="res://scripts/UI/menu.gd" id="2_o131u"]
@@ -13,12 +13,14 @@
 [ext_resource type="Texture2D" uid="uid://ci8dfl1p8qliu" path="res://resources/Menu/PatchRects/Settings.png" id="11_mfpu8"]
 [ext_resource type="Script" uid="uid://1xcmpd8qm5wc" path="res://scripts/UI/settings_tab_container.gd" id="12_qg4he"]
 [ext_resource type="Texture2D" uid="uid://c407l5mv674x0" path="res://resources/Menu/Headers/Settings_Header.png" id="12_xkl7s"]
+[ext_resource type="Script" uid="uid://dk2jfxpyy2iua" path="res://scripts/UI/settings.gd" id="12_y8j5i"]
 [ext_resource type="StyleBox" uid="uid://b4mewmdnj56qd" path="res://resources/Theme/v_separator.tres" id="13_tbd65"]
 [ext_resource type="Texture2D" uid="uid://da7g5s3h5esdr" path="res://resources/Menu/Fullscreen.png" id="14_pjik4"]
 [ext_resource type="Texture2D" uid="uid://k83gkr4l4vs5" path="res://resources/Menu/Misc/color.png" id="16_whlyx"]
 [ext_resource type="StyleBox" uid="uid://o1f6ysc2jugj" path="res://resources/Theme/box_focus.tres" id="17_cijfx"]
 [ext_resource type="Texture2D" uid="uid://ddwfg6atipo0i" path="res://resources/Menu/Graphics/SDFGI.png" id="17_hvuoq"]
 [ext_resource type="Texture2D" uid="uid://b51yf1mnhkc6j" path="res://resources/Menu/Headers/Graphics_Header.png" id="17_q4tpj"]
+[ext_resource type="Script" uid="uid://dg0mgoask60qa" path="res://scripts/UI/color_button.gd" id="17_ucr8h"]
 [ext_resource type="Texture2D" uid="uid://bju7vgey6nhvw" path="res://resources/Menu/Graphics/Shadow.png" id="18_q4tpj"]
 [ext_resource type="Texture2D" uid="uid://bgxemtlrxcpgg" path="res://resources/Menu/Headers/Controls-Header.png" id="18_s1ob8"]
 [ext_resource type="Texture2D" uid="uid://cv1v7oqrqrym0" path="res://resources/Menu/Graphics/SDFGI-Full.png" id="18_xkl7s"]
@@ -55,6 +57,9 @@
 [ext_resource type="Texture2D" uid="uid://dg51oyjbk8xpj" path="res://resources/Controls/KBM/keyboard_i.png" id="45_ifku1"]
 [ext_resource type="Texture2D" uid="uid://bugnbckbsxckc" path="res://resources/Controls/KBM/keyboard_k.png" id="46_hvuoq"]
 [ext_resource type="Texture2D" uid="uid://c1hxy2sj457tk" path="res://resources/Menu/Overlay/Life.png" id="47_ifku1"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_ucr8h"]
+allow_unpress = true
 
 [sub_resource type="Animation" id="Animation_8rgj6"]
 length = 0.001
@@ -433,6 +438,35 @@ tracks/0/keys = {
 "values": [Vector2(1, 1), Vector2(0.9, 0.9)]
 }
 
+[sub_resource type="Animation" id="Animation_ifku1"]
+resource_name = "hide_main_invisible"
+length = 0.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MenuLayer/Main:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.9, 0.9)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MenuLayer/Main:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
 [sub_resource type="Animation" id="Animation_2ywoo"]
 resource_name = "hide_settings"
 length = 0.5
@@ -619,35 +653,6 @@ tracks/3/keys = {
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_ifku1"]
-resource_name = "hide_main_invisible"
-length = 0.2
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MenuLayer/Main:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(0.5, 0.5),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(0.9, 0.9)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("MenuLayer/Main:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nyjex"]
 _data = {
 &"RESET": SubResource("Animation_8rgj6"),
@@ -664,7 +669,7 @@ _data = {
 &"show_settings": SubResource("Animation_antcs")
 }
 
-[node name="Menu" type="Control" node_paths=PackedStringArray("game_overlay", "main", "settings", "animation_player", "resolution_picker", "health_bar")]
+[node name="Menu" type="Control" node_paths=PackedStringArray("main", "settings", "animation_player", "game_overlay", "health_bar")]
 process_priority = 1
 layout_mode = 3
 anchors_preset = 15
@@ -677,11 +682,10 @@ size_flags_vertical = 3
 mouse_filter = 1
 theme = ExtResource("1_7yxt8")
 script = ExtResource("2_o131u")
-game_overlay = NodePath("GameOverlay")
 main = NodePath("MenuLayer/Main/Main")
 settings = NodePath("MenuLayer/Settings")
 animation_player = NodePath("AnimationPlayer")
-resolution_picker = NodePath("MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/Resolution")
+game_overlay = NodePath("GameOverlay")
 health_bar = NodePath("GameOverlay/HBoxContainer/Health/Bar")
 
 [node name="MenuLayer" type="CanvasLayer" parent="."]
@@ -806,7 +810,8 @@ icon = ExtResource("10_fqtlv")
 icon_alignment = 1
 expand_icon = true
 
-[node name="Settings" type="NinePatchRect" parent="MenuLayer"]
+[node name="Settings" type="NinePatchRect" parent="MenuLayer" node_paths=PackedStringArray("resolution_picker", "fullscreen_toggle", "shadow_toggle", "sdfgi_toggle", "sdfgi_full_toggle")]
+unique_name_in_owner = true
 visible = false
 modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(600, 560)
@@ -829,6 +834,12 @@ patch_margin_right = 5
 patch_margin_bottom = 5
 axis_stretch_horizontal = 2
 axis_stretch_vertical = 2
+script = ExtResource("12_y8j5i")
+resolution_picker = NodePath("TabContainer/2D/MarginContainer/2D/Resolution")
+fullscreen_toggle = NodePath("TabContainer/2D/MarginContainer/2D/Fullscreen")
+shadow_toggle = NodePath("TabContainer/3D/MarginContainer/3D/Shadow")
+sdfgi_toggle = NodePath("TabContainer/3D/MarginContainer/3D/SDFGI")
+sdfgi_full_toggle = NodePath("TabContainer/3D/MarginContainer/3D/SDFGI_Full")
 
 [node name="TabContainer" type="TabContainer" parent="MenuLayer/Settings"]
 layout_mode = 1
@@ -889,7 +900,7 @@ custom_minimum_size = Vector2(256, 48)
 layout_mode = 2
 size_flags_vertical = 4
 focus_neighbor_top = NodePath("../Resolution")
-focus_next = NodePath("../Panel/VBoxContainer/HBoxContainer/GridContainer/White")
+focus_next = NodePath("../Panel/VBoxContainer/HFlowContainer/White")
 focus_previous = NodePath("../Resolution")
 icon = ExtResource("14_pjik4")
 icon_alignment = 1
@@ -897,7 +908,7 @@ icon_alignment = 1
 [node name="Panel" type="Panel" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D"]
 custom_minimum_size = Vector2(256, 160)
 layout_mode = 2
-size_flags_vertical = 4
+size_flags_vertical = 3
 size_flags_stretch_ratio = 0.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/Panel"]
@@ -917,25 +928,24 @@ layout_mode = 2
 texture = ExtResource("16_whlyx")
 stretch_mode = 5
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/Panel/VBoxContainer"]
-layout_mode = 2
-alignment = 1
-
-[node name="GridContainer" type="GridContainer" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/Panel/VBoxContainer/HBoxContainer"]
+[node name="HFlowContainer" type="HFlowContainer" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/Panel/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/h_separation = 10
-columns = 16
+size_flags_vertical = 3
 
-[node name="White" type="Button" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/Panel/VBoxContainer/HBoxContainer/GridContainer"]
-custom_minimum_size = Vector2(48, 48)
+[node name="White" type="Button" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/Panel/VBoxContainer/HFlowContainer"]
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 focus_neighbor_right = NodePath("../Red")
 focus_next = NodePath("../Red")
-focus_previous = NodePath("../../../../../Fullscreen")
+focus_previous = NodePath("../../../../Fullscreen")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_ucr8h")
+script = ExtResource("17_ucr8h")
+color = Color(1, 1, 1, 1)
 
-[node name="White" type="ColorRect" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/Panel/VBoxContainer/HBoxContainer/GridContainer/White"]
-custom_minimum_size = Vector2(32, 32)
+[node name="Color" type="ColorRect" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/Panel/VBoxContainer/HFlowContainer/White"]
+custom_minimum_size = Vector2(48, 48)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -950,8 +960,8 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 
-[node name="Red" type="Button" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/Panel/VBoxContainer/HBoxContainer/GridContainer"]
-custom_minimum_size = Vector2(48, 48)
+[node name="Red" type="Button" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/Panel/VBoxContainer/HFlowContainer"]
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 focus_neighbor_left = NodePath("../White")
 focus_neighbor_right = NodePath("../Green")
@@ -959,23 +969,29 @@ focus_next = NodePath("../Green")
 focus_previous = NodePath("../White")
 theme_override_styles/focus = ExtResource("17_cijfx")
 theme_override_styles/pressed = ExtResource("17_cijfx")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_ucr8h")
+script = ExtResource("17_ucr8h")
+color = Color(0.644531, 0, 0, 1)
 
-[node name="Red" type="ColorRect" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/Panel/VBoxContainer/HBoxContainer/GridContainer/Red"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -16.0
-offset_top = 4.0
-offset_right = 16.0
-offset_bottom = 36.0
-grow_horizontal = 2
-mouse_filter = 1
-color = Color(0.784314, 0, 0, 1)
-
-[node name="Green" type="Button" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/Panel/VBoxContainer/HBoxContainer/GridContainer"]
+[node name="Color" type="ColorRect" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/Panel/VBoxContainer/HFlowContainer/Red"]
 custom_minimum_size = Vector2(48, 48)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -20.0
+offset_right = 16.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="Green" type="Button" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/Panel/VBoxContainer/HFlowContainer"]
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 focus_neighbor_left = NodePath("../Red")
 focus_neighbor_right = NodePath("../Blue")
@@ -983,9 +999,13 @@ focus_next = NodePath("../Blue")
 focus_previous = NodePath("../Red")
 theme_override_styles/focus = ExtResource("17_cijfx")
 theme_override_styles/pressed = ExtResource("17_cijfx")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_ucr8h")
+script = ExtResource("17_ucr8h")
+color = Color(0, 0.695312, 0.0108643, 1)
 
-[node name="Green" type="ColorRect" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/Panel/VBoxContainer/HBoxContainer/GridContainer/Green"]
-custom_minimum_size = Vector2(32, 32)
+[node name="Color" type="ColorRect" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/Panel/VBoxContainer/HFlowContainer/Green"]
+custom_minimum_size = Vector2(48, 48)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -999,10 +1019,9 @@ offset_bottom = 12.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
-color = Color(0, 0.784314, 0, 1)
 
-[node name="Blue" type="Button" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/Panel/VBoxContainer/HBoxContainer/GridContainer"]
-custom_minimum_size = Vector2(48, 48)
+[node name="Blue" type="Button" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/Panel/VBoxContainer/HFlowContainer"]
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 focus_neighbor_left = NodePath("../Green")
 focus_neighbor_right = NodePath("../Yellow")
@@ -1010,9 +1029,13 @@ focus_next = NodePath("../Yellow")
 focus_previous = NodePath("../Green")
 theme_override_styles/focus = ExtResource("17_cijfx")
 theme_override_styles/pressed = ExtResource("17_cijfx")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_ucr8h")
+script = ExtResource("17_ucr8h")
+color = Color(0.202423, 0.320791, 0.785156, 1)
 
-[node name="Blue" type="ColorRect" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/Panel/VBoxContainer/HBoxContainer/GridContainer/Blue"]
-custom_minimum_size = Vector2(32, 32)
+[node name="Color" type="ColorRect" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/Panel/VBoxContainer/HFlowContainer/Blue"]
+custom_minimum_size = Vector2(48, 48)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1026,18 +1049,21 @@ offset_bottom = 12.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
-color = Color(0, 0, 0.784314, 1)
 
-[node name="Yellow" type="Button" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/Panel/VBoxContainer/HBoxContainer/GridContainer"]
-custom_minimum_size = Vector2(48, 48)
+[node name="Yellow" type="Button" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/Panel/VBoxContainer/HFlowContainer"]
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 focus_neighbor_left = NodePath("../Blue")
 focus_previous = NodePath("../Blue")
 theme_override_styles/focus = ExtResource("17_cijfx")
 theme_override_styles/pressed = ExtResource("17_cijfx")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_ucr8h")
+script = ExtResource("17_ucr8h")
+color = Color(1, 0.919586, 0.394531, 1)
 
-[node name="Yellow" type="ColorRect" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/Panel/VBoxContainer/HBoxContainer/GridContainer/Yellow"]
-custom_minimum_size = Vector2(32, 32)
+[node name="Color" type="ColorRect" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/Panel/VBoxContainer/HFlowContainer/Yellow"]
+custom_minimum_size = Vector2(48, 48)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1051,7 +1077,6 @@ offset_bottom = 12.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
-color = Color(1, 1, 0, 1)
 
 [node name="3D" type="ScrollContainer" parent="MenuLayer/Settings/TabContainer"]
 visible = false
@@ -1670,15 +1695,5 @@ libraries = {
 [connection signal="pressed" from="MenuLayer/Main/Main/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="MenuLayer/Main/Main/VBoxContainer/Controls" to="." method="_on_controls_pressed"]
 [connection signal="pressed" from="MenuLayer/Main/Main/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
-[connection signal="item_selected" from="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/Resolution" to="." method="_on_resolution_item_selected"]
-[connection signal="toggled" from="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/Fullscreen" to="." method="_on_fullscreen_toggled"]
-[connection signal="pressed" from="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/Panel/VBoxContainer/HBoxContainer/GridContainer/White" to="." method="_on_white_pressed"]
-[connection signal="pressed" from="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/Panel/VBoxContainer/HBoxContainer/GridContainer/Red" to="." method="_on_red_pressed"]
-[connection signal="pressed" from="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/Panel/VBoxContainer/HBoxContainer/GridContainer/Green" to="." method="_on_green_pressed"]
-[connection signal="pressed" from="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/Panel/VBoxContainer/HBoxContainer/GridContainer/Blue" to="." method="_on_blue_pressed"]
-[connection signal="pressed" from="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/Panel/VBoxContainer/HBoxContainer/GridContainer/Yellow" to="." method="_on_yellow_pressed"]
-[connection signal="toggled" from="MenuLayer/Settings/TabContainer/3D/MarginContainer/3D/Shadow" to="." method="_on_shadow_toggled"]
-[connection signal="toggled" from="MenuLayer/Settings/TabContainer/3D/MarginContainer/3D/SDFGI" to="." method="_on_sdfgi_toggled"]
-[connection signal="toggled" from="MenuLayer/Settings/TabContainer/3D/MarginContainer/3D/SDFGI_Full" to="." method="_on_sdfgi_full_toggled"]
 [connection signal="pressed" from="MenuLayer/Settings/Exit Settings" to="." method="_on_exit_settings_pressed"]
 [connection signal="pressed" from="MenuLayer/Controls/Exit Controls" to="." method="_on_exit_controls_pressed"]

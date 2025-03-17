@@ -264,7 +264,7 @@ func place_markers_and_door():
 	
 	# Position door at exit, facing into the maze
 	# Create a basis with the door rotated to face inward
-	var basis = Basis(
+	var _basis = Basis(
 		Vector3(0.0, 0.0, -1.0),  # x-basis
 		Vector3(0.0, 1.0, 0.0),   # y-basis
 		Vector3(1.0, 0.0, 0.0)    # z-basis
@@ -272,6 +272,6 @@ func place_markers_and_door():
 	
 	# Set the transform with the basis and origin
 	door.transform = Transform3D(
-		basis,
+		_basis,
 		Vector3(float(x_dim), 1.5, z_dim-1.5)  # origin position
 	)

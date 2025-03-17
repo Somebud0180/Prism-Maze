@@ -1,23 +1,25 @@
 extends Node
 class_name GameManager
 
+signal finished_loading
+signal finished_level_set
 
 # The Game Manager holds the set of levels, game mode, and level progression.
 # It is also responsible for loading the game and the levels.
-
-signal finished_loading
-signal finished_level_set
 
 @onready var game = $".."
 @onready var menu = get_node("/root/Menu")
 @onready var main_layer = %MainLayer
 @onready var player = %Player
 
-var _maze_scene = preload("res://scenes/2D/maze_layer.tscn").instantiate()
-var _platform_scene = preload("res://scenes/2D/platform_layer.tscn").instantiate()
+## Enables unlimited levels.  [code]level_amount[/code]  is disregarded when enabled.
+@export var infinite_levels: bool = false 
 
-@export var level_amount: int = 15 # The amount of levels to create for the playthrough. Excluding the final level.
-@export var custom_level: String: # A level to add first to the game, used for debugging. Follows the Maze: X, Platform: X, Maze format
+## The amount of levels to create for the playthrough. Excluding the final level.
+@export var level_amount: int = 15 
+
+ ## A level to add first to the game, used for debugging. Follows the Maze: X, Platform: X, Maze format
+@export var custom_level: String:
 	set(value):
 		if not _is_valid_custom_level(value):
 			push_warning("Ignoring custom_level, invalid format. Must be one of: 'Maze', 'Maze: <number>', or 'Platform: <number>'!")
@@ -25,6 +27,10 @@ var _platform_scene = preload("res://scenes/2D/platform_layer.tscn").instantiate
 			return
 		custom_level = value 
 
+var _maze_scene = preload("res://scenes/2D/maze_layer.tscn").instantiate()
+var _platform_scene = preload("res://scenes/2D/platform_layer.tscn").instantiate()
+
+var custom_level_loaded = false
 var level: int = 0
 var level_times = []
 
@@ -44,7 +50,89 @@ func _ready() -> void:
 	await Signal(player, "player_loaded")
 	player._on_game_manager_loaded()
 	
-	load_game()
+	next_level()
+	emit_signal("finished_loading")
+
+
+func next_level() -> void:
+	_reset_keys()
+	player.game_initialized = false
+	
+	if infinite_levels or level < level_amount:
+		for child in main_layer.get_children():
+			child.queue_free()
+		
+		var new_level = get_next_level()
+		if new_level:
+			level_collection.append(new_level)
+			print(new_level)
+			load_rand_level(new_level)
+
+
+func get_next_level() -> String:
+	# If a custom level is defined and not loaded yet, return it
+	if !custom_level.is_empty() and !custom_level_loaded:
+		custom_level_loaded = true
+		return custom_level
+	
+	var candidate: String = ""
+	var tries: int = 10
+	while tries > 0:
+		# Randomly pick Maze or Platform (using your existing logic)
+		randomize()
+		var level_rand = randi_range(0, 3)
+		if level_rand == 0:
+			candidate = "Maze"
+		elif level_rand == 1:
+			candidate = "GenMaze"
+		elif level_rand == 2 or level_rand == 3:
+			candidate = "Platform"
+		
+		# Convert candidate placeholder into a resolved value
+		candidate = get_random_level(candidate)
+		
+		# Check if candidate is equal to the last played level.
+		# Here we assume level tells you the current level index,
+		# and that level_collection holds the sequence of finalized level strings.
+		if level > 0 and candidate == level_collection[level - 1]:
+			tries -= 1
+			continue
+		else:
+			return candidate
+	
+	# If all attempts failed, default to GenMaze
+	push_warning("Cannot find a random Level! Defaulting to GenMaze.")
+	return "GenMaze"
+
+
+func get_random_level(selected_level: String) -> String:
+	# Replace placeholder platformer levels to real levels, keep GenMaze
+	if selected_level == "Maze":
+		var resolved = str(get_maze_index(_maze_scene))
+		return "Maze: " + resolved
+	elif selected_level == "Platform":
+		var resolved = str(get_platform_index(_platform_scene, level))
+		return "Platform: " + resolved
+	else:
+		return "GenMaze"
+
+
+func load_rand_level(selected_level: String):
+	if selected_level == "GenMaze":
+		load_gen_maze()
+	elif selected_level.begins_with("Maze"):
+		var level_name = selected_level.replace("Maze: ", "")
+		load_maze(level_name)
+	elif selected_level.begins_with("Platform"):
+		var level_name = selected_level.replace("Platform: ", "")
+		load_platform(level_name)
+	
+	
+	player.position = Vector2i(0,0)
+	
+	# Enable player again
+	player.game_initialized = true
+
 
 func load_game() -> void:
 	var gen_level_amount: int = get_custom_level_amount()
@@ -73,7 +161,7 @@ func get_custom_level_amount() -> int:
 	if custom_level.is_empty():
 		return level_amount
 	else:
-		return level_amount -1
+		return level_amount - 1
 
 
 func level_check() -> void:
@@ -114,10 +202,10 @@ func progress_level() -> void:
 	
 	# Increase level index and load next
 	level += 1
-	load_level()
+	next_level()
 	
 	# If completed all levels, finalize
-	if level == level_collection.size() - 1:
+	if level == level_amount:
 		menu.is_timer_running = false
 		menu.is_popup_displaying = true
 		

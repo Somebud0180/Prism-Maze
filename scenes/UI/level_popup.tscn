@@ -434,7 +434,7 @@ _data = {
 &"side_finish": SubResource("Animation_tj0vq")
 }
 
-[node name="LevelPopup" type="Control" node_paths=PackedStringArray("timer_label", "level_label", "animation_player")]
+[node name="LevelPopup" type="Control" node_paths=PackedStringArray("timer_label", "level_label", "animation_player") groups=["LevelPopup"]]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

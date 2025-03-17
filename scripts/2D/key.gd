@@ -35,7 +35,7 @@ func _physics_process(_delta):
 		else:
 			# Unlock when at/near the center
 			is_unlocking = false
-			visible = false  # Hide the key
+			set_deferred("visible", false)  # Hide the key
 			
 			# Unlock the door
 			target_door.key_unlock(key_id)

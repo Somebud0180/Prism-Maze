@@ -13,8 +13,16 @@ var gravity_direction = 1: # 1 for normal, -1 for upside-down
 @export var animated_sprite: AnimatedSprite2D
 @onready var menu = get_node("/root/Menu")
 @onready var game_manager = %GameManager
-var game_initialized = false
 
+var killable = false
+var game_initialized = false:
+	set(value):
+		game_initialized = value
+		if value == true:
+			await get_tree().create_timer(1).timeout
+			killable = true
+		else:
+			killable = false
 
 func go_to(input_position: Vector2):
 	position = input_position

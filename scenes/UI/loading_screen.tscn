@@ -1,7 +1,7 @@
 [gd_scene load_steps=18 format=3 uid="uid://i4qcv0mx4r1f"]
 
 [ext_resource type="Script" uid="uid://dolbwqgj8f0we" path="res://scripts/UI/loading_screen.gd" id="1_2t34d"]
-[ext_resource type="Theme" uid="uid://btnjsh2r256l0" path="res://resources/Theme/loading.tres" id="2_85qbq"]
+[ext_resource type="Theme" uid="uid://btnjsh2r256l0" path="res://resources/Theme/LoadingScreen/loading.tres" id="2_85qbq"]
 [ext_resource type="Texture2D" uid="uid://dfvku7oe2ae6y" path="res://resources/Game/Player-Sheet.png" id="3_7uno8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_djmwj"]

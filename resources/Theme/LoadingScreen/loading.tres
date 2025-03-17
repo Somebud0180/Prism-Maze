@@ -1,6 +1,6 @@
 [gd_resource type="Theme" load_steps=2 format=3 uid="uid://btnjsh2r256l0"]
 
-[ext_resource type="StyleBox" uid="uid://oc726cekuti" path="res://resources/Theme/panel.tres" id="1_mr6c1"]
+[ext_resource type="StyleBox" uid="uid://bp7mgod2li1c" path="res://resources/Theme/LoadingScreen/panel.tres" id="1_mr6c1"]
 
 [resource]
 Panel/styles/panel = ExtResource("1_mr6c1")

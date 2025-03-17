@@ -9,6 +9,12 @@ func _on_body_entered(_body: Node2D) -> void:
 	var players = get_tree().get_nodes_in_group("Player")
 	if players.size() > 0:
 		player = players[0]
+		
+		# If player is uninitialized ignore death
+		if !player.killable:
+			return
+		
+		# Else, continue with death
 		player.gravity_direction = 1
 		timer.start()
 

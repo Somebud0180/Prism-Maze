@@ -27,15 +27,15 @@ func _on_timer_timeout() -> void:
 	show_keys(true)
 
 
-func show_flags(visible: bool) -> void:
-	if visible:
+func show_flags(_visible: bool) -> void:
+	if _visible:
 		# Restore any flags we previously hid
-		for hidden in _hidden_tile_flags:
+		for _hidden in _hidden_tile_flags:
 			set_cell(
-				hidden["pos"], 
-				hidden["source_id"], 
-				hidden["atlas_coords"], 
-				hidden["alternative_tile"]
+				_hidden["pos"], 
+				_hidden["source_id"], 
+				_hidden["atlas_coords"], 
+				_hidden["alternative_tile"]
 			)
 		_hidden_tile_flags.clear()
 	
@@ -58,16 +58,16 @@ func show_flags(visible: bool) -> void:
 			})
 		
 		# Now remove them so they disappear (hidden)
-		for hidden in _hidden_tile_flags:
-			set_cell(hidden["pos"], -1, Vector2i(-1, -1), -1)
+		for _hidden in _hidden_tile_flags:
+			set_cell(_hidden["pos"], -1, Vector2i(-1, -1), -1)
 
 
-func show_keys(visible: bool) -> void:
-	if visible:
+func show_keys(_visible: bool) -> void:
+	if _visible:
 		for k in _hidden_keys:
 			k.set_deferred("visible", true)
 			if k is CollisionObject2D:
-				k.process_mode = Node.PROCESS_MODE_INHERIT
+				k.set_deferred("process_mode", Node.PROCESS_MODE_INHERIT)
 		_hidden_keys.clear()
 	else:
 		_hidden_keys.clear()
@@ -81,7 +81,7 @@ func _hide_all_keys_recursive(current_node: Node) -> void:
 			_hidden_keys.append(child)
 			child.set_deferred("visible", false)
 			if child is CollisionObject2D:
-				child.process_mode = Node.PROCESS_MODE_DISABLED
+				child.set_deferred("process_mode", Node.PROCESS_MODE_DISABLED)
 		# Recurse on the actual child node (not the same level_name again)
 		_hide_all_keys_recursive(child)
 
@@ -132,7 +132,7 @@ func randomize_keys_and_doors() -> void:
 					# and disable it so it won't process or collide
 					key_node.set_deferred("visible", false)
 					if key_node is CollisionObject2D:
-						key_node.process_mode = Node.PROCESS_MODE_DISABLED
+						key_node.set_deferred("process_mode", Node.PROCESS_MODE_DISABLED)
 					
 					# Save so we can restore later
 					_removed_keys.append(key_node)

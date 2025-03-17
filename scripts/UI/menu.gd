@@ -1,19 +1,25 @@
 extends Control
 class_name Menu
 
-@export var game_overlay: CanvasLayer
 @export var main: NinePatchRect
 @export var settings: NinePatchRect
 @export var animation_player: AnimationPlayer
-@export var resolution_picker: OptionButton
+
+@export var game_overlay: CanvasLayer
 @export var health_bar: ProgressBar
 
+@onready var settings_node = %Settings
+
+var is_loading = false
+var last_state = STATE.MAIN
+var is_popup_displaying = false
+
+var time_elapsed: float = 0.0
+var is_timer_running: bool = false
+
+@onready var _popup_scene = get_tree().get_first_node_in_group("LevelPopup")
 var _game_scene = preload("res://scenes/2D/game.tscn").instantiate()
 var _game_scene_3d = preload("res://scenes/3D/game_3d.tscn").instantiate()
-var resolution_icon = load("res://resources/Menu/Resize.png")
-var native_icon = load("res://resources/Menu/Native.png")
-
-var popup_scene
 
 var game_scene_path = "res://scenes/2D/game.tscn"
 var game_scene_3d_path = "res://scenes/3D/game_3d.tscn"
@@ -22,7 +28,7 @@ enum WINDOW_STATE { FULLSCREEN, WINDOWED }
 var window_state = WINDOW_STATE.WINDOWED:
 	set(value):
 		window_state = value
-		_manage_resolution_picker()
+		settings_node._manage_resolution_picker()
 
 enum STATE { MAIN, SETTINGS, CONTROLS, OVERLAY, GAME, GAME3D, GAMEMIXED }
 var menu_state = STATE.MAIN:
@@ -40,24 +46,28 @@ var in_game_3d = false:
 		in_game_3d = value
 		_manage_game_overlay()
 
-var is_loading = false
-var last_state = STATE.MAIN
-
-var is_popup_displaying = false
-var resolution = Vector2i(1280, 720)
-
-var time_elapsed: float = 0.0
-var is_timer_running: bool = false
-
 # Game Settings
 var player_color: Color = Color.WHITE:
 	set(value):
 		player_color = value
-		_update_player_color()
+		settings_node._update_player_color()
+		_config_save()
+
+var fullscreen: bool = false:
+	set(value):
+		fullscreen = value
+		_config_save()
+
+var resolution = Vector2i(1280, 720):
+	set(value):
+		resolution = value
+		_config_save()
+
 
 var shadow_enabled: bool = true:
 	set(value):
 		shadow_enabled = value
+		_config_save()
 		var game_3d = get_tree().get_first_node_in_group("Game3D")
 		if game_3d:
 			game_3d.set_shadow()
@@ -65,6 +75,7 @@ var shadow_enabled: bool = true:
 var sdfgi_enabled: bool = true:
 	set(value):
 		sdfgi_enabled = value
+		_config_save()
 		var game_3d = get_tree().get_first_node_in_group("Game3D")
 		if game_3d:
 			game_3d.set_sdfgi()
@@ -72,6 +83,7 @@ var sdfgi_enabled: bool = true:
 var sdfgi_full_res: bool = false:
 	set(value):
 		sdfgi_full_res = value
+		_config_save()
 		var game_3d = get_tree().get_first_node_in_group("Game3D")
 		if game_3d:
 			game_3d.set_sdfgi()
@@ -82,25 +94,29 @@ var sdfgi_full_res: bool = false:
 		health_bar.value = value
 		_check_health()
 
-var supported_resolutions = ["2560x1600", "2560x1440", "2560x1080", "2048x1536", "1920x1200", "1920x1080", "1680x1050", "1600x900", "1440x900", "1366x768", "1280x1024", "1280x720", "1024x768", "800x600", "640x480", "640x360"]
+
+func _process(delta: float) -> void:
+	if is_timer_running:
+		time_elapsed += delta
+
 
 func _ready() -> void:
 	$MenuLayer.show()
 	$GameOverlay.hide()
 	animation_player.play("RESET_main")
 	
-	_add_full_window_resolution()
-	_add_resolutions()
-	_manage_resolution_picker()
-	_graphics_check()
+	settings_node._add_full_window_resolution()
+	settings_node._add_resolutions()
+	settings_node._manage_resolution_picker()
 	
-	popup_scene = get_node("/root/LevelPopup")
+	# Apply configurations
+	_config_load()
 	
 	$MenuLayer/Main/Main/VBoxContainer/Play.grab_focus()
 
 
 func _input(event):
-	if event.is_action_pressed("ui_cancel") and not animation_player.is_playing() and not popup_scene.is_playing and not is_loading:
+	if event.is_action_pressed("ui_cancel") and not animation_player.is_playing() and not _popup_scene.is_playing and not is_loading:
 		match menu_state:
 			STATE.SETTINGS:
 				menu_state = STATE.MAIN
@@ -196,150 +212,6 @@ func _on_exit_controls_pressed() -> void:
 	$MenuLayer/Main/Main/VBoxContainer/Play.grab_focus()
 
 
-func _manage_resolution_picker() -> void:
-	var platform = OS.get_name()
-	if platform == "Web" or platform == "iOS":
-		resolution_picker.hide()
-		return
-	
-	# Check for window state if fullscreen
-	if window_state == WINDOW_STATE.FULLSCREEN:
-		resolution_picker.disabled = true
-	else:
-		resolution_picker.disabled = false
-
-
-func _on_resolution_item_selected(index: int) -> void:
-	var selected_resolution = resolution_picker.get_item_text(index)
-	var parts = selected_resolution.split("x")
-	if parts.size() == 2:
-		var width = int(parts[0])
-		var height = int(parts[1])
-		resolution = Vector2i(width, height)
-		set_resolution()
-
-func _on_fullscreen_toggled(toggled_on: bool) -> void:
-	if toggled_on:
-		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
-		window_state = WINDOW_STATE.FULLSCREEN
-		
-		var current_resolution = DisplayServer.window_get_size()
-		var string_current = str(current_resolution[0]) + "x" + str(current_resolution[1])
-		for i in range(supported_resolutions.size()):
-			# Set as selected if same as current resolution
-			if supported_resolutions[i] == string_current:
-				resolution_picker.selected = i
-	else:
-		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
-		set_resolution()
-		window_state = WINDOW_STATE.WINDOWED
-		
-		var current_resolution = DisplayServer.window_get_size()
-		var string_current = str(current_resolution[0]) + "x" + str(current_resolution[1])
-		for i in range(supported_resolutions.size()):
-			# Set as selected if same as current resolution
-			if supported_resolutions[i] == string_current:
-				resolution_picker.selected = i
-
-
-func set_resolution() -> void:
-	# Doesnt seem to be an issue anymore
-	#
-	# Set window mode to window
-	# Workaround for macOS not allowing resizing from native resolution
-	# DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
-	
-	DisplayServer.window_set_size(resolution)
-	
-	# Reposition the current menu
-	match menu_state:
-		STATE.SETTINGS:
-			animation_player.play("RESET_settings")
-		STATE.CONTROLS:
-			animation_player.play("RESET_controls")
-		STATE.GAME:
-			animation_player.play("RESET_game")
-		STATE.MAIN:
-			animation_player.play("RESET_main")
-
-	# Get window placement
-	var rect = DisplayServer.screen_get_usable_rect()
-	var win_pos = DisplayServer.window_get_position()
-	var x_overhang = (win_pos.x + resolution.x) - (rect.position.x + rect.size.x)
-	var y_overhang = (win_pos.y + resolution.y) - (rect.position.y + rect.size.y)
-	
-	# Ensure the whole window is on-screen
-	if x_overhang > 0:
-		win_pos.x -= x_overhang
-	if win_pos.x < rect.position.x:
-		win_pos.x = rect.position.x
-	
-	if y_overhang > 0:
-		win_pos.y -= y_overhang
-	if win_pos.y < rect.position.y:
-		win_pos.y = rect.position.y
-	
-	DisplayServer.window_set_position(win_pos)
-
-
-func _add_resolutions():
-	var current_resolution: Vector2i = DisplayServer.window_get_size()
-	var string_current: String = str(current_resolution[0]) + "x" + str(current_resolution[1])
-	
-	var native_resolution: Vector2i = DisplayServer.screen_get_size()
-	var string_native: String = str(native_resolution[0]) + "x" + str(native_resolution[1])
-	
-	var native_windowed: Rect2i = DisplayServer.screen_get_usable_rect()
-	var string_windowed: String = str(native_windowed.size.x) + "x" + str(native_windowed.size.y)
-	
-	for i in range(supported_resolutions.size()):
-		var resolution_name: String = supported_resolutions[i]
-		var icon = ""
-		
-		# Add a native icon to the native resoluton
-		if (resolution_name == string_native and DisplayServer.window_get_mode() == 3) or (resolution_name == string_windowed and DisplayServer.window_get_mode() == 0):
-			icon = native_icon
-		else:
-			icon = resolution_icon
-		
-		resolution_picker.add_icon_item(icon, resolution_name, i)
-		
-		# Set as selected if same as current resolution
-		if resolution_name == string_current:
-			resolution_picker.selected = i
-
-
-func _add_full_window_resolution():
-	var rect = DisplayServer.screen_get_usable_rect()
-	var fw_w = int(rect.size.x)
-	var fw_h = int(rect.size.y)
-	
-	# Convert each supported resolution to a (width, height) pair
-	var resolution_pairs = []
-	for res_str in supported_resolutions:
-		var parts = res_str.split("x")
-		var w = int(parts[0])
-		var h = int(parts[1])
-		resolution_pairs.append(Vector2i(w, h))
-	
-	# Insert your full-window resolution
-	resolution_pairs.append(Vector2i(fw_w, fw_h))
-	
-	# Sort by width, then height
-	resolution_pairs.sort_custom(_compare_resolutions)
-	
-	# Rebuild the string list
-	supported_resolutions.clear()
-	for pair in resolution_pairs:
-		supported_resolutions.append(str(pair.x) + "x" + str(pair.y))
-
-
-func _compare_resolutions(a: Vector2i, b: Vector2i) -> bool:
-	if a.x == b.x:
-		return a.y > b.y
-	return a.x > b.x
-
-
 func _reset_game() -> void:
 	# Return background visibility
 	manage_background(true)
@@ -418,67 +290,62 @@ func _manage_game_overlay() -> void:
 		game_overlay.hide()
 
 
-# Player Color Settings
-func _on_white_pressed() -> void:
-	player_color = Color.WHITE
-
-
-func _on_red_pressed() -> void:
-	player_color = Color.RED
-
-
-func _on_green_pressed() -> void:
-	player_color = Color.WEB_GREEN
-
-
-func _on_blue_pressed() -> void:
-	player_color = Color.DARK_BLUE
-
-
-func _on_yellow_pressed() -> void:
-	player_color = Color.YELLOW
-
-
-func _update_player_color() -> void:
-	var player_ref = get_tree().get_first_node_in_group("Player")
-	if player_ref:
-		player_ref.change_color()
-
 func _check_health() -> void:
 	if character_life <= 0:
 		var player
 		if in_game:
 			player = get_node("/root/Game/Player")
-		elif in_game_3d:
+		if in_game_3d:
 			player = get_node("/root/Game3D/Player3D")
 		
 		menu_state = STATE.OVERLAY
 		player.hide_on_death()
-		popup_scene.popup_state = level_popup.POPUP.DEATH
-		popup_scene.animation_player.play("show_death")
+		_popup_scene.popup_state = level_popup.POPUP.DEATH
+		_popup_scene.animation_player.play("show_death")
 		is_popup_displaying = true
 
-func _process(delta: float) -> void:
-	if is_timer_running:
-		time_elapsed += delta
 
-
-func _graphics_check() -> void:
-	if RenderingServer.get_current_rendering_method() != "forward_plus":
-		$"MenuLayer/Settings/TabContainer/3D/MarginContainer/3D/SDFGI".disabled = true
-		$"MenuLayer/Settings/TabContainer/3D/MarginContainer/3D/SDFGI_Full".disabled = true
-		sdfgi_enabled = false
-
-
-func _on_shadow_toggled(toggled_on: bool) -> void:
-	shadow_enabled = toggled_on
-
-
-func _on_sdfgi_toggled(toggled_on: bool) -> void:
-	sdfgi_enabled = toggled_on
+func _config_load():
+	var config = ConfigFile.new()
 	
-	$"MenuLayer/Settings/TabContainer/3D/MarginContainer/3D/SDFGI_Full".disabled = !sdfgi_enabled
+	# Load data from a file.
+	var err = config.load("user://settings.cfg")
+	
+	# If the file didn't load, ignore it.
+	if err != OK:
+		return
+	
+	
+	# Restore configuration
+	resolution = config.get_value("Game", "window_size", Vector2i(1280, 720))
+	fullscreen = config.get_value("Game", "fullscreen", false)
+	player_color = config.get_value("Game", "player_color", Color.WHITE)
+	
+	shadow_enabled = config.get_value("Graphics", "shadow_enabled", true)
+	sdfgi_enabled = config.get_value("Graphics", "sdfgi_enabled", true)
+	sdfgi_full_res = config.get_value("Graphics", "sdfgi_full_res", false)
+	
+	# Restore config into button states
+	settings_node._on_fullscreen_toggled(fullscreen)
+	settings_node._on_shadow_toggled(shadow_enabled)
+	settings_node._on_sdfgi_toggled(sdfgi_enabled)
+	settings_node._on_sdfgi_full_toggled(sdfgi_full_res)
+	
+	settings_node._graphics_check()
 
-
-func _on_sdfgi_full_toggled(toggled_on: bool) -> void:
-	sdfgi_full_res = toggled_on
+func _config_save():
+	# Create new ConfigFile object.
+	var config = ConfigFile.new()
+	
+	# Store Game Settings
+	config.set_value("Game", "window_size", resolution)
+	config.set_value("Game", "fullscreen", fullscreen)
+	config.set_value("Game", "player_color", player_color)
+	
+	# Store Graphics Settings
+	config.set_value("Graphics", "shadow_enabled", shadow_enabled)
+	config.set_value("Graphics", "sdfgi_enabled", sdfgi_enabled)
+	config.set_value("Graphics", "sdfgi_full_res", sdfgi_full_res)
+	
+	# Save it to a file (overwrite if already exists).
+	config.save("user://settings.cfg")

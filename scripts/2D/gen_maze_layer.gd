@@ -191,8 +191,8 @@ func place_flag() -> void:
 		load_maze(current_level)
 
 
-func show_flags(visible: bool) -> void:
-	if visible:
+func show_flags(_visible: bool) -> void:
+	if _visible:
 		# Restore the single flag if we previously hid it
 		if _hidden_tile_flag.size() > 0:
 			set_cell(

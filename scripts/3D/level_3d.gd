@@ -1,6 +1,6 @@
 extends Node3D
 
-var level_count = 0
+var custom_level_loaded = false
 var level_indices_used = []
 var last_level = null
 var level_exclude = 3 # Beginning/Special levels to exclude from randomization
@@ -12,13 +12,13 @@ func get_next_level(custom_level: String = "") -> Node3D:
 		return null
 	
 	# If it is the first level and there is a custom level defined, return the custom level
-	if !custom_level.is_empty() and level_count == 0:
+	if !custom_level.is_empty() and !custom_level_loaded:
 		var levels = get_children()
 		for level in levels:
 			if level.name == custom_level:
 				level_indices_used.append(level)
 				var level_copy = level.duplicate()
-				level_count += 1
+				custom_level_loaded = true
 				return level_copy
 		
 		push_warning("Custom level not found!")
@@ -45,7 +45,6 @@ func get_next_level(custom_level: String = "") -> Node3D:
 			
 			# Duplicate the child
 			var copy_child = original_child.duplicate()
-			level_count += 1
 			return copy_child
 		tries -= 1
 	
