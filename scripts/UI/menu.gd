@@ -9,6 +9,7 @@ class_name Menu
 @export var health_bar: ProgressBar
 
 @onready var settings_node = %Settings
+@onready var menu_button = %MenuButton
 
 var is_loading = false
 var last_state = STATE.MAIN
@@ -35,6 +36,7 @@ var menu_state = STATE.MAIN:
 	set(value):
 		manage_game_timer(value)
 		menu_state = value
+		menu_button._manage_visibility()
 
 var in_game = false:
 	set(value):

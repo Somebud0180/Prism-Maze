@@ -172,9 +172,17 @@ global_illumination/gi/use_half_resolution=true
 
 project/editorState=[{
 "column": 0,
-"current": true,
-"line": 3,
-"path": "res://scripts/UI/color_button.gd",
+"line": 6,
+"path": "res://scripts/UI/menu_button.gd",
 "type": "file"
+}, {
+"column": 34,
+"current": true,
+"line": 38,
+"path": "res://scripts/UI/menu.gd",
+"type": "file"
+}, {
+"title": "Input",
+"type": "doc"
 }]
 project/breakpoints={}

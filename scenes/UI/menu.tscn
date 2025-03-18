@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=3 uid="uid://br2t4hanatnss"]
+[gd_scene load_steps=75 format=3 uid="uid://br2t4hanatnss"]
 
 [ext_resource type="Theme" uid="uid://bau50guyc4alk" path="res://resources/Theme/menu.tres" id="1_7yxt8"]
 [ext_resource type="Script" uid="uid://cnwd74ny2hf2q" path="res://scripts/UI/menu.gd" id="2_o131u"]
@@ -58,6 +58,7 @@
 [ext_resource type="Texture2D" uid="uid://dg51oyjbk8xpj" path="res://resources/Controls/KBM/keyboard_i.png" id="45_ifku1"]
 [ext_resource type="Texture2D" uid="uid://bugnbckbsxckc" path="res://resources/Controls/KBM/keyboard_k.png" id="46_hvuoq"]
 [ext_resource type="Texture2D" uid="uid://c1hxy2sj457tk" path="res://resources/Menu/Overlay/Life.png" id="47_ifku1"]
+[ext_resource type="Script" uid="uid://t7gje6wr8j28" path="res://scripts/UI/menu_button.gd" id="54_v00k6"]
 
 [sub_resource type="ButtonGroup" id="ButtonGroup_ucr8h"]
 allow_unpress = true
@@ -1612,6 +1613,22 @@ text = "X
 
 [node name="GameOverlay" type="CanvasLayer" parent="."]
 
+[node name="MenuButton" type="Button" parent="GameOverlay"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 32)
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 48.0
+offset_bottom = 48.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_p2cca")
+action_mode = 0
+icon = ExtResource("7_7oqtn")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("54_v00k6")
+
 [node name="HBoxContainer" type="HBoxContainer" parent="GameOverlay"]
 anchors_preset = 15
 anchor_right = 1.0
@@ -1623,16 +1640,6 @@ offset_bottom = -48.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_7yxt8")
-
-[node name="MenuButton" type="Button" parent="GameOverlay/HBoxContainer"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-theme_override_styles/normal = SubResource("StyleBoxFlat_p2cca")
-icon = ExtResource("7_7oqtn")
-icon_alignment = 1
-expand_icon = true
 
 [node name="Health" type="HBoxContainer" parent="GameOverlay/HBoxContainer"]
 custom_minimum_size = Vector2(160, 48)
@@ -1724,3 +1731,4 @@ libraries = {
 [connection signal="pressed" from="MenuLayer/Main/Main/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="MenuLayer/Settings/Exit Settings" to="." method="_on_exit_settings_pressed"]
 [connection signal="pressed" from="MenuLayer/Controls/Exit Controls" to="." method="_on_exit_controls_pressed"]
+[connection signal="pressed" from="GameOverlay/MenuButton" to="GameOverlay/MenuButton" method="_on_pressed"]
