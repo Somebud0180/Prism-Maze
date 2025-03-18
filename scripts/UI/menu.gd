@@ -37,6 +37,7 @@ var menu_state = STATE.MAIN:
 		manage_game_timer(value)
 		menu_state = value
 		menu_button._manage_visibility()
+		_manage_touch_controller()
 
 var in_game = false:
 	set(value):
@@ -113,6 +114,8 @@ func _ready() -> void:
 	
 	# Apply configurations
 	_config_load()
+	
+	_manage_touch_controller()
 	
 	$MenuLayer/Main/Main/VBoxContainer/Play.grab_focus()
 
@@ -306,6 +309,12 @@ func _check_health() -> void:
 		_popup_scene.animation_player.play("show_death")
 		is_popup_displaying = true
 
+
+func _manage_touch_controller():
+	if (menu_state == STATE.GAME or menu_state == STATE.GAME3D or menu_state == STATE.GAMEMIXED): 
+		Input.get_virtual_controller().enable()
+	else:
+		Input.get_virtual_controller().disable()
 
 func _config_load():
 	var config = ConfigFile.new()

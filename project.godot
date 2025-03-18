@@ -151,10 +151,6 @@ interact={
 ]
 }
 
-[input_devices]
-
-virtual_controller/ios/enable_controller=true
-
 [physics]
 
 2d/run_on_separate_thread=true
@@ -172,17 +168,20 @@ global_illumination/gi/use_half_resolution=true
 
 project/editorState=[{
 "column": 0,
-"line": 6,
+"line": 19,
 "path": "res://scripts/UI/menu_button.gd",
 "type": "file"
 }, {
-"column": 34,
+"column": 27,
 "current": true,
-"line": 38,
+"line": 117,
 "path": "res://scripts/UI/menu.gd",
 "type": "file"
 }, {
 "title": "Input",
+"type": "doc"
+}, {
+"title": "VirtualController",
 "type": "doc"
 }]
 project/breakpoints={}
