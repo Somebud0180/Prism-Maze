@@ -12,8 +12,10 @@ var player_3d
 
 
 func _ready() -> void:
-	# Make barrier block invisible in-game
-	mesh_library.get_item_mesh(1).material.albedo_color = Color(255, 255, 255, 0)
+	# Make barrier block invisible and set collision layer
+	if $BarrierMap:
+		var barrier_mesh = $BarrierMap.mesh_library.get_item_mesh(1)
+		barrier_mesh.material.albedo_color = Color(255, 255, 255, 0)
 	
 	_hide()
 	
@@ -22,6 +24,9 @@ func _ready() -> void:
 		player_3d = player3D[0]
 	
 	if viewport and viewport_quad and player_3d:
+		# Advertise self to global group
+		add_to_group("3DLevel")
+		
 		# Setup viewport
 		viewport.handle_input_locally = false
 		viewport.gui_disable_input = true

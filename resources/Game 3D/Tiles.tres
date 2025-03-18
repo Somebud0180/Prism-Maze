@@ -1,4 +1,4 @@
-[gd_resource type="MeshLibrary" load_steps=12 format=4 uid="uid://dnpv55qmiew0c"]
+[gd_resource type="MeshLibrary" load_steps=13 format=4 uid="uid://dnpv55qmiew0c"]
 
 [ext_resource type="Texture2D" uid="uid://f07c5yfebyiv" path="res://resources/Game 3D/Model/Block_Floor.png" id="2_old4j"]
 
@@ -80,6 +80,8 @@ data = {
 [sub_resource type="ImageTexture" id="ImageTexture_ugigi"]
 image = SubResource("Image_0gnax")
 
+[sub_resource type="GDScript" id="GDScript_wxqna"]
+
 [resource]
 item/0/name = "Block"
 item/0/mesh = SubResource("ArrayMesh_wxqna")
@@ -92,8 +94,9 @@ item/0/preview = SubResource("ImageTexture_s12y5")
 item/1/name = "Barrier Block"
 item/1/mesh = SubResource("BoxMesh_0f80m")
 item/1/mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-item/1/mesh_cast_shadow = 1
+item/1/mesh_cast_shadow = 0
 item/1/shapes = [SubResource("BoxShape3D_781gc"), Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)]
 item/1/navigation_mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-item/1/navigation_layers = 1
+item/1/navigation_layers = 2
 item/1/preview = SubResource("ImageTexture_ugigi")
+script = SubResource("GDScript_wxqna")

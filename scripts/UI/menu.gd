@@ -311,10 +311,16 @@ func _check_health() -> void:
 
 
 func _manage_touch_controller():
-	if (menu_state == STATE.GAME or menu_state == STATE.GAME3D or menu_state == STATE.GAMEMIXED): 
-		Input.get_virtual_controller().enable()
-	else:
-		Input.get_virtual_controller().disable()
+	var platform = OS.get_name()
+	if platform != "iOS":
+		return
+	
+	# Export with Xogot for iOS controls
+	#if (menu_state == STATE.GAME or menu_state == STATE.GAME3D or menu_state == STATE.GAMEMIXED): 
+		#Input.get_virtual_controller().enable()
+	#else:
+		#Input.get_virtual_controller().disable()
+
 
 func _config_load():
 	var config = ConfigFile.new()

@@ -13,7 +13,7 @@ signal finished_level_set
 @onready var player = %Player
 
 ## Enables unlimited levels.  [code]level_amount[/code]  is disregarded when enabled.
-@export var infinite_levels: bool = false 
+@export var infinite_levels: bool = false
 
 ## The amount of levels to create for the playthrough. Excluding the final level.
 @export var level_amount: int = 15 
@@ -21,10 +21,7 @@ signal finished_level_set
  ## A level to add first to the game, used for debugging. Follows the Maze: X, Platform: X, Maze format
 @export var custom_level: String:
 	set(value):
-		if not _is_valid_custom_level(value):
-			push_warning("Ignoring custom_level, invalid format. Must be one of: 'Maze', 'Maze: <number>', or 'Platform: <number>'!")
-			custom_level = ""
-			return
+		_is_valid_custom_level(value)
 		custom_level = value 
 
 var _maze_scene = preload("res://scenes/2D/maze_layer.tscn").instantiate()
@@ -74,6 +71,9 @@ func get_next_level() -> String:
 	if !custom_level.is_empty() and !custom_level_loaded:
 		custom_level_loaded = true
 		return custom_level
+	
+	if level == level_amount:
+		return "Platform: End"
 	
 	var candidate: String = ""
 	var tries: int = 10
@@ -206,6 +206,11 @@ func progress_level() -> void:
 	
 	# If completed all levels, finalize
 	if level == level_amount:
+		if menu.menu_state == Menu.STATE.GAMEMIXED:
+			var level = get_tree().get_first_node_in_group("3DLevel")
+			level.open_door()
+			return
+		
 		menu.is_timer_running = false
 		menu.is_popup_displaying = true
 		
@@ -311,14 +316,6 @@ func get_maze_index(maze_scene: Node) -> int:
 	return maze_list.pop_back()
 
 
-func hide_flags_in_current_level() -> void:
-	# Loop over all children in main_layer (which is where levels are added)
-	for child in main_layer.get_children():
-		# If that child implements hide_flags(), call it
-		if child.has_method("hide_flags"):
-			child.show_flags(false)
-
-
 func reset_game() -> void:
 	for child in main_layer.get_children():
 		child.queue_free()
@@ -329,29 +326,32 @@ func reset_game() -> void:
 	menu.time_elapsed = 0.0
 
 
-func _is_valid_custom_level(level_string: String) -> bool:
+func _is_valid_custom_level(level_string: String) -> String:
 	# 1) Generated Maze
-	if level_string == "Maze":
-		return true
+	if level_string == "GenMaze":
+		return level_string
 	
 	# 2) Maze: X
 	if level_string.begins_with("Maze: "):
 		var child_name = level_string.replace("Maze: ", "")
 		# Confirm if _maze_scene actually has a child with the name child_name
 		if not _maze_scene.has_node(child_name):
-			return false
-		return true
+			push_warning("Custom maze level does not exist! Ignored.")
+			return ""
+		return level_string
 	
 	# 2) Platform: X
 	if level_string.begins_with("Platform: "):
 		var child_name = level_string.replace("Platform: ", "")
 		# Confirm if _platform_scene actually has a child with the name child_name
 		if not _platform_scene.has_node(child_name):
-			return false
-		return true
+			push_warning("Custom platform level does not exist! Ignored.")
+			return ""
+		return level_string
 	
 	# If none of the above matched, string is invalid
-	return false
+	push_warning("Invalid custom_level, ignored. Must be one of: 'GenMaze', 'Maze: <number>', or 'Platform: <number>'!")
+	return ""
 
 
 func _reset_keys() -> void:

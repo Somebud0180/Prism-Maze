@@ -88,6 +88,23 @@ func _gravity(delta: float):
 				velocity += gravity_direction * get_gravity() * delta
 
 
+func is_valid_wall() -> bool:
+	if get_slide_collision_count() > 0 and is_on_wall_only():
+		var collision = get_slide_collision(0)
+		var collider = collision.get_collider()
+		
+		# Check if collider is a GridMap
+		if collider is GridMap:
+			# Get the cell item index
+			var cell_item = collider.get_collision_layer_value(3)
+			
+			# Only allow wall jump on normal walls (item 0)
+			return !cell_item
+			
+		return true  # Allow wall jump on non-GridMap surfaces
+	return false
+
+
 func _physics_process(delta: float) -> void:
 	# Don't process physics until we're properly initialized
 	if !game_initialized or menu.menu_state != Menu.STATE.GAME3D:
@@ -110,7 +127,7 @@ func _physics_process(delta: float) -> void:
 	_gravity(delta)
 	
 	# Check if there are any collisions before trying to access them
-	if get_slide_collision_count() > 0 and is_on_wall_only():
+	if is_valid_wall():
 		# Get the current wall collision.
 		var collision = get_slide_collision(0)
 		if collision:
