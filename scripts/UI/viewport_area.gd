@@ -13,14 +13,12 @@ func _ready() -> void:
 	if Player3D.size() > 0:
 		player_3d = Player3D[0]
 
-func _on_body_entered(body: Node3D) -> void:
+func _on_body_entered(_body: Node3D) -> void:
 	is_in_area = true
-	player_3d = body
 
 
 func _on_body_exited(_body: Node3D) -> void:
 	is_in_area = false
-	player_3d = null
 
 
 func _unhandled_input(event: InputEvent) -> void:

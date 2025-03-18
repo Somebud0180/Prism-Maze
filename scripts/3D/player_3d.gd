@@ -95,87 +95,86 @@ func _physics_process(delta: float) -> void:
 		if menu.menu_state == Menu.STATE.GAMEMIXED:
 			_gravity(delta)
 			move_and_slide()
-		
-		return
-
+			return
+		else:
+			return
 	
-	if menu.menu_state == Menu.STATE.GAME3D:
-		# Invert the gravity.
-		if Input.is_action_just_pressed("invert_gravity"):
-			if gravity_direction == 1:
-				gravity_direction = -1
-			else:
-				gravity_direction = 1
-		
-		# Add gravity based on gravity direction.
-		_gravity(delta)
-		
-		# Check if there are any collisions before trying to access them
-		if get_slide_collision_count() > 0 and is_on_wall_only():
-			# Get the current wall collision.
-			var collision = get_slide_collision(0)
-			if collision:
-				var current_normal = collision.get_normal().normalized()
-				# Only refill jump if it's a 180° flip
-				if last_wall_normal == Vector3.ZERO:
-					if jump_credit <= 0:
-						jump_credit = 1
-					was_on_wall = true
-					last_wall_normal = current_normal
-				elif current_normal.dot(last_wall_normal.normalized()) <= -0.99:
-					if jump_credit <= 0:
-						jump_credit = 1
-					was_on_wall = true
-					last_wall_normal = current_normal
-		elif is_on_wall_only():
-			# We're on a wall but don't have detailed collision info
-			was_on_wall = true
+	# Invert the gravity.
+	if Input.is_action_just_pressed("invert_gravity"):
+		if gravity_direction == 1:
+			gravity_direction = -1
 		else:
-			# Not on a wall and no collision
-			was_on_wall = false
+			gravity_direction = 1
+	
+	# Add gravity based on gravity direction.
+	_gravity(delta)
+	
+	# Check if there are any collisions before trying to access them
+	if get_slide_collision_count() > 0 and is_on_wall_only():
+		# Get the current wall collision.
+		var collision = get_slide_collision(0)
+		if collision:
+			var current_normal = collision.get_normal().normalized()
+			# Only refill jump if it's a 180° flip
+			if last_wall_normal == Vector3.ZERO:
+				if jump_credit <= 0:
+					jump_credit = 1
+				was_on_wall = true
+				last_wall_normal = current_normal
+			elif current_normal.dot(last_wall_normal.normalized()) <= -0.99:
+				if jump_credit <= 0:
+					jump_credit = 1
+				was_on_wall = true
+				last_wall_normal = current_normal
+	elif is_on_wall_only():
+		# We're on a wall but don't have detailed collision info
+		was_on_wall = true
+	else:
+		# Not on a wall and no collision
+		was_on_wall = false
+	
+	# Check if is on floor and restore double jump
+	if (gravity_direction == 1 and is_on_floor()) or (gravity_direction == -1 and is_on_ceiling()):
+		is_in_air = false
+		jump_credit = 2
+		was_on_wall = false
+		last_wall_normal = Vector3.ZERO
+	
+	# Handle jump.
+	if Input.is_action_just_pressed("jump") and jump_credit > 0:
+		#audio_player.stream = jump_sound
+		#audio_player.play()
+		jump_credit -= 1
 		
-		# Check if is on floor and restore double jump
-		if (gravity_direction == 1 and is_on_floor()) or (gravity_direction == -1 and is_on_ceiling()):
-			is_in_air = false
-			jump_credit = 2
-			was_on_wall = false
-			last_wall_normal = Vector3.ZERO
+		if was_on_wall:
+			# Push away from the wall
+			velocity += -last_wall_normal * WALL_JUMP_FORCE
 		
-		# Handle jump.
-		if Input.is_action_just_pressed("jump") and jump_credit > 0:
-			#audio_player.stream = jump_sound
-			#audio_player.play()
-			jump_credit -= 1
-			
-			if was_on_wall:
-				# Push away from the wall
-				velocity += -last_wall_normal * WALL_JUMP_FORCE
-			
-			velocity.y = JUMP_VELOCITY * gravity_direction
+		velocity.y = JUMP_VELOCITY * gravity_direction
+	
+	# Get the input direction
+	var input_dir := Input.get_vector("move_left", "move_right", "move_up", "move_down")
+	
+	# Get camera direction vectors 
+	var camera_forward = camera.get_front_direction()
+	var camera_right = camera.get_right_direction()
+	
+	# Calculate the movement direction based on camera orientation
+	var direction = Vector3(camera_right.x * input_dir.x - camera_forward.x * input_dir.y, 0.0, camera_right.z * input_dir.x - camera_forward.z * input_dir.y)
+	
+	if direction:
+		velocity.x = direction.x * SPEED
+		velocity.z = direction.z * SPEED
 		
-		# Get the input direction
-		var input_dir := Input.get_vector("move_left", "move_right", "move_up", "move_down")
-		
-		# Get camera direction vectors 
-		var camera_forward = camera.get_front_direction()
-		var camera_right = camera.get_right_direction()
-		
-		# Calculate the movement direction based on camera orientation
-		var direction = Vector3(camera_right.x * input_dir.x - camera_forward.x * input_dir.y, 0.0, camera_right.z * input_dir.x - camera_forward.z * input_dir.y).normalized()
-		
-		if direction:
-			velocity.x = direction.x * SPEED
-			velocity.z = direction.z * SPEED
-			
-			# Rotate the player to face the movement direction
-			if input_dir.length() > 0.1:
-				var target_rotation = atan2(direction.x, direction.z)
-				rotation.y = lerp_angle(rotation.y, target_rotation, delta * ROTATION_SPEED)
-		else:
-			velocity.x = move_toward(velocity.x, 0, SPEED)
-			velocity.z = move_toward(velocity.z, 0, SPEED)
-		
-		move_and_slide()
+		# Rotate the player to face the movement direction
+		if input_dir.length() > 0.1:
+			var target_rotation = atan2(direction.x, direction.z)
+			rotation.y = lerp_angle(rotation.y, target_rotation, delta * ROTATION_SPEED)
+	else:
+		velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.z = move_toward(velocity.z, 0, SPEED)
+	
+	move_and_slide()
 
 
 func _unhandled_input(event: InputEvent) -> void:    
@@ -194,11 +193,12 @@ func _handle_input_mode_switch():
 	if is_in_subviewport:
 		# Switch to 2D controls
 		if subviewport:
+			# Disable 3D input
+			set_process_input(false)
+			
 			print("Enabling 2D Input")
 			subviewport.handle_input_locally = true
 			subviewport.gui_disable_input = false
-			# Disable 3D movement
-			set_process_input(false)
 			
 			# Enable 2D player input
 			var player = get_tree().get_nodes_in_group("Player")[0] if get_tree().get_nodes_in_group("Player").size() > 0 else null
@@ -211,11 +211,12 @@ func _handle_input_mode_switch():
 	else:
 		# Switch back to 3D controls
 		if subviewport:
+			# Enable 3D input
+			set_process_input(true)
+			
 			print("Enabling 3D Input")
 			subviewport.handle_input_locally = false
 			subviewport.gui_disable_input = true
-			# Re-enable 3D movement
-			set_process_input(true)
 			
 			# Disable 2D player input
 			var player = get_tree().get_nodes_in_group("Player")[0] if get_tree().get_nodes_in_group("Player").size() > 0 else null

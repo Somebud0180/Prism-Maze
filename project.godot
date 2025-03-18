@@ -172,8 +172,7 @@ project/editorState=[{
 "path": "res://scripts/UI/menu_button.gd",
 "type": "file"
 }, {
-"column": 27,
-"current": true,
+"column": 0,
 "line": 117,
 "path": "res://scripts/UI/menu.gd",
 "type": "file"
@@ -182,6 +181,30 @@ project/editorState=[{
 "type": "doc"
 }, {
 "title": "VirtualController",
+"type": "doc"
+}, {
+"column": 155,
+"current": true,
+"line": 162,
+"path": "res://scripts/3D/player_3d.gd",
+"type": "file"
+}, {
+"column": 0,
+"line": 15,
+"path": "res://scripts/UI/viewport_area.gd",
+"type": "file"
+}, {
+"column": 0,
+"line": 0,
+"path": "res://scripts/2D/player.gd",
+"type": "file"
+}, {
+"column": 0,
+"line": 0,
+"path": "res://addons/third-person-camera/third_person_camera/ThirdPersonCamera.gd",
+"type": "file"
+}, {
+"title": "Vector3",
 "type": "doc"
 }]
 project/breakpoints={}
