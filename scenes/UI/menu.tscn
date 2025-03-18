@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=3 uid="uid://br2t4hanatnss"]
+[gd_scene load_steps=74 format=3 uid="uid://br2t4hanatnss"]
 
 [ext_resource type="Theme" uid="uid://bau50guyc4alk" path="res://resources/Theme/menu.tres" id="1_7yxt8"]
 [ext_resource type="Script" uid="uid://cnwd74ny2hf2q" path="res://scripts/UI/menu.gd" id="2_o131u"]
@@ -61,6 +61,17 @@
 
 [sub_resource type="ButtonGroup" id="ButtonGroup_ucr8h"]
 allow_unpress = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p2cca"]
+bg_color = Color(0.2, 0.2, 0.2, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
 
 [sub_resource type="Animation" id="Animation_8rgj6"]
 length = 0.001
@@ -691,6 +702,7 @@ health_bar = NodePath("GameOverlay/HBoxContainer/Health/Bar")
 
 [node name="MenuLayer" type="CanvasLayer" parent="."]
 layer = 2
+visible = false
 follow_viewport_scale = 0.05
 
 [node name="Main" type="AspectRatioContainer" parent="MenuLayer"]
@@ -1611,6 +1623,16 @@ offset_bottom = -48.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_7yxt8")
+
+[node name="MenuButton" type="Button" parent="GameOverlay/HBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_p2cca")
+icon = ExtResource("7_7oqtn")
+icon_alignment = 1
+expand_icon = true
 
 [node name="Health" type="HBoxContainer" parent="GameOverlay/HBoxContainer"]
 custom_minimum_size = Vector2(160, 48)
