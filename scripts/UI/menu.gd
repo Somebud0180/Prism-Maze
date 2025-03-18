@@ -1,6 +1,8 @@
 extends Control
 class_name Menu
 
+const _VirtualControllerHelper = preload("res://scripts/Misc/virtual_controller_helper.gd")
+
 @export var main: NinePatchRect
 @export var settings: NinePatchRect
 @export var animation_player: AnimationPlayer
@@ -315,11 +317,12 @@ func _manage_touch_controller():
 	if platform != "iOS":
 		return
 	
-	# Export with Xogot for iOS controls
-	#if (menu_state == STATE.GAME or menu_state == STATE.GAME3D or menu_state == STATE.GAMEMIXED): 
-		#Input.get_virtual_controller().enable()
-	#else:
-		#Input.get_virtual_controller().disable()
+	var virtual_controller = _VirtualControllerHelper.get_virtual_controller()
+	if virtual_controller:
+		if menu_state == STATE.GAME or menu_state == STATE.GAME3D or menu_state == STATE.GAMEMIXED: 
+			virtual_controller.enable()
+		else:
+			virtual_controller.disable()
 
 
 func _config_load():

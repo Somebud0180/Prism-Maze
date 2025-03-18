@@ -1617,7 +1617,6 @@ text = "X
 [node name="MenuButton" type="Button" parent="GameOverlay"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(32, 32)
-anchors_preset = -1
 offset_left = 14.0
 offset_top = 14.0
 offset_right = 48.0
