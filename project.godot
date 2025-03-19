@@ -160,7 +160,6 @@ interact={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
-renderer/rendering_method="forward_plus"
 renderer/rendering_method.mobile="forward_plus"
 textures/vram_compression/import_etc2_astc=true
 global_illumination/gi/use_half_resolution=true
