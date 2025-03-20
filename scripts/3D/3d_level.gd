@@ -4,6 +4,7 @@ signal door_close_animation_finished
 @onready var viewport = get_node_or_null("SubViewport")
 @onready var viewport_quad = get_node_or_null("ViewportQuad")
 @onready var viewport_area = get_node_or_null("ViewportQuad/ViewportArea")
+@onready var barrier_map = get_node_or_null("BarrierMap")
 var is_door_open = false
 var is_viewport_active = false
 var handle_subviewport_input = false
@@ -13,8 +14,8 @@ var player_3d
 
 func _ready() -> void:
 	# Make barrier block invisible and set collision layer
-	if $BarrierMap:
-		var barrier_mesh = $BarrierMap.mesh_library.get_item_mesh(1)
+	if barrier_map:
+		var barrier_mesh = barrier_map.mesh_library.get_item_mesh(1)
 		barrier_mesh.material.albedo_color = Color(255, 255, 255, 0)
 	
 	_hide()

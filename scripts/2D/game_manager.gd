@@ -207,8 +207,8 @@ func progress_level() -> void:
 	# If completed all levels, finalize
 	if level == level_amount:
 		if menu.menu_state == Menu.STATE.GAMEMIXED:
-			var level = get_tree().get_first_node_in_group("3DLevel")
-			level.open_door()
+			var _level = get_tree().get_first_node_in_group("3DLevel")
+			_level.open_door()
 			return
 		
 		menu.is_timer_running = false

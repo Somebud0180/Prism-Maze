@@ -4,10 +4,10 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v4gky"]
 resource_name = "Material"
-cull_mode = 2
 albedo_texture = ExtResource("2_old4j")
 metallic = 0.5
 roughness = 0.5
+distance_fade_max_distance = 30.0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_3mipa"]
 _surfaces = [{
@@ -57,11 +57,14 @@ image = SubResource("Image_wxqna")
 size = Vector3(2, 2, 2)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_781gc"]
-transparency = 1
+transparency = 2
+alpha_scissor_threshold = 0.1
+alpha_antialiasing_mode = 0
 cull_mode = 2
 shading_mode = 0
 specular_mode = 2
 disable_ambient_light = true
+disable_fog = true
 albedo_color = Color(1, 1, 1, 0.490196)
 
 [sub_resource type="BoxMesh" id="BoxMesh_0f80m"]
