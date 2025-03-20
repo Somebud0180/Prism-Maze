@@ -412,11 +412,13 @@ omni_attenuation = 0.1
 
 [node name="Body" type="MeshInstance3D" parent="Player3D/Player"]
 transform = Transform3D(8, -7.77094e-07, 2.27243e-07, -7.14343e-07, -8, 5.79283e-07, 3.37139e-07, -6.98492e-07, -8, 9.20935e-09, -0.173045, 0)
+gi_mode = 0
 mesh = SubResource("ArrayMesh_sw282")
 skeleton = NodePath("")
 
 [node name="Head" type="MeshInstance3D" parent="Player3D/Player"]
 transform = Transform3D(8, -3.43425e-09, 0, 1.60071e-10, -7.65616, 6.98492e-07, -1.86265e-09, -6.70552e-07, -8, -2.19891e-08, 0.37773, 9.02683e-08)
+gi_mode = 0
 mesh = SubResource("ArrayMesh_kkt5c")
 skeleton = NodePath("")
 

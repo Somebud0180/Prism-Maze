@@ -2,6 +2,7 @@ extends Area3D
 
 @onready var menu = get_node("/root/Menu")
 var level
+var level_layer
 var Player3D
 var player_3d
 
@@ -13,12 +14,21 @@ func _ready() -> void:
 	if Player3D.size() > 0:
 		player_3d = Player3D[0]
 
+
 func _on_body_entered(_body: Node3D) -> void:
 	is_in_area = true
+	
+	# Display guidee
+	level_layer = get_node("/root/Game3D/LevelLayer3D")
+	level_layer.tutorial_state = LevelLayer3D.TUTORIAL_STATE.INTERACT
 
 
 func _on_body_exited(_body: Node3D) -> void:
 	is_in_area = false
+	
+	# Reset guide
+	level_layer = get_node("/root/Game3D/LevelLayer3D")
+	level_layer.tutorial_state = LevelLayer3D.TUTORIAL_STATE.RESET
 
 
 func _unhandled_input(event: InputEvent) -> void:

@@ -50,6 +50,8 @@ func update_control_prompts():
 			double_jump_tutorial()
 		LevelLayer3D.TUTORIAL_STATE.WALL_JUMP:
 			wall_jump_tutorial()
+		LevelLayer3D.TUTORIAL_STATE.INTERACT:
+			interact_tutorial()
 
 
 func reset_tutorial():
@@ -59,7 +61,6 @@ func reset_tutorial():
 	overlay_animation_player.play("show_tutorial")
 	await overlay_animation_player.animation_finished
 	is_animating = false
-
 
 
 func move_tutorial():
@@ -158,6 +159,34 @@ func success_tutorial():
 	await overlay_animation_player.animation_finished
 	is_animating = false
 
+
+func interact_tutorial():
+	is_animating = true
+	await clear_overlay()
+	
+	var new_icon = load("res://resources/Menu/Control Icons/Screen.png")
+	var control_icon_1
+	var control_icon_2
+	
+	if current_device == InputDevice.KEYBOARD_MOUSE:
+		control_icon_1 = load("res://resources/Controls/KBM/keyboard_e.png")
+	else: # Controller
+		control_icon_1 = load("res://resources/Controls/Controllers/button_outline_t_xb.png")
+		control_icon_2 = load("res://resources/Controls/Controllers/button_outline_t_nin.png")
+	
+	var new_icon_rect = create_texture_rect(new_icon)
+	var control_rect_1 = create_texture_rect(control_icon_1)
+	
+	overlay.add_child(new_icon_rect)
+	overlay.add_child(control_rect_1)
+	
+	if control_icon_2:
+		var control_rect_2 = create_texture_rect(control_icon_2)
+		overlay.add_child(control_rect_2)
+		
+	overlay_animation_player.play("show_tutorial")
+	await overlay_animation_player.animation_finished
+	is_animating = false
 
 func clear_overlay() -> void:
 	if overlay.get_child_count() == 0:

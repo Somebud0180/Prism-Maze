@@ -1,4 +1,4 @@
-[gd_scene load_steps=75 format=3 uid="uid://br2t4hanatnss"]
+[gd_scene load_steps=79 format=3 uid="uid://br2t4hanatnss"]
 
 [ext_resource type="Theme" uid="uid://bau50guyc4alk" path="res://resources/Theme/menu.tres" id="1_7yxt8"]
 [ext_resource type="Script" uid="uid://cnwd74ny2hf2q" path="res://scripts/UI/menu.gd" id="2_o131u"]
@@ -58,7 +58,11 @@
 [ext_resource type="Texture2D" uid="uid://dg51oyjbk8xpj" path="res://resources/Controls/KBM/keyboard_i.png" id="45_ifku1"]
 [ext_resource type="Texture2D" uid="uid://bugnbckbsxckc" path="res://resources/Controls/KBM/keyboard_k.png" id="46_hvuoq"]
 [ext_resource type="Texture2D" uid="uid://c1hxy2sj457tk" path="res://resources/Menu/Overlay/Life.png" id="47_ifku1"]
+[ext_resource type="Texture2D" uid="uid://bka0g1o4egyee" path="res://resources/Menu/Control Icons/Screen.png" id="54_tsgqf"]
 [ext_resource type="Script" uid="uid://t7gje6wr8j28" path="res://scripts/UI/menu_button.gd" id="54_v00k6"]
+[ext_resource type="Texture2D" uid="uid://c278452784qcv" path="res://resources/Controls/KBM/keyboard_e.png" id="55_2ewfx"]
+[ext_resource type="Texture2D" uid="uid://rhbf84hoa5co" path="res://resources/Controls/Controllers/button_outline_t_xb.png" id="55_7mjjf"]
+[ext_resource type="Texture2D" uid="uid://namppbr5u8s5" path="res://resources/Controls/Controllers/button_outline_t_nin.png" id="56_2ewfx"]
 
 [sub_resource type="ButtonGroup" id="ButtonGroup_ucr8h"]
 allow_unpress = true
@@ -159,7 +163,7 @@ tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 0.0686499)]
+"values": [Color(1, 1, 1, 1)]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
@@ -704,7 +708,6 @@ health_bar = NodePath("GameOverlay/HBoxContainer/Health/Bar")
 
 [node name="MenuLayer" type="CanvasLayer" parent="."]
 layer = 2
-visible = false
 follow_viewport_scale = 0.05
 
 [node name="Main" type="AspectRatioContainer" parent="MenuLayer"]
@@ -1169,7 +1172,6 @@ text = "X
 
 [node name="Controls" type="NinePatchRect" parent="MenuLayer"]
 visible = false
-modulate = Color(1, 1, 1, 0.0686499)
 custom_minimum_size = Vector2(600, 560)
 anchors_preset = 15
 anchor_right = 1.0
@@ -1595,6 +1597,43 @@ texture = ExtResource("32_wg8ic")
 expand_mode = 3
 stretch_mode = 4
 
+[node name="3D Interact Controls" type="HBoxContainer" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Interact" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/3D Interact Controls"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+focus_neighbor_top = NodePath("../../3D Move Controls/Move")
+focus_neighbor_bottom = NodePath("../../3D Jump Controls/Jump")
+focus_next = NodePath("../../3D Jump Controls/Jump")
+focus_previous = NodePath("../../3D Move Controls/Move")
+texture = ExtResource("54_tsgqf")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="HSeparator" type="HSeparator" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/3D Interact Controls"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/separator = ExtResource("20_6p85y")
+
+[node name="E" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/3D Interact Controls"]
+layout_mode = 2
+texture = ExtResource("55_2ewfx")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="Top Xb" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/3D Interact Controls"]
+layout_mode = 2
+texture = ExtResource("55_7mjjf")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="Top Nin" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/3D Interact Controls"]
+layout_mode = 2
+texture = ExtResource("56_2ewfx")
+expand_mode = 3
+stretch_mode = 4
+
 [node name="Exit Controls" type="Button" parent="MenuLayer/Controls"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 1
@@ -1613,6 +1652,7 @@ text = "X
 "
 
 [node name="GameOverlay" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="MenuButton" type="Button" parent="GameOverlay"]
 unique_name_in_owner = true

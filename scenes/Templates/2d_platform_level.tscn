@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://nbc6ppc0t1hc"]
+
+[ext_resource type="TileSet" uid="uid://dyown6ix7tyu4" path="res://resources/Game/Tileset.tres" id="1_meu3c"]
+[ext_resource type="Script" uid="uid://cmoaepbanosue" path="res://scripts/2D/level.gd" id="2_7p8ip"]
+[ext_resource type="PackedScene" uid="uid://c1hg0dm7ju66w" path="res://scenes/2D/killzone.tscn" id="3_dxf5f"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_u1qnh"]
+normal = Vector2(0, 1)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_u6ejb"]
+
+[node name="X" type="TileMapLayer"]
+tile_set = ExtResource("1_meu3c")
+script = ExtResource("2_7p8ip")
+
+[node name="Platforms" type="Node2D" parent="."]
+
+[node name="Keys" type="Node2D" parent="."]
+
+[node name="Doors" type="Node2D" parent="."]
+
+[node name="Killzones" type="Node2D" parent="."]
+
+[node name="Top Killzone" parent="Killzones" instance=ExtResource("3_dxf5f")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzones/Top Killzone"]
+shape = SubResource("WorldBoundaryShape2D_u1qnh")
+
+[node name="Bottom Killzone" parent="Killzones" instance=ExtResource("3_dxf5f")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzones/Bottom Killzone"]
+shape = SubResource("WorldBoundaryShape2D_u6ejb")

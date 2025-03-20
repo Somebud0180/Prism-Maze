@@ -29,7 +29,7 @@ signal finished_loading
 ## Use the tutorial level as the spawn
 @export var is_starting_on_tutorial = false
 
-enum TUTORIAL_STATE { RESET, MOVE, JUMP, DOUBLE_JUMP, WALL_JUMP, SUCCESS }
+enum TUTORIAL_STATE { RESET, MOVE, JUMP, DOUBLE_JUMP, WALL_JUMP, SUCCESS, INTERACT }
 var tutorial_state = TUTORIAL_STATE.RESET:
 	set(value):
 		tutorial_state = value
@@ -140,6 +140,8 @@ func change_overlay():
 			tutorial_layer.wall_jump_tutorial()
 		TUTORIAL_STATE.SUCCESS:
 			tutorial_layer.success_tutorial()
+		TUTORIAL_STATE.INTERACT:
+			tutorial_layer.interact_tutorial()
 
 
 func _on_tree_exiting() -> void:

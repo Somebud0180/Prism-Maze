@@ -62,7 +62,6 @@ func next_level() -> void:
 		var new_level = get_next_level()
 		if new_level:
 			level_collection.append(new_level)
-			print(new_level)
 			load_rand_level(new_level)
 
 
@@ -327,6 +326,10 @@ func reset_game() -> void:
 
 
 func _is_valid_custom_level(level_string: String) -> String:
+	# Exit if empty
+	if level_string.is_empty():
+		return ""
+	
 	# 1) Generated Maze
 	if level_string == "GenMaze":
 		return level_string
