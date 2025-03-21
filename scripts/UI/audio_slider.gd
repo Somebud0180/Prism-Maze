@@ -13,8 +13,8 @@ func _input(event: InputEvent) -> void:
 	elif event.is_action_released("fine_control"):
 		step = 5.0
 
-func _on_value_changed(value: float) -> void:
-	if value == -30.0:
+func _on_value_changed(_value: float) -> void:
+	if _value == -30.0:
 		menu.set(target_property, -80)
 	else:
-		menu.set(target_property, value)
+		menu.set(target_property, _value)
