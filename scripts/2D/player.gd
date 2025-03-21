@@ -11,10 +11,14 @@ var gravity_direction = 1: # 1 for normal, -1 for upside-down
 		_gravity_change()
 
 @export var animated_sprite: AnimatedSprite2D
+@export var audio_player: AudioStreamPlayer2D
+
 @onready var menu = get_node("/root/Menu")
 @onready var game_manager = %GameManager
 
 var killable = false
+var fall_sound = load("res://resources/Sound/Player/Fall.wav")
+
 var game_initialized = false:
 	set(value):
 		game_initialized = value
@@ -23,6 +27,13 @@ var game_initialized = false:
 			killable = true
 		else:
 			killable = false
+
+var is_in_air = false:
+	set(value):
+		play_floor_hit(value, is_in_air)
+		is_in_air = value
+
+
 
 func go_to(input_position: Vector2):
 	position = input_position
@@ -45,12 +56,20 @@ func hide_on_death() -> void:
 		hide()
 
 
+func play_floor_hit(new_value: bool, old_value: bool) -> void:
+	if !new_value and new_value != old_value:
+		audio_player.stream = fall_sound
+		audio_player.volume_db = menu.sfx_volume
+		audio_player.play()
+
+
 func _gravity(delta: float):
 	# Add gravity based on gravity direction.
-		if gravity_direction == 1 and not is_on_floor():
+		if gravity_direction == 1 and not is_on_floor() or gravity_direction == -1 and not is_on_ceiling():
 			velocity += gravity_direction * get_gravity() * delta
-		elif gravity_direction == -1 and not is_on_ceiling():
-			velocity += gravity_direction * get_gravity() * delta
+			is_in_air = true
+		elif gravity_direction == 1 and is_on_floor() or gravity_direction == -1 and is_on_ceiling():
+			is_in_air = false
 
 
 func _ready():

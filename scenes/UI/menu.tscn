@@ -1,4 +1,4 @@
-[gd_scene load_steps=79 format=3 uid="uid://br2t4hanatnss"]
+[gd_scene load_steps=90 format=3 uid="uid://br2t4hanatnss"]
 
 [ext_resource type="Theme" uid="uid://bau50guyc4alk" path="res://resources/Theme/menu.tres" id="1_7yxt8"]
 [ext_resource type="Script" uid="uid://cnwd74ny2hf2q" path="res://scripts/UI/menu.gd" id="2_o131u"]
@@ -21,6 +21,8 @@
 [ext_resource type="Texture2D" uid="uid://ddwfg6atipo0i" path="res://resources/Menu/Graphics/SDFGI.png" id="17_hvuoq"]
 [ext_resource type="Texture2D" uid="uid://b51yf1mnhkc6j" path="res://resources/Menu/Headers/Graphics_Header.png" id="17_q4tpj"]
 [ext_resource type="Script" uid="uid://dg0mgoask60qa" path="res://scripts/UI/color_button.gd" id="17_ucr8h"]
+[ext_resource type="Texture2D" uid="uid://1v4qv34if5io" path="res://resources/Menu/Misc/Music.png" id="18_2ewfx"]
+[ext_resource type="Script" uid="uid://ch7e5fs2uwl0b" path="res://scripts/UI/audio.gd" id="18_bnowj"]
 [ext_resource type="Texture2D" uid="uid://bju7vgey6nhvw" path="res://resources/Menu/Graphics/Shadow.png" id="18_q4tpj"]
 [ext_resource type="Texture2D" uid="uid://bgxemtlrxcpgg" path="res://resources/Menu/Headers/Controls-Header.png" id="18_s1ob8"]
 [ext_resource type="Texture2D" uid="uid://cv1v7oqrqrym0" path="res://resources/Menu/Graphics/SDFGI-Full.png" id="18_xkl7s"]
@@ -29,11 +31,15 @@
 [ext_resource type="Texture2D" uid="uid://dfvku7oe2ae6y" path="res://resources/Game/Player-Sheet.png" id="19_p2cca"]
 [ext_resource type="Texture2D" uid="uid://cha05i3vt0svl" path="res://resources/Menu/Misc/Menu.png" id="19_xlwes"]
 [ext_resource type="StyleBox" uid="uid://vqm1soj8xnjh" path="res://resources/Theme/separator.tres" id="20_6p85y"]
+[ext_resource type="Texture2D" uid="uid://dmkasvvp23qkt" path="res://resources/Menu/Misc/MusicMuted.png" id="20_p5bkw"]
+[ext_resource type="Script" uid="uid://cr3ngduhxv807" path="res://scripts/UI/audio_slider.gd" id="20_sc8t4"]
 [ext_resource type="Texture2D" uid="uid://itwiqyff3egk" path="res://resources/Menu/Control Icons/Pause.png" id="20_tbd65"]
 [ext_resource type="Texture2D" uid="uid://7rov1q0wdy4i" path="res://resources/Menu/Control Icons/Exit.png" id="20_wg8ic"]
+[ext_resource type="Texture2D" uid="uid://dyjq2ifh87p7t" path="res://resources/Menu/Misc/SFXMuted.png" id="21_aevs6"]
 [ext_resource type="Texture2D" uid="uid://dgx4iqfxayl3s" path="res://resources/Controls/KBM/keyboard_arrows.png" id="21_vsims"]
 [ext_resource type="Texture2D" uid="uid://b2ctuu0ig3fse" path="res://resources/Controls/KBM/keyboard_wasd.png" id="22_ifku1"]
 [ext_resource type="Texture2D" uid="uid://bpfhnqlts6ljd" path="res://resources/Controls/KBM/keyboard_escape.png" id="22_tbd65"]
+[ext_resource type="Texture2D" uid="uid://clcctb7kklrsi" path="res://resources/Menu/Misc/SFX.png" id="22_x5kxs"]
 [ext_resource type="Texture2D" uid="uid://bhf1o42di43rv" path="res://resources/Controls/Controllers/stick_l.png" id="23_hvuoq"]
 [ext_resource type="Texture2D" uid="uid://cmmyb0rb743g5" path="res://resources/Controls/Controllers/plus_start.png" id="23_pjik4"]
 [ext_resource type="Texture2D" uid="uid://ckvudehqjwqxf" path="res://resources/Menu/Control Icons/Jump.png" id="24_xkl7s"]
@@ -54,8 +60,12 @@
 [ext_resource type="Texture2D" uid="uid://nwb2lr2a4txn" path="res://resources/Controls/KBM/mouse_move.png" id="31_mfpu8"]
 [ext_resource type="Texture2D" uid="uid://doonkqj6nopsx" path="res://resources/Controls/Controllers/stick_r.png" id="32_wg8ic"]
 [ext_resource type="Texture2D" uid="uid://1vi7svyglmjo" path="res://resources/Controls/Controllers/dpad.png" id="35_s1ob8"]
+[ext_resource type="Texture2D" uid="uid://bxs4apkjbgccb" path="res://resources/Menu/Misc/FineControl.png" id="43_3o1hb"]
+[ext_resource type="Texture2D" uid="uid://c1wrou21ncd3g" path="res://resources/Controls/KBM/keyboard_shift_icon.png" id="44_1qi2u"]
 [ext_resource type="Texture2D" uid="uid://cl34u7ep38jhx" path="res://resources/Menu/Control Icons/Zoom.png" id="44_vsims"]
 [ext_resource type="Texture2D" uid="uid://dg51oyjbk8xpj" path="res://resources/Controls/KBM/keyboard_i.png" id="45_ifku1"]
+[ext_resource type="Texture2D" uid="uid://dsxt2uo0ggluc" path="res://resources/Controls/Controllers/rt.png" id="45_qxfis"]
+[ext_resource type="Texture2D" uid="uid://b4em7x121q1qj" path="res://resources/Controls/Controllers/button_zr.png" id="46_5wffc"]
 [ext_resource type="Texture2D" uid="uid://bugnbckbsxckc" path="res://resources/Controls/KBM/keyboard_k.png" id="46_hvuoq"]
 [ext_resource type="Texture2D" uid="uid://c1hxy2sj457tk" path="res://resources/Menu/Overlay/Life.png" id="47_ifku1"]
 [ext_resource type="Texture2D" uid="uid://bka0g1o4egyee" path="res://resources/Menu/Control Icons/Screen.png" id="54_tsgqf"]
@@ -63,6 +73,18 @@
 [ext_resource type="Texture2D" uid="uid://c278452784qcv" path="res://resources/Controls/KBM/keyboard_e.png" id="55_2ewfx"]
 [ext_resource type="Texture2D" uid="uid://rhbf84hoa5co" path="res://resources/Controls/Controllers/button_outline_t_xb.png" id="55_7mjjf"]
 [ext_resource type="Texture2D" uid="uid://namppbr5u8s5" path="res://resources/Controls/Controllers/button_outline_t_nin.png" id="56_2ewfx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tsejx"]
+bg_color = Color(0.27451, 0.27451, 0.27451, 1)
+border_width_left = 3
+border_width_top = 1
+border_width_right = 3
+border_width_bottom = 1
+border_color = Color(0.273438, 0.273438, 0.273438, 1)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
 
 [sub_resource type="ButtonGroup" id="ButtonGroup_ucr8h"]
 allow_unpress = true
@@ -906,6 +928,7 @@ script = ExtResource("12_qg4he")
 [node name="2D" type="ScrollContainer" parent="MenuLayer/Settings/TabContainer"]
 layout_mode = 2
 theme = ExtResource("1_7yxt8")
+follow_focus = true
 metadata/_tab_index = 0
 
 [node name="MarginContainer" type="MarginContainer" parent="MenuLayer/Settings/TabContainer/2D"]
@@ -920,6 +943,7 @@ size_flags_vertical = 3
 theme = ExtResource("1_7yxt8")
 
 [node name="Settings Header" type="TextureRect" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D"]
+show_behind_parent = true
 custom_minimum_size = Vector2(256, 64)
 layout_mode = 2
 size_flags_vertical = 0
@@ -950,6 +974,98 @@ focus_next = NodePath("../Panel/VBoxContainer/HFlowContainer/White")
 focus_previous = NodePath("../Resolution")
 icon = ExtResource("14_pjik4")
 icon_alignment = 1
+
+[node name="AudioPlanel" type="Panel" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D"]
+custom_minimum_size = Vector2(256, 160)
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/AudioPlanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/AudioPlanel/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("16_whlyx")
+stretch_mode = 5
+
+[node name="Music" type="HBoxContainer" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/AudioPlanel/VBoxContainer" node_paths=PackedStringArray("slider", "texture_rect")]
+layout_mode = 2
+script = ExtResource("18_bnowj")
+icon = ExtResource("18_2ewfx")
+icon_cross = ExtResource("20_p5bkw")
+slider = NodePath("MusicSlider")
+texture_rect = NodePath("TextureRect")
+
+[node name="TextureRect" type="TextureRect" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/AudioPlanel/VBoxContainer/Music"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("18_2ewfx")
+stretch_mode = 4
+
+[node name="MusicSlider" type="HSlider" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/AudioPlanel/VBoxContainer/Music"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+min_value = -30.0
+max_value = 10.0
+step = 5.0
+rounded = true
+tick_count = 1
+script = ExtResource("20_sc8t4")
+target_property = &"music_volume"
+
+[node name="VSeparator" type="VSeparator" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/AudioPlanel/VBoxContainer/Music/MusicSlider"]
+show_behind_parent = true
+layout_mode = 2
+offset_left = 712.0
+offset_top = 4.0
+offset_right = 726.0
+offset_bottom = 22.0
+theme_override_styles/separator = SubResource("StyleBoxFlat_tsejx")
+
+[node name="SFX" type="HBoxContainer" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/AudioPlanel/VBoxContainer" node_paths=PackedStringArray("slider", "texture_rect")]
+layout_mode = 2
+script = ExtResource("18_bnowj")
+icon = ExtResource("22_x5kxs")
+icon_cross = ExtResource("21_aevs6")
+slider = NodePath("SFXSlider")
+texture_rect = NodePath("TextureRect")
+
+[node name="TextureRect" type="TextureRect" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/AudioPlanel/VBoxContainer/SFX"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("21_aevs6")
+stretch_mode = 4
+
+[node name="SFXSlider" type="HSlider" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/AudioPlanel/VBoxContainer/SFX"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+min_value = -30.0
+max_value = 10.0
+step = 5.0
+rounded = true
+script = ExtResource("20_sc8t4")
+target_property = &"sfx_volume"
+
+[node name="VSeparator" type="VSeparator" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/AudioPlanel/VBoxContainer/SFX/SFXSlider"]
+show_behind_parent = true
+layout_mode = 0
+offset_left = 712.0
+offset_top = 4.0
+offset_right = 726.0
+offset_bottom = 22.0
+theme_override_styles/separator = SubResource("StyleBoxFlat_tsejx")
 
 [node name="Panel" type="Panel" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D"]
 custom_minimum_size = Vector2(256, 160)
@@ -1193,9 +1309,6 @@ offset_top = 16.0
 offset_right = -16.0
 offset_bottom = 54.0
 grow_horizontal = 0
-focus_neighbor_left = NodePath("../TabContainer")
-focus_neighbor_bottom = NodePath("../TabContainer")
-focus_next = NodePath("../TabContainer")
 text = "X
 "
 
@@ -1252,14 +1365,7 @@ theme_override_styles/separator = ExtResource("13_tbd65")
 [node name="ScrollContainer" type="ScrollContainer" parent="MenuLayer/Controls/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-focus_neighbor_top = NodePath(".")
-focus_neighbor_right = NodePath(".")
-focus_neighbor_bottom = NodePath("VBoxContainer/Move Controls/Move")
-focus_next = NodePath("VBoxContainer/Move Controls/Move")
-focus_previous = NodePath(".")
-focus_mode = 2
 follow_focus = true
-draw_focus_border = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer"]
 layout_mode = 2
@@ -1268,6 +1374,11 @@ size_flags_vertical = 3
 
 [node name="Menu Controls" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../../../../Exit Controls")
+focus_neighbor_bottom = NodePath("../Pause_Exit Controls")
+focus_next = NodePath("../Pause_Exit Controls")
+focus_previous = NodePath("../../../../Exit Controls")
+focus_mode = 2
 texture = ExtResource("19_xlwes")
 stretch_mode = 4
 
@@ -1279,6 +1390,11 @@ theme_override_styles/separator = ExtResource("13_tbd65")
 
 [node name="Pause_Exit Controls" type="HBoxContainer" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../Menu Controls")
+focus_neighbor_bottom = NodePath("../Confirm Controls")
+focus_next = NodePath("../Confirm Controls")
+focus_previous = NodePath("../Menu Controls")
+focus_mode = 2
 
 [node name="Pause" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/Pause_Exit Controls"]
 custom_minimum_size = Vector2(64, 64)
@@ -1321,6 +1437,11 @@ stretch_mode = 4
 
 [node name="Confirm Controls" type="HBoxContainer" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../Pause_Exit Controls")
+focus_neighbor_bottom = NodePath("../Fine Controls")
+focus_next = NodePath("../Fine Controls")
+focus_previous = NodePath("../Pause_Exit Controls")
+focus_mode = 2
 
 [node name="Confirm" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/Confirm Controls"]
 custom_minimum_size = Vector2(64, 64)
@@ -1362,6 +1483,48 @@ texture = ExtResource("29_s1ob8")
 expand_mode = 3
 stretch_mode = 4
 
+[node name="Fine Controls" type="HBoxContainer" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../Confirm Controls")
+focus_neighbor_bottom = NodePath("../Move Controls")
+focus_next = NodePath("../Move Controls")
+focus_previous = NodePath("../Confirm Controls")
+focus_mode = 2
+
+[node name="FineControl" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/Fine Controls"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+focus_neighbor_top = NodePath("../..")
+focus_neighbor_bottom = NodePath("../../Jump Controls/Jump")
+focus_next = NodePath("../../Jump Controls/Jump")
+focus_previous = NodePath("../..")
+texture = ExtResource("43_3o1hb")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="HSeparator" type="HSeparator" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/Fine Controls"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/separator = ExtResource("20_6p85y")
+
+[node name="Shift" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/Fine Controls"]
+layout_mode = 2
+texture = ExtResource("44_1qi2u")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="Right Trigger Xb" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/Fine Controls"]
+layout_mode = 2
+texture = ExtResource("45_qxfis")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="Right Trigger Nin" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/Fine Controls"]
+layout_mode = 2
+texture = ExtResource("46_5wffc")
+expand_mode = 3
+stretch_mode = 4
+
 [node name="Controls Separator1" type="VSeparator" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer"]
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
@@ -1381,6 +1544,11 @@ theme_override_styles/separator = ExtResource("13_tbd65")
 
 [node name="Move Controls" type="HBoxContainer" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../Fine Controls")
+focus_neighbor_bottom = NodePath("../Jump Controls")
+focus_next = NodePath("../Jump Controls")
+focus_previous = NodePath("../Fine Controls")
+focus_mode = 2
 
 [node name="Move" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/Move Controls"]
 custom_minimum_size = Vector2(64, 64)
@@ -1424,6 +1592,11 @@ stretch_mode = 4
 
 [node name="Jump Controls" type="HBoxContainer" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../Move Controls")
+focus_neighbor_bottom = NodePath("../3D Move Controls")
+focus_next = NodePath("../3D Move Controls")
+focus_previous = NodePath("../Move Controls")
+focus_mode = 2
 
 [node name="Jump" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/Jump Controls"]
 custom_minimum_size = Vector2(64, 64)
@@ -1478,6 +1651,11 @@ theme_override_styles/separator = ExtResource("13_tbd65")
 
 [node name="3D Move Controls" type="HBoxContainer" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../Jump Controls")
+focus_neighbor_bottom = NodePath("../3D Jump Controls")
+focus_next = NodePath("../3D Jump Controls")
+focus_previous = NodePath("../Jump Controls")
+focus_mode = 2
 
 [node name="Move" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/3D Move Controls"]
 custom_minimum_size = Vector2(64, 64)
@@ -1519,6 +1697,11 @@ stretch_mode = 4
 
 [node name="3D Jump Controls" type="HBoxContainer" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../3D Move Controls")
+focus_neighbor_bottom = NodePath("../3D Camera Controls")
+focus_next = NodePath("../3D Camera Controls")
+focus_previous = NodePath("../3D Move Controls")
+focus_mode = 2
 
 [node name="Jump" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/3D Jump Controls"]
 custom_minimum_size = Vector2(64, 64)
@@ -1554,6 +1737,11 @@ stretch_mode = 4
 
 [node name="3D Camera Controls" type="HBoxContainer" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../3D Jump Controls")
+focus_neighbor_bottom = NodePath("../3D Zoom Controls")
+focus_next = NodePath("../3D Zoom Controls")
+focus_previous = NodePath("../3D Move Controls")
+focus_mode = 2
 
 [node name="Camera" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/3D Camera Controls"]
 custom_minimum_size = Vector2(64, 64)
@@ -1591,6 +1779,11 @@ stretch_mode = 4
 
 [node name="3D Zoom Controls" type="HBoxContainer" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../3D Camera Controls")
+focus_neighbor_bottom = NodePath("../3D Interact Controls")
+focus_next = NodePath("../3D Interact Controls")
+focus_previous = NodePath("../3D Camera Controls")
+focus_mode = 2
 
 [node name="Zoom" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/3D Zoom Controls"]
 custom_minimum_size = Vector2(64, 64)
@@ -1628,6 +1821,12 @@ stretch_mode = 4
 
 [node name="3D Interact Controls" type="HBoxContainer" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../3D Zoom Controls")
+focus_neighbor_right = NodePath("../../../../Exit Controls")
+focus_neighbor_bottom = NodePath("../Menu Controls")
+focus_next = NodePath("../Menu Controls")
+focus_previous = NodePath("../3D Zoom Controls")
+focus_mode = 2
 
 [node name="Interact" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/3D Interact Controls"]
 custom_minimum_size = Vector2(64, 64)
@@ -1674,9 +1873,11 @@ offset_top = 16.0
 offset_right = -16.0
 offset_bottom = 54.0
 grow_horizontal = 0
-focus_neighbor_left = NodePath("../VBoxContainer/ScrollContainer")
-focus_neighbor_bottom = NodePath("../VBoxContainer/ScrollContainer")
-focus_next = NodePath("../VBoxContainer/ScrollContainer")
+focus_neighbor_left = NodePath("../VBoxContainer/ScrollContainer/VBoxContainer/Menu Controls")
+focus_neighbor_top = NodePath("../VBoxContainer/ScrollContainer/VBoxContainer/3D Interact Controls")
+focus_neighbor_bottom = NodePath("../VBoxContainer/ScrollContainer/VBoxContainer/Menu Controls")
+focus_next = NodePath("../VBoxContainer/ScrollContainer/VBoxContainer/Menu Controls")
+focus_previous = NodePath("../VBoxContainer/ScrollContainer/VBoxContainer/3D Interact Controls")
 text = "X
 "
 

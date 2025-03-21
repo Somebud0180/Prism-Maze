@@ -96,3 +96,5 @@ polygon = PackedVector2Array(11, -1, 21, -1, 27, -20, 27, -22, 18, -30, 14, -30,
 offset = Vector2(16, -16)
 position_smoothing_enabled = true
 script = ExtResource("3_6nks7")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]

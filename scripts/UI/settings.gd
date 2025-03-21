@@ -176,7 +176,6 @@ func _update_player_color() -> void:
 	if player_ref:
 		player_ref.change_color()
 
-
 # 3D Settings
 func _graphics_check() -> void:
 	if RenderingServer.get_current_rendering_method() != "forward_plus":

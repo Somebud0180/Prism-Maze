@@ -46,13 +46,17 @@ func hide_on_death() -> void:
 func play_floor_hit(new_value: bool, old_value: bool) -> void:
 	if !new_value and new_value != old_value:
 		audio_player.stream = fall_sound
+		audio_player.volume_db = menu.sfx_volume
 		audio_player.play()
 
 
 func play_wall_grab(new_value: bool, old_value: bool) -> void:
 	if new_value and new_value != old_value:
 		audio_player.stream = grab_sound
+		audio_player.volume_db = menu.sfx_volume
 		audio_player.play()
+
+
 func _ready() -> void:
 	# Disable obect interaction before loading
 	set_collision_layer_value(2, false)

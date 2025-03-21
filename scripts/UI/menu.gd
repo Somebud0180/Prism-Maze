@@ -75,6 +75,12 @@ var resolution = Vector2i(1280, 720):
 		resolution = value
 		_config_save()
 
+var music_volume = 0.0:
+	set(value):
+		music_volume = value
+		audio_player.volume_db = music_volume
+
+var sfx_volume = 0.0
 
 var shadow_enabled: bool = true:
 	set(value):
@@ -203,7 +209,7 @@ func _on_play_3d_pressed() -> void:
 func _on_settings_pressed() -> void:
 	menu_state = STATE.SETTINGS
 	_hide_and_show("main", "settings")
-	$"MenuLayer/Settings/TabContainer".grab_focus()
+	$"MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/Resolution".grab_focus()
 
 
 func _on_controls_pressed() -> void:
@@ -394,12 +400,9 @@ func fade_music_out():
 
 
 func fade_music_in():
-	if audio_player.volume_db == 0:
-		return
-	
 	# tween music volume up to 0
 	tween_music = get_tree().create_tween()
-	tween_music.tween_property(audio_player, "volume_db", 0, transition_duration).set_trans(transition_type).set_ease(Tween.EASE_IN)
+	tween_music.tween_property(audio_player, "volume_db", music_volume, transition_duration).set_trans(transition_type).set_ease(Tween.EASE_IN)
 	tween_music.play()
 
 

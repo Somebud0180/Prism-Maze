@@ -221,11 +221,12 @@ infinite_levels = true
 [node name="MainLayer" type="TileMapLayer" parent="."]
 unique_name_in_owner = true
 
-[node name="Player" type="CharacterBody2D" parent="." node_paths=PackedStringArray("animated_sprite") groups=["Player"]]
+[node name="Player" type="CharacterBody2D" parent="." node_paths=PackedStringArray("animated_sprite", "audio_player") groups=["Player"]]
 unique_name_in_owner = true
 collision_layer = 2
 script = ExtResource("2_musdt")
 animated_sprite = NodePath("AnimatedSprite2D")
+audio_player = NodePath("AudioStreamPlayer2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
 z_index = 1
@@ -245,6 +246,8 @@ offset = Vector2(16, -16)
 process_callback = 0
 position_smoothing_enabled = true
 script = ExtResource("4_j64ky")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Player"]
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 unique_name_in_owner = true
