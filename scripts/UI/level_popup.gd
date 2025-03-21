@@ -6,7 +6,8 @@ class_name level_popup
 @export var animation_player: AnimationPlayer
 
 enum POPUP { NONE, FINISH, DEATH }
-var popup_state = POPUP.NONE
+@export var popup_state = POPUP.NONE
+
 var is_on_side: bool = false
 var is_playing: bool = false:
 	get():
@@ -75,7 +76,6 @@ func _on_finish_pressed() -> void:
 
 func _on_restart_pressed() -> void:
 	var menu = get_node("/root/Menu")
-	var game_manager = get_node("/root/Game/GameManager")
 	
 	if is_on_side:
 		animation_player.play("hide_death_side")
@@ -86,6 +86,7 @@ func _on_restart_pressed() -> void:
 	menu.is_popup_displaying = false
 	
 	if menu.in_game:
+		var game_manager = get_node("/root/Game/GameManager")
 		game_manager.reset_game()
 		menu._reset_game()
 	elif menu.in_game_3d:

@@ -77,7 +77,7 @@ func _gravity(delta: float):
 	# Add gravity based on gravity direction.
 		if (gravity_direction == 1 and not is_on_floor()) or (gravity_direction == -1 and not is_on_ceiling()):
 			is_in_air = true
-			if is_on_wall_only():
+			if is_valid_wall():
 				if (gravity_direction == 1 and velocity.y < 0) or (gravity_direction == -1 and velocity.y > 0):
 					# Apply reduced gravity for wall sliding only when falling
 					velocity += gravity_direction * get_gravity() * WALL_SLIDE_FACTOR * delta
@@ -95,11 +95,8 @@ func is_valid_wall() -> bool:
 		
 		# Check if collider is a GridMap
 		if collider is GridMap:
-			# Get the cell item index
-			var cell_item = collider.get_collision_layer_value(3)
-			
 			# Only allow wall jump on normal walls (item 0)
-			return !cell_item
+			return !collider.get_collision_layer_value(3)
 			
 		return true  # Allow wall jump on non-GridMap surfaces
 	return false

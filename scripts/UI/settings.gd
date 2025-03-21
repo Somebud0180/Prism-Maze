@@ -24,6 +24,7 @@ func _manage_resolution_picker() -> void:
 	var platform = OS.get_name()
 	if platform == "Web" or platform == "iOS":
 		resolution_picker.hide()
+		fullscreen_toggle.hide()
 		return
 	
 	# Check for window state if fullscreen
@@ -140,7 +141,7 @@ func _add_resolutions():
 
 
 func _add_full_window_resolution():
-	var rect = DisplayServer.screen_get_usable_rect()
+	var rect = DisplayServer.get_display_safe_area()
 	var fw_w = int(rect.size.x)
 	var fw_h = int(rect.size.y)
 	

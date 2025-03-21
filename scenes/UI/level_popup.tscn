@@ -1,8 +1,9 @@
-[gd_scene load_steps=21 format=3 uid="uid://cty4nmtt40uli"]
+[gd_scene load_steps=22 format=3 uid="uid://cty4nmtt40uli"]
 
 [ext_resource type="Theme" uid="uid://bau50guyc4alk" path="res://resources/Theme/menu.tres" id="1_jpmka"]
 [ext_resource type="Script" uid="uid://dv6t0v2h0mu5l" path="res://scripts/UI/level_popup.gd" id="2_ataru"]
 [ext_resource type="Texture2D" uid="uid://du1fhq083pt1n" path="res://resources/Menu/PatchRects/Menu.png" id="3_5o2pc"]
+[ext_resource type="Theme" uid="uid://ecyte481gy0d" path="res://resources/Theme/LevelPopup.tres" id="3_ataru"]
 [ext_resource type="Texture2D" uid="uid://dcrmd8a7krrgb" path="res://resources/Menu/Timer.png" id="4_grn5l"]
 [ext_resource type="Texture2D" uid="uid://b0g7maqisp0k7" path="res://resources/Menu/LevelTimer.png" id="5_ga3kf"]
 [ext_resource type="Texture2D" uid="uid://b78vfepjp4r7a" path="res://resources/Menu/Flag.png" id="6_2r6d8"]
@@ -14,31 +15,31 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Finish:position")
+tracks/0/path = NodePath("DeathScreen:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(515, 185)]
+"values": [Vector2(64, 1024)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Finish:scale")
+tracks/1/path = NodePath("DeathScreen:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(1, 1)]
+"values": [0.0]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Finish:visible")
+tracks/2/path = NodePath("DeathScreen:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -50,38 +51,50 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("DeathScreen:position")
+tracks/3/path = NodePath("FinishScreen:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(128, 1024)]
+"values": [Vector2(64, 64)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("DeathScreen:visible")
+tracks/4/path = NodePath("FinishScreen:scale")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [Vector2(1, 1)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("DeathScreen:rotation")
+tracks/5/path = NodePath("FinishScreen:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("..:popup_state")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
 }
 
 [sub_resource type="Animation" id="Animation_re1m3"]
@@ -97,7 +110,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(2, 2),
 "update": 0,
-"values": [Vector2(128, 128), Vector2(128, -896)]
+"values": [Vector2(64, 64), Vector2(64, -960)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -109,7 +122,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [true, true]
+"values": [true, false]
 }
 
 [sub_resource type="Animation" id="Animation_hncxo"]
@@ -126,7 +139,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(0.5, 0.5),
 "update": 0,
-"values": [Vector2(410, 128), Vector2(410, -896)]
+"values": [Vector2(-96, 64), Vector2(-96, -960)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -143,27 +156,39 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_2w4hx"]
 resource_name = "hide_finish"
-length = 0.5
+length = 0.25
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Finish:position")
+tracks/0/path = NodePath("FinishScreen:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(2, 2),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(515, 185), Vector2(515, -500)]
+"values": [Vector2(64, 64)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Finish:visible")
+tracks/1/path = NodePath("FinishScreen:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
+"times": PackedFloat32Array(0, 0.133333, 0.25),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.9, 0.9), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FinishScreen:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.25),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -175,23 +200,35 @@ length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Finish:position")
+tracks/0/path = NodePath("FinishScreen:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(2, 2),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(797, 185), Vector2(797, -500)]
+"values": [Vector2(-96, 64)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Finish:visible")
+tracks/1/path = NodePath("FinishScreen:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
+"times": PackedFloat32Array(0, 0.133333, 0.25),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.9, 0.9), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FinishScreen:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.25),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -199,7 +236,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_5mqf4"]
 resource_name = "return_death"
-length = 0.5
+length = 0.25
 step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -208,10 +245,10 @@ tracks/0/path = NodePath("DeathScreen:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.25, 0.5),
-"transitions": PackedFloat32Array(2, 2),
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(0.5, 0.5),
 "update": 0,
-"values": [Vector2(410, 128), Vector2(128, 128)]
+"values": [Vector2(-96, 64), Vector2(64, 64)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -220,48 +257,36 @@ tracks/1/path = NodePath("DeathScreen:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true, true]
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_qayne"]
 resource_name = "return_finish"
-length = 0.5
+length = 0.25
 step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Finish:position")
+tracks/0/path = NodePath("FinishScreen:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.25, 0.5),
-"transitions": PackedFloat32Array(2, 2),
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(0.5, 0.5),
 "update": 0,
-"values": [Vector2(797, 185), Vector2(515, 185)]
+"values": [Vector2(-96, 64), Vector2(64, 64)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Finish:scale")
+tracks/1/path = NodePath("FinishScreen:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.25),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Finish:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.25),
+"times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
@@ -281,7 +306,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(0.5, 0.5),
 "update": 0,
-"values": [Vector2(128, 1024), Vector2(128, 128)]
+"values": [Vector2(64, 1024), Vector2(64, 64)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -307,6 +332,18 @@ tracks/2/keys = {
 "update": 0,
 "values": [0.0, -0.10472, 0.139626, 0.0]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("..:popup_state")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
 
 [sub_resource type="Animation" id="Animation_pto1w"]
 resource_name = "show_finish"
@@ -315,38 +352,50 @@ step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Finish:position")
+tracks/0/path = NodePath("FinishScreen:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.25, 0.5),
-"transitions": PackedFloat32Array(2, 2, -2),
+"transitions": PackedFloat32Array(0.5, -2, -2),
 "update": 0,
-"values": [Vector2(577.5, 272.5), Vector2(490, 150), Vector2(515, 185)]
+"values": [Vector2(0.45, 0.45), Vector2(1.15, 1.15), Vector2(1, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Finish:scale")
+tracks/1/path = NodePath("FinishScreen:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.25, 0.5),
-"transitions": PackedFloat32Array(2, 2, -2),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0.5, 0.5), Vector2(1.2, 1.2), Vector2(1, 1)]
+"values": [Vector2(64, 64)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Finish:visible")
+tracks/2/path = NodePath("FinishScreen:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true, true]
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("..:popup_state")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
 }
 
 [sub_resource type="Animation" id="Animation_coxp6"]
@@ -363,7 +412,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.25),
 "transitions": PackedFloat32Array(0.5, 0.5),
 "update": 0,
-"values": [Vector2(128, 128), Vector2(410, 128)]
+"values": [Vector2(64, 64), Vector2(-96, 64)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -372,49 +421,37 @@ tracks/1/path = NodePath("DeathScreen:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.25),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true, true]
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_tj0vq"]
 resource_name = "side_finish"
 length = 0.25
-step = 0.01
+step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Finish:position")
+tracks/0/path = NodePath("FinishScreen:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.25),
 "transitions": PackedFloat32Array(0.5, 0.5),
 "update": 0,
-"values": [Vector2(515, 185), Vector2(797, 185)]
+"values": [Vector2(64, 64), Vector2(-96, 64)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Finish:scale")
+tracks/1/path = NodePath("FinishScreen:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Finish:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(0.5),
 "update": 1,
 "values": [true]
 }
@@ -443,34 +480,38 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_jpmka")
 script = ExtResource("2_ataru")
-timer_label = NodePath("PopupLayer/Finish/VBoxContainer/Timer HBox/Timer")
-level_label = NodePath("PopupLayer/Finish/VBoxContainer/Level Timer HBox/LevelTimer")
+timer_label = NodePath("PopupLayer/FinishScreen/Finish/VBoxContainer/Timer HBox/Timer")
+level_label = NodePath("PopupLayer/FinishScreen/Finish/VBoxContainer/Level Timer HBox/LevelTimer")
 animation_player = NodePath("AnimationPlayer")
 
 [node name="PopupLayer" type="CanvasLayer" parent="."]
 layer = 2
 
-[node name="Finish" type="NinePatchRect" parent="PopupLayer"]
+[node name="FinishScreen" type="AspectRatioContainer" parent="PopupLayer"]
 visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -125.0
-offset_top = -175.0
-offset_right = 125.0
-offset_bottom = 175.0
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 64.0
+offset_top = 64.0
+offset_right = -64.0
+offset_bottom = -64.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_jpmka")
+pivot_offset = Vector2(576, 296)
+theme = ExtResource("3_ataru")
+ratio = 0.75
+
+[node name="Finish" type="NinePatchRect" parent="PopupLayer/FinishScreen"]
+layout_mode = 2
+theme = ExtResource("3_ataru")
 texture = ExtResource("3_5o2pc")
 patch_margin_left = 5
 patch_margin_top = 5
 patch_margin_right = 5
 patch_margin_bottom = 5
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PopupLayer/Finish"]
+[node name="VBoxContainer" type="VBoxContainer" parent="PopupLayer/FinishScreen/Finish"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.05
@@ -481,52 +522,52 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="Timer HBox" type="HBoxContainer" parent="PopupLayer/Finish/VBoxContainer"]
+[node name="Timer HBox" type="HBoxContainer" parent="PopupLayer/FinishScreen/Finish/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 0
 alignment = 1
 
-[node name="Timer Icon" type="TextureRect" parent="PopupLayer/Finish/VBoxContainer/Timer HBox"]
-custom_minimum_size = Vector2(48, 48)
+[node name="Timer Icon" type="TextureRect" parent="PopupLayer/FinishScreen/Finish/VBoxContainer/Timer HBox"]
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 texture = ExtResource("4_grn5l")
 stretch_mode = 5
 
-[node name="Timer" type="RichTextLabel" parent="PopupLayer/Finish/VBoxContainer/Timer HBox"]
+[node name="Timer" type="RichTextLabel" parent="PopupLayer/FinishScreen/Finish/VBoxContainer/Timer HBox"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "00:00.00"
 fit_content = true
 scroll_active = false
 
-[node name="Time Separator" type="VSeparator" parent="PopupLayer/Finish/VBoxContainer"]
+[node name="Time Separator" type="VSeparator" parent="PopupLayer/FinishScreen/Finish/VBoxContainer"]
 custom_minimum_size = Vector2(0, 16)
 layout_mode = 2
 
-[node name="Level Timer HBox" type="HBoxContainer" parent="PopupLayer/Finish/VBoxContainer"]
+[node name="Level Timer HBox" type="HBoxContainer" parent="PopupLayer/FinishScreen/Finish/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 0
 alignment = 1
 
-[node name="Level Icon" type="TextureRect" parent="PopupLayer/Finish/VBoxContainer/Level Timer HBox"]
-custom_minimum_size = Vector2(48, 48)
+[node name="Level Icon" type="TextureRect" parent="PopupLayer/FinishScreen/Finish/VBoxContainer/Level Timer HBox"]
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 texture = ExtResource("5_ga3kf")
 stretch_mode = 5
 
-[node name="LevelTimer" type="RichTextLabel" parent="PopupLayer/Finish/VBoxContainer/Level Timer HBox"]
+[node name="LevelTimer" type="RichTextLabel" parent="PopupLayer/FinishScreen/Finish/VBoxContainer/Level Timer HBox"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "00:00.00"
 fit_content = true
 scroll_active = false
 
-[node name="VSeparator" type="VSeparator" parent="PopupLayer/Finish/VBoxContainer"]
+[node name="VSeparator" type="VSeparator" parent="PopupLayer/FinishScreen/Finish/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Finish" type="Button" parent="PopupLayer/Finish/VBoxContainer"]
-custom_minimum_size = Vector2(64, 64)
+[node name="Finish" type="Button" parent="PopupLayer/FinishScreen/Finish/VBoxContainer"]
+custom_minimum_size = Vector2(64, 96)
 layout_mode = 2
 icon = ExtResource("6_2r6d8")
 icon_alignment = 1
@@ -534,13 +575,13 @@ expand_icon = true
 
 [node name="DeathScreen" type="AspectRatioContainer" parent="PopupLayer"]
 visible = false
-anchors_preset = 15
+anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 128.0
+offset_left = 64.0
 offset_top = 1024.0
-offset_right = -128.0
-offset_bottom = 768.0
+offset_right = -64.0
+offset_bottom = 896.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(512, 232)
@@ -597,6 +638,6 @@ libraries = {
 &"": SubResource("AnimationLibrary_1o0hk")
 }
 
-[connection signal="pressed" from="PopupLayer/Finish/VBoxContainer/Finish" to="." method="_on_finish_pressed"]
+[connection signal="pressed" from="PopupLayer/FinishScreen/Finish/VBoxContainer/Finish" to="." method="_on_finish_pressed"]
 [connection signal="pressed" from="PopupLayer/DeathScreen/NinePatchRect/Death/Restart" to="." method="_on_restart_pressed"]
 [connection signal="current_animation_changed" from="AnimationPlayer" to="." method="_on_animation_player_current_animation_changed"]

@@ -391,7 +391,7 @@ transform = Transform3D(1, 4.79758e-10, 0, -3.71074e-10, 1, -2.32831e-10, 2.3283
 
 [node name="ThirdPersonCamera" parent="Player3D/Camera/CameraPivot" instance=ExtResource("3_nj5rp")]
 unique_name_in_owner = true
-transform = Transform3D(1, 4.81123e-10, 4.65661e-10, -1.30103e-09, 1, -4.65661e-10, -2.32831e-10, 0, 1, -1.11759e-08, -0.00579548, 1.86265e-09)
+transform = Transform3D(1, 4.81123e-10, 4.65661e-10, -1.30103e-09, 1, -4.65661e-10, -2.32831e-10, 0, 1, 0, 0, 0)
 distance_from_pivot = 6.0
 max_zoom_distance = 16.0
 pivot_offset = Vector2(0, 0.5)

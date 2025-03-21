@@ -145,12 +145,8 @@ func _input(event):
 			STATE.MAIN:
 				# Recover menu state
 				menu_state = last_state
-				
-				if in_game:
-					animation_player.play("hide_main_invisible")
-					_manage_popup(menu_state)
-				elif in_game_3d:
-					animation_player.play("hide_main_invisible")
+				animation_player.play("hide_main_invisible")
+				_manage_popup(last_state)
 
 
 func manage_background(_is_visible: bool):
@@ -230,6 +226,8 @@ func _reset_game() -> void:
 			animation_player.play("show_main")
 		else:
 			popup_ref.is_on_side = false
+	else:
+		animation_player.play("show_main")
 	
 	character_life = 5
 	in_game = false
@@ -252,6 +250,8 @@ func _reset_game_3d() -> void:
 			animation_player.play("show_main")
 		else:
 			popup_ref.is_on_side = false
+	else:
+		animation_player.play("show_main")
 	
 	character_life = 5
 	in_game_3d = false
@@ -280,7 +280,7 @@ func _manage_popup(state: STATE) -> void:
 				popup_ref.animation_player.play("side_death")
 			
 			popup_ref.is_on_side = true
-		elif state == Menu.STATE.GAME and popup_ref.is_on_side:
+		elif state != Menu.STATE.MAIN and popup_ref.is_on_side:
 			if popup_ref.popup_state == level_popup.POPUP.FINISH:
 				popup_ref.animation_player.play("return_finish")
 			elif popup_ref.popup_state == level_popup.POPUP.DEATH:
@@ -307,9 +307,8 @@ func _check_health() -> void:
 		
 		menu_state = STATE.OVERLAY
 		player.hide_on_death()
-		_popup_scene.popup_state = level_popup.POPUP.DEATH
-		_popup_scene.animation_player.play("show_death")
 		is_popup_displaying = true
+		_popup_scene.animation_player.play("show_death")
 
 
 func _manage_touch_controller():
@@ -337,6 +336,7 @@ func _config_load():
 	
 	
 	# Restore configuration
+	DisplayServer.window_set_position(config.get_value("Game", "window_position", Vector2i(0, 0)))
 	resolution = config.get_value("Game", "window_size", Vector2i(1280, 720))
 	fullscreen = config.get_value("Game", "fullscreen", false)
 	player_color = config.get_value("Game", "player_color", Color.WHITE)
@@ -358,6 +358,7 @@ func _config_save():
 	var config = ConfigFile.new()
 	
 	# Store Game Settings
+	config.set_value("Game", "window_position", DisplayServer.window_get_position())
 	config.set_value("Game", "window_size", resolution)
 	config.set_value("Game", "fullscreen", fullscreen)
 	config.set_value("Game", "player_color", player_color)
@@ -369,3 +370,7 @@ func _config_save():
 	
 	# Save it to a file (overwrite if already exists).
 	config.save("user://settings.cfg")
+
+
+func _on_tree_exiting() -> void:
+	_config_save()

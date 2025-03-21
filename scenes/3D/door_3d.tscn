@@ -1,6 +1,7 @@
-[gd_scene load_steps=17 format=4 uid="uid://ctmtxa4b7y3um"]
+[gd_scene load_steps=18 format=4 uid="uid://ctmtxa4b7y3um"]
 
 [ext_resource type="Texture2D" uid="uid://uwuhb7x6umay" path="res://resources/Game 3D/Model/Door_Door.png" id="1_qm7m6"]
+[ext_resource type="AudioStream" uid="uid://g8bjkgny6u0s" path="res://resources/Sound/Level/Finish.wav" id="2_60xlx"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0f2o8"]
 resource_name = "Material.005"
@@ -246,3 +247,8 @@ shape = SubResource("BoxShape3D_60xlx")
 libraries = {
 &"": SubResource("AnimationLibrary_vas5g")
 }
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Door"]
+unique_name_in_owner = true
+stream = ExtResource("2_60xlx")
+unit_size = 15.0

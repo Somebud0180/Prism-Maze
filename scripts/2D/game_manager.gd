@@ -11,6 +11,8 @@ signal finished_level_set
 @onready var menu = get_node("/root/Menu")
 @onready var main_layer = %MainLayer
 @onready var player = %Player
+@onready var animation_player = %AnimationPlayer
+@onready var audio_player = %AudioStreamPlayer2D
 
 ## Enables unlimited levels.  [code]level_amount[/code]  is disregarded when enabled.
 @export var infinite_levels: bool = false
@@ -39,6 +41,7 @@ var game_mode: int = 2  # 1: Platformer, 2: Maze
 var platform_list: Array[int] = []
 var maze_list: Array[int] = []
 
+var finish_sound = load("res://resources/Sound/Level/Finish.wav")
 
 func _ready() -> void:
 	# Reset the key color list
@@ -202,23 +205,25 @@ func progress_level() -> void:
 	# Increase level index and load next
 	level += 1
 	next_level()
+	audio_player.stream = finish_sound
+	audio_player.play()
 	
 	# If completed all levels, finalize
 	if level == level_amount:
 		if menu.menu_state == Menu.STATE.GAMEMIXED:
 			var _level = get_tree().get_first_node_in_group("3DLevel")
+			
+			animation_player.play("show_confetti")
 			_level.open_door()
-			return
-		
-		menu.is_timer_running = false
-		menu.is_popup_displaying = true
-		
-		var popup_scene = get_tree().get_root().get_node_or_null("LevelPopup")
-		
-		if popup_scene != null:
-			popup_scene.popup_state = level_popup.POPUP.FINISH
-			popup_scene.output_timer(snapped(menu.time_elapsed, 0.01), level_times)
-			popup_scene.animation_player.play("show_finish")
+		else:
+			menu.is_timer_running = false
+			menu.is_popup_displaying = true
+			
+			var popup_scene = get_tree().get_root().get_node_or_null("LevelPopup")
+			
+			if popup_scene != null:
+				popup_scene.output_timer(snapped(menu.time_elapsed, 0.01), level_times)
+				popup_scene.animation_player.play("show_finish")
 
 
 func load_level() -> void:

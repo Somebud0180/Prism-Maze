@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://ecyte481gy0d"]
+
+[ext_resource type="StyleBox" uid="uid://b4mewmdnj56qd" path="res://resources/Theme/v_separator.tres" id="1_dmndt"]
+
+[resource]
+RichTextLabel/font_sizes/normal_font_size = 48
+VSeparator/styles/separator = ExtResource("1_dmndt")

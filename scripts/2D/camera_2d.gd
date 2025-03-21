@@ -31,14 +31,16 @@ func _on_viewport_size_changed() -> void:
 	# Adjust zoom based on current game mode
 	var base_zoom = ZOOM_MAZE if game_manager.game_mode == 2 else ZOOM_PLATFORM
 	
-	# Calculate zoom factor based on the smaller dimension
-	var zoom_factor = min(
-		viewport_size.x / BASE_RESOLUTION.x,
-		viewport_size.y / BASE_RESOLUTION.y
-	)
+	# Calculate zoom based on aspect ratio comparison
+	var zoom_factor = 1.0
+	if aspect_ratio > base_aspect_ratio:
+		# Wider screen - maintain height and show more horizontally
+		zoom_factor = viewport_size.y / BASE_RESOLUTION.y
+	else:
+		# Taller screen - maintain width
+		zoom_factor = viewport_size.x / BASE_RESOLUTION.x
 	
-	# Calculate adjusted zoom that maintains proportions
-	var adjusted_zoom = Vector2(base_zoom, base_zoom) / zoom_factor
+	var adjusted_zoom = Vector2.ONE * base_zoom / zoom_factor
 	
 	# Apply zoom smoothly
 	if camera_tween and camera_tween.is_running():
