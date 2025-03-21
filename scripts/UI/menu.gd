@@ -331,10 +331,6 @@ func _check_health() -> void:
 
 
 func _manage_touch_controller():
-	var platform = OS.get_name()
-	if platform != "iOS":
-		return
-	
 	var virtual_controller = _VirtualControllerHelper.get_virtual_controller()
 	if virtual_controller:
 		if menu_state == STATE.GAME or menu_state == STATE.GAME3D or menu_state == STATE.GAMEMIXED: 
