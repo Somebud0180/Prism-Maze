@@ -6,12 +6,19 @@ const _VirtualControllerHelper = preload("res://scripts/Misc/virtual_controller_
 @export var main: NinePatchRect
 @export var settings: NinePatchRect
 @export var animation_player: AnimationPlayer
+@export var audio_player: AudioStreamPlayer
 
 @export var game_overlay: CanvasLayer
 @export var health_bar: ProgressBar
 
 @onready var settings_node = %Settings
 @onready var menu_button = %MenuButton
+
+@export var transition_duration = 0.5
+@export var transition_type = 1
+
+var main_theme = load("res://resources/Sound/Music/Main.wav")
+var tween_music
 
 var is_loading = false
 var last_state = STATE.MAIN
@@ -106,6 +113,9 @@ func _process(delta: float) -> void:
 
 
 func _ready() -> void:
+	audio_player.stream = main_theme
+	audio_player.play()
+	
 	$MenuLayer.show()
 	$GameOverlay.hide()
 	animation_player.play("RESET_main")
@@ -143,6 +153,9 @@ func _input(event):
 				await animation_player.animation_finished
 				$MenuLayer/Main/Main/VBoxContainer/Play.grab_focus()
 			STATE.MAIN:
+				if (!in_game and !in_game_3d) and menu_state == STATE.MAIN:
+					return
+				
 				# Recover menu state
 				menu_state = last_state
 				animation_player.play("hide_main_invisible")
@@ -370,6 +383,24 @@ func _config_save():
 	
 	# Save it to a file (overwrite if already exists).
 	config.save("user://settings.cfg")
+
+
+func fade_music_out():
+	# tween music volume down to -80
+	print("Fading out")
+	tween_music = get_tree().create_tween()
+	tween_music.tween_property(audio_player, "volume_db", -80, transition_duration).set_trans(transition_type).set_ease(Tween.EASE_IN)
+	tween_music.play()
+
+
+func fade_music_in():
+	if audio_player.volume_db == 0:
+		return
+	
+	# tween music volume up to 0
+	tween_music = get_tree().create_tween()
+	tween_music.tween_property(audio_player, "volume_db", 0, transition_duration).set_trans(transition_type).set_ease(Tween.EASE_IN)
+	tween_music.play()
 
 
 func _on_tree_exiting() -> void:

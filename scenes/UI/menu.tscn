@@ -484,6 +484,20 @@ tracks/1/keys = {
 "update": 1,
 "values": [true, false]
 }
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"fade_music_out"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_2ywoo"]
 resource_name = "hide_settings"
@@ -618,6 +632,20 @@ tracks/1/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"fade_music_in"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_antcs"]
 resource_name = "show_settings"
@@ -687,7 +715,7 @@ _data = {
 &"show_settings": SubResource("Animation_antcs")
 }
 
-[node name="Menu" type="Control" node_paths=PackedStringArray("main", "settings", "animation_player", "game_overlay", "health_bar")]
+[node name="Menu" type="Control" node_paths=PackedStringArray("main", "settings", "animation_player", "audio_player", "game_overlay", "health_bar")]
 process_priority = 1
 layout_mode = 3
 anchors_preset = 15
@@ -703,6 +731,7 @@ script = ExtResource("2_o131u")
 main = NodePath("MenuLayer/Main/Main")
 settings = NodePath("MenuLayer/Settings")
 animation_player = NodePath("AnimationPlayer")
+audio_player = NodePath("AudioStreamPlayer")
 game_overlay = NodePath("GameOverlay")
 health_bar = NodePath("GameOverlay/HBoxContainer/Health/Bar")
 
@@ -1763,6 +1792,8 @@ centered = false
 libraries = {
 &"": SubResource("AnimationLibrary_nyjex")
 }
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
 [connection signal="tree_exiting" from="." to="." method="_on_tree_exiting"]
 [connection signal="pressed" from="MenuLayer/Main/Main/VBoxContainer/Play" to="." method="_on_play_pressed"]

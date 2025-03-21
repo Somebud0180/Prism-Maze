@@ -45,6 +45,14 @@ func hide_on_death() -> void:
 		hide()
 
 
+func _gravity(delta: float):
+	# Add gravity based on gravity direction.
+		if gravity_direction == 1 and not is_on_floor():
+			velocity += gravity_direction * get_gravity() * delta
+		elif gravity_direction == -1 and not is_on_ceiling():
+			velocity += gravity_direction * get_gravity() * delta
+
+
 func _ready():
 	change_color()
 	
@@ -60,14 +68,14 @@ func _on_game_manager_loaded():
 func _physics_process(delta: float) -> void:
 	# Don't process physics until we're properly initialized
 	if !game_initialized or (menu.menu_state != Menu.STATE.GAME and menu.menu_state != Menu.STATE.GAMEMIXED):
+		if game_manager.game_mode == 1:
+			_gravity(delta)
+			move_and_slide()
+		
 		return
 	
 	if game_manager.game_mode == 1:
-		# Add gravity based on gravity direction.
-		if gravity_direction == 1 and not is_on_floor():
-			velocity += gravity_direction * get_gravity() * delta
-		elif gravity_direction == -1 and not is_on_ceiling():
-			velocity += gravity_direction * get_gravity() * delta
+		_gravity(delta)
 		
 		if (gravity_direction == 1 and is_on_floor()) or (gravity_direction == -1 and is_on_ceiling()):
 			jump_credit = 1
