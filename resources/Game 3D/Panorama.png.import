@@ -3,16 +3,17 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://d2elk63rfe7l2"
+path.s3tc="res://.godot/imported/Panorama.png-6279e9ab94a1f38686a5370136c34a70.s3tc.ctex"
 path.etc2="res://.godot/imported/Panorama.png-6279e9ab94a1f38686a5370136c34a70.etc2.ctex"
 metadata={
-"imported_formats": ["etc2_astc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://resources/Game 3D/Panorama.png"
-dest_files=["res://.godot/imported/Panorama.png-6279e9ab94a1f38686a5370136c34a70.etc2.ctex"]
+dest_files=["res://.godot/imported/Panorama.png-6279e9ab94a1f38686a5370136c34a70.s3tc.ctex", "res://.godot/imported/Panorama.png-6279e9ab94a1f38686a5370136c34a70.etc2.ctex"]
 
 [params]
 

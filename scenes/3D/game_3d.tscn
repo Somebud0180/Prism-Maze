@@ -357,8 +357,9 @@ _data = {
 &"show_tutorial": SubResource("Animation_2hj7x")
 }
 
-[node name="Game3D" type="Node3D" groups=["Game3D"]]
+[node name="Game3D" type="Node3D" node_paths=PackedStringArray("audio_player") groups=["Game3D"]]
 script = ExtResource("1_dfa31")
+audio_player = NodePath("AudioStreamPlayer")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 35.4406, 0)
@@ -373,11 +374,12 @@ environment = ExtResource("1_cyag4")
 [node name="Player3D" type="CharacterBody3D" parent="." groups=["Player3D"]]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
-collision_layer = 7
-collision_mask = 5
+collision_layer = 15
+collision_mask = 13
 wall_min_slide_angle = 0.262403
 script = ExtResource("2_orbxt")
 SPEED = 8.0
+CONVEYOR_SPEED = 32.0
 JUMP_VELOCITY = 12.0
 WALL_JUMP_FORCE = 40.0
 ROTATION_SPEED = 10.0
@@ -439,11 +441,15 @@ unique_name_in_owner = true
 volume_db = -3.0
 doppler_tracking = 1
 
+[node name="RayCast3D" type="RayCast3D" parent="Player3D"]
+target_position = Vector3(0, -1.15, 0)
+collision_mask = 8
+
 [node name="LevelLayer3D" type="Node3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(0.999984, 0.00457461, -0.00331309, -0.00458199, 0.999987, -0.00222544, 0.00330288, 0.00224057, 0.999992, 0, 10, 0)
 script = ExtResource("6_2hj7x")
-custom_level = "Level14"
+custom_level = "Level15"
 infinite_levels = true
 level_cull = 4
 is_starting_on_tutorial = true
@@ -491,5 +497,8 @@ libraries = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
 [connection signal="finished_loading" from="LevelLayer3D" to="." method="_on_level_layer_3d_finished_loading"]
 [connection signal="tree_exiting" from="LevelLayer3D" to="LevelLayer3D" method="_on_tree_exiting"]
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]

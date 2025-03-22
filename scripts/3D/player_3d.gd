@@ -1,10 +1,12 @@
 extends CharacterBody3D
 
 @export var SPEED = 0.0
+@export var CONVEYOR_SPEED = 24.0
 @export var JUMP_VELOCITY = 0.0
 @export var WALL_JUMP_FORCE = 0.0
 @export var WALL_SLIDE_FACTOR = 0.3
 @export var ROTATION_SPEED = 0.0
+@export var conveyor_inertia_duration = 0.2
 
 var was_on_wall = false:
 	set(value):
@@ -36,6 +38,10 @@ var subviewport
 var fall_sound = load("res://resources/Sound/Player/Fall.wav")
 var jump_sound = load("res://resources/Sound/Player/Jump.wav")
 var grab_sound = load("res://resources/Sound/Player/Grab.wav")
+
+var last_conveyor_velocity = Vector3.ZERO
+var conveyor_inertia_time = 0.0
+var desired_velocity
 
 func hide_on_death() -> void:
 	menu = get_node("/root/Menu")
@@ -144,9 +150,6 @@ func _physics_process(delta: float) -> void:
 					jump_credit = 1
 				was_on_wall = true
 				last_wall_normal = current_normal
-	elif is_on_wall_only():
-		# We're on a wall but don't have detailed collision info
-		was_on_wall = true
 	else:
 		# Not on a wall and no collision
 		was_on_wall = false
@@ -191,6 +194,21 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
+	
+	var collider = $RayCast3D.get_collider()
+	if collider is GridMap and collider.get_collision_layer_value(4):
+		var forward_dir = -collider.global_transform.basis.z.normalized()
+		desired_velocity = Vector3(forward_dir.x * CONVEYOR_SPEED, velocity.y, forward_dir.z * CONVEYOR_SPEED)
+		velocity = velocity.lerp(desired_velocity, 0.1)
+		
+		# Store conveyor velocity & reset timer
+		last_conveyor_velocity = desired_velocity
+		conveyor_inertia_time = conveyor_inertia_duration
+	else:
+		# If we just left the conveyor but have leftover inertia time
+		if conveyor_inertia_time > 0.0:
+			velocity = velocity.lerp(last_conveyor_velocity, 0.1)
+			conveyor_inertia_time -= delta
 	
 	move_and_slide()
 

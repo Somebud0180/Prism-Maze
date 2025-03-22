@@ -41,7 +41,7 @@ var game_mode: int = 2  # 1: Platformer, 2: Maze
 var platform_list: Array[int] = []
 var maze_list: Array[int] = []
 
-var finish_sound = load("res://resources/Sound/Level/Finish.wav")
+var finish_sound = load("res://resources/Sound/Level/SFX/Finish.wav")
 
 func _ready() -> void:
 	# Reset the key color list
@@ -212,6 +212,7 @@ func progress_level() -> void:
 	if level == level_amount:
 		if menu.menu_state == Menu.STATE.GAMEMIXED:
 			var _level = get_tree().get_first_node_in_group("3DLevel")
+			%Confetti.position = %Player.position
 			
 			animation_player.play("show_confetti")
 			_level.open_door()

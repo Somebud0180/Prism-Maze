@@ -998,9 +998,10 @@ layout_mode = 2
 texture = ExtResource("16_whlyx")
 stretch_mode = 5
 
-[node name="Music" type="HBoxContainer" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/AudioPlanel/VBoxContainer" node_paths=PackedStringArray("slider", "texture_rect")]
+[node name="Music" type="HBoxContainer" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/AudioPlanel/VBoxContainer" node_paths=PackedStringArray("slider", "texture_rect") groups=["sliders"]]
 layout_mode = 2
 script = ExtResource("18_bnowj")
+target_property = &"music_volume"
 icon = ExtResource("18_2ewfx")
 icon_cross = ExtResource("20_p5bkw")
 slider = NodePath("MusicSlider")
@@ -1036,6 +1037,7 @@ theme_override_styles/separator = SubResource("StyleBoxFlat_tsejx")
 [node name="SFX" type="HBoxContainer" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/AudioPlanel/VBoxContainer" node_paths=PackedStringArray("slider", "texture_rect")]
 layout_mode = 2
 script = ExtResource("18_bnowj")
+target_property = &"sfx_volume"
 icon = ExtResource("22_x5kxs")
 icon_cross = ExtResource("21_aevs6")
 slider = NodePath("SFXSlider")

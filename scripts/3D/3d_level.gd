@@ -14,7 +14,7 @@ var handle_subviewport_input = false
 var player3D
 var player_3d
 
-var finish_sound = load("res://resources/Sound/Level/Finish.wav")
+var finish_sound = load("res://resources/Sound/Level/SFX/Finish.wav")
 
 
 func _ready() -> void:

@@ -17,7 +17,7 @@ const _VirtualControllerHelper = preload("res://scripts/Misc/virtual_controller_
 @export var transition_duration = 0.5
 @export var transition_type = 1
 
-var main_theme = load("res://resources/Sound/Music/Main.wav")
+var main_theme = [load("res://resources/Sound/Music/Main.wav"), load("res://resources/Sound/Music/Main 2.wav")]
 var tween_music
 
 var is_loading = false
@@ -79,6 +79,8 @@ var music_volume = 0.0:
 	set(value):
 		music_volume = value
 		audio_player.volume_db = music_volume
+		if in_game_3d:
+			get_tree().get_first_node_in_group("Game3D").music_volume = value
 
 var sfx_volume = 0.0
 
@@ -119,7 +121,11 @@ func _process(delta: float) -> void:
 
 
 func _ready() -> void:
-	audio_player.stream = main_theme
+	# Pick a random theme song
+	randomize()
+	var chosen_index = randi() % main_theme.size()
+	
+	audio_player.stream = main_theme[chosen_index]
 	audio_player.play()
 	
 	$MenuLayer.show()
@@ -152,6 +158,9 @@ func _input(event):
 				await animation_player.animation_finished
 				$MenuLayer/Main/Main/VBoxContainer/Play.grab_focus()
 			STATE.GAME, STATE.GAME3D, STATE.GAMEMIXED, STATE.OVERLAY:
+				if in_game_3d:
+					get_tree().get_first_node_in_group("Game3D").fade_music_out()
+				
 				last_state = menu_state
 				menu_state = STATE.MAIN
 				animation_player.play("show_main")
@@ -161,6 +170,9 @@ func _input(event):
 			STATE.MAIN:
 				if (!in_game and !in_game_3d) and menu_state == STATE.MAIN:
 					return
+				
+				if in_game_3d:
+					get_tree().get_first_node_in_group("Game3D").fade_music_in()
 				
 				# Recover menu state
 				menu_state = last_state
@@ -339,6 +351,11 @@ func _manage_touch_controller():
 			virtual_controller.disable()
 
 
+func _manage_sliders():
+	for slider in get_tree().get_nodes_in_group("Sliders"):
+		slider._update_slider()
+
+
 func _config_load():
 	var config = ConfigFile.new()
 	
@@ -354,6 +371,8 @@ func _config_load():
 	DisplayServer.window_set_position(config.get_value("Game", "window_position", Vector2i(0, 0)))
 	resolution = config.get_value("Game", "window_size", Vector2i(1280, 720))
 	fullscreen = config.get_value("Game", "fullscreen", false)
+	music_volume = config.get_value("Game", "music_volume", 0)
+	sfx_volume = config.get_value("Game", "sfx_volume", 0)
 	player_color = config.get_value("Game", "player_color", Color.WHITE)
 	
 	shadow_enabled = config.get_value("Graphics", "shadow_enabled", true)
@@ -367,6 +386,7 @@ func _config_load():
 	settings_node._on_sdfgi_full_toggled(sdfgi_full_res)
 	
 	settings_node._graphics_check()
+	_manage_sliders()
 
 func _config_save():
 	# Create new ConfigFile object.
@@ -376,6 +396,8 @@ func _config_save():
 	config.set_value("Game", "window_position", DisplayServer.window_get_position())
 	config.set_value("Game", "window_size", resolution)
 	config.set_value("Game", "fullscreen", fullscreen)
+	config.set_value("Game", "music_volume", music_volume)
+	config.set_value("Game", "sfx_volume", sfx_volume)
 	config.set_value("Game", "player_color", player_color)
 	
 	# Store Graphics Settings

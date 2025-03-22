@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://cmgcuu7j3ncl2" path="res://scripts/2D/player.gd" id="2_musdt"]
 [ext_resource type="Texture2D" uid="uid://dfvku7oe2ae6y" path="res://resources/Game/Player-Sheet.png" id="3_mqq6w"]
 [ext_resource type="Script" uid="uid://pt4eigkvwdlj" path="res://scripts/2D/camera_2d.gd" id="4_j64ky"]
-[ext_resource type="AudioStream" uid="uid://g8bjkgny6u0s" path="res://resources/Sound/Level/Finish.wav" id="5_3b5mr"]
+[ext_resource type="AudioStream" uid="uid://g8bjkgny6u0s" path="res://resources/Sound/Level/SFX/Finish.wav" id="5_3b5mr"]
 [ext_resource type="Texture2D" uid="uid://cn8i1e5a2w11c" path="res://resources/Background/Substrate.png" id="5_rvy4k"]
 [ext_resource type="Texture2D" uid="uid://dhkixf8jhbq4o" path="res://resources/Background/Bottom Layer.png" id="6_lnfnm"]
 [ext_resource type="Texture2D" uid="uid://dhop524e0npfj" path="res://resources/Background/Top Layer.png" id="7_4osob"]
@@ -124,7 +124,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:scale")
+tracks/0/path = NodePath("Confetti:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -136,7 +136,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:visible")
+tracks/1/path = NodePath("Confetti:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -145,18 +145,6 @@ tracks/1/keys = {
 "update": 1,
 "values": [false]
 }
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("AnimatedSprite2D:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
 
 [sub_resource type="Animation" id="Animation_4osob"]
 resource_name = "show_confetti"
@@ -164,19 +152,19 @@ length = 0.25
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:scale")
+tracks/0/path = NodePath("Confetti:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.25),
 "transitions": PackedFloat32Array(0.5, 0.5),
 "update": 0,
-"values": [Vector2(1, 1), Vector2(5, 5)]
+"values": [Vector2(1, 1), Vector2(1.5, 1.5)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:visible")
+tracks/1/path = NodePath("Confetti:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -184,18 +172,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("AnimatedSprite2D:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_yjilw"]
@@ -206,7 +182,8 @@ _data = {
 
 [node name="Game" type="Node2D"]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Confetti" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
 visible = false
 z_index = 3
 sprite_frames = SubResource("SpriteFrames_r3f8u")
