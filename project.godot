@@ -165,6 +165,7 @@ fine_control={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+renderer/rendering_method="forward_plus"
 renderer/rendering_method.mobile="forward_plus"
 textures/vram_compression/import_etc2_astc=true
 global_illumination/gi/use_half_resolution=true
@@ -196,7 +197,7 @@ project/editorState=[{
 "path": "res://scripts/UI/viewport_area.gd",
 "type": "file"
 }, {
-"column": 2,
+"column": 0,
 "line": 9,
 "path": "res://scripts/Misc/virtual_controller_helper.gd",
 "type": "file"

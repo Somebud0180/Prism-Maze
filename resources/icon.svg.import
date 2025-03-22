@@ -3,17 +3,16 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cckneexxyrlpv"
-path.s3tc="res://.godot/imported/icon.svg-60a93a01b332c0a9192782f1380f6837.s3tc.ctex"
 path.etc2="res://.godot/imported/icon.svg-60a93a01b332c0a9192782f1380f6837.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"imported_formats": ["etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://resources/icon.svg"
-dest_files=["res://.godot/imported/icon.svg-60a93a01b332c0a9192782f1380f6837.s3tc.ctex", "res://.godot/imported/icon.svg-60a93a01b332c0a9192782f1380f6837.etc2.ctex"]
+dest_files=["res://.godot/imported/icon.svg-60a93a01b332c0a9192782f1380f6837.etc2.ctex"]
 
 [params]
 
