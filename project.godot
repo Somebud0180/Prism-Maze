@@ -21,6 +21,10 @@ config/icon="res://resources/icon.svg"
 LoadingManager="*res://scripts/UI/loading_manager.gd"
 LevelPopup="*res://scenes/UI/level_popup.tscn"
 
+[debug]
+
+settings/stdout/print_fps=true
+
 [display]
 
 window/size/viewport_width=1280
@@ -161,6 +165,8 @@ fine_control={
 [physics]
 
 2d/run_on_separate_thread=true
+3d/run_on_separate_thread=true
+3d/physics_engine="Jolt Physics"
 3d/default_gravity=30.0
 
 [rendering]

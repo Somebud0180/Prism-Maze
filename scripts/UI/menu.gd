@@ -65,6 +65,12 @@ var player_color: Color = Color.WHITE:
 		settings_node._update_player_color()
 		_config_save()
 
+var resizable: bool = false:
+	set(value):
+		resizable = value
+		settings_node._set_resize()
+		_config_save()
+
 var fullscreen: bool = false:
 	set(value):
 		fullscreen = value
@@ -79,8 +85,9 @@ var music_volume = 0.0:
 	set(value):
 		music_volume = value
 		audio_player.volume_db = music_volume
-		if in_game_3d:
-			get_tree().get_first_node_in_group("Game3D").music_volume = value
+		var game_3d = get_tree().get_first_node_in_group("Game3D")
+		if game_3d:
+			game_3d.music_volume = value
 
 var sfx_volume = 0.0
 
@@ -91,6 +98,14 @@ var shadow_enabled: bool = true:
 		var game_3d = get_tree().get_first_node_in_group("Game3D")
 		if game_3d:
 			game_3d.set_shadow()
+
+var shadow_quality: int = 1:
+	set(value):
+		shadow_quality = value
+		_config_save()
+		var game_3d = get_tree().get_first_node_in_group("Game3D")
+		if game_3d:
+			game_3d.set_shadow_quality()
 
 var sdfgi_enabled: bool = true:
 	set(value):
@@ -221,7 +236,7 @@ func _on_play_3d_pressed() -> void:
 func _on_settings_pressed() -> void:
 	menu_state = STATE.SETTINGS
 	_hide_and_show("main", "settings")
-	$"MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/Resolution".grab_focus()
+	$"MenuLayer/Settings/Exit Settings".grab_focus()
 
 
 func _on_controls_pressed() -> void:
@@ -356,6 +371,11 @@ func _manage_sliders():
 		slider._update_slider()
 
 
+func _manage_buttons():
+	for button in get_tree().get_nodes_in_group("Buttons"):
+		button._update_button()
+
+
 func _config_load():
 	var config = ConfigFile.new()
 	
@@ -369,6 +389,7 @@ func _config_load():
 	
 	# Restore configuration
 	DisplayServer.window_set_position(config.get_value("Game", "window_position", Vector2i(0, 0)))
+	resizable = config.get_value("Game", "resizable", false)
 	resolution = config.get_value("Game", "window_size", Vector2i(1280, 720))
 	fullscreen = config.get_value("Game", "fullscreen", false)
 	music_volume = config.get_value("Game", "music_volume", 0)
@@ -376,23 +397,28 @@ func _config_load():
 	player_color = config.get_value("Game", "player_color", Color.WHITE)
 	
 	shadow_enabled = config.get_value("Graphics", "shadow_enabled", true)
+	shadow_quality = config.get_value("Graphics", "shadow_quality", 1)
 	sdfgi_enabled = config.get_value("Graphics", "sdfgi_enabled", true)
 	sdfgi_full_res = config.get_value("Graphics", "sdfgi_full_res", false)
 	
 	# Restore config into button states
+	settings_node._set_resize()
 	settings_node._on_fullscreen_toggled(fullscreen)
 	settings_node._on_shadow_toggled(shadow_enabled)
 	settings_node._on_sdfgi_toggled(sdfgi_enabled)
 	settings_node._on_sdfgi_full_toggled(sdfgi_full_res)
 	
 	settings_node._graphics_check()
+	settings_node.set_resolution()
 	_manage_sliders()
+	_manage_buttons()
 
 func _config_save():
 	# Create new ConfigFile object.
 	var config = ConfigFile.new()
 	
 	# Store Game Settings
+	config.set_value("Game", "resizable", resizable)
 	config.set_value("Game", "window_position", DisplayServer.window_get_position())
 	config.set_value("Game", "window_size", resolution)
 	config.set_value("Game", "fullscreen", fullscreen)
@@ -402,6 +428,7 @@ func _config_save():
 	
 	# Store Graphics Settings
 	config.set_value("Graphics", "shadow_enabled", shadow_enabled)
+	config.set_value("Graphics", "shadow_quality", shadow_quality)
 	config.set_value("Graphics", "sdfgi_enabled", sdfgi_enabled)
 	config.set_value("Graphics", "sdfgi_full_res", sdfgi_full_res)
 	

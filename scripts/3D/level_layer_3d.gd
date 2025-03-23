@@ -41,8 +41,8 @@ var current_level = 0
 var starting_marker: Node3D
 
 func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("load_level"):
-		place_level()
+	if Input.is_action_just_pressed("w"):
+		place_level_async()
 
 
 func _ready() -> void:
@@ -71,33 +71,40 @@ func _ready() -> void:
 	
 	# Place level(s) in advance
 	for i in range(level_advance):
-		place_level()
+		place_level_async()
 	
 	emit_signal("finished_loading")
 
 
-func place_level():
-	if infinite_levels or (current_level < level_amount):
-		var next_level = _level_3d.get_next_level(custom_level)
-		if next_level:
-			add_child(next_level)
-			level_collection.append(next_level)
+func place_level_async() -> void:
+	# Step 1: Get the next level’s node
+	var next_level = _level_3d.get_next_level(custom_level)
+	# Yield a frame to avoid freezing if next_level is large
+	await get_tree().process_frame
+	
+	if next_level:
+		add_child(next_level)
+		level_collection.append(next_level)
 		
-		# Show level in level_collection
+		# Show on the next frame
+		await get_tree().process_frame
 		get_child(get_child_count() - 1)._show()
 		
-		var last_level = level_collection[get_child_count() - 2]
-		var this_level = level_collection[get_child_count() - 1]
-		
-		var exit_marker = last_level.get_node("ExitMarker")
-		var entrance_marker = this_level.get_node("EntranceMarker")
-			
-		var exit_global = exit_marker.global_transform
-		var entrance_local = entrance_marker.transform
-		this_level.global_transform = exit_global * entrance_local.affine_inverse()
-		
-		# Remove old levels
+		# Position and cull as usual
+		position_level(level_collection)
 		cull_levels()
+
+
+func position_level(level_collection):
+	var last_level = level_collection[get_child_count() - 2]
+	var this_level = level_collection[get_child_count() - 1]
+	
+	var exit_marker = last_level.get_node("ExitMarker")
+	var entrance_marker = this_level.get_node("EntranceMarker")
+		
+	var exit_global = exit_marker.global_transform
+	var entrance_local = entrance_marker.transform
+	this_level.global_transform = exit_global * entrance_local.affine_inverse()
 
 
 func cull_levels():

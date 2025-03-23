@@ -46,7 +46,6 @@ func _on_resolution_item_selected(index: int) -> void:
 
 func _on_fullscreen_toggled(toggled_on: bool) -> void:
 	if toggled_on:
-		# Set toggle state in case function is ran from config load
 		fullscreen_toggle.button_pressed = true
 		
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
@@ -54,9 +53,8 @@ func _on_fullscreen_toggled(toggled_on: bool) -> void:
 		menu.fullscreen = true
 		
 		var current_resolution = DisplayServer.window_get_size()
-		var string_current = str(current_resolution[0]) + "x" + str(current_resolution[1])
+		var string_current = str(current_resolution.x) + "x" + str(current_resolution.y)
 		for i in range(supported_resolutions.size()):
-			# Set as selected if same as current resolution
 			if supported_resolutions[i] == string_current:
 				resolution_picker.selected = i
 	else:
@@ -66,21 +64,20 @@ func _on_fullscreen_toggled(toggled_on: bool) -> void:
 		menu.fullscreen = false
 		
 		var current_resolution = DisplayServer.window_get_size()
-		var string_current = str(current_resolution[0]) + "x" + str(current_resolution[1])
+		var string_current = str(current_resolution.x) + "x" + str(current_resolution.y)
+		var rect = DisplayServer.get_display_safe_area()
+		var fw_w = int(rect.size.x)
+		var fw_h = int(rect.size.y)
 		for i in range(supported_resolutions.size()):
-			# Set as selected if same as current resolution
 			if supported_resolutions[i] == string_current:
 				resolution_picker.selected = i
 
 
 func set_resolution() -> void:
-	# Doesnt seem to be an issue anymore
-	#
 	# Set window mode to window
 	# Workaround for macOS not allowing resizing from native resolution
-	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
-	
 	DisplayServer.window_set_size(menu.resolution)
+	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 	
 	# Reposition the current menu
 	match menu.menu_state:
@@ -117,31 +114,20 @@ func _add_resolutions():
 	var current_resolution: Vector2i = DisplayServer.window_get_size()
 	var string_current: String = str(current_resolution[0]) + "x" + str(current_resolution[1])
 	
-	var native_resolution: Vector2i = DisplayServer.screen_get_size()
-	var string_native: String = str(native_resolution[0]) + "x" + str(native_resolution[1])
-	
-	var native_windowed: Rect2i = DisplayServer.screen_get_usable_rect()
-	var string_windowed: String = str(native_windowed.size.x) + "x" + str(native_windowed.size.y)
-	
 	for i in range(supported_resolutions.size()):
 		var resolution_name: String = supported_resolutions[i]
-		var icon = ""
 		
-		# Add a native icon to the native resoluton
-		if (resolution_name == string_native and DisplayServer.window_get_mode() == 3) or (resolution_name == string_windowed and DisplayServer.window_get_mode() == 0):
-			icon = native_icon
-		else:
-			icon = resolution_icon
-		
-		resolution_picker.add_icon_item(icon, resolution_name, i)
+		resolution_picker.add_icon_item(resolution_icon, resolution_name, i)
 		
 		# Set as selected if same as current resolution
 		if resolution_name == string_current:
 			resolution_picker.selected = i
+	
+	_update_resolution_icons()
 
 
 func _add_full_window_resolution():
-	var rect = DisplayServer.get_display_safe_area()
+	var rect = DisplayServer.screen_get_usable_rect()
 	var fw_w = int(rect.size.x)
 	var fw_h = int(rect.size.y)
 	
@@ -165,6 +151,29 @@ func _add_full_window_resolution():
 		supported_resolutions.append(str(pair.x) + "x" + str(pair.y))
 
 
+func _update_resolution_icons() -> void:
+	var native_resolution = DisplayServer.screen_get_size()
+	var string_native = str(native_resolution.x) + "x" + str(native_resolution.y)
+	
+	var native_windowed = DisplayServer.get_display_safe_area()
+	var string_windowed = str(native_windowed.size.x) + "x" + str(native_windowed.size.y)
+	
+	for i in range(supported_resolutions.size()):
+		var resolution_name = supported_resolutions[i]
+		# Default icon is the regular resolution icon
+		var icon = resolution_icon
+		
+		# If fullscreen mode AND matches the screen's native resolution, use native_icon
+		if resolution_name == string_native:
+			icon = native_icon
+		# If windowed mode AND matches the "usable" windowed resolution, use native_icon
+		elif resolution_name == string_windowed:
+			icon = native_icon
+		
+		# Update the existing resolution picker item’s icon
+		resolution_picker.set_item_icon(i, icon)
+
+
 func _compare_resolutions(a: Vector2i, b: Vector2i) -> bool:
 	if a.x == b.x:
 		return a.y > b.y
@@ -176,6 +185,7 @@ func _update_player_color() -> void:
 	if player_ref:
 		player_ref.change_color()
 
+
 # 3D Settings
 func _graphics_check() -> void:
 	if RenderingServer.get_current_rendering_method() != "forward_plus":
@@ -183,9 +193,15 @@ func _graphics_check() -> void:
 		sdfgi_full_toggle.disabled = true
 		menu.sdfgi_enabled = false
 
+
+func _set_resize():
+	get_viewport().get_window().unresizable = !menu.resizable
+
+
 func _on_shadow_toggled(toggled_on: bool) -> void:
 	# Restore button state in case of config load
 	shadow_toggle.button_pressed = toggled_on
+	%Shadow_Quality.editable = toggled_on
 	
 	menu.shadow_enabled = toggled_on
 

@@ -29,7 +29,7 @@ func _on_body_entered(_body: Node3D) -> void:
 			menu.character_life += 1
 		
 		layer.current_level += 1
-		layer.place_level()
+		layer.place_level_async()
 	
 	get_parent_node_3d().open_door()
 	

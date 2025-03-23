@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=14 format=3 uid="uid://bau50guyc4alk"]
+[gd_resource type="Theme" load_steps=18 format=3 uid="uid://bau50guyc4alk"]
 
 [ext_resource type="StyleBox" uid="uid://d4xsuett3yt0" path="res://resources/Theme/button_hover.tres" id="1_dxyip"]
 [ext_resource type="StyleBox" uid="uid://55ng6tb5ctyb" path="res://resources/Theme/button_focus.tres" id="1_sn4ko"]
@@ -12,6 +12,10 @@
 [ext_resource type="StyleBox" uid="uid://oc726cekuti" path="res://resources/Theme/panel.tres" id="8_g2it7"]
 [ext_resource type="StyleBox" uid="uid://jiyvdgjcnuc8" path="res://resources/Theme/panel_container.tres" id="8_ydv4c"]
 [ext_resource type="StyleBox" uid="uid://3hgi2d8hxu1i" path="res://resources/Theme/progress_fill.tres" id="10_g2it7"]
+[ext_resource type="StyleBox" uid="uid://goc215hlu3tc" path="res://resources/Theme/Settings/settings_button_disabled.tres" id="12_53xrw"]
+[ext_resource type="StyleBox" uid="uid://dspiwsb3l2ug2" path="res://resources/Theme/Settings/settings_button_focus.tres" id="12_l10na"]
+[ext_resource type="StyleBox" uid="uid://caeu1u00svere" path="res://resources/Theme/Settings/settings_button_normal.tres" id="13_53xrw"]
+[ext_resource type="StyleBox" uid="uid://ngcow0ri73qo" path="res://resources/Theme/Settings/settings_button_pressed.tres" id="14_8ex2i"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jhkqt"]
 content_margin_left = 4.0
@@ -44,18 +48,22 @@ MarginContainer/constants/margin_bottom = 16
 MarginContainer/constants/margin_left = 16
 MarginContainer/constants/margin_right = 16
 MarginContainer/constants/margin_top = 16
+OptionButton/constants/arrow_margin = 16
 OptionButton/styles/focus = ExtResource("6_tyiim")
 OptionButton/styles/hover = ExtResource("6_tyiim")
-OptionButton/styles/hover_mirrored = ExtResource("6_tyiim")
 OptionButton/styles/hover_pressed = ExtResource("7_g2it7")
-OptionButton/styles/hover_pressed_mirrored = ExtResource("7_g2it7")
 OptionButton/styles/normal = ExtResource("8_g2it7")
-OptionButton/styles/normal_mirrored = ExtResource("8_g2it7")
 OptionButton/styles/pressed = ExtResource("8_g2it7")
-OptionButton/styles/pressed_mirrored = ExtResource("8_g2it7")
 Panel/styles/panel = ExtResource("8_g2it7")
 PanelContainer/styles/panel = ExtResource("8_ydv4c")
 ProgressBar/styles/background = ExtResource("8_50ej0")
 ProgressBar/styles/fill = ExtResource("10_g2it7")
 RichTextLabel/font_sizes/normal_font_size = 32
+SettingsButton/base_type = &"Button"
+SettingsButton/styles/disabled = ExtResource("12_53xrw")
+SettingsButton/styles/focus = ExtResource("12_l10na")
+SettingsButton/styles/hover = ExtResource("12_l10na")
+SettingsButton/styles/hover_pressed = ExtResource("14_8ex2i")
+SettingsButton/styles/normal = ExtResource("13_53xrw")
+SettingsButton/styles/pressed = ExtResource("14_8ex2i")
 VSeparator/styles/separator = ExtResource("6_kbp2n")

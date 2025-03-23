@@ -14,15 +14,23 @@ var music_volume = 0.0:
 		audio_player.volume_db = music_volume
 
 func _ready() -> void:
-	# Play a random song on start
+	# Get music volume and play a random song on start
+	music_volume = menu.music_volume
 	play_random_music()
 	
 	await Signal(LoadingManager, "load_finish") 
+	set_shadow()
+	set_shadow_quality()
 	set_sdfgi()
 
 
 func set_shadow() -> void:
 	$DirectionalLight3D.shadow_enabled = menu.shadow_enabled
+
+
+func set_shadow_quality() -> void:
+	$DirectionalLight3D.directional_shadow_mode = menu.shadow_quality
+
 
 func set_sdfgi() -> void:
 	$WorldEnvironment.environment.sdfgi_enabled = menu.sdfgi_enabled
