@@ -23,8 +23,7 @@ func _ready() -> void:
 func _manage_resolution_picker() -> void:
 	var platform = OS.get_name()
 	if platform == "Web" or platform == "iOS":
-		resolution_picker.hide()
-		fullscreen_toggle.hide()
+		$"TabContainer/2D/MarginContainer/2D/WindowPanel".hide()
 		return
 	
 	# Check for window state if fullscreen
@@ -65,9 +64,6 @@ func _on_fullscreen_toggled(toggled_on: bool) -> void:
 		
 		var current_resolution = DisplayServer.window_get_size()
 		var string_current = str(current_resolution.x) + "x" + str(current_resolution.y)
-		var rect = DisplayServer.get_display_safe_area()
-		var fw_w = int(rect.size.x)
-		var fw_h = int(rect.size.y)
 		for i in range(supported_resolutions.size()):
 			if supported_resolutions[i] == string_current:
 				resolution_picker.selected = i

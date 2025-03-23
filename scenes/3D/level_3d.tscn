@@ -235,6 +235,9 @@ transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, 2.00514, 3
 [node name="Door3D" parent="StartingLevel" instance=ExtResource("5_cxprw")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 4, -13)
 
+[node name="AudioStreamPlayer3D" parent="StartingLevel/Door3D/Door" index="5"]
+stream = null
+
 [node name="Killzone 3D" parent="StartingLevel" instance=ExtResource("2_2ntvb")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StartingLevel/Killzone 3D"]
@@ -329,6 +332,9 @@ transform = Transform3D(0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, 0.258819, 
 
 [node name="Door3D" parent="Level2" instance=ExtResource("5_cxprw")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 4, -21)
+
+[node name="AudioStreamPlayer3D" parent="Level2/Door3D/Door" index="5"]
+stream = null
 
 [node name="Killzone 3D" parent="Level2" instance=ExtResource("2_2ntvb")]
 

@@ -163,8 +163,8 @@ func _physics_process(delta: float) -> void:
 	
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and jump_credit > 0:
-		#audio_player.stream = jump_sound
-		#audio_player.play()
+		audio_player.stream = jump_sound
+		audio_player.play()
 		jump_credit -= 1
 		
 		if was_on_wall:
@@ -195,8 +195,9 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 	
-	var collider = $RayCast3D.get_collider()
-	if collider is GridMap and collider.get_collision_layer_value(4):
+	var collider = call_deferred($RayCast3D.get_collider())
+	var is_collision_4 = call_deferred(collider.get_collision_layer_value(4))
+	if collider is GridMap and is_collision_4:
 		var forward_dir = -collider.global_transform.basis.z.normalized()
 		desired_velocity = Vector3(forward_dir.x * CONVEYOR_SPEED, velocity.y, forward_dir.z * CONVEYOR_SPEED)
 		velocity = velocity.lerp(desired_velocity, 0.1)

@@ -17,6 +17,7 @@ var gravity_direction = 1: # 1 for normal, -1 for upside-down
 @onready var game_manager = %GameManager
 
 var killable = false
+var jump_sound = load("res://resources/Sound/Player/Jump.wav")
 var fall_sound = load("res://resources/Sound/Player/Fall.wav")
 
 var game_initialized = false:
@@ -108,6 +109,8 @@ func _physics_process(delta: float) -> void:
 		
 		# Handle jump based on gravity direction.
 		if Input.is_action_just_pressed("jump") and jump_credit > 0:
+			audio_player.stream = jump_sound
+			audio_player.play()
 			jump_credit -= 1 
 			velocity.y = jump_velocity * gravity_direction
 		

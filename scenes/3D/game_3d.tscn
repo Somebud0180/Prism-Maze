@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://bnkt72lydniy7"]
+[gd_scene load_steps=23 format=4 uid="uid://bnkt72lydniy7"]
 
 [ext_resource type="Environment" uid="uid://b7y82yodphdhe" path="res://resources/Game 3D/game_3d.tres" id="1_cyag4"]
 [ext_resource type="Script" uid="uid://v6f8iie1qjh" path="res://scripts/3D/game_3d.gd" id="1_dfa31"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://wmf2eu0uuhrg" path="res://addons/third-person-camera/third_person_camera/ThirdPersonCamera.tscn" id="3_nj5rp"]
 [ext_resource type="Script" uid="uid://bckm35jccxmnt" path="res://scripts/3D/level_layer_3d.gd" id="6_2hj7x"]
 [ext_resource type="Script" uid="uid://d3x6emu6voebf" path="res://scripts/3D/tutorial_layer.gd" id="6_pgrkm"]
+[ext_resource type="PackedScene" uid="uid://b6h66rsx4yers" path="res://scenes/Misc/level_music_player.tscn" id="7_g3nao"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tx4ct"]
 resource_name = "Plastic Material"
@@ -357,9 +358,8 @@ _data = {
 &"show_tutorial": SubResource("Animation_2hj7x")
 }
 
-[node name="Game3D" type="Node3D" node_paths=PackedStringArray("audio_player") groups=["Game3D"]]
+[node name="Game3D" type="Node3D" groups=["Game3D"]]
 script = ExtResource("1_dfa31")
-audio_player = NodePath("AudioStreamPlayer")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 35.4406, 0)
@@ -497,8 +497,7 @@ libraries = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="LevelMusicPlayer" parent="." instance=ExtResource("7_g3nao")]
 
 [connection signal="finished_loading" from="LevelLayer3D" to="." method="_on_level_layer_3d_finished_loading"]
 [connection signal="tree_exiting" from="LevelLayer3D" to="LevelLayer3D" method="_on_tree_exiting"]
-[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]

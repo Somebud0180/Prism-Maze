@@ -962,9 +962,9 @@ theme_override_constants/separation = 16
 theme_override_styles/separator = ExtResource("13_tbd65")
 
 [node name="WindowPanel" type="Panel" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D"]
-custom_minimum_size = Vector2(0, 176)
+custom_minimum_size = Vector2(0, 190)
 layout_mode = 2
-size_flags_vertical = 3
+size_flags_horizontal = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/WindowPanel"]
 layout_mode = 1
@@ -1000,7 +1000,7 @@ theme_type_variation = &"SettingsButton"
 icon_alignment = 2
 expand_icon = true
 
-[node name="Fullscreen" type="CheckButton" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/WindowPanel/VBoxContainer" groups=["sliders"]]
+[node name="Fullscreen" type="CheckButton" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/WindowPanel/VBoxContainer"]
 custom_minimum_size = Vector2(256, 48)
 layout_mode = 2
 size_flags_vertical = 4
@@ -1358,6 +1358,7 @@ script = ExtResource("29_qxfis")
 
 [node name="VSeparator" type="VSeparator" parent="MenuLayer/Settings/TabContainer/3D/MarginContainer/3D/ShadowPanel/VBoxContainer/HBoxContainer/Shadow_Quality"]
 show_behind_parent = true
+layout_mode = 0
 offset_left = 471.0
 offset_top = 4.0
 offset_right = 485.0

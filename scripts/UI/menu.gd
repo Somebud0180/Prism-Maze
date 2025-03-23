@@ -85,9 +85,8 @@ var music_volume = 0.0:
 	set(value):
 		music_volume = value
 		audio_player.volume_db = music_volume
-		var game_3d = get_tree().get_first_node_in_group("Game3D")
-		if game_3d:
-			game_3d.music_volume = value
+		for music_player in get_tree().get_nodes_in_group("LevelMusicPlayer"):
+			music_player.music_volume = value
 
 var sfx_volume = 0.0
 
@@ -173,8 +172,9 @@ func _input(event):
 				await animation_player.animation_finished
 				$MenuLayer/Main/Main/VBoxContainer/Play.grab_focus()
 			STATE.GAME, STATE.GAME3D, STATE.GAMEMIXED, STATE.OVERLAY:
-				if in_game_3d:
-					get_tree().get_first_node_in_group("Game3D").fade_music_out()
+				# Pause any level music player, if any
+				for music_player in get_tree().get_nodes_in_group("LevelMusicPlayer"):
+					music_player.fade_music_out()
 				
 				last_state = menu_state
 				menu_state = STATE.MAIN
@@ -186,8 +186,9 @@ func _input(event):
 				if (!in_game and !in_game_3d) and menu_state == STATE.MAIN:
 					return
 				
-				if in_game_3d:
-					get_tree().get_first_node_in_group("Game3D").fade_music_in()
+				# Resume any level music player, if any
+				for music_player in get_tree().get_nodes_in_group("LevelMusicPlayer"):
+					music_player.fade_music_in()
 				
 				# Recover menu state
 				menu_state = last_state
@@ -217,6 +218,9 @@ func _on_play_pressed() -> void:
 	if !in_game:
 		LoadingManager.load_scene(game_scene_path)
 		in_game = true
+	else:
+		for music_player in get_tree().get_nodes_in_group("LevelMusicPlayer"):
+					music_player.fade_music_in()
 
 
 func _on_play_3d_pressed() -> void:
@@ -231,6 +235,9 @@ func _on_play_3d_pressed() -> void:
 	if !in_game_3d:
 		LoadingManager.load_scene(game_scene_3d_path)
 		in_game_3d = true
+	else:
+		for music_player in get_tree().get_nodes_in_group("LevelMusicPlayer"):
+					music_player.fade_music_in()
 
 
 func _on_settings_pressed() -> void:
@@ -385,7 +392,6 @@ func _config_load():
 	# If the file didn't load, ignore it.
 	if err != OK:
 		return
-	
 	
 	# Restore configuration
 	DisplayServer.window_set_position(config.get_value("Game", "window_position", Vector2i(0, 0)))

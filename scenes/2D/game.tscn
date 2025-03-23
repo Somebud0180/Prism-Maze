@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://brinhdnvr4uxf"]
+[gd_scene load_steps=30 format=3 uid="uid://brinhdnvr4uxf"]
 
 [ext_resource type="Script" uid="uid://b7l1rpqy1mblr" path="res://scripts/2D/game_manager.gd" id="1_rn7ij"]
 [ext_resource type="Script" uid="uid://cmgcuu7j3ncl2" path="res://scripts/2D/player.gd" id="2_musdt"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://dhop524e0npfj" path="res://resources/Background/Top Layer.png" id="7_4osob"]
 [ext_resource type="Texture2D" uid="uid://b0viiebu5kc4j" path="res://resources/Background/Components.png" id="8_l5bty"]
 [ext_resource type="Texture2D" uid="uid://cigeq3sfw5wax" path="res://resources/Game/Confetti.png" id="11_7fhpb"]
+[ext_resource type="PackedScene" uid="uid://b6h66rsx4yers" path="res://scenes/Misc/level_music_player.tscn" id="11_l5bty"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l5bty"]
 atlas = ExtResource("11_7fhpb")
@@ -284,5 +285,7 @@ unique_name_in_owner = true
 libraries = {
 &"": SubResource("AnimationLibrary_yjilw")
 }
+
+[node name="LevelMusicPlayer" parent="." instance=ExtResource("11_l5bty")]
 
 [connection signal="finished_level_set" from="GameManager" to="GameManager" method="_on_finished_level_set"]
