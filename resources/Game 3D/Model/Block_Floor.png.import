@@ -3,9 +3,10 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://f07c5yfebyiv"
+path.s3tc="res://.godot/imported/Block_Floor.png-dce3c6934909c70b791d0a14d739fbee.s3tc.ctex"
 path.etc2="res://.godot/imported/Block_Floor.png-dce3c6934909c70b791d0a14d739fbee.etc2.ctex"
 metadata={
-"imported_formats": ["etc2_astc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://resources/Game 3D/Model/Block_Floor.png"
-dest_files=["res://.godot/imported/Block_Floor.png-dce3c6934909c70b791d0a14d739fbee.etc2.ctex"]
+dest_files=["res://.godot/imported/Block_Floor.png-dce3c6934909c70b791d0a14d739fbee.s3tc.ctex", "res://.godot/imported/Block_Floor.png-dce3c6934909c70b791d0a14d739fbee.etc2.ctex"]
 
 [params]
 

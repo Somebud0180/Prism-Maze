@@ -1,4 +1,4 @@
-[gd_scene load_steps=95 format=3 uid="uid://br2t4hanatnss"]
+[gd_scene load_steps=99 format=3 uid="uid://br2t4hanatnss"]
 
 [ext_resource type="Theme" uid="uid://bau50guyc4alk" path="res://resources/Theme/menu.tres" id="1_7yxt8"]
 [ext_resource type="Script" uid="uid://cnwd74ny2hf2q" path="res://scripts/UI/menu.gd" id="2_o131u"]
@@ -31,6 +31,7 @@
 [ext_resource type="Texture2D" uid="uid://cv1v7oqrqrym0" path="res://resources/Menu/Graphics/SDFGI-Full.png" id="18_xkl7s"]
 [ext_resource type="Texture2D" uid="uid://dc6lvnyagscon" path="res://resources/Menu/Misc/Block2D.png" id="19_7oqtn"]
 [ext_resource type="Texture2D" uid="uid://bp1ir113ycfmw" path="res://resources/Menu/Control Icons/Move.png" id="19_i7uud"]
+[ext_resource type="Script" uid="uid://b8j6svfkgs0g7" path="res://scripts/UI/fullscreen.gd" id="19_innbc"]
 [ext_resource type="Texture2D" uid="uid://dfvku7oe2ae6y" path="res://resources/Game/Player-Sheet.png" id="19_p2cca"]
 [ext_resource type="Texture2D" uid="uid://cha05i3vt0svl" path="res://resources/Menu/Misc/Menu.png" id="19_xlwes"]
 [ext_resource type="StyleBox" uid="uid://vqm1soj8xnjh" path="res://resources/Theme/separator.tres" id="20_6p85y"]
@@ -64,7 +65,10 @@
 [ext_resource type="Texture2D" uid="uid://b0viiebu5kc4j" path="res://resources/Background/Components.png" id="30_v00k6"]
 [ext_resource type="Texture2D" uid="uid://nwb2lr2a4txn" path="res://resources/Controls/KBM/mouse_move.png" id="31_mfpu8"]
 [ext_resource type="Texture2D" uid="uid://doonkqj6nopsx" path="res://resources/Controls/Controllers/stick_r.png" id="32_wg8ic"]
+[ext_resource type="Script" uid="uid://0k7p4w7ux1me" path="res://scripts/UI/shadow.gd" id="33_fwia5"]
 [ext_resource type="Texture2D" uid="uid://1vi7svyglmjo" path="res://resources/Controls/Controllers/dpad.png" id="35_s1ob8"]
+[ext_resource type="Script" uid="uid://omnets55d74i" path="res://scripts/UI/sdfgi.gd" id="37_d37cp"]
+[ext_resource type="Script" uid="uid://yqys6tsenr4" path="res://scripts/UI/sdfgi_full.gd" id="39_30vkn"]
 [ext_resource type="Texture2D" uid="uid://bxs4apkjbgccb" path="res://resources/Menu/Misc/FineControl.png" id="43_3o1hb"]
 [ext_resource type="Texture2D" uid="uid://c1wrou21ncd3g" path="res://resources/Controls/KBM/keyboard_shift_icon.png" id="44_1qi2u"]
 [ext_resource type="Texture2D" uid="uid://cl34u7ep38jhx" path="res://resources/Menu/Control Icons/Zoom.png" id="44_vsims"]
@@ -884,7 +888,7 @@ icon = ExtResource("10_fqtlv")
 icon_alignment = 1
 expand_icon = true
 
-[node name="Settings" type="NinePatchRect" parent="MenuLayer" node_paths=PackedStringArray("resolution_picker", "fullscreen_toggle", "shadow_toggle", "sdfgi_toggle", "sdfgi_full_toggle")]
+[node name="Settings" type="NinePatchRect" parent="MenuLayer" node_paths=PackedStringArray("resolution_picker", "fullscreen_toggle", "sdfgi_toggle", "sdfgi_full_toggle")]
 unique_name_in_owner = true
 visible = false
 custom_minimum_size = Vector2(600, 560)
@@ -910,7 +914,6 @@ axis_stretch_vertical = 2
 script = ExtResource("12_y8j5i")
 resolution_picker = NodePath("TabContainer/2D/MarginContainer/2D/WindowPanel/VBoxContainer/Resolution")
 fullscreen_toggle = NodePath("TabContainer/2D/MarginContainer/2D/WindowPanel/VBoxContainer/Fullscreen")
-shadow_toggle = NodePath("TabContainer/3D/MarginContainer/3D/ShadowPanel/VBoxContainer/Shadow")
 sdfgi_toggle = NodePath("TabContainer/3D/MarginContainer/3D/LightingPanel/VBoxContainer/SDFGI")
 sdfgi_full_toggle = NodePath("TabContainer/3D/MarginContainer/3D/LightingPanel/VBoxContainer/SDFGI_Full")
 
@@ -979,13 +982,13 @@ offset_bottom = -16.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Resizable" type="CheckButton" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/WindowPanel/VBoxContainer" groups=["buttons"]]
+[node name="Resizable" type="CheckButton" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/WindowPanel/VBoxContainer" groups=["Buttons"]]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(256, 48)
 layout_mode = 2
 size_flags_vertical = 4
 focus_neighbor_top = NodePath("../Resolution")
-focus_next = NodePath("../../../Panel/VBoxContainer/HFlowContainer/White")
+focus_next = NodePath("../../../ColorPanel/VBoxContainer/HFlowContainer/White")
 focus_previous = NodePath("../Resolution")
 theme_type_variation = &"SettingsButton"
 icon = ExtResource("16_eo34a")
@@ -993,6 +996,7 @@ icon_alignment = 1
 script = ExtResource("17_innbc")
 
 [node name="Resolution" type="OptionButton" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/WindowPanel/VBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(256, 48)
 layout_mode = 2
 size_flags_vertical = 0
@@ -1002,16 +1006,17 @@ theme_type_variation = &"SettingsButton"
 icon_alignment = 2
 expand_icon = true
 
-[node name="Fullscreen" type="CheckButton" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/WindowPanel/VBoxContainer"]
+[node name="Fullscreen" type="CheckButton" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/WindowPanel/VBoxContainer" groups=["Buttons"]]
 custom_minimum_size = Vector2(256, 48)
 layout_mode = 2
 size_flags_vertical = 4
 focus_neighbor_top = NodePath("../Resolution")
-focus_next = NodePath("../../../Panel/VBoxContainer/HFlowContainer/White")
+focus_next = NodePath("../../../ColorPanel/VBoxContainer/HFlowContainer/White")
 focus_previous = NodePath("../Resolution")
 theme_type_variation = &"SettingsButton"
 icon = ExtResource("14_pjik4")
 icon_alignment = 1
+script = ExtResource("19_innbc")
 
 [node name="AudioPlanel" type="Panel" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D"]
 custom_minimum_size = Vector2(256, 196)
@@ -1052,7 +1057,7 @@ layout_mode = 2
 texture = ExtResource("18_2ewfx")
 stretch_mode = 4
 
-[node name="MusicSlider" type="HSlider" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/AudioPlanel/VBoxContainer/Music"]
+[node name="MusicSlider" type="HSlider" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/AudioPlanel/VBoxContainer/Music" node_paths=PackedStringArray("marker")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
@@ -1063,13 +1068,14 @@ rounded = true
 tick_count = 1
 script = ExtResource("20_sc8t4")
 target_property = &"music_volume"
+marker = NodePath("VSeparator")
 
 [node name="VSeparator" type="VSeparator" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/AudioPlanel/VBoxContainer/Music/MusicSlider"]
 show_behind_parent = true
 layout_mode = 2
-offset_left = 718.0
+offset_left = 712.0
 offset_top = 4.0
-offset_right = 732.0
+offset_right = 726.0
 offset_bottom = 22.0
 theme_override_styles/separator = SubResource("StyleBoxFlat_tsejx")
 
@@ -1088,7 +1094,7 @@ layout_mode = 2
 texture = ExtResource("21_aevs6")
 stretch_mode = 4
 
-[node name="SFXSlider" type="HSlider" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/AudioPlanel/VBoxContainer/SFX"]
+[node name="SFXSlider" type="HSlider" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/AudioPlanel/VBoxContainer/SFX" node_paths=PackedStringArray("marker")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
@@ -1098,23 +1104,24 @@ step = 5.0
 rounded = true
 script = ExtResource("20_sc8t4")
 target_property = &"sfx_volume"
+marker = NodePath("VSeparator")
 
 [node name="VSeparator" type="VSeparator" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/AudioPlanel/VBoxContainer/SFX/SFXSlider"]
 show_behind_parent = true
 layout_mode = 0
-offset_left = 718.0
+offset_left = 712.0
 offset_top = 4.0
-offset_right = 732.0
+offset_right = 726.0
 offset_bottom = 22.0
 theme_override_styles/separator = SubResource("StyleBoxFlat_tsejx")
 
-[node name="Panel" type="Panel" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D"]
+[node name="ColorPanel" type="Panel" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D"]
 custom_minimum_size = Vector2(256, 160)
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/Panel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/ColorPanel"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -1126,18 +1133,18 @@ offset_bottom = -16.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/Panel/VBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/ColorPanel/VBoxContainer"]
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 texture = ExtResource("16_whlyx")
 stretch_mode = 5
 
-[node name="HFlowContainer" type="HFlowContainer" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/Panel/VBoxContainer"]
+[node name="HFlowContainer" type="HFlowContainer" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/ColorPanel/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="White" type="Button" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/Panel/VBoxContainer/HFlowContainer"]
+[node name="White" type="Button" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/ColorPanel/VBoxContainer/HFlowContainer"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 focus_neighbor_right = NodePath("../Red")
@@ -1148,7 +1155,7 @@ button_group = SubResource("ButtonGroup_ucr8h")
 script = ExtResource("17_ucr8h")
 color = Color(1, 1, 1, 1)
 
-[node name="CenterContainer" type="CenterContainer" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/Panel/VBoxContainer/HFlowContainer/White"]
+[node name="CenterContainer" type="CenterContainer" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/ColorPanel/VBoxContainer/HFlowContainer/White"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -1157,7 +1164,7 @@ offset_bottom = -6.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/Panel/VBoxContainer/HFlowContainer/White/CenterContainer"]
+[node name="Sprite2D" type="Sprite2D" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/ColorPanel/VBoxContainer/HFlowContainer/White/CenterContainer"]
 position = Vector2(8, 4)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("19_p2cca")
@@ -1165,7 +1172,7 @@ centered = false
 region_enabled = true
 region_rect = Rect2(0, 32, 32, 32)
 
-[node name="Red" type="Button" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/Panel/VBoxContainer/HFlowContainer"]
+[node name="Red" type="Button" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/ColorPanel/VBoxContainer/HFlowContainer"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 focus_neighbor_left = NodePath("../White")
@@ -1179,7 +1186,7 @@ button_group = SubResource("ButtonGroup_ucr8h")
 script = ExtResource("17_ucr8h")
 color = Color(0.644531, 0, 0, 1)
 
-[node name="CenterContainer" type="CenterContainer" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/Panel/VBoxContainer/HFlowContainer/Red"]
+[node name="CenterContainer" type="CenterContainer" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/ColorPanel/VBoxContainer/HFlowContainer/Red"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -1188,7 +1195,7 @@ offset_bottom = -6.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/Panel/VBoxContainer/HFlowContainer/Red/CenterContainer"]
+[node name="Sprite2D" type="Sprite2D" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/ColorPanel/VBoxContainer/HFlowContainer/Red/CenterContainer"]
 position = Vector2(8, 4)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("19_p2cca")
@@ -1196,7 +1203,7 @@ centered = false
 region_enabled = true
 region_rect = Rect2(0, 32, 32, 32)
 
-[node name="Green" type="Button" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/Panel/VBoxContainer/HFlowContainer"]
+[node name="Green" type="Button" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/ColorPanel/VBoxContainer/HFlowContainer"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 focus_neighbor_left = NodePath("../Red")
@@ -1210,7 +1217,7 @@ button_group = SubResource("ButtonGroup_ucr8h")
 script = ExtResource("17_ucr8h")
 color = Color(0, 0.695312, 0.0108643, 1)
 
-[node name="CenterContainer" type="CenterContainer" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/Panel/VBoxContainer/HFlowContainer/Green"]
+[node name="CenterContainer" type="CenterContainer" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/ColorPanel/VBoxContainer/HFlowContainer/Green"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -1219,7 +1226,7 @@ offset_bottom = -6.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/Panel/VBoxContainer/HFlowContainer/Green/CenterContainer"]
+[node name="Sprite2D" type="Sprite2D" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/ColorPanel/VBoxContainer/HFlowContainer/Green/CenterContainer"]
 position = Vector2(8, 4)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("19_p2cca")
@@ -1227,7 +1234,7 @@ centered = false
 region_enabled = true
 region_rect = Rect2(0, 32, 32, 32)
 
-[node name="Blue" type="Button" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/Panel/VBoxContainer/HFlowContainer"]
+[node name="Blue" type="Button" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/ColorPanel/VBoxContainer/HFlowContainer"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 focus_neighbor_left = NodePath("../Green")
@@ -1241,7 +1248,7 @@ button_group = SubResource("ButtonGroup_ucr8h")
 script = ExtResource("17_ucr8h")
 color = Color(0.202423, 0.320791, 0.785156, 1)
 
-[node name="CenterContainer" type="CenterContainer" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/Panel/VBoxContainer/HFlowContainer/Blue"]
+[node name="CenterContainer" type="CenterContainer" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/ColorPanel/VBoxContainer/HFlowContainer/Blue"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -1250,7 +1257,7 @@ offset_bottom = -6.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/Panel/VBoxContainer/HFlowContainer/Blue/CenterContainer"]
+[node name="Sprite2D" type="Sprite2D" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/ColorPanel/VBoxContainer/HFlowContainer/Blue/CenterContainer"]
 position = Vector2(8, 4)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("19_p2cca")
@@ -1258,7 +1265,7 @@ centered = false
 region_enabled = true
 region_rect = Rect2(0, 32, 32, 32)
 
-[node name="Yellow" type="Button" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/Panel/VBoxContainer/HFlowContainer"]
+[node name="Yellow" type="Button" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/ColorPanel/VBoxContainer/HFlowContainer"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 focus_neighbor_left = NodePath("../Blue")
@@ -1270,7 +1277,7 @@ button_group = SubResource("ButtonGroup_ucr8h")
 script = ExtResource("17_ucr8h")
 color = Color(1, 0.919586, 0.394531, 1)
 
-[node name="CenterContainer" type="CenterContainer" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/Panel/VBoxContainer/HFlowContainer/Yellow"]
+[node name="CenterContainer" type="CenterContainer" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/ColorPanel/VBoxContainer/HFlowContainer/Yellow"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -1279,7 +1286,7 @@ offset_bottom = -6.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/Panel/VBoxContainer/HFlowContainer/Yellow/CenterContainer"]
+[node name="Sprite2D" type="Sprite2D" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/ColorPanel/VBoxContainer/HFlowContainer/Yellow/CenterContainer"]
 position = Vector2(8, 4)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("19_p2cca")
@@ -1334,7 +1341,7 @@ offset_bottom = -16.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Shadow" type="CheckButton" parent="MenuLayer/Settings/TabContainer/3D/MarginContainer/3D/ShadowPanel/VBoxContainer"]
+[node name="Shadow" type="CheckButton" parent="MenuLayer/Settings/TabContainer/3D/MarginContainer/3D/ShadowPanel/VBoxContainer" groups=["Buttons"]]
 custom_minimum_size = Vector2(256, 48)
 layout_mode = 2
 size_flags_vertical = 4
@@ -1344,11 +1351,12 @@ button_pressed = true
 icon = ExtResource("18_q4tpj")
 icon_alignment = 1
 expand_icon = true
+script = ExtResource("33_fwia5")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MenuLayer/Settings/TabContainer/3D/MarginContainer/3D/ShadowPanel/VBoxContainer"]
 layout_mode = 2
 
-[node name="Shadow_Quality" type="HSlider" parent="MenuLayer/Settings/TabContainer/3D/MarginContainer/3D/ShadowPanel/VBoxContainer/HBoxContainer"]
+[node name="Shadow_Quality" type="HSlider" parent="MenuLayer/Settings/TabContainer/3D/MarginContainer/3D/ShadowPanel/VBoxContainer/HBoxContainer" node_paths=PackedStringArray("marker") groups=["Sliders"]]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -1357,6 +1365,7 @@ max_value = 2.0
 value = 1.0
 rounded = true
 script = ExtResource("29_qxfis")
+marker = NodePath("VSeparator")
 
 [node name="VSeparator" type="VSeparator" parent="MenuLayer/Settings/TabContainer/3D/MarginContainer/3D/ShadowPanel/VBoxContainer/HBoxContainer/Shadow_Quality"]
 show_behind_parent = true
@@ -1390,7 +1399,7 @@ offset_bottom = -16.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="SDFGI" type="CheckButton" parent="MenuLayer/Settings/TabContainer/3D/MarginContainer/3D/LightingPanel/VBoxContainer"]
+[node name="SDFGI" type="CheckButton" parent="MenuLayer/Settings/TabContainer/3D/MarginContainer/3D/LightingPanel/VBoxContainer" groups=["Buttons"]]
 custom_minimum_size = Vector2(256, 48)
 layout_mode = 2
 size_flags_vertical = 4
@@ -1399,8 +1408,10 @@ button_pressed = true
 icon = ExtResource("17_hvuoq")
 icon_alignment = 1
 expand_icon = true
+script = ExtResource("37_d37cp")
 
-[node name="SDFGI_Full" type="CheckButton" parent="MenuLayer/Settings/TabContainer/3D/MarginContainer/3D/LightingPanel/VBoxContainer"]
+[node name="SDFGI_Full" type="CheckButton" parent="MenuLayer/Settings/TabContainer/3D/MarginContainer/3D/LightingPanel/VBoxContainer" groups=["Buttons"]]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(256, 48)
 layout_mode = 2
 size_flags_vertical = 4
@@ -1408,6 +1419,7 @@ theme_type_variation = &"SettingsButton"
 icon = ExtResource("18_xkl7s")
 icon_alignment = 1
 expand_icon = true
+script = ExtResource("39_30vkn")
 
 [node name="Exit Settings" type="Button" parent="MenuLayer/Settings"]
 custom_minimum_size = Vector2(32, 32)
@@ -2114,7 +2126,11 @@ libraries = {
 [connection signal="pressed" from="MenuLayer/Main/Main/VBoxContainer/Controls" to="." method="_on_controls_pressed"]
 [connection signal="pressed" from="MenuLayer/Main/Main/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
 [connection signal="toggled" from="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/WindowPanel/VBoxContainer/Resizable" to="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/WindowPanel/VBoxContainer/Resizable" method="_on_toggled"]
+[connection signal="toggled" from="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/WindowPanel/VBoxContainer/Fullscreen" to="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/WindowPanel/VBoxContainer/Fullscreen" method="_on_toggled"]
+[connection signal="toggled" from="MenuLayer/Settings/TabContainer/3D/MarginContainer/3D/ShadowPanel/VBoxContainer/Shadow" to="MenuLayer/Settings/TabContainer/3D/MarginContainer/3D/ShadowPanel/VBoxContainer/Shadow" method="_on_toggled"]
 [connection signal="value_changed" from="MenuLayer/Settings/TabContainer/3D/MarginContainer/3D/ShadowPanel/VBoxContainer/HBoxContainer/Shadow_Quality" to="MenuLayer/Settings/TabContainer/3D/MarginContainer/3D/ShadowPanel/VBoxContainer/HBoxContainer/Shadow_Quality" method="_on_value_changed"]
+[connection signal="toggled" from="MenuLayer/Settings/TabContainer/3D/MarginContainer/3D/LightingPanel/VBoxContainer/SDFGI" to="MenuLayer/Settings/TabContainer/3D/MarginContainer/3D/LightingPanel/VBoxContainer/SDFGI" method="_on_toggled"]
+[connection signal="toggled" from="MenuLayer/Settings/TabContainer/3D/MarginContainer/3D/LightingPanel/VBoxContainer/SDFGI_Full" to="MenuLayer/Settings/TabContainer/3D/MarginContainer/3D/LightingPanel/VBoxContainer/SDFGI_Full" method="_on_toggled"]
 [connection signal="pressed" from="MenuLayer/Settings/Exit Settings" to="." method="_on_exit_settings_pressed"]
 [connection signal="pressed" from="MenuLayer/Controls/Exit Controls" to="." method="_on_exit_controls_pressed"]
 [connection signal="pressed" from="GameOverlay/MenuButton" to="GameOverlay/MenuButton" method="_on_pressed"]

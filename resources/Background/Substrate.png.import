@@ -3,16 +3,17 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cn8i1e5a2w11c"
+path.s3tc="res://.godot/imported/Substrate.png-31487c27231bf5fdb9bc34a2431fe791.s3tc.ctex"
 path.etc2="res://.godot/imported/Substrate.png-31487c27231bf5fdb9bc34a2431fe791.etc2.ctex"
 metadata={
-"imported_formats": ["etc2_astc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://resources/Background/Substrate.png"
-dest_files=["res://.godot/imported/Substrate.png-31487c27231bf5fdb9bc34a2431fe791.etc2.ctex"]
+dest_files=["res://.godot/imported/Substrate.png-31487c27231bf5fdb9bc34a2431fe791.s3tc.ctex", "res://.godot/imported/Substrate.png-31487c27231bf5fdb9bc34a2431fe791.etc2.ctex"]
 
 [params]
 

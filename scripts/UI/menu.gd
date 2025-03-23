@@ -412,12 +412,6 @@ func _config_load():
 	sdfgi_full_res = config.get_value("Graphics", "sdfgi_full_res", false)
 	
 	# Restore config into button states
-	settings_node._set_resize()
-	settings_node._on_fullscreen_toggled(fullscreen)
-	settings_node._on_shadow_toggled(shadow_enabled)
-	settings_node._on_sdfgi_toggled(sdfgi_enabled)
-	settings_node._on_sdfgi_full_toggled(sdfgi_full_res)
-	
 	settings_node._graphics_check()
 	settings_node._set_resize()
 	settings_node.set_resolution()
