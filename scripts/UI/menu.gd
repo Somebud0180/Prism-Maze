@@ -84,11 +84,15 @@ var resolution = Vector2i(1280, 720):
 var music_volume = 0.0:
 	set(value):
 		music_volume = value
+		_config_save()
 		audio_player.volume_db = music_volume
 		for music_player in get_tree().get_nodes_in_group("LevelMusicPlayer"):
 			music_player.music_volume = value
 
-var sfx_volume = 0.0
+var sfx_volume = 0.0:
+	set(value):
+		sfx_volume = value
+		_config_save()
 
 var shadow_enabled: bool = true:
 	set(value):
@@ -415,6 +419,7 @@ func _config_load():
 	settings_node._on_sdfgi_full_toggled(sdfgi_full_res)
 	
 	settings_node._graphics_check()
+	settings_node._set_resize()
 	settings_node.set_resolution()
 	_manage_sliders()
 	_manage_buttons()

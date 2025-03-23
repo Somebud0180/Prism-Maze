@@ -65,12 +65,12 @@ func play_wall_grab(new_value: bool, old_value: bool) -> void:
 
 func _ready() -> void:
 	# Disable obect interaction before loading
-	set_collision_layer_value(2, false)
+	call_deferred("set_collision_layer_value", 2, false)
 
 
 func _on_game_loaded():
 	game_initialized = true
-	set_collision_layer_value(2, true)
+	call_deferred("set_collision_layer_value", 2, true)
 
 func _gravity_change(oldValue: int, newValue: int):
 	if newValue == 1 and oldValue != 1:
@@ -99,6 +99,9 @@ func _gravity(delta: float):
 
 
 func is_valid_wall() -> bool:
+	if !is_on_wall():
+		return false
+	
 	if get_slide_collision_count() > 0 and is_on_wall_only():
 		var collision = get_slide_collision(0)
 		var collider = collision.get_collider()
@@ -106,7 +109,8 @@ func is_valid_wall() -> bool:
 		# Check if collider is a GridMap
 		if collider is GridMap:
 			# Only allow wall jump on normal walls (item 0)
-			return !collider.get_collision_layer_value(3)
+			var is_barrier = call_deferred("get_collision_layer_value", 3)
+			return !is_barrier
 			
 		return true  # Allow wall jump on non-GridMap surfaces
 	return false
@@ -195,9 +199,8 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 	
-	var collider = call_deferred($RayCast3D.get_collider())
-	var is_collision_4 = call_deferred(collider.get_collision_layer_value(4))
-	if collider is GridMap and is_collision_4:
+	var collider = $RayCast3D.get_collider()
+	if collider is GridMap and collider.call_deferred("get_collision_layer_value", 4):
 		var forward_dir = -collider.global_transform.basis.z.normalized()
 		desired_velocity = Vector3(forward_dir.x * CONVEYOR_SPEED, velocity.y, forward_dir.z * CONVEYOR_SPEED)
 		velocity = velocity.lerp(desired_velocity, 0.1)

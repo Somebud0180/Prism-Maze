@@ -2,7 +2,6 @@ extends Node
 class_name GameManager
 
 signal finished_loading
-signal finished_level_set
 
 # The Game Manager holds the set of levels, game mode, and level progression.
 # It is also responsible for loading the game and the levels.
@@ -156,8 +155,8 @@ func load_game() -> void:
 	if !custom_level.is_empty():
 		level_collection.insert(0, custom_level)
 	
-	emit_signal("finished_level_set")
-
+	load_level()
+	emit_signal("finished_loading")
 
 func get_custom_level_amount() -> int:
 	if custom_level.is_empty():
@@ -387,9 +386,3 @@ func get_color(id: int) -> Color:
 			possible_colors.remove_at(rand_index)
 	
 	return color
-
-
-func _on_finished_level_set() -> void:
-	load_level()
-	
-	emit_signal("finished_loading")

@@ -770,10 +770,10 @@ follow_viewport_scale = 0.05
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 32.0
-offset_top = 32.0
-offset_right = -32.0
-offset_bottom = -32.0
+offset_left = 34.0
+offset_top = 36.0
+offset_right = -30.0
+offset_bottom = -28.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(608, 328)
@@ -934,6 +934,7 @@ script = ExtResource("12_qg4he")
 layout_mode = 2
 theme = ExtResource("1_7yxt8")
 follow_focus = true
+scroll_vertical = 100
 metadata/_tab_index = 0
 
 [node name="MarginContainer" type="MarginContainer" parent="MenuLayer/Settings/TabContainer/2D"]
@@ -979,6 +980,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Resizable" type="CheckButton" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/WindowPanel/VBoxContainer" groups=["buttons"]]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(256, 48)
 layout_mode = 2
 size_flags_vertical = 4
@@ -1065,9 +1067,9 @@ target_property = &"music_volume"
 [node name="VSeparator" type="VSeparator" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/AudioPlanel/VBoxContainer/Music/MusicSlider"]
 show_behind_parent = true
 layout_mode = 2
-offset_left = 712.0
+offset_left = 718.0
 offset_top = 4.0
-offset_right = 726.0
+offset_right = 732.0
 offset_bottom = 22.0
 theme_override_styles/separator = SubResource("StyleBoxFlat_tsejx")
 
@@ -1100,9 +1102,9 @@ target_property = &"sfx_volume"
 [node name="VSeparator" type="VSeparator" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/AudioPlanel/VBoxContainer/SFX/SFXSlider"]
 show_behind_parent = true
 layout_mode = 0
-offset_left = 712.0
+offset_left = 718.0
 offset_top = 4.0
-offset_right = 726.0
+offset_right = 732.0
 offset_bottom = 22.0
 theme_override_styles/separator = SubResource("StyleBoxFlat_tsejx")
 

@@ -192,6 +192,7 @@ func _graphics_check() -> void:
 
 func _set_resize():
 	get_viewport().get_window().unresizable = !menu.resizable
+	%Resizable._update_button()
 
 
 func _on_shadow_toggled(toggled_on: bool) -> void:
