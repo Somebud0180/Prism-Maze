@@ -1,4 +1,4 @@
-[gd_scene load_steps=99 format=3 uid="uid://br2t4hanatnss"]
+[gd_scene load_steps=100 format=3 uid="uid://br2t4hanatnss"]
 
 [ext_resource type="Theme" uid="uid://bau50guyc4alk" path="res://resources/Theme/menu.tres" id="1_7yxt8"]
 [ext_resource type="Script" uid="uid://cnwd74ny2hf2q" path="res://scripts/UI/menu.gd" id="2_o131u"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://e665j6xb1xqo" path="res://resources/Menu/Menu Icons/Play.png" id="6_jcwtk"]
 [ext_resource type="Texture2D" uid="uid://b8blbwcxtsbgw" path="res://resources/Menu/Menu Icons/Play_3D.png" id="7_7oqtn"]
 [ext_resource type="Texture2D" uid="uid://v60x1qijueux" path="res://resources/Menu/Menu Icons/Gear.png" id="8_1anaf"]
+[ext_resource type="Script" uid="uid://w2u0f23gprbq" path="res://scripts/UI/play_3d.gd" id="8_2dq55"]
 [ext_resource type="Texture2D" uid="uid://slk1m7wnru8w" path="res://resources/Menu/Menu Icons/Controls.png" id="9_xlwes"]
 [ext_resource type="Texture2D" uid="uid://bhjm5wym26dsu" path="res://resources/Menu/Menu Icons/Exit.png" id="10_fqtlv"]
 [ext_resource type="Texture2D" uid="uid://ci8dfl1p8qliu" path="res://resources/Menu/PatchRects/Settings.png" id="11_mfpu8"]
@@ -842,6 +843,7 @@ focus_previous = NodePath("../Play")
 icon = ExtResource("7_7oqtn")
 icon_alignment = 1
 expand_icon = true
+script = ExtResource("8_2dq55")
 
 [node name="ButtonSpacer2" type="VSeparator" parent="MenuLayer/Main/Main/VBoxContainer"]
 layout_mode = 2
@@ -937,7 +939,7 @@ script = ExtResource("12_qg4he")
 layout_mode = 2
 theme = ExtResource("1_7yxt8")
 follow_focus = true
-scroll_vertical = 100
+scroll_vertical = 71
 metadata/_tab_index = 0
 
 [node name="MarginContainer" type="MarginContainer" parent="MenuLayer/Settings/TabContainer/2D"]
@@ -966,6 +968,7 @@ theme_override_constants/separation = 16
 theme_override_styles/separator = ExtResource("13_tbd65")
 
 [node name="WindowPanel" type="Panel" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D"]
+visible = false
 custom_minimum_size = Vector2(0, 190)
 layout_mode = 2
 size_flags_horizontal = 3

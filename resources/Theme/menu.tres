@@ -3,6 +3,7 @@
 [ext_resource type="StyleBox" uid="uid://d4xsuett3yt0" path="res://resources/Theme/button_hover.tres" id="1_dxyip"]
 [ext_resource type="StyleBox" uid="uid://55ng6tb5ctyb" path="res://resources/Theme/button_focus.tres" id="1_sn4ko"]
 [ext_resource type="StyleBox" uid="uid://k5qrhd2cgjp1" path="res://resources/Theme/button_disabled.tres" id="1_yg5h2"]
+[ext_resource type="StyleBox" uid="uid://b5uyfssq3f7bs" path="res://resources/Theme/button_normal.tres" id="4_8ex2i"]
 [ext_resource type="StyleBox" uid="uid://cewefipvpp1ym" path="res://resources/Theme/button_pressed.tres" id="5_tyiim"]
 [ext_resource type="StyleBox" uid="uid://vqm1soj8xnjh" path="res://resources/Theme/separator.tres" id="5_wuakj"]
 [ext_resource type="StyleBox" uid="uid://b4mewmdnj56qd" path="res://resources/Theme/v_separator.tres" id="6_kbp2n"]
@@ -17,26 +18,11 @@
 [ext_resource type="StyleBox" uid="uid://caeu1u00svere" path="res://resources/Theme/Settings/settings_button_normal.tres" id="13_53xrw"]
 [ext_resource type="StyleBox" uid="uid://ngcow0ri73qo" path="res://resources/Theme/Settings/settings_button_pressed.tres" id="14_8ex2i"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jhkqt"]
-content_margin_left = 4.0
-content_margin_top = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 11.0
-bg_color = Color(0.262932, 0.262932, 0.262932, 1)
-border_width_bottom = 6
-border_color = Color(0.0676027, 0.0879598, 0.102674, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-shadow_color = Color(0.136826, 0.136826, 0.136826, 0.6)
-shadow_size = 2
-
 [resource]
 Button/styles/disabled = ExtResource("1_yg5h2")
 Button/styles/focus = ExtResource("1_sn4ko")
 Button/styles/hover = ExtResource("1_dxyip")
-Button/styles/normal = SubResource("StyleBoxFlat_jhkqt")
+Button/styles/normal = ExtResource("4_8ex2i")
 Button/styles/pressed = ExtResource("5_tyiim")
 CheckButton/styles/focus = ExtResource("6_tyiim")
 CheckButton/styles/hover = ExtResource("6_tyiim")
