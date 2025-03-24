@@ -379,7 +379,6 @@ collision_mask = 13
 wall_min_slide_angle = 0.262403
 script = ExtResource("2_orbxt")
 SPEED = 8.0
-CONVEYOR_SPEED = 32.0
 JUMP_VELOCITY = 12.0
 WALL_JUMP_FORCE = 40.0
 ROTATION_SPEED = 10.0
@@ -440,10 +439,6 @@ shape = SubResource("CapsuleShape3D_dfa31")
 unique_name_in_owner = true
 volume_db = -3.0
 doppler_tracking = 1
-
-[node name="RayCast3D" type="RayCast3D" parent="Player3D"]
-target_position = Vector3(0, -1.15, 0)
-collision_mask = 8
 
 [node name="LevelLayer3D" type="Node3D" parent="."]
 unique_name_in_owner = true

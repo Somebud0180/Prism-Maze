@@ -7,8 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://d1vxa1f4hthke" path="res://resources/Menu/Title.png" id="5_7k0uf"]
 [ext_resource type="Texture2D" uid="uid://e665j6xb1xqo" path="res://resources/Menu/Menu Icons/Play.png" id="6_jcwtk"]
 [ext_resource type="Texture2D" uid="uid://b8blbwcxtsbgw" path="res://resources/Menu/Menu Icons/Play_3D.png" id="7_7oqtn"]
+[ext_resource type="Script" uid="uid://qbm78qb5viap" path="res://scripts/UI/play_button.gd" id="7_crixo"]
 [ext_resource type="Texture2D" uid="uid://v60x1qijueux" path="res://resources/Menu/Menu Icons/Gear.png" id="8_1anaf"]
-[ext_resource type="Script" uid="uid://w2u0f23gprbq" path="res://scripts/UI/play_3d.gd" id="8_2dq55"]
 [ext_resource type="Texture2D" uid="uid://slk1m7wnru8w" path="res://resources/Menu/Menu Icons/Controls.png" id="9_xlwes"]
 [ext_resource type="Texture2D" uid="uid://bhjm5wym26dsu" path="res://resources/Menu/Menu Icons/Exit.png" id="10_fqtlv"]
 [ext_resource type="Texture2D" uid="uid://ci8dfl1p8qliu" path="res://resources/Menu/PatchRects/Settings.png" id="11_mfpu8"]
@@ -37,7 +37,7 @@
 [ext_resource type="Texture2D" uid="uid://cha05i3vt0svl" path="res://resources/Menu/Misc/Menu.png" id="19_xlwes"]
 [ext_resource type="StyleBox" uid="uid://vqm1soj8xnjh" path="res://resources/Theme/separator.tres" id="20_6p85y"]
 [ext_resource type="Texture2D" uid="uid://dmkasvvp23qkt" path="res://resources/Menu/Misc/MusicMuted.png" id="20_p5bkw"]
-[ext_resource type="Script" uid="uid://cr3ngduhxv807" path="res://scripts/UI/audio_slider.gd" id="20_sc8t4"]
+[ext_resource type="Script" uid="uid://cr3ngduhxv807" path="res://scripts/UI/slider.gd" id="20_sc8t4"]
 [ext_resource type="Texture2D" uid="uid://itwiqyff3egk" path="res://resources/Menu/Control Icons/Pause.png" id="20_tbd65"]
 [ext_resource type="Texture2D" uid="uid://7rov1q0wdy4i" path="res://resources/Menu/Control Icons/Exit.png" id="20_wg8ic"]
 [ext_resource type="Texture2D" uid="uid://dyjq2ifh87p7t" path="res://resources/Menu/Misc/SFXMuted.png" id="21_aevs6"]
@@ -817,7 +817,7 @@ stretch_mode = 4
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 
-[node name="Play" type="Button" parent="MenuLayer/Main/Main/VBoxContainer"]
+[node name="Play" type="Button" parent="MenuLayer/Main/Main/VBoxContainer" groups=["PlayButtons"]]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 size_flags_vertical = 3
@@ -828,11 +828,13 @@ focus_previous = NodePath("../Quit")
 icon = ExtResource("6_jcwtk")
 icon_alignment = 1
 expand_icon = true
+script = ExtResource("7_crixo")
+modifier = &"in_game"
 
 [node name="ButtonSpacer1" type="VSeparator" parent="MenuLayer/Main/Main/VBoxContainer"]
 layout_mode = 2
 
-[node name="Play3D" type="Button" parent="MenuLayer/Main/Main/VBoxContainer"]
+[node name="Play3D" type="Button" parent="MenuLayer/Main/Main/VBoxContainer" groups=["PlayButtons"]]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 size_flags_vertical = 3
@@ -843,7 +845,8 @@ focus_previous = NodePath("../Play")
 icon = ExtResource("7_7oqtn")
 icon_alignment = 1
 expand_icon = true
-script = ExtResource("8_2dq55")
+script = ExtResource("7_crixo")
+modifier = &"in_game_3d"
 
 [node name="ButtonSpacer2" type="VSeparator" parent="MenuLayer/Main/Main/VBoxContainer"]
 layout_mode = 2
@@ -939,7 +942,7 @@ script = ExtResource("12_qg4he")
 layout_mode = 2
 theme = ExtResource("1_7yxt8")
 follow_focus = true
-scroll_vertical = 71
+scroll_vertical = 15
 metadata/_tab_index = 0
 
 [node name="MarginContainer" type="MarginContainer" parent="MenuLayer/Settings/TabContainer/2D"]

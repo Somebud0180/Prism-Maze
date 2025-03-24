@@ -15,9 +15,9 @@ func _notification(what):
 func _position_marker():
 	var default_value = 1.0
 	var range_size = max_value - min_value
-	var ratio = (default_value - min_value) / float(range_size)
+	var _ratio = (default_value - min_value) / float(range_size)
 	var usable_width = size.x
-	marker.position.x = ratio * usable_width - 7.5
+	marker.position.x = _ratio * usable_width - 7.5
 
 
 func _update_slider():
@@ -25,5 +25,5 @@ func _update_slider():
 	value = menu.shadow_quality
 
 
-func _on_value_changed(value: float) -> void:
-	menu.shadow_quality = int(value)
+func _on_value_changed(_value: float) -> void:
+	menu.shadow_quality = int(_value)

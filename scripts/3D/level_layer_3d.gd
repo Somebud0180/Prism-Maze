@@ -41,7 +41,7 @@ var current_level = 0
 var starting_marker: Node3D
 
 func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("w"):
+	if Input.is_action_just_pressed("load_level"):
 		place_level_async()
 
 
@@ -95,9 +95,9 @@ func place_level_async() -> void:
 		cull_levels()
 
 
-func position_level(level_collection):
-	var last_level = level_collection[get_child_count() - 2]
-	var this_level = level_collection[get_child_count() - 1]
+func position_level(_level_collection):
+	var last_level = _level_collection[get_child_count() - 2]
+	var this_level = _level_collection[get_child_count() - 1]
 	
 	var exit_marker = last_level.get_node("ExitMarker")
 	var entrance_marker = this_level.get_node("EntranceMarker")

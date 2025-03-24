@@ -1,68 +1,17 @@
-[gd_scene load_steps=13 format=4 uid="uid://dwgtfqyh32i4k"]
+[gd_scene load_steps=8 format=4 uid="uid://clv812gj1aqi7"]
 
-[ext_resource type="Texture2D" uid="uid://f07c5yfebyiv" path="res://resources/Game 3D/Model/Block_Floor.png" id="1_0kb7o"]
-[ext_resource type="Texture2D" uid="uid://bc222dv1jp32m" path="res://resources/Game 3D/Model/Conveyor_UV2.png" id="2_ve8er"]
+[ext_resource type="Texture2D" uid="uid://bc222dv1jp32m" path="res://resources/Game 3D/Model/Conveyor_UV2.png" id="1_40kv3"]
+[ext_resource type="Script" uid="uid://bson42jkxeq8i" path="res://scripts/3D/conveyor.gd" id="1_bvew6"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v4gky"]
-resource_name = "Material"
-cull_mode = 2
-albedo_texture = ExtResource("1_0kb7o")
-metallic = 0.5
-roughness = 0.5
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_3mipa"]
-_surfaces = [{
-"aabb": AABB(-1, -1, -1, 2, 2, 2),
-"format": 34896613377,
-"index_count": 36,
-"index_data": PackedByteArray("AAAGAAQAAAACAAYAAwAGAAIAAwAHAAYABwAEAAYABwAFAAQABQADAAEABQAHAAMAAQACAAAAAQADAAIABQAAAAQABQABAAAA"),
-"name": "Material",
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 8,
-"vertex_data": PackedByteArray("/////wAAAAD//wAAAAAAAP///////wAA//8AAP//AAAAAP//AAAAAAAAAAAAAAAAAAD/////AAAAAAAA//8AAA==")
-}]
-blend_shape_mode = 0
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_sy2q6"]
-resource_name = "Block_Cube"
-_surfaces = [{
-"aabb": AABB(-1, -1, -1, 2, 2, 2),
-"attribute_data": PackedByteArray("qqr/f6qq/3+qqv9/V1X/f1dV/39XVf9/qar/P6mq/z+pqv8/V1X/P1dV/z9XVf8/v6r/v5P//3+/qv+/V1X/vwIA/39XVf+/qqoAAOr//z+/qv//V1UAAAIA/z9XVf//"),
-"format": 34896613399,
-"index_count": 36,
-"index_data": PackedByteArray("AQATAA0AAQAHABMACQASAAYACQAVABIAFwAOABQAFwARAA4AEAAKAAQAEAAWAAoABQAIAAIABQALAAgADwAAAAwADwADAAAA"),
-"material": SubResource("StandardMaterial3D_v4gky"),
-"name": "Material",
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 24,
-"vertex_data": PackedByteArray("/////wAA////////AAD///////8AAFTV//8AAAAA/////wAAAAD/v///AAAAAFTV/////////7///////////////////1TV//8AAP///7///wAA////v///AAD//1TVAAD//wAA//8AAP//AAD//wAA//8AAFTVAAAAAAAA//8AAAAAAAD/vwAAAAAAAFTVAAD//////78AAP///////wAA/////1TVAAAAAP///78AAAAA////vwAAAAD//1TV/7//v/9//7+qKqoq/7//vwAA/3+qKqoq//////9//7+qKqoq/////wAA/3+qKqoq/7//v/9//79U1VTV/7//vwAA/39U1VTV//////9//79U1VTV/////wAA/39U1VTV")
-}]
-blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_3mipa")
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_781gc"]
-size = Vector3(2, 2, 2)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_781gc"]
-transparency = 1
-cull_mode = 2
-shading_mode = 0
-specular_mode = 2
-disable_ambient_light = true
-albedo_color = Color(1, 1, 1, 0.490196)
-
-[sub_resource type="BoxMesh" id="BoxMesh_ve8er"]
-material = SubResource("StandardMaterial3D_781gc")
-size = Vector3(2, 2, 2)
+[sub_resource type="BoxShape3D" id="BoxShape3D_bvew6"]
+size = Vector3(2, 1.5, 2)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s4ybe"]
 resource_name = "Material"
 cull_mode = 2
-albedo_texture = ExtResource("2_ve8er")
+albedo_texture = ExtResource("1_40kv3")
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_ve8er"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_l5vc3"]
 _surfaces = [{
 "aabb": AABB(-1, -1, -1.99629, 2, 1, 1.99258),
 "format": 34359742465,
@@ -77,7 +26,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_q0r25"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_bvew6"]
 resource_name = "Conveyor_Cube"
 _surfaces = [{
 "aabb": AABB(-1, -1, -1.99629, 2, 1, 1.99258),
@@ -94,45 +43,34 @@ _surfaces = [{
 "vertex_data": PackedByteArray("AACAPwAAAABHIea/AACAvwAAAADI9U6+AACAvwAAAABHIea/AACAPwAAAADI9U6+AACAvwAAgL9HIea/AACAPwAAgL/I9U6+AACAPwAAgL9HIea/AACAvwAAgL/I9U6+AACAvwAAAADI9U6+AACAPwAAgL/I9U6+AACAvwAAgL/I9U6+AACAPwAAAADI9U6+AACAvwAAAADI9U6+AACAv1ouUr9Txva/AACAvwAAAABHIea/AACAvwAAgL/I9U6+AACAvwAAgL9HIea/AACAv1ouUr9Txva/AACAPwAAAABHIea/AACAvwAAAABHIea/AACAPwAAgL9HIea/AACAvwAAgL9HIea/AACAPwAAAABHIea/AACAPwAAgL/I9U6+AACAPwAAAADI9U6+AACAPwAAgL9HIea/AACAP1JRHL8AB3O7AACAv1JRHL8AB3O7AACAP1xdx74AB3O7AACAv1xdx74AB3O7AACAv1JRHL8AB3O7AACAv1xdx74AB3O7AACAv5hGN75Txva/AACAv5hGN75Txva/AACAP1pdx757hv+/AACAP1JRHL97hv+/AACAP1pdx757hv+/AACAP1JRHL97hv+/AACAP1xdx74AB3O7AACAP1JRHL8AB3O7AACAP///f7/E9U6+AACAP1kuUr/QmpO9AACAv///f7/E9U6+AACAv1kuUr/QmpO9AACAP5xGN77QmpO9AACAPwAAgLPE9U6+AACAv5xGN77QmpO9AACAvwAAgLPE9U6+AACAv1kuUr/QmpO9AACAv///f7/E9U6+AACAvwAAgLPE9U6+AACAv5xGN77QmpO9AACAvwAAgL9HIea/AACAv1pdx757hv+/AACAv1JRHL97hv+/AACAvwAAALNHIea/AACAvwAAALNHIea/AACAPwAAALNHIea/AACAP5hGN75Txva/AACAv1pdx757hv+/AACAv1JRHL97hv+/AACAP1ouUr9Txva/AACAvwAAgL9HIea/AACAPwAAgL9HIea/AACAP1ouUr9Txva/AACAPwAAALNHIea/AACAP5hGN75Txva/AACAP5xGN77QmpO9AACAPwAAgLPE9U6+AACAPwAAgL9HIea/AACAP///f7/E9U6+AACAP1kuUr/QmpO9/3//////////f/////////9///////7//3//////////fwAA//////9/AAD//////38AAAAA/v//fwAA//////9//3//fwCA/3//f/9/AID/f/9//38AgP9//3//fwCAAAD/f////78AAP9//38AgAAA/3////+/AAD/f/9/AIAAAP9//38AgP//////fwCA/////wAAAID//////38AgP//////fwCA//////9/AID///9/////v////39ChACA////f/9/AID///9//38AgP9//3//fwCA/3//f/9/AID/f/9//38AgP9//3//fwCAAAD/f/9/AIAAAP9//38AgAAA/3//fwCA//////9/AID//////38AgP//////fwCA////f/9/AID///9//38AgP///3//fwCA////f/9/AID/f/9//38AgP9//3//fwCA/3//f/9/AID/f/9//38AgP9//3//fwCA/3//f/9/AID/f/9//38AgP9//3//fwCAAAD/f/9/AIAAAP9/////vwAA/3//fwCAAAD/f/9/AIAAAP9//38AgAAA/3//fwCAAAD/f/9/AIAAAP9//38AgP//////fwCA//////9/AID//////38AgP//////fwCA//////9/AID//////38AgP//////fwCA//////9/AID///9//38AgP///3//fwCA////f/9/AID///9//38AgP///3////+/////f/9/AID///9/nIwAgP///3//fwCA")
 }]
 blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_ve8er")
+shadow_mesh = SubResource("ArrayMesh_l5vc3")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_ve8er"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_ebwq2"]
 size = Vector3(2, 1, 2)
 
-[node name="Tiles" type="Node3D"]
+[node name="Conveyor" type="Node3D"]
 
-[node name="Block" type="Node3D" parent="."]
-visible = false
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 8
+collision_mask = 8
+priority = 1
+script = ExtResource("1_bvew6")
+conveyor_speed = 40.0
 
-[node name="Block" type="MeshInstance3D" parent="Block"]
-mesh = SubResource("ArrayMesh_sy2q6")
-skeleton = NodePath("")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 5.96046e-08)
+shape = SubResource("BoxShape3D_bvew6")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Block/Block"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Block/Block/StaticBody3D"]
-shape = SubResource("BoxShape3D_781gc")
-
-[node name="Barrier" type="Node3D" parent="."]
-visible = false
-
-[node name="Barrier Block" type="MeshInstance3D" parent="Barrier"]
-mesh = SubResource("BoxMesh_ve8er")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Barrier/Barrier Block"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Barrier/Barrier Block/StaticBody3D"]
-shape = SubResource("BoxShape3D_781gc")
-
-[node name="Conveyor" type="Node3D" parent="."]
-
-[node name="Conveyor" type="MeshInstance3D" parent="Conveyor"]
+[node name="Conveyor" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1)
-mesh = SubResource("ArrayMesh_q0r25")
+mesh = SubResource("ArrayMesh_bvew6")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Conveyor/Conveyor"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Conveyor"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Conveyor/Conveyor/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Conveyor/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -1)
-shape = SubResource("BoxShape3D_ve8er")
+shape = SubResource("BoxShape3D_ebwq2")
+
+[connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]
+[connection signal="body_exited" from="Area3D" to="Area3D" method="_on_body_exited"]

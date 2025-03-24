@@ -52,17 +52,20 @@ var in_game = false:
 	set(value):
 		in_game = value
 		_manage_game_overlay()
+		_manage_play_buttons()
 
 var in_game_3d = false:
 	set(value):
 		in_game_3d = value
 		_manage_game_overlay()
+		_manage_play_buttons()
 
 # Game Settings
 var player_color: Color = Color.WHITE:
 	set(value):
 		player_color = value
 		settings_node._update_player_color()
+		_manage_play_buttons()
 		_config_save()
 
 var resizable: bool = false:
@@ -385,6 +388,11 @@ func _manage_sliders():
 func _manage_buttons():
 	for button in get_tree().get_nodes_in_group("Buttons"):
 		button._update_button()
+
+
+func _manage_play_buttons():
+	for play_button in get_tree().get_nodes_in_group("PlayButtons"):
+		play_button._update_button()
 
 
 func _config_load():

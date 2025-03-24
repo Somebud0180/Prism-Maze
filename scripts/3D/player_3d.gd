@@ -1,12 +1,12 @@
 extends CharacterBody3D
 
 @export var SPEED = 0.0
-@export var CONVEYOR_SPEED = 24.0
 @export var JUMP_VELOCITY = 0.0
 @export var WALL_JUMP_FORCE = 0.0
 @export var WALL_SLIDE_FACTOR = 0.3
 @export var ROTATION_SPEED = 0.0
-@export var conveyor_inertia_duration = 0.2
+
+var conveyor_velocity = Vector3.ZERO
 
 var was_on_wall = false:
 	set(value):
@@ -109,7 +109,7 @@ func is_valid_wall() -> bool:
 		# Check if collider is a GridMap
 		if collider is GridMap:
 			# Only allow wall jump on normal walls (item 0)
-			var is_barrier = call_deferred("get_collision_layer_value", 3)
+			var is_barrier = get_collision_layer_value(3)
 			return !is_barrier
 			
 		return true  # Allow wall jump on non-GridMap surfaces
@@ -199,20 +199,11 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 	
-	var collider = $RayCast3D.get_collider()
-	if collider is GridMap and collider.call_deferred("get_collision_layer_value", 4):
-		var forward_dir = -collider.global_transform.basis.z.normalized()
-		desired_velocity = Vector3(forward_dir.x * CONVEYOR_SPEED, velocity.y, forward_dir.z * CONVEYOR_SPEED)
-		velocity = velocity.lerp(desired_velocity, 0.1)
-		
-		# Store conveyor velocity & reset timer
-		last_conveyor_velocity = desired_velocity
-		conveyor_inertia_time = conveyor_inertia_duration
-	else:
-		# If we just left the conveyor but have leftover inertia time
-		if conveyor_inertia_time > 0.0:
-			velocity = velocity.lerp(last_conveyor_velocity, 0.1)
-			conveyor_inertia_time -= delta
+	if "conveyor_velocity" in self:
+		if conveyor_velocity != Vector3.ZERO:
+			# Blend conveyor velocity into the player's velocity
+			var push = conveyor_velocity
+			velocity += push * 0.2
 	
 	move_and_slide()
 

@@ -17,9 +17,9 @@ func _notification(what):
 func _position_marker():
 	var default_value = 0.0
 	var range_size = max_value - min_value
-	var ratio = (default_value - min_value) / float(range_size)
+	var _ratio = (default_value - min_value) / float(range_size)
 	var usable_width = size.x
-	marker.position.x = ratio * usable_width - 11.5
+	marker.position.x = _ratio * usable_width - 11.5
 
 
 func _input(event: InputEvent) -> void:
