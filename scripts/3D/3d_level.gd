@@ -18,11 +18,6 @@ var finish_sound = load("res://resources/Sound/Level/SFX/Finish.wav")
 
 
 func _ready() -> void:
-	# Make barrier block invisible and set collision layer
-	if barrier_map:
-		var barrier_mesh = barrier_map.mesh_library.get_item_mesh(1)
-		barrier_mesh.material.albedo_color = Color(255, 255, 255, 0)
-	
 	_hide()
 	
 	player3D = get_tree().get_nodes_in_group("Player3D")

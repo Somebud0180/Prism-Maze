@@ -1,11 +1,17 @@
 extends Node3D
+class_name Game3D
+
+signal finished_loading
 
 @onready var menu = get_node("/root/Menu")
+@onready var level_layer_3d = $LevelLayer3D
 
 func _ready() -> void:
 	set_shadow()
 	set_shadow_quality()
 	set_sdfgi()
+	
+	emit_signal("finished_loading")
 
 
 func set_shadow() -> void:
@@ -33,5 +39,7 @@ func set_sdfgi() -> void:
 
 
 func _on_level_layer_3d_finished_loading() -> void:
+	emit_signal("finished_loading")
+	
 	await get_tree().create_timer(0.5).timeout
 	$Player3D._on_game_loaded()

@@ -197,6 +197,7 @@ script = ExtResource("1_rn7ij")
 
 [node name="MainLayer" type="TileMapLayer" parent="."]
 unique_name_in_owner = true
+visible = false
 
 [node name="Player" type="CharacterBody2D" parent="." node_paths=PackedStringArray("animated_sprite", "audio_player") groups=["Player"]]
 unique_name_in_owner = true

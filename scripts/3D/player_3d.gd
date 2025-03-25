@@ -109,7 +109,7 @@ func is_valid_wall() -> bool:
 		# Check if collider is a GridMap
 		if collider is GridMap:
 			# Only allow wall jump on normal walls (item 0)
-			var is_barrier = get_collision_layer_value(3)
+			var is_barrier = collider.call_deferred("get_collision_layer_value", 3)
 			return !is_barrier
 			
 		return true  # Allow wall jump on non-GridMap surfaces
@@ -199,11 +199,7 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 	
-	if "conveyor_velocity" in self:
-		if conveyor_velocity != Vector3.ZERO:
-			# Blend conveyor velocity into the player's velocity
-			var push = conveyor_velocity
-			velocity += push * 0.2
+	velocity += conveyor_velocity
 	
 	move_and_slide()
 

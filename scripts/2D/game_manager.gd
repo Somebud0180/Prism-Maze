@@ -156,7 +156,7 @@ func load_game() -> void:
 		level_collection.insert(0, custom_level)
 	
 	load_level()
-	emit_signal("finished_loading")
+
 
 func get_custom_level_amount() -> int:
 	if custom_level.is_empty():

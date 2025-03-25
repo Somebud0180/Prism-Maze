@@ -57,11 +57,18 @@ func _process(_delta) -> void:
 			
 			# Check if this scene has a GameManager node
 			var game_manager = get_node_or_null("/root/Game/GameManager")
+			var game_3d = get_node_or_null("/root/Game3D")
+			print(game_manager == null)
+			print(game_3d == null)
 			if game_manager != null:
 				# Wait for the game manager to finish loading
 				await game_manager.finished_loading
+			if game_3d != null:
+				# Wait for the game to finish loading
+				await game_3d.finished_loading
 			
 			# Now emit the signal to hide the loading screen
+			print("Hiding")
 			var menu = get_node("/root/Menu")
 			menu.is_loading = false
 			emit_signal("load_finish")

@@ -1,6 +1,7 @@
-[gd_scene load_steps=13 format=4 uid="uid://dwgtfqyh32i4k"]
+[gd_scene load_steps=14 format=4 uid="uid://dwgtfqyh32i4k"]
 
 [ext_resource type="Texture2D" uid="uid://f07c5yfebyiv" path="res://resources/Game 3D/Model/Block_Floor.png" id="1_0kb7o"]
+[ext_resource type="Shader" uid="uid://4aqe56ugo1jf" path="res://scripts/3D/glass.gdshader" id="2_pvspv"]
 [ext_resource type="Texture2D" uid="uid://bc222dv1jp32m" path="res://resources/Game 3D/Model/Conveyor_UV2.png" id="2_ve8er"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v4gky"]
@@ -45,16 +46,16 @@ shadow_mesh = SubResource("ArrayMesh_3mipa")
 [sub_resource type="BoxShape3D" id="BoxShape3D_781gc"]
 size = Vector3(2, 2, 2)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_781gc"]
-transparency = 1
-cull_mode = 2
-shading_mode = 0
-specular_mode = 2
-disable_ambient_light = true
-albedo_color = Color(1, 1, 1, 0.490196)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_atffv"]
+render_priority = 0
+shader = ExtResource("2_pvspv")
+shader_parameter/albedo = Color(0.901961, 0.960784, 1, 0.12549)
+shader_parameter/roughness = 0.15
+shader_parameter/normal_strength = 1.0
+shader_parameter/edge_color = Color(0, 0, 0, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_ve8er"]
-material = SubResource("StandardMaterial3D_781gc")
+material = SubResource("ShaderMaterial_atffv")
 size = Vector3(2, 2, 2)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s4ybe"]
@@ -114,7 +115,6 @@ skeleton = NodePath("")
 shape = SubResource("BoxShape3D_781gc")
 
 [node name="Barrier" type="Node3D" parent="."]
-visible = false
 
 [node name="Barrier Block" type="MeshInstance3D" parent="Barrier"]
 mesh = SubResource("BoxMesh_ve8er")
@@ -125,6 +125,7 @@ mesh = SubResource("BoxMesh_ve8er")
 shape = SubResource("BoxShape3D_781gc")
 
 [node name="Conveyor" type="Node3D" parent="."]
+visible = false
 
 [node name="Conveyor" type="MeshInstance3D" parent="Conveyor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1)

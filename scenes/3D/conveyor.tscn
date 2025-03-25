@@ -1,10 +1,7 @@
-[gd_scene load_steps=8 format=4 uid="uid://clv812gj1aqi7"]
+[gd_scene load_steps=7 format=4 uid="uid://clv812gj1aqi7"]
 
 [ext_resource type="Texture2D" uid="uid://bc222dv1jp32m" path="res://resources/Game 3D/Model/Conveyor_UV2.png" id="1_40kv3"]
-[ext_resource type="Script" uid="uid://bson42jkxeq8i" path="res://scripts/3D/conveyor.gd" id="1_bvew6"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_bvew6"]
-size = Vector3(2, 1.5, 2)
+[ext_resource type="Script" uid="uid://ba7i5u0kg5otx" path="res://scripts/3D/conveyor.gd" id="1_bvew6"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s4ybe"]
 resource_name = "Material"
@@ -50,27 +47,19 @@ size = Vector3(2, 1, 2)
 
 [node name="Conveyor" type="Node3D"]
 
-[node name="Area3D" type="Area3D" parent="."]
-collision_layer = 8
-collision_mask = 8
-priority = 1
-script = ExtResource("1_bvew6")
-conveyor_speed = 40.0
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 5.96046e-08)
-shape = SubResource("BoxShape3D_bvew6")
-
 [node name="Conveyor" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1)
 mesh = SubResource("ArrayMesh_bvew6")
 skeleton = NodePath("")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Conveyor"]
+constant_linear_velocity = Vector3(0, 0, 6)
+script = ExtResource("1_bvew6")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Conveyor/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -1)
 shape = SubResource("BoxShape3D_ebwq2")
 
-[connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]
-[connection signal="body_exited" from="Area3D" to="Area3D" method="_on_body_exited"]
+[node name="Marker3D" type="Marker3D" parent="Conveyor"]
+unique_name_in_owner = true
+transform = Transform3D(-1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, -1, 0, 0, -2)
