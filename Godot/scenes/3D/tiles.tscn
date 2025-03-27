@@ -1,0 +1,122 @@
+[gd_scene load_steps=11 format=4 uid="uid://dwgtfqyh32i4k"]
+
+[ext_resource type="Texture2D" uid="uid://f07c5yfebyiv" path="res://resources/Game 3D/Model/Block_Floor.png" id="1_0kb7o"]
+[ext_resource type="Shader" uid="uid://4aqe56ugo1jf" path="res://scripts/3D/glass.gdshader" id="2_pvspv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ve8er"]
+resource_name = "Material"
+albedo_texture = ExtResource("1_0kb7o")
+metallic = 0.5
+roughness = 0.5
+distance_fade_mode = 3
+distance_fade_min_distance = 480.0
+distance_fade_max_distance = 240.0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_2t71c"]
+_surfaces = [{
+"aabb": AABB(-1, -1, -1, 2, 2, 2),
+"format": 34359742465,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAwACAAEAAAAEAAEAAwAFAAIABQAAAAIABgAEAAAABQAGAAAABwABAAQABwADAAEABgAHAAQABQADAAcABQAHAAYA"),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("AACAPwAAgD8AAIC/AACAvwAAgD8AAIA/AACAvwAAgD8AAIC/AACAvwAAgL8AAIA/AACAPwAAgD8AAIA/AACAvwAAgL8AAIC/AACAPwAAgL8AAIC/AACAPwAAgL8AAIA/")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ve8er"]
+resource_name = "Block_Cube"
+lightmap_size_hint = Vector2i(86, 130)
+_surfaces = [{
+"aabb": AABB(-1, -1, -1, 2, 2, 2),
+"attribute_data": PackedByteArray("1qoqPwAAAD8SdwQ/5EYuPwLrfz8AAIA++oJ+P/ADfz//lH8/AAAAP/qCfj/kRi4/qqoqPwAAgD4SdwQ/8AN/P4mvqj4AAIA+EncEP8EPfDtYqyo/AAAAAPqCfj83cqM+qqoqPwAAgD4SdwQ/N3KjPomvqj4AAAAA+oJ+P8EPfDuJr6o+AACAP9wR9z7wA38/V8AqPwAAQD/6gr475EYuP1fAKj8AAIA/+oK+O/ADfz+Jr6o+AABAP9wR9z7kRi4/IPcbOAAAAD/cEfc+9EKvPomvqj4AAIA++oK+O4ZeKD+Jr6o+AAAAP/qCvjv0Qq8+IPcbOAAAgD7cEfc+hl4oP4mvqj4AAAA/3BH3PsEPfDuqqio/AACAPvqCvjs3cqM+1qoqPwAAAD/6gr47wQ98O4mvqj4AAIA+3BH3Pjdyoz6Jr6o+AABAPxJ3BD/0Qq8+1qoqPwAAAD/6gn4/hl4oP1fAKj8AAEA/EncEP4ZeKD+Jr6o+AAAAP/qCfj/0Qq8+"),
+"format": 34359742519,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUA"),
+"material": SubResource("StandardMaterial3D_ve8er"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("AACAPwAAgD8AAIC/AACAvwAAgD8AAIA/AACAvwAAgD8AAIC/AACAPwAAgD8AAIA/AACAPwAAgL8AAIA/AACAvwAAgD8AAIA/AACAPwAAgD8AAIA/AACAvwAAgL8AAIA/AACAvwAAgL8AAIA/AACAvwAAgD8AAIC/AACAvwAAgD8AAIA/AACAvwAAgL8AAIC/AACAvwAAgL8AAIC/AACAPwAAgL8AAIA/AACAPwAAgL8AAIC/AACAvwAAgL8AAIA/AACAPwAAgL8AAIC/AACAPwAAgD8AAIA/AACAPwAAgD8AAIC/AACAPwAAgL8AAIA/AACAvwAAgL8AAIC/AACAPwAAgD8AAIC/AACAvwAAgD8AAIC/AACAPwAAgL8AAIC/AID//wAA/78AgP//AAD/vwCA//8AAP+/AID//wAA/7//f/9/AID///9//38AgP///3//fwCA////f/9/AID//wAAAIAAgP//AAAAgACA//8AAACAAID//wAAAIAAgP//AIAAAP///78AgAAA////vwCAAAD///+/AIAAAP///7///wCAAID/////AIAAgP////8AgACA/////wCAAID///////8AgP///////wCA////////AID///////8AgP//")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_2t71c")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_781gc"]
+size = Vector3(2, 2, 2)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pvspv"]
+render_priority = 0
+shader = ExtResource("2_pvspv")
+shader_parameter/albedo = Color(0.901961, 0.901961, 1, 0.25098)
+shader_parameter/roughness = 0.15
+shader_parameter/normal_strength = 1.0
+shader_parameter/edge_color = Color(0, 0, 0, 1)
+shader_parameter/character_position = Vector3(0, 0, 0)
+shader_parameter/fade_distance = 480.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_atffv"]
+lightmap_size_hint = Vector2i(24, 36)
+material = SubResource("ShaderMaterial_pvspv")
+add_uv2 = true
+size = Vector3(2, 2, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_04iwr"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+shading_mode = 0
+specular_mode = 2
+disable_ambient_light = true
+disable_fog = true
+albedo_color = Color(1, 1, 1, 0.501961)
+disable_receive_shadows = true
+distance_fade_mode = 3
+distance_fade_min_distance = 240.0
+distance_fade_max_distance = 120.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_ve8er"]
+lightmap_size_hint = Vector2i(24, 36)
+material = SubResource("StandardMaterial3D_04iwr")
+add_uv2 = true
+size = Vector3(2, 2, 2)
+
+[node name="Tiles" type="Node3D"]
+
+[node name="Block" type="Node3D" parent="."]
+visible = false
+
+[node name="Block" type="MeshInstance3D" parent="Block"]
+mesh = SubResource("ArrayMesh_ve8er")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Block/Block"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Block/Block/StaticBody3D"]
+shape = SubResource("BoxShape3D_781gc")
+
+[node name="Glass" type="Node3D" parent="."]
+visible = false
+
+[node name="Glass Block" type="MeshInstance3D" parent="Glass"]
+mesh = SubResource("BoxMesh_atffv")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Glass/Glass Block"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Glass/Glass Block/StaticBody3D"]
+shape = SubResource("BoxShape3D_781gc")
+
+[node name="Barrier" type="Node3D" parent="."]
+
+[node name="Barrier Block" type="MeshInstance3D" parent="Barrier"]
+gi_mode = 0
+visibility_range_end = 20.0
+visibility_range_end_margin = 1.0
+mesh = SubResource("BoxMesh_ve8er")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Barrier/Barrier Block"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Barrier/Barrier Block/StaticBody3D"]
+shape = SubResource("BoxShape3D_781gc")

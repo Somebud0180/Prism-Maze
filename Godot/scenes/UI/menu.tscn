@@ -1,0 +1,2142 @@
+[gd_scene load_steps=100 format=3 uid="uid://br2t4hanatnss"]
+
+[ext_resource type="Theme" uid="uid://bau50guyc4alk" path="res://resources/Theme/menu.tres" id="1_7yxt8"]
+[ext_resource type="Script" uid="uid://cnwd74ny2hf2q" path="res://scripts/UI/menu.gd" id="2_o131u"]
+[ext_resource type="Texture2D" uid="uid://du1fhq083pt1n" path="res://resources/Menu/PatchRects/Menu.png" id="3_u30pp"]
+[ext_resource type="Script" uid="uid://pxmim2yta7rs" path="res://scripts/UI/main.gd" id="4_0cnb7"]
+[ext_resource type="Texture2D" uid="uid://d1vxa1f4hthke" path="res://resources/Menu/Title.png" id="5_7k0uf"]
+[ext_resource type="Texture2D" uid="uid://e665j6xb1xqo" path="res://resources/Menu/Menu Icons/Play.png" id="6_jcwtk"]
+[ext_resource type="Texture2D" uid="uid://b8blbwcxtsbgw" path="res://resources/Menu/Menu Icons/Play_3D.png" id="7_7oqtn"]
+[ext_resource type="Script" uid="uid://qbm78qb5viap" path="res://scripts/UI/play_button.gd" id="7_crixo"]
+[ext_resource type="Texture2D" uid="uid://v60x1qijueux" path="res://resources/Menu/Menu Icons/Gear.png" id="8_1anaf"]
+[ext_resource type="Texture2D" uid="uid://slk1m7wnru8w" path="res://resources/Menu/Menu Icons/Controls.png" id="9_xlwes"]
+[ext_resource type="Texture2D" uid="uid://bhjm5wym26dsu" path="res://resources/Menu/Menu Icons/Exit.png" id="10_fqtlv"]
+[ext_resource type="Texture2D" uid="uid://ci8dfl1p8qliu" path="res://resources/Menu/PatchRects/Settings.png" id="11_mfpu8"]
+[ext_resource type="Script" uid="uid://1xcmpd8qm5wc" path="res://scripts/UI/settings_tab_container.gd" id="12_qg4he"]
+[ext_resource type="Texture2D" uid="uid://c407l5mv674x0" path="res://resources/Menu/Headers/Settings_Header.png" id="12_xkl7s"]
+[ext_resource type="Script" uid="uid://dk2jfxpyy2iua" path="res://scripts/UI/settings.gd" id="12_y8j5i"]
+[ext_resource type="StyleBox" uid="uid://b4mewmdnj56qd" path="res://resources/Theme/v_separator.tres" id="13_tbd65"]
+[ext_resource type="Texture2D" uid="uid://da7g5s3h5esdr" path="res://resources/Menu/Fullscreen.png" id="14_pjik4"]
+[ext_resource type="Texture2D" uid="uid://df685act78ls8" path="res://resources/Menu/Misc/Resizable.png" id="16_eo34a"]
+[ext_resource type="Texture2D" uid="uid://k83gkr4l4vs5" path="res://resources/Menu/Misc/color.png" id="16_whlyx"]
+[ext_resource type="Texture2D" uid="uid://dmsprnyta0xmh" path="res://resources/Menu/Misc/Audio_Settings.png" id="17_5wffc"]
+[ext_resource type="StyleBox" uid="uid://o1f6ysc2jugj" path="res://resources/Theme/box_focus.tres" id="17_cijfx"]
+[ext_resource type="Texture2D" uid="uid://ddwfg6atipo0i" path="res://resources/Menu/Graphics/SDFGI.png" id="17_hvuoq"]
+[ext_resource type="Script" uid="uid://dgrd7wjsi7v8k" path="res://scripts/UI/resizable.gd" id="17_innbc"]
+[ext_resource type="Texture2D" uid="uid://b51yf1mnhkc6j" path="res://resources/Menu/Headers/Graphics_Header.png" id="17_q4tpj"]
+[ext_resource type="Script" uid="uid://dg0mgoask60qa" path="res://scripts/UI/color_button.gd" id="17_ucr8h"]
+[ext_resource type="Texture2D" uid="uid://1v4qv34if5io" path="res://resources/Menu/Misc/Music.png" id="18_2ewfx"]
+[ext_resource type="Script" uid="uid://ch7e5fs2uwl0b" path="res://scripts/UI/audio.gd" id="18_bnowj"]
+[ext_resource type="Texture2D" uid="uid://bju7vgey6nhvw" path="res://resources/Menu/Graphics/Shadow.png" id="18_q4tpj"]
+[ext_resource type="Texture2D" uid="uid://bgxemtlrxcpgg" path="res://resources/Menu/Headers/Controls-Header.png" id="18_s1ob8"]
+[ext_resource type="Texture2D" uid="uid://cv1v7oqrqrym0" path="res://resources/Menu/Graphics/SDFGI-Full.png" id="18_xkl7s"]
+[ext_resource type="Texture2D" uid="uid://dc6lvnyagscon" path="res://resources/Menu/Misc/Block2D.png" id="19_7oqtn"]
+[ext_resource type="Texture2D" uid="uid://bp1ir113ycfmw" path="res://resources/Menu/Control Icons/Move.png" id="19_i7uud"]
+[ext_resource type="Script" uid="uid://b8j6svfkgs0g7" path="res://scripts/UI/fullscreen.gd" id="19_innbc"]
+[ext_resource type="Texture2D" uid="uid://dfvku7oe2ae6y" path="res://resources/Game/Player-Sheet.png" id="19_p2cca"]
+[ext_resource type="Texture2D" uid="uid://cha05i3vt0svl" path="res://resources/Menu/Misc/Menu.png" id="19_xlwes"]
+[ext_resource type="StyleBox" uid="uid://vqm1soj8xnjh" path="res://resources/Theme/separator.tres" id="20_6p85y"]
+[ext_resource type="Texture2D" uid="uid://dmkasvvp23qkt" path="res://resources/Menu/Misc/MusicMuted.png" id="20_p5bkw"]
+[ext_resource type="Script" uid="uid://cr3ngduhxv807" path="res://scripts/UI/slider.gd" id="20_sc8t4"]
+[ext_resource type="Texture2D" uid="uid://itwiqyff3egk" path="res://resources/Menu/Control Icons/Pause.png" id="20_tbd65"]
+[ext_resource type="Texture2D" uid="uid://7rov1q0wdy4i" path="res://resources/Menu/Control Icons/Exit.png" id="20_wg8ic"]
+[ext_resource type="Texture2D" uid="uid://dyjq2ifh87p7t" path="res://resources/Menu/Misc/SFXMuted.png" id="21_aevs6"]
+[ext_resource type="Texture2D" uid="uid://dgx4iqfxayl3s" path="res://resources/Controls/KBM/keyboard_arrows.png" id="21_vsims"]
+[ext_resource type="Texture2D" uid="uid://b2ctuu0ig3fse" path="res://resources/Controls/KBM/keyboard_wasd.png" id="22_ifku1"]
+[ext_resource type="Texture2D" uid="uid://bpfhnqlts6ljd" path="res://resources/Controls/KBM/keyboard_escape.png" id="22_tbd65"]
+[ext_resource type="Texture2D" uid="uid://clcctb7kklrsi" path="res://resources/Menu/Misc/SFX.png" id="22_x5kxs"]
+[ext_resource type="Texture2D" uid="uid://bhf1o42di43rv" path="res://resources/Controls/Controllers/stick_l.png" id="23_hvuoq"]
+[ext_resource type="Texture2D" uid="uid://cmmyb0rb743g5" path="res://resources/Controls/Controllers/plus_start.png" id="23_pjik4"]
+[ext_resource type="Texture2D" uid="uid://ckvudehqjwqxf" path="res://resources/Menu/Control Icons/Jump.png" id="24_xkl7s"]
+[ext_resource type="Texture2D" uid="uid://dswympymc6uev" path="res://resources/Menu/Control Icons/Confirm.png" id="25_pjik4"]
+[ext_resource type="Texture2D" uid="uid://toobd4vd6hfg" path="res://resources/Controls/KBM/keyboard_space_icon.png" id="25_q4tpj"]
+[ext_resource type="Texture2D" uid="uid://dqm1knqvsbn8a" path="res://resources/Controls/Controllers/button_b.png" id="26_qg4he"]
+[ext_resource type="Texture2D" uid="uid://cfpoqyesykedr" path="res://resources/Controls/KBM/keyboard_enter.png" id="26_whlyx"]
+[ext_resource type="Texture2D" uid="uid://3if4feve3tt1" path="res://resources/Controls/Controllers/button_a.png" id="27_1anaf"]
+[ext_resource type="Texture2D" uid="uid://cn8i1e5a2w11c" path="res://resources/Background/Substrate.png" id="27_ucr8h"]
+[ext_resource type="Texture2D" uid="uid://dets0ldrlk4ok" path="res://resources/Menu/Misc/Block3D.png" id="28_1anaf"]
+[ext_resource type="Texture2D" uid="uid://72xvr3t4rcle" path="res://resources/Controls/Controllers/button_outline_r_xb.png" id="28_cijfx"]
+[ext_resource type="Texture2D" uid="uid://dhkixf8jhbq4o" path="res://resources/Background/Bottom Layer.png" id="28_y8j5i"]
+[ext_resource type="Texture2D" uid="uid://dhop524e0npfj" path="res://resources/Background/Top Layer.png" id="29_p2cca"]
+[ext_resource type="Script" uid="uid://by8tkg0eil2rw" path="res://scripts/UI/shadow_quality.gd" id="29_qxfis"]
+[ext_resource type="Texture2D" uid="uid://ufp0dt7p05x" path="res://resources/Controls/Controllers/button_outline_r_nin.png" id="29_s1ob8"]
+[ext_resource type="Texture2D" uid="uid://dn3jva0kh35qs" path="res://resources/Menu/Control Icons/Camera.png" id="29_xlwes"]
+[ext_resource type="Texture2D" uid="uid://bgsmvdkk25y6r" path="res://resources/Menu/Graphics/Shadow_Quality.png" id="30_5wffc"]
+[ext_resource type="Texture2D" uid="uid://dxsfg0tfwgf8x" path="res://resources/Controls/KBM/Brackets.png" id="30_fqtlv"]
+[ext_resource type="Texture2D" uid="uid://b0viiebu5kc4j" path="res://resources/Background/Components.png" id="30_v00k6"]
+[ext_resource type="Texture2D" uid="uid://nwb2lr2a4txn" path="res://resources/Controls/KBM/mouse_move.png" id="31_mfpu8"]
+[ext_resource type="Texture2D" uid="uid://doonkqj6nopsx" path="res://resources/Controls/Controllers/stick_r.png" id="32_wg8ic"]
+[ext_resource type="Script" uid="uid://0k7p4w7ux1me" path="res://scripts/UI/shadow.gd" id="33_fwia5"]
+[ext_resource type="Texture2D" uid="uid://1vi7svyglmjo" path="res://resources/Controls/Controllers/dpad.png" id="35_s1ob8"]
+[ext_resource type="Script" uid="uid://omnets55d74i" path="res://scripts/UI/sdfgi.gd" id="37_d37cp"]
+[ext_resource type="Script" uid="uid://yqys6tsenr4" path="res://scripts/UI/sdfgi_full.gd" id="39_30vkn"]
+[ext_resource type="Texture2D" uid="uid://bxs4apkjbgccb" path="res://resources/Menu/Misc/FineControl.png" id="43_3o1hb"]
+[ext_resource type="Texture2D" uid="uid://c1wrou21ncd3g" path="res://resources/Controls/KBM/keyboard_shift_icon.png" id="44_1qi2u"]
+[ext_resource type="Texture2D" uid="uid://cl34u7ep38jhx" path="res://resources/Menu/Control Icons/Zoom.png" id="44_vsims"]
+[ext_resource type="Texture2D" uid="uid://dg51oyjbk8xpj" path="res://resources/Controls/KBM/keyboard_i.png" id="45_ifku1"]
+[ext_resource type="Texture2D" uid="uid://dsxt2uo0ggluc" path="res://resources/Controls/Controllers/rt.png" id="45_qxfis"]
+[ext_resource type="Texture2D" uid="uid://b4em7x121q1qj" path="res://resources/Controls/Controllers/button_zr.png" id="46_5wffc"]
+[ext_resource type="Texture2D" uid="uid://bugnbckbsxckc" path="res://resources/Controls/KBM/keyboard_k.png" id="46_hvuoq"]
+[ext_resource type="Texture2D" uid="uid://c1hxy2sj457tk" path="res://resources/Menu/Overlay/Life.png" id="47_ifku1"]
+[ext_resource type="Texture2D" uid="uid://bka0g1o4egyee" path="res://resources/Menu/Control Icons/Screen.png" id="54_tsgqf"]
+[ext_resource type="Script" uid="uid://t7gje6wr8j28" path="res://scripts/UI/menu_button.gd" id="54_v00k6"]
+[ext_resource type="Texture2D" uid="uid://c278452784qcv" path="res://resources/Controls/KBM/keyboard_e.png" id="55_2ewfx"]
+[ext_resource type="Texture2D" uid="uid://rhbf84hoa5co" path="res://resources/Controls/Controllers/button_outline_t_xb.png" id="55_7mjjf"]
+[ext_resource type="Texture2D" uid="uid://namppbr5u8s5" path="res://resources/Controls/Controllers/button_outline_t_nin.png" id="56_2ewfx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tsejx"]
+bg_color = Color(0.27451, 0.27451, 0.27451, 1)
+border_width_left = 3
+border_width_top = 1
+border_width_right = 3
+border_width_bottom = 1
+border_color = Color(0.273438, 0.273438, 0.273438, 1)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_ucr8h"]
+allow_unpress = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p2cca"]
+bg_color = Color(0.2, 0.2, 0.2, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_bottom = 1.0
+
+[sub_resource type="Animation" id="Animation_8rgj6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MenuLayer/Settings:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(64, 800)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MenuLayer/Controls:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(64, 800)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MenuLayer/Main:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MenuLayer/Settings:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MenuLayer/Controls:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("MenuLayer/Controls:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("MenuLayer/Controls:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("MenuLayer/Settings:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("MenuLayer/Settings:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("MenuLayer/Main:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("MenuLayer/Main:modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_gf7yk"]
+resource_name = "RESET_controls"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MenuLayer/Controls:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(2),
+"update": 0,
+"values": [Vector2(64, 64)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MenuLayer/Controls:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MenuLayer/Controls:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_fv2yu"]
+resource_name = "RESET_game"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MenuLayer/Settings:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1600, 64)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MenuLayer/Settings:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MenuLayer/Main/Main:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(64, 64)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MenuLayer/Main/Main:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MenuLayer/Controls:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(64, 960)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("MenuLayer/Controls:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_ufe8k"]
+resource_name = "RESET_main"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MenuLayer/Main:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_11v34"]
+resource_name = "RESET_settings"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MenuLayer/Settings:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(2),
+"update": 0,
+"values": [Vector2(64, 64)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MenuLayer/Settings:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MenuLayer/Settings:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_q8cwc"]
+resource_name = "hide_controls"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MenuLayer/Controls:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.2, 0.5),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [Vector2(64, 64), Vector2(64, 800)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MenuLayer/Controls:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.1, 1.1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MenuLayer/Controls:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.25, 0.5),
+"transitions": PackedFloat32Array(2, 2),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MenuLayer/Controls:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_ui7xe"]
+resource_name = "hide_main"
+length = 0.15
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MenuLayer/Main:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.9, 0.9)]
+}
+
+[sub_resource type="Animation" id="Animation_ifku1"]
+resource_name = "hide_main_invisible"
+length = 0.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MenuLayer/Main:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.9, 0.9)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MenuLayer/Main:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"fade_music_out"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_2ywoo"]
+resource_name = "hide_settings"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MenuLayer/Settings:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.2, 0.5),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [Vector2(64, 64), Vector2(64, 800)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MenuLayer/Settings:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.1, 1.1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MenuLayer/Settings:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MenuLayer/Settings:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.25, 0.5),
+"transitions": PackedFloat32Array(2, 2),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_4bbw6"]
+resource_name = "show_controls"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MenuLayer/Controls:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.45),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [Vector2(64, 800), Vector2(64, 64)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MenuLayer/Controls:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.1, 1.1), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MenuLayer/Controls:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MenuLayer/Controls:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(2, 2),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_y5frn"]
+resource_name = "show_main"
+length = 0.1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MenuLayer/Main:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [Vector2(0.9, 0.9), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MenuLayer/Main:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"fade_music_in"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_antcs"]
+resource_name = "show_settings"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MenuLayer/Settings:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.45),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [Vector2(64, 800), Vector2(64, 64)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MenuLayer/Settings:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.1, 1.1), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MenuLayer/Settings:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MenuLayer/Settings:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(2, 2),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nyjex"]
+_data = {
+&"RESET": SubResource("Animation_8rgj6"),
+&"RESET_controls": SubResource("Animation_gf7yk"),
+&"RESET_game": SubResource("Animation_fv2yu"),
+&"RESET_main": SubResource("Animation_ufe8k"),
+&"RESET_settings": SubResource("Animation_11v34"),
+&"hide_controls": SubResource("Animation_q8cwc"),
+&"hide_main": SubResource("Animation_ui7xe"),
+&"hide_main_invisible": SubResource("Animation_ifku1"),
+&"hide_settings": SubResource("Animation_2ywoo"),
+&"show_controls": SubResource("Animation_4bbw6"),
+&"show_main": SubResource("Animation_y5frn"),
+&"show_settings": SubResource("Animation_antcs")
+}
+
+[node name="Menu" type="Control" node_paths=PackedStringArray("main", "settings", "animation_player", "audio_player", "game_overlay", "health_bar")]
+process_priority = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 1
+theme = ExtResource("1_7yxt8")
+script = ExtResource("2_o131u")
+main = NodePath("MenuLayer/Main/Main")
+settings = NodePath("MenuLayer/Settings")
+animation_player = NodePath("AnimationPlayer")
+audio_player = NodePath("AudioStreamPlayer")
+game_overlay = NodePath("GameOverlay")
+health_bar = NodePath("GameOverlay/HBoxContainer/Health/Bar")
+
+[node name="MenuLayer" type="CanvasLayer" parent="."]
+layer = 2
+follow_viewport_scale = 0.05
+
+[node name="Main" type="AspectRatioContainer" parent="MenuLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 34.0
+offset_top = 36.0
+offset_right = -30.0
+offset_bottom = -28.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(608, 328)
+
+[node name="Main" type="NinePatchRect" parent="MenuLayer/Main"]
+layout_mode = 2
+theme = ExtResource("1_7yxt8")
+texture = ExtResource("3_u30pp")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+script = ExtResource("4_0cnb7")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuLayer/Main/Main"]
+custom_minimum_size = Vector2(576, 576)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_top = 32.0
+offset_right = -32.0
+offset_bottom = -32.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="MenuLayer/Main/Main/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("5_7k0uf")
+expand_mode = 5
+stretch_mode = 4
+
+[node name="VSeparator" type="VSeparator" parent="MenuLayer/Main/Main/VBoxContainer"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+
+[node name="Play" type="Button" parent="MenuLayer/Main/Main/VBoxContainer" groups=["PlayButtons"]]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_vertical = 3
+focus_neighbor_top = NodePath("../Quit")
+focus_neighbor_bottom = NodePath("../Play3D")
+focus_next = NodePath("../Play3D")
+focus_previous = NodePath("../Quit")
+icon = ExtResource("6_jcwtk")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("7_crixo")
+modifier = &"in_game"
+
+[node name="ButtonSpacer1" type="VSeparator" parent="MenuLayer/Main/Main/VBoxContainer"]
+layout_mode = 2
+
+[node name="Play3D" type="Button" parent="MenuLayer/Main/Main/VBoxContainer" groups=["PlayButtons"]]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_vertical = 3
+focus_neighbor_top = NodePath("../Play")
+focus_neighbor_bottom = NodePath("../Settings")
+focus_next = NodePath("../Settings")
+focus_previous = NodePath("../Play")
+icon = ExtResource("7_7oqtn")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("7_crixo")
+modifier = &"in_game_3d"
+
+[node name="ButtonSpacer2" type="VSeparator" parent="MenuLayer/Main/Main/VBoxContainer"]
+layout_mode = 2
+
+[node name="Settings" type="Button" parent="MenuLayer/Main/Main/VBoxContainer"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_vertical = 3
+focus_neighbor_top = NodePath("../Play3D")
+focus_neighbor_bottom = NodePath("../Controls")
+focus_next = NodePath("../Controls")
+focus_previous = NodePath("../Play3D")
+icon = ExtResource("8_1anaf")
+icon_alignment = 1
+expand_icon = true
+
+[node name="ButtonSpacer3" type="VSeparator" parent="MenuLayer/Main/Main/VBoxContainer"]
+layout_mode = 2
+
+[node name="Controls" type="Button" parent="MenuLayer/Main/Main/VBoxContainer"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_vertical = 3
+focus_neighbor_top = NodePath("../Settings")
+focus_neighbor_bottom = NodePath("../Quit")
+focus_next = NodePath("../Quit")
+focus_previous = NodePath("../Settings")
+icon = ExtResource("9_xlwes")
+icon_alignment = 1
+expand_icon = true
+
+[node name="ButtonSpacer4" type="VSeparator" parent="MenuLayer/Main/Main/VBoxContainer"]
+layout_mode = 2
+
+[node name="Quit" type="Button" parent="MenuLayer/Main/Main/VBoxContainer"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_vertical = 3
+focus_neighbor_top = NodePath("../Controls")
+focus_neighbor_bottom = NodePath("../Play")
+focus_next = NodePath("../Play")
+focus_previous = NodePath("../Controls")
+icon = ExtResource("10_fqtlv")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Settings" type="NinePatchRect" parent="MenuLayer" node_paths=PackedStringArray("resolution_picker", "fullscreen_toggle", "sdfgi_toggle", "sdfgi_full_toggle")]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(600, 560)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 64.0
+offset_top = 800.0
+offset_right = -64.0
+offset_bottom = 672.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(576, 296)
+theme = ExtResource("1_7yxt8")
+texture = ExtResource("11_mfpu8")
+region_rect = Rect2(0, 0, 32, 32)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+script = ExtResource("12_y8j5i")
+resolution_picker = NodePath("TabContainer/2D/MarginContainer/2D/WindowPanel/VBoxContainer/Resolution")
+fullscreen_toggle = NodePath("TabContainer/2D/MarginContainer/2D/WindowPanel/VBoxContainer/Fullscreen")
+sdfgi_toggle = NodePath("TabContainer/3D/MarginContainer/3D/LightingPanel/VBoxContainer/SDFGI")
+sdfgi_full_toggle = NodePath("TabContainer/3D/MarginContainer/3D/LightingPanel/VBoxContainer/SDFGI_Full")
+
+[node name="TabContainer" type="TabContainer" parent="MenuLayer/Settings"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_top = 32.0
+offset_right = -32.0
+offset_bottom = -32.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_neighbor_top = NodePath("../Exit Settings")
+focus_mode = 2
+current_tab = 0
+script = ExtResource("12_qg4he")
+
+[node name="2D" type="ScrollContainer" parent="MenuLayer/Settings/TabContainer"]
+layout_mode = 2
+theme = ExtResource("1_7yxt8")
+follow_focus = true
+scroll_vertical = 9
+metadata/_tab_index = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="MenuLayer/Settings/TabContainer/2D"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="2D" type="VBoxContainer" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_7yxt8")
+
+[node name="Settings Header" type="TextureRect" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D"]
+show_behind_parent = true
+custom_minimum_size = Vector2(256, 64)
+layout_mode = 2
+size_flags_vertical = 0
+texture = ExtResource("12_xkl7s")
+stretch_mode = 4
+
+[node name="VSeparator" type="VSeparator" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D"]
+custom_minimum_size = Vector2(256, 48)
+layout_mode = 2
+theme_override_constants/separation = 16
+theme_override_styles/separator = ExtResource("13_tbd65")
+
+[node name="WindowPanel" type="Panel" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D"]
+visible = false
+custom_minimum_size = Vector2(0, 190)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/WindowPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Resizable" type="CheckButton" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/WindowPanel/VBoxContainer" groups=["Buttons"]]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(256, 48)
+layout_mode = 2
+size_flags_vertical = 4
+focus_neighbor_top = NodePath("../Resolution")
+focus_next = NodePath("../../../ColorPanel/VBoxContainer/HFlowContainer/White")
+focus_previous = NodePath("../Resolution")
+theme_type_variation = &"SettingsButton"
+icon = ExtResource("16_eo34a")
+icon_alignment = 1
+script = ExtResource("17_innbc")
+
+[node name="Resolution" type="OptionButton" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/WindowPanel/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(256, 48)
+layout_mode = 2
+size_flags_vertical = 0
+focus_neighbor_bottom = NodePath("../Fullscreen")
+focus_next = NodePath("../Fullscreen")
+theme_type_variation = &"SettingsButton"
+icon_alignment = 2
+expand_icon = true
+
+[node name="Fullscreen" type="CheckButton" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/WindowPanel/VBoxContainer" groups=["Buttons"]]
+custom_minimum_size = Vector2(256, 48)
+layout_mode = 2
+size_flags_vertical = 4
+focus_neighbor_top = NodePath("../Resolution")
+focus_next = NodePath("../../../ColorPanel/VBoxContainer/HFlowContainer/White")
+focus_previous = NodePath("../Resolution")
+theme_type_variation = &"SettingsButton"
+icon = ExtResource("14_pjik4")
+icon_alignment = 1
+script = ExtResource("19_innbc")
+
+[node name="AudioPlanel" type="Panel" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D"]
+custom_minimum_size = Vector2(256, 196)
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/AudioPlanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/AudioPlanel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+texture = ExtResource("17_5wffc")
+stretch_mode = 5
+
+[node name="Music" type="HBoxContainer" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/AudioPlanel/VBoxContainer" node_paths=PackedStringArray("slider", "texture_rect")]
+layout_mode = 2
+script = ExtResource("18_bnowj")
+target_property = &"music_volume"
+icon = ExtResource("18_2ewfx")
+icon_cross = ExtResource("20_p5bkw")
+slider = NodePath("MusicSlider")
+texture_rect = NodePath("TextureRect")
+
+[node name="TextureRect" type="TextureRect" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/AudioPlanel/VBoxContainer/Music"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("18_2ewfx")
+stretch_mode = 4
+
+[node name="MusicSlider" type="HSlider" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/AudioPlanel/VBoxContainer/Music" node_paths=PackedStringArray("marker")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+min_value = -30.0
+max_value = 10.0
+step = 5.0
+rounded = true
+tick_count = 1
+script = ExtResource("20_sc8t4")
+target_property = &"music_volume"
+marker = NodePath("VSeparator")
+
+[node name="VSeparator" type="VSeparator" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/AudioPlanel/VBoxContainer/Music/MusicSlider"]
+show_behind_parent = true
+layout_mode = 2
+offset_left = 712.0
+offset_top = 4.0
+offset_right = 726.0
+offset_bottom = 22.0
+theme_override_styles/separator = SubResource("StyleBoxFlat_tsejx")
+
+[node name="SFX" type="HBoxContainer" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/AudioPlanel/VBoxContainer" node_paths=PackedStringArray("slider", "texture_rect")]
+layout_mode = 2
+script = ExtResource("18_bnowj")
+target_property = &"sfx_volume"
+icon = ExtResource("22_x5kxs")
+icon_cross = ExtResource("21_aevs6")
+slider = NodePath("SFXSlider")
+texture_rect = NodePath("TextureRect")
+
+[node name="TextureRect" type="TextureRect" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/AudioPlanel/VBoxContainer/SFX"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("21_aevs6")
+stretch_mode = 4
+
+[node name="SFXSlider" type="HSlider" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/AudioPlanel/VBoxContainer/SFX" node_paths=PackedStringArray("marker")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+min_value = -30.0
+max_value = 10.0
+step = 5.0
+rounded = true
+script = ExtResource("20_sc8t4")
+target_property = &"sfx_volume"
+marker = NodePath("VSeparator")
+
+[node name="VSeparator" type="VSeparator" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/AudioPlanel/VBoxContainer/SFX/SFXSlider"]
+show_behind_parent = true
+layout_mode = 0
+offset_left = 712.0
+offset_top = 4.0
+offset_right = 726.0
+offset_bottom = 22.0
+theme_override_styles/separator = SubResource("StyleBoxFlat_tsejx")
+
+[node name="ColorPanel" type="Panel" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D"]
+custom_minimum_size = Vector2(256, 160)
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/ColorPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/ColorPanel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+texture = ExtResource("16_whlyx")
+stretch_mode = 5
+
+[node name="HFlowContainer" type="HFlowContainer" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/ColorPanel/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="White" type="Button" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/ColorPanel/VBoxContainer/HFlowContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+focus_neighbor_right = NodePath("../Red")
+focus_next = NodePath("../Red")
+focus_previous = NodePath("../../../../WindowPanel/VBoxContainer/Fullscreen")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_ucr8h")
+script = ExtResource("17_ucr8h")
+color = Color(1, 1, 1, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/ColorPanel/VBoxContainer/HFlowContainer/White"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/ColorPanel/VBoxContainer/HFlowContainer/White/CenterContainer"]
+position = Vector2(8, 4)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("19_p2cca")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 32, 32, 32)
+
+[node name="Red" type="Button" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/ColorPanel/VBoxContainer/HFlowContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+focus_neighbor_left = NodePath("../White")
+focus_neighbor_right = NodePath("../Green")
+focus_next = NodePath("../Green")
+focus_previous = NodePath("../White")
+theme_override_styles/focus = ExtResource("17_cijfx")
+theme_override_styles/pressed = ExtResource("17_cijfx")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_ucr8h")
+script = ExtResource("17_ucr8h")
+color = Color(0.644531, 0, 0, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/ColorPanel/VBoxContainer/HFlowContainer/Red"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/ColorPanel/VBoxContainer/HFlowContainer/Red/CenterContainer"]
+position = Vector2(8, 4)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("19_p2cca")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 32, 32, 32)
+
+[node name="Green" type="Button" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/ColorPanel/VBoxContainer/HFlowContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+focus_neighbor_left = NodePath("../Red")
+focus_neighbor_right = NodePath("../Blue")
+focus_next = NodePath("../Blue")
+focus_previous = NodePath("../Red")
+theme_override_styles/focus = ExtResource("17_cijfx")
+theme_override_styles/pressed = ExtResource("17_cijfx")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_ucr8h")
+script = ExtResource("17_ucr8h")
+color = Color(0, 0.695312, 0.0108643, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/ColorPanel/VBoxContainer/HFlowContainer/Green"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/ColorPanel/VBoxContainer/HFlowContainer/Green/CenterContainer"]
+position = Vector2(8, 4)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("19_p2cca")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 32, 32, 32)
+
+[node name="Blue" type="Button" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/ColorPanel/VBoxContainer/HFlowContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+focus_neighbor_left = NodePath("../Green")
+focus_neighbor_right = NodePath("../Yellow")
+focus_next = NodePath("../Yellow")
+focus_previous = NodePath("../Green")
+theme_override_styles/focus = ExtResource("17_cijfx")
+theme_override_styles/pressed = ExtResource("17_cijfx")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_ucr8h")
+script = ExtResource("17_ucr8h")
+color = Color(0.202423, 0.320791, 0.785156, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/ColorPanel/VBoxContainer/HFlowContainer/Blue"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/ColorPanel/VBoxContainer/HFlowContainer/Blue/CenterContainer"]
+position = Vector2(8, 4)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("19_p2cca")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 32, 32, 32)
+
+[node name="Yellow" type="Button" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/ColorPanel/VBoxContainer/HFlowContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+focus_neighbor_left = NodePath("../Blue")
+focus_previous = NodePath("../Blue")
+theme_override_styles/focus = ExtResource("17_cijfx")
+theme_override_styles/pressed = ExtResource("17_cijfx")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_ucr8h")
+script = ExtResource("17_ucr8h")
+color = Color(1, 0.919586, 0.394531, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/ColorPanel/VBoxContainer/HFlowContainer/Yellow"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/ColorPanel/VBoxContainer/HFlowContainer/Yellow/CenterContainer"]
+position = Vector2(8, 4)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("19_p2cca")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 32, 32, 32)
+
+[node name="3D" type="ScrollContainer" parent="MenuLayer/Settings/TabContainer"]
+visible = false
+layout_mode = 2
+theme = ExtResource("1_7yxt8")
+theme_type_variation = &"SettingsButton"
+metadata/_tab_index = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MenuLayer/Settings/TabContainer/3D"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="3D" type="VBoxContainer" parent="MenuLayer/Settings/TabContainer/3D/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_7yxt8")
+
+[node name="Graphics Header" type="TextureRect" parent="MenuLayer/Settings/TabContainer/3D/MarginContainer/3D"]
+custom_minimum_size = Vector2(256, 64)
+layout_mode = 2
+size_flags_vertical = 0
+texture = ExtResource("17_q4tpj")
+stretch_mode = 4
+
+[node name="VSeparator" type="VSeparator" parent="MenuLayer/Settings/TabContainer/3D/MarginContainer/3D"]
+custom_minimum_size = Vector2(256, 48)
+layout_mode = 2
+theme_override_constants/separation = 16
+theme_override_styles/separator = ExtResource("13_tbd65")
+
+[node name="ShadowPanel" type="Panel" parent="MenuLayer/Settings/TabContainer/3D/MarginContainer/3D"]
+custom_minimum_size = Vector2(0, 96)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuLayer/Settings/TabContainer/3D/MarginContainer/3D/ShadowPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_top = 16.0
+offset_right = -32.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Shadow" type="CheckButton" parent="MenuLayer/Settings/TabContainer/3D/MarginContainer/3D/ShadowPanel/VBoxContainer" groups=["Buttons"]]
+custom_minimum_size = Vector2(256, 48)
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("1_7yxt8")
+theme_type_variation = &"SettingsButton"
+button_pressed = true
+icon = ExtResource("18_q4tpj")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("33_fwia5")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MenuLayer/Settings/TabContainer/3D/MarginContainer/3D/ShadowPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Shadow_Quality" type="HSlider" parent="MenuLayer/Settings/TabContainer/3D/MarginContainer/3D/ShadowPanel/VBoxContainer/HBoxContainer" node_paths=PackedStringArray("marker") groups=["Sliders"]]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 2.0
+value = 1.0
+rounded = true
+script = ExtResource("29_qxfis")
+marker = NodePath("VSeparator")
+
+[node name="VSeparator" type="VSeparator" parent="MenuLayer/Settings/TabContainer/3D/MarginContainer/3D/ShadowPanel/VBoxContainer/HBoxContainer/Shadow_Quality"]
+show_behind_parent = true
+layout_mode = 0
+offset_left = 471.0
+offset_top = 4.0
+offset_right = 485.0
+offset_bottom = 22.0
+theme_override_styles/separator = SubResource("StyleBoxFlat_tsejx")
+
+[node name="TextureRect" type="TextureRect" parent="MenuLayer/Settings/TabContainer/3D/MarginContainer/3D/ShadowPanel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("30_5wffc")
+stretch_mode = 5
+
+[node name="LightingPanel" type="Panel" parent="MenuLayer/Settings/TabContainer/3D/MarginContainer/3D"]
+custom_minimum_size = Vector2(0, 128)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuLayer/Settings/TabContainer/3D/MarginContainer/3D/LightingPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_top = 16.0
+offset_right = -32.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SDFGI" type="CheckButton" parent="MenuLayer/Settings/TabContainer/3D/MarginContainer/3D/LightingPanel/VBoxContainer" groups=["Buttons"]]
+custom_minimum_size = Vector2(256, 48)
+layout_mode = 2
+size_flags_vertical = 4
+theme_type_variation = &"SettingsButton"
+button_pressed = true
+icon = ExtResource("17_hvuoq")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("37_d37cp")
+
+[node name="SDFGI_Full" type="CheckButton" parent="MenuLayer/Settings/TabContainer/3D/MarginContainer/3D/LightingPanel/VBoxContainer" groups=["Buttons"]]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(256, 48)
+layout_mode = 2
+size_flags_vertical = 4
+theme_type_variation = &"SettingsButton"
+icon = ExtResource("18_xkl7s")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("39_30vkn")
+
+[node name="Exit Settings" type="Button" parent="MenuLayer/Settings"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -34.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = 54.0
+grow_horizontal = 0
+text = "X
+"
+
+[node name="Controls" type="NinePatchRect" parent="MenuLayer"]
+visible = false
+custom_minimum_size = Vector2(600, 560)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 64.0
+offset_top = 800.0
+offset_right = -64.0
+offset_bottom = 672.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(576, 296)
+theme = ExtResource("1_7yxt8")
+texture = ExtResource("11_mfpu8")
+region_rect = Rect2(0, 0, 32, 32)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuLayer/Controls"]
+custom_minimum_size = Vector2(512, 256)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_top = 32.0
+offset_right = -32.0
+offset_bottom = -32.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Controls Header" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+texture = ExtResource("18_s1ob8")
+stretch_mode = 4
+
+[node name="VSeparator" type="VSeparator" parent="MenuLayer/Controls/VBoxContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+theme_override_constants/separation = 16
+theme_override_styles/separator = ExtResource("13_tbd65")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MenuLayer/Controls/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+follow_focus = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Menu Controls" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../../../../Exit Controls")
+focus_neighbor_bottom = NodePath("../Pause_Exit Controls")
+focus_next = NodePath("../Pause_Exit Controls")
+focus_previous = NodePath("../../../../Exit Controls")
+focus_mode = 2
+texture = ExtResource("19_xlwes")
+stretch_mode = 4
+
+[node name="Menu Separator" type="VSeparator" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(8, 8)
+layout_mode = 2
+theme_override_constants/separation = 16
+theme_override_styles/separator = ExtResource("13_tbd65")
+
+[node name="Pause_Exit Controls" type="HBoxContainer" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../Menu Controls")
+focus_neighbor_bottom = NodePath("../Confirm Controls")
+focus_next = NodePath("../Confirm Controls")
+focus_previous = NodePath("../Menu Controls")
+focus_mode = 2
+
+[node name="Pause" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/Pause_Exit Controls"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+focus_neighbor_top = NodePath("../../..")
+focus_neighbor_bottom = NodePath("../../Jump Controls/Jump")
+focus_next = NodePath("../../Jump Controls/Jump")
+focus_previous = NodePath("../../..")
+texture = ExtResource("20_tbd65")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="Exit" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/Pause_Exit Controls"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+focus_neighbor_top = NodePath("../../..")
+focus_neighbor_bottom = NodePath("../../Jump Controls/Jump")
+focus_next = NodePath("../../Jump Controls/Jump")
+focus_previous = NodePath("../../..")
+texture = ExtResource("20_wg8ic")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="HSeparator" type="HSeparator" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/Pause_Exit Controls"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/separator = ExtResource("20_6p85y")
+
+[node name="Escape" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/Pause_Exit Controls"]
+layout_mode = 2
+texture = ExtResource("22_tbd65")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="Plus_Start" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/Pause_Exit Controls"]
+layout_mode = 2
+texture = ExtResource("23_pjik4")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="Confirm Controls" type="HBoxContainer" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../Pause_Exit Controls")
+focus_neighbor_bottom = NodePath("../Fine Controls")
+focus_next = NodePath("../Fine Controls")
+focus_previous = NodePath("../Pause_Exit Controls")
+focus_mode = 2
+
+[node name="Confirm" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/Confirm Controls"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+focus_neighbor_top = NodePath("../../..")
+focus_neighbor_bottom = NodePath("../../Jump Controls/Jump")
+focus_next = NodePath("../../Jump Controls/Jump")
+focus_previous = NodePath("../../..")
+texture = ExtResource("25_pjik4")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="HSeparator" type="HSeparator" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/Confirm Controls"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/separator = ExtResource("20_6p85y")
+
+[node name="Enter" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/Confirm Controls"]
+layout_mode = 2
+texture = ExtResource("26_whlyx")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="Space" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/Confirm Controls"]
+layout_mode = 2
+texture = ExtResource("25_q4tpj")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="Right Xb" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/Confirm Controls"]
+layout_mode = 2
+texture = ExtResource("28_cijfx")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="Right Nin" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/Confirm Controls"]
+layout_mode = 2
+texture = ExtResource("29_s1ob8")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="Fine Controls" type="HBoxContainer" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../Confirm Controls")
+focus_neighbor_bottom = NodePath("../Move Controls")
+focus_next = NodePath("../Move Controls")
+focus_previous = NodePath("../Confirm Controls")
+focus_mode = 2
+
+[node name="FineControl" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/Fine Controls"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+focus_neighbor_top = NodePath("../..")
+focus_neighbor_bottom = NodePath("../../Jump Controls/Jump")
+focus_next = NodePath("../../Jump Controls/Jump")
+focus_previous = NodePath("../..")
+texture = ExtResource("43_3o1hb")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="HSeparator" type="HSeparator" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/Fine Controls"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/separator = ExtResource("20_6p85y")
+
+[node name="Shift" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/Fine Controls"]
+layout_mode = 2
+texture = ExtResource("44_1qi2u")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="Right Trigger Xb" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/Fine Controls"]
+layout_mode = 2
+texture = ExtResource("45_qxfis")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="Right Trigger Nin" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/Fine Controls"]
+layout_mode = 2
+texture = ExtResource("46_5wffc")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="Controls Separator1" type="VSeparator" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+theme_override_constants/separation = 16
+theme_override_styles/separator = ExtResource("13_tbd65")
+
+[node name="2D Controls" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("19_7oqtn")
+stretch_mode = 4
+
+[node name="2D Separator" type="VSeparator" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(8, 8)
+layout_mode = 2
+theme_override_constants/separation = 16
+theme_override_styles/separator = ExtResource("13_tbd65")
+
+[node name="Move Controls" type="HBoxContainer" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../Fine Controls")
+focus_neighbor_bottom = NodePath("../Jump Controls")
+focus_next = NodePath("../Jump Controls")
+focus_previous = NodePath("../Fine Controls")
+focus_mode = 2
+
+[node name="Move" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/Move Controls"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+focus_neighbor_top = NodePath("../../..")
+focus_neighbor_bottom = NodePath("../../Jump Controls/Jump")
+focus_next = NodePath("../../Jump Controls/Jump")
+focus_previous = NodePath("../../..")
+texture = ExtResource("19_i7uud")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="HSeparator" type="HSeparator" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/Move Controls"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/separator = ExtResource("20_6p85y")
+
+[node name="Arrow Keys" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/Move Controls"]
+layout_mode = 2
+texture = ExtResource("21_vsims")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="WASD" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/Move Controls"]
+layout_mode = 2
+texture = ExtResource("22_ifku1")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="L Stick" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/Move Controls"]
+layout_mode = 2
+texture = ExtResource("23_hvuoq")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="DPad" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/Move Controls"]
+layout_mode = 2
+texture = ExtResource("35_s1ob8")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="Jump Controls" type="HBoxContainer" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../Move Controls")
+focus_neighbor_bottom = NodePath("../3D Move Controls")
+focus_next = NodePath("../3D Move Controls")
+focus_previous = NodePath("../Move Controls")
+focus_mode = 2
+
+[node name="Jump" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/Jump Controls"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+focus_neighbor_top = NodePath("../../Move Controls/Move")
+focus_neighbor_bottom = NodePath("../../3D Move Controls/Move")
+focus_next = NodePath("../../3D Move Controls/Move")
+focus_previous = NodePath("../../Move Controls/Move")
+texture = ExtResource("24_xkl7s")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="HSeparator" type="HSeparator" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/Jump Controls"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/separator = ExtResource("20_6p85y")
+
+[node name="Spacebar" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/Jump Controls"]
+layout_mode = 2
+texture = ExtResource("25_q4tpj")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="A Button" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/Jump Controls"]
+layout_mode = 2
+texture = ExtResource("27_1anaf")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="B Button" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/Jump Controls"]
+layout_mode = 2
+texture = ExtResource("26_qg4he")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="Controls Separator2" type="VSeparator" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+theme_override_constants/separation = 16
+theme_override_styles/separator = ExtResource("13_tbd65")
+
+[node name="3D Controls" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("28_1anaf")
+stretch_mode = 4
+
+[node name="3D Separator" type="VSeparator" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(8, 8)
+layout_mode = 2
+theme_override_constants/separation = 16
+theme_override_styles/separator = ExtResource("13_tbd65")
+
+[node name="3D Move Controls" type="HBoxContainer" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../Jump Controls")
+focus_neighbor_bottom = NodePath("../3D Jump Controls")
+focus_next = NodePath("../3D Jump Controls")
+focus_previous = NodePath("../Jump Controls")
+focus_mode = 2
+
+[node name="Move" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/3D Move Controls"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+focus_neighbor_top = NodePath("../../Jump Controls/Jump")
+focus_neighbor_bottom = NodePath("../../3D Camera Controls/Camera")
+focus_next = NodePath("../../3D Camera Controls/Camera")
+focus_previous = NodePath("../../Jump Controls/Jump")
+texture = ExtResource("19_i7uud")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="HSeparator" type="HSeparator" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/3D Move Controls"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/separator = ExtResource("20_6p85y")
+
+[node name="Arrow Keys" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/3D Move Controls"]
+layout_mode = 2
+texture = ExtResource("21_vsims")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="WASD" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/3D Move Controls"]
+layout_mode = 2
+expand_mode = 3
+
+[node name="L Stick" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/3D Move Controls"]
+layout_mode = 2
+texture = ExtResource("23_hvuoq")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="DPad" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/3D Move Controls"]
+layout_mode = 2
+texture = ExtResource("35_s1ob8")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="3D Jump Controls" type="HBoxContainer" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../3D Move Controls")
+focus_neighbor_bottom = NodePath("../3D Camera Controls")
+focus_next = NodePath("../3D Camera Controls")
+focus_previous = NodePath("../3D Move Controls")
+focus_mode = 2
+
+[node name="Jump" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/3D Jump Controls"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+focus_neighbor_top = NodePath("../../3D Camera Controls/Camera")
+focus_previous = NodePath("../../3D Camera Controls/Camera")
+texture = ExtResource("24_xkl7s")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="HSeparator" type="HSeparator" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/3D Jump Controls"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/separator = ExtResource("20_6p85y")
+
+[node name="Spacebar" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/3D Jump Controls"]
+layout_mode = 2
+texture = ExtResource("25_q4tpj")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="A Button" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/3D Jump Controls"]
+layout_mode = 2
+texture = ExtResource("27_1anaf")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="B Button" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/3D Jump Controls"]
+layout_mode = 2
+texture = ExtResource("26_qg4he")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="3D Camera Controls" type="HBoxContainer" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../3D Jump Controls")
+focus_neighbor_bottom = NodePath("../3D Zoom Controls")
+focus_next = NodePath("../3D Zoom Controls")
+focus_previous = NodePath("../3D Move Controls")
+focus_mode = 2
+
+[node name="Camera" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/3D Camera Controls"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+focus_neighbor_top = NodePath("../../3D Move Controls/Move")
+focus_neighbor_bottom = NodePath("../../3D Jump Controls/Jump")
+focus_next = NodePath("../../3D Jump Controls/Jump")
+focus_previous = NodePath("../../3D Move Controls/Move")
+texture = ExtResource("29_xlwes")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="HSeparator" type="HSeparator" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/3D Camera Controls"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/separator = ExtResource("20_6p85y")
+
+[node name="Brackets" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/3D Camera Controls"]
+layout_mode = 2
+texture = ExtResource("30_fqtlv")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="Mouse Move" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/3D Camera Controls"]
+layout_mode = 2
+texture = ExtResource("31_mfpu8")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="R Stick" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/3D Camera Controls"]
+layout_mode = 2
+texture = ExtResource("32_wg8ic")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="3D Zoom Controls" type="HBoxContainer" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../3D Camera Controls")
+focus_neighbor_bottom = NodePath("../3D Interact Controls")
+focus_next = NodePath("../3D Interact Controls")
+focus_previous = NodePath("../3D Camera Controls")
+focus_mode = 2
+
+[node name="Zoom" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/3D Zoom Controls"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+focus_neighbor_top = NodePath("../../3D Move Controls/Move")
+focus_neighbor_bottom = NodePath("../../3D Jump Controls/Jump")
+focus_next = NodePath("../../3D Jump Controls/Jump")
+focus_previous = NodePath("../../3D Move Controls/Move")
+texture = ExtResource("44_vsims")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="HSeparator" type="HSeparator" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/3D Zoom Controls"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/separator = ExtResource("20_6p85y")
+
+[node name="I" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/3D Zoom Controls"]
+layout_mode = 2
+texture = ExtResource("45_ifku1")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="K" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/3D Zoom Controls"]
+layout_mode = 2
+texture = ExtResource("46_hvuoq")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="R Stick" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/3D Zoom Controls"]
+layout_mode = 2
+texture = ExtResource("32_wg8ic")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="3D Interact Controls" type="HBoxContainer" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../3D Zoom Controls")
+focus_neighbor_right = NodePath("../../../../Exit Controls")
+focus_neighbor_bottom = NodePath("../Menu Controls")
+focus_next = NodePath("../Menu Controls")
+focus_previous = NodePath("../3D Zoom Controls")
+focus_mode = 2
+
+[node name="Interact" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/3D Interact Controls"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+focus_neighbor_top = NodePath("../../3D Move Controls/Move")
+focus_neighbor_bottom = NodePath("../../3D Jump Controls/Jump")
+focus_next = NodePath("../../3D Jump Controls/Jump")
+focus_previous = NodePath("../../3D Move Controls/Move")
+texture = ExtResource("54_tsgqf")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="HSeparator" type="HSeparator" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/3D Interact Controls"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/separator = ExtResource("20_6p85y")
+
+[node name="E" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/3D Interact Controls"]
+layout_mode = 2
+texture = ExtResource("55_2ewfx")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="Top Xb" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/3D Interact Controls"]
+layout_mode = 2
+texture = ExtResource("55_7mjjf")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="Top Nin" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/3D Interact Controls"]
+layout_mode = 2
+texture = ExtResource("56_2ewfx")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="Exit Controls" type="Button" parent="MenuLayer/Controls"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -34.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = 54.0
+grow_horizontal = 0
+focus_neighbor_left = NodePath("../VBoxContainer/ScrollContainer/VBoxContainer/Menu Controls")
+focus_neighbor_top = NodePath("../VBoxContainer/ScrollContainer/VBoxContainer/3D Interact Controls")
+focus_neighbor_bottom = NodePath("../VBoxContainer/ScrollContainer/VBoxContainer/Menu Controls")
+focus_next = NodePath("../VBoxContainer/ScrollContainer/VBoxContainer/Menu Controls")
+focus_previous = NodePath("../VBoxContainer/ScrollContainer/VBoxContainer/3D Interact Controls")
+text = "X
+"
+
+[node name="GameOverlay" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="MenuButton" type="Button" parent="GameOverlay"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 32)
+offset_left = 14.0
+offset_top = 14.0
+offset_right = 48.0
+offset_bottom = 48.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_p2cca")
+action_mode = 0
+icon = ExtResource("7_7oqtn")
+icon_alignment = 1
+script = ExtResource("54_v00k6")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GameOverlay"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 48.0
+offset_top = 48.0
+offset_right = -48.0
+offset_bottom = -48.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_7yxt8")
+
+[node name="Health" type="HBoxContainer" parent="GameOverlay/HBoxContainer"]
+custom_minimum_size = Vector2(160, 48)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+
+[node name="Icon" type="TextureRect" parent="GameOverlay/HBoxContainer/Health"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource("47_ifku1")
+stretch_mode = 4
+
+[node name="Bar" type="ProgressBar" parent="GameOverlay/HBoxContainer/Health"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 5.0
+step = 1.0
+value = 5.0
+show_percentage = false
+
+[node name="Background" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+
+[node name="Substrate Layer" type="Parallax2D" parent="Background"]
+z_index = -100
+scroll_scale = Vector2(0, 0)
+repeat_size = Vector2(800, 400)
+repeat_times = 9
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/Substrate Layer"]
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("27_ucr8h")
+centered = false
+
+[node name="Bottom Layer" type="Parallax2D" parent="Background"]
+z_index = -100
+scroll_scale = Vector2(0.8, 0.8)
+repeat_size = Vector2(800, 400)
+autoscroll = Vector2(-20, 15)
+repeat_times = 9
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/Bottom Layer"]
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("28_y8j5i")
+centered = false
+region_rect = Rect2(0, 0, 640, 320)
+
+[node name="Top Layer" type="Parallax2D" parent="Background"]
+z_index = -100
+scroll_scale = Vector2(0.8, 0.8)
+repeat_size = Vector2(800, 400)
+autoscroll = Vector2(-20, 15)
+repeat_times = 9
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/Top Layer"]
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("29_p2cca")
+centered = false
+
+[node name="Component Layer" type="Parallax2D" parent="Background"]
+z_index = -100
+scroll_scale = Vector2(0.8, 0.8)
+repeat_size = Vector2(800, 400)
+autoscroll = Vector2(-20, 15)
+repeat_times = 9
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/Component Layer"]
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("30_v00k6")
+centered = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_nyjex")
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[connection signal="tree_exiting" from="." to="." method="_on_tree_exiting"]
+[connection signal="pressed" from="MenuLayer/Main/Main/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="MenuLayer/Main/Main/VBoxContainer/Play3D" to="." method="_on_play_3d_pressed"]
+[connection signal="pressed" from="MenuLayer/Main/Main/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="MenuLayer/Main/Main/VBoxContainer/Controls" to="." method="_on_controls_pressed"]
+[connection signal="pressed" from="MenuLayer/Main/Main/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="toggled" from="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/WindowPanel/VBoxContainer/Resizable" to="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/WindowPanel/VBoxContainer/Resizable" method="_on_toggled"]
+[connection signal="toggled" from="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/WindowPanel/VBoxContainer/Fullscreen" to="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/WindowPanel/VBoxContainer/Fullscreen" method="_on_toggled"]
+[connection signal="toggled" from="MenuLayer/Settings/TabContainer/3D/MarginContainer/3D/ShadowPanel/VBoxContainer/Shadow" to="MenuLayer/Settings/TabContainer/3D/MarginContainer/3D/ShadowPanel/VBoxContainer/Shadow" method="_on_toggled"]
+[connection signal="value_changed" from="MenuLayer/Settings/TabContainer/3D/MarginContainer/3D/ShadowPanel/VBoxContainer/HBoxContainer/Shadow_Quality" to="MenuLayer/Settings/TabContainer/3D/MarginContainer/3D/ShadowPanel/VBoxContainer/HBoxContainer/Shadow_Quality" method="_on_value_changed"]
+[connection signal="toggled" from="MenuLayer/Settings/TabContainer/3D/MarginContainer/3D/LightingPanel/VBoxContainer/SDFGI" to="MenuLayer/Settings/TabContainer/3D/MarginContainer/3D/LightingPanel/VBoxContainer/SDFGI" method="_on_toggled"]
+[connection signal="toggled" from="MenuLayer/Settings/TabContainer/3D/MarginContainer/3D/LightingPanel/VBoxContainer/SDFGI_Full" to="MenuLayer/Settings/TabContainer/3D/MarginContainer/3D/LightingPanel/VBoxContainer/SDFGI_Full" method="_on_toggled"]
+[connection signal="pressed" from="MenuLayer/Settings/Exit Settings" to="." method="_on_exit_settings_pressed"]
+[connection signal="pressed" from="MenuLayer/Controls/Exit Controls" to="." method="_on_exit_controls_pressed"]
+[connection signal="pressed" from="GameOverlay/MenuButton" to="GameOverlay/MenuButton" method="_on_pressed"]
