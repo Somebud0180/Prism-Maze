@@ -14,7 +14,7 @@ var handle_subviewport_input = false
 var player3D
 var player_3d
 
-var finish_sound = load("res://resources/Sound/Level/SFX/Finish.wav")
+var finish_sound = [load("res://resources/Sound/Level/SFX/Finish.wav"), load("res://resources/Sound/Level/SFX/Finish 2.wav"), load("res://resources/Sound/Level/SFX/Finish 3.wav")]
 
 
 func _ready() -> void:
@@ -90,7 +90,7 @@ func open_door():
 	var animation_player: AnimationPlayer = get_node("Door3D/Door/AnimationPlayer")
 	is_door_open = true
 	animation_player.play("open_door")
-	audio_player.stream = finish_sound
+	audio_player.stream = finish_sound[randi_range(0, finish_sound.size() - 1)]
 	audio_player.play()
 
 

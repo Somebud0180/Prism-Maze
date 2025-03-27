@@ -40,7 +40,7 @@ var game_mode: int = 2  # 1: Platformer, 2: Maze
 var platform_list: Array[int] = []
 var maze_list: Array[int] = []
 
-var finish_sound = load("res://resources/Sound/Level/SFX/Finish.wav")
+var finish_sound = [load("res://resources/Sound/Level/SFX/Finish.wav"), load("res://resources/Sound/Level/SFX/Finish 2.wav"), load("res://resources/Sound/Level/SFX/Finish 3.wav")]
 
 func _ready() -> void:
 	# Reset the key color list
@@ -50,6 +50,7 @@ func _ready() -> void:
 	player._on_game_manager_loaded()
 	
 	next_level()
+	await get_tree().process_frame
 	emit_signal("finished_loading")
 
 
@@ -204,7 +205,7 @@ func progress_level() -> void:
 	# Increase level index and load next
 	level += 1
 	next_level()
-	audio_player.stream = finish_sound
+	audio_player.stream = finish_sound[randi_range(0, finish_sound.size() - 1)]
 	audio_player.play()
 	
 	# If completed all levels, finalize

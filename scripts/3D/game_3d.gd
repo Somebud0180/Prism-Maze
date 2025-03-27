@@ -11,6 +11,7 @@ func _ready() -> void:
 	set_shadow_quality()
 	set_sdfgi()
 	
+	await get_tree().process_frame
 	emit_signal("finished_loading")
 
 
