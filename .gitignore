@@ -1,5 +1,5 @@
 # Godot 4+ specific ignores
-.godot/
+Godot/.godot/
 /android/
 
 # Mac ignores
@@ -11,4 +11,4 @@
 .xcodeproj
 .xcprivacy
 
-build/
+Godot/build/
