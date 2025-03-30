@@ -2,15 +2,10 @@ extends Area2D
 class_name Flag
 
 var menu
-var managers
 var game_manager
 
 
 func _ready() -> void:
-	managers = get_tree().get_nodes_in_group("GameManager")
-	if managers.size() > 0:
-		game_manager = managers[0]
-	
 	call_deferred("_init_zone")
 
 
@@ -27,6 +22,7 @@ func _init_zone() -> void:
 
 
 func _on_body_entered(_body: Node2D) -> void:
+	game_manager = get_node("../../../GameManager")
 	game_manager.progress_level()
 	menu = get_node("/root/Menu")
 	if menu.character_life < 5:

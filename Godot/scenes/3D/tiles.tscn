@@ -55,7 +55,7 @@ shader_parameter/roughness = 0.15
 shader_parameter/normal_strength = 1.0
 shader_parameter/edge_color = Color(0, 0, 0, 1)
 shader_parameter/character_position = Vector3(0, 0, 0)
-shader_parameter/fade_distance = 480.0
+shader_parameter/fade_distance = 960.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_atffv"]
 lightmap_size_hint = Vector2i(24, 36)
@@ -98,7 +98,6 @@ skeleton = NodePath("")
 shape = SubResource("BoxShape3D_781gc")
 
 [node name="Glass" type="Node3D" parent="."]
-visible = false
 
 [node name="Glass Block" type="MeshInstance3D" parent="Glass"]
 mesh = SubResource("BoxMesh_atffv")
@@ -109,6 +108,7 @@ mesh = SubResource("BoxMesh_atffv")
 shape = SubResource("BoxShape3D_781gc")
 
 [node name="Barrier" type="Node3D" parent="."]
+visible = false
 
 [node name="Barrier Block" type="MeshInstance3D" parent="Barrier"]
 gi_mode = 0

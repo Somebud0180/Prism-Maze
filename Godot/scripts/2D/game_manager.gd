@@ -8,16 +8,16 @@ signal finished_loading
 
 @onready var game = $".."
 @onready var menu = get_node("/root/Menu")
-@onready var main_layer = %MainLayer
-@onready var player = %Player
-@onready var animation_player = %AnimationPlayer
-@onready var audio_player = %AudioStreamPlayer2D
+@onready var main_layer = $"../MainLayer"
+@onready var player = $"../Player"
+@onready var animation_player = $"../AnimationPlayer"
+@onready var audio_player = $"../AudioStreamPlayer2D"
 
 ## Enables unlimited levels.  [code]level_amount[/code]  is disregarded when enabled.
 @export var infinite_levels: bool = false
 
 ## The amount of levels to create for the playthrough. Excluding the final level.
-@export var level_amount: int = 15 
+@export var level_amount: int = 25
 
  ## A level to add first to the game, used for debugging. Follows the Maze: X, Platform: X, Maze format
 @export var custom_level: String:
@@ -43,6 +43,7 @@ var maze_list: Array[int] = []
 var finish_sound = [load("res://resources/Sound/Level/SFX/Finish.wav"), load("res://resources/Sound/Level/SFX/Finish 2.wav"), load("res://resources/Sound/Level/SFX/Finish 3.wav")]
 
 func _ready() -> void:
+	randomize()
 	# Reset the key color list
 	_reset_keys()
 	
@@ -54,11 +55,16 @@ func _ready() -> void:
 	emit_signal("finished_loading")
 
 
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("load_level"):
+		progress_level()
+
+
 func next_level() -> void:
 	_reset_keys()
 	player.game_initialized = false
 	
-	if infinite_levels or level < level_amount:
+	if infinite_levels or level <= level_amount:
 		for child in main_layer.get_children():
 			child.queue_free()
 		
@@ -113,7 +119,7 @@ func get_random_level(selected_level: String) -> String:
 		var resolved = str(get_maze_index(_maze_scene))
 		return "Maze: " + resolved
 	elif selected_level == "Platform":
-		var resolved = str(get_platform_index(_platform_scene, level))
+		var resolved = str(get_platform_index(_platform_scene))
 		return "Platform: " + resolved
 	else:
 		return "GenMaze"
@@ -134,29 +140,6 @@ func load_rand_level(selected_level: String):
 	
 	# Enable player again
 	player.game_initialized = true
-
-
-func load_game() -> void:
-	var gen_level_amount: int = get_custom_level_amount()
-	
-	for i in range(gen_level_amount): 
-		var this_level = randi_range(0, 1)
-		if this_level == 0:
-			level_collection.append("Maze")
-		else:
-			level_collection.append("Platform")
-	
-	for i in range(3):
-		# Check levels thrice to optimize for speed and best level set.
-		level_check()
-	
-	level_set()
-	
-	# Create a level collection after randomizer to allow setting a Generated Maze
-	if !custom_level.is_empty():
-		level_collection.insert(0, custom_level)
-	
-	load_level()
 
 
 func get_custom_level_amount() -> int:
@@ -185,7 +168,7 @@ func level_set() -> void:
 				level_collection[i] = "Maze: " + resolved
 			
 		elif level_collection[i] == "Platform":
-			var resolved = str(get_platform_index(_platform_scene, i))
+			var resolved = str(get_platform_index(_platform_scene))
 			level_collection[i] = "Platform: " + resolved
 	
 	# Append last level
@@ -193,68 +176,48 @@ func level_set() -> void:
 
 
 func progress_level() -> void:
-	# Compute how long this level took
-	var total_previous = 0.0
-	for t in level_times:
-		total_previous += t
-	
-	var current_time = menu.time_elapsed
-	var current_level_time = current_time - total_previous
-	level_times.append(snapped(current_level_time, 0.01))
-	
-	# Increase level index and load next
-	level += 1
-	next_level()
-	audio_player.stream = finish_sound[randi_range(0, finish_sound.size() - 1)]
-	audio_player.play()
-	
-	# If completed all levels, finalize
-	if level == level_amount:
-		if menu.menu_state == Menu.STATE.GAMEMIXED:
-			var _level = get_tree().get_first_node_in_group("3DLevel")
-			%Confetti.position = %Player.position
-			
-			animation_player.play("show_confetti")
-			_level.open_door()
-		else:
-			menu.is_timer_running = false
-			menu.is_popup_displaying = true
-			
-			var popup_scene = get_tree().get_root().get_node_or_null("LevelPopup")
-			
-			if popup_scene != null:
-				popup_scene.output_timer(snapped(menu.time_elapsed, 0.01), level_times)
-				popup_scene.animation_player.play("show_finish")
-
-
-func load_level() -> void:
-	# Reset the key color list
-	_reset_keys()
-	
-	# Disable player for a moment
-	player.game_initialized = false
-	
-	# Reset player gravity and sprite
-	player.gravity_direction = 1
-	
-	for child in main_layer.get_children():
-		child.queue_free()
-	
-	if level_collection[level] == "Maze":
-		load_gen_maze()
-	else:
-		if level_collection[level].begins_with("Maze: "):
-			var level_name = level_collection[level].replace("Maze: ", "")
-			load_maze(level_name)
+	if !infinite_levels and level < level_amount:
+		# Compute how long this level took
+		var total_previous = 0.0
+		for t in level_times:
+			total_previous += t
 		
-		elif level_collection[level].begins_with("Platform: "):
-			var level_name = level_collection[level].replace("Platform: ", "")
-			load_platform(level_name)
-	
-	player.position = Vector2i(0,0)
-	
-	# Enable player again
-	player.game_initialized = true
+		var current_time = menu.time_elapsed
+		var current_level_time = current_time - total_previous
+		level_times.append(snapped(current_level_time, 0.01))
+		
+		# Reset the key color list
+		_reset_keys()
+		
+		# Disable player for a moment
+		player.game_initialized = false
+		
+		# Reset player gravity and sprite
+		player.gravity_direction = 1
+		
+		# Increase level index and load next
+		level += 1
+		next_level()
+		audio_player.stream = finish_sound[randi_range(0, finish_sound.size() - 1)]
+		audio_player.play()
+		
+		# If completed all levels, finalize
+		if level == level_amount:
+			if menu.menu_state == Menu.STATE.GAMEMIXED:
+				var _level = get_node("../../../")
+				var _layer = get_node("../../../../")
+				_layer.current_level += 1
+				_layer.place_level_async()
+				_level.open_door()
+			else:
+				menu.is_timer_running = false
+				menu.is_popup_displaying = true
+				
+				var popup_scene = get_tree().get_root().get_node_or_null("LevelPopup")
+				
+				if popup_scene != null:
+					popup_scene.output_timer(snapped(menu.time_elapsed, 0.01), level_times)
+					popup_scene.animation_player.play("show_finish")
 
 
 func load_gen_maze() -> void:
@@ -291,18 +254,10 @@ func load_platform(selected_level: String) -> void:
 	main_layer.get_child(main_layer.get_child_count() - 1).init_level()
 
 
-func get_platform_index(platform_scene: Node, current_level_index: int) -> int:
-	# Only gather from first 5 children if current level is less than 6
-	var limit = 0
-	if current_level_index <= 5:
-		limit = 5
-	else:
-		# Account for final and debug level and Timer node
-		limit = platform_scene.get_child_count() - 3
-	
+func get_platform_index(platform_scene: Node) -> int:
 	if platform_list.is_empty():
-		# Use the full range of available levels, not limited to 5
-		for i in range(limit): 
+		# Account for special levels
+		for i in range(platform_scene.get_child_count() - 3): 
 			platform_list.append(i)
 		platform_list.shuffle()
 	
@@ -310,10 +265,8 @@ func get_platform_index(platform_scene: Node, current_level_index: int) -> int:
 
 
 func get_maze_index(maze_scene: Node) -> int:
-	
 	# If the list is empty, refill it
 	if maze_list.is_empty():
-		# Account for Timer child
 		for i in range(maze_scene.get_child_count() - 1):
 			maze_list.append(i)
 		maze_list.shuffle()

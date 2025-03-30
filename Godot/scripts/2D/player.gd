@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Player2D
 
 signal player_loaded
 
@@ -14,7 +15,7 @@ var gravity_direction = 1: # 1 for normal, -1 for upside-down
 @export var audio_player: AudioStreamPlayer2D
 
 @onready var menu = get_node("/root/Menu")
-@onready var game_manager = %GameManager
+@onready var game_manager = $"../GameManager"
 
 var killable = false
 var jump_sound = load("res://resources/Sound/Player/Jump.wav")
@@ -87,7 +88,7 @@ func _on_game_manager_loaded():
 func _physics_process(delta: float) -> void:
 	# Don't process physics until we're properly initialized
 	if !game_initialized or (menu.menu_state != Menu.STATE.GAME and menu.menu_state != Menu.STATE.GAMEMIXED):
-		if game_manager.game_mode == 1:
+		if menu.menu_state == Menu.STATE.GAME3D and game_manager.game_mode == 1 and is_in_air:
 			_gravity(delta)
 			move_and_slide()
 		
@@ -99,19 +100,19 @@ func _physics_process(delta: float) -> void:
 		if (gravity_direction == 1 and is_on_floor()) or (gravity_direction == -1 and is_on_ceiling()):
 			jump_credit = 1
 		
-		# Invert the gravity.
-		if Input.is_action_just_pressed("invert_gravity"):
-			if gravity_direction == 1:
-				gravity_direction = -1
-			else:
-				gravity_direction = 1
-		
 		# Handle jump based on gravity direction.
 		if Input.is_action_just_pressed("jump") and jump_credit > 0:
 			audio_player.stream = jump_sound
 			audio_player.play()
 			jump_credit -= 1 
 			velocity.y = jump_velocity * gravity_direction
+		
+		# Invert the gravity.
+		if Input.is_action_just_pressed("invert_gravity"):
+			if gravity_direction == 1:
+				gravity_direction = -1
+			else:
+				gravity_direction = 1
 		
 		# Get the input direction and handle the movement/deceleration.
 		var direction := Input.get_axis("move_left", "move_right")

@@ -222,3 +222,8 @@ func show_flags(_visible: bool) -> void:
 
 func _on_timer_timeout() -> void:
 	show_flags(true)
+
+
+func _on_emergency_timer_timeout() -> void:
+	# Make sure flags have shown in 5 seconds
+	show_flags(true)

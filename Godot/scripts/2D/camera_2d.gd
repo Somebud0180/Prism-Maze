@@ -1,6 +1,6 @@
 extends Camera2D
 
-@onready var game_manager = %GameManager
+@onready var game_manager = $"../../GameManager"
 
 const CAMERA_TWEEN_DURATION : float = 0.5
 const BASE_RESOLUTION = Vector2(1280, 720)

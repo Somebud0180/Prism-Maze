@@ -18,16 +18,16 @@ signal finished_loading
 @export var infinite_levels: bool = false
 
 ## The amount of levels to spawn
-@export var level_amount: int = 6 
+@export var level_amount: int = 22
 
 ## Spawn this amount of levels in advance
-@export var level_advance: int = 1 
+@export var level_advance: int = 1
 
 ## Cull levels past this amount
-@export var level_cull_enabled: bool = false 
+@export var level_cull_enabled: bool = false
 
 ## Cull levels past this amount
-@export var level_cull: int = 5 
+@export var level_cull: int = 4
 
 ## Use the tutorial level as the spawn
 @export var is_starting_on_tutorial = false
@@ -43,8 +43,8 @@ var level_collection = [] # The final level set to be played
 var current_level = 0
 var starting_marker: Node3D
 
-func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("load_level"):
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("load_level"):
 		place_level_async()
 
 
@@ -81,7 +81,12 @@ func _ready() -> void:
 
 func place_level_async() -> void:
 	# Step 1: Get the next level’s node
-	var next_level = _level_3d.get_next_level(custom_level)
+	var next_level = _level_3d.get_next_level(infinite_levels, levels.size() + 1, custom_level, level_amount)
+	
+	if next_level == null:
+		return
+	
+	levels.append(next_level)
 	
 	# Yield a frame to avoid freezing if next_level is large
 	await get_tree().process_frame

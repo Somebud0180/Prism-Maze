@@ -41,22 +41,22 @@ void fragment() {
 	// sample and mix textures
 	vec4 _albedo = texture(albedo_texture, UV) * albedo;
 	float _roughness = texture(roughness_texture, UV).r * roughness;
-	
+
 	// Calculate the distance between the fragment and the character
 	float chardistance = length(character_position - world_vertex);
-	
+
 	// apply glass look
 	float a = mix(0.001, 1.0, _albedo.a);
 	float alpha = 1.0 - smoothstep(0.0, fade_distance, chardistance);
 	ALPHA = mix(fresnel * edge_color.a, 1.0, a) * alpha;
-	
+
 	// Calculate the alpha value based on the distanceg
 	if (alpha <= 0.0) {
 		discard;
 	}
-	
+
 	ALBEDO = mix(edge_color.rgb * edge_color.a, _albedo.rgb, a);
-	
+
 	ROUGHNESS = _roughness;
 	NORMAL_MAP = texture(normal_map, UV).xyz;
 	NORMAL_MAP_DEPTH = normal_strength;

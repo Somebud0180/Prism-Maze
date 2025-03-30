@@ -374,7 +374,7 @@ directional_shadow_mode = 1
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
 collision_layer = 15
-collision_mask = 13
+collision_mask = 5
 wall_min_slide_angle = 0.262403
 script = ExtResource("2_orbxt")
 SPEED = 8.0
@@ -399,6 +399,7 @@ initial_dive_angle_deg = -15.0
 tilt_sensitiveness = 20.0
 horizontal_rotation_sensitiveness = 25.0
 mouse_x_sensitiveness = 5.0
+far = 240.0
 
 [node name="Player" type="Node3D" parent="Player3D"]
 
@@ -447,9 +448,7 @@ doppler_tracking = 1
 unique_name_in_owner = true
 transform = Transform3D(0.999984, 0.00457461, -0.00331309, -0.00458199, 0.999987, -0.00222544, 0.00330288, 0.00224057, 0.999992, 0, 10, 0)
 script = ExtResource("6_2hj7x")
-custom_level = "Level14"
-infinite_levels = true
-level_cull = 4
+custom_level = "Level1"
 is_starting_on_tutorial = true
 
 [node name="TutorialLayer" type="CanvasLayer" parent="." node_paths=PackedStringArray("level_layer", "overlay", "overlay_animation_player")]
@@ -499,3 +498,4 @@ libraries = {
 
 [connection signal="finished_loading" from="LevelLayer3D" to="." method="_on_level_layer_3d_finished_loading"]
 [connection signal="tree_exiting" from="LevelLayer3D" to="LevelLayer3D" method="_on_tree_exiting"]
+[connection signal="finish_tween_out" from="LevelMusicPlayer" to="LevelMusicPlayer" method="_on_finish_tween_out"]

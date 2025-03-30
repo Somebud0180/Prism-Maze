@@ -24,33 +24,16 @@ func _ready() -> void:
 	
 	_hide()
 	
-	player3D = get_tree().get_nodes_in_group("Player3D")
-	if player3D.size() > 0:
-		player_3d = player3D[0]
-	
-	if viewport and viewport_quad and player_3d:
-		# Advertise self to global group
-		add_to_group("3DLevel")
-		
+	if viewport and viewport_quad:
 		# Setup viewport
 		viewport.handle_input_locally = false
 		viewport.gui_disable_input = true
-		player_3d.subviewport = viewport
 		
 		# Clear the viewport
 		viewport.set_clear_mode(SubViewport.CLEAR_MODE_ONCE)
 		
 		# Set the viewport texture
-		viewport_quad.material_override.albedo_texture = viewport.get_texture()
-		
-		# Connect viewport area signals
-		viewport_area.input_event.connect(_on_viewport_input_event)
-
-
-func _on_viewport_input_event(_camera: Node, event: InputEvent, _position: Vector3, _normal: Vector3, _shape_idx: int) -> void:
-	if viewport and player_3d and player_3d.is_in_subviewport:
-		if not event.is_action("interact"):
-			viewport.push_input(event)
+		viewport_quad.mesh.material.albedo_texture = viewport.get_texture()
 
 
 func _on_visibility_changed():

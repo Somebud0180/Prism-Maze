@@ -95,6 +95,6 @@ func _on_restart_pressed() -> void:
 
 func _on_animation_player_current_animation_changed(animation_name: String) -> void:
 	if animation_name == "show_finish":
-		$PopupLayer/Finish/VBoxContainer/Finish.grab_focus()
+		$PopupLayer/FinishScreen/Finish/VBoxContainer/Finish.grab_focus()
 	elif animation_name == "show_death":
-		$PopupLayer/DeathScreen/NinePatchRect/Death/Restart.grab_focus()
+		$PopupLayer/DeathScreen/Death/VBoxContainer/Restart.grab_focus()

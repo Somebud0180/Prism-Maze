@@ -225,6 +225,7 @@ func _on_play_pressed() -> void:
 	if !in_game:
 		LoadingManager.load_scene(game_scene_path)
 		in_game = true
+		menu_state = STATE.GAME
 	else:
 		for music_player in get_tree().get_nodes_in_group("LevelMusicPlayer"):
 					music_player.fade_music_in()

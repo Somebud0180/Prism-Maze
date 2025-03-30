@@ -1,12 +1,14 @@
 extends CharacterBody3D
 
 @export var SPEED = 0.0
+@export var FRICTION = 0.2
 @export var JUMP_VELOCITY = 0.0
 @export var WALL_JUMP_FORCE = 0.0
 @export var WALL_SLIDE_FACTOR = 0.3
 @export var ROTATION_SPEED = 0.0
 
 var conveyor_velocity = Vector3.ZERO
+var player_controlled
 
 var was_on_wall = false:
 	set(value):
@@ -38,10 +40,6 @@ var subviewport
 var fall_sound = load("res://resources/Sound/Player/Fall.wav")
 var jump_sound = load("res://resources/Sound/Player/Jump.wav")
 var grab_sound = load("res://resources/Sound/Player/Grab.wav")
-
-var last_conveyor_velocity = Vector3.ZERO
-var conveyor_inertia_time = 0.0
-var desired_velocity
 
 func hide_on_death() -> void:
 	menu = get_node("/root/Menu")
@@ -90,12 +88,28 @@ func _gravity(delta: float):
 			if is_valid_wall():
 				if (gravity_direction == 1 and velocity.y < 0) or (gravity_direction == -1 and velocity.y > 0):
 					# Apply reduced gravity for wall sliding only when falling
-					velocity += gravity_direction * get_gravity() * WALL_SLIDE_FACTOR * delta
+					velocity += clamp(gravity_direction * get_gravity() * WALL_SLIDE_FACTOR * delta, Vector3(0.0, -30.0, 0.0), Vector3(0.0, 20.0, 0.0))
 				else:
 					# Normal gravity when moving upward on wall
 					velocity += gravity_direction * get_gravity() * delta
-			else: 
+				
+				var collision = get_slide_collision(0)
+				if collision:
+					var current_normal = collision.get_normal().normalized()
+					# Only refill jump if it's a 180° flip
+					if last_wall_normal == Vector3.ZERO:
+						if jump_credit <= 0:
+							jump_credit = 1
+						was_on_wall = true
+						last_wall_normal = current_normal
+					elif current_normal.dot(last_wall_normal.normalized()) <= -0.99:
+						if jump_credit <= 0:
+							jump_credit = 1
+						was_on_wall = true
+						last_wall_normal = current_normal
+			else:
 				velocity += gravity_direction * get_gravity() * delta
+				was_on_wall = false
 
 
 func is_valid_wall() -> bool:
@@ -109,10 +123,10 @@ func is_valid_wall() -> bool:
 		# Check if collider is a GridMap
 		if collider is GridMap:
 			# Only allow wall jump on normal walls (item 0)
-			var is_barrier = collider.call_deferred("get_collision_layer_value", 3)
+			var is_barrier = collider.get_collision_layer_value(3)
 			return !is_barrier
-			
-		return true  # Allow wall jump on non-GridMap surfaces
+		else:
+			return false
 	return false
 
 
@@ -120,43 +134,14 @@ func _physics_process(delta: float) -> void:
 	# Don't process physics until we're properly initialized
 	if !game_initialized or menu.menu_state != Menu.STATE.GAME3D:
 		# Keep gravity if in 2D-in-3D mode
-		if menu.menu_state == Menu.STATE.GAMEMIXED:
+		if menu.menu_state == Menu.STATE.GAMEMIXED and is_in_air:
 			_gravity(delta)
 			move_and_slide()
-			return
-		else:
-			return
-	
-	# Invert the gravity.
-	if Input.is_action_just_pressed("invert_gravity"):
-		if gravity_direction == 1:
-			gravity_direction = -1
-		else:
-			gravity_direction = 1
+		
+		return
 	
 	# Add gravity based on gravity direction.
 	_gravity(delta)
-	
-	# Check if there are any collisions before trying to access them
-	if is_valid_wall():
-		# Get the current wall collision.
-		var collision = get_slide_collision(0)
-		if collision:
-			var current_normal = collision.get_normal().normalized()
-			# Only refill jump if it's a 180° flip
-			if last_wall_normal == Vector3.ZERO:
-				if jump_credit <= 0:
-					jump_credit = 1
-				was_on_wall = true
-				last_wall_normal = current_normal
-			elif current_normal.dot(last_wall_normal.normalized()) <= -0.99:
-				if jump_credit <= 0:
-					jump_credit = 1
-				was_on_wall = true
-				last_wall_normal = current_normal
-	else:
-		# Not on a wall and no collision
-		was_on_wall = false
 	
 	# Check if is on floor and restore double jump
 	if (gravity_direction == 1 and is_on_floor()) or (gravity_direction == -1 and is_on_ceiling()):
@@ -176,6 +161,13 @@ func _physics_process(delta: float) -> void:
 			velocity += -last_wall_normal * WALL_JUMP_FORCE
 		
 		velocity.y = JUMP_VELOCITY * gravity_direction
+	
+	# Invert the gravity.
+	if Input.is_action_just_pressed("invert_gravity"):
+		if gravity_direction == 1:
+			gravity_direction = -1
+		else:
+			gravity_direction = 1
 	
 	# Get the input direction
 	var input_dir := Input.get_vector("move_left", "move_right", "move_up", "move_down")
@@ -199,55 +191,42 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 	
-	velocity += conveyor_velocity
-	
 	move_and_slide()
 
 
-func _unhandled_input(event: InputEvent) -> void:    
-	# Only handle 3D controls if not in subviewport
-	if !is_in_subviewport:
-		if event is InputEventMouseButton:
-			if event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
-				camera.mouse_follow = true
-				Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-			elif event.button_index == MOUSE_BUTTON_RIGHT and not event.pressed:
-				camera.mouse_follow = false
-				Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+func _input(_event: InputEvent) -> void:
+	if Input.is_action_pressed("camera_hold"):
+		camera.mouse_follow = true
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	else:
+		camera.mouse_follow = false
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 
 func _handle_input_mode_switch():
+	for player in get_tree().get_nodes_in_group("Player"):
+		player.game_initialized = false
+		player.set_process_input(false)
+	
 	if is_in_subviewport:
 		# Switch to 2D controls
 		if subviewport:
-			# Disable 3D input
-			set_process_input(false)
-			
 			print("Enabling 2D Input")
 			subviewport.handle_input_locally = true
 			subviewport.gui_disable_input = false
 			
 			# Enable 2D player input
-			var player = get_tree().get_nodes_in_group("Player")[0] if get_tree().get_nodes_in_group("Player").size() > 0 else null
-			if player:
-				player.game_initialized = true
-				player.set_process_input(true)
-				player.set_physics_process(true)
-			
-			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+			if player_controlled:
+				player_controlled.game_initialized = true
+				player_controlled.set_process_input(true)
 	else:
 		# Switch back to 3D controls
 		if subviewport:
-			# Enable 3D input
-			set_process_input(true)
-			
 			print("Enabling 3D Input")
 			subviewport.handle_input_locally = false
 			subviewport.gui_disable_input = true
 			
 			# Disable 2D player input
-			var player = get_tree().get_nodes_in_group("Player")[0] if get_tree().get_nodes_in_group("Player").size() > 0 else null
-			if player:
-				player.game_initialized = false
-				player.set_process_input(false)
-				player.set_physics_process(false)
+			if player_controlled:
+				player_controlled.game_initialized = false
+				player_controlled.set_process_input(false)

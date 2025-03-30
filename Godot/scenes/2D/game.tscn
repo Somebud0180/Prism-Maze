@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://brinhdnvr4uxf"]
+[gd_scene load_steps=24 format=3 uid="uid://brinhdnvr4uxf"]
 
 [ext_resource type="Script" uid="uid://b7l1rpqy1mblr" path="res://scripts/2D/game_manager.gd" id="1_rn7ij"]
 [ext_resource type="Script" uid="uid://cmgcuu7j3ncl2" path="res://scripts/2D/player.gd" id="2_musdt"]
@@ -9,197 +9,102 @@
 [ext_resource type="Texture2D" uid="uid://dhkixf8jhbq4o" path="res://resources/Background/Bottom Layer.png" id="6_lnfnm"]
 [ext_resource type="Texture2D" uid="uid://dhop524e0npfj" path="res://resources/Background/Top Layer.png" id="7_4osob"]
 [ext_resource type="Texture2D" uid="uid://b0viiebu5kc4j" path="res://resources/Background/Components.png" id="8_l5bty"]
-[ext_resource type="Texture2D" uid="uid://cigeq3sfw5wax" path="res://resources/Game/Confetti.png" id="11_7fhpb"]
 [ext_resource type="PackedScene" uid="uid://b6h66rsx4yers" path="res://scenes/Misc/level_music_player.tscn" id="11_l5bty"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_l5bty"]
-atlas = ExtResource("11_7fhpb")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3b5mr"]
-atlas = ExtResource("11_7fhpb")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_yjilw"]
-atlas = ExtResource("11_7fhpb")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7fhpb"]
-atlas = ExtResource("11_7fhpb")
-region = Rect2(96, 0, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_r3f8u"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_l5bty")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3b5mr")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_yjilw")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7fhpb")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ei8ab"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_wn5gj"]
 atlas = ExtResource("3_mqq6w")
 region = Rect2(0, 32, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_12alg"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_7it0l"]
 atlas = ExtResource("3_mqq6w")
 region = Rect2(32, 32, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_drjm1"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_q7btt"]
 atlas = ExtResource("3_mqq6w")
 region = Rect2(64, 32, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_kfyh6"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_pn8ur"]
 atlas = ExtResource("3_mqq6w")
 region = Rect2(96, 32, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_dafwu"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_bpmte"]
 atlas = ExtResource("3_mqq6w")
 region = Rect2(128, 32, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_gkjfo"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_101wu"]
 atlas = ExtResource("3_mqq6w")
 region = Rect2(160, 32, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_uu375"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_j4ep2"]
 atlas = ExtResource("3_mqq6w")
 region = Rect2(192, 32, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_bvmwx"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_uc46l"]
 atlas = ExtResource("3_mqq6w")
 region = Rect2(224, 32, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_p1m2c"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_a374h"]
 atlas = ExtResource("3_mqq6w")
 region = Rect2(256, 32, 32, 32)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_wx7ie"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_thbb8"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ei8ab")
+"texture": SubResource("AtlasTexture_wn5gj")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_12alg")
+"texture": SubResource("AtlasTexture_7it0l")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_drjm1")
+"texture": SubResource("AtlasTexture_q7btt")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_kfyh6")
+"texture": SubResource("AtlasTexture_pn8ur")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_dafwu")
+"texture": SubResource("AtlasTexture_bpmte")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_gkjfo")
+"texture": SubResource("AtlasTexture_101wu")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_uu375")
+"texture": SubResource("AtlasTexture_j4ep2")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_bvmwx")
+"texture": SubResource("AtlasTexture_uc46l")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_p1m2c")
+"texture": SubResource("AtlasTexture_a374h")
 }],
 "loop": true,
 "name": &"idle",
 "speed": 5.0
 }]
 
-[sub_resource type="Animation" id="Animation_3b5mr"]
+[sub_resource type="Animation" id="Animation_usq1i"]
 resource_name = "RESET"
 length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Confetti:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Confetti:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
 
-[sub_resource type="Animation" id="Animation_4osob"]
+[sub_resource type="Animation" id="Animation_gitl5"]
 resource_name = "show_confetti"
 length = 0.25
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Confetti:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.25),
-"transitions": PackedFloat32Array(0.5, 0.5),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(1.5, 1.5)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Confetti:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_yjilw"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m80lp"]
 _data = {
-&"RESET": SubResource("Animation_3b5mr"),
-&"show_confetti": SubResource("Animation_4osob")
+&"RESET": SubResource("Animation_usq1i"),
+&"show_confetti": SubResource("Animation_gitl5")
 }
 
 [node name="Game" type="Node2D"]
 
-[node name="Confetti" type="AnimatedSprite2D" parent="."]
-unique_name_in_owner = true
-visible = false
-z_index = 3
-sprite_frames = SubResource("SpriteFrames_r3f8u")
-autoplay = "default"
-frame_progress = 0.06641
-
 [node name="GameManager" type="Node" parent="." groups=["GameManager"]]
-unique_name_in_owner = true
 script = ExtResource("1_rn7ij")
+custom_level = "Platform: 0"
 
 [node name="MainLayer" type="TileMapLayer" parent="."]
-unique_name_in_owner = true
 
 [node name="Player" type="CharacterBody2D" parent="." node_paths=PackedStringArray("animated_sprite", "audio_player") groups=["Player"]]
-unique_name_in_owner = true
 collision_layer = 2
 script = ExtResource("2_musdt")
 animated_sprite = NodePath("AnimatedSprite2D")
@@ -208,7 +113,7 @@ audio_player = NodePath("AudioStreamPlayer2D")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
 z_index = 1
 position = Vector2(16, -16)
-sprite_frames = SubResource("SpriteFrames_wx7ie")
+sprite_frames = SubResource("SpriteFrames_thbb8")
 animation = &"idle"
 autoplay = "idle"
 frame_progress = 0.0914439
@@ -218,7 +123,6 @@ process_physics_priority = 2
 polygon = PackedVector2Array(11, -1, 21, -1, 27, -20, 27, -22, 18, -30, 14, -30, 5, -22, 5, -20)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-unique_name_in_owner = true
 offset = Vector2(16, -16)
 process_callback = 0
 position_smoothing_enabled = true
@@ -227,7 +131,6 @@ script = ExtResource("4_j64ky")
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Player"]
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-unique_name_in_owner = true
 stream = ExtResource("5_3b5mr")
 
 [node name="Background" type="Node2D" parent="."]
@@ -280,9 +183,8 @@ centered = false
 [node name="Timer" type="Timer" parent="."]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-unique_name_in_owner = true
 libraries = {
-&"": SubResource("AnimationLibrary_yjilw")
+&"": SubResource("AnimationLibrary_m80lp")
 }
 
 [node name="LevelMusicPlayer" parent="." instance=ExtResource("11_l5bty")]
