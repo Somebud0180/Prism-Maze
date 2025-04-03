@@ -18,7 +18,7 @@ uniform sampler2D normal_map : hint_normal;
 group_uniforms misc;
 uniform vec4 edge_color : source_color = vec4(0.0, 0.0, 0.0, 1.0);
 
-uniform vec3 character_position;
+global uniform vec3 character_position;
 uniform float fade_distance;
 
 varying vec3 world_vertex;

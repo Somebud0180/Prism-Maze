@@ -9,7 +9,7 @@ signal finish_tween_out
 @export var transition_type = 1
 
 var music_played = []
-var music = [load("res://resources/Sound/Level/Music/Level.wav"), load("res://resources/Sound/Level/Music/Robot.wav")]
+var music = [load("res://resources/Sound/Level/Music/Level.wav"), load("res://resources/Sound/Level/Music/Level 2.wav"), load("res://resources/Sound/Level/Music/Level 3.wav"), load("res://resources/Sound/Level/Music/Robot.wav")]
 var finish_music = load("res://resources/Sound/Level/Music/Finish.wav")
 var tween_music
 var music_volume = 0.0:

@@ -37,10 +37,6 @@ window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 window/vsync/vsync_mode=2
 
-[editor_plugins]
-
-enabled=PackedStringArray("res://addons/godot_icon/plugin.cfg")
-
 [global_group]
 
 Player=""
@@ -193,6 +189,13 @@ textures/vram_compression/import_etc2_astc=true
 global_illumination/gi/use_half_resolution=true
 occlusion_culling/occlusion_rays_per_thread=256
 occlusion_culling/use_occlusion_culling=true
+
+[shader_globals]
+
+character_position={
+"type": "vec3",
+"value": Vector3(0, 0, 0)
+}
 
 [xogot]
 

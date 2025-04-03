@@ -194,6 +194,10 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 
+func _process(delta: float) -> void:
+	RenderingServer.global_shader_parameter_set("character_position", position)
+
+
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_pressed("camera_hold"):
 		camera.mouse_follow = true

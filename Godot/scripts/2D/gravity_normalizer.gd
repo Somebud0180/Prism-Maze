@@ -1,13 +1,9 @@
 extends Area2D
 
-var player
-
 func _ready() -> void:
 	call_deferred("_init_zone")
-	var players = get_tree().get_nodes_in_group("Player")
-	if players.size() > 0:
-		player = players[0]
-	
+
+
 func _init_zone() -> void:
 	# Re-enable collision monitoring.
 	monitoring = true
@@ -19,5 +15,7 @@ func _init_zone() -> void:
 	if not is_connected("body_entered", Callable(self, "_on_body_entered")):
 		connect("body_entered", Callable(self, "_on_body_entered"))
 
+
 func _on_body_entered(_body: Node2D) -> void:
+	var player = get_node("../../../Player")
 	player.gravity_direction = 1

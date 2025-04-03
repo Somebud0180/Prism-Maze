@@ -62,7 +62,6 @@ func _input(event: InputEvent) -> void:
 
 func next_level() -> void:
 	_reset_keys()
-	player.game_initialized = false
 	
 	if infinite_levels or level <= level_amount:
 		for child in main_layer.get_children():
@@ -134,7 +133,6 @@ func load_rand_level(selected_level: String):
 	elif selected_level.begins_with("Platform"):
 		var level_name = selected_level.replace("Platform: ", "")
 		load_platform(level_name)
-	
 	
 	player.position = Vector2i(0,0)
 	
