@@ -405,6 +405,7 @@ far = 240.0
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Player3D/Player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+visible = false
 light_color = Color(0.855469, 0.855469, 0.855469, 1)
 light_indirect_energy = 5.0
 light_specular = 0.0

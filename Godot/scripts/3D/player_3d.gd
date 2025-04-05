@@ -194,7 +194,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	RenderingServer.global_shader_parameter_set("character_position", position)
 
 

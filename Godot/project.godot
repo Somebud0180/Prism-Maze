@@ -184,6 +184,7 @@ camera_hold={
 
 occlusion_culling/bvh_build_quality=1
 textures/canvas_textures/default_texture_filter=0
+rendering_device/driver.windows="d3d12"
 renderer/rendering_method.mobile="forward_plus"
 textures/vram_compression/import_etc2_astc=true
 global_illumination/gi/use_half_resolution=true

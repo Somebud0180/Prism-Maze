@@ -13,13 +13,15 @@ var native_icon = load("res://resources/Menu/Native.png")
 func _ready() -> void:
 	resolution_picker.connect("item_selected", _on_resolution_item_selected)
 
-
+ 
 # Game Settings
 func _manage_resolution_picker() -> void:
 	var platform = OS.get_name()
 	if platform == "Web" or platform == "iOS":
 		$"TabContainer/2D/MarginContainer/2D/WindowPanel".hide()
 		return
+	else:
+		$"TabContainer/2D/MarginContainer/2D/WindowPanel".show()
 	
 	# Check for window state if fullscreen
 	if menu.window_state == menu.WINDOW_STATE.FULLSCREEN:

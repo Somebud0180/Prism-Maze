@@ -5,6 +5,7 @@ const _VirtualControllerHelper = preload("res://scripts/Misc/virtual_controller_
 
 @export var main: NinePatchRect
 @export var settings: NinePatchRect
+@export var infinite: AspectRatioContainer
 @export var animation_player: AnimationPlayer
 @export var audio_player: AudioStreamPlayer
 
@@ -40,7 +41,7 @@ var window_state = WINDOW_STATE.WINDOWED:
 		window_state = value
 		settings_node._manage_resolution_picker()
 
-enum STATE { MAIN, SETTINGS, CONTROLS, OVERLAY, GAME, GAME3D, GAMEMIXED }
+enum STATE { MAIN, SETTINGS, CONTROLS, OVERLAY, INFIPICKER, GAME, GAME3D, GAMEMIXED }
 var menu_state = STATE.MAIN:
 	set(value):
 		manage_game_timer(value)
@@ -61,6 +62,8 @@ var in_game_3d = false:
 		_manage_play_buttons()
 
 # Game Settings
+var infinite_levels: bool = false
+
 var player_color: Color = Color.WHITE:
 	set(value):
 		player_color = value
@@ -178,6 +181,11 @@ func _input(event):
 				_hide_and_show("controls", "main")
 				await animation_player.animation_finished
 				$MenuLayer/Main/Main/VBoxContainer/Play.grab_focus()
+			STATE.INFIPICKER:
+				menu_state = STATE.MAIN
+				animation_player.play("hide_infinite")
+				await animation_player.animation_finished
+				$MenuLayer/Main/Main/VBoxContainer/Play.grab_focus()
 			STATE.GAME, STATE.GAME3D, STATE.GAMEMIXED, STATE.OVERLAY:
 				# Pause any level music player, if any
 				for music_player in get_tree().get_nodes_in_group("LevelMusicPlayer"):
@@ -215,37 +223,17 @@ func _hide_and_show(first: String, second: String):
 
 
 func _on_play_pressed() -> void:
-	# Check if already in-game in another dimension
-	if in_game_3d:
-		_reset_game_3d()
-	
-	menu_state = STATE.GAME
-	animation_player.play("hide_main_invisible")
-	await animation_player.animation_finished
-	if !in_game:
-		LoadingManager.load_scene(game_scene_path)
-		in_game = true
-		menu_state = STATE.GAME
-	else:
-		for music_player in get_tree().get_nodes_in_group("LevelMusicPlayer"):
-					music_player.fade_music_in()
+	menu_state = STATE.INFIPICKER
+	infinite.game_mode = 0
+	$MenuLayer/Infinite/Infinite/Infinite/VBoxContainer/Normal.grab_focus()
+	animation_player.play("show_infinite")
 
 
 func _on_play_3d_pressed() -> void:
-	# Check if already in-game in another dimension
-	if in_game:
-		_reset_game()
-	
-	menu_state = STATE.GAME3D
-	animation_player.play("hide_main_invisible")
-	await animation_player.animation_finished
-	
-	if !in_game_3d:
-		LoadingManager.load_scene(game_scene_3d_path)
-		in_game_3d = true
-	else:
-		for music_player in get_tree().get_nodes_in_group("LevelMusicPlayer"):
-					music_player.fade_music_in()
+	menu_state = STATE.INFIPICKER
+	infinite.game_mode = 1
+	$MenuLayer/Infinite/Infinite/Infinite/VBoxContainer/Normal.grab_focus()
+	animation_player.play("show_infinite")
 
 
 func _on_settings_pressed() -> void:
@@ -273,6 +261,12 @@ func _on_exit_settings_pressed() -> void:
 func _on_exit_controls_pressed() -> void:
 	menu_state = STATE.MAIN
 	_hide_and_show("controls", "main")
+	$MenuLayer/Main/Main/VBoxContainer/Play.grab_focus()
+
+
+func _on_exit_infipicker_pressed() -> void:
+	menu_state = STATE.MAIN
+	animation_player.play("hide_infinite")
 	$MenuLayer/Main/Main/VBoxContainer/Play.grab_focus()
 
 

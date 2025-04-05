@@ -1,4 +1,4 @@
-[gd_scene load_steps=100 format=3 uid="uid://br2t4hanatnss"]
+[gd_scene load_steps=103 format=3 uid="uid://br2t4hanatnss"]
 
 [ext_resource type="Theme" uid="uid://bau50guyc4alk" path="res://resources/Theme/menu.tres" id="1_7yxt8"]
 [ext_resource type="Script" uid="uid://cnwd74ny2hf2q" path="res://scripts/UI/menu.gd" id="2_o131u"]
@@ -83,6 +83,7 @@
 [ext_resource type="Texture2D" uid="uid://c278452784qcv" path="res://resources/Controls/KBM/keyboard_e.png" id="55_2ewfx"]
 [ext_resource type="Texture2D" uid="uid://rhbf84hoa5co" path="res://resources/Controls/Controllers/button_outline_t_xb.png" id="55_7mjjf"]
 [ext_resource type="Texture2D" uid="uid://namppbr5u8s5" path="res://resources/Controls/Controllers/button_outline_t_nin.png" id="56_2ewfx"]
+[ext_resource type="Script" uid="uid://b7avmo0ffik4l" path="res://scripts/UI/infinite.gd" id="78_crixo"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tsejx"]
 bg_color = Color(0.27451, 0.27451, 0.27451, 1)
@@ -244,6 +245,66 @@ tracks/10/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("MenuLayer/Infinite/Infinite:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(32, 192)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("MenuLayer/Infinite/Infinite:scale")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("MenuLayer/Infinite/Infinite:visible")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("MenuLayer/Infinite/Infinite:modulate")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("MenuLayer/Infinite:color")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.125911, 0.125911, 0.125911, 0.196078)]
 }
 
 [sub_resource type="Animation" id="Animation_gf7yk"]
@@ -731,6 +792,111 @@ tracks/3/keys = {
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_crixo"]
+resource_name = "show_infinite"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MenuLayer/Infinite/Infinite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.45),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [Vector2(0, 992), Vector2(0, 256)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MenuLayer/Infinite/Infinite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.1, 1.1), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MenuLayer/Infinite/Infinite:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MenuLayer/Infinite/Infinite:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MenuLayer/Infinite:color")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Color(0.12549, 0.12549, 0.12549, 0), Color(0.125911, 0.125911, 0.125911, 0.196078)]
+}
+
+[sub_resource type="Animation" id="Animation_7th0f"]
+resource_name = "hide_infinite"
+length = 0.25
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MenuLayer/Infinite/Infinite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MenuLayer/Infinite/Infinite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.5, 1.5)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MenuLayer/Infinite:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Color(0.12549, 0.12549, 0.12549, 0.196078), Color(0.12549, 0.12549, 0.12549, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nyjex"]
 _data = {
 &"RESET": SubResource("Animation_8rgj6"),
@@ -739,15 +905,17 @@ _data = {
 &"RESET_main": SubResource("Animation_ufe8k"),
 &"RESET_settings": SubResource("Animation_11v34"),
 &"hide_controls": SubResource("Animation_q8cwc"),
+&"hide_infinite": SubResource("Animation_7th0f"),
 &"hide_main": SubResource("Animation_ui7xe"),
 &"hide_main_invisible": SubResource("Animation_ifku1"),
 &"hide_settings": SubResource("Animation_2ywoo"),
 &"show_controls": SubResource("Animation_4bbw6"),
+&"show_infinite": SubResource("Animation_crixo"),
 &"show_main": SubResource("Animation_y5frn"),
 &"show_settings": SubResource("Animation_antcs")
 }
 
-[node name="Menu" type="Control" node_paths=PackedStringArray("main", "settings", "animation_player", "audio_player", "game_overlay", "health_bar")]
+[node name="Menu" type="Control" node_paths=PackedStringArray("main", "settings", "infinite", "animation_player", "audio_player", "game_overlay", "health_bar")]
 process_priority = 1
 layout_mode = 3
 anchors_preset = 15
@@ -762,6 +930,7 @@ theme = ExtResource("1_7yxt8")
 script = ExtResource("2_o131u")
 main = NodePath("MenuLayer/Main/Main")
 settings = NodePath("MenuLayer/Settings")
+infinite = NodePath("MenuLayer/Infinite/Infinite")
 animation_player = NodePath("AnimationPlayer")
 audio_player = NodePath("AudioStreamPlayer")
 game_overlay = NodePath("GameOverlay")
@@ -772,13 +941,13 @@ layer = 2
 follow_viewport_scale = 0.05
 
 [node name="Main" type="AspectRatioContainer" parent="MenuLayer"]
-anchors_preset = 15
+anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 34.0
-offset_top = 36.0
-offset_right = -30.0
-offset_bottom = -28.0
+offset_left = 32.0
+offset_top = 32.0
+offset_right = -32.0
+offset_bottom = -32.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(608, 328)
@@ -971,7 +1140,6 @@ theme_override_constants/separation = 16
 theme_override_styles/separator = ExtResource("13_tbd65")
 
 [node name="WindowPanel" type="Panel" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D"]
-visible = false
 custom_minimum_size = Vector2(0, 190)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -1444,7 +1612,7 @@ text = "X
 [node name="Controls" type="NinePatchRect" parent="MenuLayer"]
 visible = false
 custom_minimum_size = Vector2(600, 560)
-anchors_preset = 15
+anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 64.0
@@ -2010,6 +2178,98 @@ focus_previous = NodePath("../VBoxContainer/ScrollContainer/VBoxContainer/3D Int
 text = "X
 "
 
+[node name="Infinite" type="ColorRect" parent="MenuLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.125911, 0.125911, 0.125911, 0.196078)
+
+[node name="Infinite" type="AspectRatioContainer" parent="MenuLayer/Infinite"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_top = 192.0
+offset_right = 32.0
+offset_bottom = -320.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(640, 104)
+ratio = 3.1
+script = ExtResource("78_crixo")
+
+[node name="Infinite" type="NinePatchRect" parent="MenuLayer/Infinite/Infinite"]
+layout_mode = 2
+focus_neighbor_bottom = NodePath("VBoxContainer/Infinite")
+focus_next = NodePath("VBoxContainer/Infinite")
+theme = ExtResource("1_7yxt8")
+texture = ExtResource("3_u30pp")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuLayer/Infinite/Infinite/Infinite"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="VSpacer" type="VSeparator" parent="MenuLayer/Infinite/Infinite/Infinite/VBoxContainer"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+
+[node name="Normal" type="Button" parent="MenuLayer/Infinite/Infinite/Infinite/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+focus_neighbor_bottom = NodePath("../Infinite")
+focus_next = NodePath("../Infinite")
+icon = ExtResource("6_jcwtk")
+icon_alignment = 1
+expand_icon = true
+
+[node name="ButtonSpacer1" type="VSeparator" parent="MenuLayer/Infinite/Infinite/Infinite/VBoxContainer"]
+layout_mode = 2
+
+[node name="Infinite" type="Button" parent="MenuLayer/Infinite/Infinite/Infinite/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+focus_neighbor_top = NodePath("../Normal")
+focus_previous = NodePath("../Normal")
+icon = ExtResource("7_7oqtn")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Exit Infipicker" type="Button" parent="MenuLayer/Infinite/Infinite/Infinite"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -32.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = 38.0
+grow_horizontal = 0
+focus_neighbor_left = NodePath("../VBoxContainer/ScrollContainer/VBoxContainer/Menu Controls")
+focus_neighbor_top = NodePath("../VBoxContainer/ScrollContainer/VBoxContainer/3D Interact Controls")
+focus_neighbor_bottom = NodePath("../VBoxContainer/ScrollContainer/VBoxContainer/Menu Controls")
+focus_next = NodePath("../VBoxContainer/ScrollContainer/VBoxContainer/Menu Controls")
+focus_previous = NodePath("../VBoxContainer/ScrollContainer/VBoxContainer/3D Interact Controls")
+text = "X
+"
+
 [node name="GameOverlay" type="CanvasLayer" parent="."]
 visible = false
 
@@ -2139,4 +2399,7 @@ libraries = {
 [connection signal="toggled" from="MenuLayer/Settings/TabContainer/3D/MarginContainer/3D/LightingPanel/VBoxContainer/SDFGI_Full" to="MenuLayer/Settings/TabContainer/3D/MarginContainer/3D/LightingPanel/VBoxContainer/SDFGI_Full" method="_on_toggled"]
 [connection signal="pressed" from="MenuLayer/Settings/Exit Settings" to="." method="_on_exit_settings_pressed"]
 [connection signal="pressed" from="MenuLayer/Controls/Exit Controls" to="." method="_on_exit_controls_pressed"]
+[connection signal="pressed" from="MenuLayer/Infinite/Infinite/Infinite/VBoxContainer/Normal" to="MenuLayer/Infinite/Infinite" method="_on_normal_pressed"]
+[connection signal="pressed" from="MenuLayer/Infinite/Infinite/Infinite/VBoxContainer/Infinite" to="MenuLayer/Infinite/Infinite" method="_on_infinite_pressed"]
+[connection signal="pressed" from="MenuLayer/Infinite/Infinite/Infinite/Exit Infipicker" to="." method="_on_exit_infipicker_pressed"]
 [connection signal="pressed" from="GameOverlay/MenuButton" to="GameOverlay/MenuButton" method="_on_pressed"]
