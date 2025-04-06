@@ -14,7 +14,10 @@ signal finished_loading
 @onready var audio_player = $"../AudioStreamPlayer2D"
 
 ## Enables unlimited levels.  [code]level_amount[/code]  is disregarded when enabled.
-@export var infinite_levels: bool = false
+@export var infinite_levels: bool = false:
+	get():
+		menu = get_node("/root/Menu")
+		return menu.is_infinite_levels
 
 ## The amount of levels to create for the playthrough. Excluding the final level.
 @export var level_amount: int = 25
@@ -79,7 +82,7 @@ func get_next_level() -> String:
 		custom_level_loaded = true
 		return custom_level
 	
-	if level == level_amount:
+	if !infinite_levels and level == level_amount:
 		return "Platform: End"
 	
 	var candidate: String = ""
@@ -174,7 +177,7 @@ func level_set() -> void:
 
 
 func progress_level() -> void:
-	if !infinite_levels and level < level_amount:
+	if infinite_levels or level < level_amount:
 		# Compute how long this level took
 		var total_previous = 0.0
 		for t in level_times:
@@ -200,7 +203,7 @@ func progress_level() -> void:
 		audio_player.play()
 		
 		# If completed all levels, finalize
-		if level == level_amount:
+		if !infinite_levels and level == level_amount:
 			if menu.menu_state == Menu.STATE.GAMEMIXED:
 				var _level = get_node("../../../")
 				var _layer = get_node("../../../../")

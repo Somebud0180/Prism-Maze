@@ -23,10 +23,6 @@ config/windows_native_icon="res://resources/Icon/Icon.ico"
 LoadingManager="*res://scripts/UI/loading_manager.gd"
 LevelPopup="*res://scenes/UI/level_popup.tscn"
 
-[debug]
-
-settings/stdout/print_fps=true
-
 [display]
 
 window/size/viewport_width=1280

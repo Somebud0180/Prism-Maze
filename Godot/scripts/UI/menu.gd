@@ -62,7 +62,7 @@ var in_game_3d = false:
 		_manage_play_buttons()
 
 # Game Settings
-var infinite_levels: bool = false
+var is_infinite_levels: bool = false
 
 var player_color: Color = Color.WHITE:
 	set(value):
@@ -223,17 +223,31 @@ func _hide_and_show(first: String, second: String):
 
 
 func _on_play_pressed() -> void:
-	menu_state = STATE.INFIPICKER
-	infinite.game_mode = 0
-	$MenuLayer/Infinite/Infinite/Infinite/VBoxContainer/Normal.grab_focus()
-	animation_player.play("show_infinite")
+	if !in_game:
+		menu_state = STATE.INFIPICKER
+		infinite.game_mode = 0
+		$MenuLayer/Infinite/Infinite/Infinite/VBoxContainer/Normal.grab_focus()
+		animation_player.play("show_infinite")
+	else:
+		menu_state = Menu.STATE.GAME
+		animation_player.play("hide_main_invisible")
+		await animation_player.animation_finished
+		for music_player in get_tree().get_nodes_in_group("LevelMusicPlayer"):
+					music_player.fade_music_in()
 
 
 func _on_play_3d_pressed() -> void:
-	menu_state = STATE.INFIPICKER
-	infinite.game_mode = 1
-	$MenuLayer/Infinite/Infinite/Infinite/VBoxContainer/Normal.grab_focus()
-	animation_player.play("show_infinite")
+	if !in_game_3d:
+		menu_state = STATE.INFIPICKER
+		infinite.game_mode = 1
+		$MenuLayer/Infinite/Infinite/Infinite/VBoxContainer/Normal.grab_focus()
+		animation_player.play("show_infinite")
+	else:
+		menu_state = Menu.STATE.GAME3D
+		animation_player.play("hide_main_invisible")
+		await animation_player.animation_finished
+		for music_player in get_tree().get_nodes_in_group("LevelMusicPlayer"):
+					music_player.fade_music_in()
 
 
 func _on_settings_pressed() -> void:

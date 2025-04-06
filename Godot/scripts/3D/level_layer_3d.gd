@@ -3,6 +3,7 @@ class_name LevelLayer3D
 
 signal finished_loading
 
+@onready var menu = get_node("/root/Menu")
 @onready var player_3d = %Player3D
 @onready var tutorial_layer = %TutorialLayer
 @onready var _level_3d = preload("res://scenes/3D/level_3d.tscn").instantiate()
@@ -15,7 +16,9 @@ signal finished_loading
 			_level_3d.custom_level_loaded = false  # Reset the state in Level3D
 
 ## Enables unlimited levels.  [code]level_amount[/code]  is disregarded when enabled.
-@export var infinite_levels: bool = false
+@export var infinite_levels: bool = false:
+	get():
+		return menu.is_infinite_levels
 
 ## The amount of levels to spawn
 @export var level_amount: int = 22
