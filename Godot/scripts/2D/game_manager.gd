@@ -14,10 +14,7 @@ signal finished_loading
 @onready var audio_player = $"../AudioStreamPlayer2D"
 
 ## Enables unlimited levels.  [code]level_amount[/code]  is disregarded when enabled.
-@export var infinite_levels: bool = false:
-	get():
-		menu = get_node("/root/Menu")
-		return menu.is_infinite_levels
+@export var infinite_levels: bool = false
 
 ## The amount of levels to create for the playthrough. Excluding the final level.
 @export var level_amount: int = 25
@@ -46,6 +43,8 @@ var maze_list: Array[int] = []
 var finish_sound = [load("res://resources/Sound/Level/SFX/Finish.wav"), load("res://resources/Sound/Level/SFX/Finish 2.wav"), load("res://resources/Sound/Level/SFX/Finish 3.wav")]
 
 func _ready() -> void:
+	infinite_levels = menu.is_infinite_levels
+	
 	randomize()
 	# Reset the key color list
 	_reset_keys()
