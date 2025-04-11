@@ -43,7 +43,8 @@ var maze_list: Array[int] = []
 var finish_sound = [load("res://resources/Sound/Level/SFX/Finish.wav"), load("res://resources/Sound/Level/SFX/Finish 2.wav"), load("res://resources/Sound/Level/SFX/Finish 3.wav")]
 
 func _ready() -> void:
-	infinite_levels = menu.is_infinite_levels
+	if menu.in_game:
+		infinite_levels = menu.is_infinite_levels
 	
 	randomize()
 	# Reset the key color list

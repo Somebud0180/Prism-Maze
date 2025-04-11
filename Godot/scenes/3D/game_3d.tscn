@@ -11,7 +11,7 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tx4ct"]
 resource_name = "Plastic Material"
-cull_mode = 2
+transparency = 1
 albedo_color = Color(0.880478, 0.880478, 0.880478, 1)
 roughness = 0.7
 
@@ -393,12 +393,13 @@ transform = Transform3D(1, 4.79758e-10, 0, -3.71074e-10, 1, -2.32831e-10, 2.3283
 unique_name_in_owner = true
 transform = Transform3D(1, 4.81123e-10, 4.65661e-10, -1.30103e-09, 1, -4.65661e-10, -2.32831e-10, 0, 1, 0, 0, 0)
 distance_from_pivot = 6.0
+min_zoom_distance = 0.1
 max_zoom_distance = 16.0
 pivot_offset = Vector2(0, 0.5)
 initial_dive_angle_deg = -15.0
-tilt_sensitiveness = 20.0
-horizontal_rotation_sensitiveness = 25.0
+tilt_sensitiveness = 8.0
 mouse_x_sensitiveness = 5.0
+spring_arm_collision_mask = 3
 far = 240.0
 
 [node name="Player" type="Node3D" parent="Player3D"]

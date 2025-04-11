@@ -1,6 +1,7 @@
 extends AspectRatioContainer
 
 @onready var menu = get_node("/root/Menu")
+@export var game_mode_rect: TextureRect
 @export var animation_player: AnimationPlayer
 
 var game_mode = 0
@@ -20,6 +21,8 @@ func _on_infinite_pressed() -> void:
 
 
 func _load_game() -> void:
+	game_mode_rect._set_game_mode_rect(menu.is_infinite_levels)
+	
 	if game_mode == 0:
 		# Check if already in-game in another dimension
 		if menu.in_game_3d:

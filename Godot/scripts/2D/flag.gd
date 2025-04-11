@@ -3,10 +3,13 @@ class_name Flag
 
 var menu
 var game_manager
-
+var player
 
 func _ready() -> void:
+	$AnimationPlayer.play("RESET")
 	call_deferred("_init_zone")
+	
+	get_tree().create_timer(0.5).timeout.connect(play_animation)
 
 
 func _init_zone() -> void:
@@ -22,8 +25,14 @@ func _init_zone() -> void:
 
 
 func _on_body_entered(_body: Node2D) -> void:
+	player = get_node("../../../Player")
+	player.game_initialized = false
 	game_manager = get_node("../../../GameManager")
 	game_manager.progress_level()
 	menu = get_node("/root/Menu")
 	if menu.character_life < 5:
 		menu.character_life += 1
+
+
+func play_animation() -> void:
+	$AnimationPlayer.play("show_flag")

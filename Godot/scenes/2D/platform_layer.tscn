@@ -1193,6 +1193,7 @@ navigation_enabled = false
 script = ExtResource("3_l6olm")
 
 [node name="Killzone" parent="End" instance=ExtResource("5_n8b4s")]
+collision_mask = 15
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="End/Killzone"]
 position = Vector2(0, -64)

@@ -10,6 +10,7 @@ const _VirtualControllerHelper = preload("res://scripts/Misc/virtual_controller_
 @export var audio_player: AudioStreamPlayer
 
 @export var game_overlay: CanvasLayer
+@export var game_mode: TextureRect
 @export var health_bar: ProgressBar
 
 @onready var settings_node = %Settings
@@ -62,7 +63,10 @@ var in_game_3d = false:
 		_manage_play_buttons()
 
 # Game Settings
-var is_infinite_levels: bool = false
+var is_infinite_levels: bool = false:
+	set(value):
+		is_infinite_levels = value
+		game_mode._set_game_mode_rect(value)
 
 var player_color: Color = Color.WHITE:
 	set(value):
@@ -165,28 +169,30 @@ func _ready() -> void:
 	
 	_manage_touch_controller()
 	
-	$MenuLayer/Main/Main/VBoxContainer/Play.grab_focus()
+	$MenuLayer/Main/Main/VBoxContainer/Play3D.grab_focus()
 
 
 func _input(event):
-	if event.is_action_pressed("ui_cancel") and not animation_player.is_playing() and not _popup_scene.is_playing and not is_loading:
+	if (event.is_action_pressed("ui_cancel") or event.is_action_pressed("go_back")) and not animation_player.is_playing() and not _popup_scene.is_playing and not is_loading:
 		match menu_state:
 			STATE.SETTINGS:
 				menu_state = STATE.MAIN
 				_hide_and_show("settings", "main")
 				await animation_player.animation_finished
-				$MenuLayer/Main/Main/VBoxContainer/Play.grab_focus()
+				$MenuLayer/Main/Main/VBoxContainer/Play3D.grab_focus()
 			STATE.CONTROLS:
 				menu_state = STATE.MAIN
 				_hide_and_show("controls", "main")
 				await animation_player.animation_finished
-				$MenuLayer/Main/Main/VBoxContainer/Play.grab_focus()
+				$MenuLayer/Main/Main/VBoxContainer/Play3D.grab_focus()
 			STATE.INFIPICKER:
 				menu_state = STATE.MAIN
 				animation_player.play("hide_infinite")
 				await animation_player.animation_finished
-				$MenuLayer/Main/Main/VBoxContainer/Play.grab_focus()
+				$MenuLayer/Main/Main/VBoxContainer/Play3D.grab_focus()
 			STATE.GAME, STATE.GAME3D, STATE.GAMEMIXED, STATE.OVERLAY:
+				if event.is_action("go_back"):
+					return
 				# Pause any level music player, if any
 				for music_player in get_tree().get_nodes_in_group("LevelMusicPlayer"):
 					music_player.fade_music_out()
@@ -196,7 +202,7 @@ func _input(event):
 				animation_player.play("show_main")
 				_manage_popup(menu_state)
 				await animation_player.animation_finished
-				$MenuLayer/Main/Main/VBoxContainer/Play.grab_focus()
+				$MenuLayer/Main/Main/VBoxContainer/Play3D.grab_focus()
 			STATE.MAIN:
 				if (!in_game and !in_game_3d) and menu_state == STATE.MAIN:
 					return
@@ -269,19 +275,19 @@ func _on_quit_pressed() -> void:
 func _on_exit_settings_pressed() -> void:
 	menu_state = STATE.MAIN
 	_hide_and_show("settings", "main")
-	$MenuLayer/Main/Main/VBoxContainer/Play.grab_focus()
+	$MenuLayer/Main/Main/VBoxContainer/Play3D.grab_focus()
 
 
 func _on_exit_controls_pressed() -> void:
 	menu_state = STATE.MAIN
 	_hide_and_show("controls", "main")
-	$MenuLayer/Main/Main/VBoxContainer/Play.grab_focus()
+	$MenuLayer/Main/Main/VBoxContainer/Play3D.grab_focus()
 
 
 func _on_exit_infipicker_pressed() -> void:
 	menu_state = STATE.MAIN
 	animation_player.play("hide_infinite")
-	$MenuLayer/Main/Main/VBoxContainer/Play.grab_focus()
+	$MenuLayer/Main/Main/VBoxContainer/Play3D.grab_focus()
 
 
 func _reset_game() -> void:
@@ -306,6 +312,7 @@ func _reset_game() -> void:
 		LoadingManager.unload_current_scene("/root/Game")
 	
 	_game_scene = preload("res://scenes/2D/game.tscn").instantiate()
+	$MenuLayer/Main/Main/VBoxContainer/Play3D.grab_focus()
 
 
 func _reset_game_3d() -> void:
@@ -330,6 +337,7 @@ func _reset_game_3d() -> void:
 		LoadingManager.unload_current_scene("/root/Game3D")
 	
 	_game_scene_3d = preload("res://scenes/3D/game_3d.tscn").instantiate()
+	$MenuLayer/Main/Main/VBoxContainer/Play3D.grab_focus()
 
 
 func manage_game_timer(state: STATE) -> void:

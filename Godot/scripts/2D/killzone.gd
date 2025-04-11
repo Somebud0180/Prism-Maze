@@ -6,7 +6,6 @@ var player
 var menu
 
 func _on_body_exited(_body: Node2D) -> void:
-	print("You Died")
 	player = get_node("../../../Player")
 	
 	# If player is uninitialized ignore death
@@ -14,6 +13,7 @@ func _on_body_exited(_body: Node2D) -> void:
 		return
 	
 	# Else, continue with death
+	print("You Died")
 	player.gravity_direction = 1
 	timer.start()
 
@@ -24,3 +24,4 @@ func _on_timer_timeout() -> void:
 	player.velocity.x = 0
 	player.velocity.y = 0
 	player.position = Vector2i(0,0)
+	player.game_initialized = true

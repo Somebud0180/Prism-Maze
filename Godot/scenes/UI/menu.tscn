@@ -1,4 +1,4 @@
-[gd_scene load_steps=103 format=3 uid="uid://br2t4hanatnss"]
+[gd_scene load_steps=105 format=3 uid="uid://br2t4hanatnss"]
 
 [ext_resource type="Theme" uid="uid://bau50guyc4alk" path="res://resources/Theme/menu.tres" id="1_7yxt8"]
 [ext_resource type="Script" uid="uid://cnwd74ny2hf2q" path="res://scripts/UI/menu.gd" id="2_o131u"]
@@ -84,6 +84,8 @@
 [ext_resource type="Texture2D" uid="uid://rhbf84hoa5co" path="res://resources/Controls/Controllers/button_outline_t_xb.png" id="55_7mjjf"]
 [ext_resource type="Texture2D" uid="uid://namppbr5u8s5" path="res://resources/Controls/Controllers/button_outline_t_nin.png" id="56_2ewfx"]
 [ext_resource type="Script" uid="uid://b7avmo0ffik4l" path="res://scripts/UI/infinite.gd" id="78_crixo"]
+[ext_resource type="Texture2D" uid="uid://dhpjo1nowmnp2" path="res://resources/Menu/Menu Icons/Infinity.png" id="79_7th0f"]
+[ext_resource type="Script" uid="uid://dr7vcm3fvsk6b" path="res://scripts/UI/game_mode_rect.gd" id="81_p4s11"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tsejx"]
 bg_color = Color(0.27451, 0.27451, 0.27451, 1)
@@ -963,7 +965,7 @@ _data = {
 &"show_settings": SubResource("Animation_antcs")
 }
 
-[node name="Menu" type="Control" node_paths=PackedStringArray("main", "settings", "infinite", "animation_player", "audio_player", "game_overlay", "health_bar")]
+[node name="Menu" type="Control" node_paths=PackedStringArray("main", "settings", "infinite", "animation_player", "audio_player", "game_overlay", "game_mode", "health_bar")]
 process_priority = 1
 layout_mode = 3
 anchors_preset = 15
@@ -982,10 +984,12 @@ infinite = NodePath("MenuLayer/Infinite/Infinite")
 animation_player = NodePath("AnimationPlayer")
 audio_player = NodePath("AudioStreamPlayer")
 game_overlay = NodePath("GameOverlay")
+game_mode = NodePath("GameOverlay/GameModeRect")
 health_bar = NodePath("GameOverlay/HBoxContainer/Health/Bar")
 
 [node name="MenuLayer" type="CanvasLayer" parent="."]
 layer = 2
+visible = false
 follow_viewport_scale = 0.05
 
 [node name="Main" type="AspectRatioContainer" parent="MenuLayer"]
@@ -1034,36 +1038,36 @@ stretch_mode = 4
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 
-[node name="Play" type="Button" parent="MenuLayer/Main/Main/VBoxContainer" groups=["PlayButtons"]]
-custom_minimum_size = Vector2(0, 32)
-layout_mode = 2
-size_flags_vertical = 3
-focus_neighbor_top = NodePath("../Quit")
-focus_neighbor_bottom = NodePath("../Play3D")
-focus_next = NodePath("../Play3D")
-focus_previous = NodePath("../Quit")
-icon = ExtResource("6_jcwtk")
-icon_alignment = 1
-expand_icon = true
-script = ExtResource("7_crixo")
-modifier = &"in_game"
-
-[node name="ButtonSpacer1" type="VSeparator" parent="MenuLayer/Main/Main/VBoxContainer"]
-layout_mode = 2
-
 [node name="Play3D" type="Button" parent="MenuLayer/Main/Main/VBoxContainer" groups=["PlayButtons"]]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 size_flags_vertical = 3
-focus_neighbor_top = NodePath("../Play")
-focus_neighbor_bottom = NodePath("../Settings")
-focus_next = NodePath("../Settings")
-focus_previous = NodePath("../Play")
+focus_neighbor_top = NodePath("../Quit")
+focus_neighbor_bottom = NodePath("../Play")
+focus_next = NodePath("../Play")
+focus_previous = NodePath("../Quit")
 icon = ExtResource("7_7oqtn")
 icon_alignment = 1
 expand_icon = true
 script = ExtResource("7_crixo")
 modifier = &"in_game_3d"
+
+[node name="ButtonSpacer1" type="VSeparator" parent="MenuLayer/Main/Main/VBoxContainer"]
+layout_mode = 2
+
+[node name="Play" type="Button" parent="MenuLayer/Main/Main/VBoxContainer" groups=["PlayButtons"]]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_vertical = 3
+focus_neighbor_top = NodePath("../Play3D")
+focus_neighbor_bottom = NodePath("../Settings")
+focus_next = NodePath("../Settings")
+focus_previous = NodePath("../Play3D")
+icon = ExtResource("6_jcwtk")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("7_crixo")
+modifier = &"in_game"
 
 [node name="ButtonSpacer2" type="VSeparator" parent="MenuLayer/Main/Main/VBoxContainer"]
 layout_mode = 2
@@ -1072,10 +1076,10 @@ layout_mode = 2
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 size_flags_vertical = 3
-focus_neighbor_top = NodePath("../Play3D")
+focus_neighbor_top = NodePath("../Play")
 focus_neighbor_bottom = NodePath("../Controls")
 focus_next = NodePath("../Controls")
-focus_previous = NodePath("../Play3D")
+focus_previous = NodePath("../Play")
 icon = ExtResource("8_1anaf")
 icon_alignment = 1
 expand_icon = true
@@ -1103,8 +1107,8 @@ custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 size_flags_vertical = 3
 focus_neighbor_top = NodePath("../Controls")
-focus_neighbor_bottom = NodePath("../Play")
-focus_next = NodePath("../Play")
+focus_neighbor_bottom = NodePath("../Play3D")
+focus_next = NodePath("../Play3D")
 focus_previous = NodePath("../Controls")
 icon = ExtResource("10_fqtlv")
 icon_alignment = 1
@@ -2235,19 +2239,22 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.125911, 0.125911, 0.125911, 0.196078)
 
-[node name="Infinite" type="AspectRatioContainer" parent="MenuLayer/Infinite" node_paths=PackedStringArray("animation_player")]
+[node name="Infinite" type="AspectRatioContainer" parent="MenuLayer/Infinite" node_paths=PackedStringArray("game_mode_rect", "animation_player")]
 visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 992.0
-offset_bottom = 480.0
+offset_left = 32.0
+offset_top = 192.0
+offset_right = 32.0
+offset_bottom = -320.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(640, 104)
 ratio = 3.1
 script = ExtResource("78_crixo")
+game_mode_rect = NodePath("../../../GameOverlay/GameModeRect")
 animation_player = NodePath("../../../AnimationPlayer")
 
 [node name="Infinite" type="NinePatchRect" parent="MenuLayer/Infinite/Infinite"]
@@ -2295,7 +2302,7 @@ layout_mode = 2
 size_flags_vertical = 3
 focus_neighbor_top = NodePath("../Normal")
 focus_previous = NodePath("../Normal")
-icon = ExtResource("7_7oqtn")
+icon = ExtResource("79_7th0f")
 icon_alignment = 1
 expand_icon = true
 
@@ -2319,7 +2326,6 @@ text = "X
 "
 
 [node name="GameOverlay" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="MenuButton" type="Button" parent="GameOverlay"]
 unique_name_in_owner = true
@@ -2335,6 +2341,16 @@ action_mode = 0
 icon = ExtResource("7_7oqtn")
 icon_alignment = 1
 script = ExtResource("54_v00k6")
+
+[node name="GameModeRect" type="TextureRect" parent="GameOverlay"]
+offset_left = 56.0
+offset_top = 20.0
+offset_right = 80.0
+offset_bottom = 44.0
+texture = ExtResource("6_jcwtk")
+expand_mode = 1
+stretch_mode = 4
+script = ExtResource("81_p4s11")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="GameOverlay"]
 anchors_preset = 15
@@ -2434,8 +2450,8 @@ libraries = {
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
 [connection signal="tree_exiting" from="." to="." method="_on_tree_exiting"]
-[connection signal="pressed" from="MenuLayer/Main/Main/VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="MenuLayer/Main/Main/VBoxContainer/Play3D" to="." method="_on_play_3d_pressed"]
+[connection signal="pressed" from="MenuLayer/Main/Main/VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="MenuLayer/Main/Main/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="MenuLayer/Main/Main/VBoxContainer/Controls" to="." method="_on_controls_pressed"]
 [connection signal="pressed" from="MenuLayer/Main/Main/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

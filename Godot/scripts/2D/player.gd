@@ -6,6 +6,7 @@ signal player_loaded
 const speed = 200.0
 const jump_velocity = -360.0
 var jump_credit = 1
+var collisions = []
 var gravity_direction = 1: # 1 for normal, -1 for upside-down
 	set(value):
 		gravity_direction = value
@@ -136,3 +137,18 @@ func _physics_process(delta: float) -> void:
 		
 		velocity = input_vector * speed
 		move_and_slide()
+
+
+func _process(_delta: float) -> void:
+	if killable and game_manager.game_mode == 1:
+		collisions.clear()
+		
+		for i in get_slide_collision_count() - 1:
+			if get_slide_collision(i).get_collider() == Killzone2D:
+				collisions.append("Killzone")
+		
+		if collisions.size() > 0 and !collisions.has("Killzone"):
+			menu.character_life -= 1
+			velocity.x = 0
+			velocity.y = 0
+			position = Vector2i(0,0)

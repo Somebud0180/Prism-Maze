@@ -37,6 +37,7 @@ func show_flags(_visible: bool) -> void:
 				_hidden["atlas_coords"], 
 				_hidden["alternative_tile"]
 			)
+		
 		_hidden_tile_flags.clear()
 	
 	else:

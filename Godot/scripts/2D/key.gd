@@ -77,6 +77,7 @@ func _ready() -> void:
 	
 	get_color()
 	%AnimatedSprite2D.self_modulate = color
+	get_tree().create_timer(0.5).timeout.connect(play_animation)
 
 
 func _on_key_body_entered(body: Node2D) -> void:
@@ -106,3 +107,7 @@ func _on_door_unlock_body_entered(body: Node2D) -> void:
 			target_door = door
 			player = null  # Stop following player
 			position_history.clear()  # Clear history
+
+
+func play_animation() -> void:
+	$AnimationPlayer.play("show_flag")
