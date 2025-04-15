@@ -168,8 +168,6 @@ func _ready() -> void:
 	_config_load()
 	
 	_manage_touch_controller()
-	
-	$MenuLayer/Main/Main/VBoxContainer/Play3D.grab_focus()
 
 
 func _input(event):
@@ -179,17 +177,15 @@ func _input(event):
 				menu_state = STATE.MAIN
 				_hide_and_show("settings", "main")
 				await animation_player.animation_finished
-				$MenuLayer/Main/Main/VBoxContainer/Play3D.grab_focus()
 			STATE.CONTROLS:
 				menu_state = STATE.MAIN
 				_hide_and_show("controls", "main")
 				await animation_player.animation_finished
-				$MenuLayer/Main/Main/VBoxContainer/Play3D.grab_focus()
 			STATE.INFIPICKER:
 				menu_state = STATE.MAIN
 				animation_player.play("hide_infinite")
 				await animation_player.animation_finished
-				$MenuLayer/Main/Main/VBoxContainer/Play3D.grab_focus()
+				animation_player.play("RESET_main")
 			STATE.GAME, STATE.GAME3D, STATE.GAMEMIXED, STATE.OVERLAY:
 				if event.is_action("go_back"):
 					return
@@ -202,7 +198,6 @@ func _input(event):
 				animation_player.play("show_main")
 				_manage_popup(menu_state)
 				await animation_player.animation_finished
-				$MenuLayer/Main/Main/VBoxContainer/Play3D.grab_focus()
 			STATE.MAIN:
 				if (!in_game and !in_game_3d) and menu_state == STATE.MAIN:
 					return
@@ -275,19 +270,18 @@ func _on_quit_pressed() -> void:
 func _on_exit_settings_pressed() -> void:
 	menu_state = STATE.MAIN
 	_hide_and_show("settings", "main")
-	$MenuLayer/Main/Main/VBoxContainer/Play3D.grab_focus()
 
 
 func _on_exit_controls_pressed() -> void:
 	menu_state = STATE.MAIN
 	_hide_and_show("controls", "main")
-	$MenuLayer/Main/Main/VBoxContainer/Play3D.grab_focus()
 
 
 func _on_exit_infipicker_pressed() -> void:
 	menu_state = STATE.MAIN
 	animation_player.play("hide_infinite")
-	$MenuLayer/Main/Main/VBoxContainer/Play3D.grab_focus()
+	await animation_player.animation_finished
+	animation_player.play("RESET_main")
 
 
 func _reset_game() -> void:
@@ -312,7 +306,6 @@ func _reset_game() -> void:
 		LoadingManager.unload_current_scene("/root/Game")
 	
 	_game_scene = preload("res://scenes/2D/game.tscn").instantiate()
-	$MenuLayer/Main/Main/VBoxContainer/Play3D.grab_focus()
 
 
 func _reset_game_3d() -> void:
@@ -337,7 +330,6 @@ func _reset_game_3d() -> void:
 		LoadingManager.unload_current_scene("/root/Game3D")
 	
 	_game_scene_3d = preload("res://scenes/3D/game_3d.tscn").instantiate()
-	$MenuLayer/Main/Main/VBoxContainer/Play3D.grab_focus()
 
 
 func manage_game_timer(state: STATE) -> void:

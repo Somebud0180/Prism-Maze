@@ -60,7 +60,8 @@ func _ready() -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("load_level"):
-		progress_level()
+		if player.game_initialized:
+			progress_level()
 
 
 func next_level() -> void:

@@ -91,10 +91,3 @@ func _on_restart_pressed() -> void:
 		menu._reset_game()
 	elif menu.in_game_3d:
 		menu._reset_game_3d()
-
-
-func _on_animation_player_current_animation_changed(animation_name: String) -> void:
-	if animation_name == "show_finish":
-		$PopupLayer/FinishScreen/Finish/VBoxContainer/Finish.grab_focus()
-	elif animation_name == "show_death":
-		$PopupLayer/DeathScreen/Death/VBoxContainer/Restart.grab_focus()

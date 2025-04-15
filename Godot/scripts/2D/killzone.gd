@@ -1,16 +1,20 @@
 extends Area2D
 class_name Killzone2D
 
-@onready var timer = $Timer
+var timer
 var player
 var menu
 
 func _on_body_exited(_body: Node2D) -> void:
+	timer = get_node("Timer")
 	player = get_node("../../../Player")
 	
 	# If player is uninitialized ignore death
 	if !player.killable:
-		return
+		if player.game_initialized:
+			await player.killable
+		else:
+			return
 	
 	# Else, continue with death
 	print("You Died")
