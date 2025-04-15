@@ -47,7 +47,6 @@ var menu_state = STATE.MAIN:
 	set(value):
 		manage_game_timer(value)
 		menu_state = value
-		menu_button._manage_visibility()
 		_manage_touch_controller()
 
 var in_game = false:
@@ -198,6 +197,7 @@ func _input(event):
 				animation_player.play("show_main")
 				_manage_popup(menu_state)
 				await animation_player.animation_finished
+				game_mode.manage_animation(menu_state)
 			STATE.MAIN:
 				if (!in_game and !in_game_3d) and menu_state == STATE.MAIN:
 					return
@@ -208,6 +208,8 @@ func _input(event):
 				
 				# Recover menu state
 				menu_state = last_state
+				game_mode.manage_animation(menu_state)
+				await animation_player.animation_finished
 				animation_player.play("hide_main_invisible")
 				_manage_popup(last_state)
 
@@ -231,6 +233,8 @@ func _on_play_pressed() -> void:
 		animation_player.play("show_infinite")
 	else:
 		menu_state = Menu.STATE.GAME
+		game_mode.manage_animation(menu_state)
+		await animation_player.animation_finished
 		animation_player.play("hide_main_invisible")
 		await animation_player.animation_finished
 		for music_player in get_tree().get_nodes_in_group("LevelMusicPlayer"):
@@ -245,6 +249,8 @@ func _on_play_3d_pressed() -> void:
 		animation_player.play("show_infinite")
 	else:
 		menu_state = Menu.STATE.GAME3D
+		game_mode.manage_animation(menu_state)
+		await animation_player.animation_finished
 		animation_player.play("hide_main_invisible")
 		await animation_player.animation_finished
 		for music_player in get_tree().get_nodes_in_group("LevelMusicPlayer"):
@@ -288,6 +294,13 @@ func _reset_game() -> void:
 	# Return background visibility
 	manage_background(true)
 	
+	character_life = 5
+	in_game = false
+	menu_state = STATE.MAIN
+	
+	if _game_scene != null:
+		LoadingManager.unload_current_scene("/root/Game")
+	
 	# Don't play show animation if it is on screen already
 	var popup_ref = get_tree().get_root().get_node_or_null("LevelPopup")
 	if popup_ref != null:
@@ -297,13 +310,6 @@ func _reset_game() -> void:
 			popup_ref.is_on_side = false
 	else:
 		animation_player.play("show_main")
-	
-	character_life = 5
-	in_game = false
-	menu_state = STATE.MAIN
-	
-	if _game_scene != null:
-		LoadingManager.unload_current_scene("/root/Game")
 	
 	_game_scene = preload("res://scenes/2D/game.tscn").instantiate()
 
@@ -312,8 +318,16 @@ func _reset_game_3d() -> void:
 	# Return background visibility
 	manage_background(true)
 	
+	character_life = 5
+	in_game_3d = false
+	menu_state = STATE.MAIN
+	
+	if _game_scene_3d != null:
+		LoadingManager.unload_current_scene("/root/Game3D")
+	
 	# Don't play show animation if it is on screen already
-	var popup_ref = get_tree().get_root().get_node_or_null("LevelPopup")
+	var popup_ref = get_node_or_null("/root/LevelPopup")
+	print(popup_ref.is_on_side)
 	if popup_ref != null:
 		if !popup_ref.is_on_side:
 			animation_player.play("show_main")
@@ -321,13 +335,6 @@ func _reset_game_3d() -> void:
 			popup_ref.is_on_side = false
 	else:
 		animation_player.play("show_main")
-	
-	character_life = 5
-	in_game_3d = false
-	menu_state = STATE.MAIN
-	
-	if _game_scene_3d != null:
-		LoadingManager.unload_current_scene("/root/Game3D")
 	
 	_game_scene_3d = preload("res://scenes/3D/game_3d.tscn").instantiate()
 
@@ -460,7 +467,6 @@ func _config_save():
 
 func fade_music_out():
 	# tween music volume down to -80
-	print("Fading out")
 	tween_music = get_tree().create_tween()
 	tween_music.tween_property(audio_player, "volume_db", -80, transition_duration).set_trans(transition_type).set_ease(Tween.EASE_IN)
 	tween_music.play()

@@ -198,10 +198,8 @@ func _physics_process(delta: float) -> void:
 
 func _process(_delta: float) -> void:
 	RenderingServer.global_shader_parameter_set("character_position", position)
-	var mat = $Player/Body.get_active_material(0)
-	if mat and mat is StandardMaterial3D:
-		mat.albedo_color.a = clamp(camera.distance_from_pivot * 0.25, 0.0, 1.0)
-		$Player/Body.set_surface_override_material(0, mat)
+	$Player/Body.transparency = 1.0 - clamp(camera.distance_from_pivot * 0.25, 0.0, 1.0)
+	$Player/Head.transparency = 1.0 - clamp(camera.distance_from_pivot * 0.25, 0.0, 1.0)
 
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_pressed("camera_hold"):
@@ -220,7 +218,6 @@ func _handle_input_mode_switch():
 	if is_in_subviewport:
 		# Switch to 2D controls
 		if subviewport:
-			print("Enabling 2D Input")
 			subviewport.handle_input_locally = true
 			subviewport.gui_disable_input = false
 			
@@ -231,7 +228,6 @@ func _handle_input_mode_switch():
 	else:
 		# Switch back to 3D controls
 		if subviewport:
-			print("Enabling 3D Input")
 			subviewport.handle_input_locally = false
 			subviewport.gui_disable_input = true
 			

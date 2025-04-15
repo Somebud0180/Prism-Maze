@@ -90,4 +90,6 @@ func _on_restart_pressed() -> void:
 		game_manager.reset_game()
 		menu._reset_game()
 	elif menu.in_game_3d:
+		var level_layer_3d = get_node("/root/Game3D/LevelLayer3D")
+		level_layer_3d.reset_game_3d()
 		menu._reset_game_3d()

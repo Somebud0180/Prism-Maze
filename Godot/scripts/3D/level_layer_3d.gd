@@ -163,7 +163,3 @@ func change_overlay():
 			tutorial_layer.success_tutorial()
 		TUTORIAL_STATE.INTERACT:
 			tutorial_layer.interact_tutorial()
-
-
-func _on_tree_exiting() -> void:
-	reset_game_3d()
