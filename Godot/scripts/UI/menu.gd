@@ -429,7 +429,7 @@ func _config_load():
 	
 	shadow_enabled = config.get_value("Graphics", "shadow_enabled", true)
 	shadow_quality = config.get_value("Graphics", "shadow_quality", 1)
-	sdfgi_enabled = config.get_value("Graphics", "sdfgi_enabled", true)
+	sdfgi_enabled = config.get_value("Graphics", "sdfgi_enabled", false)
 	sdfgi_full_res = config.get_value("Graphics", "sdfgi_full_res", false)
 	
 	# Restore config into button states

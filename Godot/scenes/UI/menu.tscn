@@ -1,4 +1,4 @@
-[gd_scene load_steps=109 format=3 uid="uid://br2t4hanatnss"]
+[gd_scene load_steps=111 format=3 uid="uid://br2t4hanatnss"]
 
 [ext_resource type="Theme" uid="uid://bau50guyc4alk" path="res://resources/Theme/menu.tres" id="1_7yxt8"]
 [ext_resource type="Script" uid="uid://cnwd74ny2hf2q" path="res://scripts/UI/menu.gd" id="2_o131u"]
@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://da7g5s3h5esdr" path="res://resources/Menu/Fullscreen.png" id="14_pjik4"]
 [ext_resource type="Texture2D" uid="uid://df685act78ls8" path="res://resources/Menu/Misc/Resizable.png" id="16_eo34a"]
 [ext_resource type="Texture2D" uid="uid://k83gkr4l4vs5" path="res://resources/Menu/Misc/color.png" id="16_whlyx"]
+[ext_resource type="Texture2D" uid="uid://o6ngoq4vdumy" path="res://resources/Menu/Misc/Window.png" id="17_003rt"]
 [ext_resource type="Texture2D" uid="uid://dmsprnyta0xmh" path="res://resources/Menu/Misc/Audio_Settings.png" id="17_5wffc"]
 [ext_resource type="StyleBox" uid="uid://o1f6ysc2jugj" path="res://resources/Theme/box_focus.tres" id="17_cijfx"]
 [ext_resource type="Texture2D" uid="uid://ddwfg6atipo0i" path="res://resources/Menu/Graphics/SDFGI.png" id="17_hvuoq"]
@@ -88,6 +89,7 @@
 [ext_resource type="Script" uid="uid://b7avmo0ffik4l" path="res://scripts/UI/infinite.gd" id="78_crixo"]
 [ext_resource type="Texture2D" uid="uid://dhpjo1nowmnp2" path="res://resources/Menu/Menu Icons/Infinity.png" id="79_7th0f"]
 [ext_resource type="Script" uid="uid://dr7vcm3fvsk6b" path="res://scripts/UI/game_mode_rect.gd" id="81_p4s11"]
+[ext_resource type="Texture2D" uid="uid://b6sw2xxgtwpje" path="res://resources/Menu/Menu Icons/Finite.png" id="82_3441g"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tsejx"]
 bg_color = Color(0.27451, 0.27451, 0.27451, 1)
@@ -260,7 +262,7 @@ tracks/11/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(32, 192)]
+"values": [Vector2(256, 640)]
 }
 tracks/12/type = "value"
 tracks/12/imported = false
@@ -417,19 +419,19 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("MenuLayer/Main/Main:position")
+tracks/2/path = NodePath("MenuLayer/Controls:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(64, 64)]
+"values": [Vector2(64, 960)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("MenuLayer/Main/Main:visible")
+tracks/3/path = NodePath("MenuLayer/Controls:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -441,19 +443,19 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("MenuLayer/Controls:position")
+tracks/4/path = NodePath("MenuLayer/Main:scale")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(0.5),
 "update": 0,
-"values": [Vector2(64, 960)]
+"values": [Vector2(0.9, 0.9)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("MenuLayer/Controls:visible")
+tracks/5/path = NodePath("MenuLayer/Main:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -876,7 +878,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(0.5, 0.5),
 "update": 0,
-"values": [Vector2(0, 640), Vector2(0, 256)]
+"values": [Vector2(128, 640), Vector2(128, 256)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -1306,7 +1308,7 @@ theme_override_constants/separation = 16
 theme_override_styles/separator = ExtResource("13_tbd65")
 
 [node name="WindowPanel" type="Panel" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D"]
-custom_minimum_size = Vector2(0, 190)
+custom_minimum_size = Vector2(0, 180)
 layout_mode = 2
 size_flags_horizontal = 3
 
@@ -1322,18 +1324,11 @@ offset_bottom = -16.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Resizable" type="CheckButton" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/WindowPanel/VBoxContainer" groups=["Buttons"]]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(256, 48)
+[node name="TextureRect" type="TextureRect" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/WindowPanel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
-size_flags_vertical = 4
-focus_neighbor_top = NodePath("../Resolution")
-focus_next = NodePath("../../../ColorPanel/VBoxContainer/HFlowContainer/White")
-focus_previous = NodePath("../Resolution")
-theme_type_variation = &"SettingsButton"
-icon = ExtResource("16_eo34a")
-icon_alignment = 1
-script = ExtResource("17_innbc")
+texture = ExtResource("17_003rt")
+stretch_mode = 5
 
 [node name="Resolution" type="OptionButton" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/WindowPanel/VBoxContainer"]
 unique_name_in_owner = true
@@ -1346,12 +1341,27 @@ theme_type_variation = &"SettingsButton"
 icon_alignment = 2
 expand_icon = true
 
-[node name="Fullscreen" type="CheckButton" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/WindowPanel/VBoxContainer" groups=["Buttons"]]
+[node name="Resizable" type="CheckButton" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/WindowPanel/VBoxContainer" groups=["Buttons"]]
+unique_name_in_owner = true
+visible = false
 custom_minimum_size = Vector2(256, 48)
 layout_mode = 2
 size_flags_vertical = 4
 focus_neighbor_top = NodePath("../Resolution")
 focus_next = NodePath("../../../ColorPanel/VBoxContainer/HFlowContainer/White")
+focus_previous = NodePath("../Resolution")
+theme_type_variation = &"SettingsButton"
+icon = ExtResource("16_eo34a")
+icon_alignment = 1
+script = ExtResource("17_innbc")
+
+[node name="Fullscreen" type="CheckButton" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/WindowPanel/VBoxContainer" groups=["Buttons"]]
+custom_minimum_size = Vector2(256, 48)
+layout_mode = 2
+size_flags_vertical = 4
+focus_neighbor_top = NodePath("../Resolution")
+focus_neighbor_bottom = NodePath("../../../AudioPlanel/VBoxContainer/Music/MusicSlider")
+focus_next = NodePath("../../../AudioPlanel/VBoxContainer/Music/MusicSlider")
 focus_previous = NodePath("../Resolution")
 theme_type_variation = &"SettingsButton"
 icon = ExtResource("14_pjik4")
@@ -1377,7 +1387,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="TextureRect" type="TextureRect" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/AudioPlanel/VBoxContainer"]
-custom_minimum_size = Vector2(0, 64)
+custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 texture = ExtResource("17_5wffc")
 stretch_mode = 5
@@ -1456,7 +1466,7 @@ offset_bottom = 22.0
 theme_override_styles/separator = SubResource("StyleBoxFlat_tsejx")
 
 [node name="ColorPanel" type="Panel" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D"]
-custom_minimum_size = Vector2(256, 160)
+custom_minimum_size = Vector2(256, 180)
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.0
@@ -1474,7 +1484,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="TextureRect" type="TextureRect" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/ColorPanel/VBoxContainer"]
-custom_minimum_size = Vector2(0, 64)
+custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 texture = ExtResource("16_whlyx")
 stretch_mode = 5
@@ -1485,11 +1495,12 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="White" type="Button" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/ColorPanel/VBoxContainer/HFlowContainer"]
-custom_minimum_size = Vector2(64, 64)
+custom_minimum_size = Vector2(96, 96)
 layout_mode = 2
+focus_neighbor_top = NodePath("../../../../AudioPlanel/VBoxContainer/SFX/SFXSlider")
 focus_neighbor_right = NodePath("../Red")
 focus_next = NodePath("../Red")
-focus_previous = NodePath("../../../../WindowPanel/VBoxContainer/Fullscreen")
+focus_previous = NodePath("../../../../AudioPlanel/VBoxContainer/SFX/SFXSlider")
 toggle_mode = true
 button_group = SubResource("ButtonGroup_ucr8h")
 script = ExtResource("17_ucr8h")
@@ -1506,14 +1517,14 @@ grow_vertical = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/ColorPanel/VBoxContainer/HFlowContainer/White/CenterContainer"]
 position = Vector2(8, 4)
-scale = Vector2(1.5, 1.5)
+scale = Vector2(2.5, 2.5)
 texture = ExtResource("19_p2cca")
 centered = false
 region_enabled = true
 region_rect = Rect2(0, 32, 32, 32)
 
 [node name="Red" type="Button" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/ColorPanel/VBoxContainer/HFlowContainer"]
-custom_minimum_size = Vector2(64, 64)
+custom_minimum_size = Vector2(96, 96)
 layout_mode = 2
 focus_neighbor_left = NodePath("../White")
 focus_neighbor_right = NodePath("../Green")
@@ -1537,14 +1548,14 @@ grow_vertical = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/ColorPanel/VBoxContainer/HFlowContainer/Red/CenterContainer"]
 position = Vector2(8, 4)
-scale = Vector2(1.5, 1.5)
+scale = Vector2(2.5, 2.5)
 texture = ExtResource("19_p2cca")
 centered = false
 region_enabled = true
 region_rect = Rect2(0, 32, 32, 32)
 
 [node name="Green" type="Button" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/ColorPanel/VBoxContainer/HFlowContainer"]
-custom_minimum_size = Vector2(64, 64)
+custom_minimum_size = Vector2(96, 96)
 layout_mode = 2
 focus_neighbor_left = NodePath("../Red")
 focus_neighbor_right = NodePath("../Blue")
@@ -1568,14 +1579,14 @@ grow_vertical = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/ColorPanel/VBoxContainer/HFlowContainer/Green/CenterContainer"]
 position = Vector2(8, 4)
-scale = Vector2(1.5, 1.5)
+scale = Vector2(2.5, 2.5)
 texture = ExtResource("19_p2cca")
 centered = false
 region_enabled = true
 region_rect = Rect2(0, 32, 32, 32)
 
 [node name="Blue" type="Button" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/ColorPanel/VBoxContainer/HFlowContainer"]
-custom_minimum_size = Vector2(64, 64)
+custom_minimum_size = Vector2(96, 96)
 layout_mode = 2
 focus_neighbor_left = NodePath("../Green")
 focus_neighbor_right = NodePath("../Yellow")
@@ -1599,14 +1610,14 @@ grow_vertical = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/ColorPanel/VBoxContainer/HFlowContainer/Blue/CenterContainer"]
 position = Vector2(8, 4)
-scale = Vector2(1.5, 1.5)
+scale = Vector2(2.5, 2.5)
 texture = ExtResource("19_p2cca")
 centered = false
 region_enabled = true
 region_rect = Rect2(0, 32, 32, 32)
 
 [node name="Yellow" type="Button" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/ColorPanel/VBoxContainer/HFlowContainer"]
-custom_minimum_size = Vector2(64, 64)
+custom_minimum_size = Vector2(96, 96)
 layout_mode = 2
 focus_neighbor_left = NodePath("../Blue")
 focus_previous = NodePath("../Blue")
@@ -1628,7 +1639,7 @@ grow_vertical = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/ColorPanel/VBoxContainer/HFlowContainer/Yellow/CenterContainer"]
 position = Vector2(8, 4)
-scale = Vector2(1.5, 1.5)
+scale = Vector2(2.5, 2.5)
 texture = ExtResource("19_p2cca")
 centered = false
 region_enabled = true
@@ -2365,21 +2376,21 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.125911, 0.125911, 0.125911, 0.196078)
 
-[node name="Infinite" type="AspectRatioContainer" parent="MenuLayer/Infinite" node_paths=PackedStringArray("game_mode_rect", "animation_player")]
+[node name="Infinite" type="AspectRatioContainer" parent="MenuLayer/Infinite" node_paths=PackedStringArray("icon", "game_mode_rect", "animation_player")]
 visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 32.0
-offset_top = 192.0
-offset_right = 32.0
-offset_bottom = -320.0
+offset_left = 256.0
+offset_top = 640.0
+offset_bottom = 128.0
 grow_horizontal = 2
 grow_vertical = 2
-pivot_offset = Vector2(640, 104)
-ratio = 3.1
+pivot_offset = Vector2(512, 104)
+ratio = 3.0
 script = ExtResource("78_crixo")
+icon = NodePath("Infinite/VBoxContainer/TextureRect")
 game_mode_rect = NodePath("../../../GameOverlay/GameModeRect")
 animation_player = NodePath("../../../AnimationPlayer")
 
@@ -2407,8 +2418,14 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
+[node name="TextureRect" type="TextureRect" parent="MenuLayer/Infinite/Infinite/Infinite/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+texture = ExtResource("17_003rt")
+stretch_mode = 5
+
 [node name="VSpacer" type="VSeparator" parent="MenuLayer/Infinite/Infinite/Infinite/VBoxContainer"]
-custom_minimum_size = Vector2(0, 48)
+custom_minimum_size = Vector2(0, 12)
 layout_mode = 2
 
 [node name="Normal" type="Button" parent="MenuLayer/Infinite/Infinite/Infinite/VBoxContainer"]
@@ -2416,7 +2433,7 @@ layout_mode = 2
 size_flags_vertical = 3
 focus_neighbor_bottom = NodePath("../Infinite")
 focus_next = NodePath("../Infinite")
-icon = ExtResource("6_jcwtk")
+icon = ExtResource("82_3441g")
 icon_alignment = 1
 expand_icon = true
 
@@ -2438,10 +2455,10 @@ layout_mode = 1
 anchors_preset = -1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -32.0
+offset_left = -48.0
 offset_top = 16.0
 offset_right = -16.0
-offset_bottom = 38.0
+offset_bottom = 54.0
 grow_horizontal = 0
 focus_neighbor_left = NodePath("../VBoxContainer/ScrollContainer/VBoxContainer/Menu Controls")
 focus_neighbor_top = NodePath("../VBoxContainer/ScrollContainer/VBoxContainer/3D Interact Controls")

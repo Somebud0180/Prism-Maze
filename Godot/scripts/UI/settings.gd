@@ -155,7 +155,7 @@ func _update_player_color() -> void:
 
 # 3D Settings
 func _graphics_check() -> void:
-	if RenderingServer.get_current_rendering_method() != "forward_plus":
+	if RenderingServer.get_current_rendering_method() != "forward_plus" or OS.get_name() == "iOS":
 		sdfgi_toggle.disabled = true
 		sdfgi_full_toggle.disabled = true
 		menu.sdfgi_enabled = false
