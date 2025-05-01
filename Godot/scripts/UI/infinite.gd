@@ -31,12 +31,16 @@ func _load_game() -> void:
 		menu.menu_state = Menu.STATE.GAME
 		menu.animation_player.play("hide_main_invisible")
 		await menu.animation_player.animation_finished
+		
 		if !menu.in_game:
 			LoadingManager.load_scene(menu.game_scene_path)
 			menu.in_game = true
 		else:
 			for music_player in get_tree().get_nodes_in_group("LevelMusicPlayer"):
 						music_player.fade_music_in()
+		
+		game_mode_rect.manage_animation(menu.menu_state)
+		
 	elif game_mode == 1:
 			# Check if already in-game in another dimension
 		if menu.in_game:
@@ -52,3 +56,5 @@ func _load_game() -> void:
 		else:
 			for music_player in get_tree().get_nodes_in_group("LevelMusicPlayer"):
 						music_player.fade_music_in()
+		
+		game_mode_rect.manage_animation(menu.menu_state)

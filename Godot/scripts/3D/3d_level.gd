@@ -2,7 +2,6 @@ extends GridMap
 
 signal door_close_animation_finished
 
-@onready var audio_player = get_node_or_null("Door3D/Door/AudioStreamPlayer3D")
 @onready var viewport = get_node_or_null("SubViewport")
 @onready var viewport_quad = get_node_or_null("ViewportQuad")
 @onready var viewport_area = get_node_or_null("ViewportQuad/ViewportArea")
@@ -75,9 +74,9 @@ func open_door():
 		return
 		
 	var animation_player: AnimationPlayer = get_node("Door3D/Door/AnimationPlayer")
+	var audio_player = get_node("Door3D/Door/AudioStreamPlayer3D")
 	is_door_open = true
 	animation_player.play("open_door")
-	audio_player.stream = finish_sound[randi_range(0, finish_sound.size() - 1)]
 	audio_player.play()
 
 

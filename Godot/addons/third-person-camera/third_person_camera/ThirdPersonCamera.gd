@@ -3,6 +3,7 @@
 class_name ThirdPersonCamera extends Node3D
 
 
+@onready var _menu = get_node("/root/Menu")
 @onready var _camera := $Camera
 @onready var _camera_rotation_pivot = $RotationPivot
 @onready var _camera_offset_pivot = $RotationPivot/OffsetPivot
@@ -183,26 +184,27 @@ func _unhandled_input(event):
 		return
 	
 	# Handle discrete zoom levels with keybinds
-	if event.is_action_pressed("adjust_zoom"):
-		cycle_zoom()
-		get_viewport().set_input_as_handled()
-	elif event.is_action_pressed("increase_zoom"):
-		increase_zoom()
-		get_viewport().set_input_as_handled()
-	elif event.is_action_pressed("decrease_zoom"):
-		decrease_zoom()
-		get_viewport().set_input_as_handled()
-	
-	# Handle mouse wheel zoom
-	if zoom_enabled and event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_WHEEL_UP:
-			# Zoom in
-			set_zoom(distance_from_pivot - zoom_sensitivity)
+	if _menu.menu_state == Menu.STATE.GAME3D:
+		if event.is_action_pressed("adjust_zoom"):
+			cycle_zoom()
 			get_viewport().set_input_as_handled()
-		elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
-			# Zoom out
-			set_zoom(distance_from_pivot + zoom_sensitivity)
+		elif event.is_action_pressed("increase_zoom"):
+			increase_zoom()
 			get_viewport().set_input_as_handled()
+		elif event.is_action_pressed("decrease_zoom"):
+			decrease_zoom()
+			get_viewport().set_input_as_handled()
+		
+		# Handle mouse wheel zoom
+		if zoom_enabled and event is InputEventMouseButton:
+			if event.button_index == MOUSE_BUTTON_WHEEL_UP:
+				# Zoom in
+				set_zoom(distance_from_pivot - zoom_sensitivity)
+				get_viewport().set_input_as_handled()
+			elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
+				# Zoom out
+				set_zoom(distance_from_pivot + zoom_sensitivity)
+				get_viewport().set_input_as_handled()
 	
 	pass
 

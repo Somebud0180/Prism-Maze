@@ -1,4 +1,4 @@
-[gd_scene load_steps=107 format=3 uid="uid://br2t4hanatnss"]
+[gd_scene load_steps=109 format=3 uid="uid://br2t4hanatnss"]
 
 [ext_resource type="Theme" uid="uid://bau50guyc4alk" path="res://resources/Theme/menu.tres" id="1_7yxt8"]
 [ext_resource type="Script" uid="uid://cnwd74ny2hf2q" path="res://scripts/UI/menu.gd" id="2_o131u"]
@@ -83,6 +83,8 @@
 [ext_resource type="Texture2D" uid="uid://c278452784qcv" path="res://resources/Controls/KBM/keyboard_e.png" id="55_2ewfx"]
 [ext_resource type="Texture2D" uid="uid://rhbf84hoa5co" path="res://resources/Controls/Controllers/button_outline_t_xb.png" id="55_7mjjf"]
 [ext_resource type="Texture2D" uid="uid://namppbr5u8s5" path="res://resources/Controls/Controllers/button_outline_t_nin.png" id="56_2ewfx"]
+[ext_resource type="Texture2D" uid="uid://bfdsixmy8emo3" path="res://resources/Controls/KBM/mouse_move_2.png" id="70_uasga"]
+[ext_resource type="Texture2D" uid="uid://bp564jiuw1yun" path="res://resources/Controls/KBM/mouse_scroll_vertical_outline.png" id="75_003rt"]
 [ext_resource type="Script" uid="uid://b7avmo0ffik4l" path="res://scripts/UI/infinite.gd" id="78_crixo"]
 [ext_resource type="Texture2D" uid="uid://dhpjo1nowmnp2" path="res://resources/Menu/Menu Icons/Infinity.png" id="79_7th0f"]
 [ext_resource type="Script" uid="uid://dr7vcm3fvsk6b" path="res://scripts/UI/game_mode_rect.gd" id="81_p4s11"]
@@ -862,7 +864,8 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id="Animation_crixo"]
 resource_name = "show_infinite"
-length = 0.5
+length = 0.3
+step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -870,10 +873,10 @@ tracks/0/path = NodePath("MenuLayer/Infinite/Infinite:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.45),
+"times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(0.5, 0.5),
 "update": 0,
-"values": [Vector2(0, 992), Vector2(0, 256)]
+"values": [Vector2(0, 640), Vector2(0, 256)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -882,7 +885,7 @@ tracks/1/path = NodePath("MenuLayer/Infinite/Infinite:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.2, 0.5),
+"times": PackedFloat32Array(0.05, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(1.1, 1.1), Vector2(1, 1)]
@@ -918,7 +921,7 @@ tracks/4/path = NodePath("MenuLayer/Infinite:color")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.5),
+"times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(0.5, 1),
 "update": 0,
 "values": [Color(0.12549, 0.12549, 0.12549, 0), Color(0.125911, 0.125911, 0.125911, 0.196078)]
@@ -1101,7 +1104,6 @@ health_bar = NodePath("GameOverlay/HBoxContainer/Health/Bar")
 
 [node name="MenuLayer" type="CanvasLayer" parent="."]
 layer = 2
-visible = false
 follow_viewport_scale = 0.05
 
 [node name="Main" type="AspectRatioContainer" parent="MenuLayer"]
@@ -2232,6 +2234,12 @@ texture = ExtResource("31_mfpu8")
 expand_mode = 3
 stretch_mode = 4
 
+[node name="Mouse Move 2" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/3D Camera Controls"]
+layout_mode = 2
+texture = ExtResource("70_uasga")
+expand_mode = 3
+stretch_mode = 4
+
 [node name="R Stick" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/3D Camera Controls"]
 layout_mode = 2
 texture = ExtResource("32_wg8ic")
@@ -2271,6 +2279,12 @@ stretch_mode = 4
 [node name="K" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/3D Zoom Controls"]
 layout_mode = 2
 texture = ExtResource("46_hvuoq")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="Scroll" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/3D Zoom Controls"]
+layout_mode = 2
+texture = ExtResource("75_003rt")
 expand_mode = 3
 stretch_mode = 4
 
@@ -2357,10 +2371,8 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 32.0
-offset_top = 192.0
-offset_right = 32.0
-offset_bottom = -320.0
+offset_top = 256.0
+offset_bottom = -256.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(640, 104)

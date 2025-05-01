@@ -36,6 +36,7 @@ var subviewport
 @onready var animation_player = %AnimationPlayer
 @onready var pivot = %CameraPivot
 @onready var camera = %ThirdPersonCamera
+@onready var camera_marker = camera.get_node("RotationPivot/OffsetPivot/CameraSpringArm/CameraMarker")
 @onready var audio_player = %AudioStreamPlayer3D
 @onready var player_mat = $Player/Body.get_active_material(0)
 
@@ -198,8 +199,8 @@ func _physics_process(delta: float) -> void:
 
 func _process(_delta: float) -> void:
 	RenderingServer.global_shader_parameter_set("character_position", position)
-	$Player/Body.transparency = 1.0 - clamp(camera.distance_from_pivot * 0.25, 0.0, 1.0)
-	$Player/Head.transparency = 1.0 - clamp(camera.distance_from_pivot * 0.25, 0.0, 1.0)
+	$Player/Body.transparency = 1.0 - clamp(camera_marker.position.z * 0.25, 0.0, 1.0)
+	$Player/Head.transparency = 1.0 - clamp(camera_marker.position.z * 0.25, 0.0, 1.0)
 
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_pressed("camera_hold"):

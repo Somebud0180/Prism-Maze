@@ -28,13 +28,11 @@ func set_sdfgi() -> void:
 	RenderingServer.gi_set_use_half_resolution(!menu.sdfgi_full_res)
 	
 	if $WorldEnvironment.environment.sdfgi_enabled:
-		$Player3D/Player/OmniLight3D.light_energy = 1.0
-		$Player3D/Player/OmniLight3D.light_indirect_energy = 5.0
+		$Player3D/Player/OmniLight3D.visible = true
 		$WorldEnvironment/DirectionalLight3D.light_energy = 2.0
 		$WorldEnvironment/DirectionalLight3D.light_indirect_energy = 5.0
 	else:
-		$Player3D/Player/OmniLight3D.light_energy = 0.0
-		$Player3D/Player/OmniLight3D.light_indirect_energy = 0.0
+		$Player3D/Player/OmniLight3D.visible = false
 		$WorldEnvironment/DirectionalLight3D.light_energy = 0.5
 		$WorldEnvironment/DirectionalLight3D.light_indirect_energy = 1.0
 

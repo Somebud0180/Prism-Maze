@@ -182,9 +182,8 @@ func _input(event):
 				await animation_player.animation_finished
 			STATE.INFIPICKER:
 				menu_state = STATE.MAIN
-				animation_player.play("hide_infinite")
+				_hide_and_show("infinite", "main")
 				await animation_player.animation_finished
-				animation_player.play("RESET_main")
 			STATE.GAME, STATE.GAME3D, STATE.GAMEMIXED, STATE.OVERLAY:
 				if event.is_action("go_back"):
 					return
@@ -230,7 +229,7 @@ func _on_play_pressed() -> void:
 		menu_state = STATE.INFIPICKER
 		infinite.game_mode = 0
 		$MenuLayer/Infinite/Infinite/Infinite/VBoxContainer/Normal.grab_focus()
-		animation_player.play("show_infinite")
+		_hide_and_show("main", "infinite")
 	else:
 		menu_state = Menu.STATE.GAME
 		game_mode.manage_animation(menu_state)
@@ -246,7 +245,7 @@ func _on_play_3d_pressed() -> void:
 		menu_state = STATE.INFIPICKER
 		infinite.game_mode = 1
 		$MenuLayer/Infinite/Infinite/Infinite/VBoxContainer/Normal.grab_focus()
-		animation_player.play("show_infinite")
+		_hide_and_show("main", "infinite")
 	else:
 		menu_state = Menu.STATE.GAME3D
 		game_mode.manage_animation(menu_state)
@@ -285,9 +284,7 @@ func _on_exit_controls_pressed() -> void:
 
 func _on_exit_infipicker_pressed() -> void:
 	menu_state = STATE.MAIN
-	animation_player.play("hide_infinite")
-	await animation_player.animation_finished
-	animation_player.play("RESET_main")
+	_hide_and_show("infinite", "main")
 
 
 func _reset_game() -> void:
