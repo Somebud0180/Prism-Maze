@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://bnkt72lydniy7"]
+[gd_scene load_steps=24 format=4 uid="uid://bnkt72lydniy7"]
 
 [ext_resource type="Environment" uid="uid://b7y82yodphdhe" path="res://resources/Game 3D/game_3d.tres" id="1_cyag4"]
 [ext_resource type="Script" uid="uid://v6f8iie1qjh" path="res://scripts/3D/game_3d.gd" id="1_dfa31"]
@@ -197,6 +197,10 @@ _data = {
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dfa31"]
 radius = 0.801738
 height = 1.9261
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_g3nao"]
+random_pitch = 1.05
+streams_count = 1
 
 [sub_resource type="Animation" id="Animation_g3nao"]
 length = 0.001
@@ -440,6 +444,7 @@ shape = SubResource("CapsuleShape3D_dfa31")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Player3D"]
 unique_name_in_owner = true
+stream = SubResource("AudioStreamRandomizer_g3nao")
 volume_db = -3.0
 doppler_tracking = 1
 

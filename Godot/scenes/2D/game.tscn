@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://brinhdnvr4uxf"]
+[gd_scene load_steps=25 format=3 uid="uid://brinhdnvr4uxf"]
 
 [ext_resource type="Script" uid="uid://b7l1rpqy1mblr" path="res://scripts/2D/game_manager.gd" id="1_rn7ij"]
 [ext_resource type="Script" uid="uid://cmgcuu7j3ncl2" path="res://scripts/2D/player.gd" id="2_musdt"]
@@ -82,6 +82,10 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_4osob"]
+random_pitch = 1.05
+streams_count = 1
+
 [sub_resource type="Animation" id="Animation_usq1i"]
 resource_name = "RESET"
 length = 0.001
@@ -129,6 +133,7 @@ position_smoothing_enabled = true
 script = ExtResource("4_j64ky")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Player"]
+stream = SubResource("AudioStreamRandomizer_4osob")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_3b5mr")

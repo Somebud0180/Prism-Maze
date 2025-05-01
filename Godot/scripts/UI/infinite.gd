@@ -29,6 +29,7 @@ func _on_infinite_pressed() -> void:
 
 func _load_game() -> void:
 	game_mode_rect._set_game_mode_rect(menu.is_infinite_levels)
+	menu.fade_music_out()
 	
 	if game_mode == 0:
 		# Check if already in-game in another dimension

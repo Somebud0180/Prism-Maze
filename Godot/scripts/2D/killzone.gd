@@ -8,7 +8,7 @@ var menu
 func _on_body_exited(_body: Node2D) -> void:
 	player = get_node("../../../Player")
 	
-	# If player is uninitialized ignore death
+	# If player is uninitialized, ignore death
 	if !player.killable:
 		if player.game_initialized:
 			await player.killable
@@ -16,7 +16,6 @@ func _on_body_exited(_body: Node2D) -> void:
 			return
 	
 	# Else, continue with death
-	print("You Died")
 	player.gravity_direction = 1
 	await get_tree().create_timer(0.2).timeout
 	_on_timer_timeout()

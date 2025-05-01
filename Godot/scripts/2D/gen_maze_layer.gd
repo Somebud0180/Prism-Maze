@@ -7,6 +7,7 @@ extends TileMapLayer
 var _hidden_tile_flag: Dictionary = {}
 
 var allow_loops = true
+var iteration_count = 0
 var current_level = 0
 var starting_pos = Vector2i()
 const normal_wall_atlas_coords = Vector2i(0, 0)
@@ -131,6 +132,13 @@ func dfs(start: Vector2i):
 	var fringe: Array[Vector2i] = [start]
 	var seen = {}
 	while fringe.size() > 0:
+		# Check if generation is stuck
+		iteration_count += 1
+		if iteration_count > 10000:
+			# Maze is likely stuck, reload.
+			load_maze(current_level)
+			return
+			
 		var current: Vector2i 
 		current = fringe.pop_back() as Vector2i
 		if current in seen or not can_move_to(current):
