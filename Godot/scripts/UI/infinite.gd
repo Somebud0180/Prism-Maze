@@ -35,7 +35,9 @@ func _load_game() -> void:
 		if !menu.in_game:
 			LoadingManager.load_scene(menu.game_scene_path)
 			menu.in_game = true
+			animation_player.play("mode_right")
 		else:
+			game_mode_rect.manage_animation(menu.menu_state)
 			for music_player in get_tree().get_nodes_in_group("LevelMusicPlayer"):
 						music_player.fade_music_in()
 		
@@ -53,8 +55,8 @@ func _load_game() -> void:
 		if !menu.in_game_3d:
 			LoadingManager.load_scene(menu.game_scene_3d_path)
 			menu.in_game_3d = true
+			animation_player.play("mode_right")
 		else:
+			game_mode_rect.manage_animation(menu.menu_state)
 			for music_player in get_tree().get_nodes_in_group("LevelMusicPlayer"):
 						music_player.fade_music_in()
-		
-		game_mode_rect.manage_animation(menu.menu_state)
