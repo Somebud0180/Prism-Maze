@@ -618,10 +618,6 @@ transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, 2.00514, 3
 [node name="Door3D" parent="StartingLevel" instance=ExtResource("5_cxprw")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 4, -13)
 
-[node name="OmniLight3D" parent="StartingLevel/Door3D/Door" index="5"]
-transform = Transform3D(-7.71284e-05, 1.07288e-06, -1, 1, 8.27495e-11, -7.71284e-05, 0, -1, -1.07288e-06, 0.6, 0, 0)
-light_color = Color(0, 0.648438, 1, 1)
-
 [node name="Killzone 3D" parent="StartingLevel" instance=ExtResource("2_2ntvb")]
 collision_layer = 0
 
@@ -1629,10 +1625,6 @@ transform = Transform3D(0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, 0.258819, 
 
 [node name="Door3D" parent="Level2" instance=ExtResource("5_cxprw")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 4, -21)
-
-[node name="OmniLight3D" parent="Level2/Door3D/Door" index="5"]
-transform = Transform3D(-7.71284e-05, 1.07288e-06, -1, 1, 8.27495e-11, -7.71284e-05, 0, -1, -1.07288e-06, 0.6, 0, 0)
-light_color = Color(0, 0.648438, 1, 1)
 
 [node name="Killzone 3D" parent="Level2" instance=ExtResource("2_2ntvb")]
 collision_layer = 0

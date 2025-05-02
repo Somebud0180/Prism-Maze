@@ -22,6 +22,7 @@ func _ready() -> void:
 	var is_2d = get_parent().name == "Game"
 	music_volume = menu.music_volume
 	if !(is_2d and menu.in_game_3d):
+		await get_tree().process_frame
 		play_random_music()
 
 
