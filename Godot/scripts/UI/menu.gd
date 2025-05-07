@@ -202,7 +202,7 @@ func _input(event):
 				menu_state = STATE.MAIN
 				_hide_and_show("infinite", "main")
 				await animation_player.animation_finished
-			STATE.GAME, STATE.GAME3D, STATE.GAMEMIXED, STATE.OVERLAY:
+			STATE.GAME, STATE.GAME3D, STATE.OVERLAY:
 				if event.is_action("go_back"):
 					return
 				# Pause any level music player, if any

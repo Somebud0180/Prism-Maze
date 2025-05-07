@@ -36,9 +36,9 @@ func _load_game() -> void:
 		if menu.in_game_3d:
 			menu._reset_game_3d()
 		
-		menu.menu_state = Menu.STATE.GAME
 		menu.animation_player.play("RESET_game")
 		await menu.animation_player.animation_finished
+		menu.menu_state = Menu.STATE.GAME
 		
 		if !menu.in_game:
 			LoadingManager.load_scene(menu.game_scene_path)
@@ -53,9 +53,9 @@ func _load_game() -> void:
 		if menu.in_game:
 			menu._reset_game()
 		
-		menu.menu_state = Menu.STATE.GAME3D
 		menu.animation_player.play("RESET_game")
 		await menu.animation_player.animation_finished
+		menu.menu_state = Menu.STATE.GAME3D
 		
 		if !menu.in_game_3d:
 			LoadingManager.load_scene(menu.game_scene_3d_path)

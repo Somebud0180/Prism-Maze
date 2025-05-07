@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ufp0dt7p05x"
-path="res://.godot/imported/button_outline_r_nin.png-240c3fc42e9150202d087b417c6430ea.ctex"
+uid="uid://2mgoijj5qdjr"
+path="res://.godot/imported/button_r.png-cd94bab0d38862709232dbe187e22348.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/Controls/Controllers/button_outline_r_nin.png"
-dest_files=["res://.godot/imported/button_outline_r_nin.png-240c3fc42e9150202d087b417c6430ea.ctex"]
+source_file="res://resources/Controls/Controllers/button_r.png"
+dest_files=["res://.godot/imported/button_r.png-cd94bab0d38862709232dbe187e22348.ctex"]
 
 [params]
 

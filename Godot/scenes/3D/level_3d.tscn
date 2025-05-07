@@ -1018,7 +1018,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 6)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -54)
 
 [node name="MidLevel" type="GridMap" parent="."]
-visible = false
 mesh_library = ExtResource("1_nvka6")
 cell_octant_size = 32
 data = {
@@ -1031,7 +1030,6 @@ metadata/_editor_floor_ = Vector3(0, 27, 0)
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 140, -43)
 
 [node name="BarrierMap" type="GridMap" parent="MidLevel"]
-visible = false
 mesh_library = ExtResource("1_nvka6")
 cell_octant_size = 32
 collision_layer = 4
@@ -2144,7 +2142,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 4)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, -126)
 
 [node name="BarrierMap" type="GridMap" parent="Level12"]
-visible = false
 mesh_library = ExtResource("1_nvka6")
 cell_octant_size = 32
 collision_layer = 4
@@ -2185,7 +2182,6 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 32,
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -42, 2, 48)
 
 [node name="BarrierMap" type="GridMap" parent="Level13"]
-visible = false
 mesh_library = ExtResource("1_nvka6")
 cell_octant_size = 32
 collision_layer = 4

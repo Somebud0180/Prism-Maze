@@ -51,16 +51,12 @@
 [ext_resource type="Texture2D" uid="uid://ckvudehqjwqxf" path="res://resources/Menu/Control Icons/Jump.png" id="24_xkl7s"]
 [ext_resource type="Texture2D" uid="uid://dswympymc6uev" path="res://resources/Menu/Control Icons/Confirm.png" id="25_pjik4"]
 [ext_resource type="Texture2D" uid="uid://toobd4vd6hfg" path="res://resources/Controls/KBM/keyboard_space_icon.png" id="25_q4tpj"]
-[ext_resource type="Texture2D" uid="uid://dqm1knqvsbn8a" path="res://resources/Controls/Controllers/button_b.png" id="26_qg4he"]
 [ext_resource type="Texture2D" uid="uid://cfpoqyesykedr" path="res://resources/Controls/KBM/keyboard_enter.png" id="26_whlyx"]
-[ext_resource type="Texture2D" uid="uid://3if4feve3tt1" path="res://resources/Controls/Controllers/button_a.png" id="27_1anaf"]
 [ext_resource type="Texture2D" uid="uid://cn8i1e5a2w11c" path="res://resources/Background/Substrate.png" id="27_ucr8h"]
 [ext_resource type="Texture2D" uid="uid://dets0ldrlk4ok" path="res://resources/Menu/Misc/Block3D.png" id="28_1anaf"]
-[ext_resource type="Texture2D" uid="uid://72xvr3t4rcle" path="res://resources/Controls/Controllers/button_outline_r_xb.png" id="28_cijfx"]
 [ext_resource type="Texture2D" uid="uid://dhkixf8jhbq4o" path="res://resources/Background/Bottom Layer.png" id="28_y8j5i"]
 [ext_resource type="Texture2D" uid="uid://dhop524e0npfj" path="res://resources/Background/Top Layer.png" id="29_p2cca"]
 [ext_resource type="Script" uid="uid://by8tkg0eil2rw" path="res://scripts/UI/shadow_quality.gd" id="29_qxfis"]
-[ext_resource type="Texture2D" uid="uid://ufp0dt7p05x" path="res://resources/Controls/Controllers/button_outline_r_nin.png" id="29_s1ob8"]
 [ext_resource type="Texture2D" uid="uid://dn3jva0kh35qs" path="res://resources/Menu/Control Icons/Camera.png" id="29_xlwes"]
 [ext_resource type="Texture2D" uid="uid://bgsmvdkk25y6r" path="res://resources/Menu/Graphics/Shadow_Quality.png" id="30_5wffc"]
 [ext_resource type="Texture2D" uid="uid://dxsfg0tfwgf8x" path="res://resources/Controls/KBM/Brackets.png" id="30_fqtlv"]
@@ -86,8 +82,11 @@
 [ext_resource type="Texture2D" uid="uid://bka0g1o4egyee" path="res://resources/Menu/Control Icons/Screen.png" id="54_tsgqf"]
 [ext_resource type="Script" uid="uid://t7gje6wr8j28" path="res://scripts/UI/menu_button.gd" id="54_v00k6"]
 [ext_resource type="Texture2D" uid="uid://c278452784qcv" path="res://resources/Controls/KBM/keyboard_e.png" id="55_2ewfx"]
-[ext_resource type="Texture2D" uid="uid://rhbf84hoa5co" path="res://resources/Controls/Controllers/button_outline_t_xb.png" id="55_7mjjf"]
-[ext_resource type="Texture2D" uid="uid://namppbr5u8s5" path="res://resources/Controls/Controllers/button_outline_t_nin.png" id="56_2ewfx"]
+[ext_resource type="Texture2D" uid="uid://c4uk13xdwrl07" path="res://resources/Controls/Controllers/button_d.png" id="56_745e6"]
+[ext_resource type="Texture2D" uid="uid://2mgoijj5qdjr" path="res://resources/Controls/Controllers/button_r.png" id="59_qtbfk"]
+[ext_resource type="Texture2D" uid="uid://cwcv3pmw12qjc" path="res://resources/Controls/KBM/keyboard_g.png" id="61_745e6"]
+[ext_resource type="Texture2D" uid="uid://ylchtyr8kg3j" path="res://resources/Controls/Controllers/button_l.png" id="62_6xu7c"]
+[ext_resource type="Texture2D" uid="uid://t0kl2vmke8q3" path="res://resources/Menu/Misc/GUI_Toggle.png" id="65_qtbfk"]
 [ext_resource type="Texture2D" uid="uid://bfdsixmy8emo3" path="res://resources/Controls/KBM/mouse_move_2.png" id="70_uasga"]
 [ext_resource type="Texture2D" uid="uid://bp564jiuw1yun" path="res://resources/Controls/KBM/mouse_scroll_vertical_outline.png" id="75_003rt"]
 [ext_resource type="Script" uid="uid://b7avmo0ffik4l" path="res://scripts/UI/infinite.gd" id="78_crixo"]
@@ -95,6 +94,7 @@
 [ext_resource type="Script" uid="uid://dr7vcm3fvsk6b" path="res://scripts/UI/game_mode_rect.gd" id="81_p4s11"]
 [ext_resource type="Texture2D" uid="uid://b6sw2xxgtwpje" path="res://resources/Menu/Menu Icons/Finite.png" id="82_3441g"]
 [ext_resource type="Script" uid="uid://1injk52wnwrl" path="res://scripts/UI/game_overlay.gd" id="88_lyy4v"]
+[ext_resource type="Texture2D" uid="uid://bo46ndfumnlu3" path="res://resources/Controls/Controllers/button_u.png" id="88_vfv3m"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tsejx"]
 bg_color = Color(0.27451, 0.27451, 0.27451, 1)
@@ -790,6 +790,46 @@ tracks/3/keys = {
 "values": [true]
 }
 
+[sub_resource type="Animation" id="Animation_lyy4v"]
+resource_name = "hide_overlay"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GameOverlay/MenuButton:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [Vector2(14, 14), Vector2(14, -56)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GameOverlay/GameModeRect:offset_top")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [18.0, -52.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GameOverlay/HBoxContainer:offset_bottom")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [-48.0, 96.0]
+}
+
 [sub_resource type="Animation" id="Animation_2ywoo"]
 resource_name = "hide_settings"
 length = 0.5
@@ -1099,6 +1139,47 @@ tracks/4/keys = {
 "values": [false]
 }
 
+[sub_resource type="Animation" id="Animation_qtbfk"]
+resource_name = "show_overlay"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GameOverlay/MenuButton:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [Vector2(14, -56), Vector2(14, 14)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GameOverlay/GameModeRect:offset_top")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [-52.0, 18.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GameOverlay/HBoxContainer:offset_bottom")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [96.0, -48.0]
+}
+
 [sub_resource type="Animation" id="Animation_antcs"]
 resource_name = "show_settings"
 length = 0.5
@@ -1149,87 +1230,6 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(2, 2),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_lyy4v"]
-resource_name = "hide_overlay"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("GameOverlay/MenuButton:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(0.5, 0.5),
-"update": 0,
-"values": [Vector2(14, 14), Vector2(14, -56)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("GameOverlay/GameModeRect:offset_top")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(0.5, 0.5),
-"update": 0,
-"values": [18.0, -52.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("GameOverlay/HBoxContainer:offset_bottom")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(0.5, 0.5),
-"update": 0,
-"values": [-48.0, 96.0]
-}
-
-[sub_resource type="Animation" id="Animation_qtbfk"]
-resource_name = "show_overlay"
-length = 0.5
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("GameOverlay/MenuButton:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(0.5, 0.5),
-"update": 0,
-"values": [Vector2(14, -56), Vector2(14, 14)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("GameOverlay/GameModeRect:offset_top")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(0.5, 0.5),
-"update": 0,
-"values": [-52.0, 18.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("GameOverlay/HBoxContainer:offset_bottom")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(0.5, 0.5),
-"update": 0,
-"values": [96.0, -48.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nyjex"]
@@ -2200,8 +2200,8 @@ size_flags_vertical = 3
 [node name="Menu Controls" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 focus_neighbor_top = NodePath("../../../../Exit Controls")
-focus_neighbor_bottom = NodePath("../Pause_Exit Controls")
-focus_next = NodePath("../Pause_Exit Controls")
+focus_neighbor_bottom = NodePath("../Pause Controls")
+focus_next = NodePath("../Pause Controls")
 focus_previous = NodePath("../../../../Exit Controls")
 focus_mode = 2
 texture = ExtResource("19_xlwes")
@@ -2213,7 +2213,7 @@ layout_mode = 2
 theme_override_constants/separation = 16
 theme_override_styles/separator = ExtResource("13_tbd65")
 
-[node name="Pause_Exit Controls" type="HBoxContainer" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer"]
+[node name="Pause Controls" type="HBoxContainer" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 focus_neighbor_top = NodePath("../Menu Controls")
 focus_neighbor_bottom = NodePath("../Confirm Controls")
@@ -2221,7 +2221,7 @@ focus_next = NodePath("../Confirm Controls")
 focus_previous = NodePath("../Menu Controls")
 focus_mode = 2
 
-[node name="Pause" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/Pause_Exit Controls"]
+[node name="Pause" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/Pause Controls"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 focus_neighbor_top = NodePath("../../..")
@@ -2232,29 +2232,18 @@ texture = ExtResource("20_tbd65")
 expand_mode = 3
 stretch_mode = 4
 
-[node name="Exit" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/Pause_Exit Controls"]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-focus_neighbor_top = NodePath("../../..")
-focus_neighbor_bottom = NodePath("../../Jump Controls/Jump")
-focus_next = NodePath("../../Jump Controls/Jump")
-focus_previous = NodePath("../../..")
-texture = ExtResource("20_wg8ic")
-expand_mode = 3
-stretch_mode = 4
-
-[node name="HSeparator" type="HSeparator" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/Pause_Exit Controls"]
+[node name="HSeparator" type="HSeparator" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/Pause Controls"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/separator = ExtResource("20_6p85y")
 
-[node name="Escape" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/Pause_Exit Controls"]
+[node name="Escape" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/Pause Controls"]
 layout_mode = 2
 texture = ExtResource("22_tbd65")
 expand_mode = 3
 stretch_mode = 4
 
-[node name="Plus_Start" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/Pause_Exit Controls"]
+[node name="Plus_Start" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/Pause Controls"]
 layout_mode = 2
 texture = ExtResource("23_pjik4")
 expand_mode = 3
@@ -2262,10 +2251,10 @@ stretch_mode = 4
 
 [node name="Confirm Controls" type="HBoxContainer" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
-focus_neighbor_top = NodePath("../Pause_Exit Controls")
+focus_neighbor_top = NodePath("../Pause Controls")
 focus_neighbor_bottom = NodePath("../Fine Controls")
 focus_next = NodePath("../Fine Controls")
-focus_previous = NodePath("../Pause_Exit Controls")
+focus_previous = NodePath("../Pause Controls")
 focus_mode = 2
 
 [node name="Confirm" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/Confirm Controls"]
@@ -2296,15 +2285,87 @@ texture = ExtResource("25_q4tpj")
 expand_mode = 3
 stretch_mode = 4
 
-[node name="Right Xb" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/Confirm Controls"]
+[node name="Right Button" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/Confirm Controls"]
 layout_mode = 2
-texture = ExtResource("28_cijfx")
+texture = ExtResource("59_qtbfk")
 expand_mode = 3
 stretch_mode = 4
 
-[node name="Right Nin" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/Confirm Controls"]
+[node name="Exit Controls" type="HBoxContainer" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
-texture = ExtResource("29_s1ob8")
+focus_neighbor_top = NodePath("../Menu Controls")
+focus_neighbor_bottom = NodePath("../Confirm Controls")
+focus_next = NodePath("../Confirm Controls")
+focus_previous = NodePath("../Menu Controls")
+focus_mode = 2
+
+[node name="Exit" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/Exit Controls"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+focus_neighbor_top = NodePath("../../..")
+focus_neighbor_bottom = NodePath("../../Jump Controls/Jump")
+focus_next = NodePath("../../Jump Controls/Jump")
+focus_previous = NodePath("../../..")
+texture = ExtResource("20_wg8ic")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="HSeparator" type="HSeparator" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/Exit Controls"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/separator = ExtResource("20_6p85y")
+
+[node name="Escape" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/Exit Controls"]
+layout_mode = 2
+texture = ExtResource("22_tbd65")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="Plus_Start" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/Exit Controls"]
+layout_mode = 2
+texture = ExtResource("23_pjik4")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="Bottom Button" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/Exit Controls"]
+layout_mode = 2
+texture = ExtResource("56_745e6")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="GUIToggle" type="HBoxContainer" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../Confirm Controls")
+focus_neighbor_bottom = NodePath("../Move Controls")
+focus_next = NodePath("../Move Controls")
+focus_previous = NodePath("../Confirm Controls")
+focus_mode = 2
+
+[node name="GUIToggle" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/GUIToggle"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+focus_neighbor_top = NodePath("../..")
+focus_neighbor_bottom = NodePath("../../Jump Controls/Jump")
+focus_next = NodePath("../../Jump Controls/Jump")
+focus_previous = NodePath("../..")
+texture = ExtResource("65_qtbfk")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="HSeparator" type="HSeparator" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/GUIToggle"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/separator = ExtResource("20_6p85y")
+
+[node name="G" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/GUIToggle"]
+layout_mode = 2
+texture = ExtResource("61_745e6")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="Left Button" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/GUIToggle"]
+layout_mode = 2
+texture = ExtResource("62_6xu7c")
 expand_mode = 3
 stretch_mode = 4
 
@@ -2445,15 +2506,15 @@ texture = ExtResource("25_q4tpj")
 expand_mode = 3
 stretch_mode = 4
 
-[node name="A Button" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/Jump Controls"]
+[node name="Right Button" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/Jump Controls"]
 layout_mode = 2
-texture = ExtResource("27_1anaf")
+texture = ExtResource("59_qtbfk")
 expand_mode = 3
 stretch_mode = 4
 
-[node name="B Button" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/Jump Controls"]
+[node name="Bottom Button" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/Jump Controls"]
 layout_mode = 2
-texture = ExtResource("26_qg4he")
+texture = ExtResource("56_745e6")
 expand_mode = 3
 stretch_mode = 4
 
@@ -2548,15 +2609,15 @@ texture = ExtResource("25_q4tpj")
 expand_mode = 3
 stretch_mode = 4
 
-[node name="A Button" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/3D Jump Controls"]
+[node name="Right Button" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/3D Jump Controls"]
 layout_mode = 2
-texture = ExtResource("27_1anaf")
+texture = ExtResource("59_qtbfk")
 expand_mode = 3
 stretch_mode = 4
 
-[node name="B Button" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/3D Jump Controls"]
+[node name="Bottom Button" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/3D Jump Controls"]
 layout_mode = 2
-texture = ExtResource("26_qg4he")
+texture = ExtResource("56_745e6")
 expand_mode = 3
 stretch_mode = 4
 
@@ -2687,15 +2748,9 @@ texture = ExtResource("55_2ewfx")
 expand_mode = 3
 stretch_mode = 4
 
-[node name="Top Xb" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/3D Interact Controls"]
+[node name="Top Button" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/3D Interact Controls"]
 layout_mode = 2
-texture = ExtResource("55_7mjjf")
-expand_mode = 3
-stretch_mode = 4
-
-[node name="Top Nin" type="TextureRect" parent="MenuLayer/Controls/VBoxContainer/ScrollContainer/VBoxContainer/3D Interact Controls"]
-layout_mode = 2
-texture = ExtResource("56_2ewfx")
+texture = ExtResource("88_vfv3m")
 expand_mode = 3
 stretch_mode = 4
 
@@ -2739,7 +2794,6 @@ icon_alignment = 1
 script = ExtResource("54_v00k6")
 
 [node name="GameModeRect" type="TextureRect" parent="GameOverlay" node_paths=PackedStringArray("animation_player")]
-anchors_preset = -1
 offset_left = 54.0
 offset_top = 18.0
 offset_right = 80.0
@@ -2751,7 +2805,7 @@ script = ExtResource("81_p4s11")
 animation_player = NodePath("../../AnimationPlayer")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="GameOverlay"]
-anchors_preset = -1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 48.0

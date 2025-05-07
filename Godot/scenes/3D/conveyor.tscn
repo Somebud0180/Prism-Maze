@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=4 uid="uid://clv812gj1aqi7"]
 
-[ext_resource type="Texture2D" uid="uid://bc222dv1jp32m" path="res://resources/Game 3D/Model/Conveyor_UV2.png" id="1_40kv3"]
+[ext_resource type="Texture2D" uid="uid://bcu0mnnnfmg0k" path="res://resources/Game 3D/Model/Conveyor_UV2.png" id="1_40kv3"]
 [ext_resource type="Script" uid="uid://ba7i5u0kg5otx" path="res://scripts/3D/conveyor.gd" id="1_bvew6"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s4ybe"]

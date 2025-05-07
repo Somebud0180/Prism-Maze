@@ -60,7 +60,7 @@ func hide_on_death() -> void:
 
 func play_floor_hit(new_value: bool, old_value: bool) -> void:
 	if !new_value and new_value != old_value:
-		audio_player.stream.set_stream(0, fall_sound)
+		audio_player.set_stream(fall_sound)
 		audio_player.volume_db = menu.sfx_volume
 		audio_player.play()
 
@@ -103,7 +103,7 @@ func _physics_process(delta: float) -> void:
 		
 		# Handle jump based on gravity direction.
 		if Input.is_action_just_pressed("jump") and jump_credit > 0:
-			audio_player.stream.set_stream(0, jump_sound)
+			audio_player.set_stream(jump_sound)
 			audio_player.play()
 			jump_credit -= 1 
 			velocity.y = jump_velocity * gravity_direction

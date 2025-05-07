@@ -103,8 +103,8 @@ func jump_tutorial():
 	if current_device == InputDevice.KEYBOARD_MOUSE:
 		control_icon_1 = load("res://resources/Controls/KBM/keyboard_space_icon.png")
 	else: # Controller
-		control_icon_1 = load("res://resources/Controls/Controllers/button_a.png")
-		control_icon_2 = load("res://resources/Controls/Controllers/button_b.png")
+		control_icon_1 = load("res://resources/Controls/Controllers/button_r.png")
+		control_icon_2 = load("res://resources/Controls/Controllers/button_d.png")
 	
 	var new_icon_rect = create_texture_rect(new_icon)
 	var control_rect_1 = create_texture_rect(control_icon_1)
@@ -171,8 +171,7 @@ func interact_tutorial():
 	if current_device == InputDevice.KEYBOARD_MOUSE:
 		control_icon_1 = load("res://resources/Controls/KBM/keyboard_e.png")
 	else: # Controller
-		control_icon_1 = load("res://resources/Controls/Controllers/button_outline_t_xb.png")
-		control_icon_2 = load("res://resources/Controls/Controllers/button_outline_t_nin.png")
+		control_icon_1 = load("res://resources/Controls/Controllers/button_u.png")
 	
 	var new_icon_rect = create_texture_rect(new_icon)
 	var control_rect_1 = create_texture_rect(control_icon_1)
@@ -180,7 +179,9 @@ func interact_tutorial():
 	overlay.add_child(new_icon_rect)
 	overlay.add_child(control_rect_1)
 	
+	@warning_ignore("unassigned_variable")
 	if control_icon_2:
+		@warning_ignore("unassigned_variable")
 		var control_rect_2 = create_texture_rect(control_icon_2)
 		overlay.add_child(control_rect_2)
 		
