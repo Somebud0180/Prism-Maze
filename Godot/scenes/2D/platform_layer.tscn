@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=4 uid="uid://1xqnurgp142s"]
+[gd_scene load_steps=72 format=4 uid="uid://1xqnurgp142s"]
 
 [ext_resource type="Script" uid="uid://gvjhotcobtjd" path="res://scripts/2D/level_layer.gd" id="1_pbkb7"]
 [ext_resource type="TileSet" uid="uid://dyown6ix7tyu4" path="res://resources/Game/Tileset.tres" id="2_pthuq"]
@@ -573,12 +573,48 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector2(2016, -16)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MovingPlatform3:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MovingPlatform1:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("MovingPlatform2:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_21fog"]
 resource_name = "move"
-length = 8.0
+length = 12.0
 loop_mode = 1
-step = 0.05
+step = 1.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -615,11 +651,207 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector2(592, 0), Vector2(2016, 0)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MovingPlatform3:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MovingPlatform1:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("MovingPlatform2:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_u1qnh"]
 _data = {
 &"RESET": SubResource("Animation_g326m"),
 &"move": SubResource("Animation_21fog")
+}
+
+[sub_resource type="Animation" id="Animation_u1qnh"]
+resource_name = "RESET"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MovingPlatform3:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2080, -16)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MovingPlatform2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2048, -16)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MovingPlatform1:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2016, -16)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MovingPlatform4:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MovingPlatform5:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("MovingPlatform6:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_u6ejb"]
+resource_name = "move"
+length = 12.0
+loop_mode = 1
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MovingPlatform4:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(4, 12),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(656, 0), Vector2(2080, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MovingPlatform5:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(4, 12),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(624, 0), Vector2(2048, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MovingPlatform6:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(4, 12),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(592, 0), Vector2(2016, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MovingPlatform4:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 4, 12),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MovingPlatform5:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 4, 12),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("MovingPlatform6:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 4, 12),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_15eda"]
+_data = {
+&"RESET": SubResource("Animation_u1qnh"),
+&"move": SubResource("Animation_u6ejb")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_21fog"]
@@ -1100,7 +1332,7 @@ shape = SubResource("RectangleShape2D_lxfva")
 
 [node name="11" type="TileMapLayer" parent="."]
 visible = false
-tile_map_data = PackedByteArray("AAD//wAAAAAAAAAAAAAAAAAAAAAAAAAAAAD+/wAAAAAAAAAAAAD+/wEAAAAAAAAAAAD//wEAAAAAAAAAAAAAAAEAAAAAAAAAAAD+/wIAAAAAAAAAAAD//wIAAAAAAAAAAAAAAAIAAAAAAAAAAAD+/wMAAAAAAAAAAAD//wMAAAAAAAAAAAAAAAMAAAAAAAAAAAD+/wQAAAAAAAAAAAD+/wUAAAAAAAAAAAD+/wYAAAAAAAAAAAD+/wcAAAAAAAAAAAD+/wgAAAAAAAAAAAD+/wkAAAAAAAAAAAD+/woAAAAAAAAAAAD+/wsAAAAAAAAAAAD+/wwAAAAAAAAAAAD+/w0AAAAAAAAAAAD+/w4AAAAAAAAAAAD+/w8AAAAAAAAAAAAAABAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA0AAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAQAAAAAAAAAAAD//wQAAAAAAAAAAAD//wUAAAAAAAAAAAD//wYAAAAAAAAAAAD//wcAAAAAAAAAAAD//wgAAAAAAAAAAAD//wkAAAAAAAAAAAD//woAAAAAAAAAAAD//wsAAAAAAAAAAAD//wwAAAAAAAAAAAD//w0AAAAAAAAAAAD//w4AAAAAAAAAAAD//w8AAAAAAAAAAAD//xAAAAAAAAAAAAD+/xAAAAAAAAAAAAD+/xEAAAAAAAAAAAD+/xIAAAAAAAAAAAD+/xMAAAAAAAAAAAD+/xQAAAAAAAAAAAD+/xUAAAAAAAAAAAD+/xYAAAAAAAAAAAD+/xcAAAAAAAAAAAD+/xgAAAAAAAAAAAD+/xkAAAAAAAAAAAD+/xoAAAAAAAAAAAD+/xsAAAAAAAAAAAD+/xwAAAAAAAAAAAD+/x0AAAAAAAAAAAD+/x4AAAAAAAAAAAD+/x8AAAAAAAAAAAD+/yAAAAAAAAAAAAD+/yEAAAAAAAAAAAD+/yIAAAAAAAAAAAD+/yMAAAAAAAAAAAD+/yQAAAAAAAAAAAD+/yUAAAAAAAAAAAD+/yYAAAAAAAAAAAD+/ycAAAAAAAAAAAD+/ygAAAAAAAAAAAD//ygAAAAAAAAAAAD//ycAAAAAAAAAAAD//yYAAAAAAAAAAAD//yUAAAAAAAAAAAD//yQAAAAAAAAAAAD//yMAAAAAAAAAAAD//yIAAAAAAAAAAAD//yEAAAAAAAAAAAD//yAAAAAAAAAAAAD//x8AAAAAAAAAAAD//x4AAAAAAAAAAAD//x0AAAAAAAAAAAD//xwAAAAAAAAAAAD//xsAAAAAAAAAAAD//xoAAAAAAAAAAAD//xkAAAAAAAAAAAD//xgAAAAAAAAAAAD//xcAAAAAAAAAAAD//xYAAAAAAAAAAAD//xUAAAAAAAAAAAD//xQAAAAAAAAAAAD//xMAAAAAAAAAAAD//xIAAAAAAAAAAAD//xEAAAAAAAAAAAAAABEAAAAAAAAAAAAAABIAAAAAAAAAAAAAABMAAAAAAAAAAAAAABQAAAAAAAAAAAAAABUAAAAAAAAAAAAAABYAAAAAAAAAAAAAABcAAAAAAAAAAAAAABgAAAAAAAAAAAAAABkAAAAAAAAAAAAAABoAAAAAAAAAAAAAABsAAAAAAAAAAAAAABwAAAAAAAAAAAAAAB0AAAAAAAAAAAAAAB4AAAAAAAAAAAAAAB8AAAAAAAAAAAAAACAAAAAAAAAAAAAAACEAAAAAAAAAAAAAACIAAAAAAAAAAAAAACMAAAAAAAAAAAAAACQAAAAAAAAAAAAAACUAAAAAAAAAAAAAACYAAAAAAAAAAAAAACcAAAAAAAAAAAAAACgAAAAAAAAAAAAEAP//AAAAAAAAAAAFAP//AAAAAAAAAAAGAP//AAAAAAAAAAAHAP//AAAAAAAAAAAGAP3/AAAAAAAAAAAIAPz/AAAAAAAAAAAJAPz/AAAAAAAAAAAMAPv/AAAAAAAAAAAgAP//AAAAAAAAAAAgAP7/AAAAAAAAAAAsAP//AAAAAAAAAAAsAAAAAAAAAAAAAAAfAAMAAAAAAAAAAAAgAAMAAAAAAAAAAAAhAAMAAAAAAAAAAAAdAAIAAAAAAAAAAAAeAAAAAAAAAAAAAAAtAAMAAAAAAAAAAAAsAAMAAAAAAAAAAAArAAMAAAAAAAAAAAApAAIAAAAAAAAAAAAqAAAAAAAAAAAAAAA1AAAAAAAAAAAAAAA2AAAAAAAAAAAAAAA3AAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA4AP//AAAAAAAAAAA4AP7/AAAAAAAAAAA6AP3/AAAAAAAAAAA8APr/AAAAAAAAAAA3APz/AAAAAAAAAAA4APr/AAAAAAAAAAA9AP3/AAAAAAAAAAA/APz/AAAAAAAAAAA9APj/AAAAAAAAAABAAPr/AAAAAAAAAAA/APj/AAAAAAAAAAA+APb/AAAAAAAAAAA9APP/AAAAAAAAAAA9APL/AAAAAAAAAAA9APH/AAAAAAAAAAA9APD/AAAAAAAAAAA9AO//AAAAAAAAAAA/APP/AAAAAAAAAAA/APL/AAAAAAAAAAA/APH/AAAAAAAAAAA/APD/AAAAAAAAAAA/AO//AAAAAAAAAABAAO//AAAAAAAAAABBAO//AAAAAAAAAABCAO//AAAAAAAAAABDAO//AAAAAAAAAAA9AO7/AAAAAAAAAAA9AO3/AAAAAAAAAAA9AOz/AAAAAAAAAAA+AOz/AAAAAAAAAAA/AOz/AAAAAAAAAABAAOz/AAAAAAAAAABBAOz/AAAAAAAAAABCAOz/AAAAAAAAAABDAOz/AAAAAAAAAABDAO3/AAAAAAAAAABDAO7/AAAAAAAAAABBAO7/AQAAAAAAAAA+APX/AQAAAAAABAA+APP/AQAAAAAABAA+APH/AQAAAAAABAA+AO//AQAAAAAABAAQAPz/AAAAAAAAAAARAPr/AAAAAAAAAAASAPj/AAAAAAAAAAATAPb/AAAAAAAAAAAWAPz/AAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAD//wAAAAAAAAAAAAAAAAAAAAAAAAAAAAD+/wAAAAAAAAAAAAD+/wEAAAAAAAAAAAD//wEAAAAAAAAAAAAAAAEAAAAAAAAAAAD+/wIAAAAAAAAAAAD//wIAAAAAAAAAAAAAAAIAAAAAAAAAAAD+/wMAAAAAAAAAAAD//wMAAAAAAAAAAAAAAAMAAAAAAAAAAAD+/wQAAAAAAAAAAAD+/wUAAAAAAAAAAAD+/wYAAAAAAAAAAAD+/wcAAAAAAAAAAAD+/wgAAAAAAAAAAAD+/wkAAAAAAAAAAAD+/woAAAAAAAAAAAD+/wsAAAAAAAAAAAD+/wwAAAAAAAAAAAD+/w0AAAAAAAAAAAD+/w4AAAAAAAAAAAD+/w8AAAAAAAAAAAAAABAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA0AAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAQAAAAAAAAAAAD//wQAAAAAAAAAAAD//wUAAAAAAAAAAAD//wYAAAAAAAAAAAD//wcAAAAAAAAAAAD//wgAAAAAAAAAAAD//wkAAAAAAAAAAAD//woAAAAAAAAAAAD//wsAAAAAAAAAAAD//wwAAAAAAAAAAAD//w0AAAAAAAAAAAD//w4AAAAAAAAAAAD//w8AAAAAAAAAAAD//xAAAAAAAAAAAAD+/xAAAAAAAAAAAAD+/xEAAAAAAAAAAAD+/xIAAAAAAAAAAAD+/xMAAAAAAAAAAAD+/xQAAAAAAAAAAAD+/xUAAAAAAAAAAAD+/xYAAAAAAAAAAAD+/xcAAAAAAAAAAAD+/xgAAAAAAAAAAAD+/xkAAAAAAAAAAAD+/xoAAAAAAAAAAAD+/xsAAAAAAAAAAAD+/xwAAAAAAAAAAAD+/x0AAAAAAAAAAAD+/x4AAAAAAAAAAAD+/x8AAAAAAAAAAAD+/yAAAAAAAAAAAAD+/yEAAAAAAAAAAAD+/yIAAAAAAAAAAAD+/yMAAAAAAAAAAAD+/yQAAAAAAAAAAAD+/yUAAAAAAAAAAAD+/yYAAAAAAAAAAAD+/ycAAAAAAAAAAAD+/ygAAAAAAAAAAAD//ygAAAAAAAAAAAD//ycAAAAAAAAAAAD//yYAAAAAAAAAAAD//yUAAAAAAAAAAAD//yQAAAAAAAAAAAD//yMAAAAAAAAAAAD//yIAAAAAAAAAAAD//yEAAAAAAAAAAAD//yAAAAAAAAAAAAD//x8AAAAAAAAAAAD//x4AAAAAAAAAAAD//x0AAAAAAAAAAAD//xwAAAAAAAAAAAD//xsAAAAAAAAAAAD//xoAAAAAAAAAAAD//xkAAAAAAAAAAAD//xgAAAAAAAAAAAD//xcAAAAAAAAAAAD//xYAAAAAAAAAAAD//xUAAAAAAAAAAAD//xQAAAAAAAAAAAD//xMAAAAAAAAAAAD//xIAAAAAAAAAAAD//xEAAAAAAAAAAAAAABEAAAAAAAAAAAAAABIAAAAAAAAAAAAAABMAAAAAAAAAAAAAABQAAAAAAAAAAAAAABUAAAAAAAAAAAAAABYAAAAAAAAAAAAAABcAAAAAAAAAAAAAABgAAAAAAAAAAAAAABkAAAAAAAAAAAAAABoAAAAAAAAAAAAAABsAAAAAAAAAAAAAABwAAAAAAAAAAAAAAB0AAAAAAAAAAAAAAB4AAAAAAAAAAAAAAB8AAAAAAAAAAAAAACAAAAAAAAAAAAAAACEAAAAAAAAAAAAAACIAAAAAAAAAAAAAACMAAAAAAAAAAAAAACQAAAAAAAAAAAAAACUAAAAAAAAAAAAAACYAAAAAAAAAAAAAACcAAAAAAAAAAAAAACgAAAAAAAAAAAAEAP//AAAAAAAAAAAFAP//AAAAAAAAAAAGAP//AAAAAAAAAAAHAP//AAAAAAAAAAAGAP3/AAAAAAAAAAAIAPz/AAAAAAAAAAAJAPz/AAAAAAAAAAAMAPv/AAAAAAAAAAAgAP//AAAAAAAAAAAgAP7/AAAAAAAAAAAsAP//AAAAAAAAAAAsAAAAAAAAAAAAAAAfAAMAAAAAAAAAAAAgAAMAAAAAAAAAAAAhAAMAAAAAAAAAAAAdAAIAAAAAAAAAAAAeAAAAAAAAAAAAAAAtAAMAAAAAAAAAAAAsAAMAAAAAAAAAAAArAAMAAAAAAAAAAAApAAIAAAAAAAAAAAAqAAAAAAAAAAAAAAA1AAAAAAAAAAAAAAA2AAAAAAAAAAAAAAA3AAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA4AP//AAAAAAAAAAA4AP7/AAAAAAAAAAA6AP3/AAAAAAAAAAA8APr/AAAAAAAAAAA3APz/AAAAAAAAAAA4APr/AAAAAAAAAAA9AP3/AAAAAAAAAAA/APz/AAAAAAAAAAA9APj/AAAAAAAAAABAAPr/AAAAAAAAAAA/APj/AAAAAAAAAAA+APb/AAAAAAAAAAA9APP/AAAAAAAAAAA9APL/AAAAAAAAAAA9APH/AAAAAAAAAAA9APD/AAAAAAAAAAA9AO//AAAAAAAAAAA/APP/AAAAAAAAAAA/APL/AAAAAAAAAAA/APH/AAAAAAAAAAA/APD/AAAAAAAAAAA/AO//AAAAAAAAAABAAO//AAAAAAAAAABBAO//AAAAAAAAAABCAO//AAAAAAAAAABDAO//AAAAAAAAAAA9AO7/AAAAAAAAAAA9AO3/AAAAAAAAAAA9AOz/AAAAAAAAAAA+AOz/AAAAAAAAAAA/AOz/AAAAAAAAAABAAOz/AAAAAAAAAABBAOz/AAAAAAAAAABCAOz/AAAAAAAAAABDAOz/AAAAAAAAAABDAO3/AAAAAAAAAABDAO7/AAAAAAAAAABBAO7/AQAAAAAAAAA+APX/AQAAAAAABAA+APP/AQAAAAAABAA+APH/AQAAAAAABAA+AO//AQAAAAAABAAQAPz/AAAAAAAAAAARAPr/AAAAAAAAAAASAPj/AAAAAAAAAAATAPb/AAAAAAAAAAAVAPn/AAAAAAAAAAAXAP3/AAAAAAAAAAA=")
 tile_set = ExtResource("2_pthuq")
 script = ExtResource("3_l6olm")
 
@@ -1118,6 +1350,24 @@ position = Vector2(2080, -16)
 [node name="AnimationPlayer" type="AnimationPlayer" parent="11/Platforms"]
 libraries = {
 &"": SubResource("AnimationLibrary_u1qnh")
+}
+autoplay = "move"
+
+[node name="MovingPlatform4" parent="11/Platforms" instance=ExtResource("4_klxfx")]
+visible = false
+position = Vector2(837.571, 0)
+
+[node name="MovingPlatform5" parent="11/Platforms" instance=ExtResource("4_klxfx")]
+visible = false
+position = Vector2(805.571, 0)
+
+[node name="MovingPlatform6" parent="11/Platforms" instance=ExtResource("4_klxfx")]
+visible = false
+position = Vector2(773.571, 0)
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="11/Platforms"]
+libraries = {
+&"": SubResource("AnimationLibrary_15eda")
 }
 autoplay = "move"
 
@@ -1186,6 +1436,7 @@ position = Vector2(192, -288)
 shape = SubResource("RectangleShape2D_g326m")
 
 [node name="End" type="TileMapLayer" parent="."]
+visible = false
 use_parent_material = true
 tile_map_data = PackedByteArray("AAD5//n/AAAAAAAAAAD5/wMAAAAAAAAAAAD6//n/AAAAAAAAAAD6/wMAAAAAAAAAAAD7//n/AAAAAAAAAAD7/wMAAAAAAAAAAAD8//n/AAAAAAAAAAD8////AAAAAAAAAAD8/wMAAAAAAAAAAAD9//n/AAAAAAAAAAD9/wMAAAAAAAAAAAD+//n/AAAAAAAAAAD+/wEAAAAAAAAAAAD+/wMAAAAAAAAAAAD///n/AAAAAAAAAAD//wEAAAAAAAAAAAD//wMAAAAAAAAAAAAAAPn/AAAAAAAAAAAAAAEAAAAAAAAAAAAAAAMAAAAAAAAAAAABAPn/AAAAAAAAAAABAAEAAAAAAAAAAAABAAMAAAAAAAAAAAACAPn/AAAAAAAAAAACAAMAAAAAAAAAAAADAPn/AAAAAAAAAAADAP//AAAAAAAAAAADAAMAAAAAAAAAAAAEAPn/AAAAAAAAAAAEAAMAAAAAAAAAAAAFAPn/AAAAAAAAAAAFAAMAAAAAAAAAAAAGAPn/AAAAAAAAAAAGAAMAAAAAAAAAAAAHAPn/AAAAAAAAAAAHAPr/AAAAAAAAAAAHAPv/AAAAAAAAAAAHAPz/AAAAAAAAAAAHAP3/AAAAAAAAAAAHAP7/AAAAAAAAAAAHAP//AAAAAAAAAAAHAAAAAAAAAAAAAAAHAAEAAAAAAAAAAAAHAAIAAAAAAAAAAAAHAAMAAAAAAAAAAAD4//n/AAAAAAAAAAD4//r/AAAAAAAAAAD4//v/AAAAAAAAAAD4//z/AAAAAAAAAAD4//3/AAAAAAAAAAD4//7/AAAAAAAAAAD4////AAAAAAAAAAD4/wAAAAAAAAAAAAD4/wEAAAAAAAAAAAD4/wIAAAAAAAAAAAD4/wMAAAAAAAAAAAA=")
 tile_set = ExtResource("2_pthuq")
@@ -1263,3 +1514,62 @@ id = 1
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Debug/Killzone"]
 position = Vector2(304, -80)
 shape = SubResource("RectangleShape2D_u6ejb")
+
+[connection signal="body_entered" from="0/Flag" to="0/Flag" method="_on_body_entered"]
+[connection signal="body_entered" from="1/Flag" to="1/Flag" method="_on_body_entered"]
+[connection signal="body_entered" from="2/Flag" to="2/Flag" method="_on_body_entered"]
+[connection signal="body_entered" from="3/Flag" to="3/Flag" method="_on_body_entered"]
+[connection signal="body_entered" from="4/Flag" to="4/Flag" method="_on_body_entered"]
+[connection signal="body_entered" from="5/Flag" to="5/Flag" method="_on_body_entered"]
+[connection signal="body_entered" from="6/GravityInverter" to="6/GravityInverter" method="_on_body_entered"]
+[connection signal="body_entered" from="6/GravityNormalizer" to="6/GravityNormalizer" method="_on_body_entered"]
+[connection signal="body_entered" from="6/Flag" to="6/Flag" method="_on_body_entered"]
+[connection signal="body_entered" from="7/GravityInverter" to="7/GravityInverter" method="_on_body_entered"]
+[connection signal="body_entered" from="7/@Area2D@30972" to="7/@Area2D@30972" method="_on_body_entered"]
+[connection signal="body_entered" from="7/GravityNormalizer" to="7/GravityNormalizer" method="_on_body_entered"]
+[connection signal="body_entered" from="7/@Area2D@30973" to="7/@Area2D@30973" method="_on_body_entered"]
+[connection signal="body_entered" from="7/@Area2D@30974" to="7/@Area2D@30974" method="_on_body_entered"]
+[connection signal="body_entered" from="7/@Area2D@30975" to="7/@Area2D@30975" method="_on_body_entered"]
+[connection signal="body_entered" from="7/@Area2D@30976" to="7/@Area2D@30976" method="_on_body_entered"]
+[connection signal="body_entered" from="7/@Area2D@30977" to="7/@Area2D@30977" method="_on_body_entered"]
+[connection signal="body_entered" from="7/@Area2D@30978" to="7/@Area2D@30978" method="_on_body_entered"]
+[connection signal="body_entered" from="7/Flag" to="7/Flag" method="_on_body_entered"]
+[connection signal="body_entered" from="8/Flag" to="8/Flag" method="_on_body_entered"]
+[connection signal="body_entered" from="8/GravityNormalizer" to="8/GravityNormalizer" method="_on_body_entered"]
+[connection signal="body_entered" from="8/@Area2D@30979" to="8/@Area2D@30979" method="_on_body_entered"]
+[connection signal="body_entered" from="8/@Area2D@30980" to="8/@Area2D@30980" method="_on_body_entered"]
+[connection signal="body_entered" from="8/@Area2D@30981" to="8/@Area2D@30981" method="_on_body_entered"]
+[connection signal="body_entered" from="8/@Area2D@30982" to="8/@Area2D@30982" method="_on_body_entered"]
+[connection signal="body_entered" from="8/@Area2D@30983" to="8/@Area2D@30983" method="_on_body_entered"]
+[connection signal="body_entered" from="8/GravityInverter" to="8/GravityInverter" method="_on_body_entered"]
+[connection signal="body_entered" from="8/@Area2D@30984" to="8/@Area2D@30984" method="_on_body_entered"]
+[connection signal="body_entered" from="9/Flag" to="9/Flag" method="_on_body_entered"]
+[connection signal="body_entered" from="10/GravityNormalizer" to="10/GravityNormalizer" method="_on_body_entered"]
+[connection signal="body_entered" from="10/@Area2D@30987" to="10/@Area2D@30987" method="_on_body_entered"]
+[connection signal="body_entered" from="10/@Area2D@30988" to="10/@Area2D@30988" method="_on_body_entered"]
+[connection signal="body_entered" from="10/@Area2D@30989" to="10/@Area2D@30989" method="_on_body_entered"]
+[connection signal="body_entered" from="10/@Area2D@30990" to="10/@Area2D@30990" method="_on_body_entered"]
+[connection signal="body_entered" from="10/@Area2D@30991" to="10/@Area2D@30991" method="_on_body_entered"]
+[connection signal="body_entered" from="10/@Area2D@30992" to="10/@Area2D@30992" method="_on_body_entered"]
+[connection signal="body_entered" from="10/GravityInverter" to="10/GravityInverter" method="_on_body_entered"]
+[connection signal="body_entered" from="10/@Area2D@30993" to="10/@Area2D@30993" method="_on_body_entered"]
+[connection signal="body_entered" from="10/@Area2D@30994" to="10/@Area2D@30994" method="_on_body_entered"]
+[connection signal="body_entered" from="10/@Area2D@30995" to="10/@Area2D@30995" method="_on_body_entered"]
+[connection signal="body_entered" from="10/@Area2D@30996" to="10/@Area2D@30996" method="_on_body_entered"]
+[connection signal="body_entered" from="10/@Area2D@30997" to="10/@Area2D@30997" method="_on_body_entered"]
+[connection signal="body_entered" from="10/@Area2D@30998" to="10/@Area2D@30998" method="_on_body_entered"]
+[connection signal="body_entered" from="10/@Area2D@30999" to="10/@Area2D@30999" method="_on_body_entered"]
+[connection signal="body_entered" from="10/Flag" to="10/Flag" method="_on_body_entered"]
+[connection signal="body_entered" from="10/@Area2D@31000" to="10/@Area2D@31000" method="_on_body_entered"]
+[connection signal="body_entered" from="10/@Area2D@31001" to="10/@Area2D@31001" method="_on_body_entered"]
+[connection signal="body_entered" from="10/@Area2D@31002" to="10/@Area2D@31002" method="_on_body_entered"]
+[connection signal="body_entered" from="10/@Area2D@31003" to="10/@Area2D@31003" method="_on_body_entered"]
+[connection signal="body_entered" from="10/@Area2D@31004" to="10/@Area2D@31004" method="_on_body_entered"]
+[connection signal="body_entered" from="10/@Area2D@31005" to="10/@Area2D@31005" method="_on_body_entered"]
+[connection signal="body_entered" from="10/@Area2D@31006" to="10/@Area2D@31006" method="_on_body_entered"]
+[connection signal="body_entered" from="10/@Area2D@31007" to="10/@Area2D@31007" method="_on_body_entered"]
+[connection signal="body_entered" from="11/Flag" to="11/Flag" method="_on_body_entered"]
+[connection signal="body_entered" from="12/Flag" to="12/Flag" method="_on_body_entered"]
+[connection signal="body_entered" from="Debug/Flag" to="Debug/Flag" method="_on_body_entered"]
+[connection signal="body_entered" from="Debug/@Area2D@31011" to="Debug/@Area2D@31011" method="_on_body_entered"]
+[connection signal="body_entered" from="Debug/@Area2D@31012" to="Debug/@Area2D@31012" method="_on_body_entered"]
