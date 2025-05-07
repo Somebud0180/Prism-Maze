@@ -103,6 +103,24 @@ var sfx_volume = 0.0:
 		sfx_volume = value
 		_config_save()
 
+var UPSCALE_STANDARD = [0, 1, 2]
+var UPSCALE_METAL = [0, 3, 4]
+var upscale_quality: int = 0:
+	set(value):
+		upscale_quality = value
+		_config_save()
+		if RenderingServer.get_current_rendering_driver_name() == "metal":
+			get_tree().root.scaling_3d_mode = UPSCALE_METAL[upscale_quality]
+		else:
+			get_tree().root.scaling_3d_mode = UPSCALE_STANDARD[upscale_quality]
+
+var RES_SCALE = [0.5, 0.59, 0.67, 0.77, 1.0]
+var resolution_scaling: int = 4:
+	set(value):
+		resolution_scaling = value
+		_config_save()
+		get_tree().root.scaling_3d_scale = RES_SCALE[resolution_scaling]
+
 var shadow_enabled: bool = true:
 	set(value):
 		shadow_enabled = value
@@ -427,6 +445,8 @@ func _config_load():
 	sfx_volume = config.get_value("Game", "sfx_volume", 0)
 	player_color = config.get_value("Game", "player_color", Color.WHITE)
 	
+	upscale_quality = config.get_value("Graphics", "upscale_quality", 0)
+	resolution_scaling = config.get_value("Graphics", "resolution_scaling", 4)
 	shadow_enabled = config.get_value("Graphics", "shadow_enabled", true)
 	shadow_quality = config.get_value("Graphics", "shadow_quality", 1)
 	sdfgi_enabled = config.get_value("Graphics", "sdfgi_enabled", false)
@@ -453,6 +473,8 @@ func _config_save():
 	config.set_value("Game", "player_color", player_color)
 	
 	# Store Graphics Settings
+	config.set_value("Graphics", "upscale_quality", upscale_quality)
+	config.set_value("Graphics", "resolution_scaling", resolution_scaling)
 	config.set_value("Graphics", "shadow_enabled", shadow_enabled)
 	config.set_value("Graphics", "shadow_quality", shadow_quality)
 	config.set_value("Graphics", "sdfgi_enabled", sdfgi_enabled)

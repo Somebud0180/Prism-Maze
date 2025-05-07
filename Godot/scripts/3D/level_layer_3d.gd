@@ -56,14 +56,20 @@ func _ready() -> void:
 	var copy_starting
 	if is_starting_on_tutorial:
 		var tutorial = _level_3d.get_child(0)
+		await get_tree().process_frame
 		copy_starting = tutorial.duplicate()
+		await get_tree().process_frame
 	else:
 		var starting = _level_3d.get_child(1)
+		await get_tree().process_frame
 		copy_starting = starting.duplicate()
+		await get_tree().process_frame
 	
 	add_child(copy_starting)
+	await get_tree().process_frame
 	level_collection.append(copy_starting)
 	get_child(get_child_count() - 1)._show()
+	await get_tree().process_frame
 	
 	starting_marker = level_collection[0].get_node("EntranceMarker")
 	
@@ -78,6 +84,7 @@ func _ready() -> void:
 	# Place level(s) in advance
 	for i in range(level_advance):
 		place_level_async()
+		await get_tree().process_frame
 	
 	emit_signal("finished_loading")
 

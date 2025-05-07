@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://djhc1a25dsp6l"
+uid="uid://ble5j6hrf4ad8"
 path="res://.godot/imported/Flag.glb-8de373e8c3854b2c34cf96f25d127f36.scn"
 
 [deps]
@@ -22,7 +22,7 @@ nodes/use_node_type_suffixes=true
 meshes/ensure_tangents=true
 meshes/generate_lods=true
 meshes/create_shadow_meshes=true
-meshes/light_baking=2
+meshes/light_baking=1
 meshes/lightmap_texel_size=0.2
 meshes/force_disable_compression=false
 skins/use_named_skins=true

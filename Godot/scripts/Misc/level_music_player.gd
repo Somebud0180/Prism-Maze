@@ -9,20 +9,18 @@ signal finish_tween_out
 @export var transition_type = 1
 
 var music_played = []
-var music = [load("res://resources/Sound/Level/Music/Level.wav"), load("res://resources/Sound/Level/Music/Level 2.wav"), load("res://resources/Sound/Level/Music/Level 3.wav"), load("res://resources/Sound/Level/Music/Robot.wav")]
+var level_music = load("res://resources/Sound/Level/Music/level_music.tres")
 var finish_music = load("res://resources/Sound/Level/Music/Finish.wav")
 var tween_music
 var music_volume = 0.0:
 	set(value):
 		music_volume = value
-		audio_player.volume_db = music_volume
 
-func _ready() -> void:
+func play() -> void:
 	# Get music volume and play a random song on start
 	var is_2d = get_parent().name == "Game"
 	music_volume = menu.music_volume
 	if !(is_2d and menu.in_game_3d):
-		await get_tree().process_frame
 		play_random_music()
 
 
@@ -51,21 +49,8 @@ func _on_finish_tween_out():
 
 
 func play_random_music():
-	# Pick a random theme song
-	randomize()
-	var chosen_index = randi() % music.size()
-	
-	# Check if song is already played, pick another if so.
-	while music_played.has(music[chosen_index]):
-		# Check if song played is already full, reset if so.
-		if music_played.size() == music.size():
-			music_played.clear()
-			
-		chosen_index = randi() % music.size()
-	
-	audio_player.stop()
-	audio_player.stream = music[chosen_index]
-	music_played.append(music[chosen_index])
+	audio_player.stream = level_music
+	audio_player.volume_db = music_volume
 	audio_player.play()
 
 

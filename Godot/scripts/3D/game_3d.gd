@@ -8,7 +8,9 @@ signal finished_loading
 
 func _ready() -> void:
 	set_shadow()
+	await get_tree().process_frame
 	set_shadow_quality()
+	await get_tree().process_frame
 	set_sdfgi()
 	
 	await get_tree().process_frame

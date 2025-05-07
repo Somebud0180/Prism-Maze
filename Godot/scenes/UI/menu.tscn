@@ -1,4 +1,4 @@
-[gd_scene load_steps=111 format=3 uid="uid://br2t4hanatnss"]
+[gd_scene load_steps=118 format=3 uid="uid://br2t4hanatnss"]
 
 [ext_resource type="Theme" uid="uid://bau50guyc4alk" path="res://resources/Theme/menu.tres" id="1_7yxt8"]
 [ext_resource type="Script" uid="uid://cnwd74ny2hf2q" path="res://scripts/UI/menu.gd" id="2_o131u"]
@@ -68,8 +68,12 @@
 [ext_resource type="Texture2D" uid="uid://nwb2lr2a4txn" path="res://resources/Controls/KBM/mouse_move.png" id="31_mfpu8"]
 [ext_resource type="Texture2D" uid="uid://doonkqj6nopsx" path="res://resources/Controls/Controllers/stick_r.png" id="32_wg8ic"]
 [ext_resource type="Script" uid="uid://0k7p4w7ux1me" path="res://scripts/UI/shadow.gd" id="33_fwia5"]
+[ext_resource type="Script" uid="uid://p3kbstb0gl7q" path="res://scripts/UI/upscaling_quality.gd" id="34_45s6n"]
+[ext_resource type="Texture2D" uid="uid://c7vhpk6vn57k3" path="res://resources/Menu/Misc/Upscale.png" id="35_i1l8p"]
 [ext_resource type="Texture2D" uid="uid://1vi7svyglmjo" path="res://resources/Controls/Controllers/dpad.png" id="35_s1ob8"]
+[ext_resource type="Script" uid="uid://f52xeorw4m1b" path="res://scripts/UI/scaling_quality.gd" id="36_flc68"]
 [ext_resource type="Script" uid="uid://omnets55d74i" path="res://scripts/UI/sdfgi.gd" id="37_d37cp"]
+[ext_resource type="Texture2D" uid="uid://cmc05loq3yld0" path="res://resources/Menu/Misc/Scale.png" id="37_lyy4v"]
 [ext_resource type="Script" uid="uid://yqys6tsenr4" path="res://scripts/UI/sdfgi_full.gd" id="39_30vkn"]
 [ext_resource type="Texture2D" uid="uid://bxs4apkjbgccb" path="res://resources/Menu/Misc/FineControl.png" id="43_3o1hb"]
 [ext_resource type="Texture2D" uid="uid://c1wrou21ncd3g" path="res://resources/Controls/KBM/keyboard_shift_icon.png" id="44_1qi2u"]
@@ -90,6 +94,7 @@
 [ext_resource type="Texture2D" uid="uid://dhpjo1nowmnp2" path="res://resources/Menu/Menu Icons/Infinity.png" id="79_7th0f"]
 [ext_resource type="Script" uid="uid://dr7vcm3fvsk6b" path="res://scripts/UI/game_mode_rect.gd" id="81_p4s11"]
 [ext_resource type="Texture2D" uid="uid://b6sw2xxgtwpje" path="res://resources/Menu/Menu Icons/Finite.png" id="82_3441g"]
+[ext_resource type="Script" uid="uid://1injk52wnwrl" path="res://scripts/UI/game_overlay.gd" id="88_lyy4v"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tsejx"]
 bg_color = Color(0.27451, 0.27451, 0.27451, 1)
@@ -347,6 +352,54 @@ tracks/18/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("GameOverlay/MenuButton:position")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(14, 14)]
+}
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("GameOverlay/GameModeRect:offset_top")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [18.0]
+}
+tracks/21/type = "value"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("GameOverlay/HBoxContainer:offset_bottom")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-48.0]
+}
+tracks/22/type = "value"
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/path = NodePath("GameOverlay/GameModeRect:offset_right")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [80.0]
 }
 
 [sub_resource type="Animation" id="Animation_gf7yk"]
@@ -805,6 +858,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [54.0, 18.0]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GameOverlay/GameModeRect:offset_right")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [80.0, 44.0]
+}
 
 [sub_resource type="Animation" id="Animation_h7g78"]
 resource_name = "mode_right"
@@ -821,6 +886,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(-2, -2),
 "update": 0,
 "values": [18.0, 54.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GameOverlay/GameModeRect:offset_right")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [44.0, 80.0]
 }
 
 [sub_resource type="Animation" id="Animation_4bbw6"]
@@ -1074,6 +1151,87 @@ tracks/3/keys = {
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_lyy4v"]
+resource_name = "hide_overlay"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GameOverlay/MenuButton:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [Vector2(14, 14), Vector2(14, -56)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GameOverlay/GameModeRect:offset_top")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [18.0, -52.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GameOverlay/HBoxContainer:offset_bottom")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [-48.0, 96.0]
+}
+
+[sub_resource type="Animation" id="Animation_qtbfk"]
+resource_name = "show_overlay"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GameOverlay/MenuButton:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [Vector2(14, -56), Vector2(14, 14)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GameOverlay/GameModeRect:offset_top")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [-52.0, 18.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GameOverlay/HBoxContainer:offset_bottom")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [96.0, -48.0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nyjex"]
 _data = {
 &"RESET": SubResource("Animation_8rgj6"),
@@ -1085,12 +1243,14 @@ _data = {
 &"hide_infinite": SubResource("Animation_7th0f"),
 &"hide_main": SubResource("Animation_ui7xe"),
 &"hide_main_invisible": SubResource("Animation_ifku1"),
+&"hide_overlay": SubResource("Animation_lyy4v"),
 &"hide_settings": SubResource("Animation_2ywoo"),
 &"mode_left": SubResource("Animation_p4s11"),
 &"mode_right": SubResource("Animation_h7g78"),
 &"show_controls": SubResource("Animation_4bbw6"),
 &"show_infinite": SubResource("Animation_crixo"),
 &"show_main": SubResource("Animation_y5frn"),
+&"show_overlay": SubResource("Animation_qtbfk"),
 &"show_settings": SubResource("Animation_antcs")
 }
 
@@ -1249,10 +1409,10 @@ custom_minimum_size = Vector2(600, 560)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 1600.0
-offset_top = 64.0
-offset_right = 1472.0
-offset_bottom = -64.0
+offset_left = 64.0
+offset_top = 800.0
+offset_right = -64.0
+offset_bottom = 672.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(576, 296)
@@ -1688,8 +1848,85 @@ layout_mode = 2
 theme_override_constants/separation = 16
 theme_override_styles/separator = ExtResource("13_tbd65")
 
+[node name="QualityPanel" type="Panel" parent="MenuLayer/Settings/TabContainer/3D/MarginContainer/3D"]
+custom_minimum_size = Vector2(0, 112)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuLayer/Settings/TabContainer/3D/MarginContainer/3D/QualityPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_top = 16.0
+offset_right = -32.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Upscaling" type="HBoxContainer" parent="MenuLayer/Settings/TabContainer/3D/MarginContainer/3D/QualityPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Upscaling_Quality" type="HSlider" parent="MenuLayer/Settings/TabContainer/3D/MarginContainer/3D/QualityPanel/VBoxContainer/Upscaling" node_paths=PackedStringArray("marker") groups=["Sliders"]]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 2.0
+rounded = true
+script = ExtResource("34_45s6n")
+marker = NodePath("VSeparator")
+
+[node name="VSeparator" type="VSeparator" parent="MenuLayer/Settings/TabContainer/3D/MarginContainer/3D/QualityPanel/VBoxContainer/Upscaling/Upscaling_Quality"]
+show_behind_parent = true
+layout_mode = 0
+offset_left = 0.5
+offset_top = 4.0
+offset_right = 14.5
+offset_bottom = 22.0
+theme_override_styles/separator = SubResource("StyleBoxFlat_tsejx")
+
+[node name="TextureRect" type="TextureRect" parent="MenuLayer/Settings/TabContainer/3D/MarginContainer/3D/QualityPanel/VBoxContainer/Upscaling"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("35_i1l8p")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Scaling" type="HBoxContainer" parent="MenuLayer/Settings/TabContainer/3D/MarginContainer/3D/QualityPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Scaling_Quality" type="HSlider" parent="MenuLayer/Settings/TabContainer/3D/MarginContainer/3D/QualityPanel/VBoxContainer/Scaling" node_paths=PackedStringArray("marker") groups=["Sliders"]]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 4.0
+value = 4.0
+rounded = true
+script = ExtResource("36_flc68")
+marker = NodePath("VSeparator")
+
+[node name="VSeparator" type="VSeparator" parent="MenuLayer/Settings/TabContainer/3D/MarginContainer/3D/QualityPanel/VBoxContainer/Scaling/Scaling_Quality"]
+show_behind_parent = true
+layout_mode = 0
+offset_left = 916.5
+offset_top = 4.0
+offset_right = 930.5
+offset_bottom = 22.0
+theme_override_styles/separator = SubResource("StyleBoxFlat_tsejx")
+
+[node name="TextureRect" type="TextureRect" parent="MenuLayer/Settings/TabContainer/3D/MarginContainer/3D/QualityPanel/VBoxContainer/Scaling"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("37_lyy4v")
+expand_mode = 1
+stretch_mode = 5
+
 [node name="ShadowPanel" type="Panel" parent="MenuLayer/Settings/TabContainer/3D/MarginContainer/3D"]
-custom_minimum_size = Vector2(0, 96)
+custom_minimum_size = Vector2(0, 112)
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MenuLayer/Settings/TabContainer/3D/MarginContainer/3D/ShadowPanel"]
@@ -1740,6 +1977,7 @@ offset_bottom = 22.0
 theme_override_styles/separator = SubResource("StyleBoxFlat_tsejx")
 
 [node name="TextureRect" type="TextureRect" parent="MenuLayer/Settings/TabContainer/3D/MarginContainer/3D/ShadowPanel/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -1798,6 +2036,107 @@ grow_horizontal = 0
 text = "X
 "
 
+[node name="Infinite" type="ColorRect" parent="MenuLayer"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.125911, 0.125911, 0.125911, 0.196078)
+
+[node name="Infinite" type="AspectRatioContainer" parent="MenuLayer/Infinite" node_paths=PackedStringArray("icon", "game_mode_rect", "animation_player")]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 256.0
+offset_top = 640.0
+offset_bottom = 128.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(512, 104)
+ratio = 3.0
+script = ExtResource("78_crixo")
+icon = NodePath("Infinite/VBoxContainer/TextureRect")
+game_mode_rect = NodePath("../../../GameOverlay/GameModeRect")
+animation_player = NodePath("../../../AnimationPlayer")
+
+[node name="Infinite" type="NinePatchRect" parent="MenuLayer/Infinite/Infinite"]
+layout_mode = 2
+focus_neighbor_bottom = NodePath("VBoxContainer/Infinite")
+focus_next = NodePath("VBoxContainer/Infinite")
+theme = ExtResource("1_7yxt8")
+texture = ExtResource("3_u30pp")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuLayer/Infinite/Infinite/Infinite"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="MenuLayer/Infinite/Infinite/Infinite/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+texture = ExtResource("17_003rt")
+stretch_mode = 5
+
+[node name="VSpacer" type="VSeparator" parent="MenuLayer/Infinite/Infinite/Infinite/VBoxContainer"]
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
+
+[node name="Normal" type="Button" parent="MenuLayer/Infinite/Infinite/Infinite/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+focus_neighbor_bottom = NodePath("../Infinite")
+focus_next = NodePath("../Infinite")
+icon = ExtResource("82_3441g")
+icon_alignment = 1
+expand_icon = true
+
+[node name="ButtonSpacer1" type="VSeparator" parent="MenuLayer/Infinite/Infinite/Infinite/VBoxContainer"]
+layout_mode = 2
+
+[node name="Infinite" type="Button" parent="MenuLayer/Infinite/Infinite/Infinite/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+focus_neighbor_top = NodePath("../Normal")
+focus_previous = NodePath("../Normal")
+icon = ExtResource("79_7th0f")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Exit Infipicker" type="Button" parent="MenuLayer/Infinite/Infinite/Infinite"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -48.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = 54.0
+grow_horizontal = 0
+focus_neighbor_left = NodePath("../VBoxContainer/ScrollContainer/VBoxContainer/Menu Controls")
+focus_neighbor_top = NodePath("../VBoxContainer/ScrollContainer/VBoxContainer/3D Interact Controls")
+focus_neighbor_bottom = NodePath("../VBoxContainer/ScrollContainer/VBoxContainer/Menu Controls")
+focus_next = NodePath("../VBoxContainer/ScrollContainer/VBoxContainer/Menu Controls")
+focus_previous = NodePath("../VBoxContainer/ScrollContainer/VBoxContainer/3D Interact Controls")
+text = "X
+"
+
 [node name="Controls" type="NinePatchRect" parent="MenuLayer"]
 visible = false
 custom_minimum_size = Vector2(600, 560)
@@ -1805,9 +2144,9 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 64.0
-offset_top = 960.0
+offset_top = 800.0
 offset_right = -64.0
-offset_bottom = 832.0
+offset_bottom = 672.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(576, 296)
@@ -2379,108 +2718,9 @@ focus_previous = NodePath("../VBoxContainer/ScrollContainer/VBoxContainer/3D Int
 text = "X
 "
 
-[node name="Infinite" type="ColorRect" parent="MenuLayer"]
-visible = false
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.125911, 0.125911, 0.125911, 0.196078)
-
-[node name="Infinite" type="AspectRatioContainer" parent="MenuLayer/Infinite" node_paths=PackedStringArray("icon", "game_mode_rect", "animation_player")]
-visible = false
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 256.0
-offset_top = 640.0
-offset_bottom = 128.0
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(512, 104)
-ratio = 3.0
-script = ExtResource("78_crixo")
-icon = NodePath("Infinite/VBoxContainer/TextureRect")
-game_mode_rect = NodePath("../../../GameOverlay/GameModeRect")
-animation_player = NodePath("../../../AnimationPlayer")
-
-[node name="Infinite" type="NinePatchRect" parent="MenuLayer/Infinite/Infinite"]
-layout_mode = 2
-focus_neighbor_bottom = NodePath("VBoxContainer/Infinite")
-focus_next = NodePath("VBoxContainer/Infinite")
-theme = ExtResource("1_7yxt8")
-texture = ExtResource("3_u30pp")
-patch_margin_left = 5
-patch_margin_top = 5
-patch_margin_right = 5
-patch_margin_bottom = 5
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MenuLayer/Infinite/Infinite/Infinite"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 16.0
-offset_top = 16.0
-offset_right = -16.0
-offset_bottom = -16.0
-grow_horizontal = 2
-grow_vertical = 2
-alignment = 1
-
-[node name="TextureRect" type="TextureRect" parent="MenuLayer/Infinite/Infinite/Infinite/VBoxContainer"]
-custom_minimum_size = Vector2(0, 40)
-layout_mode = 2
-texture = ExtResource("17_003rt")
-stretch_mode = 5
-
-[node name="VSpacer" type="VSeparator" parent="MenuLayer/Infinite/Infinite/Infinite/VBoxContainer"]
-custom_minimum_size = Vector2(0, 12)
-layout_mode = 2
-
-[node name="Normal" type="Button" parent="MenuLayer/Infinite/Infinite/Infinite/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-focus_neighbor_bottom = NodePath("../Infinite")
-focus_next = NodePath("../Infinite")
-icon = ExtResource("82_3441g")
-icon_alignment = 1
-expand_icon = true
-
-[node name="ButtonSpacer1" type="VSeparator" parent="MenuLayer/Infinite/Infinite/Infinite/VBoxContainer"]
-layout_mode = 2
-
-[node name="Infinite" type="Button" parent="MenuLayer/Infinite/Infinite/Infinite/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-focus_neighbor_top = NodePath("../Normal")
-focus_previous = NodePath("../Normal")
-icon = ExtResource("79_7th0f")
-icon_alignment = 1
-expand_icon = true
-
-[node name="Exit Infipicker" type="Button" parent="MenuLayer/Infinite/Infinite/Infinite"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -48.0
-offset_top = 16.0
-offset_right = -16.0
-offset_bottom = 54.0
-grow_horizontal = 0
-focus_neighbor_left = NodePath("../VBoxContainer/ScrollContainer/VBoxContainer/Menu Controls")
-focus_neighbor_top = NodePath("../VBoxContainer/ScrollContainer/VBoxContainer/3D Interact Controls")
-focus_neighbor_bottom = NodePath("../VBoxContainer/ScrollContainer/VBoxContainer/Menu Controls")
-focus_next = NodePath("../VBoxContainer/ScrollContainer/VBoxContainer/Menu Controls")
-focus_previous = NodePath("../VBoxContainer/ScrollContainer/VBoxContainer/3D Interact Controls")
-text = "X
-"
-
-[node name="GameOverlay" type="CanvasLayer" parent="."]
+[node name="GameOverlay" type="CanvasLayer" parent="." node_paths=PackedStringArray("animation_player")]
+script = ExtResource("88_lyy4v")
+animation_player = NodePath("../AnimationPlayer")
 
 [node name="MenuButton" type="Button" parent="GameOverlay"]
 unique_name_in_owner = true
@@ -2499,6 +2739,7 @@ icon_alignment = 1
 script = ExtResource("54_v00k6")
 
 [node name="GameModeRect" type="TextureRect" parent="GameOverlay" node_paths=PackedStringArray("animation_player")]
+anchors_preset = -1
 offset_left = 54.0
 offset_top = 18.0
 offset_right = 80.0
@@ -2510,7 +2751,7 @@ script = ExtResource("81_p4s11")
 animation_player = NodePath("../../AnimationPlayer")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="GameOverlay"]
-anchors_preset = 15
+anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 48.0
@@ -2614,13 +2855,15 @@ libraries = {
 [connection signal="pressed" from="MenuLayer/Main/Main/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
 [connection signal="toggled" from="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/WindowPanel/VBoxContainer/Resizable" to="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/WindowPanel/VBoxContainer/Resizable" method="_on_toggled"]
 [connection signal="toggled" from="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/WindowPanel/VBoxContainer/Fullscreen" to="MenuLayer/Settings/TabContainer/2D/MarginContainer/2D/WindowPanel/VBoxContainer/Fullscreen" method="_on_toggled"]
+[connection signal="value_changed" from="MenuLayer/Settings/TabContainer/3D/MarginContainer/3D/QualityPanel/VBoxContainer/Upscaling/Upscaling_Quality" to="MenuLayer/Settings/TabContainer/3D/MarginContainer/3D/QualityPanel/VBoxContainer/Upscaling/Upscaling_Quality" method="_on_value_changed"]
+[connection signal="value_changed" from="MenuLayer/Settings/TabContainer/3D/MarginContainer/3D/QualityPanel/VBoxContainer/Scaling/Scaling_Quality" to="MenuLayer/Settings/TabContainer/3D/MarginContainer/3D/QualityPanel/VBoxContainer/Scaling/Scaling_Quality" method="_on_value_changed"]
 [connection signal="toggled" from="MenuLayer/Settings/TabContainer/3D/MarginContainer/3D/ShadowPanel/VBoxContainer/Shadow" to="MenuLayer/Settings/TabContainer/3D/MarginContainer/3D/ShadowPanel/VBoxContainer/Shadow" method="_on_toggled"]
 [connection signal="value_changed" from="MenuLayer/Settings/TabContainer/3D/MarginContainer/3D/ShadowPanel/VBoxContainer/HBoxContainer/Shadow_Quality" to="MenuLayer/Settings/TabContainer/3D/MarginContainer/3D/ShadowPanel/VBoxContainer/HBoxContainer/Shadow_Quality" method="_on_value_changed"]
 [connection signal="toggled" from="MenuLayer/Settings/TabContainer/3D/MarginContainer/3D/LightingPanel/VBoxContainer/SDFGI" to="MenuLayer/Settings/TabContainer/3D/MarginContainer/3D/LightingPanel/VBoxContainer/SDFGI" method="_on_toggled"]
 [connection signal="toggled" from="MenuLayer/Settings/TabContainer/3D/MarginContainer/3D/LightingPanel/VBoxContainer/SDFGI_Full" to="MenuLayer/Settings/TabContainer/3D/MarginContainer/3D/LightingPanel/VBoxContainer/SDFGI_Full" method="_on_toggled"]
 [connection signal="pressed" from="MenuLayer/Settings/Exit Settings" to="." method="_on_exit_settings_pressed"]
-[connection signal="pressed" from="MenuLayer/Controls/Exit Controls" to="." method="_on_exit_controls_pressed"]
 [connection signal="pressed" from="MenuLayer/Infinite/Infinite/Infinite/VBoxContainer/Normal" to="MenuLayer/Infinite/Infinite" method="_on_normal_pressed"]
 [connection signal="pressed" from="MenuLayer/Infinite/Infinite/Infinite/VBoxContainer/Infinite" to="MenuLayer/Infinite/Infinite" method="_on_infinite_pressed"]
 [connection signal="pressed" from="MenuLayer/Infinite/Infinite/Infinite/Exit Infipicker" to="." method="_on_exit_infipicker_pressed"]
+[connection signal="pressed" from="MenuLayer/Controls/Exit Controls" to="." method="_on_exit_controls_pressed"]
 [connection signal="pressed" from="GameOverlay/MenuButton" to="GameOverlay/MenuButton" method="_on_pressed"]

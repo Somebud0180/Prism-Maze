@@ -1,0 +1,13 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=5 format=3 uid="uid://brlcy24st307y"]
+
+[ext_resource type="AudioStream" uid="uid://ut6a5bbwcpkx" path="res://resources/Sound/Level/Music/Level 2.wav" id="1_nthvh"]
+[ext_resource type="AudioStream" uid="uid://swbbtvd35lyc" path="res://resources/Sound/Level/Music/Level 3.wav" id="2_jwfdm"]
+[ext_resource type="AudioStream" uid="uid://wr8crctmpn2k" path="res://resources/Sound/Level/Music/Level 1.wav" id="3_wan3n"]
+[ext_resource type="AudioStream" uid="uid://2dtpofxi3m34" path="res://resources/Sound/Level/Music/Robot.wav" id="4_ea05k"]
+
+[resource]
+streams_count = 4
+stream_0/stream = ExtResource("1_nthvh")
+stream_1/stream = ExtResource("2_jwfdm")
+stream_2/stream = ExtResource("3_wan3n")
+stream_3/stream = ExtResource("4_ea05k")

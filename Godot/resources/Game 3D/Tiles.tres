@@ -1,6 +1,6 @@
 [gd_resource type="MeshLibrary" load_steps=17 format=4 uid="uid://dnpv55qmiew0c"]
 
-[ext_resource type="Texture2D" uid="uid://f07c5yfebyiv" path="res://resources/Game 3D/Model/Block_Floor.png" id="2_old4j"]
+[ext_resource type="Texture2D" uid="uid://bkrv1h40v6s7y" path="res://resources/Game 3D/Model/Block_Floor.png" id="2_old4j"]
 [ext_resource type="Shader" uid="uid://4aqe56ugo1jf" path="res://scripts/3D/glass.gdshader" id="2_s12y5"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ve8er"]

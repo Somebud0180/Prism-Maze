@@ -70,3 +70,5 @@ func _process(_delta) -> void:
 			var menu = get_node("/root/Menu")
 			menu.is_loading = false
 			emit_signal("load_finish")
+			for music_player in get_tree().get_nodes_in_group("LevelMusicPlayer"):
+						music_player.play()
