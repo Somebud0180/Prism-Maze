@@ -9,7 +9,9 @@ func _ready() -> void:
 func _on_body_entered(body: Node3D) -> void:
 	if body.name == "Player3D":
 		body.SPEED = 1.0
-
+		
+		if !Achievements.achievements["FINISH_3D"]:
+						Achievements.set_achievement("FINISH_3D")
 
 func _on_body_exited(body: Node3D) -> void:
 	if body.name == "Player3D":

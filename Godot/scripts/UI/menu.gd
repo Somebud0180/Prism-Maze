@@ -36,6 +36,8 @@ var _game_scene_3d = preload("res://scenes/3D/game_3d.tscn").instantiate()
 var game_scene_path = "res://scenes/2D/game.tscn"
 var game_scene_3d_path = "res://scenes/3D/game_3d.tscn"
 
+var cheat_used = false
+
 enum WINDOW_STATE { FULLSCREEN, WINDOWED }
 var window_state = WINDOW_STATE.WINDOWED:
 	set(value):
@@ -214,7 +216,6 @@ func _input(event):
 				animation_player.play("show_main")
 				_manage_popup(menu_state)
 				await animation_player.animation_finished
-				game_mode.manage_animation(menu_state)
 			STATE.MAIN:
 				if (!in_game and !in_game_3d) and menu_state == STATE.MAIN:
 					return
@@ -225,8 +226,6 @@ func _input(event):
 				
 				# Recover menu state
 				menu_state = last_state
-				game_mode.manage_animation(menu_state)
-				await animation_player.animation_finished
 				animation_player.play("hide_main_invisible")
 				_manage_popup(last_state)
 
@@ -250,8 +249,6 @@ func _on_play_pressed() -> void:
 		_hide_and_show("main", "infinite")
 	else:
 		menu_state = Menu.STATE.GAME
-		game_mode.manage_animation(menu_state)
-		await animation_player.animation_finished
 		animation_player.play("hide_main_invisible")
 		await animation_player.animation_finished
 		for music_player in get_tree().get_nodes_in_group("LevelMusicPlayer"):
@@ -266,8 +263,6 @@ func _on_play_3d_pressed() -> void:
 		_hide_and_show("main", "infinite")
 	else:
 		menu_state = Menu.STATE.GAME3D
-		game_mode.manage_animation(menu_state)
-		await animation_player.animation_finished
 		animation_player.play("hide_main_invisible")
 		await animation_player.animation_finished
 		for music_player in get_tree().get_nodes_in_group("LevelMusicPlayer"):
@@ -311,6 +306,7 @@ func _reset_game() -> void:
 	
 	character_life = 5
 	in_game = false
+	cheat_used = false
 	menu_state = STATE.MAIN
 	
 	if _game_scene != null:
@@ -335,6 +331,7 @@ func _reset_game_3d() -> void:
 	
 	character_life = 5
 	in_game_3d = false
+	cheat_used = false
 	menu_state = STATE.MAIN
 	
 	if _game_scene_3d != null:
@@ -395,6 +392,10 @@ func _check_health() -> void:
 			player = get_node("/root/Game/Player")
 		if in_game_3d:
 			player = get_node("/root/Game3D/Player3D")
+		
+		# Check if this is the first ever game reset
+		if !Achievements.achievements["FIRST_RESET"]:
+			Achievements.set_achievement("FIRST_RESET")
 		
 		menu_state = STATE.OVERLAY
 		player.hide_on_death()

@@ -22,6 +22,12 @@ config/windows_native_icon="res://resources/Icon/Icon.ico"
 
 LoadingManager="*res://scripts/UI/loading_manager.gd"
 LevelPopup="*res://scenes/UI/level_popup.tscn"
+Steamworks="*res://scripts/Steamworks/steamworks.gd"
+Achievements="*res://scripts/Misc/achievement_handler.gd"
+
+[debug]
+
+file_logging/enable_file_logging=true
 
 [display]
 

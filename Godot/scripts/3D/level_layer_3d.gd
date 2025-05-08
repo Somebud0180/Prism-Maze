@@ -48,6 +48,7 @@ var starting_marker: Node3D
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("load_level"):
+		menu.cheat_used = true
 		place_level_async()
 
 

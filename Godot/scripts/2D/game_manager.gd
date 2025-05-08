@@ -61,6 +61,7 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("load_level"):
 		if player.game_initialized:
+			menu.cheat_used = true
 			progress_level()
 
 
@@ -220,6 +221,9 @@ func progress_level() -> void:
 				if popup_scene != null:
 					popup_scene.output_timer(snapped(menu.time_elapsed, 0.01), level_times)
 					popup_scene.animation_player.play("show_finish")
+					
+					if !Achievements.achievements["FINISH_2D"]:
+						Achievements.set_achievement("FINISH_2D")
 
 
 func load_gen_maze() -> void:

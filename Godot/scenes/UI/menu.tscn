@@ -1,7 +1,8 @@
-[gd_scene load_steps=118 format=3 uid="uid://br2t4hanatnss"]
+[gd_scene load_steps=119 format=3 uid="uid://br2t4hanatnss"]
 
 [ext_resource type="Theme" uid="uid://bau50guyc4alk" path="res://resources/Theme/menu.tres" id="1_7yxt8"]
 [ext_resource type="Script" uid="uid://cnwd74ny2hf2q" path="res://scripts/UI/menu.gd" id="2_o131u"]
+[ext_resource type="Script" uid="uid://dyux8qsgmrnlx" path="res://scripts/Steamworks/steam_avatar.gd" id="3_qtbfk"]
 [ext_resource type="Texture2D" uid="uid://du1fhq083pt1n" path="res://resources/Menu/PatchRects/Menu.png" id="3_u30pp"]
 [ext_resource type="Script" uid="uid://pxmim2yta7rs" path="res://scripts/UI/main.gd" id="4_0cnb7"]
 [ext_resource type="Texture2D" uid="uid://d1vxa1f4hthke" path="res://resources/Menu/Title.png" id="5_7k0uf"]
@@ -401,6 +402,42 @@ tracks/22/keys = {
 "update": 0,
 "values": [80.0]
 }
+tracks/23/type = "value"
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/path = NodePath("MenuLayer/SteamAvatar:visible")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/24/type = "value"
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/path = NodePath("MenuLayer/SteamAvatar:modulate")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/25/type = "value"
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/path = NodePath("MenuLayer/SteamAvatar:scale")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_gf7yk"]
 resource_name = "RESET_controls"
@@ -528,6 +565,42 @@ tracks/6/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("MenuLayer/SteamAvatar:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("GameOverlay/GameModeRect:offset_left")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(-2),
+"update": 0,
+"values": [54.0]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("GameOverlay/GameModeRect:offset_right")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(-2),
+"update": 0,
+"values": [80.0]
 }
 
 [sub_resource type="Animation" id="Animation_ufe8k"]
@@ -784,10 +857,82 @@ tracks/3/path = NodePath("GameOverlay/MenuButton:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0),
+"times": PackedFloat32Array(0.2),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MenuLayer/SteamAvatar:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("MenuLayer/SteamAvatar:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("MenuLayer/SteamAvatar:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.9, 0.9)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("MenuLayer/Main:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("GameOverlay/GameModeRect:offset_left")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [18.0, 54.0]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("GameOverlay/GameModeRect:offset_right")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [44.0, 80.0]
 }
 
 [sub_resource type="Animation" id="Animation_lyy4v"]
@@ -1074,6 +1219,7 @@ tracks/5/keys = {
 resource_name = "show_main"
 length = 0.1
 step = 0.05
+capture_included = true
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -1133,10 +1279,82 @@ tracks/4/path = NodePath("GameOverlay/MenuButton:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0.1),
+"times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("MenuLayer/SteamAvatar:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("MenuLayer/SteamAvatar:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(0.5),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("MenuLayer/SteamAvatar:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [Vector2(0.9, 0.9), Vector2(1, 1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("MenuLayer/Main:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("GameOverlay/GameModeRect:offset_left")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(-2),
+"update": 2,
+"values": [18.0]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("GameOverlay/GameModeRect:offset_right")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(-2),
+"update": 2,
+"values": [44.0]
 }
 
 [sub_resource type="Animation" id="Animation_qtbfk"]
@@ -1280,8 +1498,28 @@ health_bar = NodePath("GameOverlay/HBoxContainer/Health/Bar")
 layer = 2
 follow_viewport_scale = 0.05
 
+[node name="SteamAvatar" type="TextureButton" parent="MenuLayer"]
+custom_minimum_size = Vector2(64, 64)
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -96.0
+offset_top = 32.0
+offset_right = -32.0
+offset_bottom = 96.0
+grow_horizontal = 0
+pivot_offset = Vector2(32, 32)
+size_flags_horizontal = 8
+size_flags_vertical = 8
+focus_neighbor_left = NodePath("../Main/Main/VBoxContainer/Play3D")
+focus_neighbor_top = NodePath("../Main/Main/VBoxContainer/Quit")
+focus_neighbor_bottom = NodePath("../Main/Main/VBoxContainer/Play3D")
+focus_next = NodePath("../Main/Main/VBoxContainer/Play3D")
+focus_previous = NodePath("../Main/Main/VBoxContainer/Quit")
+script = ExtResource("3_qtbfk")
+
 [node name="Main" type="AspectRatioContainer" parent="MenuLayer"]
-anchors_preset = 15
+anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 32.0
@@ -1291,6 +1529,7 @@ offset_bottom = -32.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(608, 328)
+mouse_filter = 2
 
 [node name="Main" type="NinePatchRect" parent="MenuLayer/Main"]
 layout_mode = 2
@@ -1330,10 +1569,9 @@ layout_mode = 2
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 size_flags_vertical = 3
-focus_neighbor_top = NodePath("../Quit")
-focus_neighbor_bottom = NodePath("../Play")
-focus_next = NodePath("../Play")
-focus_previous = NodePath("../Quit")
+focus_neighbor_top = NodePath("../../../../SteamAvatar")
+focus_neighbor_right = NodePath("../../../../SteamAvatar")
+focus_previous = NodePath("../../../../SteamAvatar")
 icon = ExtResource("7_7oqtn")
 icon_alignment = 1
 expand_icon = true
@@ -1347,10 +1585,6 @@ layout_mode = 2
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 size_flags_vertical = 3
-focus_neighbor_top = NodePath("../Play3D")
-focus_neighbor_bottom = NodePath("../Settings")
-focus_next = NodePath("../Settings")
-focus_previous = NodePath("../Play3D")
 icon = ExtResource("6_jcwtk")
 icon_alignment = 1
 expand_icon = true
@@ -1364,10 +1598,6 @@ layout_mode = 2
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 size_flags_vertical = 3
-focus_neighbor_top = NodePath("../Play")
-focus_neighbor_bottom = NodePath("../Controls")
-focus_next = NodePath("../Controls")
-focus_previous = NodePath("../Play")
 icon = ExtResource("8_1anaf")
 icon_alignment = 1
 expand_icon = true
@@ -1379,10 +1609,6 @@ layout_mode = 2
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 size_flags_vertical = 3
-focus_neighbor_top = NodePath("../Settings")
-focus_neighbor_bottom = NodePath("../Quit")
-focus_next = NodePath("../Quit")
-focus_previous = NodePath("../Settings")
 icon = ExtResource("9_xlwes")
 icon_alignment = 1
 expand_icon = true
@@ -1394,10 +1620,7 @@ layout_mode = 2
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 size_flags_vertical = 3
-focus_neighbor_top = NodePath("../Controls")
 focus_neighbor_bottom = NodePath("../Play3D")
-focus_next = NodePath("../Play3D")
-focus_previous = NodePath("../Controls")
 icon = ExtResource("10_fqtlv")
 icon_alignment = 1
 expand_icon = true
@@ -1416,6 +1639,7 @@ offset_bottom = 672.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(576, 296)
+mouse_filter = 0
 theme = ExtResource("1_7yxt8")
 texture = ExtResource("11_mfpu8")
 region_rect = Rect2(0, 0, 32, 32)
@@ -2100,8 +2324,6 @@ layout_mode = 2
 [node name="Normal" type="Button" parent="MenuLayer/Infinite/Infinite/Infinite/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-focus_neighbor_bottom = NodePath("../Infinite")
-focus_next = NodePath("../Infinite")
 icon = ExtResource("82_3441g")
 icon_alignment = 1
 expand_icon = true
@@ -2112,8 +2334,6 @@ layout_mode = 2
 [node name="Infinite" type="Button" parent="MenuLayer/Infinite/Infinite/Infinite/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-focus_neighbor_top = NodePath("../Normal")
-focus_previous = NodePath("../Normal")
 icon = ExtResource("79_7th0f")
 icon_alignment = 1
 expand_icon = true
@@ -2129,11 +2349,6 @@ offset_top = 16.0
 offset_right = -16.0
 offset_bottom = 54.0
 grow_horizontal = 0
-focus_neighbor_left = NodePath("../VBoxContainer/ScrollContainer/VBoxContainer/Menu Controls")
-focus_neighbor_top = NodePath("../VBoxContainer/ScrollContainer/VBoxContainer/3D Interact Controls")
-focus_neighbor_bottom = NodePath("../VBoxContainer/ScrollContainer/VBoxContainer/Menu Controls")
-focus_next = NodePath("../VBoxContainer/ScrollContainer/VBoxContainer/Menu Controls")
-focus_previous = NodePath("../VBoxContainer/ScrollContainer/VBoxContainer/3D Interact Controls")
 text = "X
 "
 
@@ -2150,6 +2365,7 @@ offset_bottom = 672.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(576, 296)
+mouse_filter = 0
 theme = ExtResource("1_7yxt8")
 texture = ExtResource("11_mfpu8")
 region_rect = Rect2(0, 0, 32, 32)
@@ -2902,6 +3118,7 @@ libraries = {
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
 [connection signal="tree_exiting" from="." to="." method="_on_tree_exiting"]
+[connection signal="pressed" from="MenuLayer/SteamAvatar" to="MenuLayer/SteamAvatar" method="_on_pressed"]
 [connection signal="pressed" from="MenuLayer/Main/Main/VBoxContainer/Play3D" to="." method="_on_play_3d_pressed"]
 [connection signal="pressed" from="MenuLayer/Main/Main/VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="MenuLayer/Main/Main/VBoxContainer/Settings" to="." method="_on_settings_pressed"]

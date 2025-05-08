@@ -7,3 +7,5 @@ func _ready() -> void:
 	if platform == "Web" or platform == "iOS":
 		$VBoxContainer/ButtonSpacer4.visible = false
 		$VBoxContainer/Quit.visible = false
+		$VBoxContainer/Play3D.focus_neighbor_top = "../Controls"
+		$VBoxContainer/Controls.focus_neighbor_bottom = "../Play3D"

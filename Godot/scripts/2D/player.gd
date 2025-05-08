@@ -110,6 +110,7 @@ func _physics_process(delta: float) -> void:
 		
 		# Invert the gravity.
 		if Input.is_action_just_pressed("invert_gravity"):
+			menu.cheat_used = true
 			if gravity_direction == 1:
 				gravity_direction = -1
 			else:
