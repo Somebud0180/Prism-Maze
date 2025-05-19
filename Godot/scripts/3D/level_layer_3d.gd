@@ -24,7 +24,7 @@ signal finished_loading
 @export var level_amount: int = 22
 
 ## Spawn this amount of levels in advance
-@export var level_advance: int = 1
+@export var level_advance: int = 2
 
 ## Cull levels past this amount
 @export var level_cull_enabled: bool = false

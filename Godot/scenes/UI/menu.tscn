@@ -1500,7 +1500,7 @@ follow_viewport_scale = 0.05
 
 [node name="SteamAvatar" type="TextureButton" parent="MenuLayer"]
 custom_minimum_size = Vector2(64, 64)
-anchors_preset = -1
+anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -96.0
@@ -1519,7 +1519,7 @@ focus_previous = NodePath("../Main/Main/VBoxContainer/Quit")
 script = ExtResource("3_qtbfk")
 
 [node name="Main" type="AspectRatioContainer" parent="MenuLayer"]
-anchors_preset = -1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 32.0
@@ -3117,6 +3117,7 @@ libraries = {
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
+[connection signal="tree_entered" from="." to="." method="_on_tree_entered"]
 [connection signal="tree_exiting" from="." to="." method="_on_tree_exiting"]
 [connection signal="pressed" from="MenuLayer/SteamAvatar" to="MenuLayer/SteamAvatar" method="_on_pressed"]
 [connection signal="pressed" from="MenuLayer/Main/Main/VBoxContainer/Play3D" to="." method="_on_play_3d_pressed"]

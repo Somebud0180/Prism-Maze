@@ -168,6 +168,9 @@ func _process(delta: float) -> void:
 
 
 func _ready() -> void:
+	# Connect controller detection
+	Input.connect("joy_connection_changed", _joy_connection_changed)
+	
 	# Pick a random theme song
 	randomize()
 	var chosen_index = randi() % main_theme.size()
@@ -282,6 +285,7 @@ func _on_controls_pressed() -> void:
 
 
 func _on_quit_pressed() -> void:
+	get_tree().root.propagate_notification(NOTIFICATION_WM_CLOSE_REQUEST)
 	get_tree().quit()
 
 
@@ -499,5 +503,25 @@ func fade_music_in():
 	tween_music.play()
 
 
+func _joy_connection_changed(id,connected):
+	print(str(id)+" "+str(connected))
+	if !connected:
+		match menu_state:
+				STATE.GAME, STATE.GAME3D, STATE.OVERLAY:
+					# Pause any level music player, if any
+					for music_player in get_tree().get_nodes_in_group("LevelMusicPlayer"):
+						music_player.fade_music_out()
+					
+					last_state = menu_state
+					menu_state = STATE.MAIN
+					animation_player.play("show_main")
+					_manage_popup(menu_state)
+					await animation_player.animation_finished
+
+
 func _on_tree_exiting() -> void:
 	_config_save()
+
+
+func _on_tree_entered() -> void:
+	Achievements.connect_achievements()

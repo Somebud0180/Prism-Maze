@@ -8,18 +8,25 @@
 
 config_version=5
 
+[animation]
+
+warnings/check_invalid_track_paths=false
+
 [application]
 
-config/name="Prism Maze"
+config/name="Prism"
 config/version="0.2"
-run/main_scene="res://scenes/UI/menu.tscn"
+run/main_scene="uid://dn8dtlhkn2ijw"
 config/features=PackedStringArray("4.4", "Forward Plus")
+boot_splash/image="uid://bewrpq3x40a3q"
 config/icon="uid://bpt3r6n3tg3nb"
 config/macos_native_icon="res://resources/Icon/Icon.icns"
 config/windows_native_icon="res://resources/Icon/Icon.ico"
 
 [autoload]
 
+gd="*res://addons/godot-action/utils_gd_action.tscn"
+sp="*res://addons/awesome_splash/utils_splash.gd"
 LoadingManager="*res://scripts/UI/loading_manager.gd"
 LevelPopup="*res://scenes/UI/level_popup.tscn"
 Steamworks="*res://scripts/Steamworks/steamworks.gd"
@@ -38,6 +45,10 @@ window/size/resizable=false
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 window/vsync/vsync_mode=2
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/awesome_splash/plugin.cfg", "res://addons/godot-action/plugin.cfg")
 
 [global_group]
 

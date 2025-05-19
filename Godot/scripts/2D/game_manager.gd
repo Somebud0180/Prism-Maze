@@ -209,6 +209,7 @@ func progress_level() -> void:
 			if menu.menu_state == Menu.STATE.GAMEMIXED:
 				var _level = get_node("../../../")
 				var _layer = get_node("../../../../")
+				print("You finished the level!")
 				_layer.current_level += 1
 				_layer.place_level_async()
 				_level.open_door()

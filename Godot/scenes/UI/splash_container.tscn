@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://dn8dtlhkn2ijw"]
+
+[ext_resource type="Script" uid="uid://bs11t1er7g681" path="res://addons/awesome_splash/core/SplashContainer.gd" id="1_vuf5p"]
+[ext_resource type="PackedScene" uid="uid://br2t4hanatnss" path="res://scenes/UI/menu.tscn" id="2_qmrht"]
+[ext_resource type="PackedScene" uid="uid://dfhwfsoinmcxh" path="res://src/demo_collection/circle_jump_02/splash_screen.tscn" id="3_2558p"]
+
+[node name="SplashContainer" type="Node2D"]
+script = ExtResource("1_vuf5p")
+move_to_scene = ExtResource("2_qmrht")
+
+[node name="SplashCircleJump02" parent="." instance=ExtResource("3_2558p")]
+logo_path = "uid://by3f6o771jqh"
+background_color = Color(0.141176, 0.141176, 0.141176, 1)
+is_skip_appear_transition = true

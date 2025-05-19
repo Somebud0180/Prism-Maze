@@ -19,14 +19,12 @@ func _ready() -> void:
 	if is_steam_enabled():
 		print("Running Steamworks Functions")
 		app_id = int(OS.get_environment("SteamAppId"))
-		steam_id = Steam.getSteamID()
-		Achievements.connect_achievements()
-		steam_avatar = get_node("/root/Menu/MenuLayer/SteamAvatar")
-		steam_avatar.connect_avatar()
+		steam_id = steam_api.getSteamID()
 
 
 func _process(_delta: float) -> void:
-	Steam.run_callbacks()
+	if is_steam_enabled():
+		steam_api.run_callbacks()
 
 
 # Initialize Steam

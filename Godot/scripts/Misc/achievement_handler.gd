@@ -1,6 +1,6 @@
 extends Node
 
-@onready var menu = get_node("/root/Menu")
+var menu
 
 var achievements = {
 	"EARLY_DEATH": false,
@@ -20,14 +20,14 @@ func set_achievement(this_achievement: String) -> void:
 	
 	achievements[this_achievement] = true
 	
-	if not Steam.setAchievement(this_achievement):
+	if not Steamworks.steam_api.setAchievement(this_achievement):
 		print("Failed to set achievement: %s" % this_achievement)
 		return
 	
 	print("Set acheivement: %s" % this_achievement)
 	
 	# Pass the value to Steam then fire it
-	if not Steam.storeStats():
+	if not Steamworks.steam_api.storeStats():
 		print("Failed to store data on Steam, should be stored locally")
 		return
 	
@@ -35,8 +35,10 @@ func set_achievement(this_achievement: String) -> void:
 
 
 func connect_achievements() -> void:
+	menu = get_node("/root/Menu")
+	
 	if Steamworks.is_steam_enabled():
-		Steam.current_stats_received.connect(_on_steam_stats_ready)
+		Steamworks.steam_api.current_stats_received.connect(_on_steam_stats_ready)
 
 
 func _on_steam_stats_ready(this_game: int, this_result: int, this_user: int) -> void:
@@ -51,7 +53,7 @@ func _on_steam_stats_ready(this_game: int, this_result: int, this_user: int) -> 
 		print("Stats are for a different app ID: %s" % this_game)
 		return
 	
-	if this_result != Steam.RESULT_OK:
+	if this_result != Steamworks.steam_api.RESULT_OK:
 		print("Failed to get stats and achievements from Steam: %s" % this_result)
 		return
 	
@@ -61,7 +63,7 @@ func _on_steam_stats_ready(this_game: int, this_result: int, this_user: int) -> 
 # Process achievements
 func load_steam_achievements() -> void:
 	for this_achievement in achievements.keys():
-		var steam_achievement: Dictionary = Steam.getAchievement(this_achievement)
+		var steam_achievement: Dictionary = Steamworks.steam_api.getAchievement(this_achievement)
 		
 		# The set_achievement function is below in the Setting Achievements section
 		if not this_achievement['ret']:

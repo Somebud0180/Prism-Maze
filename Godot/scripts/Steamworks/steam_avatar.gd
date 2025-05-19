@@ -2,21 +2,15 @@ extends TextureButton
 
 func _ready() -> void:
 	if !Steamworks.is_steam_enabled():
-		hide()
-		$"../Main/Main/VBoxContainer/Quit".focus_neighbor_right = ""
-		$"../Main/Main/VBoxContainer/Quit".focus_next = "../Play3D"
+		queue_free()
+	else:
+		Steamworks.steam_api.getPlayerAvatar(2, Steamworks.steam_id)
+		Steamworks.steam_api.avatar_loaded.connect(_on_loaded_avatar)
 
 
 func _on_pressed() -> void:
 	if Steamworks.is_steam_enabled():
-		Steam.activateGameOverlay()
-
-
-# Called when the node enters the scene tree for the first time.
-func connect_avatar() -> void:
-	if Steamworks.is_steam_enabled():
-		Steam.getPlayerAvatar(2, Steamworks.steam_id)
-		Steam.avatar_loaded.connect(_on_loaded_avatar)
+		Steamworks.steam_api.activateGameOverlay()
 
 
 func _on_loaded_avatar(user_id: int, avatar_size: int, avatar_buffer: PackedByteArray) -> void:
