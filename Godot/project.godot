@@ -35,6 +35,7 @@ Achievements="*res://scripts/Misc/achievement_handler.gd"
 [debug]
 
 file_logging/enable_file_logging=true
+gdscript/warnings/integer_division=0
 
 [display]
 
@@ -48,7 +49,7 @@ window/vsync/vsync_mode=2
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/awesome_splash/plugin.cfg", "res://addons/godot-action/plugin.cfg")
+enabled=PackedStringArray("res://addons/addons/ImportCleaner/plugin.cfg", "res://addons/awesome_splash/plugin.cfg", "res://addons/godot-action/plugin.cfg")
 
 [global_group]
 

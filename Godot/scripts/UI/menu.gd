@@ -16,8 +16,9 @@ const _VirtualControllerHelper = preload("res://scripts/Misc/virtual_controller_
 @onready var settings_node = %Settings
 @onready var menu_button = %MenuButton
 
-@export var transition_duration = 0.5
-@export var transition_type = 1
+# Music Player
+var transition_duration = 0.5
+var transition_type = 1
 
 var main_theme = [load("res://resources/Sound/Music/Main.wav"), load("res://resources/Sound/Music/Main 2.wav")]
 var tween_music
@@ -442,10 +443,7 @@ func _config_load():
 		return
 	
 	# Restore configuration
-	DisplayServer.window_set_position(config.get_value("Game", "window_position", Vector2i(0, 0)))
 	resizable = config.get_value("Game", "resizable", false)
-	resolution = config.get_value("Game", "window_size", Vector2i(1280, 720))
-	fullscreen = config.get_value("Game", "fullscreen", false)
 	music_volume = config.get_value("Game", "music_volume", 0)
 	sfx_volume = config.get_value("Game", "sfx_volume", 0)
 	player_color = config.get_value("Game", "player_color", Color.WHITE)
@@ -503,8 +501,7 @@ func fade_music_in():
 	tween_music.play()
 
 
-func _joy_connection_changed(id,connected):
-	print(str(id)+" "+str(connected))
+func _joy_connection_changed(_id,connected):
 	if !connected:
 		match menu_state:
 				STATE.GAME, STATE.GAME3D, STATE.OVERLAY:

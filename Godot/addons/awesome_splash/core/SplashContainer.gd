@@ -10,6 +10,7 @@ class_name SplashContainer
 
 func _ready():
 	super._ready()
+	_config_load()
 	if not Engine.is_editor_hint():
 		finished_all.connect(self._on_finished_all_splash_screen)
 		start_play_list_screen()
@@ -30,3 +31,21 @@ func _on_finished_all_splash_screen():
 		get_tree().change_scene_to_packed(move_to_scene)
 	else:
 		push_error("Please set move_to_scene in SplashContainer")
+
+
+func _config_load():
+	var config = ConfigFile.new()
+	
+	# Load data from a file.
+	var err = config.load("user://settings.cfg")
+	
+	# If the file didn't load, ignore it.
+	if err != OK:
+		return
+	
+	# Restore window configuration
+	if config.get_value("Game", "fullscreen", false):
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+	
+	DisplayServer.window_set_position(config.get_value("Game", "window_position", Vector2i(0, 0)))
+	DisplayServer.window_set_size(config.get_value("Game", "window_size", Vector2i(1280, 720)))
