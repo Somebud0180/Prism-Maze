@@ -41,6 +41,9 @@ func _on_resolution_item_selected(index: int) -> void:
 
 
 func set_resolution() -> void:
+	if menu.fullscreen:
+		return
+	
 	# Set window mode to window
 	# Workaround for macOS not allowing resizing from native resolution
 	DisplayServer.window_set_size(menu.resolution)

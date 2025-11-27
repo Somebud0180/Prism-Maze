@@ -93,6 +93,14 @@ var resolution = Vector2i(1280, 720):
 		resolution = value
 		_config_save()
 
+var text_enabled = false:
+	set(value):
+		text_enabled = value
+		_config_save()
+		_manage_buttons()
+		_manage_play_buttons()
+		_manage_labels()
+
 var music_volume = 0.0:
 	set(value):
 		music_volume = value
@@ -140,7 +148,7 @@ var shadow_quality: int = 1:
 		if game_3d:
 			game_3d.set_shadow_quality()
 
-var sdfgi_enabled: bool = true:
+var sdfgi_enabled: bool = false:
 	set(value):
 		sdfgi_enabled = value
 		_config_save()
@@ -422,6 +430,11 @@ func _manage_sliders():
 		slider._update_slider()
 
 
+func _manage_labels():
+	for button in get_tree().get_nodes_in_group("Labels"):
+		button._update_label()
+
+
 func _manage_buttons():
 	for button in get_tree().get_nodes_in_group("Buttons"):
 		button._update_button()
@@ -444,6 +457,8 @@ func _config_load():
 	
 	# Restore configuration
 	resizable = config.get_value("Game", "resizable", false)
+	fullscreen = config.get_value("Game", "fullscreen", false)
+	text_enabled = config.get_value("Game", "text_enabled", false)
 	music_volume = config.get_value("Game", "music_volume", 0)
 	sfx_volume = config.get_value("Game", "sfx_volume", 0)
 	player_color = config.get_value("Game", "player_color", Color.WHITE)
@@ -471,6 +486,7 @@ func _config_save():
 	config.set_value("Game", "window_position", DisplayServer.window_get_position())
 	config.set_value("Game", "window_size", resolution)
 	config.set_value("Game", "fullscreen", fullscreen)
+	config.set_value("Game", "text_enabled", text_enabled)
 	config.set_value("Game", "music_volume", music_volume)
 	config.set_value("Game", "sfx_volume", sfx_volume)
 	config.set_value("Game", "player_color", player_color)
@@ -504,7 +520,11 @@ func fade_music_in():
 func _joy_connection_changed(_id,connected):
 	if !connected:
 		match menu_state:
-				STATE.GAME, STATE.GAME3D, STATE.OVERLAY:
+				STATE.GAME, STATE.GAME3D, STATE.GAMEMIXED, STATE.OVERLAY:
+					if STATE.GAMEMIXED:
+						for viewport in get_tree().get_nodes_in_group("Viewports"):
+							viewport.disconnect_viewport()
+					
 					# Pause any level music player, if any
 					for music_player in get_tree().get_nodes_in_group("LevelMusicPlayer"):
 						music_player.fade_music_out()

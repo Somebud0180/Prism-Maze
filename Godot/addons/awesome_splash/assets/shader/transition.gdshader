@@ -25,10 +25,10 @@ vec4 diamond_transition(vec4 txt, vec4 fade_color, vec2 uv, vec2 fragcoord, floa
 	float diamondPixelSize = size;
 	float xFraction = fract(fragcoord.x / diamondPixelSize);
 	float yFraction = fract(fragcoord.y / diamondPixelSize);
-    
+
 	float xDistance = abs(xFraction - 0.5);
 	float yDistance = abs(yFraction - 0.5);
-    
+
 	if (xDistance + yDistance + uv.y > v * 3.0) {
 		return txt;
 	}
@@ -52,11 +52,11 @@ vec4 blur(vec2 uv, sampler2D source, float intensity)
 	return result;
 }
 
-void fragment() 
+void fragment()
 {
 	vec4 txt = texture(TEXTURE, UV);
 	vec4 output_color = txt;
-	
+
 	if (transition_type == 1) // FADE
 	{
 		output_color = fade_transition(txt, color, process_value);
@@ -87,6 +87,6 @@ void fragment()
 		pixel_uv = mix(UV, pixel_uv, vec2(process_value));
 		output_color = texture(TEXTURE, pixel_uv);
 	}
-	
+
 	COLOR = output_color;
 }

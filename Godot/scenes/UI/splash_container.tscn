@@ -6,7 +6,12 @@
 
 [node name="SplashContainer" type="Node2D"]
 script = ExtResource("1_vuf5p")
+custom_node/type = 0
+custom_node/default_time = 1.0
+skip/type = 2
 move_to_scene = ExtResource("2_qmrht")
+transition_time = 0.3
+fade_color = Color(0.141176, 0.141176, 0.141176, 0.996078)
 
 [node name="SplashCircleJump02" parent="." instance=ExtResource("3_2558p")]
 logo_path = "uid://by3f6o771jqh"

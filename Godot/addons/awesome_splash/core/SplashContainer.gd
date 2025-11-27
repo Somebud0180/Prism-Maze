@@ -22,7 +22,8 @@ func _ready():
 func _skip_awe_splash_by_event(event) -> bool:
 	return event.is_pressed() \
 		and ((event is InputEventMouseButton and event.button_index == 1) \
-		or (event is InputEventScreenTouch))
+		or (event is InputEventScreenTouch)) \
+		or (event is InputEventJoypadButton)
 
 
 # Todo: move to other screen here:

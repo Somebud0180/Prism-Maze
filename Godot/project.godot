@@ -17,7 +17,7 @@ warnings/check_invalid_track_paths=false
 config/name="Prism"
 config/version="0.2"
 run/main_scene="uid://dn8dtlhkn2ijw"
-config/features=PackedStringArray("4.4", "Forward Plus")
+config/features=PackedStringArray("4.6", "Forward Plus")
 boot_splash/image="uid://bewrpq3x40a3q"
 config/icon="uid://bpt3r6n3tg3nb"
 config/macos_native_icon="res://resources/Icon/Icon.icns"
@@ -49,7 +49,7 @@ window/vsync/vsync_mode=2
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/addons/ImportCleaner/plugin.cfg", "res://addons/awesome_splash/plugin.cfg", "res://addons/godot-action/plugin.cfg")
+enabled=PackedStringArray("res://addons/awesome_splash/plugin.cfg", "res://addons/godot-action/plugin.cfg")
 
 [global_group]
 
@@ -62,6 +62,8 @@ Sliders=""
 LevelMusicPlayer=""
 Buttons=""
 PlayButtons=""
+Viewports=""
+Labels=""
 
 [input]
 

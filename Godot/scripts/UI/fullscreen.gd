@@ -4,9 +4,20 @@ extends CheckButton
 @onready var settings = %Settings
 @onready var resolution_picker = %Resolution
 
+var stored_text = ""
+
+func _ready() -> void:
+	stored_text = text
+
 func _update_button() -> void:
 	button_pressed = menu.fullscreen
-
+	
+	if menu.text_enabled:
+		text = stored_text
+		icon_alignment = HORIZONTAL_ALIGNMENT_LEFT
+	else:
+		text = ""
+		icon_alignment = HORIZONTAL_ALIGNMENT_CENTER
 
 func _on_toggled(toggled_on: bool) -> void:
 	if toggled_on:

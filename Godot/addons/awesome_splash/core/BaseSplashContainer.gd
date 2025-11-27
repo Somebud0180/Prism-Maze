@@ -16,7 +16,7 @@ signal finished
 signal finished_all
 
 var skip_custom_screen_type: int = 0
-var skip_screen_type: int = 0
+var skip_screen_type: int = 2
 
 var current_screen
 var list_screen = []

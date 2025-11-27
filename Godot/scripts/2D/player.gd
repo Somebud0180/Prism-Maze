@@ -1,6 +1,7 @@
 extends CharacterBody2D
 class_name Player2D
 
+@warning_ignore("unused_signal")
 signal player_loaded
 
 const speed = 200.0

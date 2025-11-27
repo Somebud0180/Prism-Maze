@@ -9,6 +9,13 @@ var player_3d
 
 var is_in_area = false
 
+func disconnect_viewport() -> void:
+	if menu.menu_state == Menu.STATE.GAMEMIXED:
+		menu.menu_state = Menu.STATE.GAME3D
+		player_3d.is_in_subviewport = false
+		player_3d._handle_input_mode_switch()
+
+
 func _ready() -> void:
 	viewport = get_node("../../SubViewport")
 	level = get_parent().get_parent()

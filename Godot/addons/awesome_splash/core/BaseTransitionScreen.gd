@@ -21,8 +21,8 @@ var blur_intensity: float = 4.0
 var diamond_size: float = 32.0
 var min_pixel: float = 1.0
 var max_pixel: float = 128.0
-var transition_time: float = 1.0
-var fade_color: Color = Color.WHITE
+var transition_time: float = 0.3
+var fade_color: Color = Color(0.141, 0.141, 0.141)
 
 
 var viewport_container: SubViewportContainer

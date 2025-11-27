@@ -1,3 +1,4 @@
+@warning_ignore("missing_tool")
 extends AweSplashScreen
 
 @onready var logo_container := $AspectNode/LogoContainer
